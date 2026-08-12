@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ravishankar Insights</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#071a35,#123f72);
+  color:white;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.menu{
+  font-size:30px;
+  cursor:pointer;
+}
+
+.hero{
+  min-height:75vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:linear-gradient(135deg,#eaf3ff,#ffffff);
+}
+
+.hero h1{
+  font-size:clamp(35px,7vw,70px);
+  color:#0a3566;
+  margin-bottom:18px;
+}
+
+.hero h2{
+  font-size:clamp(22px,4vw,34px);
+  margin-bottom:18px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+  font-size:17px;
+}
+
+.founder{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+}
+
+.founder-photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid white;
+  box-shadow:0 5px 20px #0003;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+}
+
+.btn{
+  padding:14px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display:inline-block;
+  border:none;
+  cursor:pointer;
+}
+
+.login-btn{
+  background:#1261c9;
+  color:white;
+}
+
+.syllabus-btn{
+  background:#f0a500;
+  color:#111;
+}
+
+.info{
+  padding:55px 6%;
+  text-align:center;
+}
+
+.info h2{
+  color:#0a3566;
+  margin-bottom:15px;
+  font-size:32px;
+}
+
+.info p{
+  max-width:850px;
+  margin:auto;
+  line-height:1.8;
+}
+
+.cards{
+  padding:20px 6% 70px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:28px 20px;
+  border-radius:18px;
+  box-shadow:0 8px 25px #00000012;
+  text-align:center;
+}
+
+.card h3{
+  color:#123f72;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#596579;
+  line-height:1.6;
+}
+
+.lock{
+  margin-top:15px;
+  font-weight:bold;
+  color:#c77b00;
+}
+
+.notice{
+  background:#fff;
+  margin:20px 6%;
+  padding:25px;
+  border-left:5px solid #1261c9;
+  border-radius:10px;
+  line-height:1.8;
+}
+
+footer{
+  background:#071a35;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+.side-menu{
+  display:none;
+  position:fixed;
+  right:15px;
+  top:70px;
+  width:240px;
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 10px 35px #0003;
+  z-index:2000;
+}
+
+.side-menu a{
+  display:block;
+  padding:14px;
+  color:#172033;
+  text-decoration:none;
+  border-bottom:1px solid #eee;
+}
+
+.side-menu a:hover{
+  background:#eef5ff;
+}
+
+@media(max-width:600px){
+  .logo{
+    font-size:17px;
+  }
+
+  .hero{
+    min-height:80vh;
+  }
+}
+</style>
+<style>
+.slider-section{padding:35px 6%;background:#f5f7fb}
+.slider{position:relative;width:100%;max-width:1100px;height:330px;margin:auto;overflow:hidden;border-radius:24px;box-shadow:0 12px 35px #0002;background:linear-gradient(135deg,#0a3566,#1261c9)}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;opacity:0;transform:scale(1.03);transition:opacity .8s ease,transform .8s ease;color:white}
+.slide.active{opacity:1;transform:scale(1)}
+.slide-content h2{font-size:clamp(25px,5vw,45px);margin-bottom:15px}
+.slide-content p{font-size:18px;line-height:1.7}
+.dots{text-align:center;margin-top:15px}
+.dot{display:inline-block;width:10px;height:10px;margin:5px;border-radius:50%;background:#b7c4d8;transition:.3s}
+.active-dot{width:25px;border-radius:10px;background:#1261c9}
+</style>
+<style>
+.founder-section{padding:45px 6%;background:#fff}
+.founder-card{max-width:1000px;margin:auto;display:flex;align-items:center;gap:35px;padding:30px;border-radius:24px;background:#f8fafc;box-shadow:0 10px 30px #0001}
+.founder-card img{width:180px;height:180px;object-fit:cover;border-radius:50%;border:6px solid white;box-shadow:0 8px 25px #0002}
+.founder-text span{font-size:13px;font-weight:700;letter-spacing:2px}
+.founder-text h2{font-size:36px;margin:8px 0}
+.founder-text h3{margin:5px 0 12px}
+.founder-text p{line-height:1.7;font-size:16px}
+@media(max-width:650px){.founder-card{flex-direction:column;text-align:center}.founder-card img{width:145px;height:145px}}
+</style>
+<style>
+.professional-nav{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:#ffffffee;backdrop-filter:blur(12px);box-shadow:0 3px 18px #0001}
+.nav-logo{font-weight:800;font-size:20px;color:#123d70}
+.professional-nav nav{display:flex;align-items:center;gap:8px}
+.professional-nav nav a{text-decoration:none;color:#172b4d;font-weight:600;padding:9px 12px;border-radius:9px}
+.professional-nav nav a:hover{background:#eaf2ff}
+.professional-nav .nav-login{background:#1261c9;color:white}
+.nav-toggle{display:none;border:0;background:transparent;font-size:25px;cursor:pointer}
+@media(max-width:800px){
+.nav-toggle{display:block}
+.professional-nav nav{display:none;position:absolute;top:65px;left:0;right:0;flex-direction:column;align-items:stretch;padding:12px 5%;background:white;box-shadow:0 8px 20px #0002}
+.professional-nav nav.show{display:flex}
+.professional-nav nav a{padding:13px}
+}
+</style>
+<style>
+.professional-info{padding:45px 6%;background:#f5f7fb}
+.info-box{max-width:1000px;margin:auto;background:white;padding:30px;border-radius:20px;box-shadow:0 8px 25px #0001}
+.info-box h2{color:#123d70;margin-top:0}
+.info-box p{line-height:1.8;font-size:16px}
+.update-item{padding:13px;margin:10px 0;background:#f3f7ff;border-radius:10px;line-height:1.5}
+.contact-box{background:#fff}
+</style>
+<style>
+.student-section{padding:55px 6%;background:#f5f7fb}
+.student-heading{text-align:center;max-width:750px;margin:0 auto 30px}
+.student-heading span{font-size:13px;font-weight:800;letter-spacing:2px;color:#1261c9}
+.student-heading h2{font-size:32px;margin:10px 0}
+.student-heading p{line-height:1.7}
+.student-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.student-card{background:white;padding:22px;border-radius:18px;box-shadow:0 7px 22px #0001;transition:.25s}
+.student-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px #0002}
+.student-card h3{margin-top:0;color:#123d70}
+.student-card p{min-height:45px;line-height:1.5}
+.student-card a{display:inline-block;text-decoration:none;background:#1261c9;color:white;padding:9px 12px;border-radius:8px;font-size:14px}
+@media(max-width:900px){.student-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.student-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.syllabus-section{padding:55px 6%;background:#fff}
+.syllabus-heading{text-align:center;max-width:750px;margin:0 auto 30px}
+.syllabus-heading span{font-size:13px;font-weight:800;letter-spacing:2px;color:#1261c9}
+.syllabus-heading h2{font-size:32px;margin:10px 0}
+.syllabus-heading p{line-height:1.7}
+.syllabus-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.syllabus-card{text-decoration:none;color:#172b4d;background:#f7faff;border:1px solid #e2eafa;padding:25px;border-radius:18px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.syllabus-card:hover{transform:translateY(-5px);box-shadow:0 10px 25px #0001;border-color:#1261c9}
+.syllabus-card b{font-size:21px;color:#123d70}
+.syllabus-card span{font-size:14px;line-height:1.5}
+@media(max-width:900px){.syllabus-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.syllabus-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.exam-category{max-width:1150px;margin:35px auto}
+.exam-category>h3{font-size:24px;color:#123d70;margin:35px 0 18px;border-left:5px solid #1261c9;padding-left:12px}
+.student-grid{max-width:1100px;margin:0 auto 25px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.student-card{background:white;padding:22px;border-radius:18px;box-shadow:0 7px 22px #0001;transition:.25s}
+.student-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px #0002}
+.student-card h3{margin-top:0;color:#123d70}
+.student-card p{min-height:45px;line-height:1.5}
+.student-card a{display:inline-block;text-decoration:none;background:#1261c9;color:white;padding:9px 12px;border-radius:8px;font-size:14px}
+@media(max-width:900px){.student-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.student-grid{grid-template-columns:1fr}}
+</style>
+<style>
+/* HOMEPAGE CLEAN VIEW */
+.home-clean-hide{display:none!important}
+</style>
+<style>
+.home-guidance{padding:18px 5%;background:#f5f8ff;border-bottom:1px solid #dce7f7}
+.guidance-scroll{max-width:1100px;margin:auto;display:flex;gap:35px;overflow:hidden;white-space:nowrap;animation:guidanceMove 18s linear infinite}
+.guidance-scroll span{font-weight:600;color:#17385f}
+.guidance-scroll a{color:#1261c9;text-decoration:none;font-weight:800}
+.guidance-actions{display:flex;justify-content:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.guidance-btn{display:inline-block;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700}
+.syllabus-btn{background:white;color:#1261c9;border:1px solid #1261c9}
+.login-btn{background:#1261c9;color:white}
+@keyframes guidanceMove{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+@media(max-width:600px){.guidance-scroll{gap:25px}.guidance-btn{width:100%;text-align:center}}
+</style>
+<style>
+.student-info-box{padding:40px 6%;background:#eef5ff}
+.student-info-box .info-box{text-align:center;max-width:900px}
+.student-info-login{display:inline-block;margin-top:12px;background:#1261c9;color:white;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700}
+</style>
+
+<style id="section-navigation-style">
+.route-hidden{display:none!important}
+.route-visible{display:block!important}
+
+#student-info,#about,#updates,#student,#student-old,#syllabus,#contact,#about-old{
+  scroll-margin-top:90px;
+}
+
+body.route-home #student,
+body.route-home #student-old,
+body.route-home #syllabus,
+body.route-home #about-old,
+body.route-home #updates,
+body.route-home #contact{
+  display:none!important;
+}
+
+body.route-student > *:not(header):not(.route-banner):not(#student){
+  display:none!important;
+}
+body.route-student #student{
+  display:block!important;
+}
+
+body.route-syllabus > *:not(header):not(.route-banner):not(#syllabus){
+  display:none!important;
+}
+body.route-syllabus #syllabus{
+  display:block!important;
+}
+
+body.route-about > *:not(header):not(.route-banner):not(#about){
+  display:none!important;
+}
+body.route-about #about{
+  display:block!important;
+}
+
+body.route-updates > *:not(header):not(.route-banner):not(#updates){
+  display:none!important;
+}
+body.route-updates #updates{
+  display:block!important;
+}
+
+body.route-contact > *:not(header):not(.route-banner):not(#contact){
+  display:none!important;
+}
+body.route-contact #contact{
+  display:block!important;
+}
+
+body.route-home .student-section,
+body.route-home .syllabus-section{
+  display:none!important;
+}
+
+.route-banner{
+  position:relative;
+  z-index:10;
+}
+
+.founder-section img{
+  max-width:120px;
+  height:auto;
+  border-radius:50%;
+  object-fit:cover;
+}
+</style>
+
+
+<style id="final-home-cleanup">
+/* ===== FINAL HOME CLEANUP ===== */
+
+/* Homepage पर पुराने cards/sections नहीं दिखेंगे */
+body.route-home #student-old,
+body.route-home .cards,
+body.route-home .slider-section,
+body.route-home #syllabus,
+body.route-home .syllabus-section{
+  display:none!important;
+}
+
+/* पुराने duplicate information blocks */
+body.route-home #about-old,
+body.route-home #student-old{
+  display:none!important;
+}
+
+/* Student button अब केवल login/register के लिए */
+body.route-home .student-section{
+  display:none!important;
+}
+
+/* Banner को homepage के ऊपर दिखाएँ */
+body.route-home .route-top-banner{
+  display:block!important;
+}
+
+/* Existing founder photo साफ और गोल रहे */
+.founder-section img{
+  width:110px;
+  height:110px;
+  max-width:110px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* नीचे का अनचाहा खाली/पुराना content */
+body.route-home .slider-section,
+body.route-home .cards{
+  visibility:hidden!important;
+  height:0!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+</style>
+
+
+<style id="final-layout-fix">
+/* ===== FINAL LAYOUT ===== */
+
+/* नीचे के पुराने cards पूरी तरह बंद */
+body.route-home .cards,
+body.route-home #student-old,
+body.route-home #about-old,
+body.route-home .syllabus-section{
+  display:none!important;
+}
+
+/* पुराने slider को homepage पर दिखाना है */
+body.route-home .slider-section{
+  display:block!important;
+  visibility:visible!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:20px 5%!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+
+/* Banner को ऊपर रखने के लिए */
+body.route-home .top-banner-area{
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+  padding:20px 5%;
+}
+
+/* Founder की existing photo */
+body.route-home .top-banner-area .founder-section{
+  display:block!important;
+  padding:10px!important;
+  background:transparent!important;
+}
+
+body.route-home .top-banner-area .founder-section img{
+  width:100px!important;
+  height:100px!important;
+  max-width:100px!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+}
+
+/* Banner */
+body.route-home .top-banner-area .slider-section{
+  flex:1;
+  max-width:850px;
+  padding:15px!important;
+}
+
+/* Homepage में नीचे का duplicate founder बंद */
+body.route-home > .founder-section{
+  display:none!important;
+}
+</style>
+
+
+<style id="public-hide-admin">
+.admin-only,
+.admin-card,
+.admin-panel,
+.admin-dashboard-link,
+a[href*="admin-dashboard"],
+a[href="admin.html"],
+a[href="admin-dashboard.html"],
+a[href="admin-upload.html"],
+a[href*="/admin"]{
+  display:none !important;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- GOOGLE ADSENSE SLOT -->
+<div class="adsense-slot" aria-label="Advertisement">
+  <span>Advertisement</span>
+</div>
+<!-- END GOOGLE ADSENSE SLOT -->
+
+<header class="professional-nav">
+<div class="nav-logo">📚 The Ravishankar Insights</div>
+<button class="nav-toggle" onclick="toggleProfessionalMenu()">☰</button>
+<nav id="mainNav">
+<a href="index.html">🏠 Home</a>
+<a href="#student">🎓 Student</a>
+<a href="#syllabus">📚 Syllabus</a>
+<a href="#updates">📢 Updates</a>
+<a href="#about">ℹ️ About</a>
+<a href="#contact">📞 Contact</a>
+<a href="login.html" class="nav-login">🔐 Login</a>
+</nav>
+</header>
+
+<header>
+  <div class="logo">📚 The Ravishankar Insights</div>
+  <div class="menu" onclick="toggleMenu()">⋮</div>
+</header>
+
+<div id="menuBox" class="side-menu">
+  <a href="login.html">🔐 Student Login</a>
+  <a href="register.html">📝 Student Register</a>
+  <a href="#about">ℹ️ About</a>
+  <a href="#student">🎓 Student</a>
+  <a href="#syllabus">📚 Syllabus</a>
+</div>
+
+<section class="hero">
+
+  <div>
+
+    <h1>Welcome to<br>The Ravishankar Insights</h1>
+
+    <h2>📖 शिक्षा • अध्ययन • सफलता</h2>
+
+    <p>
+      The Ravishankar Insights में आपका स्वागत है।
+      यहाँ विभिन्न courses, competitive examinations,
+      study material, notes, previous year papers और syllabus
+      उपलब्ध हैं।
+    </p>
+
+    <div class="founder">
+      <img
+        class="founder-photo"
+        src="images/founder.jpg"
+        alt="Founder">
+      <div>
+        <strong>Founder</strong><br>
+        Ravishankar
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a class="btn login-btn" href="login.html">
+        🔐 Student Login
+      </a>
+
+      <a class="btn syllabus-btn" href="#syllabus">
+        📚 Syllabus
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="student-info" class="student-info-box">
+<div class="info-box">
+<h2>🎓 Student Information</h2>
+<p>Student Portal में अलग-अलग exams और courses की जानकारी उपलब्ध है।</p>
+<p>📚 Syllabus देखने के लिए ऊपर Syllabus section चुनें।</p>
+<p>🔐 Study Material, Notes और Previous Year Papers देखने के लिए Student Login/Register करें।</p>
+<a href="login.html" class="student-info-login">🔐 Student Login / Register</a>
+</div>
+</section>
+<section id="about" class="professional-info">
+<div class="info-box">
+<h2>ℹ️ About The Ravishankar Insights</h2>
+<p>The Ravishankar Insights एक educational platform है जहाँ विद्यार्थियों को BA, MA, UPSC, UPPCS, NET-JRF, Railway, SSC, Banking और अन्य परीक्षाओं से संबंधित अध्ययन सामग्री उपलब्ध कराने का उद्देश्य है।</p>
+<p>यहाँ Study Material, Notes, Previous Year Papers, Syllabus और आगे चलकर Video Lectures जैसी सुविधाएँ उपलब्ध होंगी।</p>
+</div>
+</section>
+
+<section id="student" class="student-section home-clean-hide">
+
+<div class="student-heading">
+<span>🎓 STUDENT PORTAL</span>
+<h2>भारत के प्रमुख Exams की तैयारी</h2>
+<p>
+Study Material, Notes, PYQs और अन्य resources देखने के लिए
+Student Login/Register करें।
+</p>
+</div>
+
+<div class="exam-category">
+
+<h3>🎓 University & Academic</h3>
+<div class="student-grid">
+<div class="student-card"><h3>📘 BA</h3><p>BA • Notes • PYQs • Study Material</p><a href="login.html?next=ba-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📕 MA</h3><p>MA • Notes • PYQs • Study Material</p><a href="login.html?next=ma-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🎓 CUET</h3><p>CUET UG • PG Preparation</p><a href="login.html?next=university-law-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>🏛️ UPSC & Civil Services</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🏛️ UPSC CSE</h3><p>IAS • IPS • IFS • Prelims • Mains</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🛡️ CDS</h3><p>Combined Defence Services</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🎖️ NDA</h3><p>National Defence Academy</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🛡️ CAPF</h3><p>Central Armed Police Forces</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🩺 UPSC CMS</h3><p>Combined Medical Services</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>🏢 State PSC</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🏛️ UPPCS</h3><p>Uttar Pradesh PCS</p><a href="login.html?next=uppcs-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏛️ State PSC</h3><p>Other State Public Service Commissions</p><a href="login.html?next=state-psc-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>📝 SSC Exams</h3>
+<div class="student-grid">
+<div class="student-card"><h3>📝 SSC CGL</h3><p>Graduate Level Examination</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📝 SSC CHSL</h3><p>10+2 Level Examination</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📝 SSC MTS</h3><p>Multi Tasking Staff</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>👮 SSC GD</h3><p>Constable GD</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>👮 SSC CPO</h3><p>Sub-Inspector Examination</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📊 SSC Selection Post</h3><p>Selection Post Examination</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>🏦 Banking & Finance</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🏦 IBPS PO</h3><p>Probationary Officer</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏦 IBPS Clerk</h3><p>Customer Service Associate</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏦 IBPS RRB</h3><p>Office Assistant • Officer Scale</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏦 SBI PO</h3><p>State Bank Probationary Officer</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏦 SBI Clerk</h3><p>Junior Associate</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏛️ RBI</h3><p>RBI Grade B & Other Exams</p><a href="login.html?next=banking-exams-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>🚆 Railway Exams</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🚆 RRB NTPC</h3><p>Non-Technical Popular Categories</p><a href="login.html?next=railway-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🚆 RRB Group D</h3><p>Level 1 Railway Recruitment</p><a href="login.html?next=railway-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🚆 RRB ALP</h3><p>Assistant Loco Pilot</p><a href="login.html?next=railway-exams-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🚆 RRB Technician</h3><p>Railway Technician</p><a href="login.html?next=railway-exams-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>👮 Police & Defence</h3>
+<div class="student-grid">
+<div class="student-card"><h3>👮 SSC GD</h3><p>Central Armed Police Forces</p><a href="login.html?next=ssc-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>👮 State Police</h3><p>Police Constable & SI Exams</p><a href="login.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🎖️ Defence Exams</h3><p>Army • Navy • Air Force</p><a href="login.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>👨‍🏫 Teaching & Education</h3>
+<div class="student-grid">
+<div class="student-card"><h3>👨‍🏫 CTET</h3><p>Central Teacher Eligibility Test</p><a href="login.html?next=teaching-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>👩‍🏫 TET</h3><p>Teacher Eligibility Tests</p><a href="login.html?next=teaching-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📚 TGT</h3><p>Trained Graduate Teacher Exams</p><a href="login.html?next=teaching-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📚 PGT</h3><p>Post Graduate Teacher Exams</p><a href="login.html?next=teaching-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>📚 NET, JRF & Research</h3>
+<div class="student-grid">
+<div class="student-card"><h3>📚 UGC NET</h3><p>NET Paper 1 & Subject Papers</p><a href="login.html?next=net-jrf-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🔬 NET-JRF</h3><p>JRF Preparation • PYQs • Notes</p><a href="login.html?next=net-jrf-materials.html">🔐 Login करके देखें</a></div>
+</div>
+
+<h3>🧪 Engineering Entrance</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🧪 JEE Main</h3><p>Engineering Entrance • NTA</p><a href="login.html?next=engineering-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🧪 JEE Advanced</h3><p>Advanced Engineering Entrance</p><a href="login.html?next=engineering-materials.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>🏥 Medical Entrance</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🩺 NEET UG</h3><p>Medical Entrance • NTA</p><a href="login.html?next=medical-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🩺 NEET PG</h3><p>Postgraduate Medical Entrance</p><a href="login.html?next=medical-materials.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>🏛️ University & Law Entrance</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🎓 CUET UG</h3><p>Central Universities Entrance</p><a href="login.html?next=university-law-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🎓 CUET PG</h3><p>Postgraduate University Entrance</p><a href="login.html?next=university-law-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>⚖️ AIBE</h3><p>All India Bar Examination</p><a href="login.html?next=university-law-materials.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>🏛️ UP Government Exams</h3>
+<div class="student-grid">
+<div class="student-card"><h3>📝 UPSSSC PET</h3><p>Preliminary Eligibility Test</p><a href="login.html?next=up-government-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>📋 UPSSSC</h3><p>Various Group C Examinations</p><a href="login.html?next=up-government-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>👮 UP Police</h3><p>Constable • SI • Other Posts</p><a href="login.html?next=up-government-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏛️ UP Judiciary</h3><p>Civil Judge • Judicial Services</p><a href="login.html?next=up-government-materials.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>🛡️ Defence & Armed Forces</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🎖️ Agniveer</h3><p>Army • Navy • Air Force</p><a href="login.html?next=armed-forces-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🛡️ CAPF</h3><p>Central Armed Police Forces</p><a href="login.html?next=civil-defence-materials.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>🏢 Insurance & Other Government Exams</h3>
+<div class="student-grid">
+<div class="student-card"><h3>🏢 LIC</h3><p>Insurance Recruitment Exams</p><a href="login.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏢 EPFO</h3><p>EO/AO • SSA • Other Exams</p><a href="login.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏢 ESIC</h3><p>Various Recruitment Exams</p><a href="login.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🏢 FCI</h3><p>Food Corporation Recruitment</p><a href="login.html">🔐 Login करके देखें</a></div>
+</div>
+<h3>⚖️ Law & Other Professional Exams</h3>
+<div class="student-grid">
+<div class="student-card"><h3>⚖️ CLAT</h3><p>Common Law Admission Test</p><a href="login.html?next=law-professional-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>⚖️ AILET</h3><p>National Law University Entrance</p><a href="login.html?next=law-professional-materials.html">🔐 Login करके देखें</a></div>
+<div class="student-card"><h3>🩺 NEET</h3><p>Medical Entrance Preparation</p><a href="login.html">🔐 Login करके देखें</a></div>
+</div>
+
+</section>
+
+<!-- DYNAMIC ADMIN CARDS -->
+<div id="dynamic-admin-cards-area" style="margin-top:35px;">
+
+  <h3>🆕 New Sections</h3>
+
+  <div
+    id="dynamic-admin-cards"
+    class="student-grid"
+  >
+    <p>New sections loading...</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  const API =
+    "https://ravishankar-insights-backend-1.onrender.com";
+
+  const container =
+    document.getElementById("dynamic-admin-cards");
+
+  async function loadDynamicCards(){
+
+    try {
+
+      const response =
+        await fetch(API + "/api/cards");
+
+      const data =
+        await response.json();
+
+      if (
+        !data.success ||
+        !Array.isArray(data.cards)
+      ) {
+        container.innerHTML = "";
+        return;
+      }
+
+      if (data.cards.length === 0) {
+        container.innerHTML = "";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      data.cards.forEach(function(card){
+
+        const box =
+          document.createElement("div");
+
+        box.className = "student-card";
+
+        const title =
+          document.createElement("h3");
+
+        title.textContent =
+          (card.icon || "📚") + " " + card.title;
+
+        const description =
+          document.createElement("p");
+
+        description.textContent =
+          card.description || "Study Material और Notes";
+
+        const link =
+          document.createElement("a");
+
+        link.textContent =
+          "🔐 Login करके देखें";
+
+        link.href =
+          "login.html?next=" +
+          encodeURIComponent(card.page);
+
+        box.appendChild(title);
+        box.appendChild(description);
+        box.appendChild(link);
+
+        container.appendChild(box);
+
+      });
+
+    } catch(error) {
+
+      console.error(
+        "Dynamic cards error:",
+        error
+      );
+
+      container.innerHTML = "";
+
+    }
+
+  }
+
+  loadDynamicCards();
+
+})();
+</script>
+
+<section id="updates" class="professional-info">
+<div class="info-box">
+<h2>📢 Latest Updates</h2>
+<div class="update-item">🆕 नई Study Material और PDF जल्द जोड़ी जाएँगी।</div>
+<div class="update-item">📚 विभिन्न Courses और Competitive Exams के sections उपलब्ध हैं।</div>
+<div class="update-item">🎥 Video Lectures की सुविधा भी आगे जोड़ी जाएगी।</div>
+</div>
+</section>
+<section class="home-guidance">
+<div class="guidance-scroll">
+<span>📚 Syllabus देखने के लिए <a href="#syllabus">Syllabus पर Click करें</a></span>
+<span>🔐 पढ़ने के लिए <a href="login.html">Student Login/Register करें</a> — सारा Study Material वहीं मिलेगा</span>
+<span>🎓 Student की जानकारी के लिए <a href="#student-info">Student section देखें</a> और Login करें</span>
+</div>
+<div class="guidance-actions">
+<a class="guidance-btn syllabus-btn" href="#syllabus">📚 Syllabus देखें</a>
+<a class="guidance-btn login-btn" href="login.html">🔐 Student Login</a>
+</div>
+</section>
+<section class="notice">
+  📢 <strong>सूचना:</strong>
+  यहाँ विभिन्न प्रकार के study materials और syllabus उपलब्ध हैं।
+  Study Material देखने के लिए Student Login/Register करें।
+</section>
+
+<section class="founder-section">
+<div class="founder-card">
+<img src="images/founder.jpg" alt="Founder - Ravishankar">
+<div class="founder-text">
+<span>THE RAVISHANKAR INSIGHTS</span>
+<h2>Ravishankar</h2>
+<h3>Founder & Educational Platform</h3>
+<p>विद्यार्थियों के लिए अध्ययन सामग्री, पाठ्यक्रम, नोट्स और परीक्षा तैयारी को एक ही स्थान पर उपलब्ध कराने का हमारा प्रयास।</p>
+</div>
+</div>
+</section>
+<section class="slider-section">
+<div class="slider">
+<div class="slide active"><div class="slide-content"><h2>📚 The Ravishankar Insights</h2><p>Study Material • Notes • PYQs • Syllabus</p></div></div>
+<div class="slide"><div class="slide-content"><h2>🎓 विद्यार्थियों का स्वागत है</h2><p>अपने लक्ष्य की तैयारी एक ही platform पर करें</p></div></div>
+<div class="slide"><div class="slide-content"><h2>🏛️ UPSC • UPPCS • NET JRF</h2><p>Competitive examination preparation</p></div></div>
+<div class="slide"><div class="slide-content"><h2>📖 BA • MA • Railway • SSC • Banking</h2><p>अलग-अलग sections में study resources</p></div></div>
+</div>
+<div class="dots"><span class="dot active-dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</section>
+<section id="about-old" class="info">
+  <h2>About The Ravishankar Insights</h2>
+  <p>
+    The Ravishankar Insights एक education और exam-preparation
+    platform है जहाँ विद्यार्थियों को विभिन्न courses और
+    competitive examinations के लिए syllabus, notes,
+    previous year papers और अन्य study materials एक ही स्थान
+    पर उपलब्ध कराने का उद्देश्य है।
+  </p>
+</section>
+
+<section id="student-old" class="info">
+  <h2>🎓 Student Section</h2>
+  <p>
+    Student section में उपलब्ध study material देखने के लिए
+    पहले Student Login करें।
+  </p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <h3>🎓 BA</h3>
+    <p>BA के study materials, notes और PYQs</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>🎓 MA</h3>
+    <p>MA study materials और notes</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>🏛️ UPSC</h3>
+    <p>UPSC preparation materials</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>🏛️ UPPCS</h3>
+    <p>UPPCS preparation materials</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>📚 NET JRF</h3>
+    <p>NET JRF study materials और PYQs</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>🚆 Railway</h3>
+    <p>Railway examination materials</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>📖 SSC</h3>
+    <p>SSC examination materials</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+  <div class="card">
+    <h3>🏦 Banking</h3>
+    <p>Banking examination materials</p>
+    <div class="lock">🔒 Login Required</div>
+  </div>
+
+</section>
+
+<section id="syllabus" class="syllabus-section">
+<div class="syllabus-heading">
+<span>📚 SYLLABUS</span>
+<h2>अपनी परीक्षा का Syllabus चुनें</h2>
+<p>यहाँ अलग-अलग courses और competitive examinations के syllabus उपलब्ध होंगे।</p>
+</div>
+<div class="syllabus-grid">
+<a href="ba-syllabus.html" class="syllabus-card"><b>📘 BA</b><span>BA Course Syllabus</span></a>
+<a href="ma-syllabus.html" class="syllabus-card"><b>📕 MA</b><span>MA Course Syllabus</span></a>
+<a href="upsc-syllabus.html" class="syllabus-card"><b>🏛️ UPSC</b><span>UPSC Syllabus</span></a>
+<a href="uppcs-syllabus.html" class="syllabus-card"><b>🏛️ UPPCS</b><span>UPPCS Syllabus</span></a>
+<a href="net-jrf-syllabus.html" class="syllabus-card"><b>📚 NET-JRF</b><span>NET-JRF Syllabus</span></a>
+<a href="railway-syllabus.html" class="syllabus-card"><b>🚆 Railway</b><span>Railway Exam Syllabus</span></a>
+<a href="ssc-syllabus.html" class="syllabus-card"><b>📝 SSC</b><span>SSC Exam Syllabus</span></a>
+<a href="banking-syllabus.html" class="syllabus-card"><b>🏦 Banking</b><span>Banking Exam Syllabus</span></a>
+</div>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <h3>BA Syllabus</h3>
+    <p>BA का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>MA Syllabus</h3>
+    <p>MA का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>UPSC Syllabus</h3>
+    <p>UPSC का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>UPPCS Syllabus</h3>
+    <p>UPPCS का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>NET JRF Syllabus</h3>
+    <p>NET JRF का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>Railway Syllabus</h3>
+    <p>Railway exams का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>SSC Syllabus</h3>
+    <p>SSC exams का syllabus</p>
+  </div>
+
+  <div class="card">
+    <h3>Banking Syllabus</h3>
+    <p>Banking exams का syllabus</p>
+  </div>
+
+</section>
+
+<footer>
+  <h3>The Ravishankar Insights</h3>
+  <p>Study • Learn • Prepare • Succeed</p>
+  <br>
+  <p>© The Ravishankar Insights</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  const menu=document.getElementById("menuBox");
+
+  if(menu.style.display==="block"){
+    menu.style.display="none";
+  }else{
+    menu.style.display="block";
+  }
+}
+</script>
+
+<script>
+let currentSlide=0;const slides=document.querySelectorAll(".slide");const dots=document.querySelectorAll(".dot");
+function showSlide(index){slides.forEach((s,i)=>s.classList.toggle("active",i===index));dots.forEach((d,i)=>d.classList.toggle("active-dot",i===index));}
+setInterval(()=>{currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide)},4000);
+</script>
+<script>
+function toggleProfessionalMenu(){document.getElementById("mainNav").classList.toggle("show");}
+document.querySelectorAll("#mainNav a").forEach(function(link){link.addEventListener("click",function(){document.getElementById("mainNav").classList.remove("show");});});
+</script>
+<section id="contact" class="professional-info contact-box">
+<div class="info-box">
+<h2>📞 Contact & Feedback</h2>
+<p>Website से संबंधित सुझाव, समस्या या अध्ययन सामग्री से संबंधित feedback के लिए संपर्क करें।</p>
+<p><strong>The Ravishankar Insights</strong></p>
+</div>
+</section>
+
+<script id="section-navigation-script">
+(function(){
+
+function hideAll(){
+ document.body.classList.remove(
+  "route-home","route-student","route-syllabus",
+  "route-about","route-updates","route-contact"
+ );
+}
+
+function showRoute(route){
+ hideAll();
+
+ if(route==="student") document.body.classList.add("route-student");
+ else if(route==="syllabus") document.body.classList.add("route-syllabus");
+ else if(route==="about") document.body.classList.add("route-about");
+ else if(route==="updates") document.body.classList.add("route-updates");
+ else if(route==="contact") document.body.classList.add("route-contact");
+ else document.body.classList.add("route-home");
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function routeFromHash(){
+ let r=location.hash.replace("#","").trim().toLowerCase();
+
+ if(r==="student" || r==="student-info") showRoute("student");
+ else if(r==="syllabus") showRoute("syllabus");
+ else if(r==="about") showRoute("about");
+ else if(r==="updates") showRoute("updates");
+ else if(r==="contact") showRoute("contact");
+ else showRoute("home");
+}
+
+document.addEventListener("click",function(e){
+ const a=e.target.closest("a");
+ if(!a)return;
+
+ const href=a.getAttribute("href")||"";
+
+ if(href==="#student" || href==="#student-info"){
+  e.preventDefault();
+  history.pushState(null,"","#student");
+  showRoute("student");
+ }
+ else if(href==="#syllabus"){
+  e.preventDefault();
+  history.pushState(null,"","#syllabus");
+  showRoute("syllabus");
+ }
+ else if(href==="#about"){
+  e.preventDefault();
+  history.pushState(null,"","#about");
+  showRoute("about");
+ }
+ else if(href==="#updates"){
+  e.preventDefault();
+  history.pushState(null,"","#updates");
+  showRoute("updates");
+ }
+ else if(href==="#contact"){
+  e.preventDefault();
+  history.pushState(null,"","#contact");
+  showRoute("contact");
+ }
+});
+
+window.addEventListener("hashchange",routeFromHash);
+window.addEventListener("popstate",routeFromHash);
+
+routeFromHash();
+
+})();
+</script>
+
+
+<script id="move-banner-top">
+document.addEventListener("DOMContentLoaded", function(){
+
+  const header = document.querySelector("header");
+  const founder = document.querySelector("body > .founder-section");
+  const slider = document.querySelector("body > .slider-section");
+
+  if(header && founder && slider && !document.querySelector(".top-banner-area")){
+    const area = document.createElement("div");
+    area.className = "top-banner-area";
+
+    header.insertAdjacentElement("afterend", area);
+    area.appendChild(founder);
+    area.appendChild(slider);
+  }
+
+});
+</script>
+
+</body>
+</html>
