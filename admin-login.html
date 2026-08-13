@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - The Ravishankar Insights</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#0f172a,#1e3a8a,#312e81);
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+h1{
+  text-align:center;
+  margin:0 0 8px;
+  color:#111827;
+}
+
+.subtitle{
+  text-align:center;
+  color:#6b7280;
+  margin-bottom:25px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  font-weight:bold;
+  color:#374151;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#1d4ed8;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:disabled{
+  opacity:.6;
+}
+
+#message{
+  margin-top:15px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#1d4ed8;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+  <h1>🔐 Admin Login</h1>
+  <div class="subtitle">The Ravishankar Insights</div>
+
+  <form id="adminLoginForm">
+
+    <label for="username">Admin Username</label>
+    <input
+      id="username"
+      type="text"
+      autocomplete="username"
+      required
+    >
+
+    <label for="password">Admin Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="current-password"
+      required
+    >
+
+    <button id="loginBtn" type="submit">
+      🔐 Login
+    </button>
+
+  </form>
+
+  <div id="message"></div>
+
+  <a class="back" href="index.html">← Main Website</a>
+
+</div>
+
+<script>
+const API =
+  "https://ravishankar-insights-backend-1.onrender.com";
+
+const form =
+  document.getElementById("adminLoginForm");
+
+const message =
+  document.getElementById("message");
+
+const loginBtn =
+  document.getElementById("loginBtn");
+
+form.addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  message.textContent = "";
+  loginBtn.disabled = true;
+  loginBtn.textContent = "⏳ Login हो रहा है...";
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  try {
+
+    const response = await fetch(
+      API + "/api/admin/login",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          username,
+          password
+        })
+      }
+    );
+
+    const data =
+      await response.json();
+
+    if(!response.ok || !data.success){
+
+      throw new Error(
+        data.message || "Admin login failed."
+      );
+
+    }
+
+    localStorage.setItem(
+      "adminToken",
+      data.token
+    );
+
+    message.style.color = "green";
+    message.textContent =
+      "✅ Admin Login सफल। Dashboard खोला जा रहा है...";
+
+    setTimeout(function(){
+      window.location.href =
+        "admin-dashboard.html";
+    },700);
+
+  } catch(error){
+
+    console.error("Admin login error:",error);
+
+    message.style.color = "red";
+    message.textContent =
+      "❌ " + error.message;
+
+    loginBtn.disabled = false;
+    loginBtn.textContent = "🔐 Login";
+  }
+
+});
+</script>
+
+</body>
+</html>
