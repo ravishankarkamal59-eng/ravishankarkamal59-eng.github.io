@@ -558,7 +558,7 @@ a[href*="/admin"]:not(#mainAdminLink){
 <a href="#about">ℹ️ About</a>
 <a href="#contact">📞 Contact</a>
 <a href="login.html" class="nav-login">🔐 Login</a>
-<a href="admin-login.html" class="nav-admin" id="mainAdminLink" style="display:none;">🔑 Admin</a>
+<a href="admin-login.html" class="nav-admin" id="mainAdminLink">🔑 Admin</a>
 </nav>
 </header>
 
@@ -1428,18 +1428,42 @@ document.addEventListener("DOMContentLoaded", function(){
 <!-- END RAVISHANKAR INSIGHTS FOOTER -->
 
 
+<style>
+#mainAdminLink {
+  display: none !important;
+}
+
+#mainAdminLink.private-admin-visible {
+  display: inline-block !important;
+}
+</style>
+
 <script>
 /* ===============================
    PRIVATE ADMIN BUTTON
    केवल Admin Login के बाद दिखेगा
    =============================== */
 (function () {
-  const adminLink = document.getElementById("mainAdminLink");
-  const adminToken = localStorage.getItem("adminToken");
+  function updateAdminButton() {
+    const adminLink = document.getElementById("mainAdminLink");
+    const adminToken = localStorage.getItem("adminToken");
 
-  if (adminLink && adminToken) {
-    adminLink.style.display = "inline-block";
+    if (!adminLink) return;
+
+    if (adminToken) {
+      adminLink.classList.add("private-admin-visible");
+    } else {
+      adminLink.classList.remove("private-admin-visible");
+    }
   }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateAdminButton);
+  } else {
+    updateAdminButton();
+  }
+
+  window.addEventListener("storage", updateAdminButton);
 })();
 </script>
 \n</body>
