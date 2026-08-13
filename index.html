@@ -1440,25 +1440,72 @@ document.addEventListener("DOMContentLoaded", function(){
 
 <script>
 (function () {
+
   function updatePrivateAdmin() {
-    const link = document.getElementById("mainAdminLink");
+
+    const link =
+      document.getElementById("mainAdminLink");
 
     if (!link) return;
 
-    const token = localStorage.getItem("adminToken");
+    const token =
+      localStorage.getItem("adminToken");
 
-    if (token && token.trim() !== "") {
-      link.classList.add("private-admin-visible");
-      link.setAttribute("aria-hidden", "false");
+    const loggedIn =
+      localStorage.getItem("adminLoggedIn");
+
+    if (
+      token &&
+      token.trim() !== "" &&
+      loggedIn === "true"
+    ) {
+
+      link.classList.add(
+        "private-admin-visible"
+      );
+
+      link.style.setProperty(
+        "display",
+        "inline-block",
+        "important"
+      );
+
+      link.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
     } else {
-      link.classList.remove("private-admin-visible");
-      link.setAttribute("aria-hidden", "true");
+
+      link.classList.remove(
+        "private-admin-visible"
+      );
+
+      link.style.setProperty(
+        "display",
+        "none",
+        "important"
+      );
+
+      link.setAttribute(
+        "aria-hidden",
+        "true"
+      );
     }
   }
 
-  document.addEventListener("DOMContentLoaded", updatePrivateAdmin);
-  window.addEventListener("pageshow", updatePrivateAdmin);
-  window.addEventListener("storage", updatePrivateAdmin);
+  document.addEventListener(
+    "DOMContentLoaded",
+    updatePrivateAdmin
+  );
+
+  window.addEventListener(
+    "pageshow",
+    updatePrivateAdmin
+  );
+
+  updatePrivateAdmin();
+
 })();
 </script>
 </body>

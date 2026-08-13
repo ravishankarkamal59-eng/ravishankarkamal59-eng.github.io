@@ -184,13 +184,18 @@ form.addEventListener("submit", async function(e){
       data.token
     );
 
+    localStorage.setItem(
+      "adminLoggedIn",
+      "true"
+    );
+
     message.style.color = "green";
     message.textContent =
       "✅ Admin Login सफल। Dashboard खोला जा रहा है...";
 
     setTimeout(function(){
       window.location.href =
-        "admin-dashboard.html";
+        "index.html";
     },700);
 
   } catch(error){
