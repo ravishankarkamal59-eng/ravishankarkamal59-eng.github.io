@@ -285,26 +285,6 @@ onclick="showLogin()">
 
 <script>
 
-/* AUTO LOGIN — Registered student को दोबारा Login/Register न कराएं */
-(function(){
-  const loggedIn = localStorage.getItem("studentLoggedIn");
-  const studentUser = localStorage.getItem("studentUser");
-
-  if(loggedIn === "true" && studentUser){
-
-    const next =
-      new URLSearchParams(window.location.search).get("next");
-
-    if(next){
-      window.location.href = next;
-    }else{
-      window.location.href = "student/student-dashboard.html";
-    }
-
-    return;
-  }
-})();
-
 const API =
 "https://ravishankar-insights-backend-1.onrender.com";
 
