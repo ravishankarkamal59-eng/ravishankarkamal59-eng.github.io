@@ -537,6 +537,52 @@ a[href*="/admin"]:not(#mainAdminLink){
 }
 </style>
 
+
+<style>
+.premium-founder-highlight{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:18px 22px;
+  margin-top:24px;
+  border-radius:22px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 12px 35px rgba(0,0,0,.22);
+  backdrop-filter:blur(12px);
+}
+.premium-founder-highlight .founder-photo{
+  width:92px;
+  height:92px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #fff;
+  box-shadow:0 6px 22px rgba(0,0,0,.28);
+}
+.founder-highlight-text{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.founder-highlight-text span{
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+.founder-highlight-text strong{
+  font-size:26px;
+}
+.founder-highlight-text small{
+  font-size:14px;
+  opacity:.9;
+}
+@media(max-width:650px){
+  .premium-founder-highlight{
+    justify-content:center;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -591,14 +637,15 @@ a[href*="/admin"]:not(#mainAdminLink){
       उपलब्ध हैं।
     </p>
 
-    <div class="founder">
+    <div class="founder premium-founder-highlight">
       <img
         class="founder-photo"
         src="images/founder.jpg"
-        alt="Founder">
-      <div>
-        <strong>Founder</strong><br>
-        Ravishankar
+        alt="Founder - Ravishankar">
+      <div class="founder-highlight-text">
+        <span>THE RAVISHANKAR INSIGHTS</span>
+        <strong>Ravishankar</strong>
+        <small>Founder & Educational Platform</small>
       </div>
     </div>
 
@@ -1235,65 +1282,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <!-- END STUDY CONTENT SECTION -->
 
 <!-- LATEST EDUCATIONAL UPDATES -->
-<section class="latest-updates" aria-labelledby="latest-updates-title">
-  <div class="latest-updates-inner">
-    <h2 id="latest-updates-title">📚 Latest Educational Updates</h2>
-    <p class="latest-intro">
-      Useful study resources, exam preparation material and educational
-      updates for students.
-    </p>
 
-    <div class="updates-grid">
-      <a class="update-card" href="ba-materials.html">
-        <span>🎓</span>
-        <strong>BA Study Materials</strong>
-        <small>Notes and learning resources</small>
-      </a>
-
-      <a class="update-card" href="upsc-materials.html">
-        <span>🇮🇳</span>
-        <strong>UPSC Preparation</strong>
-        <small>Study resources for aspirants</small>
-      </a>
-
-      <a class="update-card" href="uppcs-materials.html">
-        <span>📖</span>
-        <strong>UPPCS Preparation</strong>
-        <small>Useful preparation material</small>
-      </a>
-
-      <a class="update-card" href="banking-materials.html">
-        <span>🏦</span>
-        <strong>Banking Exams</strong>
-        <small>Exam preparation resources</small>
-      </a>
-
-      <a class="update-card" href="railway-materials.html">
-        <span>🚆</span>
-        <strong>Railway Exams</strong>
-        <small>Study material and resources</small>
-      </a>
-
-      <a class="update-card" href="ssc-materials.html">
-        <span>📝</span>
-        <strong>SSC Exams</strong>
-        <small>Preparation resources</small>
-      </a>
-
-      <a class="update-card" href="net-jrf-materials.html">
-        <span>🎯</span>
-        <strong>NET-JRF</strong>
-        <small>Study material for aspirants</small>
-      </a>
-
-      <a class="update-card" href="articles.html">
-        <span>📰</span>
-        <strong>Educational Articles</strong>
-        <small>Read useful educational content</small>
-      </a>
-    </div>
-  </div>
-</section>
 
 <style>
 .latest-updates{
