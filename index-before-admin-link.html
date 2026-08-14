@@ -513,7 +513,7 @@ a[href*="admin-dashboard"],
 a[href="admin.html"],
 a[href="admin-dashboard.html"],
 a[href="admin-upload.html"],
-a[href*="/admin"]:not(#mainAdminLink){
+a[href*="/admin"]{
   display:none !important;
 }
 </style>
@@ -558,7 +558,6 @@ a[href*="/admin"]:not(#mainAdminLink){
 <a href="#about">ℹ️ About</a>
 <a href="#contact">📞 Contact</a>
 <a href="login.html" class="nav-login">🔐 Login</a>
-<a href="admin-login.html" class="nav-admin" id="mainAdminLink">🔑 Admin</a>
 </nav>
 </header>
 
@@ -1427,11 +1426,5 @@ document.addEventListener("DOMContentLoaded", function(){
 </footer>
 <!-- END RAVISHANKAR INSIGHTS FOOTER -->
 
-
-<style id="admin-visible-style">
-#mainAdminLink {
-  display: inline-block !important;
-}
-</style>
 </body>
 </html>
