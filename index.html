@@ -583,6 +583,154 @@ a[href*="/admin"]:not(#mainAdminLink){
 }
 </style>
 
+
+<style>
+.premium-main-banner{
+  padding:55px 6%;
+  background:
+    linear-gradient(135deg,#111827 0%,#312e81 48%,#0f766e 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.premium-banner-inner{
+  max-width:1050px;
+  margin:auto;
+  padding:38px 28px;
+  border-radius:32px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.05)
+  );
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  backdrop-filter:blur(14px);
+}
+
+.premium-banner-title{
+  padding-bottom:25px;
+  border-bottom:1px solid rgba(255,255,255,.22);
+}
+
+.premium-banner-title span{
+  font-size:13px;
+  letter-spacing:5px;
+  font-weight:700;
+  opacity:.9;
+}
+
+.premium-banner-title h1{
+  margin:7px 0 0;
+  font-size:clamp(28px,5vw,54px);
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.premium-founder-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:30px 10px;
+}
+
+.premium-main-photo{
+  width:145px;
+  height:145px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid rgba(255,255,255,.95);
+  box-shadow:
+    0 0 0 5px rgba(255,255,255,.12),
+    0 15px 40px rgba(0,0,0,.4);
+}
+
+.premium-founder-name{
+  text-align:left;
+}
+
+.premium-founder-name h2{
+  margin:0;
+  font-size:clamp(28px,4vw,42px);
+}
+
+.premium-founder-name p{
+  margin:7px 0 0;
+  font-size:15px;
+  opacity:.88;
+}
+
+.premium-banner-bottom{
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.22);
+}
+
+.premium-banner-bottom h3{
+  margin:0 0 12px;
+  font-size:clamp(20px,3vw,29px);
+}
+
+.premium-banner-bottom p{
+  max-width:760px;
+  margin:0 auto;
+  line-height:1.7;
+  font-size:15px;
+  opacity:.92;
+}
+
+.premium-banner-buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.premium-banner-buttons a{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.premium-login-btn{
+  background:#fff;
+  color:#111827;
+}
+
+.premium-syllabus-btn{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.35);
+}
+
+@media(max-width:650px){
+  .premium-main-banner{
+    padding:30px 4%;
+  }
+
+  .premium-banner-inner{
+    padding:28px 18px;
+  }
+
+  .premium-founder-center{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .premium-founder-name{
+    text-align:center;
+  }
+
+  .premium-main-photo{
+    width:125px;
+    height:125px;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -622,41 +770,48 @@ a[href*="/admin"]:not(#mainAdminLink){
   <a href="admin-login.html" class="nav-admin" id="sideAdminLink">🔑 Admin</a>
 </div>
 
-<section class="hero">
+<section class="hero premium-main-banner">
 
-  <div>
+  <div class="premium-banner-inner">
 
-    <h1>Welcome to<br>The Ravishankar Insights</h1>
+    <!-- ROW 1 -->
+    <div class="premium-banner-title">
+      <span>THE</span>
+      <h1>RAVISHANKAR INSIGHTS</h1>
+    </div>
 
-    <h2>📖 शिक्षा • अध्ययन • सफलता</h2>
-
-    <p>
-      The Ravishankar Insights में आपका स्वागत है।
-      यहाँ विभिन्न courses, competitive examinations,
-      study material, notes, previous year papers और syllabus
-      उपलब्ध हैं।
-    </p>
-
-    <div class="founder premium-founder-highlight">
+    <!-- ROW 2: ONLY EXISTING PHOTO -->
+    <div class="premium-founder-center">
       <img
-        class="founder-photo"
         src="images/founder.jpg"
-        alt="Founder - Ravishankar">
-      <div class="founder-highlight-text">
-        <span>THE RAVISHANKAR INSIGHTS</span>
-        <strong>Ravishankar</strong>
-        <small>Founder & Educational Platform</small>
+        alt="Ravishankar - Founder"
+        class="premium-main-photo">
+
+      <div class="premium-founder-name">
+        <h2>Ravishankar</h2>
+        <p>Founder & Educational Platform</p>
       </div>
     </div>
 
-    <div class="buttons">
-      <a class="btn login-btn" href="login.html">
-        🔐 Student Login
-      </a>
+    <!-- ROW 3 -->
+    <div class="premium-banner-bottom">
+      <h3>📖 शिक्षा • अध्ययन • सफलता</h3>
 
-      <a class="btn syllabus-btn" href="#syllabus">
-        📚 Syllabus
-      </a>
+      <p>
+        The Ravishankar Insights में आपका स्वागत है।
+        यहाँ courses, competitive examinations, study material,
+        notes, previous year papers और syllabus उपलब्ध हैं।
+      </p>
+
+      <div class="premium-banner-buttons">
+        <a href="login.html" class="premium-login-btn">
+          🔐 Student Login
+        </a>
+
+        <a href="#syllabus" class="premium-syllabus-btn">
+          📚 Syllabus
+        </a>
+      </div>
     </div>
 
   </div>
