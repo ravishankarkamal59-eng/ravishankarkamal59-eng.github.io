@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Portal | The Ravishankar Insights</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#07111f,#123b5d);
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+h1{
+  text-align:center;
+  color:#123b5d;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:25px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin:14px 0 7px;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:18px;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:#1677ff;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#075ed8;
+}
+
+.hidden{
+  display:none;
+}
+
+.link{
+  margin-top:18px;
+  text-align:center;
+  color:#1677ff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#message{
+  margin-top:15px;
+  text-align:center;
+  font-weight:bold;
+  line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎓 Student Portal</h1>
+
+<div class="subtitle">
+The Ravishankar Insights
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginSection">
+
+<form id="loginForm">
+
+<label>Email</label>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="अपना Email डालें"
+required
+>
+
+<label>Password</label>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="अपना Password डालें"
+required
+>
+
+<button type="submit">
+🔐 Login
+</button>
+
+</form>
+
+
+<div
+class="link"
+onclick="showForgot()">
+
+🔑 Forgot Password?
+
+</div>
+
+
+<div
+class="link"
+onclick="showRegister()">
+
+New Student? Register करें
+
+</div>
+
+</div>
+
+
+<!-- REGISTER -->
+
+<div id="registerSection" class="hidden">
+
+<form id="registerForm">
+
+<label>Name</label>
+
+<input
+type="text"
+id="regName"
+placeholder="अपना नाम"
+required
+>
+
+
+<label>Mobile Number</label>
+
+<input
+type="tel"
+id="regMobile"
+maxlength="10"
+placeholder="10 digit mobile number"
+required
+>
+
+
+<label>Email</label>
+
+<input
+type="email"
+id="regEmail"
+placeholder="Email"
+required
+>
+
+
+<label>Password</label>
+
+<input
+type="password"
+id="regPassword"
+placeholder="Password"
+required
+>
+
+
+<button type="submit">
+📩 Send OTP
+</button>
+
+</form>
+
+
+<div id="otpSection" class="hidden">
+
+<label>OTP</label>
+
+<input
+type="text"
+id="regOtp"
+maxlength="6"
+placeholder="SMS से आया 6 digit OTP"
+>
+
+
+<button
+type="button"
+onclick="verifyOTP()">
+
+✅ Verify OTP & Register
+
+</button>
+
+</div>
+
+
+<div
+class="link"
+onclick="showLogin()">
+
+Already registered? Login करें
+
+</div>
+
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div id="forgotSection" class="hidden">
+
+<label>Email</label>
+
+<input
+type="email"
+id="forgotEmail"
+placeholder="Registered Email"
+>
+
+<button
+type="button"
+onclick="forgotPassword()">
+
+📩 Reset Password
+
+</button>
+
+
+<div
+class="link"
+onclick="showLogin()">
+
+← वापस Login
+
+</div>
+
+</div>
+
+
+<div id="message"></div>
+
+</div>
+
+
+<script>
+
+const API =
+"https://ravishankar-insights-backend-1.onrender.com";
+
+
+function showLogin(){
+
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
+
+document
+.getElementById("registerSection")
+.classList.add("hidden");
+
+document
+.getElementById("forgotSection")
+.classList.add("hidden");
+
+clearMessage();
+
+}
+
+
+function showRegister(){
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+document
+.getElementById("registerSection")
+.classList.remove("hidden");
+
+document
+.getElementById("forgotSection")
+.classList.add("hidden");
+
+clearMessage();
+
+}
+
+
+function showForgot(){
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+document
+.getElementById("registerSection")
+.classList.add("hidden");
+
+document
+.getElementById("forgotSection")
+.classList.remove("hidden");
+
+clearMessage();
+
+}
+
+
+function clearMessage(){
+
+document
+.getElementById("message")
+.textContent="";
+
+}
+
+
+function message(text,color){
+
+const box =
+document.getElementById("message");
+
+box.style.color=color;
+
+box.textContent=text;
+
+}
+
+
+/* REGISTER + SEND OTP */
+
+document
+.getElementById("registerForm")
+.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+const name =
+document.getElementById("regName")
+.value.trim();
+
+const mobile =
+document.getElementById("regMobile")
+.value.trim();
+
+const email =
+document.getElementById("regEmail")
+.value.trim();
+
+const password =
+document.getElementById("regPassword")
+.value;
+
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+message(
+"सही 10 digit mobile number डालें।",
+"red"
+);
+
+return;
+
+}
+
+
+message(
+"OTP भेजा जा रहा है...",
+"#1677ff"
+);
+
+
+try{
+
+const response =
+await fetch(
+API + "/api/student/send-otp",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+credentials: "include",
+
+body:JSON.stringify({
+
+name:name,
+mobile:mobile,
+email:email,
+password:password
+
+})
+
+});
+
+
+const data =
+await response.json();
+
+
+if(!data.success){
+
+if(
+(data.message || "").includes("पहले से मौजूद") ||
+(data.message || "").toLowerCase().includes("already")
+){
+
+message(
+"⚠️ यह Email या Mobile पहले से Registered है। कृपया Login करें।",
+"red"
+);
+
+setTimeout(function(){
+showLogin();
+}, 1800);
+
+return;
+
+}
+
+message(
+data.message ||
+"OTP भेजने में समस्या हुई।",
+"red"
+);
+
+return;
+
+}
+
+
+document
+.getElementById("otpSection")
+.classList.remove("hidden");
+
+
+message(
+"OTP भेजने का request सफल हुआ। SMS में आया OTP डालें।",
+"green"
+);
+
+
+}catch(error){
+
+console.error(error);
+
+message(
+"अभी सेवा उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें।",
+"red"
+);
+
+}
+
+});
+
+
+/* VERIFY OTP */
+
+async function verifyOTP(){
+
+const name =
+document.getElementById("regName")
+.value.trim();
+
+const mobile =
+document.getElementById("regMobile")
+.value.trim();
+
+const email =
+document.getElementById("regEmail")
+.value.trim();
+
+const password =
+document.getElementById("regPassword")
+.value;
+
+const otp =
+document.getElementById("regOtp")
+.value.trim();
+
+
+if(!/^[0-9]{6}$/.test(otp)){
+
+message(
+"6 digit OTP डालें।",
+"red"
+);
+
+return;
+
+}
+
+
+message(
+"OTP verify किया जा रहा है...",
+"#1677ff"
+);
+
+
+try{
+
+const response =
+await fetch(
+API + "/api/student/verify-otp",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+name:name,
+mobile:mobile,
+email:email,
+password:password,
+otp:otp
+
+})
+
+});
+
+
+const data =
+await response.json();
+
+
+if(!data.success){
+
+message(
+data.message ||
+"OTP गलत है या expire हो गया।",
+"red"
+);
+
+return;
+
+}
+
+
+/* SAVE REGISTERED STUDENT SESSION */
+
+if(data.user){
+  localStorage.setItem(
+    "studentUser",
+    JSON.stringify(data.user)
+  );
+}
+
+localStorage.setItem(
+  "studentLoggedIn",
+  "true"
+);
+
+localStorage.setItem(
+  "studentSession",
+  data.studentSession
+);
+
+message(
+"🎉 Registration सफल हो गया! Dashboard खुल रहा है...",
+"green"
+);
+
+setTimeout(
+function(){
+
+const next =
+new URLSearchParams(window.location.search).get("next");
+
+window.location.href =
+next || "student-dashboard.html";
+
+},
+1200
+);
+
+
+}catch(error){
+
+console.error(error);
+
+message(
+"अभी सेवा उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें।",
+"red"
+);
+
+}
+
+}
+
+
+/* LOGIN */
+
+document
+.getElementById("loginForm")
+.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+const email =
+document
+.getElementById("loginEmail")
+.value.trim();
+
+
+const password =
+document
+.getElementById("loginPassword")
+.value;
+
+
+message(
+"Login किया जा रहा है...",
+"#1677ff"
+);
+
+
+try{
+
+const response =
+await fetch(
+API + "/api/student/login",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+credentials: "include",
+
+body:JSON.stringify({
+
+email:email,
+password:password
+
+})
+
+});
+
+
+const data =
+await response.json();
+
+
+if(!data.success){
+
+message(
+data.message ||
+"Email या Password गलत है।",
+"red"
+);
+
+return;
+
+}
+
+
+localStorage.setItem(
+"studentUser",
+JSON.stringify(
+data.user
+)
+);
+localStorage.setItem(
+  "studentLoggedIn",
+  "true"
+);
+
+localStorage.setItem(
+  "studentSession",
+  data.studentSession
+);
+
+message(
+"✅ Login सफल हुआ!",
+"green"
+);
+
+
+setTimeout(
+function(){
+
+window.location.href =
+"student-dashboard.html";
+
+},
+800
+);
+
+
+}catch(error){
+
+console.error(error);
+
+message(
+"अभी सेवा उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें।",
+"red"
+);
+
+}
+
+});
+
+
+/* FORGOT PASSWORD */
+
+function forgotPassword(){
+
+message(
+"Forgot Password की backend सुविधा अभी अगले step में जोड़ेंगे।",
+"#1677ff"
+);
+
+}
+
+</script>
+
+</body>
+</html>
+
