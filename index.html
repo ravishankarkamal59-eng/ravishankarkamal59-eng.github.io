@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351"
-     crossorigin="anonymous"></script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Ravishankar Insights</title>
@@ -214,6 +211,150 @@ footer{
     min-height:80vh;
   }
 }
+
+/* =========================================
+   PREMIUM HOMEPAGE TOP
+   ========================================= */
+
+.premium-top{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(46,125,210,.22),transparent 38%),
+    linear-gradient(180deg,#06152d 0%,#0b2c52 45%,#f7faff 45%,#ffffff 100%);
+  text-align:center;
+  padding-bottom:65px;
+}
+
+.premium-banner{
+  padding:55px 20px 42px;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.premium-small{
+  font-size:12px;
+  letter-spacing:5px;
+  font-weight:700;
+  opacity:.8;
+  margin-bottom:14px;
+}
+
+.premium-banner h1{
+  font-size:clamp(32px,7vw,72px);
+  line-height:1.05;
+  letter-spacing:2px;
+  margin:0;
+  font-weight:900;
+  text-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.premium-banner p{
+  margin-top:18px;
+  font-size:15px;
+  letter-spacing:4px;
+  opacity:.9;
+}
+
+.premium-line{
+  width:90px;
+  height:3px;
+  margin:0 auto 25px;
+  border-radius:20px;
+  background:linear-gradient(90deg,transparent,#fff,transparent);
+}
+
+.premium-line:last-child{
+  margin:25px auto 0;
+}
+
+.premium-founder{
+  width:min(330px,86%);
+  margin:-2px auto 0;
+  padding:28px 20px 22px;
+  background:rgba(255,255,255,.96);
+  border-radius:28px;
+  box-shadow:0 18px 55px rgba(7,26,53,.22);
+  position:relative;
+  z-index:2;
+}
+
+.premium-founder img{
+  width:145px;
+  height:145px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid white;
+  box-shadow:0 8px 30px rgba(0,0,0,.2);
+}
+
+.premium-founder-name{
+  margin-top:15px;
+  font-size:25px;
+  font-weight:800;
+  color:#092e57;
+}
+
+.premium-founder-role{
+  margin-top:5px;
+  font-size:13px;
+  color:#65748a;
+  letter-spacing:.5px;
+}
+
+.premium-intro{
+  width:min(850px,90%);
+  margin:32px auto 0;
+  padding:28px 25px;
+}
+
+.intro-badge{
+  display:inline-block;
+  padding:9px 18px;
+  border-radius:30px;
+  background:#eaf3ff;
+  color:#1261c9;
+  font-size:14px;
+  font-weight:700;
+}
+
+.premium-intro h2{
+  margin:18px 0 12px;
+  font-size:clamp(28px,5vw,42px);
+  color:#0a3566;
+}
+
+.premium-intro p{
+  max-width:720px;
+  margin:auto;
+  line-height:1.9;
+  font-size:17px;
+  color:#526176;
+}
+
+@media(max-width:600px){
+  .premium-banner{
+    padding-top:42px;
+  }
+
+  .premium-banner h1{
+    letter-spacing:1px;
+  }
+
+  .premium-founder{
+    padding-top:24px;
+  }
+
+  .premium-founder img{
+    width:125px;
+    height:125px;
+  }
+
+  .premium-intro{
+    padding-left:10px;
+    padding-right:10px;
+  }
+}
+
 </style>
 <style>
 .slider-section{padding:35px 6%;background:#f5f7fb}
@@ -513,258 +654,511 @@ a[href*="admin-dashboard"],
 a[href="admin.html"],
 a[href="admin-dashboard.html"],
 a[href="admin-upload.html"],
-a[href*="/admin"]:not(#mainAdminLink){
+a[href*="/admin"]{
   display:none !important;
 }
 </style>
 
 
-<style>
-.site-footer{
-  margin-top:50px;
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:30px 15px;
-  line-height:1.8;
-}
-.site-footer a{
-  color:#fff;
-  text-decoration:none;
-}
-.footer-links{
-  margin-top:15px;
-}
-</style>
+<style id="premium-final-fix">
 
+/* =========================================
+   PREMIUM TOP — FINAL
+   ========================================= */
 
-<style>
-.premium-founder-highlight{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:18px 22px;
-  margin-top:24px;
-  border-radius:22px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:0 12px 35px rgba(0,0,0,.22);
-  backdrop-filter:blur(12px);
-}
-.premium-founder-highlight .founder-photo{
-  width:92px;
-  height:92px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid #fff;
-  box-shadow:0 6px 22px rgba(0,0,0,.28);
-}
-.founder-highlight-text{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-.founder-highlight-text span{
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:700;
-}
-.founder-highlight-text strong{
-  font-size:26px;
-}
-.founder-highlight-text small{
-  font-size:14px;
-  opacity:.9;
-}
-@media(max-width:650px){
-  .premium-founder-highlight{
-    justify-content:center;
-  }
-}
-</style>
-
-
-<style>
-.premium-main-banner{
-  padding:55px 6%;
-  background:
-    linear-gradient(135deg,#111827 0%,#312e81 48%,#0f766e 100%);
-  color:#fff;
-  text-align:center;
+body.route-home .premium-top{
+  display:block!important;
 }
 
-.premium-banner-inner{
-  max-width:1050px;
-  margin:auto;
-  padding:38px 28px;
-  border-radius:32px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.14),
-    rgba(255,255,255,.05)
-  );
-  border:1px solid rgba(255,255,255,.25);
-  box-shadow:0 25px 70px rgba(0,0,0,.35);
-  backdrop-filter:blur(14px);
+/* पुराने founder section को पूरी तरह बंद */
+body.route-home > .founder-section{
+  display:none!important;
 }
 
-.premium-banner-title{
-  padding-bottom:25px;
-  border-bottom:1px solid rgba(255,255,255,.22);
+/* पुराने automatic banner system को बंद */
+body.route-home .top-banner-area{
+  display:none!important;
 }
 
-.premium-banner-title span{
-  display:inline-block;
-  padding:7px 16px;
-  margin-bottom:8px;
-  border-radius:999px;
-  background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.35);
-  font-size:12px;
-  letter-spacing:4px;
-  font-weight:800;
-  color:#fff;
+/* Premium banner mobile/desktop */
+.premium-top{
+  width:100%;
+  overflow:hidden;
 }
 
-.premium-banner-title h1{
-  display:inline-block;
-  margin:8px 0 0;
-  padding:10px 20px;
-  border-radius:16px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.32);
-  color:#fff;
-  text-shadow:0 3px 15px rgba(0,0,0,.45);
-  font-size:clamp(28px,5vw,54px);
-  letter-spacing:2px;
-  font-weight:900;
+.premium-banner h1{
+  word-break:normal;
 }
 
-.premium-founder-center{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:28px;
-  padding:30px 10px;
-}
-
-.premium-main-photo{
-  width:145px;
-  height:145px;
-  object-fit:cover;
-  border-radius:50%;
-  border:6px solid rgba(255,255,255,.95);
-  box-shadow:
-    0 0 0 5px rgba(255,255,255,.12),
-    0 15px 40px rgba(0,0,0,.4);
-}
-
-.premium-founder-name{
-  text-align:left;
-}
-
-.premium-founder-name h2{
-  display:inline-block;
-  margin:0;
-  padding:6px 18px;
-  border-radius:14px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.28);
-  color:#fff;
-  font-size:clamp(28px,4vw,42px);
-  text-shadow:0 3px 12px rgba(0,0,0,.4);
-}
-
-.premium-founder-name p{
-  display:inline-block;
-  margin:8px 0 0;
-  padding:6px 14px;
-  border-radius:10px;
-  background:rgba(0,0,0,.20);
-  color:#fff;
-  font-size:15px;
-  font-weight:700;
-}
-
-.premium-banner-bottom{
-  padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.22);
-}
-
-.premium-banner-bottom h3{
-  display:inline-block;
-  margin:0 0 14px;
-  padding:8px 18px;
-  border-radius:14px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.30);
-  color:#fff;
-  font-size:clamp(20px,3vw,29px);
-  font-weight:900;
-  text-shadow:0 3px 12px rgba(0,0,0,.35);
-}
-
-.premium-banner-bottom p{
-  max-width:760px;
+/* Founder photo सिर्फ premium section में */
+.premium-founder img{
+  display:block;
   margin:0 auto;
-  line-height:1.7;
-  font-size:15px;
-  opacity:.92;
 }
 
-.premium-banner-buttons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:22px;
+/* बाकी existing website में founder image accidentally दिखाई न दे */
+body.route-home .founder-section{
+  display:none!important;
 }
 
-.premium-banner-buttons a{
-  display:inline-block;
-  padding:12px 22px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:700;
+</style>
+
+
+<style id="restore-home-content">
+/* =========================================
+   FINAL HOMEPAGE CONTENT CONTROL
+   ========================================= */
+
+/* Home पर केवल मुख्य content/details रहें */
+body.route-home #student,
+body.route-home .student-section,
+body.route-home #syllabus,
+body.route-home .syllabus-section,
+body.route-home .cards{
+  display:none!important;
 }
 
-.premium-login-btn{
-  background:#fff;
-  color:#111827;
+/* Home पर content-detail sections दिखें */
+body.route-home #student-info,
+body.route-home #about,
+body.route-home #updates,
+body.route-home #contact,
+body.route-home .home-guidance,
+body.route-home .notice{
+  display:block!important;
 }
 
-.premium-syllabus-btn{
-  background:rgba(255,255,255,.14);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.35);
+/* Student/Syllabus routes पर अपने sections दिखें */
+body.route-student #student,
+body.route-student .student-section{
+  display:block!important;
 }
 
-@media(max-width:650px){
-  .premium-main-banner{
-    padding:30px 4%;
+body.route-syllabus #syllabus,
+body.route-syllabus .syllabus-section{
+  display:block!important;
+}
+
+/* Home पर पुराने duplicate sections नहीं */
+body.route-home #about-old,
+body.route-home #student-old{
+  display:none!important;
+}
+</style>
+
+
+<style id="final-home-section-separation">
+/* =========================================
+   HOME / STUDENT / SYLLABUS SEPARATION
+   ========================================= */
+
+/* Main Home पर Student Dashboard के cards नहीं */
+body.route-home #student,
+body.route-home .student-section,
+body.route-home #student-old{
+  display:none!important;
+}
+
+/* Main Home पर Syllabus के cards नहीं */
+body.route-home #syllabus,
+body.route-home .syllabus-section{
+  display:none!important;
+}
+
+/* पुराने generic cards भी Home पर नहीं */
+body.route-home .cards{
+  display:none!important;
+  visibility:hidden!important;
+  height:0!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+
+/* Student/Syllabus अपने route पर सामान्य रूप से दिखें */
+body.route-student #student,
+body.route-syllabus #syllabus{
+  display:block!important;
+}
+
+/* Premium top हमेशा Home पर रहे */
+body.route-home .premium-top{
+  display:block!important;
+}
+
+/* Founder duplicate नहीं */
+body.route-home > .founder-section{
+  display:none!important;
+}
+
+/* Automatic old banner नहीं */
+body.route-home .top-banner-area{
+  display:none!important;
+}
+</style>
+
+
+<style id="FINAL-ROUTE-VISIBILITY">
+/* =========================================
+   FINAL ROUTE VISIBILITY
+   ========================================= */
+
+/* HOME
+   Premium + information/content blocks दिखें
+   Student/Syllabus cards बिल्कुल नहीं
+*/
+body.route-home #student,
+body.route-home .student-section,
+body.route-home #syllabus,
+body.route-home .syllabus-section,
+body.route-home .cards,
+body.route-home #student-old,
+body.route-home #about-old{
+  display:none!important;
+}
+
+body.route-home #student-info,
+body.route-home #about,
+body.route-home #updates,
+body.route-home .home-guidance,
+body.route-home .notice,
+body.route-home .slider-section,
+body.route-home #contact,
+body.route-home footer{
+  display:block!important;
+}
+
+/* STUDENT ROUTE
+   सिर्फ Student Dashboard
+*/
+body.route-student #student{
+  display:block!important;
+}
+
+body.route-student #student-info,
+body.route-student #about,
+body.route-student #updates,
+body.route-student .home-guidance,
+body.route-student .notice,
+body.route-student .slider-section,
+body.route-student #syllabus,
+body.route-student .syllabus-section,
+body.route-student .cards,
+body.route-student #contact,
+body.route-student footer{
+  display:none!important;
+}
+
+/* SYLLABUS ROUTE
+   सिर्फ Syllabus
+*/
+body.route-syllabus #syllabus{
+  display:block!important;
+}
+
+body.route-syllabus #student,
+body.route-syllabus .student-section,
+body.route-syllabus #student-info,
+body.route-syllabus #about,
+body.route-syllabus #updates,
+body.route-syllabus .home-guidance,
+body.route-syllabus .notice,
+body.route-syllabus .slider-section,
+body.route-syllabus .cards,
+body.route-syllabus #contact,
+body.route-syllabus footer{
+  display:none!important;
+}
+
+/* ABOUT ROUTE */
+body.route-about #about{
+  display:block!important;
+}
+
+/* UPDATES ROUTE */
+body.route-updates #updates{
+  display:block!important;
+}
+
+/* CONTACT ROUTE */
+body.route-contact #contact{
+  display:block!important;
+}
+</style>
+
+
+<style id="MASTER-FINAL-ROUTES">
+/* =========================================
+   MASTER FINAL ROUTE CONTROL
+   यह सबसे आखिरी CSS है इसलिए पुराने rules
+   को override करेगा।
+   ========================================= */
+
+/* ---------- HOME ---------- */
+
+body.route-home #student,
+body.route-home .student-section,
+body.route-home #syllabus,
+body.route-home .syllabus-section,
+body.route-home .cards,
+body.route-home #student-old,
+body.route-home #about-old {
+  display:none !important;
+}
+
+body.route-home .premium-top,
+body.route-home #student-info,
+body.route-home #about,
+body.route-home #updates,
+body.route-home .home-guidance,
+body.route-home .notice,
+body.route-home .slider-section,
+body.route-home #contact,
+body.route-home footer {
+  display:block !important;
+}
+
+
+/* ---------- STUDENT ---------- */
+
+body.route-student #student,
+body.route-student .student-section {
+  display:block !important;
+}
+
+body.route-student .premium-top,
+body.route-student #student-info,
+body.route-student #about,
+body.route-student #updates,
+body.route-student .home-guidance,
+body.route-student .notice,
+body.route-student .slider-section,
+body.route-student #syllabus,
+body.route-student .syllabus-section,
+body.route-student .cards,
+body.route-student #about-old,
+body.route-student #student-old,
+body.route-student #contact,
+body.route-student footer {
+  display:none !important;
+}
+
+
+/* ---------- SYLLABUS ---------- */
+
+body.route-syllabus #syllabus,
+body.route-syllabus .syllabus-section {
+  display:block !important;
+}
+
+body.route-syllabus .premium-top,
+body.route-syllabus #student,
+body.route-syllabus .student-section,
+body.route-syllabus #student-info,
+body.route-syllabus #about,
+body.route-syllabus #updates,
+body.route-syllabus .home-guidance,
+body.route-syllabus .notice,
+body.route-syllabus .slider-section,
+body.route-syllabus .cards,
+body.route-syllabus #about-old,
+body.route-syllabus #student-old,
+body.route-syllabus #contact,
+body.route-syllabus footer {
+  display:none !important;
+}
+
+
+/* ---------- ABOUT ---------- */
+
+body.route-about #about {
+  display:block !important;
+}
+
+body.route-about #student,
+body.route-about .student-section,
+body.route-about #syllabus,
+body.route-about .syllabus-section,
+body.route-about .cards,
+body.route-about #updates,
+body.route-about #contact {
+  display:none !important;
+}
+
+
+/* ---------- UPDATES ---------- */
+
+body.route-updates #updates {
+  display:block !important;
+}
+
+body.route-updates #student,
+body.route-updates .student-section,
+body.route-updates #syllabus,
+body.route-updates .syllabus-section,
+body.route-updates .cards,
+body.route-updates #about,
+body.route-updates #contact {
+  display:none !important;
+}
+
+
+/* ---------- CONTACT ---------- */
+
+body.route-contact #contact {
+  display:block !important;
+}
+
+body.route-contact #student,
+body.route-contact .student-section,
+body.route-contact #syllabus,
+body.route-contact .syllabus-section,
+body.route-contact .cards,
+body.route-contact #about,
+body.route-contact #updates {
+  display:none !important;
+}
+</style>
+
+
+<style id="about-contact-block-fix">
+/* ===== HOME INFORMATION BLOCKS ===== */
+
+body.route-home #about,
+body.route-home #contact{
+  display:block!important;
+  max-width:1100px;
+  margin:0 auto!important;
+  padding:0 20px!important;
+  box-sizing:border-box;
+}
+
+body.route-home #about .info-box,
+body.route-home #contact .info-box{
+  background:#f5f8ff!important;
+  border:1px solid #dce7f7!important;
+  border-radius:20px!important;
+  padding:30px!important;
+  box-shadow:0 8px 25px #00000012!important;
+  box-sizing:border-box;
+}
+
+body.route-home #about h2,
+body.route-home #contact h2{
+  color:#123d70!important;
+  margin-top:0!important;
+}
+
+body.route-home #about p,
+body.route-home #contact p{
+  line-height:1.8!important;
+  color:#334155!important;
+}
+
+body.route-home #contact h3{
+  color:#123d70!important;
+  margin-bottom:6px!important;
+}
+
+body.route-home #contact a{
+  color:#1261c9!important;
+  font-weight:700!important;
+  text-decoration:none!important;
+}
+
+body.route-home #contact a:hover{
+  text-decoration:underline!important;
+}
+
+@media(max-width:600px){
+  body.route-home #about,
+  body.route-home #contact{
+    margin:0 auto!important;
+    padding:0 12px!important;
   }
 
-  .premium-banner-inner{
-    padding:28px 18px;
-  }
-
-  .premium-founder-center{
-    flex-direction:column;
-    gap:14px;
-  }
-
-  .premium-founder-name{
-    text-align:center;
-  }
-
-  .premium-main-photo{
-    width:125px;
-    height:125px;
+  body.route-home #about .info-box,
+  body.route-home #contact .info-box{
+    padding:22px!important;
+    border-radius:16px!important;
   }
 }
 </style>
 
-</head>
+
+<style id="CONTACT-BLACK-ONLY">
+/* सिर्फ Contact block black */
+#contact{
+  background:#000!important;
+  color:#fff!important;
+}
+
+#contact .info-box{
+  background:#000!important;
+  color:#fff!important;
+  border-color:#222!important;
+}
+
+#contact h2,
+#contact h3,
+#contact p,
+#contact strong{
+  color:#fff!important;
+}
+
+#contact a{
+  color:#fff!important;
+}
+</style>
+
+
+<style id="CONTACT-INNER-CARD-REMOVE">
+/* सिर्फ Home के नीचे Contact के अंदर वाला card हटाएँ */
+body.route-home #contact .info-box{
+  background:transparent!important;
+  border:none!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  padding:30px 0!important;
+}
+</style>
+
+
+<style id="CONTACT-DETAILS-WHITE">
+/* सिर्फ Contact details का text white */
+#contact p,
+#contact h3,
+#contact a{
+  color:#fff!important;
+}
+</style>
+
+
+<style id="CONTACT-ALL-TEXT-WHITE">
+/* सिर्फ Contact block के अंदर का text white */
+#contact,
+#contact *{
+  color:#fff!important;
+}
+</style>
+
+
+<style id="CONTACT-TEXT-FINAL-WHITE">
+/* ONLY Contact block — every text element white */
+html body #contact,
+html body #contact *,
+html body #contact p,
+html body #contact h2,
+html body #contact h3,
+html body #contact strong,
+html body #contact a,
+html body #contact br,
+html body #contact span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+</style>
+\n</head>
 
 <body>
 
@@ -785,7 +1179,6 @@ a[href*="/admin"]:not(#mainAdminLink){
 <a href="#about">ℹ️ About</a>
 <a href="#contact">📞 Contact</a>
 <a href="login.html" class="nav-login">🔐 Login</a>
-<a href="admin-login.html" class="nav-admin" id="mainAdminLink">🔑 Admin</a>
 </nav>
 </header>
 
@@ -800,53 +1193,39 @@ a[href*="/admin"]:not(#mainAdminLink){
   <a href="#about">ℹ️ About</a>
   <a href="#student">🎓 Student</a>
   <a href="#syllabus">📚 Syllabus</a>
-  <a href="admin-login.html" class="nav-admin" id="sideAdminLink">🔑 Admin</a>
 </div>
 
-<section class="hero premium-main-banner">
+<!-- PREMIUM HOMEPAGE TOP -->
+<section class="premium-top">
 
-  <div class="premium-banner-inner">
+  <div class="premium-banner">
+    <div class="premium-line"></div>
+    <div class="premium-small">WELCOME TO</div>
+    <h1>THE RAVISHANKAR INSIGHTS</h1>
+    <p>Education • Knowledge • Success</p>
+    <div class="premium-line"></div>
+  </div>
 
-    <!-- ROW 1 -->
-    <div class="premium-banner-title">
-      <span>THE</span>
-      <h1>RAVISHANKAR INSIGHTS</h1>
+  <div class="premium-founder">
+    <img src="images/founder.jpg" alt="Ravishankar - Founder">
+    <div class="premium-founder-name">Ravishankar</div>
+    <div class="premium-founder-role">Founder & Educational Platform</div>
+  </div>
+
+  <div class="premium-intro">
+    <div class="intro-badge">📚 शिक्षा • अध्ययन • सफलता</div>
+    <h2>आपका स्वागत है</h2>
+    <p>
+      The Ravishankar Insights में आपका स्वागत है।
+      यहाँ विभिन्न courses, competitive examinations,
+      study material, notes, previous year papers और syllabus
+      उपलब्ध हैं।
+    </p>
+
+    <div class="buttons">
+      <a class="btn login-btn" href="login.html">🔐 Student Login</a>
+      <a class="btn syllabus-btn" href="#syllabus">📚 Syllabus</a>
     </div>
-
-    <!-- ROW 2: ONLY EXISTING PHOTO -->
-    <div class="premium-founder-center">
-      <img
-        src="images/founder.jpg"
-        alt="Ravishankar - Founder"
-        class="premium-main-photo">
-
-      <div class="premium-founder-name">
-        <h2>Ravishankar</h2>
-        <p>Founder & Educational Platform</p>
-      </div>
-    </div>
-
-    <!-- ROW 3 -->
-    <div class="premium-banner-bottom">
-      <h3>📖 शिक्षा • अध्ययन • सफलता</h3>
-
-      <p>
-        The Ravishankar Insights में आपका स्वागत है।
-        यहाँ courses, competitive examinations, study material,
-        notes, previous year papers और syllabus उपलब्ध हैं।
-      </p>
-
-      <div class="premium-banner-buttons">
-        <a href="login.html" class="premium-login-btn">
-          🔐 Student Login
-        </a>
-
-        <a href="#syllabus" class="premium-syllabus-btn">
-          📚 Syllabus
-        </a>
-      </div>
-    </div>
-
   </div>
 
 </section>
@@ -860,6 +1239,42 @@ a[href*="/admin"]:not(#mainAdminLink){
 <a href="login.html" class="student-info-login">🔐 Student Login / Register</a>
 </div>
 </section>
+<section id="about" class="professional-info">
+<div class="info-box">
+<h2>ℹ️ About The Ravishankar Insights</h2>
+
+<p>
+<strong>The Ravishankar Insights</strong> एक educational और exam-preparation platform है,
+जिसका उद्देश्य विद्यार्थियों को पढ़ाई और प्रतियोगी परीक्षाओं की तैयारी के लिए
+जरूरी जानकारी और अध्ययन सामग्री एक ही स्थान पर उपलब्ध कराना है।
+</p>
+
+<p>
+यह platform BA, MA, UPSC, UPPCS, UGC NET-JRF, Railway, SSC, Banking
+और अन्य courses तथा competitive examinations की तैयारी में विद्यार्थियों की सहायता
+करने के लिए बनाया गया है।
+</p>
+
+<p>
+यहाँ विद्यार्थियों को <strong>Study Material, Notes, Previous Year Papers (PYQs),
+Syllabus, Exam Information</strong> और भविष्य में <strong>Video Lectures</strong>
+जैसी सुविधाएँ उपलब्ध कराने का उद्देश्य है।
+</p>
+
+<p>
+Student section में उपलब्ध अध्ययन सामग्री को सुरक्षित रखने के लिए
+विद्यार्थियों को <strong>Student Login/Register</strong> करना होगा।
+</p>
+
+<hr>
+
+<p>
+<strong>👤 Founder: Ravi Shankar Bhaskar</strong>
+</p>
+
+</div>
+</section>
+
 <section id="student" class="student-section home-clean-hide">
 
 <div class="student-heading">
@@ -987,16 +1402,6 @@ Student Login/Register करें।
 </div>
 
 </section>
-
-<section id="about" class="professional-info">
-<div class="info-box">
-<h2>ℹ️ About The Ravishankar Insights</h2>
-<p>The Ravishankar Insights एक educational platform है जहाँ विद्यार्थियों को BA, MA, UPSC, UPPCS, NET-JRF, Railway, SSC, Banking और अन्य परीक्षाओं से संबंधित अध्ययन सामग्री उपलब्ध कराने का उद्देश्य है।</p>
-<p>यहाँ Study Material, Notes, Previous Year Papers, Syllabus और आगे चलकर Video Lectures जैसी सुविधाएँ उपलब्ध होंगी।</p>
-</div>
-</section>
-
-
 
 <!-- DYNAMIC ADMIN CARDS -->
 <div id="dynamic-admin-cards-area" style="margin-top:35px;">
@@ -1300,8 +1705,33 @@ document.querySelectorAll("#mainNav a").forEach(function(link){link.addEventList
 <section id="contact" class="professional-info contact-box">
 <div class="info-box">
 <h2>📞 Contact & Feedback</h2>
-<p>Website से संबंधित सुझाव, समस्या या अध्ययन सामग्री से संबंधित feedback के लिए संपर्क करें।</p>
-<p><strong>The Ravishankar Insights</strong></p>
+
+<p>
+Website से संबंधित सुझाव, समस्या, feedback या Study Material से संबंधित
+किसी भी जानकारी के लिए हमसे संपर्क करें।
+</p>
+
+<h3>👤 Founder</h3>
+<p><strong>Ravi Shankar Bhaskar</strong></p>
+
+<h3>📞 Contact Numbers</h3>
+<p>
+<a href="tel:8931050393">8931050393</a><br>
+<a href="tel:6391024897">6391024897</a>
+</p>
+
+<h3>📧 Email</h3>
+<p>
+<a href="mailto:ravishankarkamal59@gmail.com">
+ravishankarkamal59@gmail.com
+</a>
+</p>
+
+<p>
+<strong>The Ravishankar Insights</strong><br>
+Study • Learn • Prepare • Succeed
+</p>
+
 </div>
 </section>
 
@@ -1381,186 +1811,28 @@ routeFromHash();
 </script>
 
 
-<script id="move-banner-top">
-document.addEventListener("DOMContentLoaded", function(){
-
-  const header = document.querySelector("header");
-  const founder = document.querySelector("body > .founder-section");
-  const slider = document.querySelector("body > .slider-section");
-
-  if(header && founder && slider && !document.querySelector(".top-banner-area")){
-    const area = document.createElement("div");
-    area.className = "top-banner-area";
-
-    header.insertAdjacentElement("afterend", area);
-    area.appendChild(founder);
-    area.appendChild(slider);
-  }
-
-});
-</script>
 
 
-
-
-<!-- STUDY CONTENT SECTION -->
-
-
-<style>
-.study-content-section{
-  width:100%;
-  padding:45px 18px;
-  margin:10px 0 25px;
-}
-.study-content-inner{
-  max-width:1100px;
-  margin:auto;
-}
-.study-content-section h2{
-  text-align:center;
-  margin:0 0 10px;
-}
-.study-content-intro{
-  text-align:center;
-  margin:0 auto 28px;
-  line-height:1.6;
-  opacity:.8;
-}
-.study-content-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.study-content-card{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  padding:22px;
-  border-radius:16px;
-  text-decoration:none;
-  color:inherit;
-  background:rgba(128,128,128,.10);
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.study-content-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-}
-.study-content-card span{
-  font-size:30px;
-}
-.study-content-card strong{
-  font-size:17px;
-}
-.study-content-card small{
-  opacity:.75;
-  line-height:1.5;
-}
-@media(max-width:800px){
-  .study-content-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-@media(max-width:480px){
-  .study-content-grid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
-<!-- END STUDY CONTENT SECTION -->
-
-<!-- LATEST EDUCATIONAL UPDATES -->
-
-
-<style>
-.latest-updates{
-  width:100%;
-  padding:45px 18px;
-  margin:25px 0;
-}
-.latest-updates-inner{
-  max-width:1100px;
-  margin:auto;
-}
-.latest-updates h2{
-  text-align:center;
-  margin:0 0 10px;
-}
-.latest-intro{
-  text-align:center;
-  margin:0 auto 28px;
-  line-height:1.6;
-  opacity:.8;
-}
-.updates-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.update-card{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  padding:22px;
-  border-radius:16px;
-  text-decoration:none;
-  color:inherit;
-  background:rgba(128,128,128,.10);
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.update-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-}
-.update-card span{
-  font-size:30px;
-}
-.update-card strong{
-  font-size:17px;
-}
-.update-card small{
-  opacity:.75;
-  line-height:1.4;
-}
-@media(max-width:800px){
-  .updates-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-@media(max-width:480px){
-  .updates-grid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
-<!-- END LATEST EDUCATIONAL UPDATES -->
-
-<!-- RAVISHANKAR INSIGHTS FOOTER -->
-<footer class="site-footer">
-  <strong>The Ravishankar Insights</strong>
-  <div>Founder: Ravishankar</div>
-  <div>📞 <a href="tel:6391024897">6391024897</a> &nbsp; | &nbsp; <a href="tel:8931050393">8931050393</a></div>
-  <div>✉️ <a href="mailto:ravishankarkamal59@gmail.com">ravishankarkamal59@gmail.com</a></div>
-
-  <div class="footer-links">
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a> |
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a>
-  </div>
-</footer>
-<!-- END RAVISHANKAR INSIGHTS FOOTER -->
-
-
-<style id="admin-visible-style">
-#mainAdminLink {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 9999 !important;
-}
-</style>
 </body>
 </html>
+
+<style id="CONTACT-GAP-REMOVE">
+/* सिर्फ Contact block के ऊपर का सफेद gap हटाएँ */
+html body #contact{
+  margin-top:0!important;
+  padding-top:0!important;
+}
+html body #contact .info-box{
+  margin-top:0!important;
+}
+</style>
+
+<style id="CONTACT-FOOTER-GAP-FIX">
+/* Contact को ऊपर वाले footer से सीधे जोड़ें */
+html body footer{
+  margin-bottom:0!important;
+}
+html body #contact{
+  margin-top:0!important;
+}
+</style>
