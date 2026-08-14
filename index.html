@@ -558,7 +558,7 @@ a[href*="/admin"]:not(#mainAdminLink){
 <a href="#about">ℹ️ About</a>
 <a href="#contact">📞 Contact</a>
 <a href="login.html" class="nav-login">🔐 Login</a>
-<a href="admin-login.html" class="nav-admin" id="mainAdminLink" aria-hidden="true">🔑 Admin</a>
+<a href="admin-login.html" class="nav-admin" id="mainAdminLink">🔑 Admin</a>
 </nav>
 </header>
 
@@ -1428,85 +1428,10 @@ document.addEventListener("DOMContentLoaded", function(){
 <!-- END RAVISHANKAR INSIGHTS FOOTER -->
 
 
-<style id="private-admin-style">
+<style id="admin-visible-style">
 #mainAdminLink {
-  display: none !important;
-}
-
-#mainAdminLink.private-admin-visible {
   display: inline-block !important;
 }
 </style>
-
-<script>
-(function () {
-
-  function updatePrivateAdmin() {
-
-    const link =
-      document.getElementById("mainAdminLink");
-
-    if (!link) return;
-
-    const token =
-      localStorage.getItem("adminToken");
-
-    const loggedIn =
-      localStorage.getItem("adminLoggedIn");
-
-    if (
-      token &&
-      token.trim() !== "" &&
-      loggedIn === "true"
-    ) {
-
-      link.classList.add(
-        "private-admin-visible"
-      );
-
-      link.style.setProperty(
-        "display",
-        "inline-block",
-        "important"
-      );
-
-      link.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-    } else {
-
-      link.classList.remove(
-        "private-admin-visible"
-      );
-
-      link.style.setProperty(
-        "display",
-        "none",
-        "important"
-      );
-
-      link.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-    }
-  }
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    updatePrivateAdmin
-  );
-
-  window.addEventListener(
-    "pageshow",
-    updatePrivateAdmin
-  );
-
-  updatePrivateAdmin();
-
-})();
-</script>
 </body>
 </html>
