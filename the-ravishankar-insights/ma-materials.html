@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MA PDF Materials | The Ravishankar Insights</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#07111f,#123b5d);
+  color:white;
+  padding:25px 18px;
+}
+
+header h1{
+  max-width:1100px;
+  margin:auto;
+}
+
+.container{
+  max-width:1100px;
+  margin:25px auto;
+  padding:0 18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:24px;
+  border-radius:18px;
+  box-shadow:0 7px 22px rgba(0,0,0,.08);
+}
+
+.card h2{
+  color:#123b5d;
+  margin-bottom:18px;
+}
+
+.buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button{
+  border:0;
+  padding:10px 15px;
+  border-radius:9px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.open{
+  background:#1677ff;
+}
+
+.upload{
+  background:#198754;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎓 MA PDF Materials</h1>
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<!-- Political Science -->
+<div class="card">
+<h2>Political Science</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- History -->
+<div class="card">
+<h2>History</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- Geography -->
+<div class="card">
+<h2>Geography</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- Hindi -->
+<div class="card">
+<h2>Hindi</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- English -->
+<div class="card">
+<h2>English</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- Philosophy -->
+<div class="card">
+<h2>Philosophy</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+<!-- Economics -->
+<div class="card">
+<h2>Economics</h2>
+<div class="buttons">
+<button class="open">📄 Open PDF</button>
+<button class="upload">🔐 Admin Upload</button>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<style id="ma-hide-admin">
+.upload,
+.admin-only {
+  display: none !important;
+}
+</style>
+
+
+<script>
+const API = "https://ravishankar-insights-backend-1.onrender.com";
+
+async function loadMAMaterials() {
+  try {
+    const response = await fetch(API + "/api/materials/ma");
+    const data = await response.json();
+
+    const pdfButtons = document.querySelectorAll(".open");
+
+    if (!data.success || !data.files || data.files.length === 0) {
+      pdfButtons.forEach(btn => {
+        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
+        btn.disabled = true;
+      });
+      return;
+    }
+
+    const pdfFiles = data.files.filter(file =>
+      file.name.toLowerCase().endsWith(".pdf")
+    );
+
+    pdfButtons.forEach((btn, index) => {
+
+      if (!pdfFiles[index]) {
+        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
+        btn.disabled = true;
+        return;
+      }
+
+      btn.textContent = "📄 Open PDF";
+
+      btn.onclick = async () => {
+        try {
+          const studentSession =
+            localStorage.getItem("studentSession");
+
+          if (!studentSession) {
+            throw new Error("Student login required");
+          }
+
+          const pdfResponse = await fetch(
+            API + pdfFiles[index].url,
+            {
+              headers: {
+                "Authorization": "Bearer " + studentSession
+              }
+            }
+          );
+
+          if (!pdfResponse.ok) {
+            throw new Error("PDF access denied");
+          }
+
+          const blob = await pdfResponse.blob();
+          const pdfUrl = URL.createObjectURL(blob);
+
+          window.open(pdfUrl, "_blank");
+
+          setTimeout(() => {
+            URL.revokeObjectURL(pdfUrl);
+          }, 60000);
+
+        } catch (error) {
+          console.error("MA PDF open error:", error);
+          alert("PDF खोलने के लिए Student Login जरूरी है।");
+        }
+      };
+    });
+
+  } catch (error) {
+    console.error("MA materials error:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadMAMaterials);
+</script>
+
+</body>
+</html>

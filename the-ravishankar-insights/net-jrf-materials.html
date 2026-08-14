@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NET JRF Materials | The Ravishankar Insights</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#111827,#7c3aed);
+  color:white;
+  padding:25px 18px;
+  text-align:center;
+}
+
+header h1{
+  font-size:25px;
+}
+
+header p{
+  margin-top:7px;
+  opacity:.85;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 15px 50px;
+}
+
+.back{
+  display:inline-block;
+  text-decoration:none;
+  color:#2563eb;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  padding:23px;
+  box-shadow:0 10px 30px rgba(15,23,42,.10);
+  border-left:5px solid #7c3aed;
+}
+
+.icon{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.card h2{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#64748b;
+  line-height:1.5;
+  min-height:45px;
+}
+
+.buttons{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+.open{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  padding:12px;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+}
+
+.open:hover{
+  background:#1d4ed8;
+}
+
+.upload-label{
+  display:block;
+  text-align:center;
+  padding:12px;
+  border-radius:10px;
+  background:#16a34a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.upload-label:hover{
+  background:#15803d;
+}
+
+input[type="file"]{
+  display:none;
+}
+
+.file-name{
+  font-size:13px;
+  color:#64748b;
+  text-align:center;
+  word-break:break-word;
+}
+
+footer{
+  margin-top:30px;
+  padding:22px;
+  text-align:center;
+  background:#111827;
+  color:white;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:21px;
+  }
+
+  .card{
+    padding:20px;
+  }
+}
+</style>
+<style>.admin-only{display:none !important;}</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏆 NET JRF Materials</h1>
+  <p>The Ravishankar Insights</p>
+</header>
+
+<main class="container">
+
+<a class="back" href="student-dashboard.html">
+  ← Back to Student Dashboard
+</a>
+
+<div class="grid">
+
+<!-- NET PAPER 1 -->
+
+<div class="card">
+  <div class="icon">📘</div>
+
+  <h2>NET Paper 1</h2>
+
+  <p>
+    Teaching, Research Aptitude,
+    Reasoning, ICT और अन्य topics.
+  </p>
+
+  <div class="buttons">
+
+    <a class="open" href="../net-paper1.html">
+      📖 Open
+    </a>
+
+    <label class="upload-label">
+      📄 Add PDF
+      <input
+        type="file"
+        accept="application/pdf"
+        onchange="showFile(this,'paper1Pdf')"
+      >
+    </label>
+
+    <div id="paper1Pdf" class="file-name">
+      No PDF selected
+    </div>
+
+    <label class="upload-label">
+      🎥 Video Upload
+      <input
+        type="file"
+        accept="video/*"
+        onchange="showFile(this,'paper1Video')"
+      >
+    </label>
+
+    <div id="paper1Video" class="file-name">
+      No video selected
+    </div>
+
+  </div>
+</div>
+
+
+<!-- POLITICAL SCIENCE PAPER 2 -->
+
+<div class="card">
+  <div class="icon">📕</div>
+
+  <h2>Political Science Paper 2</h2>
+
+  <p>
+    UGC NET Political Science
+    Paper 2 study material.
+  </p>
+
+  <div class="buttons">
+
+    <a class="open" href="../net-paper2-political-science.html">
+      📖 Open
+    </a>
+
+    <label class="upload-label">
+      📄 Add PDF
+      <input
+        type="file"
+        accept="application/pdf"
+        onchange="showFile(this,'paper2Pdf')"
+      >
+    </label>
+
+    <div id="paper2Pdf" class="file-name">
+      No PDF selected
+    </div>
+
+    <label class="upload-label">
+      🎥 Video Upload
+      <input
+        type="file"
+        accept="video/*"
+        onchange="showFile(this,'paper2Video')"
+      >
+    </label>
+
+    <div id="paper2Video" class="file-name">
+      No video selected
+    </div>
+
+  </div>
+</div>
+
+
+<!-- NOTES -->
+
+<div class="card">
+  <div class="icon">📝</div>
+
+  <h2>NET JRF Notes</h2>
+
+  <p>
+    NET/JRF Notes और study material.
+  </p>
+
+  <div class="buttons">
+
+    <a class="open" href="../net-jrf-notes.html">
+      📖 Open
+    </a>
+
+    <label class="upload-label">
+      📄 Add PDF
+      <input
+        type="file"
+        accept="application/pdf"
+        onchange="showFile(this,'notesPdf')"
+      >
+    </label>
+
+    <div id="notesPdf" class="file-name">
+      No PDF selected
+    </div>
+
+    <label class="upload-label">
+      🎥 Video Upload
+      <input
+        type="file"
+        accept="video/*"
+        onchange="showFile(this,'notesVideo')"
+      >
+    </label>
+
+    <div id="notesVideo" class="file-name">
+      No video selected
+    </div>
+
+  </div>
+</div>
+
+
+<!-- PYQ -->
+
+<div class="card">
+  <div class="icon">📚</div>
+
+  <h2>NET JRF PYQ</h2>
+
+  <p>
+    Previous Year Questions और
+    practice material.
+  </p>
+
+  <div class="buttons">
+
+    <a class="open" href="../net-jrf-pyq.html">
+      📖 Open
+    </a>
+
+    <label class="upload-label">
+      📄 Add PDF
+      <input
+        type="file"
+        accept="application/pdf"
+        onchange="showFile(this,'pyqPdf')"
+      >
+    </label>
+
+    <div id="pyqPdf" class="file-name">
+      No PDF selected
+    </div>
+
+    <label class="upload-label">
+      🎥 Video Upload
+      <input
+        type="file"
+        accept="video/*"
+        onchange="showFile(this,'pyqVideo')"
+      >
+    </label>
+
+    <div id="pyqVideo" class="file-name">
+      No video selected
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SYLLABUS -->
+
+<div class="card">
+  <div class="icon">📋</div>
+
+  <h2>NET JRF Syllabus</h2>
+
+  <p>
+    NET/JRF syllabus और
+    preparation structure.
+  </p>
+
+  <div class="buttons">
+
+    <a class="open" href="../net-jrf-syllabus.html">
+      📖 Open
+    </a>
+
+    <label class="upload-label">
+      📄 Add PDF
+      <input
+        type="file"
+        accept="application/pdf"
+        onchange="showFile(this,'syllabusPdf')"
+      >
+    </label>
+
+    <div id="syllabusPdf" class="file-name">
+      No PDF selected
+    </div>
+
+    <label class="upload-label">
+      🎥 Video Upload
+      <input
+        type="file"
+        accept="video/*"
+        onchange="showFile(this,'syllabusVideo')"
+      >
+    </label>
+
+    <div id="syllabusVideo" class="file-name">
+      No video selected
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+  © 2026 The Ravishankar Insights
+</footer>
+
+
+<script>
+
+function showFile(input, outputId){
+
+  const output =
+    document.getElementById(outputId);
+
+  if(input.files && input.files.length > 0){
+
+    output.textContent =
+      "Selected: " + input.files[0].name;
+
+  }else{
+
+    output.textContent =
+      "No file selected";
+
+  }
+
+}
+
+</script>
+
+
+<script>
+const API = "https://ravishankar-insights-backend-1.onrender.com";
+
+async function loadNETJRFMaterials() {
+  try {
+    const response = await fetch(API + "/api/materials/net-jrf");
+    const data = await response.json();
+
+    if (!data.success) return;
+
+    const pdfButtons = document.querySelectorAll(".pdf");
+
+    if (!data.files || data.files.length === 0) {
+      pdfButtons.forEach(btn => {
+        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
+        btn.disabled = true;
+      });
+      return;
+    }
+
+    const pdfFiles = data.files.filter(file =>
+      file.name.toLowerCase().endsWith(".pdf")
+    );
+
+    pdfButtons.forEach(btn => {
+      if (pdfFiles.length > 0) {
+        btn.onclick = () => {
+          window.open(API + pdfFiles[0].url, "_blank");
+        };
+      } else {
+        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
+        btn.disabled = true;
+      }
+    });
+
+  } catch (error) {
+    console.error("net-jrf materials error:", error);
+  }
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  loadNETJRFMaterials
+);
+</script>
+
+
+</body>
+</html>
