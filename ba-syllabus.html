@@ -36,16 +36,604 @@ header h1{margin:0;font-size:22px}
 <p>यहाँ इस परीक्षा/course का syllabus उपलब्ध है।</p>
 </section>
 
-<section class="units">
 
-<div class="unit"><h3>Unit 1</h3><p>Political Science • History • Geography • Hindi • English • Philosophy • Economics</p></div>
-<div class="unit"><h3>Unit 2</h3><p>Year 1 • Year 2 • Year 3 — Course Structure</p></div>
-<div class="unit"><h3>Unit 3</h3><p>प्रत्येक विषय का Unit-wise syllabus यहाँ उपलब्ध होगा।</p></div>
-<div class="unit"><h3>Unit 4</h3><p>Previous Year Papers और Notes के लिए Student Login करें।</p></div>
-<div class="unit"><h3>Unit 5</h3><p>Exam Pattern और महत्वपूर्ण Topics यहाँ जोड़े जाएँगे।</p></div>
-<div class="unit"><h3>Unit 6</h3><p>अधिक जानकारी के लिए संबंधित Study Material section देखें।</p></div>
+<style>
+.pdf-section{
+  margin:22px 0;
+  background:#fff;
+  border:1px solid #d9e1ec;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+.pdf-section h3{
+  margin-top:0;
+  color:#123d70;
+  font-size:24px;
+}
+.pdf-section h4{
+  color:#234f7d;
+  margin-top:25px;
+}
+.pdf-section li{
+  margin:7px 0;
+}
+.latest{
+  background:#eef5ff;
+  border-left:4px solid #2463eb;
+  padding:12px;
+  border-radius:7px;
+}
+.official-note{
+  margin-top:25px;
+  padding:15px;
+  background:#fff8e8;
+  border-left:4px solid #e0a400;
+  border-radius:8px;
+}
+</style>
 
-</section>
+
+<style>
+.tri-syllabus{
+  margin:24px 0;
+  padding:0;
+}
+
+.tri-header{
+  background:linear-gradient(135deg,#123d70,#2463a5);
+  color:white;
+  padding:24px;
+  border-radius:18px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px #0002;
+}
+
+.tri-header h3{
+  margin:0 0 8px;
+  font-size:26px;
+}
+
+.tri-header p{
+  margin:0;
+}
+
+.tri-card{
+  background:#fff;
+  border:1px solid #dce4ef;
+  border-radius:16px;
+  padding:22px;
+  margin:18px 0;
+  box-shadow:0 5px 18px #00000012;
+}
+
+.tri-card h4{
+  color:#123d70;
+  margin-top:0;
+  font-size:20px;
+}
+
+.tri-card h5{
+  color:#234f7d;
+  margin-bottom:8px;
+}
+
+.tri-card ul{
+  padding-left:22px;
+}
+
+.tri-card li{
+  margin:7px 0;
+}
+
+.tri-note{
+  background:#eef5ff;
+  border-left:5px solid #2463eb;
+  padding:15px;
+  border-radius:8px;
+  margin-top:18px;
+}
+
+.tri-source{
+  background:#fff8e8;
+  border-left:5px solid #d59b00;
+  padding:15px;
+  border-radius:8px;
+  margin-top:18px;
+}
+
+.tri-brand{
+  text-align:center;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin:20px 0;
+  color:#123d70;
+}
+
+@media(max-width:600px){
+  .tri-card{
+    padding:17px;
+  }
+  .tri-header h3{
+    font-size:22px;
+  }
+}
+</style>
+
+
+
+<style>
+.tri-ba{
+  margin:24px 0;
+}
+
+.tri-ba-brand{
+  background:linear-gradient(135deg,#123d70,#2463a5);
+  color:#fff;
+  padding:28px;
+  border-radius:18px;
+  margin-bottom:22px;
+  box-shadow:0 8px 25px #0002;
+}
+
+.tri-ba-brand h3{
+  margin:0 0 8px;
+  font-size:28px;
+}
+
+.tri-ba-brand p{
+  margin:6px 0;
+}
+
+.tri-semester{
+  background:#fff;
+  border:1px solid #dce4ef;
+  border-radius:17px;
+  padding:22px;
+  margin:22px 0;
+  box-shadow:0 5px 18px #00000012;
+}
+
+.tri-semester h4{
+  color:#123d70;
+  font-size:23px;
+  margin-top:0;
+}
+
+.tri-paper{
+  background:#f8fbff;
+  border-left:5px solid #2463a5;
+  padding:18px;
+  margin:18px 0;
+  border-radius:10px;
+}
+
+.tri-paper h5{
+  color:#234f7d;
+  font-size:19px;
+  margin-top:0;
+}
+
+.tri-unit{
+  background:#fff;
+  border:1px solid #e0e6ef;
+  border-radius:10px;
+  padding:15px;
+  margin:15px 0;
+}
+
+.tri-unit strong{
+  color:#123d70;
+}
+
+.tri-unit li{
+  margin:7px 0;
+}
+
+.tri-note{
+  background:#eef5ff;
+  border-left:5px solid #2463eb;
+  padding:16px;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+.tri-source{
+  background:#fff8e8;
+  border-left:5px solid #d59b00;
+  padding:16px;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+@media(max-width:600px){
+  .tri-semester{
+    padding:17px;
+  }
+}
+</style>
+
+<div class="tri-ba">
+
+<div class="tri-ba-brand">
+<h3>THE RAVISHANKAR INSIGHTS</h3>
+<p><strong>BA Political Science</strong></p>
+<p>University of Allahabad</p>
+<p>Detailed Topic-wise Study Structure</p>
 </div>
+
+<div class="tri-semester">
+<h4>SEMESTER – I</h4>
+
+<div class="tri-paper">
+<h5>MAJOR — POLITICAL THEORY</h5>
+
+<div class="tri-unit">
+<strong>UNIT – I : INTRODUCTION TO POLITICAL SCIENCE</strong>
+<ul>
+<li>Meaning and Definition of Political Science</li>
+<li>Nature of Political Science</li>
+<li>Scope of Political Science</li>
+<li>Political Science and Politics</li>
+<li>Political Science and Political Theory</li>
+<li>Political Science and Political Philosophy</li>
+<li>Political Science and Comparative Politics</li>
+<li>Political Science as the Study of State</li>
+<li>Political Science as the Study of Government</li>
+<li>Political Science as the Study of Power</li>
+<li>Political Science as the Study of Political System</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II : APPROACHES TO POLITICAL SCIENCE</strong>
+<ul>
+<li>Historical Approach</li>
+<li>Philosophical Approach</li>
+
+<li>Behavioural Approach</li>
+<li>Post-Behavioural Approach</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III : CONCEPT OF STATE</strong>
+<ul>
+<li>Meaning of State</li>
+<li>Elements of State</li>
+<li>Idealist Concept of State</li>
+<li>Liberal Concept of State</li>
+<li>Welfare State</li>
+<li>Libertarian Concept of State</li>
+<li>Gandhian Concept of State</li>
+<li>Marxian Concept of State</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV : ORIGIN AND EVOLUTION OF STATE</strong>
+<ul>
+<li>Divine Origin Theory</li>
+<li>Force Theory</li>
+<li>Social Contract Theory</li>
+<li>Evolutionary Theory</li>
+<li>Development of Nation-State</li>
+<li>Globalisation and the State</li>
+<li>Challenges before the Nation-State</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V : BASIC POLITICAL CONCEPTS</strong>
+<ul>
+<li>Sovereignty</li>
+<li>Liberty</li>
+<li>Equality</li>
+</ul>
+</div>
+
+</div>
+
+<div class="tri-paper">
+<h5>MAJOR — THEORY AND PRACTICE OF MODERN GOVERNMENTS</h5>
+<p><strong>Comparative Study:</strong> United Kingdom, United States of America and China</p>
+
+<div class="tri-unit">
+<strong>UNIT – I : BRITISH CONSTITUTION</strong>
+<ul>
+<li>Salient Features</li>
+<li>Constitutional Conventions</li>
+<li>Monarchy</li>
+<li>British Parliament</li>
+<li>Organization of Parliament</li>
+<li>Powers of Parliament</li>
+<li>Functions of Parliament</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II : BRITISH EXECUTIVE AND JUDICIARY</strong>
+<ul>
+<li>Prime Minister</li>
+<li>Cabinet</li>
+<li>Party System</li>
+<li>Judiciary</li>
+<li>Judicial Powers</li>
+<li>Judicial Functions</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III : AMERICAN CONSTITUTION</strong>
+<ul>
+<li>Salient Features</li>
+<li>Federalism</li>
+<li>President</li>
+<li>Cabinet</li>
+<li>American Party System</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV : AMERICAN CONGRESS AND SUPREME COURT</strong>
+<ul>
+<li>Congress</li>
+<li>Organization of Congress</li>
+<li>Powers of Congress</li>
+<li>Functions of Congress</li>
+<li>Supreme Court</li>
+<li>Organization of Supreme Court</li>
+<li>Powers of Supreme Court</li>
+<li>Functions of Supreme Court</li>
+<li>Judicial Review</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V : CHINESE POLITICAL SYSTEM</strong>
+<ul>
+<li>Salient Features</li>
+<li>Communist Party of China</li>
+<li>President</li>
+<li>National People's Congress</li>
+<li>Supreme People's Court</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="tri-semester">
+<h4>SEMESTER – I — MINOR</h4>
+
+<div class="tri-paper">
+<h5>MINOR — POLITICAL THEORY</h5>
+
+<div class="tri-unit">
+<strong>UNIT – I</strong>
+<ul>
+<li>Nature and Scope of Political Science</li>
+<li>State and Government</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II</strong>
+<ul>
+<li>Historical Approach</li>
+<li>Philosophical Approach</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III</strong>
+<ul>
+<li>Meaning and Elements of State</li>
+<li>Gandhian View of State</li>
+<li>Marxian View of State</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV</strong>
+<ul>
+<li>Divine Origin Theory</li>
+<li>Force Theory</li>
+<li>Social Contract Theory</li>
+<li>Evolutionary Theory</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V</strong>
+<ul>
+<li>Sovereignty</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="tri-semester">
+
+<h4>SEMESTER – I — MINOR 02</h4>
+
+<div class="tri-paper">
+
+<h5>MINOR 02 — THEORY AND PRACTICE OF MODERN GOVERNMENTS</h5>
+
+<p><strong>Comparative Study:</strong> United Kingdom, United States of America and China</p>
+
+<div class="tri-unit">
+<strong>UNIT – I : BRITISH CONSTITUTION</strong>
+<ul>
+<li>Salient Features of British Constitution</li>
+<li>British Parliament</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II : BRITISH CONSTITUTION</strong>
+<ul>
+<li>Prime Minister</li>
+<li>Cabinet</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III : AMERICAN CONSTITUTION</strong>
+<ul>
+<li>Salient Features of US Constitution</li>
+<li>President — Election and Powers</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV : AMERICAN CONSTITUTION</strong>
+<ul>
+<li>Congress — Organization</li>
+<li>Supreme Court — Organization and Powers</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V : CHINESE CONSTITUTION</strong>
+<ul>
+<li>Salient Features</li>
+<li>National People's Congress</li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="tri-semester">
+<h4>SEMESTER – II</h4>
+
+<div class="tri-paper">
+<h5>POLITICAL THEORY — MAJOR</h5>
+
+<div class="tri-unit">
+<strong>UNIT – I : RIGHTS, JUSTICE AND CITIZENSHIP</strong>
+<ul>
+<li>Rights</li>
+<li>Justice</li>
+<li>Citizenship</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II : NATION AND NATIONALISM</strong>
+<ul>
+<li>Nation</li>
+<li>Nationalism</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III : CIVIL SOCIETY AND COSMOPOLITANISM</strong>
+<ul>
+<li>Emergence of Civil Society</li>
+<li>Cosmopolitanism</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV : SOCIALISM AND FASCISM</strong>
+<ul>
+<li>Socialism</li>
+<li>Critique of Socialism</li>
+<li>Fascism</li>
+<li>Critique of Fascism</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V : DEMOCRACY</strong>
+<ul>
+<li>Democracy</li>
+<li>Political Participation</li>
+<li>Political Representation</li>
+</ul>
+</div>
+
+</div>
+
+<div class="tri-paper">
+<h5>THEORY AND PRACTICE OF MODERN GOVERNMENTS — INDIAN CONSTITUTION</h5>
+
+<div class="tri-unit">
+<strong>UNIT – I : CONSTITUENT ASSEMBLY AND CONSTITUTIONAL PHILOSOPHY</strong>
+<ul>
+<li>Constituent Assembly — Organization</li>
+<li>Constituent Assembly — Powers</li>
+<li>Constituent Assembly — Functions</li>
+<li>Objectives and Philosophy of the Indian Constitution</li>
+<li>Preamble</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – II : CONSTITUTIONAL FRAMEWORK</strong>
+<ul>
+<li>Constitutional Amendment</li>
+<li>Federalism</li>
+<li>Fundamental Rights</li>
+<li>Directive Principles of State Policy</li>
+<li>Fundamental Duties</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – III : UNION EXECUTIVE</strong>
+<ul>
+<li>President</li>
+<li>Prime Minister</li>
+<li>Council of Ministers</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – IV : PARLIAMENT AND JUDICIARY</strong>
+<ul>
+<li>Parliament — Organization</li>
+<li>Parliament — Powers</li>
+<li>Parliament — Functions</li>
+<li>Supreme Court</li>
+<li>High Courts</li>
+<li>Judicial Powers and Functions</li>
+<li>Judicial Review</li>
+</ul>
+</div>
+
+<div class="tri-unit">
+<strong>UNIT – V : LOCAL GOVERNMENT AND PARTY SYSTEM</strong>
+<ul>
+<li>Panchayati Raj</li>
+<li>Urban Local Bodies</li>
+<li>Party System</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+
+
+
+<div class="tri-note">
+<strong>Study Structure:</strong>
+Subject → Semester → Major/Minor → Paper → Unit → Topic
+<br><br>
+यह सामग्री study-friendly topic-wise format में व्यवस्थित की गई है। परीक्षा के लिए अपने session की latest official University syllabus/notification को अंतिम reference मानें।
+</div>
+
+<div class="tri-source">
+<strong>THE RAVISHANKAR INSIGHTS</strong><br>
+University of Allahabad — Political Science<br>
+Official University website: allduniv.ac.in
+</div>
+
+</div>
+
 </body>
 </html>
