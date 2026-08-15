@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0;url=https://ravishankarkamal59-eng.github.io/">
+  <title>Page Not Found</title>
 </head>
 <body>
-  <p>Redirecting to <a href="https://ravishankarkamal59-eng.github.io/">The Ravishankar Insights</a>...</p>
-
   <script>
-    if (window.location.pathname.startsWith("/the-ravishankar-insights/")) {
+    if (window.location.pathname === "/the-ravishankar-insights/" ||
+        window.location.pathname === "/the-ravishankar-insights/index.html" ||
+        window.location.pathname.startsWith("/the-ravishankar-insights/")) {
       window.location.replace("https://ravishankarkamal59-eng.github.io/");
     }
   </script>
+
+  <h1>Page Not Found</h1>
+  <p>The requested page could not be found.</p>
 </body>
 </html>
