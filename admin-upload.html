@@ -205,6 +205,87 @@ button:disabled{
 
 <label>Material Type चुनें</label>
 
+<label>Paper / Topic चुनें</label>
+<label>Subject / Programme चुनें</label>
+<select id="uploadSubject">
+<option value="">📚 General / सभी Subjects</option>
+
+<option value="BA — Ancient History, Culture & Archaeology">BA — Ancient History, Culture & Archaeology</option>
+<option value="BA — Anthropology">BA — Anthropology</option>
+<option value="BA — Arabic">BA — Arabic</option>
+<option value="BA — Persian">BA — Persian</option>
+<option value="BA — Education">BA — Education</option>
+<option value="BA — English">BA — English</option>
+<option value="BA — Geography">BA — Geography</option>
+<option value="BA — Hindi">BA — Hindi</option>
+<option value="BA — Medieval & Modern History">BA — Medieval & Modern History</option>
+<option value="BA — Music">BA — Music</option>
+<option value="BA — Philosophy">BA — Philosophy</option>
+<option value="BA — Political Science">BA — Political Science</option>
+<option value="BA — Psychology">BA — Psychology</option>
+<option value="BA — Sanskrit">BA — Sanskrit</option>
+<option value="BA — Sociology">BA — Sociology</option>
+<option value="BA — Urdu">BA — Urdu</option>
+<option value="BA — Economics">BA — Economics</option>
+<option value="BA — Defence & Strategic Studies">BA — Defence & Strategic Studies</option>
+<option value="BA — Mathematics">BA — Mathematics</option>
+<option value="BA — Statistics">BA — Statistics</option>
+
+<option value="MA — Ancient History, Culture & Archaeology">MA — Ancient History, Culture & Archaeology</option>
+<option value="MA — Anthropology">MA — Anthropology</option>
+<option value="MA — Arabic">MA — Arabic</option>
+<option value="MA — Persian">MA — Persian</option>
+<option value="MA — Education">MA — Education</option>
+<option value="MA — English">MA — English</option>
+<option value="MA — Geography">MA — Geography</option>
+<option value="MA — Hindi">MA — Hindi</option>
+<option value="MA — Medieval & Modern History">MA — Medieval & Modern History</option>
+<option value="MA — Music">MA — Music</option>
+<option value="MA — Philosophy">MA — Philosophy</option>
+<option value="MA — Political Science">MA — Political Science</option>
+<option value="MA — Psychology">MA — Psychology</option>
+<option value="MA — Sanskrit">MA — Sanskrit</option>
+<option value="MA — Sociology">MA — Sociology</option>
+<option value="MA — Urdu">MA — Urdu</option>
+<option value="MA — Economics">MA — Economics</option>
+<option value="MA — Defence & Strategic Studies">MA — Defence & Strategic Studies</option>
+<option value="MA — Mathematics">MA — Mathematics</option>
+<option value="MA — Statistics">MA — Statistics</option>
+<option value="MA — Mass Communication">MA — Mass Communication</option>
+<option value="MA — Women's Studies">MA — Women's Studies</option>
+<option value="MA — Development Studies">MA — Development Studies</option>
+<option value="MA — Theatre & Film">MA — Theatre & Film</option>
+<option value="MA — Painting">MA — Painting</option>
+</select>
+
+<select id="uploadPaper">
+<option value="">📚 General / सभी Papers</option>
+<option value="Semester 1 - Paper 1">Semester 1 - Paper 1</option>
+<option value="Semester 1 - Paper 2">Semester 1 - Paper 2</option>
+<option value="Semester 1 - Paper 3">Semester 1 - Paper 3</option>
+<option value="Semester 1 - Paper 4">Semester 1 - Paper 4</option>
+<option value="Semester 2 - Paper 1">Semester 2 - Paper 1</option>
+<option value="Semester 2 - Paper 2">Semester 2 - Paper 2</option>
+<option value="Semester 2 - Paper 3">Semester 2 - Paper 3</option>
+<option value="Semester 2 - Paper 4">Semester 2 - Paper 4</option>
+<option value="Semester 3 - Paper 1">Semester 3 - Paper 1</option>
+<option value="Semester 3 - Paper 2">Semester 3 - Paper 2</option>
+<option value="Semester 3 - Paper 3">Semester 3 - Paper 3</option>
+<option value="Semester 3 - Paper 4">Semester 3 - Paper 4</option>
+<option value="Semester 4 - Paper 1">Semester 4 - Paper 1</option>
+<option value="Semester 4 - Paper 2">Semester 4 - Paper 2</option>
+<option value="Semester 4 - Paper 3">Semester 4 - Paper 3</option>
+<option value="Semester 4 - Paper 4">Semester 4 - Paper 4</option>
+<option value="Semester 5 - Paper 1">Semester 5 - Paper 1</option>
+<option value="Semester 5 - Paper 2">Semester 5 - Paper 2</option>
+<option value="Semester 5 - Paper 3">Semester 5 - Paper 3</option>
+<option value="Semester 5 - Paper 4">Semester 5 - Paper 4</option>
+<option value="Semester 6 - Paper 1">Semester 6 - Paper 1</option>
+<option value="Semester 6 - Paper 2">Semester 6 - Paper 2</option>
+<option value="Semester 6 - Paper 3">Semester 6 - Paper 3</option>
+<option value="Semester 6 - Paper 4">Semester 6 - Paper 4</option>
+</select>
+
 <select id="materialType">
 <option value="pyq">📄 PYQ</option>
 <option value="notes">📝 Notes</option>
@@ -273,6 +354,12 @@ async function uploadMaterial(){
 
   const materialType =
     document.getElementById("materialType").value;
+
+  const paper =
+    document.getElementById("uploadPaper").value;
+
+  const subject =
+    document.getElementById("uploadSubject").value;
 
   const message =
     document.getElementById("uploadMessage");
@@ -354,6 +441,16 @@ async function uploadMaterial(){
   formData.append(
     "materialType",
     materialType
+  );
+
+  formData.append(
+    "paper",
+    paper
+  );
+
+  formData.append(
+    "subject",
+    subject
   );
 
 
