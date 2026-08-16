@@ -16,6 +16,39 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
 .books{display:block;margin-top:15px;padding:13px;background:#fff3cd;border-radius:9px;text-decoration:none;color:#664d03;font-weight:bold}
 .back{display:inline-block;margin:15px 0;padding:10px 15px;background:#172554;color:white;text-decoration:none;border-radius:8px}
 </style>
+<style id="quick-access-style">
+.quick-access{
+  background:linear-gradient(135deg,#172554,#1e3a8a);
+  color:white;
+  padding:18px;
+  border-radius:18px;
+  margin:20px 0 25px;
+  box-shadow:0 6px 20px #0002;
+}
+.quick-access h2{
+  margin:0 0 12px;
+  font-size:21px;
+}
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:9px;
+}
+.quick-grid a{
+  display:block;
+  background:white;
+  color:#172554;
+  text-decoration:none;
+  text-align:center;
+  padding:11px 8px;
+  border-radius:10px;
+  font-weight:bold;
+}
+.quick-grid a:hover{
+  transform:translateY(-2px);
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -24,22 +57,34 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
 </header>
 <main class="container">
 <a class="back" href="student-dashboard.html">← Back to Student Section</a>
+<section id="quick-access" class="quick-access">
+  <h2>⚡ BA Quick Access</h2>
+  <div class="quick-grid">
+    <a href="#ba-year1">📘 1st Year</a><a href="#ba-year2">📗 2nd Year</a><a href="#ba-year3">📙 3rd Year</a>
+    <a href="#pyq">📝 PYQ</a>
+    <a href="#notes">📚 Notes</a>
+    <a href="#syllabus">📖 Syllabus</a>
+    <a href="#pdf">📄 PDF</a>
+    <a href="#books">📚 Books</a>
+  </div>
+</section>
+
 <p><strong>BA Subjects</strong> — प्रत्येक programme में semester-wise study material structure.</p>
 
     <section class="program">
       <h2>📘 BA — Ancient History, Culture & Archaeology</h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-year1">📘 BA 1st Year — Semester 1</h3>
       
     <div class="paper">
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a id="pdf" href="#">📄 PDF</a>
+      <a id="notes" href="#">📚 Notes</a>
+      <a id="syllabus" href="#">📖 Syllabus</a>
+      <a id="pyq" href="#">📝 PYQ</a>
     </div>
     
     </div>
@@ -138,7 +183,7 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-year2">📘 BA 2nd Year — Semester 3</h3>
       
     <div class="paper">
       <h4>📚 Paper 1</h4>
@@ -246,7 +291,7 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-year3">📘 BA 3rd Year — Semester 5</h3>
       
     <div class="paper">
       <h4>📚 Paper 1</h4>
@@ -352,7 +397,7 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
     
     </div>
     
-      <a class="books" href="#">📚 Ancient History, Culture & Archaeology — Books</a>
+      <a id="books" class="books" href="#">📚 Ancient History, Culture & Archaeology — Books</a>
     </section>
     
     <section class="program">
