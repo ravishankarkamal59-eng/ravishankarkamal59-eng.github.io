@@ -1151,79 +1151,51 @@ Open All Materials →
     box.appendChild(clone);
 
     /*
-      DASHBOARD ONLY — CARD LOGIN HIDE
+      DASHBOARD ONLY — FINAL DIRECT CARD LINKS
       Main Student Login को नहीं छेड़ना है।
+      Homepage से clone होकर आने वाले Study Cards के
+      login.html?next=... links को सीधे target page पर भेजना है।
     */
 
+    clone.querySelectorAll(".student-card").forEach(card => {
+      const link = card.querySelector('a[href^="login.html"]');
+
+      if (!link) return;
+
+      const href = link.getAttribute("href") || "";
+
+      if (href.startsWith("login.html?next=")) {
+        const target = href.substring("login.html?next=".length);
+
+        if (target) {
+          link.href = decodeURIComponent(target);
+          link.textContent = "Open →";
+        }
+      }
+    });
+
     /*
-      DASHBOARD ONLY — DIRECT CARD LINKS
-      Main Student Login को नहीं छेड़ना है।
-      केवल cloned Study Cards के login links को direct target links में बदलना है.
+      Cards जिनमें केवल login.html था,
+      उनके लिए सुरक्षित direct targets।
     */
-    const directCardTargets = {
-      "BA": "ba-materials.html",
-      "MA": "ma-materials.html",
-      "CUET": "university-law-materials.html",
-      "UPSC CSE": "civil-defence-materials.html",
-      "CDS": "civil-defence-materials.html",
-      "NDA": "civil-defence-materials.html",
-      "CAPF": "civil-defence-materials.html",
-      "UPSC CMS": "civil-defence-materials.html",
-      "UPPCS": "uppcs-materials.html",
-      "State PSC": "state-psc-materials.html",
-      "SSC CGL": "ssc-materials.html",
-      "SSC CHSL": "ssc-materials.html",
-      "SSC MTS": "ssc-materials.html",
-      "SSC GD": "ssc-materials.html",
-      "SSC CPO": "ssc-materials.html",
-      "SSC Selection Post": "ssc-materials.html",
-      "IBPS PO": "banking-exams-materials.html",
-      "IBPS Clerk": "banking-exams-materials.html",
-      "IBPS RRB": "banking-exams-materials.html",
-      "SBI PO": "banking-exams-materials.html",
-      "SBI Clerk": "banking-exams-materials.html",
-      "RBI": "banking-exams-materials.html",
-      "RRB NTPC": "railway-exams-materials.html",
-      "RRB Group D": "railway-exams-materials.html",
-      "RRB ALP": "railway-exams-materials.html",
-      "RRB Technician": "railway-exams-materials.html",
-      "State Police": "up-government-materials.html",
-      "Defence Exams": "armed-forces-materials.html",
-      "CTET": "teaching-materials.html",
-      "TET": "teaching-materials.html",
-      "TGT": "teaching-materials.html",
-      "PGT": "teaching-materials.html",
-      "UGC NET": "net-jrf-materials.html",
-      "NET-JRF": "net-jrf-materials.html",
-      "JEE Main": "engineering-materials.html",
-      "JEE Advanced": "engineering-materials.html",
-      "NEET UG": "medical-materials.html",
-      "NEET PG": "medical-materials.html",
-      "CUET UG": "university-law-materials.html",
-      "CUET PG": "university-law-materials.html",
-      "AIBE": "university-law-materials.html",
-      "UPSSSC PET": "up-government-materials.html",
-      "UPSSSC": "up-government-materials.html",
-      "UP Police": "up-government-materials.html",
-      "UP Judiciary": "up-government-materials.html",
-      "Agniveer": "armed-forces-materials.html",
-      "LIC": "materials.html",
-      "EPFO": "materials.html",
-      "ESIC": "materials.html",
-      "FCI": "materials.html",
-      "CLAT": "law-professional-materials.html",
-      "AILET": "law-professional-materials.html",
-      "NEET": "medical-materials.html"
+    const directTargets = {
+      "👮 State Police": "up-government-materials.html",
+      "🎖️ Defence Exams": "armed-forces-materials.html",
+      "🏢 LIC": "materials.html",
+      "🏢 EPFO": "materials.html",
+      "🏢 ESIC": "materials.html",
+      "🏢 FCI": "materials.html",
+      "🩺 NEET": "medical-materials.html"
     };
 
     clone.querySelectorAll(".student-card").forEach(card => {
       const title = card.querySelector("h3");
-      const link = card.querySelector('a[href^="login.html"]');
+      const link = card.querySelector('a[href="login.html"]');
 
       if (!title || !link) return;
 
       const key = title.textContent.replace(/\s+/g, " ").trim();
-      const target = directCardTargets[key];
+      const target = directTargets[key];
 
       if (target) {
         link.href = target;
@@ -1231,7 +1203,10 @@ Open All Materials →
       }
     });
 
-    /* Remove only the second duplicate SSC GD and CAPF card */
+    /*
+      Duplicate cards:
+      दूसरे SSC GD और दूसरे CAPF card को हटाएँ।
+    */
     const seenCards = new Set();
 
     clone.querySelectorAll(".student-card").forEach(card => {
@@ -1240,7 +1215,7 @@ Open All Materials →
 
       const key = title.textContent.replace(/\s+/g, " ").trim();
 
-      if (key === "SSC GD" || key === "CAPF") {
+      if (key === "👮 SSC GD" || key === "🛡️ CAPF") {
         if (seenCards.has(key)) {
           card.remove();
         } else {
