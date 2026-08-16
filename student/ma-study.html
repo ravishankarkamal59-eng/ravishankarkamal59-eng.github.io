@@ -49,6 +49,37 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
 }
 </style>
 
+
+<style id="study-search-style">
+.study-search-box{
+  background:white;
+  border-radius:18px;
+  padding:16px;
+  margin:18px 0 22px;
+  box-shadow:0 5px 18px #0002;
+}
+.study-search-box input{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px 16px;
+  border:2px solid #dbe4f0;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
+.study-search-box input:focus{
+  border-color:#172554;
+}
+.study-search-result{
+  margin-top:10px;
+  font-size:14px;
+  color:#172033;
+}
+.search-hidden{
+  display:none !important;
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -57,6 +88,19 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
 </header>
 <main class="container">
 <a class="back" href="student-dashboard.html">← Back to Student Section</a>
+<section class="study-search-box">
+  <strong>🔎 MA Search</strong>
+  <input
+    id="study-search"
+    type="search"
+    placeholder="Search First Year, Ancient History, Political Science, Semester, Notes, PYQ..."
+    autocomplete="off"
+  >
+  <div id="study-search-result" class="study-search-result">
+    सभी subjects/programmes में search करें।
+  </div>
+</section>
+
 <section id="quick-access" class="quick-access">
   <h2>⚡ MA Quick Access</h2>
   <div class="quick-grid">
@@ -5597,5 +5641,47 @@ header{background:#172554;color:white;text-align:center;padding:28px 18px}
     </section>
     
 </main>
+
+<script id="study-search-script">
+(function(){
+  const input = document.getElementById("study-search");
+  const result = document.getElementById("study-search-result");
+
+  if(!input) return;
+
+  const programs = Array.from(document.querySelectorAll(".program"));
+
+  function search(){
+    const q = input.value.trim().toLowerCase();
+
+    let matches = 0;
+
+    programs.forEach(program => {
+      const text = program.innerText.toLowerCase();
+
+      if(!q || text.includes(q)){
+        program.classList.remove("search-hidden");
+        matches++;
+      }else{
+        program.classList.add("search-hidden");
+      }
+    });
+
+    if(!q){
+      result.textContent =
+        "सभी subjects/programmes में search करें।";
+    }else if(matches){
+      result.textContent =
+        "✅ " + matches + " matching programme(s) मिले।";
+    }else{
+      result.textContent =
+        "❌ कोई matching programme नहीं मिला। दूसरा keyword try करें।";
+    }
+  }
+
+  input.addEventListener("input", search);
+})();
+</script>
+
 </body>
 </html>
