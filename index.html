@@ -1228,6 +1228,164 @@ html body #contact span {
 <a href="login.html" class="student-info-login">🔐 Student Login / Register</a>
 </div>
 </section>
+
+<!-- MAIN WEBSITE SEARCH -->
+<section id="site-search-section" class="site-search-section">
+  <div class="site-search-box">
+    <div class="site-search-title">🔎 Search Study Material</div>
+    <div class="site-search-input-wrap">
+      <span>🔍</span>
+      <input
+        id="siteSearch"
+        type="search"
+        placeholder="Search BA, MA, UPSC, UPPCS, NET, Railway, SSC, Banking..."
+        autocomplete="off"
+      >
+    </div>
+    <div id="searchResults" class="site-search-results"></div>
+  </div>
+</section>
+
+<style>
+.site-search-section{
+  padding:25px 6%;
+  background:#f5f7fb;
+}
+
+.site-search-box{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  box-shadow:0 8px 25px #00000012;
+}
+
+.site-search-title{
+  text-align:center;
+  color:#123f72;
+  font-size:24px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.site-search-input-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:2px solid #e1e8f0;
+  border-radius:14px;
+  padding:12px 15px;
+  background:#fafcff;
+}
+
+.site-search-input-wrap span{
+  font-size:21px;
+}
+
+.site-search-input-wrap input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-size:16px;
+  color:#172033;
+}
+
+.site-search-results{
+  margin-top:12px;
+}
+
+.site-search-result{
+  display:block;
+  padding:14px;
+  margin-top:8px;
+  border-radius:12px;
+  background:#f4f8ff;
+  color:#172033;
+  text-decoration:none;
+  border-left:4px solid #1261c9;
+}
+
+.site-search-result:hover{
+  background:#eaf3ff;
+}
+
+.site-search-result strong{
+  color:#123f72;
+  font-size:16px;
+}
+
+.site-search-result small{
+  display:block;
+  margin-top:5px;
+  color:#596579;
+}
+
+.site-search-empty{
+  text-align:center;
+  padding:14px;
+  color:#64748b;
+}
+</style>
+
+<script>
+(function(){
+
+const searchItems = [
+  ["BA Study", "student/ba-study.html", "BA Notes, PYQs और Study Material"],
+  ["MA Study", "student/ma-study.html", "MA Notes, PYQs और Study Material"],
+  ["CUET", "university-law-materials.html", "CUET UG और PG Preparation"],
+  ["UPSC CSE", "civil-defence-materials.html", "IAS, IPS, IFS, Prelims और Mains"],
+  ["CDS", "civil-defence-materials.html", "Combined Defence Services"],
+  ["NET JRF", "student/net.html", "UGC NET JRF Preparation"],
+  ["UPPCS", "student/uppcs-materials.html", "UPPCS Study Material"],
+  ["Railway", "student/railway-materials.html", "Railway Exam Preparation"],
+  ["SSC", "student/ssc-materials.html", "SSC Exam Preparation"],
+  ["Banking", "student/banking-materials.html", "Banking Exam Preparation"],
+  ["LLB", "student/llb-study.html", "LLB Study Material"],
+  ["CLAT", "law-professional-materials.html", "CLAT Preparation"],
+  ["AILET", "law-professional-materials.html", "AILET Preparation"],
+  ["NEET", "medical-materials.html", "NEET Preparation"],
+  ["Student Portal", "login.html", "Student Login/Register और Study Material"]
+];
+
+const input = document.getElementById("siteSearch");
+const results = document.getElementById("searchResults");
+
+if(!input || !results) return;
+
+input.addEventListener("input", function(){
+
+  const query = this.value.trim().toLowerCase();
+
+  if(!query){
+    results.innerHTML = "";
+    return;
+  }
+
+  const matches = searchItems.filter(item =>
+    item.join(" ").toLowerCase().includes(query)
+  );
+
+  if(!matches.length){
+    results.innerHTML =
+      '<div class="site-search-empty">❌ कोई matching material नहीं मिला।</div>';
+    return;
+  }
+
+  results.innerHTML = matches.map(item => `
+    <a class="site-search-result" href="${item[1]}">
+      🔎 <strong>${item[0]}</strong>
+      <small>${item[2]}</small>
+    </a>
+  `).join("");
+
+});
+
+})();
+</script>
+
 <section id="about" class="professional-info">
 <div class="info-box">
 <h2>ℹ️ About The Ravishankar Insights</h2>
