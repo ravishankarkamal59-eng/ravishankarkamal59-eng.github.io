@@ -3,278 +3,6903 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BA PDFs | The Ravishankar Insights</title>
-
+<title>BA Study Section - The Ravishankar Insights</title>
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
-
-body{
-  background:#f4f7fb;
-  color:#172033;
-}
-
-header{
-  background:linear-gradient(135deg,#07111f,#123b5d);
+body{font-family:Arial,sans-serif;margin:0;background:#f4f7fb;color:#172033}
+header{background:#172554;color:white;text-align:center;padding:28px 18px}
+.container{max-width:1100px;margin:auto;padding:20px}
+.program{background:white;border-radius:18px;padding:20px;margin:25px 0;box-shadow:0 5px 18px #0001}
+.semester{background:#eef4ff;border-radius:14px;padding:15px;margin:15px 0}
+.paper{background:white;border-radius:11px;padding:14px;margin:10px 0}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.links a{padding:9px 12px;background:#172554;color:white;text-decoration:none;border-radius:8px}
+.books{display:block;margin-top:15px;padding:13px;background:#fff3cd;border-radius:9px;text-decoration:none;color:#664d03;font-weight:bold}
+.back{display:inline-block;margin:15px 0;padding:10px 15px;background:#172554;color:white;text-decoration:none;border-radius:8px}
+</style>
+<style id="quick-access-style">
+.quick-access{
+  background:linear-gradient(135deg,#172554,#1e3a8a);
   color:white;
-  padding:25px 18px;
-}
-
-header h1{
-  max-width:1100px;
-  margin:auto;
-}
-
-.container{
-  max-width:1100px;
-  margin:25px auto;
-  padding:0 18px;
-}
-
-.back{
-  display:inline-block;
-  margin-bottom:20px;
-  color:#1677ff;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:white;
-  padding:25px;
+  padding:18px;
   border-radius:18px;
-  box-shadow:0 7px 22px rgba(0,0,0,.08);
+  margin:20px 0 25px;
+  box-shadow:0 6px 20px #0002;
 }
-
-.card h2{
-  color:#123b5d;
-  margin-bottom:10px;
+.quick-access h2{
+  margin:0 0 12px;
+  font-size:21px;
 }
-
-.card p{
-  color:#777;
-  margin-bottom:18px;
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:9px;
 }
-
-input[type="file"]{
-  width:100%;
-  margin-bottom:12px;
-}
-
-button,
-.open{
-  display:inline-block;
-  border:0;
-  padding:10px 16px;
-  border-radius:9px;
-  background:#1677ff;
-  color:white;
+.quick-grid a{
+  display:block;
+  background:white;
+  color:#172554;
   text-decoration:none;
+  text-align:center;
+  padding:11px 8px;
+  border-radius:10px;
   font-weight:bold;
-  cursor:pointer;
 }
-
-.pdf-box{
-  margin-top:18px;
-  padding-top:15px;
-  border-top:1px solid #ddd;
-}
-
-.pdf-box a{
-  color:#1677ff;
-  font-weight:bold;
-  text-decoration:none;
+.quick-grid a:hover{
+  transform:translateY(-2px);
 }
 </style>
-</head>
-
-<body>
-
-<header>
-<h1>📚 BA PDF Materials</h1>
-</header>
-
-<div class="container">
-
-<a class="back" href="materials.html">
-← Materials पर वापस जाएँ
-</a>
-
-<div class="grid">
-
-<!-- BA 1st Year -->
-<div class="card">
-
-<h2>📘 BA 1st Year</h2>
-
-<p>BA 1st Year की PDF यहाँ रखें।</p>
-
-<input
-type="file"
-id="pdf1"
-accept="application/pdf"
->
-
-<button onclick="savePDF('pdf1','pdf1Link')">
-PDF Save
-</button>
-
-<div class="pdf-box">
-<a
-id="pdf1Link"
-target="_blank"
-style="display:none"
->
-📄 Open PDF
-</a>
-</div>
-
-</div>
 
 
-<!-- BA 2nd Year -->
-<div class="card">
-
-<h2>📗 BA 2nd Year</h2>
-
-<p>BA 2nd Year की PDF यहाँ रखें।</p>
-
-<input
-type="file"
-id="pdf2"
-accept="application/pdf"
->
-
-<button onclick="savePDF('pdf2','pdf2Link')">
-PDF Save
-</button>
-
-<div class="pdf-box">
-<a
-id="pdf2Link"
-target="_blank"
-style="display:none"
->
-📄 Open PDF
-</a>
-</div>
-
-</div>
-
-
-<!-- BA 3rd Year -->
-<div class="card">
-
-<h2>📕 BA 3rd Year</h2>
-
-<p>BA 3rd Year की PDF यहाँ रखें।</p>
-
-<input
-type="file"
-id="pdf3"
-accept="application/pdf"
->
-
-<button onclick="savePDF('pdf3','pdf3Link')">
-PDF Save
-</button>
-
-<div class="pdf-box">
-<a
-id="pdf3Link"
-target="_blank"
-style="display:none"
->
-📄 Open PDF
-</a>
-</div>
-
-</div>
-
-</div>
-</div>
-
-<div class="container" id="uploadedMaterials" style="margin-top:30px;">
-<h2>📚 Uploaded BA Materials</h2>
-<div id="materialsList">⏳ Materials load हो रहे हैं...</div>
-</div>
-<script>
-
-function savePDF(inputId, linkId){
-
-  const file =
-    document.getElementById(inputId).files[0];
-
-  if(!file){
-
-    alert("पहले PDF चुनें।");
-    return;
-  }
-
-  if(file.type !== "application/pdf"){
-
-    alert("सिर्फ PDF file चुनें।");
-    return;
-  }
-
-  const url =
-    URL.createObjectURL(file);
-
-  const link =
-    document.getElementById(linkId);
-
-  link.href = url;
-  link.style.display = "inline-block";
-
-  alert("PDF तैयार है। अब Open PDF दबाएँ।");
+<style id="study-search-style">
+.study-search-box{
+  background:white;
+  border-radius:18px;
+  padding:16px;
+  margin:18px 0 22px;
+  box-shadow:0 5px 18px #0002;
 }
+.study-search-box input{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px 16px;
+  border:2px solid #dbe4f0;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
+.study-search-box input:focus{
+  border-color:#172554;
+}
+.study-search-result{
+  margin-top:10px;
+  font-size:14px;
+  color:#172033;
+}
+.search-hidden{
+  display:none !important;
+}
+</style>
 
-const BACKEND="https://ravishankar-insights-backend-1.onrender.com";
+</head>
+<body>
+<header>
+<h1>📘 BA Study Section</h1>
+<p>The Ravishankar Insights</p>
+</header>
+<main class="container">
+<a class="back" href="student-dashboard.html">← Back to Student Section</a>
+<section class="study-search-box">
+  <strong>🔎 BA Search</strong>
+  <input
+    id="study-search"
+    type="search"
+    placeholder="Search First Year, Ancient History, Political Science, Semester, Notes, PYQ..."
+    autocomplete="off"
+  >
+  <div id="study-search-result" class="study-search-result">
+    सभी subjects/programmes में search करें।
+  </div>
+</section>
 
-async function loadUploadedMaterials(){
-  const box=document.getElementById("materialsList");
-  try{
-    const response=await fetch(BACKEND+"/api/materials/ba");
-    const data=await response.json();
+<section id="quick-access" class="quick-access">
+  <h2>⚡ BA Quick Access</h2>
+  <div class="quick-grid">
+    <a href="#ba-year1">📘 1st Year</a><a href="#ba-year2">📗 2nd Year</a><a href="#ba-year3">📙 3rd Year</a>
+    <a href="#pyq">📝 PYQ</a>
+    <a href="#notes">📚 Notes</a>
+    <a href="#syllabus">📖 Syllabus</a>
+    <a href="#pdf">📄 PDF</a>
+    <a href="#books">📚 Books</a>
+  </div>
+</section>
 
-    if(!data.success || !data.files.length){
-      box.innerHTML="<p>अभी कोई uploaded material नहीं है।</p>";
+<p><strong>BA Subjects</strong> — प्रत्येक programme में semester-wise study material structure.</p>
+
+    <section class="program" data-material-subject="BA — Ancient History, Culture & Archaeology">
+      <h2>📘 BA — Ancient History, Culture & Archaeology</h2>
+      
+    <div class="semester">
+      <h3 id="ba-year1">📘 BA 1st Year — Semester 1</h3>
+      
+    <div class="paper">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a id="pdf" href="#">📄 PDF</a>
+      <a id="notes" href="#">📚 Notes</a>
+      <a id="syllabus" href="#">📖 Syllabus</a>
+      <a id="pyq" href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3 id="ba-year2">📘 BA 2nd Year — Semester 3</h3>
+      
+    <div class="paper">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3 id="ba-year3">📘 BA 3rd Year — Semester 5</h3>
+      
+    <div class="paper">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a id="books" class="books" href="#">📚 Ancient History, Culture & Archaeology — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Anthropology">
+      <h2>📘 BA — Anthropology</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Anthropology — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Arabic">
+      <h2>📘 BA — Arabic</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Arabic — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Persian">
+      <h2>📘 BA — Persian</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Persian — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Education">
+      <h2>📘 BA — Education</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Education — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — English">
+      <h2>📘 BA — English</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 English — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Geography">
+      <h2>📘 BA — Geography</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Geography — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Hindi">
+      <h2>📘 BA — Hindi</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Hindi — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Medieval & Modern History">
+      <h2>📘 BA — Medieval & Modern History</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Medieval & Modern History — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Music">
+      <h2>📘 BA — Music</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Music — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Philosophy">
+      <h2>📘 BA — Philosophy</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Philosophy — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Political Science">
+      <h2>📘 BA — Political Science</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Political Science — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Psychology">
+      <h2>📘 BA — Psychology</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Psychology — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Sanskrit">
+      <h2>📘 BA — Sanskrit</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Sanskrit — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Sociology">
+      <h2>📘 BA — Sociology</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Sociology — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Urdu">
+      <h2>📘 BA — Urdu</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Urdu — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Economics">
+      <h2>📘 BA — Economics</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Economics — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Defence & Strategic Studies">
+      <h2>📘 BA — Defence & Strategic Studies</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Defence & Strategic Studies — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Mathematics">
+      <h2>📘 BA — Mathematics</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Mathematics — Books</a>
+    </section>
+    
+    <section class="program" data-material-subject="BA — Statistics">
+      <h2>📘 BA — Statistics</h2>
+      
+    <div class="semester">
+      <h3>Semester 1</h3>
+      
+    <div class="paper" data-material-paper="Semester 1 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 1 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 2</h3>
+      
+    <div class="paper" data-material-paper="Semester 2 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 2 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 3</h3>
+      
+    <div class="paper" data-material-paper="Semester 3 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 3 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 4</h3>
+      
+    <div class="paper" data-material-paper="Semester 4 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 4 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 5</h3>
+      
+    <div class="paper" data-material-paper="Semester 5 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 5 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      
+    <div class="semester">
+      <h3>Semester 6</h3>
+      
+    <div class="paper" data-material-paper="Semester 6 - Paper 1">
+      <h4>📚 Paper 1</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 2">
+      <h4>📚 Paper 2</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 3">
+      <h4>📚 Paper 3</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper" data-material-paper="Semester 6 - Paper 4">
+      <h4>📚 Paper 4</h4>
+      
+    <div class="links">
+      <a href="#">📄 PDF</a>
+      <a href="#">📚 Notes</a>
+      <a href="#">📖 Syllabus</a>
+      <a href="#">📝 PYQ</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+      <a class="books" href="#">📚 Statistics — Books</a>
+    </section>
+    
+</main>
+
+
+<script id="auto-card-material-script">
+(function(){
+  const API_BASE =
+    "https://ravishankar-insights-backend-1.onrender.com";
+
+  function safeText(v){
+    return String(v || "").trim();
+  }
+
+  function showMessage(message){
+    alert(message);
+  }
+
+  function makeLink(link, material){
+    if(!material) return;
+
+    const url = material.url || "";
+
+    if(!url){
+      showMessage("Material URL उपलब्ध नहीं है।");
       return;
     }
 
-    box.innerHTML=data.files.map(file=>`
-      <div style="background:white;padding:16px;margin:12px 0;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.08);">
-        <strong>📄 ${file.name}</strong>
-        <br>
-        <a href="${BACKEND}${file.url}" target="_blank" style="display:inline-block;margin-top:10px;padding:10px 16px;background:#1677ff;color:white;text-decoration:none;border-radius:8px;">
-        📖 Open PDF
-        </a>
-        <a href="${BACKEND}${file.url}" download style="display:inline-block;margin-top:10px;margin-left:8px;padding:10px 16px;background:#168f45;color:white;text-decoration:none;border-radius:8px;">
-        ⬇️ Download
-        </a>
-      </div>
-    `).join("");
-  }catch(error){
-    console.error(error);
-    box.innerHTML="<p style="color:red;">Materials load नहीं हो पाए।</p>";
-  }
-}
+    const fullUrl =
+      url.startsWith("http")
+        ? url
+        : API_BASE + url;
 
-loadUploadedMaterials();
+    window.open(fullUrl, "_blank", "noopener");
+  }
+
+  async function loadMaterials(program, paper, type){
+    const subject =
+      safeText(program.dataset.materialSubject);
+
+    const paperValue =
+      safeText(paper.dataset.materialPaper);
+
+    if(!subject || !paperValue){
+      showMessage("Subject या Paper की जानकारी नहीं मिली।");
+      return;
+    }
+
+    try{
+      const params = new URLSearchParams({
+        card: subject,
+        subject: subject,
+        paper: paperValue,
+        type: type
+      });
+
+      const response = await fetch(
+        API_BASE + "/api/card-materials?" + params.toString(),
+        {
+          credentials: "include"
+        }
+      );
+
+      const data = await response.json();
+
+      if(!response.ok || !data.success){
+        showMessage(
+          data.message || "Material load नहीं हो पाया।"
+        );
+        return;
+      }
+
+      const materials = Array.isArray(data.materials)
+        ? data.materials
+        : [];
+
+      if(!materials.length){
+        showMessage(
+          "इस Paper के लिए अभी " +
+          type.toUpperCase() +
+          " उपलब्ध नहीं है।"
+        );
+        return;
+      }
+
+      if(materials.length === 1){
+        makeLink(null, materials[0]);
+        return;
+      }
+
+      const choices = materials
+        .map((m, i) => `${i + 1}. ${m.name || "Material"}`)
+        .join("\n");
+
+      const answer = prompt(
+        "Available materials:\n\n" +
+        choices +
+        "\n\nजिसे खोलना है उसका नंबर डालें:"
+      );
+
+      const index = Number(answer) - 1;
+
+      if(
+        Number.isInteger(index) &&
+        index >= 0 &&
+        index < materials.length
+      ){
+        makeLink(null, materials[index]);
+      }
+
+    }catch(error){
+      console.error(error);
+      showMessage(
+        "Material server से connection नहीं हो पाया।"
+      );
+    }
+  }
+
+  document.querySelectorAll(".program").forEach(program => {
+
+    program.querySelectorAll(".paper").forEach(paper => {
+
+      const links =
+        paper.querySelector(".links");
+
+      if(!links) return;
+
+      const anchors =
+        links.querySelectorAll("a");
+
+      anchors.forEach(anchor => {
+
+        const text =
+          safeText(anchor.textContent).toLowerCase();
+
+        let type = "";
+
+        if(text.includes("notes")){
+          type = "notes";
+        }else if(text.includes("syllabus")){
+          type = "syllabus";
+        }else if(text.includes("pyq")){
+          type = "pyq";
+        }else if(text.includes("pdf")){
+          type = "notes";
+        }
+
+        if(!type) return;
+
+        anchor.removeAttribute("href");
+
+        anchor.href = "#";
+
+        anchor.addEventListener("click", function(e){
+          e.preventDefault();
+          loadMaterials(program, paper, type);
+        });
+
+      });
+
+    });
+
+  });
+
+})();
 </script>
 
+<script id="study-search-script">
+(function(){
+  const input = document.getElementById("study-search");
+  const result = document.getElementById("study-search-result");
+
+  if(!input) return;
+
+  const programs = Array.from(document.querySelectorAll(".program"));
+
+  function search(){
+    const q = input.value.trim().toLowerCase();
+
+    let matches = 0;
+
+    programs.forEach(program => {
+      const text = program.innerText.toLowerCase();
+
+      if(!q || text.includes(q)){
+        program.classList.remove("search-hidden");
+        matches++;
+      }else{
+        program.classList.add("search-hidden");
+      }
+    });
+
+    if(!q){
+      result.textContent =
+        "सभी subjects/programmes में search करें।";
+    }else if(matches){
+      result.textContent =
+        "✅ " + matches + " matching programme(s) मिले।";
+    }else{
+      result.textContent =
+        "❌ कोई matching programme नहीं मिला। दूसरा keyword try करें।";
+    }
+  }
+
+  input.addEventListener("input", search);
+})();
+</script>
 
 </body>
 </html>
