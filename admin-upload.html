@@ -299,6 +299,7 @@ button:disabled{
 <option value="pyq">📄 PYQ</option>
 <option value="notes">📝 Notes</option>
 <option value="syllabus">📚 Syllabus</option>
+<option value="book">📖 Book</option>
 </select>
 
 <label>PDF या Video चुनें</label>
@@ -317,6 +318,23 @@ accept="application/pdf,video/mp4,video/webm,video/quicktime"
 
 <div id="uploadResult" class="result"></div>
 
+</div>
+
+<div class="card" style="margin-top:25px;">
+  <h2>🗑️ Delete Materials</h2>
+  <p>किसी भी section की uploaded PDF/Video यहाँ से delete करें।</p>
+
+  <button
+    onclick="loadDeleteMaterials()"
+    style="background:#123b5d;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer;">
+    🔄 Load Materials
+  </button>
+
+  <div id="deleteMessage" class="message"></div>
+
+  <div id="deleteList" style="margin-top:15px;">
+    Materials load करने के लिए ऊपर button दबाएँ।
+  </div>
 </div>
 
 <a class="back" href="admin-dashboard.html">
@@ -581,6 +599,218 @@ async function uploadMaterial(){
 
   button.disabled = false;
 
+}
+
+
+// =====================================
+// LOAD ALL MATERIALS FOR DELETE
+// =====================================
+
+async function loadDeleteMaterials(){
+
+  const list =
+    document.getElementById("deleteList");
+
+  const message =
+    document.getElementById("deleteMessage");
+
+  list.innerHTML = "⏳ Materials loading...";
+  message.textContent = "";
+
+  const token =
+    localStorage.getItem("adminToken");
+
+  if(!token){
+    window.location.replace("admin-login.html");
+    return;
+  }
+
+  const sections = [
+    ["ba","BA"],
+    ["ma","MA"],
+    ["upsc","UPSC"],
+    ["uppcs","UPPCS"],
+    ["net-jrf","NET JRF"],
+    ["railway","Railway"],
+    ["ssc","SSC"],
+    ["banking","Banking"],
+    ["teaching","Teaching & Education"],
+    ["armed-forces","Armed Forces"],
+    ["railway-exams","Railway Exams"],
+    ["banking-exams","Banking Exams"],
+    ["state-psc","State PSC"],
+    ["civil-defence","Civil Defence"],
+    ["law-professional","Law & Professional Exams"],
+    ["insurance","Insurance"],
+    ["up-government","UP Government Exams"],
+    ["university-law","University & Law"],
+    ["medical","Medical"],
+    ["engineering","Engineering"],
+    ["research","Research"],
+    ["police-defence","Police & Defence"]
+  ];
+
+  let html = "";
+  let total = 0;
+
+  for(const [section, title] of sections){
+
+    try{
+
+      const response =
+        await fetch(
+          API + "/api/materials/" + section
+        );
+
+      const data =
+        await response.json();
+
+      if(
+        !data.success ||
+        !Array.isArray(data.files) ||
+        data.files.length === 0
+      ){
+        continue;
+      }
+
+      html +=
+        "<div style='margin-top:20px;padding:15px;background:#f7f9fc;border-radius:10px;'>" +
+        "<h3>📚 " + title + "</h3>";
+
+      data.files.forEach(file => {
+
+        total++;
+
+        const safeName =
+          encodeURIComponent(file.name);
+
+        html +=
+          "<div style='display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;margin:8px 0;background:white;border-radius:8px;'>" +
+
+          "<span style='word-break:break-word;'>" +
+          "📄 " + file.name +
+          "</span>" +
+
+          "<button " +
+          "onclick='deleteMaterial(\"" +
+          section +
+          "\",\"" +
+          safeName +
+          "\")' " +
+          "style='background:#d63031;color:white;border:0;padding:8px 12px;border-radius:6px;cursor:pointer;'>" +
+          "🗑️ Delete" +
+          "</button>" +
+
+          "</div>";
+      });
+
+      html += "</div>";
+
+    }catch(error){
+
+      console.error(
+        "Material load error:",
+        section,
+        error
+      );
+    }
+  }
+
+  if(total === 0){
+    html =
+      "<p>अभी कोई uploaded material नहीं मिला।</p>";
+  }
+
+  list.innerHTML = html;
+}
+
+
+// =====================================
+// DELETE ONE MATERIAL
+// =====================================
+
+async function deleteMaterial(section, encodedFilename){
+
+  const token =
+    localStorage.getItem("adminToken");
+
+  if(!token){
+    window.location.replace("admin-login.html");
+    return;
+  }
+
+  const filename =
+    decodeURIComponent(encodedFilename);
+
+  const ok =
+    confirm(
+      "क्या आप यह file delete करना चाहते हैं?\\n\\n" +
+      filename
+    );
+
+  if(!ok){
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        API +
+        "/api/admin/materials/" +
+        section +
+        "/" +
+        encodedFilename,
+        {
+          method:"DELETE",
+          headers:{
+            "Authorization":
+              "Bearer " + token
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(response.status === 401){
+
+      localStorage.removeItem(
+        "adminToken"
+      );
+
+      window.location.replace(
+        "admin-login.html"
+      );
+
+      return;
+    }
+
+    if(!response.ok || !data.success){
+
+      alert(
+        "❌ " +
+        (data.message ||
+        "File delete नहीं हो पाई।")
+      );
+
+      return;
+    }
+
+    alert(
+      "✅ File successfully delete हो गई।"
+    );
+
+    loadDeleteMaterials();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "❌ Server से connection नहीं हो पाया।"
+    );
+  }
 }
 
 </script>
