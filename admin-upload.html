@@ -296,6 +296,7 @@ button:disabled{
 </select>
 
 <select id="materialType">
+<option value="pdf">📄 PDF</option>
 <option value="pyq">📄 PYQ</option>
 <option value="notes">📝 Notes</option>
 <option value="syllabus">📚 Syllabus</option>
@@ -515,8 +516,27 @@ async function uploadMaterial(){
       );
 
 
-    const data =
-      await response.json();
+    const responseText =
+      await response.text();
+
+    let data = {};
+
+    try {
+
+      data = JSON.parse(responseText);
+
+    } catch(parseError) {
+
+      console.error(
+        "SERVER RESPONSE:",
+        responseText
+      );
+
+      throw new Error(
+        "Server ने JSON के बजाय HTML/text भेजा। HTTP " +
+        response.status
+      );
+    }
 
 
     if(response.status === 401){
@@ -557,10 +577,10 @@ async function uploadMaterial(){
       "✅ File successfully upload हो गई।";
 
 
-    if(data.file && data.file.url){
+    if(data.material && data.material.url){
 
       const fileURL =
-        API + data.file.url;
+        API + data.material.url;
 
 
       result.innerHTML =
@@ -568,9 +588,12 @@ async function uploadMaterial(){
         section.toUpperCase() +
 
         "<br><strong>📄 File:</strong> " +
-        data.file.name +
+        data.material.name +
 
-        "<br>" +
+        "<br><strong>📂 Type:</strong> " +
+        materialType.toUpperCase() +
+
+        "<br><br>" +
 
         "<a href=\"" +
         fileURL +
