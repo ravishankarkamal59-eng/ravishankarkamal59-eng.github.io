@@ -117,6 +117,15 @@ button:disabled{
   border-radius:9px;
   font-weight:bold;
 }
+.logout{
+  background:#d63031;
+  color:white;
+  border:0;
+  padding:10px 16px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -313,8 +322,16 @@ accept="application/pdf,video/mp4,video/webm,video/quicktime"
 <a class="back" href="admin-dashboard.html">
 ⬅️ Admin Dashboard
 </a>
+<button class="logout" onclick="adminLogout()">🚪 Logout</button>
 
 </div>
+
+<script>
+function adminLogout(){
+  localStorage.removeItem("adminToken");
+  window.location.replace("admin-login.html");
+}
+</script>
 
 <script>
 
