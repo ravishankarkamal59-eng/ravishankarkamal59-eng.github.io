@@ -1146,73 +1146,49 @@ html body #contact span {
 }
 </style>
 \n
-<style id="compact-exam-links">
-/* ===== COMPACT EXAM LINKS ===== */
 
-.student-card{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:10px !important;
-  padding:10px 14px !important;
-  margin:0 !important;
-  min-height:48px !important;
-  border-radius:12px !important;
-  box-shadow:0 3px 12px rgba(0,0,0,.07) !important;
-  cursor:pointer !important;
+
+
+<style id="exam-link-list">
+/* ===== EXAM LINK LIST — PUBLIC ARTICLES STYLE ===== */
+.exam-link-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px 18px;
+  margin:12px 0 24px;
 }
 
-.student-card h3{
-  margin:0 !important;
-  padding:0 !important;
-  font-size:15px !important;
-  line-height:1.25 !important;
-  flex:1 !important;
+.exam-link-list a{
+  display:block;
+  padding:8px 4px;
+  color:#1677ff;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  line-height:1.4;
+  border-bottom:1px solid rgba(22,119,255,.12);
 }
 
-.student-card p{
-  display:none !important;
+.exam-link-list a::after{
+  content:" →";
+  font-weight:700;
 }
 
-.student-card a{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  padding:7px 11px !important;
-  margin:0 !important;
-  border-radius:8px !important;
-  font-size:13px !important;
-  font-weight:700 !important;
-  white-space:nowrap !important;
-  text-decoration:none !important;
-}
-
-.student-card a:hover{
-  transform:translateY(-1px);
+.exam-link-list a:hover{
+  text-decoration:underline;
+  transform:translateX(2px);
 }
 
 @media(max-width:600px){
-  .student-card{
-    padding:9px 11px !important;
-    min-height:44px !important;
-    border-radius:10px !important;
+  .exam-link-list{
+    grid-template-columns:1fr;
+    gap:3px;
   }
 
-  .student-card h3{
-    font-size:14px !important;
+  .exam-link-list a{
+    padding:7px 3px;
+    font-size:14px;
   }
-
-  .student-card a{
-    padding:6px 9px !important;
-    font-size:12px !important;
-  }
-}
-
-/* Compact grid */
-.student-card-container,
-.student-grid,
-.exam-grid{
-  gap:10px !important;
 }
 </style>
 
@@ -1507,116 +1483,148 @@ Student Login/Register करें।
 <div class="exam-category">
 
 <h3>🎓 University & Academic</h3>
-<div class="student-grid">
-<div class="student-card"><h3>📘 BA</h3><p>BA • Notes • PYQs • Study Material</p><a href="student/ba-study.html">Open →</a></div>
-<div class="student-card"><h3>📕 MA</h3><p>MA • Notes • PYQs • Study Material</p><a href="student/ma-study.html">Open →</a></div>
-<div class="student-card"><h3>🎓 CUET</h3><p>CUET UG • PG Preparation</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/ba-study.html">📘 BA — BA • Notes • PYQs • Study Material</a>
+<a class="exam-link" href="student/ma-study.html">📕 MA — MA • Notes • PYQs • Study Material</a>
+<a class="exam-link" href="student/materials.html">🎓 CUET — CUET UG • PG Preparation</a>
+</div>
 </div>
 
 <h3>🏛️ UPSC & Civil Services</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🏛️ UPSC CSE</h3><p>IAS • IPS • IFS • Prelims • Mains</p><a href="upsc-materials.html">Open →</a></div>
-<div class="student-card"><h3>🛡️ CDS</h3><p>Combined Defence Services</p><a href="upsc-materials.html">Open →</a></div>
-<div class="student-card"><h3>🎖️ NDA</h3><p>National Defence Academy</p><a href="upsc-materials.html">Open →</a></div>
-<div class="student-card"><h3>🛡️ CAPF</h3><p>Central Armed Police Forces</p><a href="upsc-materials.html">Open →</a></div>
-<div class="student-card"><h3>🩺 UPSC CMS</h3><p>Combined Medical Services</p><a href="upsc-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="upsc-materials.html">🏛️ UPSC CSE — IAS • IPS • IFS • Prelims • Mains</a>
+<a class="exam-link" href="upsc-materials.html">🛡️ CDS — Combined Defence Services</a>
+<a class="exam-link" href="upsc-materials.html">🎖️ NDA — National Defence Academy</a>
+<a class="exam-link" href="upsc-materials.html">🛡️ CAPF — Central Armed Police Forces</a>
+<a class="exam-link" href="upsc-materials.html">🩺 UPSC CMS — Combined Medical Services</a>
+</div>
 </div>
 
 <h3>🏢 State PSC</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🏛️ UPPCS</h3><p>Uttar Pradesh PCS</p><a href="uppcs-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏛️ State PSC</h3><p>Other State Public Service Commissions</p><a href="student/uppcs-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="uppcs-materials.html">🏛️ UPPCS — Uttar Pradesh PCS</a>
+<a class="exam-link" href="student/uppcs-materials.html">🏛️ State PSC — Other State Public Service Commissions</a>
+</div>
 </div>
 
 <h3>📝 SSC Exams</h3>
-<div class="student-grid">
-<div class="student-card"><h3>📝 SSC CGL</h3><p>Graduate Level Examination</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>📝 SSC CHSL</h3><p>10+2 Level Examination</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>📝 SSC MTS</h3><p>Multi Tasking Staff</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>👮 SSC GD</h3><p>Constable GD</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>👮 SSC CPO</h3><p>Sub-Inspector Examination</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>📊 SSC Selection Post</h3><p>Selection Post Examination</p><a href="ssc-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="ssc-materials.html">📝 SSC CGL — Graduate Level Examination</a>
+<a class="exam-link" href="ssc-materials.html">📝 SSC CHSL — 10+2 Level Examination</a>
+<a class="exam-link" href="ssc-materials.html">📝 SSC MTS — Multi Tasking Staff</a>
+<a class="exam-link" href="ssc-materials.html">👮 SSC GD — Constable GD</a>
+<a class="exam-link" href="ssc-materials.html">👮 SSC CPO — Sub-Inspector Examination</a>
+<a class="exam-link" href="ssc-materials.html">📊 SSC Selection Post — Selection Post Examination</a>
+</div>
 </div>
 
 <h3>🏦 Banking & Finance</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🏦 IBPS PO</h3><p>Probationary Officer</p><a href="student/banking-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏦 IBPS Clerk</h3><p>Customer Service Associate</p><a href="student/banking-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏦 IBPS RRB</h3><p>Office Assistant • Officer Scale</p><a href="student/banking-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏦 SBI PO</h3><p>State Bank Probationary Officer</p><a href="student/banking-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏦 SBI Clerk</h3><p>Junior Associate</p><a href="student/banking-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏛️ RBI</h3><p>RBI Grade B & Other Exams</p><a href="student/banking-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/banking-materials.html">🏦 IBPS PO — Probationary Officer</a>
+<a class="exam-link" href="student/banking-materials.html">🏦 IBPS Clerk — Customer Service Associate</a>
+<a class="exam-link" href="student/banking-materials.html">🏦 IBPS RRB — Office Assistant • Officer Scale</a>
+<a class="exam-link" href="student/banking-materials.html">🏦 SBI PO — State Bank Probationary Officer</a>
+<a class="exam-link" href="student/banking-materials.html">🏦 SBI Clerk — Junior Associate</a>
+<a class="exam-link" href="student/banking-materials.html">🏛️ RBI — RBI Grade B & Other Exams</a>
+</div>
 </div>
 
 <h3>🚆 Railway Exams</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🚆 RRB NTPC</h3><p>Non-Technical Popular Categories</p><a href="student/railway-materials.html">Open →</a></div>
-<div class="student-card"><h3>🚆 RRB Group D</h3><p>Level 1 Railway Recruitment</p><a href="student/railway-materials.html">Open →</a></div>
-<div class="student-card"><h3>🚆 RRB ALP</h3><p>Assistant Loco Pilot</p><a href="student/railway-materials.html">Open →</a></div>
-<div class="student-card"><h3>🚆 RRB Technician</h3><p>Railway Technician</p><a href="student/railway-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/railway-materials.html">🚆 RRB NTPC — Non-Technical Popular Categories</a>
+<a class="exam-link" href="student/railway-materials.html">🚆 RRB Group D — Level 1 Railway Recruitment</a>
+<a class="exam-link" href="student/railway-materials.html">🚆 RRB ALP — Assistant Loco Pilot</a>
+<a class="exam-link" href="student/railway-materials.html">🚆 RRB Technician — Railway Technician</a>
+</div>
 </div>
 
 <h3>👮 Police & Defence</h3>
-<div class="student-grid">
-<div class="student-card"><h3>👮 SSC GD</h3><p>Central Armed Police Forces</p><a href="ssc-materials.html">Open →</a></div>
-<div class="student-card"><h3>👮 State Police</h3><p>Police Constable & SI Exams</p><a href="student/uppcs-materials.html">Open →</a></div>
-<div class="student-card"><h3>🎖️ Defence Exams</h3><p>Army • Navy • Air Force</p><a href="upsc-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="ssc-materials.html">👮 SSC GD — Central Armed Police Forces</a>
+<a class="exam-link" href="student/uppcs-materials.html">👮 State Police — Police Constable & SI Exams</a>
+<a class="exam-link" href="upsc-materials.html">🎖️ Defence Exams — Army • Navy • Air Force</a>
+</div>
 </div>
 
 <h3>👨‍🏫 Teaching & Education</h3>
-<div class="student-grid">
-<div class="student-card"><h3>👨‍🏫 CTET</h3><p>Central Teacher Eligibility Test</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>👩‍🏫 TET</h3><p>Teacher Eligibility Tests</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>📚 TGT</h3><p>Trained Graduate Teacher Exams</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>📚 PGT</h3><p>Post Graduate Teacher Exams</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">👨‍🏫 CTET — Central Teacher Eligibility Test</a>
+<a class="exam-link" href="student/materials.html">👩‍🏫 TET — Teacher Eligibility Tests</a>
+<a class="exam-link" href="student/materials.html">📚 TGT — Trained Graduate Teacher Exams</a>
+<a class="exam-link" href="student/materials.html">📚 PGT — Post Graduate Teacher Exams</a>
+</div>
 </div>
 
 <h3>📚 NET, JRF & Research</h3>
-<div class="student-grid">
-<div class="student-card"><h3>📚 UGC NET</h3><p>NET Paper 1 & Subject Papers</p><a href="net-jrf-materials.html">Open →</a></div>
-<div class="student-card"><h3>🔬 NET-JRF</h3><p>JRF Preparation • PYQs • Notes</p><a href="net-jrf-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="net-jrf-materials.html">📚 UGC NET — NET Paper 1 & Subject Papers</a>
+<a class="exam-link" href="net-jrf-materials.html">🔬 NET-JRF — JRF Preparation • PYQs • Notes</a>
+</div>
 </div>
 
 <h3>🧪 Engineering Entrance</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🧪 JEE Main</h3><p>Engineering Entrance • NTA</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🧪 JEE Advanced</h3><p>Advanced Engineering Entrance</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">🧪 JEE Main — Engineering Entrance • NTA</a>
+<a class="exam-link" href="student/materials.html">🧪 JEE Advanced — Advanced Engineering Entrance</a>
+</div>
 </div>
 <h3>🏥 Medical Entrance</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🩺 NEET UG</h3><p>Medical Entrance • NTA</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🩺 NEET PG</h3><p>Postgraduate Medical Entrance</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">🩺 NEET UG — Medical Entrance • NTA</a>
+<a class="exam-link" href="student/materials.html">🩺 NEET PG — Postgraduate Medical Entrance</a>
+</div>
 </div>
 <h3>🏛️ University & Law Entrance</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🎓 CUET UG</h3><p>Central Universities Entrance</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🎓 CUET PG</h3><p>Postgraduate University Entrance</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>⚖️ AIBE</h3><p>All India Bar Examination</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">🎓 CUET UG — Central Universities Entrance</a>
+<a class="exam-link" href="student/materials.html">🎓 CUET PG — Postgraduate University Entrance</a>
+<a class="exam-link" href="student/materials.html">⚖️ AIBE — All India Bar Examination</a>
+</div>
 </div>
 <h3>🏛️ UP Government Exams</h3>
-<div class="student-grid">
-<div class="student-card"><h3>📝 UPSSSC PET</h3><p>Preliminary Eligibility Test</p><a href="student/uppcs-materials.html">Open →</a></div>
-<div class="student-card"><h3>📋 UPSSSC</h3><p>Various Group C Examinations</p><a href="student/uppcs-materials.html">Open →</a></div>
-<div class="student-card"><h3>👮 UP Police</h3><p>Constable • SI • Other Posts</p><a href="student/uppcs-materials.html">Open →</a></div>
-<div class="student-card"><h3>🏛️ UP Judiciary</h3><p>Civil Judge • Judicial Services</p><a href="student/uppcs-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/uppcs-materials.html">📝 UPSSSC PET — Preliminary Eligibility Test</a>
+<a class="exam-link" href="student/uppcs-materials.html">📋 UPSSSC — Various Group C Examinations</a>
+<a class="exam-link" href="student/uppcs-materials.html">👮 UP Police — Constable • SI • Other Posts</a>
+<a class="exam-link" href="student/uppcs-materials.html">🏛️ UP Judiciary — Civil Judge • Judicial Services</a>
+</div>
 </div>
 <h3>🛡️ Defence & Armed Forces</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🎖️ Agniveer</h3><p>Army • Navy • Air Force</p><a href="upsc-materials.html">Open →</a></div>
-<div class="student-card"><h3>🛡️ CAPF</h3><p>Central Armed Police Forces</p><a href="upsc-materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="upsc-materials.html">🎖️ Agniveer — Army • Navy • Air Force</a>
+<a class="exam-link" href="upsc-materials.html">🛡️ CAPF — Central Armed Police Forces</a>
+</div>
 </div>
 <h3>🏢 Insurance & Other Government Exams</h3>
-<div class="student-grid">
-<div class="student-card"><h3>🏢 LIC</h3><p>Insurance Recruitment Exams</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🏢 EPFO</h3><p>EO/AO • SSA • Other Exams</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🏢 ESIC</h3><p>Various Recruitment Exams</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🏢 FCI</h3><p>Food Corporation Recruitment</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">🏢 LIC — Insurance Recruitment Exams</a>
+<a class="exam-link" href="student/materials.html">🏢 EPFO — EO/AO • SSA • Other Exams</a>
+<a class="exam-link" href="student/materials.html">🏢 ESIC — Various Recruitment Exams</a>
+<a class="exam-link" href="student/materials.html">🏢 FCI — Food Corporation Recruitment</a>
+</div>
 </div>
 <h3>⚖️ Law & Other Professional Exams</h3>
-<div class="student-grid">
-<div class="student-card"><h3>⚖️ CLAT</h3><p>Common Law Admission Test</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>⚖️ AILET</h3><p>National Law University Entrance</p><a href="student/materials.html">Open →</a></div>
-<div class="student-card"><h3>🩺 NEET</h3><p>Medical Entrance Preparation</p><a href="student/materials.html">Open →</a></div>
+<div class="student-grid"><div class="exam-link-list">
+
+<a class="exam-link" href="student/materials.html">⚖️ CLAT — Common Law Admission Test</a>
+<a class="exam-link" href="student/materials.html">⚖️ AILET — National Law University Entrance</a>
+<a class="exam-link" href="student/materials.html">🩺 NEET — Medical Entrance Preparation</a>
+</div>
 </div>
 
 </section>
