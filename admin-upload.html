@@ -587,12 +587,13 @@ async function uploadMaterial(){
 
   }catch(error){
 
-    console.error(error);
+    console.error("UPLOAD ERROR:", error);
 
     message.style.color = "red";
 
     message.textContent =
-      "❌ Server से connection नहीं हो पाया।";
+      "❌ Upload error: " +
+      (error.message || "Unknown error");
 
   }
 
