@@ -1207,23 +1207,6 @@ body.route-student #student{
 </style>
 
 
-<style id="CONTENT-DETAILS-ROUTE">
-body.route-content-details #student-info{
-  display:block!important;
-}
-
-body.route-content-details #student,
-body.route-content-details #syllabus,
-body.route-content-details #updates,
-body.route-content-details #contact,
-body.route-content-details .home-guidance,
-body.route-content-details .notice,
-body.route-content-details .slider-section,
-body.route-content-details footer{
-  display:none!important;
-}
-</style>
-
 </head>
 
 <body>
@@ -1233,7 +1216,6 @@ body.route-content-details footer{
 <nav id="mainNav">
 <a href="index.html">🏠 Home</a>
 <a href="#student">🎓 Student</a>
-<a href="#content-details">📖 Content Details</a>
 <a href="#syllabus">📚 Syllabus</a>
 <a href="#updates">📢 Updates</a>
 <a href="about.html">ℹ️ About</a>
@@ -1732,7 +1714,7 @@ document.querySelectorAll("#mainNav a").forEach(function(link){link.addEventList
 function hideAll(){
  document.body.classList.remove(
   "route-home","route-student","route-syllabus",
-  "route-about","route-updates","route-contact","route-content-details"
+  "route-about","route-updates","route-contact"
  );
 }
 
@@ -1744,7 +1726,6 @@ function showRoute(route){
  else if(route==="about") document.body.classList.add("route-about");
  else if(route==="updates") document.body.classList.add("route-updates");
  else if(route==="contact") document.body.classList.add("route-contact");
- else if(route==="content-details") document.body.classList.add("route-content-details");
  else document.body.classList.add("route-home");
 
  window.scrollTo({top:0,behavior:"smooth"});
@@ -1758,7 +1739,6 @@ function routeFromHash(){
  else if(r==="about") showRoute("about");
  else if(r==="updates") showRoute("updates");
  else if(r==="contact") showRoute("contact");
- else if(r==="content-details") showRoute("content-details");
  else showRoute("home");
 }
 
