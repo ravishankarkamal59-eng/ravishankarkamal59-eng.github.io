@@ -1178,6 +1178,21 @@ body.route-syllabus #syllabus{
 }
 </style>
 
+
+<style id="HOME-BA-MA-MENU-ONLY">
+/* Homepage पर BA/MA links नहीं दिखेंगे */
+body.route-home #student .exam-link[href="student/ba-study.html"],
+body.route-home #student .exam-link[href="student/ma-study.html"]{
+  display:none !important;
+}
+
+/* 3-dot → Student route में BA/MA links दिखाई देंगे */
+body.route-student #student .exam-link[href="student/ba-study.html"],
+body.route-student #student .exam-link[href="student/ma-study.html"]{
+  display:block !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -1452,6 +1467,10 @@ Student Login/Register करें।
 
 <a class="exam-link" href="student/ba-study.html">📘 BA — BA • Notes • PYQs • Study Material</a>
 <a class="exam-link" href="student/ma-study.html">📕 MA — MA • Notes • PYQs • Study Material</a>
+
+
+
+
 
 </div>
 </div>
