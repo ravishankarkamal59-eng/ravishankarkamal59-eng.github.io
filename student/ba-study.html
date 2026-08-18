@@ -427,6 +427,205 @@ a.books{
 }
 </style>
 
+
+<style id="FINAL-BA-MA-COMPACT-LAYOUT">
+
+/* =====================================================
+   SUBJECT
+   ===================================================== */
+
+.subject-text-link{
+  margin:2px 0 1px !important;
+  padding:0 !important;
+  line-height:1.1 !important;
+  font-size:15px !important;
+}
+
+.subject-text-link a{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  text-decoration:underline !important;
+}
+
+
+/* =====================================================
+   SEMESTER
+   ===================================================== */
+
+.semester,
+.semester h3,
+.semester-text-link{
+  margin:1px 0 !important;
+  padding:0 !important;
+  line-height:1.1 !important;
+}
+
+.semester h3,
+.semester-text-link{
+  font-size:13px !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.semester-text-link a{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  text-decoration:underline !important;
+}
+
+
+/* =====================================================
+   PAPER
+   ===================================================== */
+
+.paper,
+.paper h4,
+.paper-text-link{
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1.1 !important;
+}
+
+.paper h4,
+.paper-text-link{
+  font-size:12px !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.paper-text-link a{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  text-decoration:underline !important;
+}
+
+
+/* =====================================================
+   MATERIAL LINKS
+   PYQ | NOTES | SYLLABUS | PDF
+   ===================================================== */
+
+.paper .links{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:1.1 !important;
+}
+
+.paper .links a{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:11px !important;
+  line-height:1.1 !important;
+  font-weight:500 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+
+.paper .links a:not(:last-child)::after{
+  content:" | ";
+  margin:0 2px !important;
+  text-decoration:none !important;
+}
+
+
+/* =====================================================
+   BOOKS
+   ===================================================== */
+
+a.books{
+  display:inline !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:11px !important;
+  line-height:1.1 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+
+
+/* =====================================================
+   EXTRA SPACE REMOVAL
+   ===================================================== */
+
+.semester > *{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+.paper > *{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+.paper + .paper{
+  margin-top:1px !important;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media(max-width:600px){
+
+  .subject-text-link{
+    font-size:14px !important;
+    line-height:1.05 !important;
+  }
+
+  .semester h3,
+  .semester-text-link{
+    font-size:12px !important;
+    line-height:1.05 !important;
+  }
+
+  .paper h4,
+  .paper-text-link{
+    font-size:11px !important;
+    line-height:1.05 !important;
+  }
+
+  .paper .links,
+  .paper .links a,
+  a.books{
+    font-size:10px !important;
+    line-height:1.05 !important;
+  }
+
+  .paper .links a:not(:last-child)::after{
+    content:" | ";
+    margin:0 1px !important;
+  }
+}
+
+</style>
+
 </head>
 <body>
 <header>
