@@ -1165,6 +1165,19 @@ html body #contact span {
 }
 </style>
 
+
+<style id="HOME-SYLLABUS-MENU-ONLY">
+/* Homepage पर Syllabus section नहीं दिखेगा */
+body.route-home #syllabus{
+  display:none !important;
+}
+
+/* 3-dot/menu से Syllabus route खोलने पर पूरा section दिखे */
+body.route-syllabus #syllabus{
+  display:block !important;
+}
+</style>
+
 </head>
 
 <body>
