@@ -1193,6 +1193,19 @@ body.route-student #student .exam-link[href="student/ma-study.html"]{
 }
 </style>
 
+
+<style id="HOME-STUDENT-PORTAL-MENU-ONLY">
+/* Main homepage पर पूरा Student Portal नहीं दिखेगा */
+body.route-home #student{
+  display:none !important;
+}
+
+/* 3-dot → Student पर पूरा Student Portal दिखाई देगा */
+body.route-student #student{
+  display:block !important;
+}
+</style>
+
 </head>
 
 <body>
