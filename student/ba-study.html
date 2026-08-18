@@ -199,6 +199,163 @@ a.books{
   }
 }
 </style>
+<style id="SEMESTER-PAPER-TEXT-LINKS">
+
+/* ===== SEMESTER = COMPACT TEXT ===== */
+.semester h3{
+  margin:8px 0 4px !important;
+  padding:0 !important;
+  font-size:15px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+/* ===== PAPER = COMPACT TEXT ===== */
+.paper h4{
+  margin:5px 0 2px !important;
+  padding:0 !important;
+  font-size:14px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .semester h3{
+    font-size:13px !important;
+  }
+
+  .paper h4{
+    font-size:13px !important;
+  }
+}
+
+</style>
+<style id="ALL-STUDY-TEXT-LINKS-V4">
+
+/* SUBJECT */
+.subject-text-link,
+.subject-text-link a{
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+.subject-text-link a{
+  text-decoration:underline !important;
+}
+
+/* SEMESTER */
+.semester-text-link{
+  margin:7px 0 4px !important;
+  padding:0 !important;
+  font-size:15px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+.semester-text-link a{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  text-decoration:underline !important;
+}
+
+/* PAPER */
+.paper-text-link{
+  margin:4px 0 2px !important;
+  padding:0 !important;
+  font-size:14px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+.paper-text-link a{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  text-decoration:underline !important;
+}
+
+/* PDF / NOTES / SYLLABUS / PYQ */
+.paper .links{
+  display:block !important;
+  margin:3px 0 7px !important;
+  padding:0 !important;
+}
+
+.paper .links a{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:13px !important;
+  line-height:1.4 !important;
+  font-weight:500 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+
+.paper .links a:not(:last-child)::after{
+  content:" | ";
+  margin:0 4px !important;
+  text-decoration:none !important;
+}
+
+/* BOOKS */
+a.books{
+  display:inline !important;
+  padding:0 !important;
+  margin:3px 0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:13px !important;
+  line-height:1.4 !important;
+  text-decoration:underline !important;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .semester-text-link{
+    font-size:13px !important;
+  }
+
+  .paper-text-link{
+    font-size:13px !important;
+  }
+
+  .paper .links a,
+  a.books{
+    font-size:12px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <header>
@@ -238,10 +395,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Ancient History, Culture & Archaeology</a></h2>
       
     <div class="semester">
-      <h3 id="ba-year1">📘 BA 1st Year — Semester 1</h3>
+      <h3 id="ba-semester-1" class="semester-text-link"><a href="#ba-semester-1">BA 1st Year — Semester 1</a></h3>
       
     <div class="paper">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-1" class="paper-text-link"><a href="#ba-paper-1">Paper 1</a></h4>
       
     <div class="links">
       <a id="pdf" href="#">PDF</a>
@@ -253,7 +410,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-2" class="paper-text-link"><a href="#ba-paper-2">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -265,7 +422,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-3" class="paper-text-link"><a href="#ba-paper-3">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -277,7 +434,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-4" class="paper-text-link"><a href="#ba-paper-4">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -292,10 +449,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-2" class="semester-text-link"><a href="#ba-semester-2">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-5" class="paper-text-link"><a href="#ba-paper-5">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -307,7 +464,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-6" class="paper-text-link"><a href="#ba-paper-6">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -319,7 +476,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-7" class="paper-text-link"><a href="#ba-paper-7">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -331,7 +488,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-8" class="paper-text-link"><a href="#ba-paper-8">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -346,22 +503,10 @@ a.books{
     
       
     <div class="semester">
-      <h3 id="ba-year2">📘 BA 2nd Year — Semester 3</h3>
+      <h3 id="ba-semester-3" class="semester-text-link"><a href="#ba-semester-3">BA 2nd Year — Semester 3</a></h3>
       
     <div class="paper">
-      <h4>📚 Paper 1</h4>
-      
-    <div class="links">
-      <a href="#">PDF</a>
-      <a href="#">Notes</a>
-      <a href="#">Syllabus</a>
-      <a href="#">PYQ</a>
-    </div>
-    
-    </div>
-    
-    <div class="paper">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-9" class="paper-text-link"><a href="#ba-paper-9">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -373,7 +518,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-10" class="paper-text-link"><a href="#ba-paper-10">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -385,7 +530,19 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-11" class="paper-text-link"><a href="#ba-paper-11">Paper 3</a></h4>
+      
+    <div class="links">
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4 id="ba-paper-12" class="paper-text-link"><a href="#ba-paper-12">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -400,10 +557,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-4" class="semester-text-link"><a href="#ba-semester-4">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-13" class="paper-text-link"><a href="#ba-paper-13">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -415,7 +572,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-14" class="paper-text-link"><a href="#ba-paper-14">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -427,7 +584,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-15" class="paper-text-link"><a href="#ba-paper-15">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -439,7 +596,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-16" class="paper-text-link"><a href="#ba-paper-16">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -454,22 +611,10 @@ a.books{
     
       
     <div class="semester">
-      <h3 id="ba-year3">📘 BA 3rd Year — Semester 5</h3>
+      <h3 id="ba-semester-5" class="semester-text-link"><a href="#ba-semester-5">BA 3rd Year — Semester 5</a></h3>
       
     <div class="paper">
-      <h4>📚 Paper 1</h4>
-      
-    <div class="links">
-      <a href="#">PDF</a>
-      <a href="#">Notes</a>
-      <a href="#">Syllabus</a>
-      <a href="#">PYQ</a>
-    </div>
-    
-    </div>
-    
-    <div class="paper">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-17" class="paper-text-link"><a href="#ba-paper-17">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -481,7 +626,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-18" class="paper-text-link"><a href="#ba-paper-18">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -493,7 +638,19 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-19" class="paper-text-link"><a href="#ba-paper-19">Paper 3</a></h4>
+      
+    <div class="links">
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4 id="ba-paper-20" class="paper-text-link"><a href="#ba-paper-20">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -508,22 +665,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-6" class="semester-text-link"><a href="#ba-semester-6">Semester 6</a></h3>
       
     <div class="paper">
-      <h4>📚 Paper 1</h4>
-      
-    <div class="links">
-      <a href="#">PDF</a>
-      <a href="#">Notes</a>
-      <a href="#">Syllabus</a>
-      <a href="#">PYQ</a>
-    </div>
-    
-    </div>
-    
-    <div class="paper">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-21" class="paper-text-link"><a href="#ba-paper-21">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -535,7 +680,7 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-22" class="paper-text-link"><a href="#ba-paper-22">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -547,7 +692,19 @@ a.books{
     </div>
     
     <div class="paper">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-23" class="paper-text-link"><a href="#ba-paper-23">Paper 3</a></h4>
+      
+    <div class="links">
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
+    </div>
+    
+    </div>
+    
+    <div class="paper">
+      <h4 id="ba-paper-24" class="paper-text-link"><a href="#ba-paper-24">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -567,10 +724,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Anthropology</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-7" class="semester-text-link"><a href="#ba-semester-7">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-25" class="paper-text-link"><a href="#ba-paper-25">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -582,7 +739,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-26" class="paper-text-link"><a href="#ba-paper-26">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -594,7 +751,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-27" class="paper-text-link"><a href="#ba-paper-27">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -606,7 +763,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-28" class="paper-text-link"><a href="#ba-paper-28">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -621,10 +778,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-8" class="semester-text-link"><a href="#ba-semester-8">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-29" class="paper-text-link"><a href="#ba-paper-29">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -636,7 +793,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-30" class="paper-text-link"><a href="#ba-paper-30">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -648,7 +805,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-31" class="paper-text-link"><a href="#ba-paper-31">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -660,7 +817,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-32" class="paper-text-link"><a href="#ba-paper-32">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -675,10 +832,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-9" class="semester-text-link"><a href="#ba-semester-9">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-33" class="paper-text-link"><a href="#ba-paper-33">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -690,7 +847,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-34" class="paper-text-link"><a href="#ba-paper-34">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -702,7 +859,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-35" class="paper-text-link"><a href="#ba-paper-35">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -714,7 +871,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-36" class="paper-text-link"><a href="#ba-paper-36">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -729,10 +886,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-10" class="semester-text-link"><a href="#ba-semester-10">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-37" class="paper-text-link"><a href="#ba-paper-37">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -744,7 +901,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-38" class="paper-text-link"><a href="#ba-paper-38">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -756,7 +913,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-39" class="paper-text-link"><a href="#ba-paper-39">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -768,7 +925,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-40" class="paper-text-link"><a href="#ba-paper-40">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -783,10 +940,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-11" class="semester-text-link"><a href="#ba-semester-11">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-41" class="paper-text-link"><a href="#ba-paper-41">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -798,7 +955,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-42" class="paper-text-link"><a href="#ba-paper-42">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -810,7 +967,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-43" class="paper-text-link"><a href="#ba-paper-43">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -822,7 +979,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-44" class="paper-text-link"><a href="#ba-paper-44">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -837,10 +994,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-12" class="semester-text-link"><a href="#ba-semester-12">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-45" class="paper-text-link"><a href="#ba-paper-45">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -852,7 +1009,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-46" class="paper-text-link"><a href="#ba-paper-46">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -864,7 +1021,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-47" class="paper-text-link"><a href="#ba-paper-47">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -876,7 +1033,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-48" class="paper-text-link"><a href="#ba-paper-48">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -896,10 +1053,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Arabic</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-13" class="semester-text-link"><a href="#ba-semester-13">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-49" class="paper-text-link"><a href="#ba-paper-49">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -911,7 +1068,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-50" class="paper-text-link"><a href="#ba-paper-50">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -923,7 +1080,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-51" class="paper-text-link"><a href="#ba-paper-51">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -935,7 +1092,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-52" class="paper-text-link"><a href="#ba-paper-52">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -950,10 +1107,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-14" class="semester-text-link"><a href="#ba-semester-14">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-53" class="paper-text-link"><a href="#ba-paper-53">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -965,7 +1122,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-54" class="paper-text-link"><a href="#ba-paper-54">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -977,7 +1134,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-55" class="paper-text-link"><a href="#ba-paper-55">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -989,7 +1146,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-56" class="paper-text-link"><a href="#ba-paper-56">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1004,10 +1161,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-15" class="semester-text-link"><a href="#ba-semester-15">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-57" class="paper-text-link"><a href="#ba-paper-57">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1019,7 +1176,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-58" class="paper-text-link"><a href="#ba-paper-58">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1031,7 +1188,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-59" class="paper-text-link"><a href="#ba-paper-59">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1043,7 +1200,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-60" class="paper-text-link"><a href="#ba-paper-60">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1058,10 +1215,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-16" class="semester-text-link"><a href="#ba-semester-16">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-61" class="paper-text-link"><a href="#ba-paper-61">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1073,7 +1230,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-62" class="paper-text-link"><a href="#ba-paper-62">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1085,7 +1242,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-63" class="paper-text-link"><a href="#ba-paper-63">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1097,7 +1254,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-64" class="paper-text-link"><a href="#ba-paper-64">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1112,10 +1269,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-17" class="semester-text-link"><a href="#ba-semester-17">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-65" class="paper-text-link"><a href="#ba-paper-65">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1127,7 +1284,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-66" class="paper-text-link"><a href="#ba-paper-66">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1139,7 +1296,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-67" class="paper-text-link"><a href="#ba-paper-67">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1151,7 +1308,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-68" class="paper-text-link"><a href="#ba-paper-68">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1166,10 +1323,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-18" class="semester-text-link"><a href="#ba-semester-18">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-69" class="paper-text-link"><a href="#ba-paper-69">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1181,7 +1338,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-70" class="paper-text-link"><a href="#ba-paper-70">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1193,7 +1350,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-71" class="paper-text-link"><a href="#ba-paper-71">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1205,7 +1362,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-72" class="paper-text-link"><a href="#ba-paper-72">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1225,10 +1382,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Persian</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-19" class="semester-text-link"><a href="#ba-semester-19">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-73" class="paper-text-link"><a href="#ba-paper-73">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1240,7 +1397,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-74" class="paper-text-link"><a href="#ba-paper-74">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1252,7 +1409,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-75" class="paper-text-link"><a href="#ba-paper-75">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1264,7 +1421,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-76" class="paper-text-link"><a href="#ba-paper-76">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1279,10 +1436,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-20" class="semester-text-link"><a href="#ba-semester-20">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-77" class="paper-text-link"><a href="#ba-paper-77">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1294,7 +1451,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-78" class="paper-text-link"><a href="#ba-paper-78">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1306,7 +1463,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-79" class="paper-text-link"><a href="#ba-paper-79">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1318,7 +1475,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-80" class="paper-text-link"><a href="#ba-paper-80">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1333,10 +1490,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-21" class="semester-text-link"><a href="#ba-semester-21">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-81" class="paper-text-link"><a href="#ba-paper-81">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1348,7 +1505,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-82" class="paper-text-link"><a href="#ba-paper-82">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1360,7 +1517,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-83" class="paper-text-link"><a href="#ba-paper-83">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1372,7 +1529,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-84" class="paper-text-link"><a href="#ba-paper-84">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1387,10 +1544,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-22" class="semester-text-link"><a href="#ba-semester-22">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-85" class="paper-text-link"><a href="#ba-paper-85">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1402,7 +1559,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-86" class="paper-text-link"><a href="#ba-paper-86">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1414,7 +1571,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-87" class="paper-text-link"><a href="#ba-paper-87">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1426,7 +1583,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-88" class="paper-text-link"><a href="#ba-paper-88">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1441,10 +1598,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-23" class="semester-text-link"><a href="#ba-semester-23">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-89" class="paper-text-link"><a href="#ba-paper-89">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1456,7 +1613,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-90" class="paper-text-link"><a href="#ba-paper-90">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1468,7 +1625,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-91" class="paper-text-link"><a href="#ba-paper-91">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1480,7 +1637,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-92" class="paper-text-link"><a href="#ba-paper-92">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1495,10 +1652,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-24" class="semester-text-link"><a href="#ba-semester-24">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-93" class="paper-text-link"><a href="#ba-paper-93">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1510,7 +1667,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-94" class="paper-text-link"><a href="#ba-paper-94">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1522,7 +1679,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-95" class="paper-text-link"><a href="#ba-paper-95">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1534,7 +1691,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-96" class="paper-text-link"><a href="#ba-paper-96">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1554,10 +1711,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Education</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-25" class="semester-text-link"><a href="#ba-semester-25">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-97" class="paper-text-link"><a href="#ba-paper-97">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1569,7 +1726,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-98" class="paper-text-link"><a href="#ba-paper-98">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1581,7 +1738,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-99" class="paper-text-link"><a href="#ba-paper-99">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1593,7 +1750,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-100" class="paper-text-link"><a href="#ba-paper-100">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1608,10 +1765,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-26" class="semester-text-link"><a href="#ba-semester-26">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-101" class="paper-text-link"><a href="#ba-paper-101">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1623,7 +1780,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-102" class="paper-text-link"><a href="#ba-paper-102">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1635,7 +1792,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-103" class="paper-text-link"><a href="#ba-paper-103">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1647,7 +1804,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-104" class="paper-text-link"><a href="#ba-paper-104">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1662,10 +1819,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-27" class="semester-text-link"><a href="#ba-semester-27">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-105" class="paper-text-link"><a href="#ba-paper-105">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1677,7 +1834,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-106" class="paper-text-link"><a href="#ba-paper-106">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1689,7 +1846,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-107" class="paper-text-link"><a href="#ba-paper-107">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1701,7 +1858,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-108" class="paper-text-link"><a href="#ba-paper-108">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1716,10 +1873,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-28" class="semester-text-link"><a href="#ba-semester-28">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-109" class="paper-text-link"><a href="#ba-paper-109">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1731,7 +1888,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-110" class="paper-text-link"><a href="#ba-paper-110">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1743,7 +1900,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-111" class="paper-text-link"><a href="#ba-paper-111">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1755,7 +1912,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-112" class="paper-text-link"><a href="#ba-paper-112">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1770,10 +1927,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-29" class="semester-text-link"><a href="#ba-semester-29">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-113" class="paper-text-link"><a href="#ba-paper-113">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1785,7 +1942,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-114" class="paper-text-link"><a href="#ba-paper-114">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1797,7 +1954,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-115" class="paper-text-link"><a href="#ba-paper-115">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1809,7 +1966,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-116" class="paper-text-link"><a href="#ba-paper-116">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1824,10 +1981,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-30" class="semester-text-link"><a href="#ba-semester-30">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-117" class="paper-text-link"><a href="#ba-paper-117">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1839,7 +1996,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-118" class="paper-text-link"><a href="#ba-paper-118">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1851,7 +2008,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-119" class="paper-text-link"><a href="#ba-paper-119">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1863,7 +2020,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-120" class="paper-text-link"><a href="#ba-paper-120">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1883,10 +2040,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — English</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-31" class="semester-text-link"><a href="#ba-semester-31">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-121" class="paper-text-link"><a href="#ba-paper-121">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1898,7 +2055,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-122" class="paper-text-link"><a href="#ba-paper-122">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1910,7 +2067,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-123" class="paper-text-link"><a href="#ba-paper-123">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1922,7 +2079,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-124" class="paper-text-link"><a href="#ba-paper-124">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1937,10 +2094,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-32" class="semester-text-link"><a href="#ba-semester-32">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-125" class="paper-text-link"><a href="#ba-paper-125">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1952,7 +2109,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-126" class="paper-text-link"><a href="#ba-paper-126">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1964,7 +2121,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-127" class="paper-text-link"><a href="#ba-paper-127">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1976,7 +2133,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-128" class="paper-text-link"><a href="#ba-paper-128">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -1991,10 +2148,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-33" class="semester-text-link"><a href="#ba-semester-33">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-129" class="paper-text-link"><a href="#ba-paper-129">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2006,7 +2163,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-130" class="paper-text-link"><a href="#ba-paper-130">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2018,7 +2175,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-131" class="paper-text-link"><a href="#ba-paper-131">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2030,7 +2187,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-132" class="paper-text-link"><a href="#ba-paper-132">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2045,10 +2202,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-34" class="semester-text-link"><a href="#ba-semester-34">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-133" class="paper-text-link"><a href="#ba-paper-133">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2060,7 +2217,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-134" class="paper-text-link"><a href="#ba-paper-134">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2072,7 +2229,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-135" class="paper-text-link"><a href="#ba-paper-135">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2084,7 +2241,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-136" class="paper-text-link"><a href="#ba-paper-136">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2099,10 +2256,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-35" class="semester-text-link"><a href="#ba-semester-35">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-137" class="paper-text-link"><a href="#ba-paper-137">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2114,7 +2271,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-138" class="paper-text-link"><a href="#ba-paper-138">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2126,7 +2283,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-139" class="paper-text-link"><a href="#ba-paper-139">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2138,7 +2295,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-140" class="paper-text-link"><a href="#ba-paper-140">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2153,10 +2310,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-36" class="semester-text-link"><a href="#ba-semester-36">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-141" class="paper-text-link"><a href="#ba-paper-141">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2168,7 +2325,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-142" class="paper-text-link"><a href="#ba-paper-142">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2180,7 +2337,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-143" class="paper-text-link"><a href="#ba-paper-143">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2192,7 +2349,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-144" class="paper-text-link"><a href="#ba-paper-144">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2212,10 +2369,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Geography</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-37" class="semester-text-link"><a href="#ba-semester-37">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-145" class="paper-text-link"><a href="#ba-paper-145">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2227,7 +2384,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-146" class="paper-text-link"><a href="#ba-paper-146">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2239,7 +2396,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-147" class="paper-text-link"><a href="#ba-paper-147">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2251,7 +2408,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-148" class="paper-text-link"><a href="#ba-paper-148">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2266,10 +2423,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-38" class="semester-text-link"><a href="#ba-semester-38">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-149" class="paper-text-link"><a href="#ba-paper-149">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2281,7 +2438,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-150" class="paper-text-link"><a href="#ba-paper-150">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2293,7 +2450,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-151" class="paper-text-link"><a href="#ba-paper-151">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2305,7 +2462,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-152" class="paper-text-link"><a href="#ba-paper-152">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2320,10 +2477,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-39" class="semester-text-link"><a href="#ba-semester-39">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-153" class="paper-text-link"><a href="#ba-paper-153">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2335,7 +2492,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-154" class="paper-text-link"><a href="#ba-paper-154">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2347,7 +2504,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-155" class="paper-text-link"><a href="#ba-paper-155">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2359,7 +2516,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-156" class="paper-text-link"><a href="#ba-paper-156">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2374,10 +2531,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-40" class="semester-text-link"><a href="#ba-semester-40">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-157" class="paper-text-link"><a href="#ba-paper-157">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2389,7 +2546,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-158" class="paper-text-link"><a href="#ba-paper-158">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2401,7 +2558,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-159" class="paper-text-link"><a href="#ba-paper-159">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2413,7 +2570,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-160" class="paper-text-link"><a href="#ba-paper-160">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2428,10 +2585,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-41" class="semester-text-link"><a href="#ba-semester-41">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-161" class="paper-text-link"><a href="#ba-paper-161">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2443,7 +2600,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-162" class="paper-text-link"><a href="#ba-paper-162">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2455,7 +2612,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-163" class="paper-text-link"><a href="#ba-paper-163">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2467,7 +2624,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-164" class="paper-text-link"><a href="#ba-paper-164">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2482,10 +2639,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-42" class="semester-text-link"><a href="#ba-semester-42">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-165" class="paper-text-link"><a href="#ba-paper-165">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2497,7 +2654,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-166" class="paper-text-link"><a href="#ba-paper-166">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2509,7 +2666,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-167" class="paper-text-link"><a href="#ba-paper-167">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2521,7 +2678,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-168" class="paper-text-link"><a href="#ba-paper-168">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2541,10 +2698,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Hindi</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-43" class="semester-text-link"><a href="#ba-semester-43">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-169" class="paper-text-link"><a href="#ba-paper-169">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2556,7 +2713,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-170" class="paper-text-link"><a href="#ba-paper-170">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2568,7 +2725,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-171" class="paper-text-link"><a href="#ba-paper-171">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2580,7 +2737,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-172" class="paper-text-link"><a href="#ba-paper-172">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2595,10 +2752,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-44" class="semester-text-link"><a href="#ba-semester-44">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-173" class="paper-text-link"><a href="#ba-paper-173">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2610,7 +2767,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-174" class="paper-text-link"><a href="#ba-paper-174">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2622,7 +2779,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-175" class="paper-text-link"><a href="#ba-paper-175">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2634,7 +2791,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-176" class="paper-text-link"><a href="#ba-paper-176">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2649,10 +2806,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-45" class="semester-text-link"><a href="#ba-semester-45">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-177" class="paper-text-link"><a href="#ba-paper-177">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2664,7 +2821,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-178" class="paper-text-link"><a href="#ba-paper-178">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2676,7 +2833,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-179" class="paper-text-link"><a href="#ba-paper-179">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2688,7 +2845,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-180" class="paper-text-link"><a href="#ba-paper-180">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2703,10 +2860,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-46" class="semester-text-link"><a href="#ba-semester-46">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-181" class="paper-text-link"><a href="#ba-paper-181">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2718,7 +2875,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-182" class="paper-text-link"><a href="#ba-paper-182">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2730,7 +2887,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-183" class="paper-text-link"><a href="#ba-paper-183">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2742,7 +2899,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-184" class="paper-text-link"><a href="#ba-paper-184">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2757,10 +2914,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-47" class="semester-text-link"><a href="#ba-semester-47">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-185" class="paper-text-link"><a href="#ba-paper-185">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2772,7 +2929,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-186" class="paper-text-link"><a href="#ba-paper-186">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2784,7 +2941,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-187" class="paper-text-link"><a href="#ba-paper-187">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2796,7 +2953,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-188" class="paper-text-link"><a href="#ba-paper-188">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2811,10 +2968,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-48" class="semester-text-link"><a href="#ba-semester-48">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-189" class="paper-text-link"><a href="#ba-paper-189">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2826,7 +2983,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-190" class="paper-text-link"><a href="#ba-paper-190">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2838,7 +2995,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-191" class="paper-text-link"><a href="#ba-paper-191">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2850,7 +3007,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-192" class="paper-text-link"><a href="#ba-paper-192">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2870,10 +3027,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Medieval & Modern History</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-49" class="semester-text-link"><a href="#ba-semester-49">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-193" class="paper-text-link"><a href="#ba-paper-193">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2885,7 +3042,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-194" class="paper-text-link"><a href="#ba-paper-194">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2897,7 +3054,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-195" class="paper-text-link"><a href="#ba-paper-195">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2909,7 +3066,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-196" class="paper-text-link"><a href="#ba-paper-196">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2924,10 +3081,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-50" class="semester-text-link"><a href="#ba-semester-50">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-197" class="paper-text-link"><a href="#ba-paper-197">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2939,7 +3096,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-198" class="paper-text-link"><a href="#ba-paper-198">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2951,7 +3108,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-199" class="paper-text-link"><a href="#ba-paper-199">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2963,7 +3120,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-200" class="paper-text-link"><a href="#ba-paper-200">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2978,10 +3135,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-51" class="semester-text-link"><a href="#ba-semester-51">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-201" class="paper-text-link"><a href="#ba-paper-201">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -2993,7 +3150,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-202" class="paper-text-link"><a href="#ba-paper-202">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3005,7 +3162,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-203" class="paper-text-link"><a href="#ba-paper-203">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3017,7 +3174,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-204" class="paper-text-link"><a href="#ba-paper-204">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3032,10 +3189,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-52" class="semester-text-link"><a href="#ba-semester-52">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-205" class="paper-text-link"><a href="#ba-paper-205">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3047,7 +3204,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-206" class="paper-text-link"><a href="#ba-paper-206">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3059,7 +3216,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-207" class="paper-text-link"><a href="#ba-paper-207">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3071,7 +3228,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-208" class="paper-text-link"><a href="#ba-paper-208">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3086,10 +3243,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-53" class="semester-text-link"><a href="#ba-semester-53">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-209" class="paper-text-link"><a href="#ba-paper-209">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3101,7 +3258,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-210" class="paper-text-link"><a href="#ba-paper-210">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3113,7 +3270,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-211" class="paper-text-link"><a href="#ba-paper-211">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3125,7 +3282,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-212" class="paper-text-link"><a href="#ba-paper-212">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3140,10 +3297,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-54" class="semester-text-link"><a href="#ba-semester-54">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-213" class="paper-text-link"><a href="#ba-paper-213">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3155,7 +3312,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-214" class="paper-text-link"><a href="#ba-paper-214">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3167,7 +3324,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-215" class="paper-text-link"><a href="#ba-paper-215">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3179,7 +3336,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-216" class="paper-text-link"><a href="#ba-paper-216">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3199,10 +3356,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Music</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-55" class="semester-text-link"><a href="#ba-semester-55">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-217" class="paper-text-link"><a href="#ba-paper-217">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3214,7 +3371,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-218" class="paper-text-link"><a href="#ba-paper-218">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3226,7 +3383,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-219" class="paper-text-link"><a href="#ba-paper-219">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3238,7 +3395,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-220" class="paper-text-link"><a href="#ba-paper-220">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3253,10 +3410,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-56" class="semester-text-link"><a href="#ba-semester-56">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-221" class="paper-text-link"><a href="#ba-paper-221">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3268,7 +3425,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-222" class="paper-text-link"><a href="#ba-paper-222">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3280,7 +3437,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-223" class="paper-text-link"><a href="#ba-paper-223">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3292,7 +3449,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-224" class="paper-text-link"><a href="#ba-paper-224">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3307,10 +3464,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-57" class="semester-text-link"><a href="#ba-semester-57">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-225" class="paper-text-link"><a href="#ba-paper-225">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3322,7 +3479,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-226" class="paper-text-link"><a href="#ba-paper-226">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3334,7 +3491,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-227" class="paper-text-link"><a href="#ba-paper-227">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3346,7 +3503,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-228" class="paper-text-link"><a href="#ba-paper-228">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3361,10 +3518,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-58" class="semester-text-link"><a href="#ba-semester-58">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-229" class="paper-text-link"><a href="#ba-paper-229">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3376,7 +3533,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-230" class="paper-text-link"><a href="#ba-paper-230">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3388,7 +3545,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-231" class="paper-text-link"><a href="#ba-paper-231">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3400,7 +3557,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-232" class="paper-text-link"><a href="#ba-paper-232">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3415,10 +3572,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-59" class="semester-text-link"><a href="#ba-semester-59">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-233" class="paper-text-link"><a href="#ba-paper-233">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3430,7 +3587,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-234" class="paper-text-link"><a href="#ba-paper-234">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3442,7 +3599,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-235" class="paper-text-link"><a href="#ba-paper-235">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3454,7 +3611,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-236" class="paper-text-link"><a href="#ba-paper-236">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3469,10 +3626,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-60" class="semester-text-link"><a href="#ba-semester-60">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-237" class="paper-text-link"><a href="#ba-paper-237">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3484,7 +3641,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-238" class="paper-text-link"><a href="#ba-paper-238">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3496,7 +3653,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-239" class="paper-text-link"><a href="#ba-paper-239">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3508,7 +3665,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-240" class="paper-text-link"><a href="#ba-paper-240">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3528,10 +3685,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Philosophy</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-61" class="semester-text-link"><a href="#ba-semester-61">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-241" class="paper-text-link"><a href="#ba-paper-241">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3543,7 +3700,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-242" class="paper-text-link"><a href="#ba-paper-242">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3555,7 +3712,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-243" class="paper-text-link"><a href="#ba-paper-243">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3567,7 +3724,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-244" class="paper-text-link"><a href="#ba-paper-244">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3582,10 +3739,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-62" class="semester-text-link"><a href="#ba-semester-62">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-245" class="paper-text-link"><a href="#ba-paper-245">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3597,7 +3754,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-246" class="paper-text-link"><a href="#ba-paper-246">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3609,7 +3766,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-247" class="paper-text-link"><a href="#ba-paper-247">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3621,7 +3778,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-248" class="paper-text-link"><a href="#ba-paper-248">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3636,10 +3793,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-63" class="semester-text-link"><a href="#ba-semester-63">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-249" class="paper-text-link"><a href="#ba-paper-249">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3651,7 +3808,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-250" class="paper-text-link"><a href="#ba-paper-250">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3663,7 +3820,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-251" class="paper-text-link"><a href="#ba-paper-251">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3675,7 +3832,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-252" class="paper-text-link"><a href="#ba-paper-252">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3690,10 +3847,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-64" class="semester-text-link"><a href="#ba-semester-64">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-253" class="paper-text-link"><a href="#ba-paper-253">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3705,7 +3862,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-254" class="paper-text-link"><a href="#ba-paper-254">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3717,7 +3874,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-255" class="paper-text-link"><a href="#ba-paper-255">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3729,7 +3886,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-256" class="paper-text-link"><a href="#ba-paper-256">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3744,10 +3901,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-65" class="semester-text-link"><a href="#ba-semester-65">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-257" class="paper-text-link"><a href="#ba-paper-257">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3759,7 +3916,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-258" class="paper-text-link"><a href="#ba-paper-258">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3771,7 +3928,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-259" class="paper-text-link"><a href="#ba-paper-259">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3783,7 +3940,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-260" class="paper-text-link"><a href="#ba-paper-260">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3798,10 +3955,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-66" class="semester-text-link"><a href="#ba-semester-66">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-261" class="paper-text-link"><a href="#ba-paper-261">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3813,7 +3970,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-262" class="paper-text-link"><a href="#ba-paper-262">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3825,7 +3982,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-263" class="paper-text-link"><a href="#ba-paper-263">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3837,7 +3994,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-264" class="paper-text-link"><a href="#ba-paper-264">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3857,10 +4014,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Political Science</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-67" class="semester-text-link"><a href="#ba-semester-67">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-265" class="paper-text-link"><a href="#ba-paper-265">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3872,7 +4029,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-266" class="paper-text-link"><a href="#ba-paper-266">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3884,7 +4041,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-267" class="paper-text-link"><a href="#ba-paper-267">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3896,7 +4053,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-268" class="paper-text-link"><a href="#ba-paper-268">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3911,10 +4068,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-68" class="semester-text-link"><a href="#ba-semester-68">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-269" class="paper-text-link"><a href="#ba-paper-269">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3926,7 +4083,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-270" class="paper-text-link"><a href="#ba-paper-270">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3938,7 +4095,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-271" class="paper-text-link"><a href="#ba-paper-271">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3950,7 +4107,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-272" class="paper-text-link"><a href="#ba-paper-272">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3965,10 +4122,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-69" class="semester-text-link"><a href="#ba-semester-69">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-273" class="paper-text-link"><a href="#ba-paper-273">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3980,7 +4137,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-274" class="paper-text-link"><a href="#ba-paper-274">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -3992,7 +4149,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-275" class="paper-text-link"><a href="#ba-paper-275">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4004,7 +4161,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-276" class="paper-text-link"><a href="#ba-paper-276">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4019,10 +4176,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-70" class="semester-text-link"><a href="#ba-semester-70">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-277" class="paper-text-link"><a href="#ba-paper-277">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4034,7 +4191,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-278" class="paper-text-link"><a href="#ba-paper-278">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4046,7 +4203,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-279" class="paper-text-link"><a href="#ba-paper-279">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4058,7 +4215,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-280" class="paper-text-link"><a href="#ba-paper-280">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4073,10 +4230,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-71" class="semester-text-link"><a href="#ba-semester-71">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-281" class="paper-text-link"><a href="#ba-paper-281">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4088,7 +4245,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-282" class="paper-text-link"><a href="#ba-paper-282">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4100,7 +4257,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-283" class="paper-text-link"><a href="#ba-paper-283">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4112,7 +4269,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-284" class="paper-text-link"><a href="#ba-paper-284">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4127,10 +4284,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-72" class="semester-text-link"><a href="#ba-semester-72">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-285" class="paper-text-link"><a href="#ba-paper-285">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4142,7 +4299,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-286" class="paper-text-link"><a href="#ba-paper-286">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4154,7 +4311,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-287" class="paper-text-link"><a href="#ba-paper-287">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4166,7 +4323,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-288" class="paper-text-link"><a href="#ba-paper-288">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4186,10 +4343,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Psychology</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-73" class="semester-text-link"><a href="#ba-semester-73">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-289" class="paper-text-link"><a href="#ba-paper-289">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4201,7 +4358,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-290" class="paper-text-link"><a href="#ba-paper-290">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4213,7 +4370,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-291" class="paper-text-link"><a href="#ba-paper-291">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4225,7 +4382,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-292" class="paper-text-link"><a href="#ba-paper-292">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4240,10 +4397,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-74" class="semester-text-link"><a href="#ba-semester-74">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-293" class="paper-text-link"><a href="#ba-paper-293">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4255,7 +4412,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-294" class="paper-text-link"><a href="#ba-paper-294">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4267,7 +4424,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-295" class="paper-text-link"><a href="#ba-paper-295">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4279,7 +4436,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-296" class="paper-text-link"><a href="#ba-paper-296">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4294,10 +4451,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-75" class="semester-text-link"><a href="#ba-semester-75">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-297" class="paper-text-link"><a href="#ba-paper-297">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4309,7 +4466,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-298" class="paper-text-link"><a href="#ba-paper-298">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4321,7 +4478,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-299" class="paper-text-link"><a href="#ba-paper-299">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4333,7 +4490,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-300" class="paper-text-link"><a href="#ba-paper-300">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4348,10 +4505,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-76" class="semester-text-link"><a href="#ba-semester-76">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-301" class="paper-text-link"><a href="#ba-paper-301">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4363,7 +4520,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-302" class="paper-text-link"><a href="#ba-paper-302">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4375,7 +4532,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-303" class="paper-text-link"><a href="#ba-paper-303">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4387,7 +4544,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-304" class="paper-text-link"><a href="#ba-paper-304">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4402,10 +4559,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-77" class="semester-text-link"><a href="#ba-semester-77">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-305" class="paper-text-link"><a href="#ba-paper-305">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4417,7 +4574,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-306" class="paper-text-link"><a href="#ba-paper-306">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4429,7 +4586,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-307" class="paper-text-link"><a href="#ba-paper-307">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4441,7 +4598,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-308" class="paper-text-link"><a href="#ba-paper-308">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4456,10 +4613,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-78" class="semester-text-link"><a href="#ba-semester-78">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-309" class="paper-text-link"><a href="#ba-paper-309">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4471,7 +4628,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-310" class="paper-text-link"><a href="#ba-paper-310">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4483,7 +4640,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-311" class="paper-text-link"><a href="#ba-paper-311">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4495,7 +4652,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-312" class="paper-text-link"><a href="#ba-paper-312">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4515,10 +4672,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Sanskrit</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-79" class="semester-text-link"><a href="#ba-semester-79">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-313" class="paper-text-link"><a href="#ba-paper-313">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4530,7 +4687,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-314" class="paper-text-link"><a href="#ba-paper-314">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4542,7 +4699,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-315" class="paper-text-link"><a href="#ba-paper-315">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4554,7 +4711,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-316" class="paper-text-link"><a href="#ba-paper-316">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4569,10 +4726,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-80" class="semester-text-link"><a href="#ba-semester-80">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-317" class="paper-text-link"><a href="#ba-paper-317">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4584,7 +4741,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-318" class="paper-text-link"><a href="#ba-paper-318">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4596,7 +4753,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-319" class="paper-text-link"><a href="#ba-paper-319">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4608,7 +4765,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-320" class="paper-text-link"><a href="#ba-paper-320">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4623,10 +4780,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-81" class="semester-text-link"><a href="#ba-semester-81">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-321" class="paper-text-link"><a href="#ba-paper-321">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4638,7 +4795,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-322" class="paper-text-link"><a href="#ba-paper-322">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4650,7 +4807,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-323" class="paper-text-link"><a href="#ba-paper-323">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4662,7 +4819,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-324" class="paper-text-link"><a href="#ba-paper-324">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4677,10 +4834,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-82" class="semester-text-link"><a href="#ba-semester-82">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-325" class="paper-text-link"><a href="#ba-paper-325">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4692,7 +4849,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-326" class="paper-text-link"><a href="#ba-paper-326">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4704,7 +4861,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-327" class="paper-text-link"><a href="#ba-paper-327">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4716,7 +4873,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-328" class="paper-text-link"><a href="#ba-paper-328">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4731,10 +4888,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-83" class="semester-text-link"><a href="#ba-semester-83">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-329" class="paper-text-link"><a href="#ba-paper-329">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4746,7 +4903,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-330" class="paper-text-link"><a href="#ba-paper-330">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4758,7 +4915,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-331" class="paper-text-link"><a href="#ba-paper-331">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4770,7 +4927,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-332" class="paper-text-link"><a href="#ba-paper-332">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4785,10 +4942,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-84" class="semester-text-link"><a href="#ba-semester-84">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-333" class="paper-text-link"><a href="#ba-paper-333">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4800,7 +4957,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-334" class="paper-text-link"><a href="#ba-paper-334">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4812,7 +4969,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-335" class="paper-text-link"><a href="#ba-paper-335">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4824,7 +4981,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-336" class="paper-text-link"><a href="#ba-paper-336">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4844,10 +5001,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Sociology</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-85" class="semester-text-link"><a href="#ba-semester-85">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-337" class="paper-text-link"><a href="#ba-paper-337">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4859,7 +5016,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-338" class="paper-text-link"><a href="#ba-paper-338">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4871,7 +5028,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-339" class="paper-text-link"><a href="#ba-paper-339">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4883,7 +5040,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-340" class="paper-text-link"><a href="#ba-paper-340">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4898,10 +5055,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-86" class="semester-text-link"><a href="#ba-semester-86">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-341" class="paper-text-link"><a href="#ba-paper-341">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4913,7 +5070,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-342" class="paper-text-link"><a href="#ba-paper-342">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4925,7 +5082,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-343" class="paper-text-link"><a href="#ba-paper-343">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4937,7 +5094,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-344" class="paper-text-link"><a href="#ba-paper-344">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4952,10 +5109,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-87" class="semester-text-link"><a href="#ba-semester-87">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-345" class="paper-text-link"><a href="#ba-paper-345">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4967,7 +5124,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-346" class="paper-text-link"><a href="#ba-paper-346">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4979,7 +5136,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-347" class="paper-text-link"><a href="#ba-paper-347">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -4991,7 +5148,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-348" class="paper-text-link"><a href="#ba-paper-348">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5006,10 +5163,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-88" class="semester-text-link"><a href="#ba-semester-88">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-349" class="paper-text-link"><a href="#ba-paper-349">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5021,7 +5178,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-350" class="paper-text-link"><a href="#ba-paper-350">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5033,7 +5190,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-351" class="paper-text-link"><a href="#ba-paper-351">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5045,7 +5202,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-352" class="paper-text-link"><a href="#ba-paper-352">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5060,10 +5217,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-89" class="semester-text-link"><a href="#ba-semester-89">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-353" class="paper-text-link"><a href="#ba-paper-353">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5075,7 +5232,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-354" class="paper-text-link"><a href="#ba-paper-354">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5087,7 +5244,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-355" class="paper-text-link"><a href="#ba-paper-355">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5099,7 +5256,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-356" class="paper-text-link"><a href="#ba-paper-356">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5114,10 +5271,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-90" class="semester-text-link"><a href="#ba-semester-90">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-357" class="paper-text-link"><a href="#ba-paper-357">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5129,7 +5286,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-358" class="paper-text-link"><a href="#ba-paper-358">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5141,7 +5298,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-359" class="paper-text-link"><a href="#ba-paper-359">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5153,7 +5310,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-360" class="paper-text-link"><a href="#ba-paper-360">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5173,10 +5330,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Urdu</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-91" class="semester-text-link"><a href="#ba-semester-91">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-361" class="paper-text-link"><a href="#ba-paper-361">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5188,7 +5345,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-362" class="paper-text-link"><a href="#ba-paper-362">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5200,7 +5357,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-363" class="paper-text-link"><a href="#ba-paper-363">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5212,7 +5369,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-364" class="paper-text-link"><a href="#ba-paper-364">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5227,10 +5384,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-92" class="semester-text-link"><a href="#ba-semester-92">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-365" class="paper-text-link"><a href="#ba-paper-365">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5242,7 +5399,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-366" class="paper-text-link"><a href="#ba-paper-366">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5254,7 +5411,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-367" class="paper-text-link"><a href="#ba-paper-367">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5266,7 +5423,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-368" class="paper-text-link"><a href="#ba-paper-368">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5281,10 +5438,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-93" class="semester-text-link"><a href="#ba-semester-93">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-369" class="paper-text-link"><a href="#ba-paper-369">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5296,7 +5453,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-370" class="paper-text-link"><a href="#ba-paper-370">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5308,7 +5465,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-371" class="paper-text-link"><a href="#ba-paper-371">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5320,7 +5477,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-372" class="paper-text-link"><a href="#ba-paper-372">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5335,10 +5492,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-94" class="semester-text-link"><a href="#ba-semester-94">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-373" class="paper-text-link"><a href="#ba-paper-373">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5350,7 +5507,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-374" class="paper-text-link"><a href="#ba-paper-374">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5362,7 +5519,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-375" class="paper-text-link"><a href="#ba-paper-375">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5374,7 +5531,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-376" class="paper-text-link"><a href="#ba-paper-376">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5389,10 +5546,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-95" class="semester-text-link"><a href="#ba-semester-95">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-377" class="paper-text-link"><a href="#ba-paper-377">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5404,7 +5561,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-378" class="paper-text-link"><a href="#ba-paper-378">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5416,7 +5573,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-379" class="paper-text-link"><a href="#ba-paper-379">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5428,7 +5585,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-380" class="paper-text-link"><a href="#ba-paper-380">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5443,10 +5600,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-96" class="semester-text-link"><a href="#ba-semester-96">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-381" class="paper-text-link"><a href="#ba-paper-381">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5458,7 +5615,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-382" class="paper-text-link"><a href="#ba-paper-382">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5470,7 +5627,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-383" class="paper-text-link"><a href="#ba-paper-383">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5482,7 +5639,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-384" class="paper-text-link"><a href="#ba-paper-384">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5502,10 +5659,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Economics</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-97" class="semester-text-link"><a href="#ba-semester-97">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-385" class="paper-text-link"><a href="#ba-paper-385">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5517,7 +5674,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-386" class="paper-text-link"><a href="#ba-paper-386">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5529,7 +5686,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-387" class="paper-text-link"><a href="#ba-paper-387">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5541,7 +5698,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-388" class="paper-text-link"><a href="#ba-paper-388">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5556,10 +5713,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-98" class="semester-text-link"><a href="#ba-semester-98">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-389" class="paper-text-link"><a href="#ba-paper-389">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5571,7 +5728,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-390" class="paper-text-link"><a href="#ba-paper-390">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5583,7 +5740,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-391" class="paper-text-link"><a href="#ba-paper-391">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5595,7 +5752,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-392" class="paper-text-link"><a href="#ba-paper-392">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5610,10 +5767,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-99" class="semester-text-link"><a href="#ba-semester-99">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-393" class="paper-text-link"><a href="#ba-paper-393">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5625,7 +5782,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-394" class="paper-text-link"><a href="#ba-paper-394">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5637,7 +5794,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-395" class="paper-text-link"><a href="#ba-paper-395">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5649,7 +5806,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-396" class="paper-text-link"><a href="#ba-paper-396">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5664,10 +5821,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-100" class="semester-text-link"><a href="#ba-semester-100">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-397" class="paper-text-link"><a href="#ba-paper-397">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5679,7 +5836,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-398" class="paper-text-link"><a href="#ba-paper-398">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5691,7 +5848,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-399" class="paper-text-link"><a href="#ba-paper-399">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5703,7 +5860,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-400" class="paper-text-link"><a href="#ba-paper-400">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5718,10 +5875,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-101" class="semester-text-link"><a href="#ba-semester-101">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-401" class="paper-text-link"><a href="#ba-paper-401">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5733,7 +5890,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-402" class="paper-text-link"><a href="#ba-paper-402">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5745,7 +5902,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-403" class="paper-text-link"><a href="#ba-paper-403">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5757,7 +5914,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-404" class="paper-text-link"><a href="#ba-paper-404">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5772,10 +5929,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-102" class="semester-text-link"><a href="#ba-semester-102">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-405" class="paper-text-link"><a href="#ba-paper-405">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5787,7 +5944,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-406" class="paper-text-link"><a href="#ba-paper-406">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5799,7 +5956,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-407" class="paper-text-link"><a href="#ba-paper-407">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5811,7 +5968,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-408" class="paper-text-link"><a href="#ba-paper-408">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5831,10 +5988,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Defence & Strategic Studies</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-103" class="semester-text-link"><a href="#ba-semester-103">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-409" class="paper-text-link"><a href="#ba-paper-409">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5846,7 +6003,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-410" class="paper-text-link"><a href="#ba-paper-410">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5858,7 +6015,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-411" class="paper-text-link"><a href="#ba-paper-411">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5870,7 +6027,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-412" class="paper-text-link"><a href="#ba-paper-412">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5885,10 +6042,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-104" class="semester-text-link"><a href="#ba-semester-104">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-413" class="paper-text-link"><a href="#ba-paper-413">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5900,7 +6057,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-414" class="paper-text-link"><a href="#ba-paper-414">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5912,7 +6069,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-415" class="paper-text-link"><a href="#ba-paper-415">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5924,7 +6081,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-416" class="paper-text-link"><a href="#ba-paper-416">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5939,10 +6096,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-105" class="semester-text-link"><a href="#ba-semester-105">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-417" class="paper-text-link"><a href="#ba-paper-417">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5954,7 +6111,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-418" class="paper-text-link"><a href="#ba-paper-418">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5966,7 +6123,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-419" class="paper-text-link"><a href="#ba-paper-419">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5978,7 +6135,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-420" class="paper-text-link"><a href="#ba-paper-420">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -5993,10 +6150,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-106" class="semester-text-link"><a href="#ba-semester-106">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-421" class="paper-text-link"><a href="#ba-paper-421">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6008,7 +6165,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-422" class="paper-text-link"><a href="#ba-paper-422">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6020,7 +6177,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-423" class="paper-text-link"><a href="#ba-paper-423">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6032,7 +6189,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-424" class="paper-text-link"><a href="#ba-paper-424">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6047,10 +6204,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-107" class="semester-text-link"><a href="#ba-semester-107">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-425" class="paper-text-link"><a href="#ba-paper-425">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6062,7 +6219,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-426" class="paper-text-link"><a href="#ba-paper-426">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6074,7 +6231,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-427" class="paper-text-link"><a href="#ba-paper-427">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6086,7 +6243,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-428" class="paper-text-link"><a href="#ba-paper-428">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6101,10 +6258,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-108" class="semester-text-link"><a href="#ba-semester-108">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-429" class="paper-text-link"><a href="#ba-paper-429">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6116,7 +6273,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-430" class="paper-text-link"><a href="#ba-paper-430">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6128,7 +6285,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-431" class="paper-text-link"><a href="#ba-paper-431">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6140,7 +6297,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-432" class="paper-text-link"><a href="#ba-paper-432">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6160,10 +6317,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Mathematics</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-109" class="semester-text-link"><a href="#ba-semester-109">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-433" class="paper-text-link"><a href="#ba-paper-433">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6175,7 +6332,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-434" class="paper-text-link"><a href="#ba-paper-434">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6187,7 +6344,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-435" class="paper-text-link"><a href="#ba-paper-435">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6199,7 +6356,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-436" class="paper-text-link"><a href="#ba-paper-436">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6214,10 +6371,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-110" class="semester-text-link"><a href="#ba-semester-110">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-437" class="paper-text-link"><a href="#ba-paper-437">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6229,7 +6386,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-438" class="paper-text-link"><a href="#ba-paper-438">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6241,7 +6398,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-439" class="paper-text-link"><a href="#ba-paper-439">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6253,7 +6410,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-440" class="paper-text-link"><a href="#ba-paper-440">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6268,10 +6425,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-111" class="semester-text-link"><a href="#ba-semester-111">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-441" class="paper-text-link"><a href="#ba-paper-441">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6283,7 +6440,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-442" class="paper-text-link"><a href="#ba-paper-442">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6295,7 +6452,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-443" class="paper-text-link"><a href="#ba-paper-443">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6307,7 +6464,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-444" class="paper-text-link"><a href="#ba-paper-444">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6322,10 +6479,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-112" class="semester-text-link"><a href="#ba-semester-112">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-445" class="paper-text-link"><a href="#ba-paper-445">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6337,7 +6494,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-446" class="paper-text-link"><a href="#ba-paper-446">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6349,7 +6506,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-447" class="paper-text-link"><a href="#ba-paper-447">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6361,7 +6518,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-448" class="paper-text-link"><a href="#ba-paper-448">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6376,10 +6533,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-113" class="semester-text-link"><a href="#ba-semester-113">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-449" class="paper-text-link"><a href="#ba-paper-449">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6391,7 +6548,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-450" class="paper-text-link"><a href="#ba-paper-450">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6403,7 +6560,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-451" class="paper-text-link"><a href="#ba-paper-451">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6415,7 +6572,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-452" class="paper-text-link"><a href="#ba-paper-452">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6430,10 +6587,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-114" class="semester-text-link"><a href="#ba-semester-114">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-453" class="paper-text-link"><a href="#ba-paper-453">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6445,7 +6602,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-454" class="paper-text-link"><a href="#ba-paper-454">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6457,7 +6614,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-455" class="paper-text-link"><a href="#ba-paper-455">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6469,7 +6626,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-456" class="paper-text-link"><a href="#ba-paper-456">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6489,10 +6646,10 @@ a.books{
       <h2 class="subject-text-link"><a href="#ba-year1">BA — Statistics</a></h2>
       
     <div class="semester">
-      <h3>Semester 1</h3>
+      <h3 id="ba-semester-115" class="semester-text-link"><a href="#ba-semester-115">Semester 1</a></h3>
       
     <div class="paper" data-material-paper="Semester 1 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-457" class="paper-text-link"><a href="#ba-paper-457">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6504,7 +6661,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-458" class="paper-text-link"><a href="#ba-paper-458">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6516,7 +6673,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-459" class="paper-text-link"><a href="#ba-paper-459">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6528,7 +6685,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 1 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-460" class="paper-text-link"><a href="#ba-paper-460">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6543,10 +6700,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 2</h3>
+      <h3 id="ba-semester-116" class="semester-text-link"><a href="#ba-semester-116">Semester 2</a></h3>
       
     <div class="paper" data-material-paper="Semester 2 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-461" class="paper-text-link"><a href="#ba-paper-461">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6558,7 +6715,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-462" class="paper-text-link"><a href="#ba-paper-462">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6570,7 +6727,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-463" class="paper-text-link"><a href="#ba-paper-463">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6582,7 +6739,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 2 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-464" class="paper-text-link"><a href="#ba-paper-464">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6597,10 +6754,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 3</h3>
+      <h3 id="ba-semester-117" class="semester-text-link"><a href="#ba-semester-117">Semester 3</a></h3>
       
     <div class="paper" data-material-paper="Semester 3 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-465" class="paper-text-link"><a href="#ba-paper-465">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6612,7 +6769,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-466" class="paper-text-link"><a href="#ba-paper-466">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6624,7 +6781,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-467" class="paper-text-link"><a href="#ba-paper-467">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6636,7 +6793,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 3 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-468" class="paper-text-link"><a href="#ba-paper-468">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6651,10 +6808,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 4</h3>
+      <h3 id="ba-semester-118" class="semester-text-link"><a href="#ba-semester-118">Semester 4</a></h3>
       
     <div class="paper" data-material-paper="Semester 4 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-469" class="paper-text-link"><a href="#ba-paper-469">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6666,7 +6823,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-470" class="paper-text-link"><a href="#ba-paper-470">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6678,7 +6835,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-471" class="paper-text-link"><a href="#ba-paper-471">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6690,7 +6847,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 4 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-472" class="paper-text-link"><a href="#ba-paper-472">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6705,10 +6862,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 5</h3>
+      <h3 id="ba-semester-119" class="semester-text-link"><a href="#ba-semester-119">Semester 5</a></h3>
       
     <div class="paper" data-material-paper="Semester 5 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-473" class="paper-text-link"><a href="#ba-paper-473">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6720,7 +6877,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-474" class="paper-text-link"><a href="#ba-paper-474">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6732,7 +6889,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-475" class="paper-text-link"><a href="#ba-paper-475">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6744,7 +6901,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 5 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-476" class="paper-text-link"><a href="#ba-paper-476">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6759,10 +6916,10 @@ a.books{
     
       
     <div class="semester">
-      <h3>Semester 6</h3>
+      <h3 id="ba-semester-120" class="semester-text-link"><a href="#ba-semester-120">Semester 6</a></h3>
       
     <div class="paper" data-material-paper="Semester 6 - Paper 1">
-      <h4>📚 Paper 1</h4>
+      <h4 id="ba-paper-477" class="paper-text-link"><a href="#ba-paper-477">Paper 1</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6774,7 +6931,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 2">
-      <h4>📚 Paper 2</h4>
+      <h4 id="ba-paper-478" class="paper-text-link"><a href="#ba-paper-478">Paper 2</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6786,7 +6943,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 3">
-      <h4>📚 Paper 3</h4>
+      <h4 id="ba-paper-479" class="paper-text-link"><a href="#ba-paper-479">Paper 3</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
@@ -6798,7 +6955,7 @@ a.books{
     </div>
     
     <div class="paper" data-material-paper="Semester 6 - Paper 4">
-      <h4>📚 Paper 4</h4>
+      <h4 id="ba-paper-480" class="paper-text-link"><a href="#ba-paper-480">Paper 4</a></h4>
       
     <div class="links">
       <a href="#">PDF</a>
