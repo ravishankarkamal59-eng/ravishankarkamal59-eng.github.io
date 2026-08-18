@@ -140,6 +140,65 @@ a.books{
 }
 </style>
 
+<style id="SUBJECT-AND-MATERIAL-TEXT-LINKS">
+.subject-text-link{
+  margin:10px 0 6px !important;
+  padding:0 !important;
+  font-size:17px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+}
+.subject-text-link a{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  text-decoration:underline !important;
+}
+.paper .links a{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:13px !important;
+  line-height:1.4 !important;
+  font-weight:500 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+.paper .links a:not(:last-child)::after{
+  content:" | ";
+  margin:0 4px !important;
+  text-decoration:none !important;
+}
+a.books{
+  display:inline !important;
+  padding:0 !important;
+  margin:3px 0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  font-size:13px !important;
+  line-height:1.4 !important;
+  text-decoration:underline !important;
+}
+@media(max-width:600px){
+  .subject-text-link{
+    font-size:15px !important;
+  }
+  .paper .links a,
+  a.books{
+    font-size:12px !important;
+  }
+}
+</style>
 </head>
 <body>
 <header>
@@ -165,10 +224,10 @@ a.books{
   <h2>⚡ MA Quick Access</h2>
   <div class="quick-grid">
     <a href="#ma-year1">🎓 1st Year</a><a href="#ma-year2">🎓 2nd Year</a>
-    <a href="#pyq">📝 PYQ</a>
-    <a href="#notes">📚 Notes</a>
-    <a href="#syllabus">📖 Syllabus</a>
-    <a href="#pdf">📄 PDF</a>
+    <a href="#pyq">PYQ</a>
+    <a href="#notes">Notes</a>
+    <a href="#syllabus">Syllabus</a>
+    <a href="#pdf">PDF</a>
     <a href="#books">📚 Books</a>
   </div>
 </section>
@@ -176,7 +235,7 @@ a.books{
 <p><strong>MA Subjects</strong> — प्रत्येक programme में semester-wise study material structure.</p>
 
     <section class="program" data-material-subject="MA — Ancient History, Culture & Archaeology">
-      <h2>🎓 MA — Ancient History, Culture & Archaeology</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Ancient History, Culture & Archaeology</a></h2>
       
     <div class="semester">
       <h3 id="ma-year1">🎓 MA 1st Year — Semester 1</h3>
@@ -185,10 +244,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a id="pdf" href="#">📄 PDF</a>
-      <a id="notes" href="#">📚 Notes</a>
-      <a id="syllabus" href="#">📖 Syllabus</a>
-      <a id="pyq" href="#">📝 PYQ</a>
+      <a id="pdf" href="#">PDF</a>
+      <a id="notes" href="#">Notes</a>
+      <a id="syllabus" href="#">Syllabus</a>
+      <a id="pyq" href="#">PYQ</a>
     </div>
     
     </div>
@@ -197,10 +256,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -209,10 +268,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -221,10 +280,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -239,10 +298,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -251,10 +310,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -263,10 +322,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -275,10 +334,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -293,10 +352,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -305,10 +364,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -317,10 +376,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -329,10 +388,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -347,10 +406,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -359,10 +418,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -371,10 +430,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -383,21 +442,21 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
     
     </div>
     
-      <a id="books" class="books" href="#">📚 Ancient History, Culture & Archaeology — Books</a>
+      <a id="books" class="books" href="#">Ancient History, Culture & Archaeology — Books</a>
     </section>
     
     <section class="program" data-material-subject="MA — Anthropology">
-      <h2>🎓 MA — Anthropology</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Anthropology</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -406,10 +465,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -418,10 +477,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -430,10 +489,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -442,10 +501,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -460,10 +519,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -472,10 +531,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -484,10 +543,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -496,10 +555,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -514,10 +573,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -526,10 +585,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -538,10 +597,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -550,10 +609,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -568,10 +627,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -580,10 +639,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -592,10 +651,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -604,10 +663,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -618,7 +677,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Arabic">
-      <h2>🎓 MA — Arabic</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Arabic</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -627,10 +686,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -639,10 +698,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -651,10 +710,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -663,10 +722,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -681,10 +740,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -693,10 +752,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -705,10 +764,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -717,10 +776,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -735,10 +794,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -747,10 +806,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -759,10 +818,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -771,10 +830,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -789,10 +848,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -801,10 +860,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -813,10 +872,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -825,10 +884,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -839,7 +898,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Persian">
-      <h2>🎓 MA — Persian</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Persian</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -848,10 +907,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -860,10 +919,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -872,10 +931,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -884,10 +943,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -902,10 +961,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -914,10 +973,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -926,10 +985,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -938,10 +997,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -956,10 +1015,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -968,10 +1027,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -980,10 +1039,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -992,10 +1051,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1010,10 +1069,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1022,10 +1081,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1034,10 +1093,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1046,10 +1105,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1060,7 +1119,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Education">
-      <h2>🎓 MA — Education</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Education</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -1069,10 +1128,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1081,10 +1140,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1093,10 +1152,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1105,10 +1164,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1123,10 +1182,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1135,10 +1194,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1147,10 +1206,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1159,10 +1218,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1177,10 +1236,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1189,10 +1248,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1201,10 +1260,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1213,10 +1272,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1231,10 +1290,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1243,10 +1302,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1255,10 +1314,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1267,10 +1326,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1281,7 +1340,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — English">
-      <h2>🎓 MA — English</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — English</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -1290,10 +1349,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1302,10 +1361,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1314,10 +1373,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1326,10 +1385,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1344,10 +1403,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1356,10 +1415,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1368,10 +1427,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1380,10 +1439,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1398,10 +1457,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1410,10 +1469,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1422,10 +1481,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1434,10 +1493,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1452,10 +1511,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1464,10 +1523,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1476,10 +1535,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1488,10 +1547,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1502,7 +1561,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Geography">
-      <h2>🎓 MA — Geography</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Geography</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -1511,10 +1570,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1523,10 +1582,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1535,10 +1594,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1547,10 +1606,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1565,10 +1624,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1577,10 +1636,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1589,10 +1648,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1601,10 +1660,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1619,10 +1678,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1631,10 +1690,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1643,10 +1702,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1655,10 +1714,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1673,10 +1732,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1685,10 +1744,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1697,10 +1756,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1709,10 +1768,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1723,7 +1782,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Hindi">
-      <h2>🎓 MA — Hindi</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Hindi</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -1732,10 +1791,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1744,10 +1803,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1756,10 +1815,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1768,10 +1827,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1786,10 +1845,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1798,10 +1857,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1810,10 +1869,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1822,10 +1881,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1840,10 +1899,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1852,10 +1911,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1864,10 +1923,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1876,10 +1935,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1894,10 +1953,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1906,10 +1965,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1918,10 +1977,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1930,10 +1989,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1944,7 +2003,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Medieval & Modern History">
-      <h2>🎓 MA — Medieval & Modern History</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Medieval & Modern History</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -1953,10 +2012,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1965,10 +2024,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1977,10 +2036,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -1989,10 +2048,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2007,10 +2066,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2019,10 +2078,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2031,10 +2090,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2043,10 +2102,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2061,10 +2120,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2073,10 +2132,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2085,10 +2144,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2097,10 +2156,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2115,10 +2174,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2127,10 +2186,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2139,10 +2198,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2151,10 +2210,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2165,7 +2224,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Music">
-      <h2>🎓 MA — Music</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Music</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -2174,10 +2233,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2186,10 +2245,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2198,10 +2257,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2210,10 +2269,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2228,10 +2287,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2240,10 +2299,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2252,10 +2311,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2264,10 +2323,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2282,10 +2341,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2294,10 +2353,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2306,10 +2365,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2318,10 +2377,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2336,10 +2395,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2348,10 +2407,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2360,10 +2419,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2372,10 +2431,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2386,7 +2445,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Philosophy">
-      <h2>🎓 MA — Philosophy</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Philosophy</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -2395,10 +2454,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2407,10 +2466,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2419,10 +2478,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2431,10 +2490,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2449,10 +2508,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2461,10 +2520,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2473,10 +2532,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2485,10 +2544,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2503,10 +2562,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2515,10 +2574,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2527,10 +2586,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2539,10 +2598,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2557,10 +2616,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2569,10 +2628,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2581,10 +2640,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2593,10 +2652,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2607,7 +2666,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Political Science">
-      <h2>🎓 MA — Political Science</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Political Science</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -2616,10 +2675,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2628,10 +2687,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2640,10 +2699,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2652,10 +2711,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2670,10 +2729,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2682,10 +2741,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2694,10 +2753,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2706,10 +2765,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2724,10 +2783,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2736,10 +2795,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2748,10 +2807,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2760,10 +2819,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2778,10 +2837,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2790,10 +2849,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2802,10 +2861,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2814,10 +2873,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2828,7 +2887,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Psychology">
-      <h2>🎓 MA — Psychology</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Psychology</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -2837,10 +2896,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2849,10 +2908,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2861,10 +2920,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2873,10 +2932,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2891,10 +2950,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2903,10 +2962,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2915,10 +2974,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2927,10 +2986,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2945,10 +3004,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2957,10 +3016,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2969,10 +3028,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2981,10 +3040,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -2999,10 +3058,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3011,10 +3070,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3023,10 +3082,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3035,10 +3094,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3049,7 +3108,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Sanskrit">
-      <h2>🎓 MA — Sanskrit</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Sanskrit</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -3058,10 +3117,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3070,10 +3129,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3082,10 +3141,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3094,10 +3153,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3112,10 +3171,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3124,10 +3183,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3136,10 +3195,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3148,10 +3207,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3166,10 +3225,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3178,10 +3237,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3190,10 +3249,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3202,10 +3261,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3220,10 +3279,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3232,10 +3291,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3244,10 +3303,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3256,10 +3315,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3270,7 +3329,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Sociology">
-      <h2>🎓 MA — Sociology</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Sociology</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -3279,10 +3338,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3291,10 +3350,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3303,10 +3362,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3315,10 +3374,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3333,10 +3392,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3345,10 +3404,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3357,10 +3416,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3369,10 +3428,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3387,10 +3446,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3399,10 +3458,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3411,10 +3470,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3423,10 +3482,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3441,10 +3500,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3453,10 +3512,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3465,10 +3524,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3477,10 +3536,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3491,7 +3550,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Urdu">
-      <h2>🎓 MA — Urdu</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Urdu</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -3500,10 +3559,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3512,10 +3571,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3524,10 +3583,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3536,10 +3595,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3554,10 +3613,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3566,10 +3625,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3578,10 +3637,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3590,10 +3649,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3608,10 +3667,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3620,10 +3679,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3632,10 +3691,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3644,10 +3703,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3662,10 +3721,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3674,10 +3733,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3686,10 +3745,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3698,10 +3757,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3712,7 +3771,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Economics">
-      <h2>🎓 MA — Economics</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Economics</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -3721,10 +3780,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3733,10 +3792,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3745,10 +3804,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3757,10 +3816,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3775,10 +3834,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3787,10 +3846,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3799,10 +3858,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3811,10 +3870,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3829,10 +3888,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3841,10 +3900,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3853,10 +3912,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3865,10 +3924,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3883,10 +3942,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3895,10 +3954,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3907,10 +3966,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3919,10 +3978,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3933,7 +3992,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Defence & Strategic Studies">
-      <h2>🎓 MA — Defence & Strategic Studies</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Defence & Strategic Studies</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -3942,10 +4001,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3954,10 +4013,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3966,10 +4025,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3978,10 +4037,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -3996,10 +4055,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4008,10 +4067,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4020,10 +4079,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4032,10 +4091,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4050,10 +4109,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4062,10 +4121,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4074,10 +4133,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4086,10 +4145,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4104,10 +4163,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4116,10 +4175,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4128,10 +4187,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4140,10 +4199,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4154,7 +4213,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Mathematics">
-      <h2>🎓 MA — Mathematics</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Mathematics</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -4163,10 +4222,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4175,10 +4234,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4187,10 +4246,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4199,10 +4258,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4217,10 +4276,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4229,10 +4288,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4241,10 +4300,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4253,10 +4312,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4271,10 +4330,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4283,10 +4342,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4295,10 +4354,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4307,10 +4366,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4325,10 +4384,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4337,10 +4396,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4349,10 +4408,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4361,10 +4420,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4375,7 +4434,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Statistics">
-      <h2>🎓 MA — Statistics</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Statistics</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -4384,10 +4443,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4396,10 +4455,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4408,10 +4467,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4420,10 +4479,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4438,10 +4497,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4450,10 +4509,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4462,10 +4521,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4474,10 +4533,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4492,10 +4551,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4504,10 +4563,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4516,10 +4575,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4528,10 +4587,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4546,10 +4605,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4558,10 +4617,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4570,10 +4629,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4582,10 +4641,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4596,7 +4655,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Mass Communication">
-      <h2>🎓 MA — Mass Communication</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Mass Communication</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -4605,10 +4664,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4617,10 +4676,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4629,10 +4688,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4641,10 +4700,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4659,10 +4718,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4671,10 +4730,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4683,10 +4742,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4695,10 +4754,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4713,10 +4772,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4725,10 +4784,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4737,10 +4796,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4749,10 +4808,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4767,10 +4826,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4779,10 +4838,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4791,10 +4850,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4803,10 +4862,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4817,7 +4876,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Women's Studies">
-      <h2>🎓 MA — Women's Studies</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Women's Studies</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -4826,10 +4885,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4838,10 +4897,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4850,10 +4909,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4862,10 +4921,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4880,10 +4939,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4892,10 +4951,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4904,10 +4963,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4916,10 +4975,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4934,10 +4993,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4946,10 +5005,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4958,10 +5017,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4970,10 +5029,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -4988,10 +5047,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5000,10 +5059,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5012,10 +5071,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5024,10 +5083,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5038,7 +5097,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Development Studies">
-      <h2>🎓 MA — Development Studies</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Development Studies</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -5047,10 +5106,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5059,10 +5118,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5071,10 +5130,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5083,10 +5142,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5101,10 +5160,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5113,10 +5172,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5125,10 +5184,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5137,10 +5196,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5155,10 +5214,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5167,10 +5226,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5179,10 +5238,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5191,10 +5250,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5209,10 +5268,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5221,10 +5280,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5233,10 +5292,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5245,10 +5304,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5259,7 +5318,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Theatre & Film">
-      <h2>🎓 MA — Theatre & Film</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Theatre & Film</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -5268,10 +5327,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5280,10 +5339,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5292,10 +5351,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5304,10 +5363,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5322,10 +5381,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5334,10 +5393,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5346,10 +5405,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5358,10 +5417,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5376,10 +5435,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5388,10 +5447,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5400,10 +5459,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5412,10 +5471,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5430,10 +5489,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5442,10 +5501,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5454,10 +5513,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5466,10 +5525,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5480,7 +5539,7 @@ a.books{
     </section>
     
     <section class="program" data-material-subject="MA — Painting">
-      <h2>🎓 MA — Painting</h2>
+      <h2 class="subject-text-link"><a href="#ma-year1">MA — Painting</a></h2>
       
     <div class="semester">
       <h3>Semester 1</h3>
@@ -5489,10 +5548,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5501,10 +5560,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5513,10 +5572,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5525,10 +5584,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5543,10 +5602,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5555,10 +5614,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5567,10 +5626,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5579,10 +5638,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5597,10 +5656,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5609,10 +5668,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5621,10 +5680,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5633,10 +5692,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5651,10 +5710,10 @@ a.books{
       <h4>📚 Paper 1</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5663,10 +5722,10 @@ a.books{
       <h4>📚 Paper 2</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5675,10 +5734,10 @@ a.books{
       <h4>📚 Paper 3</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
@@ -5687,10 +5746,10 @@ a.books{
       <h4>📚 Paper 4</h4>
       
     <div class="links">
-      <a href="#">📄 PDF</a>
-      <a href="#">📚 Notes</a>
-      <a href="#">📖 Syllabus</a>
-      <a href="#">📝 PYQ</a>
+      <a href="#">PDF</a>
+      <a href="#">Notes</a>
+      <a href="#">Syllabus</a>
+      <a href="#">PYQ</a>
     </div>
     
     </div>
