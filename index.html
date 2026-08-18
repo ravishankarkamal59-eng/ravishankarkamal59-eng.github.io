@@ -467,14 +467,12 @@ footer{
 .route-hidden{display:none!important}
 .route-visible{display:block!important}
 
-#student-info,#about,#updates,#student,#student-old,#syllabus,#contact,#about-old{
+#student-info,#about,#updates,#student,#syllabus,#contact{
   scroll-margin-top:90px;
 }
 
 body.route-home #student,
-body.route-home #student-old,
 body.route-home #syllabus,
-body.route-home #about-old,
 body.route-home #updates,
 body.route-home #contact{
   display:none!important;
@@ -538,7 +536,6 @@ body.route-home .syllabus-section{
 /* ===== FINAL HOME CLEANUP ===== */
 
 /* Homepage पर पुराने cards/sections नहीं दिखेंगे */
-body.route-home #student-old,
 body.route-home .cards,
 body.route-home .slider-section,
 body.route-home #syllabus,
@@ -546,11 +543,7 @@ body.route-home .syllabus-section{
   display:none!important;
 }
 
-/* पुराने duplicate information blocks */
-body.route-home #about-old,
-body.route-home #student-old{
-  display:none!important;
-}
+/* पुराने duplicate information blocks हटाए जा चुके हैं */
 
 /* Student button अब केवल login/register के लिए */
 body.route-home .student-section{
@@ -589,8 +582,6 @@ body.route-home .cards{
 
 /* नीचे के पुराने cards पूरी तरह बंद */
 body.route-home .cards,
-body.route-home #student-old,
-body.route-home #about-old,
 body.route-home .syllabus-section{
   display:none!important;
 }
@@ -643,8 +634,6 @@ body.route-home > .founder-section{
   display:none!important;
 }
 </style>
-
-
 
 
 <style id="premium-final-fix">
@@ -727,10 +716,7 @@ body.route-syllabus .syllabus-section{
 }
 
 /* Home पर पुराने duplicate sections नहीं */
-body.route-home #about-old,
-body.route-home #student-old{
-  display:none!important;
-}
+
 </style>
 
 
@@ -741,8 +727,7 @@ body.route-home #student-old{
 
 /* Main Home पर Student Dashboard के cards नहीं */
 body.route-home #student,
-body.route-home .student-section,
-body.route-home #student-old{
+body.route-home .student-section{
   display:none!important;
 }
 
@@ -799,10 +784,7 @@ body.route-home .student-section,
 body.route-home #syllabus,
 body.route-home .syllabus-section,
 body.route-home .cards,
-body.route-home #student-old,
-body.route-home #about-old{
-  display:none!important;
-}
+
 
 body.route-home #student-info,
 body.route-home #about,
@@ -888,10 +870,7 @@ body.route-home .student-section,
 body.route-home #syllabus,
 body.route-home .syllabus-section,
 body.route-home .cards,
-body.route-home #student-old,
-body.route-home #about-old {
-  display:none !important;
-}
+
 
 body.route-home .premium-top,
 body.route-home #student-info,
@@ -923,8 +902,6 @@ body.route-student .slider-section,
 body.route-student #syllabus,
 body.route-student .syllabus-section,
 body.route-student .cards,
-body.route-student #about-old,
-body.route-student #student-old,
 body.route-student #contact,
 body.route-student footer {
   display:none !important;
@@ -948,8 +925,6 @@ body.route-syllabus .home-guidance,
 body.route-syllabus .notice,
 body.route-syllabus .slider-section,
 body.route-syllabus .cards,
-body.route-syllabus #about-old,
-body.route-syllabus #student-old,
 body.route-syllabus #contact,
 body.route-syllabus footer {
   display:none !important;
@@ -1145,7 +1120,6 @@ html body #contact span {
   -webkit-text-fill-color: #ffffff !important;
 }
 </style>
-
 
 
 <style id="exam-link-list">
@@ -1525,7 +1499,7 @@ Student Login/Register करें।
 <h3>👮 Police & Defence</h3>
 <div class="student-grid"><div class="exam-link-list">
 
-<a class="exam-link" href="ssc-materials.html">👮 SSC GD — Central Armed Police Forces</a>
+
 <a class="exam-link" href="student/uppcs-materials.html">👮 State Police — Police Constable & SI Exams</a>
 <a class="exam-link" href="upsc-materials.html">🎖️ Defence Exams — Army • Navy • Air Force</a>
 </div>
@@ -1584,7 +1558,6 @@ Student Login/Register करें।
 <div class="student-grid"><div class="exam-link-list">
 
 <a class="exam-link" href="upsc-materials.html">🎖️ Agniveer — Army • Navy • Air Force</a>
-<a class="exam-link" href="upsc-materials.html">🛡️ CAPF — Central Armed Police Forces</a>
 </div>
 </div>
 <h3>🏢 Insurance & Other Government Exams</h3>
@@ -1606,7 +1579,6 @@ Student Login/Register करें।
 </div>
 
 </section>
-
 
 
 <section id="updates" class="professional-info">
@@ -1644,24 +1616,7 @@ Student Login/Register करें।
 </div>
 <div class="dots"><span class="dot active-dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
 </section>
-<section id="about-old" class="info">
-  <h2>About The Ravishankar Insights</h2>
-  <p>
-    The Ravishankar Insights एक education और exam-preparation
-    platform है जहाँ विद्यार्थियों को विभिन्न courses और
-    competitive examinations के लिए syllabus, notes,
-    previous year papers और अन्य study materials एक ही स्थान
-    पर उपलब्ध कराने का उद्देश्य है।
-  </p>
-</section>
 
-<section id="student-old" class="info">
-  <h2>🎓 Student Section</h2>
-  <p>
-    Student section में उपलब्ध study material देखने के लिए
-    पहले Student Login करें।
-  </p>
-</section>
 
 <section class="cards">
 
@@ -1977,8 +1932,6 @@ routeFromHash();
 
 })();
 </script>
-
-
 
 
 </body>
