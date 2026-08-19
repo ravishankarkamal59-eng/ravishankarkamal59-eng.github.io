@@ -223,23 +223,23 @@ footer{
 }
 
 .premium-banner{
-  width:min(92%,620px);
-  min-height:72px;
+  width:min(94%,680px);
+  min-height:82px;
   margin:0 auto;
-  padding:9px 16px;
+  padding:10px 18px;
   display:flex;
   align-items:center;
-  gap:13px;
+  gap:16px;
   text-align:left;
   color:#fff;
   position:relative;
   overflow:hidden;
-  border-radius:16px;
-  background:linear-gradient(135deg,#06152d 0%,#0b2c52 58%,#155e9e 100%);
-  border:1px solid rgba(255,193,7,.55);
+  border-radius:18px;
+  background:linear-gradient(135deg,#06152d 0%,#0b2c52 55%,#155e9e 100%);
+  border:1px solid rgba(255,193,7,.65);
   box-shadow:
-    0 8px 24px rgba(7,26,53,.24),
-    inset 0 1px 0 rgba(255,255,255,.12);
+    0 9px 28px rgba(7,26,53,.28),
+    inset 0 1px 0 rgba(255,255,255,.14);
 }
 
 .premium-banner::after{
@@ -265,13 +265,15 @@ footer{
 }
 
 .premium-banner img{
-  width:50px;
-  height:50px;
-  flex:0 0 50px;
+  width:60px;
+  height:60px;
+  flex:0 0 60px;
   object-fit:cover;
   border-radius:50%;
   border:2px solid #f7c948;
-  box-shadow:0 4px 16px rgba(0,0,0,.35);
+  box-shadow:
+    0 4px 18px rgba(0,0,0,.38),
+    0 0 0 3px rgba(247,201,72,.12);
   position:relative;
   z-index:1;
 }
@@ -292,11 +294,32 @@ footer{
 
 .premium-banner h1{
   margin:0;
-  font-size:clamp(15px,4vw,21px);
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:.2px;
+  font-size:clamp(20px,5.2vw,28px);
+  line-height:1.12;
+  font-weight:900;
+  letter-spacing:.4px;
   color:#fff;
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.35),
+    0 0 18px rgba(247,201,72,.18);
+  background:linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff4bd 25%,
+    #f7c948 50%,
+    #fff4bd 75%,
+    #fff 100%
+  );
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:premiumTextHighlight 4s linear infinite;
+}
+
+@keyframes premiumTextHighlight{
+  0%{background-position:220% center;}
+  100%{background-position:-20% center;}
 }
 
 .premium-banner p,
