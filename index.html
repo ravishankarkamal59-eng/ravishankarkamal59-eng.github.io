@@ -506,13 +506,6 @@ body.route-updates #updates{
   display:block!important;
 }
 
-body.route-contact > *:not(header):not(.route-banner):not(#contact){
-  display:none!important;
-}
-body.route-contact #contact{
-  display:block!important;
-}
-
 body.route-home .student-section,
 body.route-home .syllabus-section{
   display:none!important;
@@ -849,10 +842,6 @@ body.route-updates #updates{
   display:block!important;
 }
 
-/* CONTACT ROUTE */
-body.route-contact #contact{
-  display:block!important;
-}
 </style>
 
 
@@ -965,21 +954,6 @@ body.route-updates #contact {
 }
 
 
-/* ---------- CONTACT ---------- */
-
-body.route-contact #contact {
-  display:block !important;
-}
-
-body.route-contact #student,
-body.route-contact .student-section,
-body.route-contact #syllabus,
-body.route-contact .syllabus-section,
-body.route-contact .cards,
-body.route-contact #about,
-body.route-contact #updates {
-  display:none !important;
-}
 </style>
 
 
@@ -1219,7 +1193,6 @@ body.route-student #student{
 <a href="#syllabus">📚 Syllabus</a>
 <a href="#updates">📢 Updates</a>
 <a href="about.html">ℹ️ About</a>
-<a href="#contact">📞 Contact</a>
 <a href="login.html" class="nav-login">🔐 Login</a>
 <a href="admin-login.html" class="nav-admin">🔑 Admin</a>
 </nav>
@@ -1715,7 +1688,7 @@ document.querySelectorAll("#mainNav a").forEach(function(link){link.addEventList
 function hideAll(){
  document.body.classList.remove(
   "route-home","route-student","route-syllabus",
-  "route-about","route-updates","route-contact"
+  "route-about","route-updates"
  );
 }
 
@@ -1726,7 +1699,6 @@ function showRoute(route){
  else if(route==="syllabus") document.body.classList.add("route-syllabus");
  else if(route==="about") document.body.classList.add("route-about");
  else if(route==="updates") document.body.classList.add("route-updates");
- else if(route==="contact") document.body.classList.add("route-contact");
  else document.body.classList.add("route-home");
 
  window.scrollTo({top:0,behavior:"smooth"});
@@ -1739,7 +1711,6 @@ function routeFromHash(){
  else if(r==="syllabus") showRoute("syllabus");
  else if(r==="about") showRoute("about");
  else if(r==="updates") showRoute("updates");
- else if(r==="contact") showRoute("contact");
  else showRoute("home");
 }
 
@@ -1768,11 +1739,6 @@ document.addEventListener("click",function(e){
   e.preventDefault();
   history.pushState(null,"","#updates");
   showRoute("updates");
- }
- else if(href==="#contact"){
-  e.preventDefault();
-  history.pushState(null,"","#contact");
-  showRoute("contact");
  }
 });
 
