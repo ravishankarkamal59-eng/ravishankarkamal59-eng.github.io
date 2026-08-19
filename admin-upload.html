@@ -459,10 +459,9 @@ async function uploadMaterial(){
   const formData =
     new FormData();
 
-  formData.append(
-    "file",
-    file
-  );
+  // IMPORTANT:
+  // Send text fields BEFORE the file so Multer
+  // has req.body.section when choosing the upload folder.
 
   formData.append(
     "section",
@@ -487,6 +486,11 @@ async function uploadMaterial(){
   formData.append(
     "subject",
     subject
+  );
+
+  formData.append(
+    "file",
+    file
   );
 
 
