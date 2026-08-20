@@ -1,331 +1,205 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="materials.css">
-<title>UPPCS Materials | The Ravishankar Insights</title>
+<title>UPPCS Study Materials | The Ravishankar Insights</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box}
 
 body{
-  background:#f4f7fb;
-  color:#172033;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#222;
 }
 
 header{
-  background:linear-gradient(135deg,#07111f,#123b5d);
+  background:linear-gradient(135deg,#123b5d,#1677ff);
   color:white;
-  padding:25px 18px;
+  text-align:center;
+  padding:28px 15px;
 }
 
 header h1{
-  max-width:1100px;
-  margin:auto;
+  margin:0 0 8px;
+  font-size:28px;
+}
+
+header p{
+  margin:0;
+  opacity:.95;
 }
 
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:25px auto;
-  padding:0 18px;
+  padding:0 15px;
 }
 
-.section-title{
-  margin:30px 0 15px;
-  color:#123b5d;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.card{
+.paper{
   background:white;
-  padding:22px;
-  border-radius:18px;
-  box-shadow:0 7px 22px rgba(0,0,0,.08);
-}
-
-.card h3{
-  color:#123b5d;
   margin-bottom:18px;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-.buttons{
+.paper h2{
+  margin:0 0 14px;
+  color:#123b5d;
+  font-size:21px;
+}
+
+.links{
   display:flex;
   flex-wrap:wrap;
-  gap:9px;
+  gap:10px;
 }
 
-button{
-  border:0;
-  padding:10px 12px;
+.material-link{
+  display:inline-block;
+  padding:10px 14px;
   border-radius:9px;
-  color:white;
+  background:#eef4ff;
+  color:#1255b5;
+  text-decoration:none;
   font-weight:bold;
-  cursor:pointer;
+  border:1px solid #d8e5ff;
 }
 
-.pdf{
-  background:#1677ff;
+.material-link:hover{
+  background:#dfeaff;
 }
 
-.upload-pdf{
-  background:#198754;
+.status{
+  margin-top:12px;
+  color:#666;
+  font-size:14px;
 }
 
-.video{
-  background:#e67e22;
+.back{
+  display:inline-block;
+  margin:10px 0 30px;
+  padding:11px 16px;
+  background:#123b5d;
+  color:white;
+  text-decoration:none;
+  border-radius:9px;
 }
 </style>
-<style>.admin-only{display:none !important;}</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🏛️ UPPCS Study Materials</h1>
+  <h1>📚 UPPCS Study Materials</h1>
+  <p>The Ravishankar Insights</p>
 </header>
 
 <div class="container">
 
-<!-- PRELIMS -->
-
-<h2 class="section-title">📘 UPPCS Prelims</h2>
-
-<div class="grid">
-
-<div class="card">
-  <h3>Paper 1 — General Studies</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Prelims — General Studies Paper-I</h2>
+<div class="links" data-card="UPPCS Prelims GS Paper 1"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 2 — CSAT</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Prelims — General Studies Paper-II / CSAT</h2>
+<div class="links" data-card="UPPCS Prelims GS Paper 2"></div>
 </div>
 
+<div class="paper">
+<h2>UPPCS Mains — General Hindi</h2>
+<div class="links" data-card="UPPCS Mains General Hindi"></div>
 </div>
 
-
-<!-- MAINS -->
-
-<h2 class="section-title">📕 UPPCS Mains</h2>
-
-<div class="grid">
-
-<div class="card">
-  <h3>Paper 1 — General Hindi</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — Essay</h2>
+<div class="links" data-card="UPPCS Mains Essay"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 2 — Essay</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-I</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 1"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 3 — General Studies I</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-II</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 2"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 4 — General Studies II</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-III</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 3"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 5 — General Studies III</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-IV</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 4"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 6 — General Studies IV</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-V</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 5"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 7 — General Studies V</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
+<div class="paper">
+<h2>UPPCS Mains — General Studies Paper-VI</h2>
+<div class="links" data-card="UPPCS Mains GS Paper 6"></div>
 </div>
 
-<div class="card">
-  <h3>Paper 8 — General Studies VI</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Optional Subject — Paper I</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Optional Subject — Paper II</h3>
-
-  <div class="buttons">
-    <button class="pdf">📄 Open PDF</button>
-  </div>
-</div>
+<a class="back" href="../student-dashboard.html">⬅️ Student Dashboard</a>
 
 </div>
-
-</div>
-
 
 <script>
-const API = "https://ravishankar-insights-backend-1.onrender.com";
 
-async function loadUPPCSMaterials() {
-  try {
-    const response = await fetch(API + "/api/materials/uppcs");
-    const data = await response.json();
+const API =
+"https://ravishankar-insights-backend-1.onrender.com";
 
-    const pdfButtons = document.querySelectorAll(".pdf");
+const types = [
+  ["pyq","📄 PYQ"],
+  ["syllabus","📚 Syllabus"],
+  ["notes","📝 Notes"],
+  ["pdf","📄 PDF"],
+  ["video","🎥 Video"],
+  ["book","📕 Book"]
+];
 
-    if (!data.success || !data.files || data.files.length === 0) {
-      pdfButtons.forEach(btn => {
-        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
-        btn.disabled = true;
-      });
-      return;
-    }
+function createLinks(box, card){
 
-    const pdfFiles = data.files.filter(file =>
-      file.name.toLowerCase().endsWith(".pdf")
-    );
+  types.forEach(([type,label]) => {
 
-    if (pdfFiles.length === 0) {
-      pdfButtons.forEach(btn => {
-        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
-        btn.disabled = true;
-      });
-      return;
-    }
+    const a = document.createElement("a");
 
-    /*
-      अभी backend में UPPCS की केवल 1 PDF है।
-      इसलिए उपलब्ध PDF को पहले Open PDF button से जोड़ेंगे।
-    */
+    a.className = "material-link";
+    a.textContent = label;
+    a.href =
+      API +
+      "/api/card-materials?card=" +
+      encodeURIComponent(card) +
+      "&type=" +
+      encodeURIComponent(type);
 
-    pdfButtons.forEach((btn, index) => {
+    a.target = "_blank";
 
-      if (pdfFiles[index]) {
-        btn.textContent = "📄 Open PDF";
+    box.appendChild(a);
 
-        btn.onclick = async () => {
+  });
 
-          try {
-
-            const studentSession =
-              localStorage.getItem("studentSession");
-
-            if (!studentSession) {
-              throw new Error("Student login required");
-            }
-
-            const pdfResponse = await fetch(
-              API + pdfFiles[index].url,
-              {
-                headers: {
-                  "Authorization":
-                    "Bearer " + studentSession
-                }
-              }
-            );
-
-            if (!pdfResponse.ok) {
-              throw new Error("PDF access denied");
-            }
-
-            const blob = await pdfResponse.blob();
-
-            const pdfUrl = URL.createObjectURL(blob);
-
-            window.open(pdfUrl, "_blank");
-
-            setTimeout(() => {
-              URL.revokeObjectURL(pdfUrl);
-            }, 60000);
-
-          } catch (error) {
-
-            console.error("PDF open error:", error);
-
-            alert(
-              "PDF खोलने के लिए Student Login जरूरी है।"
-            );
-
-          }
-
-        };
-
-      } else {
-
-        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
-        btn.disabled = true;
-
-      }
-
-    });
-
-  } catch (error) {
-
-    console.error(
-      "UPPCS materials error:",
-      error
-    );
-
-  }
 }
 
-document.addEventListener(
-  "DOMContentLoaded",
-  loadUPPCSMaterials
-);
-</script>
+document.querySelectorAll(".links").forEach(box => {
 
+  const card = box.dataset.card;
+
+  createLinks(box,card);
+
+});
+
+</script>
 
 </body>
 </html>
