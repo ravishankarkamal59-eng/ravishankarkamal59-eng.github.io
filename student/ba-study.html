@@ -7289,7 +7289,7 @@ a.books{
 
     try{
       const params = new URLSearchParams({
-        card: subject,
+        card: "BA",
         subject: subject,
         paper: paperValue,
         type: type
@@ -7383,7 +7383,7 @@ a.books{
         }else if(text.includes("pyq")){
           type = "pyq";
         }else if(text.includes("pdf")){
-          type = "notes";
+          type = "pdf";
         }
 
         if(!type) return;
