@@ -94,6 +94,40 @@ button{
 }
 </style>
 
+
+<style id="UPSC-MATERIAL-TEXT-LINKS">
+.upsc-material-links{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  gap:4px 8px !important;
+  margin:6px 0 10px !important;
+  padding:0 !important;
+}
+.upsc-material-links a{
+  display:inline !important;
+  background:none !important;
+  color:#2563eb !important;
+  border:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  font-size:12px !important;
+  line-height:1.3 !important;
+  font-weight:600 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+.upsc-material-links a:not(:last-child)::after{
+  content:" | " !important;
+  color:#64748b !important;
+  text-decoration:none !important;
+  margin:0 3px !important;
+}
+.upsc-material-links a:hover{
+  color:#1d4ed8 !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -112,6 +146,17 @@ button{
 
 <div class="card">
 <h3>Paper 1 — General Studies</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -121,6 +166,17 @@ button{
 
 <div class="card">
 <h3>Paper 2 — CSAT</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -139,6 +195,17 @@ button{
 
 <div class="card">
 <h3>Paper A — Indian Language</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -148,6 +215,17 @@ button{
 
 <div class="card">
 <h3>Paper B — English</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -157,6 +235,17 @@ button{
 
 <div class="card">
 <h3>Essay</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -166,6 +255,17 @@ button{
 
 <div class="card">
 <h3>GS Paper 1 — Indian Heritage & Culture</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -175,6 +275,17 @@ button{
 
 <div class="card">
 <h3>GS Paper 2 — Governance & Constitution</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -184,6 +295,17 @@ button{
 
 <div class="card">
 <h3>GS Paper 3 — Economy, Science & Technology</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -193,6 +315,17 @@ button{
 
 <div class="card">
 <h3>GS Paper 4 — Ethics & Integrity</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -202,6 +335,17 @@ button{
 
 <div class="card">
 <h3>Optional Subject — Paper 1</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -211,6 +355,17 @@ button{
 
 <div class="card">
 <h3>Optional Subject — Paper 2</h3>
+
+<div class="upsc-material-links">
+<a href="#" data-type="pyq" onclick="return openUPSCMaterial(this);">PYQ</a>
+<a href="#" data-type="syllabus" onclick="return openUPSCMaterial(this);">Syllabus</a>
+<a href="#" data-type="notes" onclick="return openUPSCMaterial(this);">Notes</a>
+<a href="#" data-type="pdf" onclick="return openUPSCMaterial(this);">PDF</a>
+<a href="#" data-type="video" onclick="return openUPSCMaterial(this);">Video</a>
+<a href="#" data-type="book" onclick="return openUPSCMaterial(this);">Book</a>
+</div>
+
+
 <div class="buttons">
 <button class="pdf">📄 Open PDF</button>
 <button class="upload-pdf admin-only">🔐 Admin PDF Upload</button>
@@ -225,6 +380,51 @@ button{
 
 <script>
 const API = "https://ravishankar-insights-backend-1.onrender.com";
+
+
+async function openUPSCMaterial(link) {
+  try {
+    const card = link.closest(".card");
+    if (!card) return false;
+
+    const paperElement = card.querySelector("h3");
+    if (!paperElement) return false;
+
+    const paper = paperElement.textContent.trim();
+    const type = link.dataset.type;
+
+    const url =
+      API +
+      "/api/card-materials?card=UPSC" +
+      "&subject=" + encodeURIComponent("UPSC") +
+      "&paper=" + encodeURIComponent(paper) +
+      "&type=" + encodeURIComponent(type);
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!data.success || !data.materials || data.materials.length === 0) {
+      alert(type.toUpperCase() + " अभी उपलब्ध नहीं है।");
+      return false;
+    }
+
+    const material = data.materials[0];
+
+    if (material.url) {
+      window.open(API + material.url, "_blank");
+    } else if (material.fileUrl) {
+      window.open(API + material.fileUrl, "_blank");
+    } else {
+      alert("Material link उपलब्ध नहीं है।");
+    }
+
+  } catch (error) {
+    console.error("UPSC card material error:", error);
+    alert("Material खोलने में समस्या हुई।");
+  }
+
+  return false;
+}
 
 async function loadUPSCMaterials() {
   try {

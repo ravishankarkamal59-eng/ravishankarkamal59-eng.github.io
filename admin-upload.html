@@ -117,15 +117,6 @@ button:disabled{
   border-radius:9px;
   font-weight:bold;
 }
-.logout{
-  background:#d63031;
-  color:white;
-  border:0;
-  padding:10px 16px;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-}
 </style>
 </head>
 
@@ -212,95 +203,78 @@ button:disabled{
 <option value="NEET PG">🩺 NEET PG</option>
 </select>
 
-<label>Material Type चुनें</label>
+<!-- BA / MA SUBJECT + SEMESTER / PAPER -->
 
-<label>Paper / Topic चुनें</label>
-<label>Subject / Programme चुनें</label>
+<div id="baMaFields" style="display:none;">
+
+<label>Subject चुनें</label>
+
 <select id="uploadSubject">
-<option value="">📚 General / सभी Subjects</option>
-
-<option value="BA — Ancient History, Culture & Archaeology">BA — Ancient History, Culture & Archaeology</option>
-<option value="BA — Anthropology">BA — Anthropology</option>
-<option value="BA — Arabic">BA — Arabic</option>
-<option value="BA — Persian">BA — Persian</option>
-<option value="BA — Education">BA — Education</option>
-<option value="BA — English">BA — English</option>
-<option value="BA — Geography">BA — Geography</option>
-<option value="BA — Hindi">BA — Hindi</option>
-<option value="BA — Medieval & Modern History">BA — Medieval & Modern History</option>
-<option value="BA — Music">BA — Music</option>
-<option value="BA — Philosophy">BA — Philosophy</option>
-<option value="BA — Political Science">BA — Political Science</option>
-<option value="BA — Psychology">BA — Psychology</option>
-<option value="BA — Sanskrit">BA — Sanskrit</option>
-<option value="BA — Sociology">BA — Sociology</option>
-<option value="BA — Urdu">BA — Urdu</option>
-<option value="BA — Economics">BA — Economics</option>
-<option value="BA — Defence & Strategic Studies">BA — Defence & Strategic Studies</option>
-<option value="BA — Mathematics">BA — Mathematics</option>
-<option value="BA — Statistics">BA — Statistics</option>
-
-<option value="MA — Ancient History, Culture & Archaeology">MA — Ancient History, Culture & Archaeology</option>
-<option value="MA — Anthropology">MA — Anthropology</option>
-<option value="MA — Arabic">MA — Arabic</option>
-<option value="MA — Persian">MA — Persian</option>
-<option value="MA — Education">MA — Education</option>
-<option value="MA — English">MA — English</option>
-<option value="MA — Geography">MA — Geography</option>
-<option value="MA — Hindi">MA — Hindi</option>
-<option value="MA — Medieval & Modern History">MA — Medieval & Modern History</option>
-<option value="MA — Music">MA — Music</option>
-<option value="MA — Philosophy">MA — Philosophy</option>
-<option value="MA — Political Science">MA — Political Science</option>
-<option value="MA — Psychology">MA — Psychology</option>
-<option value="MA — Sanskrit">MA — Sanskrit</option>
-<option value="MA — Sociology">MA — Sociology</option>
-<option value="MA — Urdu">MA — Urdu</option>
-<option value="MA — Economics">MA — Economics</option>
-<option value="MA — Defence & Strategic Studies">MA — Defence & Strategic Studies</option>
-<option value="MA — Mathematics">MA — Mathematics</option>
-<option value="MA — Statistics">MA — Statistics</option>
-<option value="MA — Mass Communication">MA — Mass Communication</option>
-<option value="MA — Women's Studies">MA — Women's Studies</option>
-<option value="MA — Development Studies">MA — Development Studies</option>
-<option value="MA — Theatre & Film">MA — Theatre & Film</option>
-<option value="MA — Painting">MA — Painting</option>
+<option value="">-- Subject चुनें --</option>
+<option value="Political Science">Political Science</option>
+<option value="Philosophy">Philosophy</option>
+<option value="History">History</option>
+<option value="Geography">Geography</option>
+<option value="Economics">Economics</option>
+<option value="Sociology">Sociology</option>
+<option value="Hindi">Hindi</option>
+<option value="English">English</option>
+<option value="Education">Education</option>
+<option value="Other">Other</option>
 </select>
+
+<label>Semester / Paper चुनें</label>
 
 <select id="uploadPaper">
-<option value="">📚 General / सभी Papers</option>
-<option value="Semester 1 - Paper 1">Semester 1 - Paper 1</option>
-<option value="Semester 1 - Paper 2">Semester 1 - Paper 2</option>
-<option value="Semester 1 - Paper 3">Semester 1 - Paper 3</option>
-<option value="Semester 1 - Paper 4">Semester 1 - Paper 4</option>
-<option value="Semester 2 - Paper 1">Semester 2 - Paper 1</option>
-<option value="Semester 2 - Paper 2">Semester 2 - Paper 2</option>
-<option value="Semester 2 - Paper 3">Semester 2 - Paper 3</option>
-<option value="Semester 2 - Paper 4">Semester 2 - Paper 4</option>
-<option value="Semester 3 - Paper 1">Semester 3 - Paper 1</option>
-<option value="Semester 3 - Paper 2">Semester 3 - Paper 2</option>
-<option value="Semester 3 - Paper 3">Semester 3 - Paper 3</option>
-<option value="Semester 3 - Paper 4">Semester 3 - Paper 4</option>
-<option value="Semester 4 - Paper 1">Semester 4 - Paper 1</option>
-<option value="Semester 4 - Paper 2">Semester 4 - Paper 2</option>
-<option value="Semester 4 - Paper 3">Semester 4 - Paper 3</option>
-<option value="Semester 4 - Paper 4">Semester 4 - Paper 4</option>
-<option value="Semester 5 - Paper 1">Semester 5 - Paper 1</option>
-<option value="Semester 5 - Paper 2">Semester 5 - Paper 2</option>
-<option value="Semester 5 - Paper 3">Semester 5 - Paper 3</option>
-<option value="Semester 5 - Paper 4">Semester 5 - Paper 4</option>
-<option value="Semester 6 - Paper 1">Semester 6 - Paper 1</option>
-<option value="Semester 6 - Paper 2">Semester 6 - Paper 2</option>
-<option value="Semester 6 - Paper 3">Semester 6 - Paper 3</option>
-<option value="Semester 6 - Paper 4">Semester 6 - Paper 4</option>
+<option value="">-- Semester / Paper चुनें --</option>
+<option value="Semester 1">Semester 1</option>
+<option value="Semester 2">Semester 2</option>
+<option value="Semester 3">Semester 3</option>
+<option value="Semester 4">Semester 4</option>
+<option value="Semester 5">Semester 5</option>
+<option value="Semester 6">Semester 6</option>
+<option value="Paper 1">Paper 1</option>
+<option value="Paper 2">Paper 2</option>
+<option value="Paper 3">Paper 3</option>
+<option value="Paper 4">Paper 4</option>
+<option value="Paper 5">Paper 5</option>
+<option value="Paper 6">Paper 6</option>
 </select>
 
+</div>
+
+<!-- UPSC PAPER FIELDS -->
+
+<div id="upscFields" style="display:none;">
+
+<label>UPSC Paper चुनें</label>
+
+<select id="upscPaper">
+<option value="">-- UPSC Paper चुनें --</option>
+<option value="Paper 1 — General Studies">Paper 1 — General Studies</option>
+<option value="Paper 2 — CSAT">Paper 2 — CSAT</option>
+<option value="Paper A — Indian Language">Paper A — Indian Language</option>
+<option value="Paper B — English">Paper B — English</option>
+<option value="Essay">Essay</option>
+<option value="GS Paper 1 — Indian Heritage & Culture">GS Paper 1 — Indian Heritage & Culture</option>
+<option value="GS Paper 2 — Governance & Constitution">GS Paper 2 — Governance & Constitution</option>
+<option value="GS Paper 3 — Economy, Science & Technology">GS Paper 3 — Economy, Science & Technology</option>
+<option value="GS Paper 4 — Ethics & Integrity">GS Paper 4 — Ethics & Integrity</option>
+<option value="Optional Subject — Paper 1">Optional Subject — Paper 1</option>
+<option value="Optional Subject — Paper 2">Optional Subject — Paper 2</option>
+</select>
+
+</div>
+
+<label>Material Type चुनें</label>
+
 <select id="materialType">
-<option value="pdf">📄 PDF</option>
 <option value="pyq">📄 PYQ</option>
 <option value="notes">📝 Notes</option>
 <option value="syllabus">📚 Syllabus</option>
-<option value="book">📖 Book</option>
+<option value="book">📕 Book</option>
+<option value="pdf">📄 PDF</option>
+<option value="video">🎥 Video</option>
 </select>
 
 <label>PDF या Video चुनें</label>
@@ -321,38 +295,105 @@ accept="application/pdf,video/mp4,video/webm,video/quicktime"
 
 </div>
 
-<div class="card" style="margin-top:25px;">
-  <h2>🗑️ Delete Materials</h2>
-  <p>किसी भी section की uploaded PDF/Video यहाँ से delete करें।</p>
-
-  <button
-    onclick="loadDeleteMaterials()"
-    style="background:#123b5d;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer;">
-    🔄 Load Materials
-  </button>
-
-  <div id="deleteMessage" class="message"></div>
-
-  <div id="deleteList" style="margin-top:15px;">
-    Materials load करने के लिए ऊपर button दबाएँ।
-  </div>
-</div>
-
 <a class="back" href="admin-dashboard.html">
 ⬅️ Admin Dashboard
 </a>
-<button class="logout" onclick="adminLogout()">🚪 Logout</button>
 
 </div>
 
-<script>
-function adminLogout(){
-  localStorage.removeItem("adminToken");
-  window.location.replace("admin-login.html");
-}
-</script>
 
 <script>
+/* BA / MA CARD UPLOAD PREFILL */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const urlSection = (params.get("section") || "").toLowerCase();
+  const urlCard = params.get("card") || "";
+
+  if (!urlSection) return;
+
+  window.addEventListener("DOMContentLoaded", function () {
+    const sectionEl =
+      document.getElementById("uploadSection") ||
+      document.getElementById("section") ||
+      document.querySelector('[name="section"]');
+
+    const cardEl =
+      document.getElementById("uploadCard") ||
+      document.getElementById("card") ||
+      document.querySelector('[name="card"]');
+
+    if (sectionEl) {
+      sectionEl.value = urlSection;
+      sectionEl.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    if (cardEl && urlCard) {
+      cardEl.value = urlCard;
+    }
+  });
+})();
+
+
+
+function updateBaMaFields() {
+
+  const section =
+    document.getElementById("uploadSection")?.value || "";
+
+  const baMaBox =
+    document.getElementById("baMaFields");
+
+  const upscBox =
+    document.getElementById("upscFields");
+
+  if (baMaBox) {
+    baMaBox.style.display =
+      (section === "ba" || section === "ma")
+        ? "block"
+        : "none";
+  }
+
+  if (upscBox) {
+    upscBox.style.display =
+      section === "upsc"
+        ? "block"
+        : "none";
+  }
+
+  if (section !== "ba" && section !== "ma") {
+
+    const subject =
+      document.getElementById("uploadSubject");
+
+    const paper =
+      document.getElementById("uploadPaper");
+
+    if (subject) subject.value = "";
+    if (paper) paper.value = "";
+  }
+
+  if (section !== "upsc") {
+
+    const upscPaper =
+      document.getElementById("upscPaper");
+
+    if (upscPaper) upscPaper.value = "";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const section =
+    document.getElementById("uploadSection");
+
+  if (section) {
+    section.addEventListener(
+      "change",
+      updateBaMaFields
+    );
+
+    updateBaMaFields();
+  }
+});
 
 const API =
 "https://ravishankar-insights-backend-1.onrender.com";
@@ -386,16 +427,20 @@ async function uploadMaterial(){
     document.getElementById("uploadSection").value;
 
   const card =
-    document.getElementById("uploadCard").value;
+    section === "upsc"
+      ? "UPSC"
+      : (document.getElementById("uploadCard")?.value || "");
 
   const materialType =
     document.getElementById("materialType").value;
+  
+  const subject =
+    document.getElementById("uploadSubject")?.value || "";
 
   const paper =
-    document.getElementById("uploadPaper").value;
-
-  const subject =
-    document.getElementById("uploadSubject").value;
+    section === "upsc"
+      ? (document.getElementById("upscPaper")?.value || "")
+      : (document.getElementById("uploadPaper")?.value || "");
 
   const message =
     document.getElementById("uploadMessage");
@@ -410,6 +455,36 @@ async function uploadMaterial(){
   message.textContent = "";
   result.innerHTML = "";
 
+
+  if (
+    (section === "ba" || section === "ma") &&
+    !subject
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले Subject चुनें।";
+    return;
+  }
+
+  if (
+    section === "upsc" &&
+    !paper
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले UPSC Paper चुनें।";
+    return;
+  }
+
+  if (
+    (section === "ba" || section === "ma") &&
+    !paper
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले Semester / Paper चुनें।";
+    return;
+  }
 
   if(!file){
 
@@ -459,10 +534,6 @@ async function uploadMaterial(){
   const formData =
     new FormData();
 
-  // IMPORTANT:
-  // Send text fields BEFORE the file so Multer
-  // has req.body.section when choosing the upload folder.
-
   formData.append(
     "section",
     section
@@ -479,13 +550,13 @@ async function uploadMaterial(){
   );
 
   formData.append(
-    "paper",
-    paper
+    "subject",
+    subject
   );
 
   formData.append(
-    "subject",
-    subject
+    "paper",
+    paper
   );
 
   formData.append(
@@ -520,27 +591,8 @@ async function uploadMaterial(){
       );
 
 
-    const responseText =
-      await response.text();
-
-    let data = {};
-
-    try {
-
-      data = JSON.parse(responseText);
-
-    } catch(parseError) {
-
-      console.error(
-        "SERVER RESPONSE:",
-        responseText
-      );
-
-      throw new Error(
-        "Server ने JSON के बजाय HTML/text भेजा। HTTP " +
-        response.status
-      );
-    }
+    const data =
+      await response.json();
 
 
     if(response.status === 401){
@@ -594,10 +646,7 @@ async function uploadMaterial(){
         "<br><strong>📄 File:</strong> " +
         data.material.name +
 
-        "<br><strong>📂 Type:</strong> " +
-        materialType.toUpperCase() +
-
-        "<br><br>" +
+        "<br>" +
 
         "<a href=\"" +
         fileURL +
@@ -614,231 +663,18 @@ async function uploadMaterial(){
 
   }catch(error){
 
-    console.error("UPLOAD ERROR:", error);
+    console.error(error);
 
     message.style.color = "red";
 
     message.textContent =
-      "❌ Upload error: " +
-      (error.message || "Unknown error");
+      "❌ Server से connection नहीं हो पाया।";
 
   }
 
 
   button.disabled = false;
 
-}
-
-
-// =====================================
-// LOAD ALL MATERIALS FOR DELETE
-// =====================================
-
-async function loadDeleteMaterials(){
-
-  const list =
-    document.getElementById("deleteList");
-
-  const message =
-    document.getElementById("deleteMessage");
-
-  list.innerHTML = "⏳ Materials loading...";
-  message.textContent = "";
-
-  const token =
-    localStorage.getItem("adminToken");
-
-  if(!token){
-    window.location.replace("admin-login.html");
-    return;
-  }
-
-  const sections = [
-    ["ba","BA"],
-    ["ma","MA"],
-    ["upsc","UPSC"],
-    ["uppcs","UPPCS"],
-    ["net-jrf","NET JRF"],
-    ["railway","Railway"],
-    ["ssc","SSC"],
-    ["banking","Banking"],
-    ["teaching","Teaching & Education"],
-    ["armed-forces","Armed Forces"],
-    ["railway-exams","Railway Exams"],
-    ["banking-exams","Banking Exams"],
-    ["state-psc","State PSC"],
-    ["civil-defence","Civil Defence"],
-    ["law-professional","Law & Professional Exams"],
-    ["insurance","Insurance"],
-    ["up-government","UP Government Exams"],
-    ["university-law","University & Law"],
-    ["medical","Medical"],
-    ["engineering","Engineering"],
-    ["research","Research"],
-    ["police-defence","Police & Defence"]
-  ];
-
-  let html = "";
-  let total = 0;
-
-  for(const [section, title] of sections){
-
-    try{
-
-      const response =
-        await fetch(
-          API + "/api/materials/" + section
-        );
-
-      const data =
-        await response.json();
-
-      if(
-        !data.success ||
-        !Array.isArray(data.files) ||
-        data.files.length === 0
-      ){
-        continue;
-      }
-
-      html +=
-        "<div style='margin-top:20px;padding:15px;background:#f7f9fc;border-radius:10px;'>" +
-        "<h3>📚 " + title + "</h3>";
-
-      data.files.forEach(file => {
-
-        total++;
-
-        const safeName =
-          encodeURIComponent(file.name);
-
-        html +=
-          "<div style='display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;margin:8px 0;background:white;border-radius:8px;'>" +
-
-          "<span style='word-break:break-word;'>" +
-          "📄 " + file.name +
-          "</span>" +
-
-          "<button " +
-          "onclick='deleteMaterial(\"" +
-          section +
-          "\",\"" +
-          safeName +
-          "\")' " +
-          "style='background:#d63031;color:white;border:0;padding:8px 12px;border-radius:6px;cursor:pointer;'>" +
-          "🗑️ Delete" +
-          "</button>" +
-
-          "</div>";
-      });
-
-      html += "</div>";
-
-    }catch(error){
-
-      console.error(
-        "Material load error:",
-        section,
-        error
-      );
-    }
-  }
-
-  if(total === 0){
-    html =
-      "<p>अभी कोई uploaded material नहीं मिला।</p>";
-  }
-
-  list.innerHTML = html;
-}
-
-
-// =====================================
-// DELETE ONE MATERIAL
-// =====================================
-
-async function deleteMaterial(section, encodedFilename){
-
-  const token =
-    localStorage.getItem("adminToken");
-
-  if(!token){
-    window.location.replace("admin-login.html");
-    return;
-  }
-
-  const filename =
-    decodeURIComponent(encodedFilename);
-
-  const ok =
-    confirm(
-      "क्या आप यह file delete करना चाहते हैं?\\n\\n" +
-      filename
-    );
-
-  if(!ok){
-    return;
-  }
-
-  try{
-
-    const response =
-      await fetch(
-        API +
-        "/api/admin/materials/" +
-        section +
-        "/" +
-        encodedFilename,
-        {
-          method:"DELETE",
-          headers:{
-            "Authorization":
-              "Bearer " + token
-          }
-        }
-      );
-
-    const data =
-      await response.json();
-
-    if(response.status === 401){
-
-      localStorage.removeItem(
-        "adminToken"
-      );
-
-      window.location.replace(
-        "admin-login.html"
-      );
-
-      return;
-    }
-
-    if(!response.ok || !data.success){
-
-      alert(
-        "❌ " +
-        (data.message ||
-        "File delete नहीं हो पाई।")
-      );
-
-      return;
-    }
-
-    alert(
-      "✅ File successfully delete हो गई।"
-    );
-
-    loadDeleteMaterials();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ Server से connection नहीं हो पाया।"
-    );
-  }
 }
 
 </script>
