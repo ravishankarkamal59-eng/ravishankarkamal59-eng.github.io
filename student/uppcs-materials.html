@@ -1,87 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UPPCS Study Materials | The Ravishankar Insights</title>
+<link rel="stylesheet" href="materials.css">
+<title>UPPCS Materials | The Ravishankar Insights</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f7fb;
-  color:#222;
+  background:#f4f7fb;
+  color:#172033;
 }
 
 header{
-  background:linear-gradient(135deg,#123b5d,#1677ff);
+  background:linear-gradient(135deg,#07111f,#123b5d);
   color:white;
-  text-align:center;
-  padding:28px 15px;
+  padding:25px 18px;
 }
 
 header h1{
-  margin:0 0 8px;
-  font-size:28px;
-}
-
-header p{
-  margin:0;
-  opacity:.95;
+  max-width:1100px;
+  margin:auto;
 }
 
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:25px auto;
-  padding:0 15px;
+  padding:0 18px;
 }
 
-.paper{
-  background:white;
-  margin-bottom:18px;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-}
-
-.paper h2{
-  margin:0 0 14px;
+.section-title{
+  margin:30px 0 15px;
   color:#123b5d;
-  font-size:21px;
 }
 
-.links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
 }
 
-.material-link{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:9px;
-  background:#eef4ff;
-  color:#1255b5;
-  text-decoration:none;
-  font-weight:bold;
-  border:1px solid #d8e5ff;
+.card{
+  background:white;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 7px 22px rgba(0,0,0,.08);
 }
 
-.material-link:hover{
-  background:#dfeaff;
+.card h3{
+  color:#123b5d;
+  margin-bottom:12px;
 }
 
-.status{
-  margin-top:12px;
-  color:#666;
-  font-size:14px;
+.uppcs-material-links{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  gap:4px 8px !important;
+  margin:6px 0 10px !important;
+  padding:0 !important;
+}
+
+.uppcs-material-links a{
+  display:inline !important;
+  background:none !important;
+  color:#2563eb !important;
+  border:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  font-size:12px !important;
+  line-height:1.3 !important;
+  font-weight:600 !important;
+  text-decoration:underline !important;
+  white-space:nowrap !important;
+}
+
+.uppcs-material-links a:not(:last-child)::after{
+  content:" | " !important;
+  color:#64748b !important;
+  text-decoration:none !important;
+  margin:0 3px !important;
+}
+
+.uppcs-material-links a:hover{
+  color:#1d4ed8 !important;
 }
 
 .back{
   display:inline-block;
-  margin:10px 0 30px;
+  margin:25px 0 30px;
   padding:11px 16px;
   background:#123b5d;
   color:white;
@@ -94,60 +108,71 @@ header p{
 <body>
 
 <header>
-  <h1>📚 UPPCS Study Materials</h1>
-  <p>The Ravishankar Insights</p>
+  <h1>🏛️ UPPCS Study Materials</h1>
 </header>
 
 <div class="container">
 
-<div class="paper">
-<h2>UPPCS Prelims — General Studies Paper-I</h2>
-<div class="links" data-card="UPPCS Prelims GS Paper 1"></div>
+<h2 class="section-title">📘 UPPCS Prelims</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>General Studies Paper-I</h3>
+<div class="uppcs-material-links" data-card="UPPCS Prelims GS Paper 1"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Prelims — General Studies Paper-II / CSAT</h2>
-<div class="links" data-card="UPPCS Prelims GS Paper 2"></div>
+<div class="card">
+<h3>General Studies Paper-II / CSAT</h3>
+<div class="uppcs-material-links" data-card="UPPCS Prelims GS Paper 2"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Hindi</h2>
-<div class="links" data-card="UPPCS Mains General Hindi"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — Essay</h2>
-<div class="links" data-card="UPPCS Mains Essay"></div>
+<h2 class="section-title">📕 UPPCS Mains</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>General Hindi</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains General Hindi"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-I</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 1"></div>
+<div class="card">
+<h3>Essay</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains Essay"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-II</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 2"></div>
+<div class="card">
+<h3>General Studies Paper-I</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 1"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-III</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 3"></div>
+<div class="card">
+<h3>General Studies Paper-II</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 2"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-IV</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 4"></div>
+<div class="card">
+<h3>General Studies Paper-III</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 3"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-V</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 5"></div>
+<div class="card">
+<h3>General Studies Paper-IV</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 4"></div>
 </div>
 
-<div class="paper">
-<h2>UPPCS Mains — General Studies Paper-VI</h2>
-<div class="links" data-card="UPPCS Mains GS Paper 6"></div>
+<div class="card">
+<h3>General Studies Paper-V</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 5"></div>
+</div>
+
+<div class="card">
+<h3>General Studies Paper-VI</h3>
+<div class="uppcs-material-links" data-card="UPPCS Mains GS Paper 6"></div>
+</div>
+
 </div>
 
 <a class="back" href="../student-dashboard.html">⬅️ Student Dashboard</a>
@@ -156,46 +181,84 @@ header p{
 
 <script>
 
-const API =
-"https://ravishankar-insights-backend-1.onrender.com";
+const API = "https://ravishankar-insights-backend-1.onrender.com";
 
 const types = [
-  ["pyq","📄 PYQ"],
-  ["syllabus","📚 Syllabus"],
-  ["notes","📝 Notes"],
-  ["pdf","📄 PDF"],
-  ["video","🎥 Video"],
-  ["book","📕 Book"]
+  ["pyq","PYQ"],
+  ["syllabus","Syllabus"],
+  ["notes","Notes"],
+  ["pdf","PDF"],
+  ["video","Video"],
+  ["book","Book"]
 ];
 
-function createLinks(box, card){
+async function openUPPCS(link){
+
+  try{
+
+    const card = link.closest(".card");
+    const box = link.closest(".uppcs-material-links");
+
+    if(!card || !box) return false;
+
+    const cardName = box.dataset.card;
+    const type = link.dataset.type;
+
+    const url =
+      API +
+      "/api/card-materials?card=" +
+      encodeURIComponent(cardName) +
+      "&type=" +
+      encodeURIComponent(type);
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if(!data.success || !data.materials || data.materials.length === 0){
+      alert(type.toUpperCase() + " अभी उपलब्ध नहीं है।");
+      return false;
+    }
+
+    const material = data.materials[0];
+
+    if(material.url){
+      window.open(API + material.url, "_blank");
+    }
+    else if(material.fileUrl){
+      window.open(API + material.fileUrl, "_blank");
+    }
+    else{
+      alert("Material link उपलब्ध नहीं है।");
+    }
+
+  }catch(error){
+
+    console.error("UPPCS material error:", error);
+    alert("Material खोलने में समस्या हुई।");
+
+  }
+
+  return false;
+}
+
+document.querySelectorAll(".uppcs-material-links").forEach(box => {
+
+  const card = box.dataset.card;
 
   types.forEach(([type,label]) => {
 
     const a = document.createElement("a");
 
-    a.className = "material-link";
+    a.href = "#";
+    a.dataset.type = type;
     a.textContent = label;
-    a.href =
-      API +
-      "/api/card-materials?card=" +
-      encodeURIComponent(card) +
-      "&type=" +
-      encodeURIComponent(type);
-
-    a.target = "_blank";
+    a.onclick = function(){
+      return openUPPCS(this);
+    };
 
     box.appendChild(a);
 
   });
-
-}
-
-document.querySelectorAll(".links").forEach(box => {
-
-  const card = box.dataset.card;
-
-  createLinks(box,card);
 
 });
 
