@@ -494,6 +494,16 @@ async function uploadMaterial(){
 
   if (
     (section === "ba" || section === "ma") &&
+    !semester
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले Semester चुनें।";
+    return;
+  }
+
+  if (
+    (section === "ba" || section === "ma") &&
     !paper
   ) {
     message.style.color = "red";
