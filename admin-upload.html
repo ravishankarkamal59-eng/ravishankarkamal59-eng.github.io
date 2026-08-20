@@ -223,16 +223,22 @@ button:disabled{
 <option value="Other">Other</option>
 </select>
 
-<label>Semester / Paper चुनें</label>
+<label>Semester चुनें</label>
 
-<select id="uploadPaper">
-<option value="">-- Semester / Paper चुनें --</option>
+<select id="uploadSemester">
+<option value="">-- Semester चुनें --</option>
 <option value="Semester 1">Semester 1</option>
 <option value="Semester 2">Semester 2</option>
 <option value="Semester 3">Semester 3</option>
 <option value="Semester 4">Semester 4</option>
 <option value="Semester 5">Semester 5</option>
 <option value="Semester 6">Semester 6</option>
+</select>
+
+<label>Paper चुनें</label>
+
+<select id="uploadPaper">
+<option value="">-- Paper चुनें --</option>
 <option value="Paper 1">Paper 1</option>
 <option value="Paper 2">Paper 2</option>
 <option value="Paper 3">Paper 3</option>
@@ -478,11 +484,21 @@ async function uploadMaterial(){
 
   if (
     (section === "ba" || section === "ma") &&
+    !semester
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले Semester चुनें।";
+    return;
+  }
+
+  if (
+    (section === "ba" || section === "ma") &&
     !paper
   ) {
     message.style.color = "red";
     message.textContent =
-      "❌ पहले Semester / Paper चुनें।";
+      "❌ पहले Paper चुनें।";
     return;
   }
 
@@ -554,9 +570,17 @@ async function uploadMaterial(){
     subject
   );
 
+  const semester =
+    document.getElementById("uploadSemester")?.value || "";
+
   formData.append(
     "paper",
     paper
+  );
+
+  formData.append(
+    "semester",
+    semester
   );
 
   formData.append(
