@@ -281,6 +281,54 @@ button:disabled{
 
 </div>
 
+
+<!-- NET JRF SUBJECT / PAPER FIELDS -->
+<div id="netJrfFields" style="display:none;">
+
+<label>NET JRF Subject चुनें</label>
+
+<select id="netJrfSubject">
+<option value="">-- NET Subject चुनें --</option>
+<option value="Economics">Economics</option>
+<option value="Political Science">Political Science</option>
+<option value="Philosophy">Philosophy</option>
+<option value="History">History</option>
+<option value="Commerce">Commerce</option>
+<option value="Social Work">Social Work</option>
+<option value="Education">Education</option>
+<option value="Psychology">Psychology</option>
+<option value="Sociology">Sociology</option>
+<option value="Anthropology">Anthropology</option>
+<option value="Defence and Strategic Studies">Defence and Strategic Studies</option>
+<option value="Home Science">Home Science</option>
+<option value="Population Studies">Population Studies</option>
+<option value="Management">Management</option>
+<option value="Hindi">Hindi</option>
+<option value="English">English</option>
+<option value="Law">Law</option>
+<option value="Geography">Geography</option>
+<option value="Library and Information Science">Library and Information Science</option>
+<option value="Mass Communication and Journalism">Mass Communication and Journalism</option>
+<option value="Public Administration">Public Administration</option>
+<option value="Computer Science and Applications">Computer Science and Applications</option>
+<option value="Environmental Sciences">Environmental Sciences</option>
+<option value="Tourism Administration and Management">Tourism Administration and Management</option>
+<option value="Women Studies">Women Studies</option>
+<option value="Human Rights and Duties">Human Rights and Duties</option>
+<option value="Yoga">Yoga</option>
+<option value="Indian Knowledge System">Indian Knowledge System</option>
+</select>
+
+<label>NET JRF Paper चुनें</label>
+
+<select id="netJrfPaper">
+<option value="">-- NET Paper चुनें --</option>
+<option value="Paper 1 — General Paper">Paper 1 — General Paper</option>
+<option value="Paper 2">Paper 2</option>
+</select>
+
+</div>
+
 <label>Material Type चुनें</label>
 
 <select id="materialType">
@@ -433,6 +481,25 @@ const API =
   }
 })();
 
+function updateNetJrfFields(){
+
+  const section =
+    document.getElementById("uploadSection")?.value || "";
+
+  const netFields =
+    document.getElementById("netJrfFields");
+
+  if(netFields){
+    netFields.style.display =
+      section === "net-jrf" ? "block" : "none";
+  }
+}
+
+document.getElementById("uploadSection")
+  ?.addEventListener("change", updateNetJrfFields);
+
+updateNetJrfFields();
+
 async function uploadMaterial(){
 
   const file =
@@ -440,6 +507,12 @@ async function uploadMaterial(){
 
   const section =
     document.getElementById("uploadSection").value;
+
+  const netSubject =
+    document.getElementById("netJrfSubject")?.value || "";
+
+  const netPaper =
+    document.getElementById("netJrfPaper")?.value || "";
 
   const card =
     section === "upsc"
@@ -450,12 +523,18 @@ async function uploadMaterial(){
     document.getElementById("materialType").value;
   
   const subject =
-    document.getElementById("uploadSubject")?.value || "";
+    section === "net-jrf"
+      ? netSubject
+      : (document.getElementById("uploadSubject")?.value || "");
 
   const paper =
-    section === "upsc"
-      ? (document.getElementById("upscPaper")?.value || "")
-      : (document.getElementById("uploadPaper")?.value || "");
+    section === "net-jrf"
+      ? netPaper
+      : (
+          section === "upsc"
+            ? (document.getElementById("upscPaper")?.value || "")
+            : (document.getElementById("uploadPaper")?.value || "")
+        );
 
   const message =
     document.getElementById("uploadMessage");
@@ -518,6 +597,27 @@ async function uploadMaterial(){
     message.style.color = "red";
     message.textContent =
       "❌ पहले Paper चुनें।";
+    return;
+  }
+
+  if (
+    section === "net-jrf" &&
+    !netPaper
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ पहले NET JRF Paper चुनें।";
+    return;
+  }
+
+  if (
+    section === "net-jrf" &&
+    netPaper === "Paper 2" &&
+    !netSubject
+  ) {
+    message.style.color = "red";
+    message.textContent =
+      "❌ Paper 2 के लिए NET Subject चुनें।";
     return;
   }
 
@@ -587,6 +687,12 @@ async function uploadMaterial(){
   formData.append(
     "subject",
     subject
+  );
+
+  formData.append(
+    "semester",
+    section === "net-jrf" ? "" :
+      (document.getElementById("uploadSemester")?.value || "")
   );
 
   const semester =

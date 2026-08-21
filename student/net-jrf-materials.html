@@ -1,189 +1,91 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NET JRF Materials | The Ravishankar Insights</title>
+<title>NET JRF Materials — The Ravishankar Insights</title>
 
 <style>
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
 }
 
 body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
   color:#172033;
 }
 
 header{
-  background:linear-gradient(135deg,#111827,#7c3aed);
-  color:white;
-  padding:25px 18px;
+  padding:28px 15px;
   text-align:center;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
 }
 
 header h1{
-  font-size:25px;
+  margin:0 0 8px;
+  font-size:30px;
 }
 
 header p{
-  margin-top:7px;
-  opacity:.85;
+  margin:0;
+  opacity:.9;
 }
 
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px 15px 50px;
+  width:min(1100px,94%);
+  margin:25px auto;
 }
 
-.back{
-  display:inline-block;
-  text-decoration:none;
-  color:#2563eb;
-  font-weight:bold;
-  margin-bottom:20px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-  gap:20px;
-}
-
-.card{
+.net-paper{
   background:white;
-  border-radius:20px;
-  padding:23px;
-  box-shadow:0 10px 30px rgba(15,23,42,.10);
-  border-left:5px solid #7c3aed;
-}
-
-.icon{
-  font-size:42px;
-  margin-bottom:12px;
-}
-
-.card h2{
-  font-size:20px;
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#64748b;
-  line-height:1.5;
-  min-height:45px;
-}
-
-.buttons{
-  display:grid;
-  gap:10px;
-  margin-top:18px;
-}
-
-.open{
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  padding:12px;
-  border-radius:10px;
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
-}
-
-.open:hover{
-  background:#1d4ed8;
-}
-
-.upload-label{
-  display:block;
-  text-align:center;
-  padding:12px;
-  border-radius:10px;
-  background:#16a34a;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.upload-label:hover{
-  background:#15803d;
-}
-
-input[type="file"]{
-  display:none;
-}
-
-.file-name{
-  font-size:13px;
-  color:#64748b;
-  text-align:center;
-  word-break:break-word;
-}
-
-footer{
-  margin-top:30px;
+  margin-bottom:22px;
   padding:22px;
-  text-align:center;
-  background:#111827;
-  color:white;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-@media(max-width:600px){
-  header h1{
-    font-size:21px;
-  }
-
-  .card{
-    padding:20px;
-  }
-}
-</style>
-<style>.admin-only{display:none !important;}</style>
-
-
-
-<!-- NET TEXT LINKS STYLE -->
-<style id="NET-TEXT-LINKS-STYLE">
-.net-text-links{
-  margin:4px 0 12px;
-  padding:0;
-  font-size:13px;
-  line-height:1.7;
-}
-
-.net-text-links a{
-  display:inline;
-  margin:0 3px;
-  padding:0;
-  text-decoration:underline;
-  background:none;
-  border:0;
-  box-shadow:none;
+.net-paper h2{
+  margin-top:0;
+  color:#1d4ed8;
 }
 
 .net-subject{
-  margin:12px 0;
-  padding:8px 0;
+  margin:14px 0;
+  padding:17px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  background:#fafcff;
 }
 
 .net-subject h3{
-  margin:0 0 3px;
-  font-size:17px;
+  margin:0 0 10px;
+  font-size:19px;
 }
 
-#net-paper2-subjects{
-  margin-top:20px;
+.net-links{
+  line-height:2;
+  font-weight:600;
+}
+
+.net-links a{
+  color:#2563eb;
+  text-decoration:none;
+}
+
+.net-links a:hover{
+  text-decoration:underline;
+}
+
+.status{
+  margin-top:8px;
+  font-size:13px;
+  color:#64748b;
 }
 </style>
-<!-- END NET TEXT LINKS STYLE -->
-
 </head>
 
 <body>
@@ -193,614 +95,563 @@ footer{
   <p>The Ravishankar Insights</p>
 </header>
 
-<main class="container">
+<div class="container">
 
-<a class="back" href="student-dashboard.html">
-  ← Back to Student Dashboard
-</a>
-
-<div class="grid">
-
-<!-- NET PAPER 1 -->
-
-<div class="card">
-  <div class="icon">📘</div>
-
-  <h2>NET Paper 1</h2>
-
-  <p>
-    Teaching, Research Aptitude,
-    Reasoning, ICT और अन्य topics.
-  </p>
-
-  <div class="buttons">
-
-    <label class="upload-label">
-      📄 Add PDF
-      <input
-        type="file"
-        accept="application/pdf"
-        onchange="showFile(this,'paper1Pdf')"
-      >
-    </label>
-
-    <div id="paper1Pdf" class="file-name">
-      No PDF selected
-
-<div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
-</div>
-</div>
-
-    <label class="upload-label">
-      🎥 Video Upload
-      <input
-        type="file"
-        accept="video/*"
-        onchange="showFile(this,'paper1Video')"
-      >
-    </label>
-
-    <div id="paper1Video" class="file-name">
-      No video selected
-    </div>
-
+<section class="net-paper">
+  <h2>📘 Paper 1 — General Paper</h2>
+  <div class="net-links"
+       data-section="net-jrf"
+       data-paper="Paper 1 — General Paper"
+       data-subject="">
+    <a data-material="pyq" href="net-jrf-pyq.html">PYQ</a> |
+    <a data-material="syllabus" href="net-jrf-syllabus.html">Syllabus</a> |
+    <a data-material="notes" href="net-jrf-notes.html">Notes</a> |
+    <a data-material="pdf" href="net-jrf-pdf.html">PDF</a> |
+    <a data-material="video" href="net-jrf-video.html">Video</a> |
+    <a data-material="book" href="net-jrf-books.html">Books</a>
   </div>
-</div>
+</section>
 
-
-<!-- POLITICAL SCIENCE PAPER 2 -->
-
-<div class="card">
-  <div class="icon">📕</div>
-
-  <h2>Political Science Paper 2</h2>
-
-  <p>
-    UGC NET Political Science
-    Paper 2 study material.
-  </p>
-
-  <div class="buttons">
-
-    <label class="upload-label">
-      📄 Add PDF
-      <input
-        type="file"
-        accept="application/pdf"
-        onchange="showFile(this,'paper2Pdf')"
-      >
-    </label>
-
-    <div id="paper2Pdf" class="file-name">
-      No PDF selected
-    </div>
-
-    <label class="upload-label">
-      🎥 Video Upload
-      <input
-        type="file"
-        accept="video/*"
-        onchange="showFile(this,'paper2Video')"
-      >
-    </label>
-
-    <div id="paper2Video" class="file-name">
-      No video selected
-    </div>
-
-  </div>
-</div>
-
-
-<!-- NOTES -->
-
-<div class="card">
-  <div class="icon">📝</div>
-
-  <h2>NET JRF Notes</h2>
-
-  <p>
-    NET/JRF Notes और study material.
-  </p>
-
-  <div class="buttons">
-
-    <label class="upload-label">
-      📄 Add PDF
-      <input
-        type="file"
-        accept="application/pdf"
-        onchange="showFile(this,'notesPdf')"
-      >
-    </label>
-
-    <div id="notesPdf" class="file-name">
-      No PDF selected
-    </div>
-
-    <label class="upload-label">
-      🎥 Video Upload
-      <input
-        type="file"
-        accept="video/*"
-        onchange="showFile(this,'notesVideo')"
-      >
-    </label>
-
-    <div id="notesVideo" class="file-name">
-      No video selected
-    </div>
-
-  </div>
-</div>
-
-
-<!-- PYQ -->
-
-<div class="card">
-  <div class="icon">📚</div>
-
-  <h2>NET JRF PYQ</h2>
-
-  <p>
-    Previous Year Questions और
-    practice material.
-  </p>
-
-  <div class="buttons">
-
-    <label class="upload-label">
-      📄 Add PDF
-      <input
-        type="file"
-        accept="application/pdf"
-        onchange="showFile(this,'pyqPdf')"
-      >
-    </label>
-
-    <div id="pyqPdf" class="file-name">
-      No PDF selected
-    </div>
-
-    <label class="upload-label">
-      🎥 Video Upload
-      <input
-        type="file"
-        accept="video/*"
-        onchange="showFile(this,'pyqVideo')"
-      >
-    </label>
-
-    <div id="pyqVideo" class="file-name">
-      No video selected
-    </div>
-
-  </div>
-</div>
-
-
-<!-- SYLLABUS -->
-
-<div class="card">
-  <div class="icon">📋</div>
-
-  <h2>NET JRF Syllabus</h2>
-
-  <p>
-    NET/JRF syllabus और
-    preparation structure.
-  </p>
-
-  <div class="buttons">
-
-    <a class="open" href="../net-jrf-syllabus.html">
-      📖 Open
-    </a>
-
-    <label class="upload-label">
-      📄 Add PDF
-      <input
-        type="file"
-        accept="application/pdf"
-        onchange="showFile(this,'syllabusPdf')"
-      >
-    </label>
-
-    <div id="syllabusPdf" class="file-name">
-      No PDF selected
-    </div>
-
-    <label class="upload-label">
-      🎥 Video Upload
-      <input
-        type="file"
-        accept="video/*"
-        onchange="showFile(this,'syllabusVideo')"
-      >
-    </label>
-
-    <div id="syllabusVideo" class="file-name">
-      No video selected
-    </div>
-
-  </div>
-</div>
-
-</div>
-
-
-
-<!-- NET PAPER 2 SUBJECTS -->
-<section id="net-paper2-subjects">
-  <h2>NET Paper 2 — Subjects</h2>
+<section class="net-paper">
+  <h2>📚 Paper 2 — Subjects</h2>
 
   <div class="net-subject">
     <h3>Economics</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Economics">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Political Science</h3>
-    <div class="net-text-links">
-  <a href="../net-unit1-pyq.html" data-net-material="pyq">PYQ</a> |
-  <a href="../net-unit1-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-unit1-notes.html" data-net-material="notes">Notes</a> |
-  <a href="../net-unit1-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Political Science">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Philosophy</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Philosophy">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>History</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="History">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Commerce</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Commerce">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Social Work</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Social Work">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Education</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Education">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Psychology</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Psychology">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Sociology</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Sociology">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Anthropology</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Anthropology">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Defence and Strategic Studies</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Defence and Strategic Studies">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Home Science</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Home Science">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Population Studies</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Population Studies">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Management</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Management">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Hindi</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Hindi">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>English</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="English">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Law</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Law">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Geography</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Geography">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Library and Information Science</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Library and Information Science">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Mass Communication and Journalism</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Mass Communication and Journalism">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Public Administration</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Public Administration">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Computer Science and Applications</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Computer Science and Applications">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Environmental Sciences</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Environmental Sciences">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Tourism Administration and Management</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Tourism Administration and Management">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Women Studies</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Women Studies">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Human Rights and Duties</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Human Rights and Duties">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Yoga</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Yoga">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
   <div class="net-subject">
     <h3>Indian Knowledge System</h3>
-    <div class="net-text-links">
-  <a href="../net-jrf-syllabus.html" data-net-material="syllabus">Syllabus</a> |
-  <a href="../net-jrf-pdf.html" data-net-material="pdf">PDF</a> |
-  <a href="../net-jrf-video.html" data-net-material="video">Video</a> |
-  <a href="../net-jrf-books.html" data-net-material="books">Books</a>
-</div>
+
+    <div class="net-links"
+         data-section="net-jrf"
+         data-paper="Paper 2"
+         data-subject="Indian Knowledge System">
+      <a data-material="pyq" href="#">PYQ</a> |
+      <a data-material="syllabus" href="#">Syllabus</a> |
+      <a data-material="notes" href="#">Notes</a> |
+      <a data-material="pdf" href="#">PDF</a> |
+      <a data-material="video" href="#">Video</a> |
+      <a data-material="book" href="#">Books</a>
+    </div>
   </div>
 
 </section>
-<!-- END NET PAPER 2 SUBJECTS -->
 
-</main>
-
-<footer>
-  © 2026 The Ravishankar Insights
-</footer>
-
+</div>
 
 <script>
+const API =
+  "https://ravishankar-insights-backend-1.onrender.com";
 
-function showFile(input, outputId){
+async function loadNetMaterials(){
 
-  const output =
-    document.getElementById(outputId);
+  const blocks =
+    document.querySelectorAll(".net-links");
 
-  if(input.files && input.files.length > 0){
+  for(const block of blocks){
 
-    output.textContent =
-      "Selected: " + input.files[0].name;
+    const section =
+      block.dataset.section || "net-jrf";
 
-  }else{
+    const paper =
+      block.dataset.paper || "";
 
-    output.textContent =
-      "No file selected";
+    const subject =
+      block.dataset.subject || "";
 
-  }
+    try{
 
-}
+      const response =
+        await fetch(
+          API +
+          "/api/materials/" +
+          encodeURIComponent(section)
+        );
 
-</script>
+      if(!response.ok) continue;
 
+      const data =
+        await response.json();
 
-<script>
-const API = "https://ravishankar-insights-backend-1.onrender.com";
+      const files =
+        Array.isArray(data.files)
+          ? data.files
+          : [];
 
-async function loadNETJRFMaterials() {
-  try {
-    const response = await fetch(API + "/api/materials/net-jrf");
-    const data = await response.json();
+      const links =
+        block.querySelectorAll(
+          "a[data-material]"
+        );
 
-    if (!data.success) return;
+      links.forEach(link => {
 
-    const pdfButtons = document.querySelectorAll(".pdf");
+        const type =
+          link.dataset.material;
 
-    if (!data.files || data.files.length === 0) {
-      pdfButtons.forEach(btn => {
-        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
-        btn.disabled = true;
+        const match =
+          files.find(file =>
+            String(file.paper || "") === paper &&
+            String(file.subject || "") === subject &&
+            String(file.materialType || "") === type
+          );
+
+        if(match && match.url){
+
+          link.href =
+            API + match.url;
+
+          link.target = "_blank";
+
+          link.textContent =
+            link.textContent + " ✓";
+
+        }
+
       });
-      return;
+
+    }catch(error){
+
+      console.error(
+        "NET material load error:",
+        error
+      );
+
     }
 
-    const pdfFiles = data.files.filter(file =>
-      file.name.toLowerCase().endsWith(".pdf")
-    );
-
-    pdfButtons.forEach(btn => {
-      if (pdfFiles.length > 0) {
-        btn.onclick = () => {
-          window.open(API + pdfFiles[0].url, "_blank");
-        };
-      } else {
-        btn.textContent = "📄 PDF अभी उपलब्ध नहीं";
-        btn.disabled = true;
-      }
-    });
-
-  } catch (error) {
-    console.error("net-jrf materials error:", error);
   }
+
 }
 
-document.addEventListener(
-  "DOMContentLoaded",
-  loadNETJRFMaterials
-);
+loadNetMaterials();
 </script>
-
 
 </body>
 </html>
