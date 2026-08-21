@@ -536,6 +536,9 @@ async function uploadMaterial(){
             : (document.getElementById("uploadPaper")?.value || "")
         );
 
+  const semester =
+    document.getElementById("uploadSemester")?.value || "";
+
   const message =
     document.getElementById("uploadMessage");
 
@@ -567,16 +570,6 @@ async function uploadMaterial(){
     message.style.color = "red";
     message.textContent =
       "❌ पहले UPSC Paper चुनें।";
-    return;
-  }
-
-  if (
-    (section === "ba" || section === "ma") &&
-    !semester
-  ) {
-    message.style.color = "red";
-    message.textContent =
-      "❌ पहले Semester चुनें।";
     return;
   }
 
@@ -691,21 +684,12 @@ async function uploadMaterial(){
 
   formData.append(
     "semester",
-    section === "net-jrf" ? "" :
-      (document.getElementById("uploadSemester")?.value || "")
+    semester
   );
-
-  const semester =
-    document.getElementById("uploadSemester")?.value || "";
 
   formData.append(
     "paper",
     paper
-  );
-
-  formData.append(
-    "semester",
-    semester
   );
 
   formData.append(
