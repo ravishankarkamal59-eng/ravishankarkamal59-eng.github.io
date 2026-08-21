@@ -625,8 +625,16 @@ async function loadNetMaterials(){
 
         if(match && match.url){
 
+          const studentSession =
+            localStorage.getItem("studentSession") || "";
+
           link.href =
-            API + match.url;
+            API +
+            match.url +
+            (studentSession
+              ? "?studentSession=" +
+                encodeURIComponent(studentSession)
+              : "");
 
           link.target = "_blank";
 
