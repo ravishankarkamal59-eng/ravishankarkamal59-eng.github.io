@@ -2396,4 +2396,76 @@ html body footer{
 html body #contact{
   margin-top:0!important;
 }
+
+/* BIG MOBILE MENU BUTTON */
+.simple-main-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 5%;
+  background:#ffffff;
+  box-shadow:0 3px 15px rgba(0,0,0,.12);
+  position:relative;
+  z-index:10000;
+}
+
+.simple-logo{
+  font-size:18px;
+  font-weight:800;
+}
+
+.simple-menu-button{
+  width:52px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#1261c9;
+  color:#fff;
+  border-radius:12px;
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+  user-select:none;
+  box-shadow:0 4px 12px rgba(18,97,201,.35);
+  border:2px solid rgba(255,255,255,.8);
+}
+
+.simple-menu-button:active{
+  transform:scale(.94);
+}
+
+.side-menu{
+  position:absolute;
+  top:72px;
+  right:5%;
+  z-index:10001;
+  display:none;
+  width:min(280px,90vw);
+  background:#fff;
+  border-radius:14px;
+  padding:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.20);
+}
+
+.side-menu.show{
+  display:block;
+}
+
+.side-menu a{
+  display:block;
+  padding:14px 16px;
+  margin:2px 0;
+  border-radius:10px;
+  color:#172b4d;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:700;
+}
+
+.side-menu a:hover{
+  background:#eef5ff;
+}
+
 </style>
