@@ -194,6 +194,7 @@ footer{
 }
 
 .side-menu-logo{
+  color:#1261c9 !important;
   padding:12px 14px;
   margin-bottom:4px;
   font-size:17px;
@@ -2295,12 +2296,7 @@ footer a[href="terms.html"]{
 <script>
 function toggleMenu(){
   const menu=document.getElementById("menuBox");
-
-  if(menu.style.display==="block"){
-    menu.style.display="none";
-  }else{
-    menu.style.display="block";
-  }
+  menu.classList.toggle("show");
 }
 </script>
 
