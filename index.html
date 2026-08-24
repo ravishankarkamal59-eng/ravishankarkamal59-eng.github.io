@@ -237,18 +237,18 @@ footer{
 @media(max-width:650px){.founder-card{flex-direction:column;text-align:center}.founder-card img{width:145px;height:145px}}
 </style>
 <style>
-.professional-nav{position:sticky;top:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:#ffffffee;backdrop-filter:blur(12px);box-shadow:0 3px 18px #0001}
+
 .nav-logo{font-weight:800;font-size:20px;color:#123d70}
-.professional-nav nav{display:flex;align-items:center;gap:8px}
-.professional-nav nav a{text-decoration:none;color:#172b4d;font-weight:600;padding:9px 12px;border-radius:9px}
-.professional-nav nav a:hover{background:#eaf2ff}
-.professional-nav .nav-login{background:#1261c9;color:white}
+
+
+
+
 .nav-toggle{display:none;border:0;background:transparent;font-size:25px;cursor:pointer}
 @media(max-width:800px){
 .nav-toggle{display:block}
-.professional-nav nav{display:none;position:absolute;top:65px;left:0;right:0;flex-direction:column;align-items:stretch;padding:12px 5%;background:white;box-shadow:0 8px 20px #0002}
-.professional-nav nav.show{display:flex}
-.professional-nav nav a{padding:13px}
+
+
+
 }
 </style>
 <style>
@@ -547,20 +547,7 @@ a[href*="/admin"]:not(#mainAdminLink){
 </div>
 <!-- END GOOGLE ADSENSE SLOT -->
 
-<header class="professional-nav">
-<div class="nav-logo">📚 The Ravishankar Insights</div>
-<button class="nav-toggle" onclick="toggleProfessionalMenu()">☰</button>
-<nav id="mainNav">
-<a href="index.html">🏠 Home</a>
-<a href="#student">🎓 Student</a>
-<a href="#syllabus">📚 Syllabus</a>
-<a href="#updates">📢 Updates</a>
-<a href="#about">ℹ️ About</a>
-<a href="#contact">📞 Contact</a>
-<a href="login.html" class="nav-login">🔐 Login</a>
-<a href="admin-login.html" class="nav-admin" id="mainAdminLink">🔑 Admin</a>
-</nav>
-</header>
+
 
 <header>
   <div class="logo">📚 The Ravishankar Insights</div>
@@ -568,12 +555,11 @@ a[href*="/admin"]:not(#mainAdminLink){
 </header>
 
 <div id="menuBox" class="side-menu">
-  <a href="login.html">🔐 Student Login</a>
-  <a href="register.html">📝 Student Register</a>
-  <a href="ravishankar-ai.html">🤖 Ravishankar AI</a>
-  <a href="#about">ℹ️ About</a>
+  <a href="index.html">🏠 Home</a>
   <a href="#student">🎓 Student</a>
   <a href="#syllabus">📚 Syllabus</a>
+  <a href="ravishankar-ai.html">🤖 Ravishankar AI</a>
+  <a href="admin-login.html">🔑 Admin</a>
 </div>
 
 <section class="hero">
@@ -631,6 +617,42 @@ a[href*="/admin"]:not(#mainAdminLink){
 <p>The Ravishankar Insights एक educational platform है जहाँ विद्यार्थियों को BA, MA, UPSC, UPPCS, NET-JRF, Railway, SSC, Banking और अन्य परीक्षाओं से संबंधित अध्ययन सामग्री उपलब्ध कराने का उद्देश्य है।</p>
 <p>यहाँ Study Material, Notes, Previous Year Papers, Syllabus और आगे चलकर Video Lectures जैसी सुविधाएँ उपलब्ध होंगी।</p>
 </div>
+</section>
+
+
+<!-- PREMIUM HOMEPAGE TOP -->
+<section class="premium-top">
+
+  <div class="premium-banner">
+    <img src="images/founder.jpg" alt="Ravishankar">
+    <div class="premium-banner-text">
+      <div class="premium-banner-small">WELCOME TO</div>
+      <h1>The Ravishankar Insights</h1>
+    </div>
+  </div>
+
+  <div class="premium-founder">
+    <img src="images/founder.jpg" alt="Ravishankar - Founder">
+    <div class="premium-founder-name">Ravishankar</div>
+    <div class="premium-founder-role">Founder & Educational Platform</div>
+  </div>
+
+  <div class="premium-intro">
+    <div class="intro-badge">📚 शिक्षा • अध्ययन • सफलता</div>
+    <h2>आपका स्वागत है</h2>
+    <p>
+      The Ravishankar Insights में आपका स्वागत है।
+      यहाँ विभिन्न courses, competitive examinations,
+      study material, notes, previous year papers और syllabus
+      उपलब्ध हैं।
+    </p>
+
+    <div class="buttons">
+      <a class="btn login-btn" href="login.html">🔐 Student Login</a>
+      <a class="btn syllabus-btn" href="#syllabus">📚 Syllabus</a>
+    </div>
+  </div>
+
 </section>
 
 <section id="student" class="student-section home-clean-hide">
