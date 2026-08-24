@@ -1292,17 +1292,19 @@ body.route-student #student{
 <body>
 <header class="simple-main-header">
   <div class="simple-logo">📚 The Ravishankar Insights</div>
-  <div class="simple-menu-button" onclick="toggleNewMenu()">⋮</div>
+  <div class="simple-menu-button" onclick="toggleMenu()">☰</div>
 </header>
 
-<div id="newMenuBox" class="new-side-menu">
-  <div class="new-menu-logo">📚 The Ravishankar Insights</div>
+<div id="menuBox" class="side-menu">
+  <div class="side-menu-logo"><span class="menu-logo-text">📚 The Ravishankar Insights</span></div>
   <a href="index.html">🏠 Home</a>
   <a href="#student">🎓 Student</a>
   <a href="#syllabus">📚 Syllabus</a>
   <a href="ravishankar-ai.html">🤖 Ravishankar AI</a>
   <a href="admin-login.html">🔑 Admin</a>
 </div>
+
+
 
 <!-- PREMIUM HOMEPAGE TOP -->
 <section class="premium-top">
@@ -2388,12 +2390,6 @@ routeFromHash();
 </script>
 
 
-
-<script>
-function toggleNewMenu(){
-  document.getElementById("newMenuBox").classList.toggle("show");
-}
-</script>
 </body>
 </html>
 
@@ -2488,47 +2484,4 @@ html body #contact{
   background:#eef5ff;
 }
 
-
-.new-side-menu{
-  display:none;
-  position:fixed;
-  top:70px;
-  right:15px;
-  z-index:99999;
-  width:min(280px,90vw);
-  background:#fff;
-  border-radius:14px;
-  padding:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,.20);
-}
-
-.new-side-menu.show{
-  display:block !important;
-}
-
-.new-menu-logo{
-  display:block !important;
-  color:#1261c9 !important;
-  -webkit-text-fill-color:#1261c9 !important;
-  font-size:17px;
-  font-weight:800;
-  padding:12px 14px;
-  border-bottom:1px solid #e5e7eb;
-}
-
-.new-side-menu a{
-  display:block;
-  padding:14px 16px;
-  margin:2px 0;
-  border-radius:10px;
-  color:#172b4d !important;
-  -webkit-text-fill-color:#172b4d !important;
-  text-decoration:none;
-  font-size:16px;
-  font-weight:700;
-}
-
-.new-side-menu a:hover{
-  background:#eef5ff;
-}
 </style>
