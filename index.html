@@ -194,13 +194,15 @@ footer{
 }
 
 .side-menu-logo{
-  color:#1261c9 !important;
   padding:12px 14px;
   margin-bottom:4px;
   font-size:17px;
   font-weight:800;
-  color:#1261c9;
+  color:#1261c9 !important;
   border-bottom:1px solid #e5e7eb;
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
 }
 
 .side-menu a{
@@ -2444,11 +2446,10 @@ html body #contact{
 
 .side-menu{
   display:none;
-  position:absolute;
-  top:72px;
-  right:5%;
+  position:fixed;
+  top:70px;
+  right:15px;
   z-index:10001;
-  display:none;
   width:min(280px,90vw);
   background:#fff;
   border-radius:14px;
