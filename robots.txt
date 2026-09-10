@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://ravishankarkamal59-eng.github.io/sitemap.xml
