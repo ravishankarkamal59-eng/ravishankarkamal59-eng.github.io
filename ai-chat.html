@@ -166,18 +166,18 @@
       renderMsg(question, 'user');
       showTyping();
 
-      const systemPrompt = `तुम The Ravishankar Insights वेबसाइट के AI सहायक हो। भारत के सरकारी परीक्षाओं (UPSC, BPSC, SSC, Railway, Banking, Police) की तैयारी करने वाले छात्रों की मदद करते हो। हमेशा हिंदी में जवाब दो। जवाब साफ, छोटा और उपयोगी हो।`;
+      const systemPrompt = 'तुम The Ravishankar Insights वेबसाइट के AI सहायक हो। भारत के सरकारी परीक्षाओं (UPSC, BPSC, SSC, Railway, Banking, Police) की तैयारी करने वाले छात्रों की मदद करते हो। हमेशा हिंदी में जवाब दो। जवाब साफ, छोटा और उपयोगी हो।';
 
       let answer = null;
       let errorMsg = '';
 
-      // === पहला प्रयास: Pollinations OpenAI-compatible endpoint ===
+      // === प्रयास 1: KeylessAI (Cloudflare Worker - CORS open, no key) ===
       try {
-        const res1 = await fetch('https://text.pollinations.ai/v1/chat/completions', {
+        const res1 = await fetch('https://keylessai.thryx.workers.dev/v1/chat/completions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: 'openai-fast',
+            model: 'gpt-4o',
             messages: [
               { role: 'system', content: systemPrompt },
               { role: 'user', content: question }
@@ -188,18 +188,18 @@
           const data1 = await res1.json();
           answer = data1.choices?.[0]?.message?.content;
         } else {
-          errorMsg += 'Pollinations: HTTP ' + res1.status + '. ';
+          errorMsg += 'KeylessAI: HTTP ' + res1.status + '. ';
         }
-      } catch (e1) { errorMsg += 'Pollinations fail. '; }
+      } catch (e1) { errorMsg += 'KeylessAI fail. '; }
 
-      // === दूसरा प्रयास: Keyless Kilo Gateway (बैकअप) ===
+      // === प्रयास 2: Pollinations (fallback) ===
       if (!answer) {
         try {
-          const res2 = await fetch('https://api.kilo.ai/api/gateway/chat/completions', {
+          const res2 = await fetch('https://text.pollinations.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              model: 'kilo-auto/free',
+              model: 'openai',
               messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user', content: question }
@@ -210,9 +210,30 @@
             const data2 = await res2.json();
             answer = data2.choices?.[0]?.message?.content;
           } else {
-            errorMsg += 'Kilo: HTTP ' + res2.status + '. ';
+            errorMsg += 'Pollinations: HTTP ' + res2.status + '. ';
           }
-        } catch (e2) { errorMsg += 'Kilo fail. '; }
+        } catch (e2) { errorMsg += 'Pollinations fail. '; }
+      }
+
+      // === प्रयास 3: ApiAirforce (fallback) ===
+      if (!answer) {
+        try {
+          const res3 = await fetch('https://api.airforce/v1/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              model: 'gpt-4o-mini',
+              messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: question }
+              ]
+            })
+          });
+          if (res3.ok) {
+            const data3 = await res3.json();
+            answer = data3.choices?.[0]?.message?.content;
+          }
+        } catch (e3) {}
       }
 
       hideTyping();
@@ -221,7 +242,7 @@
         renderMsg(answer.trim(), 'ai');
         aiStatus.textContent = 'तैयार है - कुछ और पूछें';
       } else {
-        renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत आ रही है। कृपया दोबारा कोशिश करें।' + (errorMsg ? '\n\n(तकनीकी: ' + errorMsg + ')' : ''), 'ai');
+        renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत आ रही है। कृपया दोबारा कोशिश करें।', 'ai');
         aiStatus.textContent = 'कुछ गड़बड़ हुई';
       }
 
