@@ -168,40 +168,63 @@
 
       const systemPrompt = `तुम The Ravishankar Insights वेबसाइट के AI सहायक हो। भारत के सरकारी परीक्षाओं (UPSC, BPSC, SSC, Railway, Banking, Police) की तैयारी करने वाले छात्रों की मदद करते हो। हमेशा हिंदी में जवाब दो। जवाब साफ, छोटा और उपयोगी हो।`;
 
+      let answer = null;
+      let errorMsg = '';
+
+      // === पहला प्रयास: Pollinations OpenAI-compatible endpoint ===
       try {
-        const prompt = encodeURIComponent(systemPrompt + '\n\nछात्र का सवाल: ' + question);
-        const response = await fetch('https://text.pollinations.ai/' + prompt, {
-          method: 'GET'
+        const res1 = await fetch('https://text.pollinations.ai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'openai-fast',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: question }
+            ]
+          })
         });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const text = await response.text();
-        hideTyping();
-        renderMsg(text.trim(), 'ai');
-        aiStatus.textContent = 'तैयार है - कुछ और पूछें';
-      } catch (err) {
-        hideTyping();
-        // Fallback: POST endpoint
+        if (res1.ok) {
+          const data1 = await res1.json();
+          answer = data1.choices?.[0]?.message?.content;
+        } else {
+          errorMsg += 'Pollinations: HTTP ' + res1.status + '. ';
+        }
+      } catch (e1) { errorMsg += 'Pollinations fail. '; }
+
+      // === दूसरा प्रयास: Keyless Kilo Gateway (बैकअप) ===
+      if (!answer) {
         try {
-          const res2 = await fetch('https://text.pollinations.ai/openai', {
+          const res2 = await fetch('https://api.kilo.ai/api/gateway/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              model: 'openai',
+              model: 'kilo-auto/free',
               messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user', content: question }
               ]
             })
           });
-          const data = await res2.json();
-          const ans = data.choices?.[0]?.message?.content || 'माफ़ करें, जवाब नहीं मिला।';
-          renderMsg(ans, 'ai');
-          aiStatus.textContent = 'तैयार है';
-        } catch (e2) {
-          renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत है। दोबारा कोशिश करें।', 'ai');
-          aiStatus.textContent = 'कुछ गड़बड़ हुई';
-        }
+          if (res2.ok) {
+            const data2 = await res2.json();
+            answer = data2.choices?.[0]?.message?.content;
+          } else {
+            errorMsg += 'Kilo: HTTP ' + res2.status + '. ';
+          }
+        } catch (e2) { errorMsg += 'Kilo fail. '; }
       }
+
+      hideTyping();
+
+      if (answer && answer.trim()) {
+        renderMsg(answer.trim(), 'ai');
+        aiStatus.textContent = 'तैयार है - कुछ और पूछें';
+      } else {
+        renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत आ रही है। कृपया दोबारा कोशिश करें।' + (errorMsg ? '\n\n(तकनीकी: ' + errorMsg + ')' : ''), 'ai');
+        aiStatus.textContent = 'कुछ गड़बड़ हुई';
+      }
+
       sendBtn.disabled = false;
       userInput.focus();
     }
