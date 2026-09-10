@@ -42,6 +42,27 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "The Ravishankar Insights",
+    "url": "https://ravishankarkamal59-eng.github.io/",
+    "logo": "https://ravishankarkamal59-eng.github.io/assets/images/logo.png",
+    "description": "सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़",
+    "founder": {
+      "@type": "Person",
+      "name": "Ravishankar Kamal"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-8931050393",
+      "contactType": "customer support",
+      "email": "ravishankarkamal59@gmail.com"
+    }
+  }
+  </script>
+  <meta name="google-site-verification" content="YAHAN_APNA_CODE_DALEIN" />
 </head>
 <body>
   <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
@@ -50,6 +71,7 @@ const analytics = getAnalytics(app);
     <nav aria-label="मुख्य नेविगेशन">
       <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
       <div id="userBox" class="user-box"></div>
+      <button id="installBtn" class="btn-small" style="display:none; background:#27ae60">📲 ऐप इंस्टॉल</button>
       <button class="menu-toggle" aria-label="मेनू" aria-expanded="false">☰</button>
       <ul class="nav-links">
         <li><a href="index.html" class="active">होम</a></li>
@@ -179,10 +201,10 @@ const analytics = getAnalytics(app);
       </div>
       <div>
         <h4>फॉलो करें</h4>
-        <a href="#">📱 WhatsApp</a>
-        <a href="#">📺 YouTube</a>
-        <a href="#">📘 Facebook</a>
-        <a href="#">🐦 Twitter</a>
+        <a href="https://wa.me/918931050393" target="_blank">📱 WhatsApp</a>
+        <a href="https://youtube.com/@ravishankarkamal" target="_blank">📺 YouTube</a>
+        <a href="https://facebook.com/ravishankarkamal" target="_blank">📘 Facebook</a>
+        <a href="https://twitter.com/ravishankarkamal" target="_blank">🐦 Twitter</a>
       </div>
     </div>
     <div class="footer-bottom">© 2026 The Ravishankar Insights. सर्वाधिकार सुरक्षित। | Made with ❤️ for Students</div>
@@ -191,5 +213,6 @@ const analytics = getAnalytics(app);
   <a href="https://wa.me/918931050393?text=नमस्ते,%20मुझे%20पढ़ाई%20में%20मदद%20चाहिए" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
   <button id="topBtn" class="top-btn" aria-label="ऊपर जाएँ">↑</button>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/pwa.js"></script>
 </body>
 </html>
