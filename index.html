@@ -163,6 +163,27 @@ const analytics = getAnalytics(app);
       <a href="login.html" class="btn">मुफ़्त में जुड़ें</a>
     </div>
 
+    
+    <h2 class="section-title" id="youtubeSection">🎥 वीडियो क्लास</h2>
+    <div class="grid">
+      <div class="exam-card" style="text-align:center">
+        <div style="background:#000;aspect-ratio:16/9;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;cursor:pointer">▶️</div>
+        <h3 style="margin-top:0.8rem">UPSC GS कैसे पढ़ें?</h3>
+        <p>शुरुआती लोगों के लिए पूरी रणनीति</p>
+      </div>
+      <div class="exam-card" style="text-align:center">
+        <div style="background:#000;aspect-ratio:16/9;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;cursor:pointer">▶️</div>
+        <h3 style="margin-top:0.8rem">SSC CGL की तैयारी</h3>
+        <p>3 महीने में पूरा प्लान</p>
+      </div>
+      <div class="exam-card" style="text-align:center">
+        <div style="background:#000;aspect-ratio:16/9;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;cursor:pointer">▶️</div>
+        <h3 style="margin-top:0.8rem">Daily Current Affairs</h3>
+        <p>आज की महत्वपूर्ण खबरें</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1rem"><a href="https://youtube.com/@ravishankarkamal" target="_blank" class="btn">📺 YouTube चैनल देखें</a></p>
+
     <h2 class="section-title">नवीनतम करंट अफेयर्स</h2>
     <div class="news-item">
       <span class="date">📅 आज</span>
@@ -175,6 +196,26 @@ const analytics = getAnalytics(app);
       <p>स्ट्रैटेजी, टाइम टेबल और महत्वपूर्ण टॉपिक्स की पूरी गाइड।</p>
     </div>
     <p style="text-align:center; margin-top:1rem"><a href="current-affairs.html" class="btn">और पढ़ें</a></p>
+
+    
+    <h2 class="section-title">📬 नई अपडेट पाएँ</h2>
+    <div class="cta-box" style="background:linear-gradient(135deg,#0f3460,#16213e)">
+      <h2 style="color:#fff;border:none;padding:0">ईमेल से जुड़ें</h2>
+      <p>जब भी नए नोट्स, क्विज़ या करंट अफेयर्स आएँ, आपको मुफ़्त में मिलेंगे।</p>
+      <form id="newsletterForm" style="max-width:500px;margin:1rem auto;flex-direction:row;flex-wrap:wrap;gap:0.5rem;justify-content:center">
+        <input type="email" id="nlEmail" placeholder="अपना ईमेल डालें" required style="flex:1;min-width:250px">
+        <button type="submit" class="btn">सब्सक्राइब करें</button>
+      </form>
+      <p id="nlMsg" style="margin-top:0.5rem"></p>
+    </div>
+    <script>
+      document.getElementById('newsletterForm').onsubmit = (e) => {
+        e.preventDefault();
+        const email = document.getElementById('nlEmail').value;
+        document.getElementById('nlMsg').innerHTML = '✅ धन्यवाद! हम आपको ' + email + ' पर अपडेट भेजेंगे।';
+        document.getElementById('nlEmail').value = '';
+      };
+    </script>
 
     <div class="ad-slot" style="border:none; background:transparent; padding:0"><ins class="adsbygoogle"
      style="display:block"
@@ -218,8 +259,10 @@ const analytics = getAnalytics(app);
   </footer>
 
   <a href="https://wa.me/918931050393?text=नमस्ते,%20मुझे%20पढ़ाई%20में%20मदद%20चाहिए" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <button id="darkToggle" class="dark-toggle" aria-label="डार्क मोड">🌙</button>
   <button id="topBtn" class="top-btn" aria-label="ऊपर जाएँ">↑</button>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/pwa.js"></script>
+  <script src="assets/js/features.js"></script>
 </body>
 </html>
