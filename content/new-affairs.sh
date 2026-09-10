@@ -1,20 +1,37 @@
 #!/bin/bash
-# Daily करंट अफेयर्स डालने का आसान तरीका
+clear
 echo ""
 echo "=========================================="
 echo "  📰 नई करंट अफेयर्स डालें"
 echo "=========================================="
 echo ""
-read -p "खबर की तारीख (जैसे: 11 सितंबर 2026): " DATE
-read -p "शीर्षक (Headline): " TITLE
-read -p "छोटा विवरण (2-3 लाइन): " DESC
+read -p "📅 खबर की तारीख (जैसे: 11 सितंबर 2026): " DATE
+read -p "📰 शीर्षक: " TITLE
+read -p "📝 विवरण: " DESC
 
-HTML="    <div class=\"news-item\">\n      <span class=\"date\">📅 $DATE</span>\n      <h3>$TITLE</h3>\n      <p>$DESC</p>\n    </div>"
+HTML="    <div class=\"news-item\">
+      <span class=\"date\">📅 $DATE</span>
+      <h3>$TITLE</h3>
+      <p>$DESC</p>
+    </div>"
 
-# current-affairs.html में जोड़ें — पहली news-item के ऊपर
-sed -i "0,/<div class=\"news-item\">/s||$HTML\n    <div class=\"news-item\">|" current-affairs.html
+# current-affairs.html में पहली news-item के ऊपर जोड़ें
+python3 - <<PYEOF
+with open('current-affairs.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+new_news = '''$HTML
+'''
+# पहली <div class="news-item"> के पहले जोड़ें
+idx = content.find('<div class="news-item">')
+if idx > 0:
+    content = content[:idx] + new_news + content[idx:]
+    with open('current-affairs.html', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("✅ खबर जोड़ दी गई")
+else:
+    print("❌ news-item नहीं मिला")
+PYEOF
 
 echo ""
-echo "✅ खबर जोड़ दी गई!"
-echo ""
-echo "अब ये चलाएँ: git add . && git commit -m 'New current affairs' && git push origin main"
+echo "अब ये चलाएँ:"
+echo "  git add . && git commit -m 'New current affairs' && git push origin main"
