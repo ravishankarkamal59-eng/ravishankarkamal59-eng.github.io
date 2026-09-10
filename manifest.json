@@ -1,0 +1,12 @@
+{
+  "name": "The Ravishankar Insights - सरकारी परीक्षा तैयारी",
+  "short_name": "Ravishankar Insights",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f3460",
+  "theme_color": "#0f3460",
+  "description": "सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़",
+  "icons": [
+    { "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>", "sizes": "192x192", "type": "image/svg+xml" }
+  ]
+}

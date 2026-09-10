@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>डैशबोर्ड - The Ravishankar Insights</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="top-bar">आपका डैशबोर्ड</div>
+    <nav>
+      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+      <ul class="nav-links"><li><a href="index.html">होम</a></li><li><a href="#" id="dashLogout">लॉगआउट</a></li></ul>
+    </nav>
+  </header>
+  <main>
+    <div class="content">
+      <h1>नमस्ते, <span id="userName">छात्र</span> 👋</h1>
+      <p>आपका डैशबोर्ड - यहाँ से सभी स्टडी मटेरियल का एक्सेस पाएँ।</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-box"><div class="f-icon">📚</div><h3>नोट्स</h3><p>सभी विषयों के PDF</p><a href="notes.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
+      <div class="feature-box"><div class="f-icon">🎯</div><h3>क्विज़</h3><p>प्रैक्टिस टेस्ट</p><a href="quiz.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
+      <div class="feature-box"><div class="f-icon">📰</div><h3>करंट अफेयर्स</h3><p>रोज़ाना अपडेट</p><a href="current-affairs.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
+      <div class="feature-box"><div class="f-icon">📝</div><h3>स्टडी प्लान</h3><p>आपका टाइम टेबल</p><a href="#" class="btn" style="margin-top:0.8rem">बनाएँ</a></div>
+      <div class="feature-box"><div class="f-icon">🏆</div><h3>प्रोग्रेस</h3><p>आपकी तैयारी</p><a href="#" class="btn" style="margin-top:0.8rem">देखें</a></div>
+      <div class="feature-box"><div class="f-icon">💬</div><h3>सपोर्ट</h3><p>WhatsApp पर मदद</p><a href="https://wa.me/919999999999" class="btn" style="margin-top:0.8rem">चैट</a></div>
+    </div>
+  </main>
+  <footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    const firebaseConfig = { apiKey: "AIzaSyDEMO_REPLACE_ME", authDomain: "ravishankar-insights.firebaseapp.com", projectId: "ravishankar-insights", storageBucket: "ravishankar-insights.appspot.com", messagingSenderId: "000000000000", appId: "1:000000000000:web:abcdef" };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user) => {
+      if (!user) { location.href = 'login.html'; return; }
+      document.getElementById('userName').textContent = user.displayName || user.email.split('@')[0];
+    });
+    document.getElementById('dashLogout').onclick = (e) => { e.preventDefault(); signOut(auth).then(() => location.href = 'index.html'); };
+  </script>
+</body>
+</html>

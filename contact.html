@@ -3,44 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>संपर्क करें - भारत घूमो</title>
-  <meta name="description" content="भारत घूमो से संपर्क करें। टूर पैकेज, होटल बुकिंग और ट्रैवल सलाह के लिए।">
+  <title>संपर्क करें - The Ravishankar Insights</title>
+  <meta name="description" content="The Ravishankar Insights से संपर्क करें। पढ़ाई से जुड़े सवाल, सुझाव या शिकायत के लिए।">
   <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/contact.html">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
+  <a href="#main" class="skip-link">मुख्य सामग्री</a>
   <header>
-    <nav aria-label="मुख्य नेविगेशन">
-      <div class="logo">भारत घूमो</div>
-      <button class="menu-toggle" aria-label="मेनू खोलें" aria-expanded="false">☰</button>
+    <div class="top-bar">संपर्क करें</div>
+    <nav>
+      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+      <button class="menu-toggle" aria-label="मेनू">☰</button>
       <ul class="nav-links">
         <li><a href="index.html">होम</a></li>
-        <li><a href="about.html">हमारे बारे में</a></li>
-        <li><a href="contact.html">संपर्क</a></li>
-        <li><a href="privacy.html">प्राइवेसी</a></li>
+        <li><a href="exams.html">परीक्षाएँ</a></li>
+        <li><a href="notes.html">नोट्स</a></li>
+        <li><a href="current-affairs.html">करंट अफेयर्स</a></li>
+        <li><a href="quiz.html">क्विज़</a></li>
+        <li><a href="blog.html">ब्लॉग</a></li>
+        <li><a href="contact.html" class="active">संपर्क</a></li>
       </ul>
     </nav>
   </header>
+
   <main id="main">
-    <section class="content">
+    <div class="breadcrumb"><a href="index.html">होम</a> › संपर्क</div>
+    <div class="content">
       <h1>संपर्क करें</h1>
-      <p>अगर आपको किसी टूर पैकेज, होटल या ट्रैवल सलाह की जरूरत है, तो हमें लिखें।</p>
-      <form action="#" method="POST">
-        <label for="name">नाम</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">ईमेल</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">संदेश</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+      <p>कोई सवाल, सुझाव या शिकायत हो तो नीचे फॉर्म भरें या WhatsApp पर मैसेज करें।</p>
+
+      <h2>📱 WhatsApp</h2>
+      <p><a href="https://wa.me/919999999999" target="_blank" class="btn btn-green">WhatsApp पर मैसेज करें</a></p>
+
+      <h2>📧 ईमेल</h2>
+      <p><a href="mailto:info@ravishankarinsights.com">info@ravishankarinsights.com</a></p>
+
+      <h2>✉️ फॉर्म</h2>
+      <form id="contactForm">
+        <label for="cname">आपका नाम *</label>
+        <input type="text" id="cname" required>
+        <label for="cemail">ईमेल *</label>
+        <input type="email" id="cemail" required>
+        <label for="csubject">विषय</label>
+        <select id="csubject">
+          <option>सामान्य सवाल</option>
+          <option>नोट्स चाहिए</option>
+          <option>क्विज़ के बारे में</option>
+          <option>शिकायत</option>
+          <option>सुझाव</option>
+        </select>
+        <label for="cmsg">संदेश *</label>
+        <textarea id="cmsg" rows="5" required></textarea>
         <button type="submit" class="btn">भेजें</button>
       </form>
-      <p>ईमेल: <a href="mailto:info@bharatghumo.com">info@bharatghumo.com</a></p>
-    </section>
+      <p id="contactMsg"></p>
+    </div>
   </main>
-  <footer>
-    <p>© 2026 भारत घूमो. सर्वाधिकार सुरक्षित।</p>
-  </footer>
+
+  <footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+  <a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank">💬</a>
+  <button id="topBtn" class="top-btn">↑</button>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('contactForm').onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cname').value;
+      const email = document.getElementById('cemail').value;
+      const subject = document.getElementById('csubject').value;
+      const msg = document.getElementById('cmsg').value;
+      const text = `नमस्ते!%0Aनाम: ${name}%0Aईमेल: ${email}%0Aविषय: ${subject}%0Aसंदेश: ${msg}`;
+      window.open('https://wa.me/919999999999?text=' + text, '_blank');
+      document.getElementById('contactMsg').textContent = '✅ WhatsApp खुल रहा है...';
+    };
+  </script>
 </body>
 </html>

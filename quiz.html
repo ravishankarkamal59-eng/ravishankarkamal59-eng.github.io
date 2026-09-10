@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मुफ़्त क्विज़ और टेस्ट सीरीज़ - The Ravishankar Insights</title>
+  <meta name="description" content="सरकारी परीक्षा के लिए मुफ़्त क्विज़ और मॉक टेस्ट - GS, गणित, रीजनिंग, English।">
+  <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/quiz.html">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">मुख्य सामग्री</a>
+  <header>
+    <div class="top-bar">🎯 मुफ़्त क्विज़ और मॉक टेस्ट</div>
+    <nav>
+      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+      <button class="menu-toggle" aria-label="मेनू">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">होम</a></li>
+        <li><a href="exams.html">परीक्षाएँ</a></li>
+        <li><a href="notes.html">नोट्स</a></li>
+        <li><a href="current-affairs.html">करंट अफेयर्स</a></li>
+        <li><a href="quiz.html" class="active">क्विज़</a></li>
+        <li><a href="blog.html">ब्लॉग</a></li>
+        <li><a href="contact.html">संपर्क</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="breadcrumb"><a href="index.html">होम</a> › क्विज़</div>
+    <div class="content">
+      <h1>डेली क्विज़ - सामान्य ज्ञान</h1>
+      <p>नीचे दिए गए 10 प्रश्नों के जवाब दें और अपना स्कोर देखें।</p>
+    </div>
+
+    <div class="ad-slot">📢 विज्ञापन स्थान</div>
+
+    <h2 class="section-title">आज की क्विज़</h2>
+    <div id="quizContainer"></div>
+    <p id="quizScore" style="text-align:center; font-size:1.3rem; font-weight:bold; color:var(--primary); margin:1.5rem 0"></p>
+
+    <div class="cta-box">
+      <h2>और क्विज़ चाहिए?</h2>
+      <p>लॉगिन करें और रोज़ नई क्विज़ का एक्सेस पाएँ।</p>
+      <a href="login.html" class="btn">मुफ़्त लॉगिन</a>
+    </div>
+  </main>
+
+  <footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+  <a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank">💬</a>
+  <button id="topBtn" class="top-btn">↑</button>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initQuiz([
+        { q: 'भारत का संविधान कब लागू हुआ?', options: ['15 अगस्त 1947', '26 जनवरी 1950', '26 नवंबर 1949', '2 अक्टूबर 1950'], ans: 1 },
+        { q: 'भारत के पहले प्रधानमंत्री कौन थे?', options: ['सरदार पटेल', 'जवाहरलाल नेहरू', 'डॉ. राजेंद्र प्रसाद', 'लाल बहादुर शास्त्री'], ans: 1 },
+        { q: 'सबसे लंबी नदी कौन सी है?', options: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], ans: 1 },
+        { q: 'ताज महल किस शहर में है?', options: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], ans: 1 },
+        { q: 'भारत का राष्ट्रीय खेल क्या है?', options: ['क्रिकेट', 'हॉकी', 'कबड्डी', 'फुटबॉल'], ans: 1 },
+        { q: 'RBI की स्थापना कब हुई?', options: ['1935', '1947', '1950', '1969'], ans: 0 },
+        { q: 'विश्व पर्यावरण दिवस कब मनाया जाता है?', options: ['5 जून', '22 अप्रैल', '16 सितंबर', '1 दिसंबर'], ans: 0 },
+        { q: 'भारत का सबसे बड़ा राज्य क्षेत्रफल में?', options: ['मध्य प्रदेश', 'राजस्थान', 'महाराष्ट्र', 'उत्तर प्रदेश'], ans: 1 },
+        { q: 'ISRO का मुख्यालय कहाँ है?', options: ['मुंबई', 'बेंगलुरु', 'दिल्ली', 'हैदराबाद'], ans: 1 },
+        { q: 'नोबेल पुरस्कार किस देश में दिया जाता है?', options: ['USA', 'UK', 'स्वीडन', 'फ्रांस'], ans: 2 }
+      ]);
+    });
+  </script>
+</body>
+</html>

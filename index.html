@@ -3,156 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>भारत घूमो - टूरिज्म, ट्रैवल गाइड और टूर पैकेज</title>
-  <meta name="description" content="भारत के सबसे खूबसूरत पर्यटन स्थल, ट्रैवल टिप्स, होटल बुकिंग और सस्ते टूर पैकेज। हिंदी में पूरी जानकारी।">
-  <meta name="keywords" content="भारत टूरिज्म, ट्रैवल गाइड, पर्यटन स्थल, टूर पैकेज, होटल बुकिंग, घूमने की जगह">
-  <meta name="author" content="भारत घूमो">
-  <meta name="theme-color" content="#1a5276">
+  <title>The Ravishankar Insights - सरकारी परीक्षा की तैयारी</title>
+  <meta name="description" content="UPSC, BPSC, SSC, Railway, Banking, Police और सभी सरकारी परीक्षाओं की मुफ़्त तैयारी। नोट्स, करंट अफेयर्स, क्विज़, PYQ और स्टडी मटेरियल हिंदी में।">
+  <meta name="keywords" content="UPSC, BPSC, SSC, Railway, Banking, Police, सरकारी परीक्षा, नोट्स, करंट अफेयर्स, स्टडी मटेरियल, हिंदी">
+  <meta name="author" content="Ravishankar Kamal">
+  <meta name="theme-color" content="#0f3460">
   <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/">
-  <meta property="og:title" content="भारत घूमो - टूरिज्म और ट्रैवल गाइड">
-  <meta property="og:description" content="भारत के सबसे खूबसूरत पर्यटन स्थल और सस्ते टूर पैकेज।">
+  <meta property="og:title" content="The Ravishankar Insights - सरकारी परीक्षा की तैयारी">
+  <meta property="og:description" content="सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़।">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ravishankarkamal59-eng.github.io/">
-  <meta property="og:image" content="https://ravishankarkamal59-eng.github.io/assets/images/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDEMO_REPLACE_ME",
-      authDomain: "bharat-ghumo.firebaseapp.com",
-      projectId: "bharat-ghumo",
-      storageBucket: "bharat-ghumo.appspot.com",
+      authDomain: "ravishankar-insights.firebaseapp.com",
+      projectId: "ravishankar-insights",
+      storageBucket: "ravishankar-insights.appspot.com",
       messagingSenderId: "000000000000",
       appId: "1:000000000000:web:abcdef"
     };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    window._auth = auth;
-    window._signOut = signOut;
-    onAuthStateChanged(auth, (user) => {
-      const box = document.getElementById('userBox');
-      if (!box) return;
-      if (user) {
-        box.innerHTML = '<span>नमस्ते, ' + (user.displayName || user.email) + '</span> <button id="logoutBtn" class="btn-small">लॉगआउट</button>';
-        document.getElementById('logoutBtn').onclick = () => { signOut(auth); location.reload(); };
-      } else {
-        box.innerHTML = '<a href="login.html" class="btn-small">लॉगिन</a>';
-      }
-    });
+    try {
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      onAuthStateChanged(auth, (user) => {
+        const box = document.getElementById('userBox');
+        if (!box) return;
+        if (user) {
+          box.innerHTML = '<span>👤 ' + (user.displayName || user.email.split('@')[0]) + '</span> <button id="logoutBtn" class="btn-small">लॉगआउट</button>';
+          document.getElementById('logoutBtn').onclick = () => { signOut(auth); location.reload(); };
+        } else {
+          box.innerHTML = '<a href="login.html" class="btn-small">लॉगिन</a>';
+        }
+      });
+    } catch(e) { console.log('Firebase config missing'); }
   </script>
 </head>
 <body>
   <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
   <header>
+    <div class="top-bar">🎯 सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, क्विज़, करंट अफेयर्स</div>
     <nav aria-label="मुख्य नेविगेशन">
-      <div class="logo">🌏 भारत घूमो</div>
+      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
       <div id="userBox" class="user-box"></div>
-      <button class="menu-toggle" aria-label="मेनू खोलें" aria-expanded="false">☰</button>
+      <button class="menu-toggle" aria-label="मेनू" aria-expanded="false">☰</button>
       <ul class="nav-links">
-        <li><a href="index.html">होम</a></li>
-        <li><a href="destinations.html">डेस्टिनेशन</a></li>
-        <li><a href="packages.html">पैकेज</a></li>
-        <li><a href="gallery.html">गैलरी</a></li>
+        <li><a href="index.html" class="active">होम</a></li>
+        <li><a href="exams.html">परीक्षाएँ</a></li>
+        <li><a href="notes.html">नोट्स</a></li>
+        <li><a href="current-affairs.html">करंट अफेयर्स</a></li>
+        <li><a href="quiz.html">क्विज़</a></li>
         <li><a href="blog.html">ब्लॉग</a></li>
-        <li><a href="about.html">हमारे बारे में</a></li>
         <li><a href="contact.html">संपर्क</a></li>
       </ul>
     </nav>
   </header>
+
   <main id="main">
     <section class="hero">
-      <h1>भारत की खूबसूरती को करें एक्सप्लोर</h1>
-      <p>ट्रैवल गाइड, टिप्स, होटल और सस्ते टूर पैकेज – सब कुछ एक जगह।</p>
-      <a href="packages.html" class="btn">टूर पैकेज देखें</a>
-      <a href="destinations.html" class="btn btn-outline">डेस्टिनेशन</a>
+      <h1>सरकारी परीक्षा की तैयारी <span>अब आसान</span></h1>
+      <p>UPSC, BPSC, SSC, Railway, Banking, Police और सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़ और PYQ एक जगह।</p>
+      <a href="exams.html" class="btn">परीक्षाएँ देखें</a>
+      <a href="notes.html" class="btn btn-outline">मुफ़्त नोट्स</a>
     </section>
 
-    <section class="search-box">
-      <h2>अपनी मंज़िल खोजें</h2>
-      <input type="text" id="searchInput" placeholder="जैसे: गोवा, मनाली, केरल..." aria-label="डेस्टिनेशन खोजें">
-      <div id="searchResults" class="search-results"></div>
-    </section>
+    <div class="stats">
+      <div class="stat"><h3>50+</h3><p>सरकारी परीक्षाएँ</p></div>
+      <div class="stat"><h3>5000+</h3><p>प्रैक्टिस प्रश्न</p></div>
+      <div class="stat"><h3>1000+</h3><p>नोट्स PDF</p></div>
+      <div class="stat"><h3>100%</h3><p>मुफ़्त सामग्री</p></div>
+    </div>
 
-    <section id="destinations" class="destinations">
-      <h2>लोकप्रिय पर्यटन स्थल</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="https://picsum.photos/seed/taj/400/250" alt="ताज महल, आगरा" loading="lazy">
-          <h3>ताज महल, आगरा</h3>
-          <p>दुनिया के सात अजूबों में से एक, प्यार का प्रतीक।</p>
-          <a href="destinations.html#taj" class="link">और पढ़ें →</a>
-        </article>
-        <article class="card">
-          <img src="https://picsum.photos/seed/kerala/400/250" alt="केरल के बैकवाटर्स" loading="lazy">
-          <h3>केरल बैकवाटर्स</h3>
-          <p>हाउसबोट, नारियल के पेड़ और शांत पानी।</p>
-          <a href="destinations.html#kerala" class="link">और पढ़ें →</a>
-        </article>
-        <article class="card">
-          <img src="https://picsum.photos/seed/rajasthan/400/250" alt="राजस्थान का महल" loading="lazy">
-          <h3>राजस्थान</h3>
-          <p>महल, किले और रेगिस्तान की सैर।</p>
-          <a href="destinations.html#rajasthan" class="link">और पढ़ें →</a>
-        </article>
-        <article class="card">
-          <img src="https://picsum.photos/seed/goa/400/250" alt="गोवा बीच" loading="lazy">
-          <h3>गोवा बीच</h3>
-          <p>समुद्र, रेत और पार्टी की जगह।</p>
-          <a href="destinations.html#goa" class="link">और पढ़ें →</a>
-        </article>
-        <article class="card">
-          <img src="https://picsum.photos/seed/manali/400/250" alt="मनाली पहाड़" loading="lazy">
-          <h3>मनाली, हिमाचल</h3>
-          <p>बर्फीले पहाड़ और एडवेंचर।</p>
-          <a href="destinations.html#manali" class="link">और पढ़ें →</a>
-        </article>
-        <article class="card">
-          <img src="https://picsum.photos/seed/varanasi/400/250" alt="वाराणसी घाट" loading="lazy">
-          <h3>वाराणसी</h3>
-          <p>गंगा आरती और आध्यात्मिक शांति।</p>
-          <a href="destinations.html#varanasi" class="link">और पढ़ें →</a>
-        </article>
+    <h2 class="section-title">लोकप्रिय परीक्षाएँ</h2>
+    <div class="grid">
+      <div class="exam-card">
+        <div class="icon">🏛️</div>
+        <h3>UPSC सिविल सेवा</h3>
+        <p>IAS, IPS, IFS के लिए प्रारंभिक और मुख्य परीक्षा की तैयारी।</p>
+        <span class="tag">प्रीलिम्स</span><span class="tag">मेन्स</span><span class="tag">इंटरव्यू</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#upsc">पूरी जानकारी →</a></p>
       </div>
-    </section>
-
-    <section class="features">
-      <h2>हम क्यों बेहतर हैं?</h2>
-      <div class="grid-3">
-        <div class="feature">💰<h3>सस्ते पैकेज</h3><p>बजट में बेहतरीन टूर।</p></div>
-        <div class="feature">🛡️<h3>सुरक्षित यात्रा</h3><p>वेरिफाइड होटल और गाइड।</p></div>
-        <div class="feature">📞<h3>24x7 सपोर्ट</h3><p>WhatsApp पर तुरंत मदद।</p></div>
+      <div class="exam-card">
+        <div class="icon">📖</div>
+        <h3>BPSC</h3>
+        <p>बिहार लोक सेवा आयोग की सभी परीक्षाओं की तैयारी।</p>
+        <span class="tag">Prelims</span><span class="tag">Mains</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#bpsc">पूरी जानकारी →</a></p>
       </div>
-    </section>
-
-    <section class="reviews">
-      <h2>यात्रियों के रिव्यू</h2>
-      <div class="grid-3">
-        <div class="review">⭐⭐⭐⭐⭐ <p>"गोवा ट्रिप शानदार रही! बुकिंग आसान थी।"</p><b>— राहुल, दिल्ली</b></div>
-        <div class="review">⭐⭐⭐⭐⭐ <p>"केरल पैकेज बहुत अच्छा और सस्ता था।"</p><b>— प्रिया, मुंबई</b></div>
-        <div class="review">⭐⭐⭐⭐ <p>"मनाली की जानकारी बहुत काम आई।"</p><b>— अमित, जयपुर</b></div>
+      <div class="exam-card">
+        <div class="icon">🎓</div>
+        <h3>SSC</h3>
+        <p>CGL, CHSL, MTS, GD - स्टाफ सिलेक्शन कमीशन की परीक्षाएँ।</p>
+        <span class="tag">CGL</span><span class="tag">CHSL</span><span class="tag">MTS</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#ssc">पूरी जानकारी →</a></p>
       </div>
-    </section>
+      <div class="exam-card">
+        <div class="icon">🚆</div>
+        <h3>Railway (RRB)</h3>
+        <p>NTPC, Group D, ALP, JE की तैयारी।</p>
+        <span class="tag">NTPC</span><span class="tag">Group D</span><span class="tag">ALP</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#railway">पूरी जानकारी →</a></p>
+      </div>
+      <div class="exam-card">
+        <div class="icon">🏦</div>
+        <h3>Banking</h3>
+        <p>IBPS PO, Clerk, SBI, RBI की तैयारी।</p>
+        <span class="tag">IBPS</span><span class="tag">SBI</span><span class="tag">RBI</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#banking">पूरी जानकारी →</a></p>
+      </div>
+      <div class="exam-card">
+        <div class="icon">👮</div>
+        <h3>Police भर्ती</h3>
+        <p>SI, Constable, दरोगा की तैयारी।</p>
+        <span class="tag">SI</span><span class="tag">Constable</span>
+        <p style="margin-top:0.7rem"><a href="exams.html#police">पूरी जानकारी →</a></p>
+      </div>
+    </div>
 
-    <section class="cta">
-      <h2>अपनी यात्रा की योजना बनाएँ</h2>
-      <p>अभी बुक करें और 10% छूट पाएँ।</p>
-      <a href="packages.html" class="btn">बुकिंग करें</a>
-    </section>
+    <h2 class="section-title">हम क्या देते हैं?</h2>
+    <div class="grid-3">
+      <div class="feature-box"><div class="f-icon">📝</div><h3>मुफ़्त नोट्स</h3><p>सभी विषयों के हिंदी में नोट्स PDF</p></div>
+      <div class="feature-box"><div class="f-icon">📰</div><h3>डेली करंट अफेयर्स</h3><p>रोज़ाना अपडेट सरकारी परीक्षा के लिए</p></div>
+      <div class="feature-box"><div class="f-icon">🎯</div><h3>क्विज़ और टेस्ट</h3><p>प्रैक्टिस के लिए हजारों प्रश्न</p></div>
+      <div class="feature-box"><div class="f-icon">📄</div><h3>PYQ पेपर</h3><p>पिछले साल के प्रश्न पत्र PDF में</p></div>
+      <div class="feature-box"><div class="f-icon">🎥</div><h3>वीडियो क्लास</h3><p>महत्वपूर्ण टॉपिक की वीडियो</p></div>
+      <div class="feature-box"><div class="f-icon">📊</div><h3>सिलेबस और स्ट्रैटेजी</h3><p>हर परीक्षा का पूरा प्लान</p></div>
+    </div>
+
+    <div class="cta-box">
+      <h2>आज ही तैयारी शुरू करें</h2>
+      <p>मुफ़्त अकाउंट बनाएँ और सभी नोट्स, क्विज़ और PDF का फायदा उठाएँ।</p>
+      <a href="login.html" class="btn">मुफ़्त में जुड़ें</a>
+    </div>
+
+    <h2 class="section-title">नवीनतम करंट अफेयर्स</h2>
+    <div class="news-item">
+      <span class="date">📅 आज</span>
+      <h3>UPSC 2026 का नोटिफिकेशन जारी</h3>
+      <p>संघ लोक सेवा आयोग ने 2026 के लिए अधिसूचना जारी कर दी है। आवेदन की अंतिम तिथि और पात्रता की पूरी जानकारी।</p>
+    </div>
+    <div class="news-item">
+      <span class="date">📅 इस हफ्ते</span>
+      <h3>SSC CGL 2026 की तैयारी कैसे करें</h3>
+      <p>स्ट्रैटेजी, टाइम टेबल और महत्वपूर्ण टॉपिक्स की पूरी गाइड।</p>
+    </div>
+    <p style="text-align:center; margin-top:1rem"><a href="current-affairs.html" class="btn">और पढ़ें</a></p>
+
+    <div class="ad-slot">📢 विज्ञापन स्थान (Google AdSense)</div>
   </main>
+
   <footer>
-    <p>© 2026 भारत घूमो. सर्वाधिकार सुरक्षित।</p>
-    <nav aria-label="फुटर नेविगेशन">
-      <a href="about.html">About</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy</a>
-    </nav>
+    <div class="footer-grid">
+      <div>
+        <h4>📚 The Ravishankar Insights</h4>
+        <p style="font-size:0.9rem; color:#aaa">सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़ और स्टडी मटेरियल हिंदी में।</p>
+      </div>
+      <div>
+        <h4>महत्वपूर्ण लिंक</h4>
+        <a href="exams.html">परीक्षाएँ</a>
+        <a href="notes.html">नोट्स</a>
+        <a href="current-affairs.html">करंट अफेयर्स</a>
+        <a href="quiz.html">क्विज़</a>
+        <a href="blog.html">ब्लॉग</a>
+      </div>
+      <div>
+        <h4>कंपनी</h4>
+        <a href="about.html">हमारे बारे में</a>
+        <a href="contact.html">संपर्क</a>
+        <a href="privacy.html">प्राइवेसी पॉलिसी</a>
+        <a href="terms.html">नियम और शर्तें</a>
+      </div>
+      <div>
+        <h4>फॉलो करें</h4>
+        <a href="#">📱 WhatsApp</a>
+        <a href="#">📺 YouTube</a>
+        <a href="#">📘 Facebook</a>
+        <a href="#">🐦 Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 The Ravishankar Insights. सर्वाधिकार सुरक्षित। | Made with ❤️ for Students</div>
   </footer>
 
-  <a href="https://wa.me/919999999999?text=नमस्ते,%20मुझे%20टूर%20पैकेज%20चाहिए" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp पर संपर्क करें">💬</a>
+  <a href="https://wa.me/919999999999?text=नमस्ते,%20मुझे%20पढ़ाई%20में%20मदद%20चाहिए" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
   <button id="topBtn" class="top-btn" aria-label="ऊपर जाएँ">↑</button>
-
   <script src="assets/js/main.js"></script>
 </body>
 </html>

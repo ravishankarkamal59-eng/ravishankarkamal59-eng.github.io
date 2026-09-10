@@ -3,25 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>लॉगिन / साइनअप - भारत घूमो</title>
-  <meta name="description" content="भारत घूमो पर लॉगिन करें और बुकिंग, ऑफर और पर्सनल ट्रैवल प्लान पाएँ।">
+  <title>लॉगिन / साइनअप - The Ravishankar Insights</title>
+  <meta name="description" content="मुफ़्त अकाउंट बनाएँ और सभी नोट्स, क्विज़, PDF का फायदा उठाएँ।">
   <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/login.html">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
   <header>
-    <nav aria-label="मुख्य नेविगेशन">
-      <div class="logo">🌏 भारत घूमो</div>
-      <ul class="nav-links">
-        <li><a href="index.html">होम</a></li>
-      </ul>
+    <div class="top-bar">मुफ़्त अकाउंट बनाएँ</div>
+    <nav>
+      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+      <ul class="nav-links"><li><a href="index.html">होम</a></li></ul>
     </nav>
   </header>
-  <main id="main">
-    <section class="content auth-box">
+  <main>
+    <div class="content" style="max-width:480px; margin:2rem auto">
       <h1 id="authTitle">लॉगिन करें</h1>
-      <p id="authMsg" class="auth-msg"></p>
+      <p id="authMsg" style="min-height:1.2rem; font-size:0.9rem; margin:0.5rem 0"></p>
       <form id="authForm">
         <label for="email">ईमेल</label>
         <input type="email" id="email" required autocomplete="email">
@@ -31,24 +29,25 @@
         <input type="text" id="name" style="display:none" autocomplete="name">
         <button type="submit" class="btn" id="submitBtn">लॉगिन</button>
       </form>
-      <p class="auth-switch">
+      <p style="text-align:center; margin-top:0.8rem">
         <span id="switchText">नया यूज़र? </span>
-        <a href="#" id="switchBtn">साइनअप करें</a>
+        <a href="#" id="switchBtn" style="color:var(--accent); font-weight:600">साइनअप करें</a>
       </p>
-      <p class="auth-switch"><a href="#" id="resetBtn">पासवर्ड भूल गए?</a></p>
-      <button id="googleBtn" class="btn btn-google">Google से लॉगिन</button>
-    </section>
+      <p style="text-align:center"><a href="#" id="resetBtn" style="color:var(--accent); font-size:0.9rem">पासवर्ड भूल गए?</a></p>
+      <button id="googleBtn" class="btn" style="background:#db4437; width:100%">🔵 Google से लॉगिन</button>
+      <p style="font-size:0.85rem; color:#888; text-align:center; margin-top:1rem">साइनअप करके आप हमारी <a href="terms.html">शर्तों</a> और <a href="privacy.html">प्राइवेसी</a> से सहमत होते हैं।</p>
+    </div>
   </main>
-  <footer><p>© 2026 भारत घूमो</p></footer>
+  <footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDEMO_REPLACE_ME",
-      authDomain: "bharat-ghumo.firebaseapp.com",
-      projectId: "bharat-ghumo",
-      storageBucket: "bharat-ghumo.appspot.com",
+      authDomain: "ravishankar-insights.firebaseapp.com",
+      projectId: "ravishankar-insights",
+      storageBucket: "ravishankar-insights.appspot.com",
       messagingSenderId: "000000000000",
       appId: "1:000000000000:web:abcdef"
     };
@@ -72,18 +71,18 @@
         title.textContent = 'साइनअप करें';
         submitBtn.textContent = 'साइनअप';
         nameField.style.display = 'block'; nameLabel.style.display = 'block';
-        switchText.textContent = 'पहले से यूज़र? '; switchBtn.textContent = 'लॉगिन करें';
+        switchText.textContent = 'पहले से यूज़र? '; switchBtn.textContent = 'लॉगिन';
       } else {
         title.textContent = 'लॉगिन करें';
         submitBtn.textContent = 'लॉगिन';
         nameField.style.display = 'none'; nameLabel.style.display = 'none';
-        switchText.textContent = 'नया यूज़र? '; switchBtn.textContent = 'साइनअप करें';
+        switchText.textContent = 'नया यूज़र? '; switchBtn.textContent = 'साइनअप';
       }
     };
 
     document.getElementById('authForm').onsubmit = async (e) => {
       e.preventDefault();
-      msg.textContent = 'कृपया प्रतीक्षा करें...';
+      msg.textContent = 'कृपया प्रतीक्षा करें...'; msg.style.color = '#666';
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       try {
@@ -91,10 +90,9 @@
           await signInWithEmailAndPassword(auth, email, password);
         } else {
           const cred = await createUserWithEmailAndPassword(auth, email, password);
-          const name = nameField.value;
-          if (name) await updateProfile(cred.user, { displayName: name });
+          if (nameField.value) await updateProfile(cred.user, { displayName: nameField.value });
         }
-        msg.style.color = 'green'; msg.textContent = 'सफल! रीडायरेक्ट हो रहा है...';
+        msg.style.color = 'green'; msg.textContent = '✅ सफल! रीडायरेक्ट...';
         setTimeout(() => location.href = 'index.html', 800);
       } catch (err) {
         msg.style.color = 'red'; msg.textContent = 'त्रुटि: ' + err.message;
@@ -109,8 +107,8 @@
     document.getElementById('resetBtn').onclick = async (e) => {
       e.preventDefault();
       const email = document.getElementById('email').value;
-      if (!email) { msg.textContent = 'पहले ईमेल डालें'; return; }
-      try { await sendPasswordResetEmail(auth, email); msg.style.color = 'green'; msg.textContent = 'रीसेट लिंक ईमेल पर भेजा गया'; }
+      if (!email) { msg.style.color = 'red'; msg.textContent = 'पहले ईमेल डालें'; return; }
+      try { await sendPasswordResetEmail(auth, email); msg.style.color = 'green'; msg.textContent = '✅ रीसेट लिंक भेजा गया'; }
       catch (err) { msg.style.color = 'red'; msg.textContent = err.message; }
     };
   </script>
