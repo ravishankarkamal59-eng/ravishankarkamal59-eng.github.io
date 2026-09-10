@@ -19,28 +19,28 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyDEMO_REPLACE_ME",
-      authDomain: "ravishankar-insights.firebaseapp.com",
-      projectId: "ravishankar-insights",
-      storageBucket: "ravishankar-insights.appspot.com",
-      messagingSenderId: "000000000000",
-      appId: "1:000000000000:web:abcdef"
-    };
-    try {
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      onAuthStateChanged(auth, (user) => {
-        const box = document.getElementById('userBox');
-        if (!box) return;
-        if (user) {
-          box.innerHTML = '<span>👤 ' + (user.displayName || user.email.split('@')[0]) + '</span> <button id="logoutBtn" class="btn-small">लॉगआउट</button>';
-          document.getElementById('logoutBtn').onclick = () => { signOut(auth); location.reload(); };
-        } else {
-          box.innerHTML = '<a href="login.html" class="btn-small">लॉगिन</a>';
-        }
-      });
-    } catch(e) { console.log('Firebase config missing'); }
+    const firebaseConfig = // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBuXUDMyn78gy1fO6xhYMxm4amhgmPAGos",
+  authDomain: "ravishankar-insights.firebaseapp.com",
+  projectId: "ravishankar-insights",
+  storageBucket: "ravishankar-insights.firebasestorage.app",
+  messagingSenderId: "562405068325",
+  appId: "1:562405068325:web:848503cde76bddb52db9cc",
+  measurementId: "G-BJQL4LE1NR"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
   </script>
 </head>
 <body>
