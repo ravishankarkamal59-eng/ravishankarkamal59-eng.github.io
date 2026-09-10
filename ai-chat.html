@@ -7,7 +7,6 @@
   <meta name="description" content="मुफ़्त AI सहायक - पढ़ाई, करंट अफेयर्स, सरकारी परीक्षा का कोई भी सवाल पूछें।">
   <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/ai-chat.html">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsllm7@0.1.0/jsllm7.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .chat-wrapper { max-width:900px; margin:1rem auto; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; display:flex; flex-direction:column; height:calc(100vh - 200px); min-height:500px; }
@@ -169,56 +168,38 @@
 
       const systemPrompt = 'तुम The Ravishankar Insights वेबसाइट के AI सहायक हो। भारत के सरकारी परीक्षाओं (UPSC, BPSC, SSC, Railway, Banking, Police) की तैयारी करने वाले छात्रों की मदद करते हो। हमेशा हिंदी में जवाब दो। जवाब साफ, छोटा और उपयोगी हो।';
 
+      const endpoints = [
+        { url: 'https://keylessai.thryx.workers.dev/v1/chat/completions', model: 'gpt-4o' },
+        { url: 'https://api.llm7.io/v1/chat/completions', model: 'gpt-4.1-mini' },
+        { url: 'https://api.airforce/v1/chat/completions', model: 'gpt-4o-mini' }
+      ];
+
       let answer = null;
+      let lastError = '';
 
-      // === प्रयास 1: jsllm7 library (LLM7.io - no key, browser-friendly) ===
-      try {
-        if (typeof jsllm7 === 'function') {
-          const res = await jsllm7(question, systemPrompt);
-          if (res && res.trim()) answer = res.trim();
+      for (const ep of endpoints) {
+        if (answer) break;
+        try {
+          const res = await fetch(ep.url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              model: ep.model,
+              messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: question }
+              ]
+            })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            answer = data.choices?.[0]?.message?.content;
+          } else {
+            lastError += ep.url.split('/')[2] + ': HTTP ' + res.status + '. ';
+          }
+        } catch (e) {
+          lastError += ep.url.split('/')[2] + ' fail. ';
         }
-      } catch (e1) { console.log('jsllm7 fail:', e1); }
-
-      // === प्रयास 2: LLM7.io direct fetch ===
-      if (!answer) {
-        try {
-          const res2 = await fetch('https://api.llm7.io/v1/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              model: 'gpt-4.1-mini',
-              messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: question }
-              ]
-            })
-          });
-          if (res2.ok) {
-            const data2 = await res2.json();
-            answer = data2.choices?.[0]?.message?.content;
-          }
-        } catch (e2) { console.log('LLM7 direct fail:', e2); }
-      }
-
-      // === प्रयास 3: ApiAirforce (fallback) ===
-      if (!answer) {
-        try {
-          const res3 = await fetch('https://api.airforce/v1/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              model: 'gpt-4.1-mini',
-              messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: question }
-              ]
-            })
-          });
-          if (res3.ok) {
-            const data3 = await res3.json();
-            answer = data3.choices?.[0]?.message?.content;
-          }
-        } catch (e3) {}
       }
 
       hideTyping();
@@ -227,7 +208,7 @@
         renderMsg(answer.trim(), 'ai');
         aiStatus.textContent = 'तैयार है - कुछ और पूछें';
       } else {
-        renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत आ रही है। कृपया दोबारा कोशिश करें।', 'ai');
+        renderMsg('❌ माफ़ करें, अभी जवाब देने में दिक्कत आ रही है। कृपया दोबारा कोशिश करें।' + (lastError ? '\n\n(तकनीकी: ' + lastError + ')' : ''), 'ai');
         aiStatus.textContent = 'कुछ गड़बड़ हुई';
       }
 
