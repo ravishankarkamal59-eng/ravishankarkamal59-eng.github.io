@@ -55,6 +55,13 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
+    getRedirectResult(auth).then((result) => {
+      if (result && result.user) location.href = "index.html";
+    }).catch((err) => {
+      const m = document.getElementById("authMsg");
+      if (m) { m.style.color = "red"; m.textContent = err.message; }
+    });
+
     let mode = 'login';
     const title = document.getElementById('authTitle');
     const submitBtn = document.getElementById('submitBtn');
