@@ -107,7 +107,7 @@
     };
 
     document.getElementById('googleBtn').onclick = async () => {
-      try { await signInWithRedirect(auth, provider); = 'index.html'; }
+      try { await signInWithRedirect(auth, provider); }
       catch (err) { msg.style.color = 'red'; msg.textContent = err.message; }
     };
 
