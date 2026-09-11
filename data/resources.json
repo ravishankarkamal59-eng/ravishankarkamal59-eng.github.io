@@ -2,19 +2,95 @@
   "upsc": {
     "name": "UPSC Civil Services",
     "notes": [
-      {"title": "Polity Complete Notes", "link": "https://drive.google.com/", "type": "PDF"},
-      {"title": "Modern History Notes", "link": "https://drive.google.com/", "type": "PDF"}
+      {
+        "title": "Polity Complete Notes",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      },
+      {
+        "title": "Modern History Notes",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
     ],
     "pyq": [
-      {"title": "UPSC Prelims 2024 PYQ", "link": "https://drive.google.com/", "type": "PDF"},
-      {"title": "UPSC Mains 2023 PYQ", "link": "https://drive.google.com/", "type": "PDF"}
+      {
+        "title": "UPSC Prelims 2024 PYQ",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      },
+      {
+        "title": "UPSC Mains 2023 PYQ",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
     ],
-    "syllabus": [{"title": "UPSC Full Syllabus 2026", "link": "https://drive.google.com/", "type": "PDF"}],
-    "videos": [{"title": "UPSC Strategy by Toppers", "link": "https://youtube.com/", "type": "Video"}],
-    "books": [{"title": "Laxmikanth - Indian Polity", "link": "https://amazon.in/", "type": "Book"}]
+    "syllabus": [
+      {
+        "title": "UPSC Full Syllabus 2026",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
+    ],
+    "videos": [
+      {
+        "title": "UPSC Strategy by Toppers",
+        "link": "https://youtube.com/",
+        "type": "Video"
+      }
+    ],
+    "books": [
+      {
+        "title": "Laxmikanth - Indian Polity",
+        "link": "https://amazon.in/",
+        "type": "Book"
+      }
+    ]
   },
-  "bpsc": {"name": "BPSC", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "ssc-cgl": {"name": "SSC CGL", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "railway": {"name": "Railway", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "banking": {"name": "Banking", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []}
+  "bpsc": {
+    "name": "BPSC",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ssc-cgl": {
+    "name": "SSC CGL",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "railway": {
+    "name": "Railway",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "banking": {
+    "name": "Banking",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-ma": {
+    "name": "BA/MA",
+    "notes": [],
+    "pyq": [
+      {
+        "title": "Political science",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ba-ma/pyq/1789123746048-pol501-1-.pdf",
+        "type": "PDF"
+      }
+    ],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  }
 }
