@@ -2,100 +2,135 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - Upload PDF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f3460">
+<title>RS Admin - Content Manager</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="admin-manifest.json">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%230f3460' rx='28'/><text x='90' y='115' font-size='95' text-anchor='middle' fill='white'>🔐</text></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RS Admin">
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
-.aw{max-width:900px;margin:1rem auto;padding:1rem}
-.lg{background:#fff;padding:2rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.1);max-width:400px;margin:3rem auto}
-.lg h2{color:#0f3460;text-align:center;margin-bottom:1rem}
+* { -webkit-tap-highlight-color: transparent; }
+body { padding-bottom: 80px; }
+.aw{max-width:900px;margin:0 auto;padding:.8rem}
+.app-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1rem;border-radius:14px;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.app-hd .ic{font-size:2rem}
+.app-hd h1{color:#fff;margin:0;font-size:1.15rem}
+.app-hd p{margin:.2rem 0 0;font-size:.78rem;opacity:.9}
+.lg{background:#fff;padding:1.8rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.1);max-width:400px;margin:3rem auto}
+.lg h2{color:#0f3460;text-align:center;margin-bottom:1rem;font-size:1.2rem}
 .lg input{width:100%;padding:.9rem;border:2px solid #e0e6ed;border-radius:10px;margin-bottom:.8rem;font-size:1rem;box-sizing:border-box}
-.lg button{width:100%;padding:.9rem;background:#e94560;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer}
-.ah{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;margin-bottom:1rem}
-.ah h1{color:#fff;margin:0;font-size:1.3rem}
-.ah p{margin:.5rem 0 0;opacity:.9;font-size:.9rem}
-.fc{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.08);margin-bottom:1rem}
-.fc label{display:block;font-weight:600;color:#0f3460;margin:.8rem 0 .4rem;font-size:.95rem}
+.lg button{width:100%;padding:1rem;background:#e94560;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer}
+.tk-st{background:#e8f5e9;border:2px solid #27ae60;padding:.8rem 1rem;border-radius:12px;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;font-size:.88rem;color:#155724}
+.tk-st .ok{font-size:1.4rem}
+.tk-st button{margin-left:auto;background:transparent;color:#e74c3c;border:1px solid #e74c3c;padding:.3rem .7rem;border-radius:8px;cursor:pointer;font-size:.8rem}
+.fc{background:#fff;padding:1.2rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.08);margin-bottom:1rem}
+.fc label{display:block;font-weight:600;color:#0f3460;margin:.7rem 0 .4rem;font-size:.9rem}
 .fc input,.fc select{width:100%;padding:.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:.95rem;box-sizing:border-box;font-family:inherit}
-.fc button{margin-top:1rem;padding:.9rem 1.5rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:1rem;width:100%}
+.fc button{margin-top:1rem;padding:1rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:1rem;width:100%}
 .fc button:disabled{background:#ccc;cursor:not-allowed}
-.tk-box{background:#e8f5e9;border:2px solid #27ae60;padding:1rem;border-radius:12px;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
-.tk-box .ok{font-size:1.5rem}
-.tk-box .info{flex:1;font-size:.9rem;color:#155724}
-.tk-box button{background:transparent;color:#e74c3c;border:1px solid #e74c3c;padding:.4rem .8rem;border-radius:8px;cursor:pointer;font-size:.85rem;width:auto}
-.up-area{border:3px dashed #0f3460;border-radius:14px;padding:2rem 1rem;text-align:center;background:#f8fafc;cursor:pointer;transition:all .3s;margin:1rem 0}
-.up-area:hover{border-color:#e94560;background:#fff5f5}
-.up-area .icon{font-size:3rem;margin-bottom:.5rem}
-.up-area .txt{color:#0f3460;font-weight:600;font-size:1.05rem}
-.up-area .sub{color:#888;font-size:.85rem;margin-top:.3rem}
+.up-area{border:3px dashed #0f3460;border-radius:14px;padding:1.5rem 1rem;text-align:center;background:#f8fafc;cursor:pointer;transition:all .3s;margin:.5rem 0}
+.up-area:active{border-color:#e94560;background:#fff5f5}
+.up-area .icon{font-size:2.5rem;margin-bottom:.3rem}
+.up-area .txt{color:#0f3460;font-weight:600;font-size:1rem}
+.up-area .sub{color:#888;font-size:.8rem;margin-top:.2rem}
 .up-area input[type=file]{display:none}
-.file-list{background:#f8fafc;border-radius:10px;padding:.8rem;margin-top:.5rem;font-size:.85rem;color:#555}
-.file-item{padding:.4rem 0;border-bottom:1px solid #e0e6ed;display:flex;justify-content:space-between}
+.file-item{padding:.5rem 0;border-bottom:1px solid #e0e6ed;display:flex;justify-content:space-between;font-size:.85rem}
 .file-item:last-child{border:none}
+.file-list{background:#f8fafc;border-radius:10px;padding:.8rem;margin-top:.5rem;font-size:.85rem;color:#555}
 .progress{width:100%;height:8px;background:#e0e6ed;border-radius:4px;overflow:hidden;margin:.8rem 0;display:none}
 .progress-bar{height:100%;background:linear-gradient(90deg,#e94560,#f39c12);width:0%;transition:width .3s}
-.msg{padding:1rem;border-radius:10px;margin:1rem 0;display:none;font-size:.9rem}
+.msg{padding:.9rem;border-radius:10px;margin:.8rem 0;display:none;font-size:.88rem;line-height:1.5}
 .msg.ok{background:#d4edda;color:#155724;display:block}
 .msg.err{background:#f8d7da;color:#721c24;display:block}
 .msg.info{background:#d1ecf1;color:#0c5460;display:block}
-.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
-.tabs button{padding:.6rem 1.2rem;border:2px solid #e0e6ed;background:#fff;border-radius:20px;cursor:pointer;font-weight:500;font-size:.9rem}
-.tabs button.on{background:#e94560;color:#fff;border-color:#e94560}
-.item-list{background:#f8fafc;border-radius:10px;padding:1rem;margin-top:1rem;max-height:400px;overflow-y:auto}
-.item-row{display:flex;align-items:center;gap:.5rem;padding:.6rem;border-bottom:1px solid #e0e6ed;font-size:.85rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;padding:.4rem;background:#f5f7fa;border-radius:12px}
+.tabs button{flex:1;padding:.7rem .5rem;border:2px solid transparent;background:transparent;border-radius:10px;cursor:pointer;font-weight:600;font-size:.85rem;color:#666;min-width:80px}
+.tabs button.on{background:#fff;color:#e94560;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.item-list{background:#f8fafc;border-radius:10px;padding:.7rem;margin-top:.8rem;max-height:400px;overflow-y:auto}
+.item-row{display:flex;align-items:center;gap:.5rem;padding:.5rem .4rem;border-bottom:1px solid #e0e6ed;font-size:.83rem}
+.item-row:last-child{border:none}
 .item-row .ti{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.item-row .tp{background:#e8f4ff;color:#0f3460;padding:.1rem .4rem;border-radius:6px;font-size:.7rem}
-.item-row .dl{background:#e74c3c;color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;flex-shrink:0}
-.help ol{line-height:2;font-size:.9rem}
-.help a{color:#e94560}
+.item-row .tp{background:#e8f4ff;color:#0f3460;padding:.1rem .4rem;border-radius:6px;font-size:.68rem;flex-shrink:0}
+.item-row .dl{background:#e74c3c;color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;flex-shrink:0;font-size:.9rem}
+.install-btn{display:none;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;padding:.8rem 1.2rem;border:none;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:1rem;width:100%;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 3px 10px rgba(39,174,96,.3)}
+.install-btn.show{display:flex}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -2px 12px rgba(0,0,0,.08);display:flex;justify-content:space-around;padding:.5rem 0;z-index:90}
+.bnav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:.2rem;color:#999;font-size:.7rem;cursor:pointer;padding:.3rem .8rem;flex:1;max-width:100px}
+.bnav button .bic{font-size:1.4rem}
+.bnav button.on{color:#e94560;font-weight:600}
+.offline-bar{background:#f39c12;color:#fff;padding:.5rem;text-align:center;font-size:.8rem;font-weight:600;display:none;position:fixed;top:0;left:0;right:0;z-index:100}
+.offline-bar.show{display:block}
+body.dark-mode .fc,body.dark-mode .lg,body.dark-mode .item-list,body.dark-mode .file-list{background:#16213e;color:#e0e0e0}
+body.dark-mode .fc label,body.dark-mode .app-hd h1{color:#6dd5fa}
+body.dark-mode .tabs{background:#0a1628}
+body.dark-mode .tabs button.on{background:#16213e;color:#6dd5fa}
+body.dark-mode .bnav{background:#16213e}
+body.dark-mode .up-area{background:#0a1628;border-color:#6dd5fa}
 </style>
 </head>
 <body>
+<div class="offline-bar" id="offlineBar">📴 आप ऑफ़लाइन हैं — इंटरनेट से जुड़ें</div>
+
 <header>
-<div class="top-bar">🔐 Admin Panel - PDF Upload</div>
+<div class="top-bar">🔐 RS Admin App</div>
 <nav>
 <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
 <ul class="nav-links"><li><a href="index.html">होम</a></li><li><a href="#" id="lo" style="display:none">लॉगआउट</a></li></ul>
 </nav>
 </header>
+
 <main>
 <div class="aw">
 
+<!-- INSTALL BUTTON -->
+<button class="install-btn" id="installBtn">
+<span style="font-size:1.3rem">📲</span>
+<span>App इंस्टॉल करें</span>
+</button>
+
+<!-- LOGIN -->
 <div class="lg" id="loginBox">
 <h2>🔐 Admin Login</h2>
-<input type="password" id="ap" placeholder="Password">
+<input type="password" id="ap" placeholder="Password" autocomplete="current-password">
 <button id="lb">Login</button>
-<p id="le" style="color:#e74c3c;text-align:center;margin-top:.8rem"></p>
+<p id="le" style="color:#e74c3c;text-align:center;margin-top:.8rem;font-size:.9rem"></p>
+<p style="text-align:center;color:#888;font-size:.78rem;margin-top:1rem">🔒 सिर्फ Admin के लिए</p>
 </div>
 
+<!-- MAIN CONTENT -->
 <div id="ac" style="display:none">
-<div class="ah">
-<h1>📚 PDF Upload Manager</h1>
-<p>Phone से PDF select करके सीधे upload करें</p>
+<div class="app-hd">
+<div class="ic">📚</div>
+<div>
+<h1>Content Manager</h1>
+<p id="tokenStatusTxt">PDF, Notes, Videos upload करें</p>
+</div>
 </div>
 
-<!-- Token status - हमेशा दिखे -->
-<div id="tkBox" class="tk-box" style="display:none">
+<!-- Token Status -->
+<div id="tkBox" class="tk-st" style="display:none">
 <span class="ok">✅</span>
-<div class="info">
-<strong>Token saved</strong><br>
-<span style="font-size:.8rem">अब हर बार token डालने की जरूरत नहीं</span>
-</div>
+<div style="flex:1"><strong>Token Saved</strong><br><span style="font-size:.75rem">हर बार डालने की जरूरत नहीं</span></div>
 <button id="chTk">बदलें</button>
 </div>
 
+<!-- Token Form -->
 <div id="tkForm">
 <div class="fc">
 <label>🔑 GitHub Token (सिर्फ एक बार)</label>
-<input type="password" id="tk" placeholder="ghp_...">
+<input type="password" id="tk" placeholder="ghp_..." autocomplete="off">
 <label>👤 GitHub Username</label>
 <input type="text" id="un" value="ravishankarkamal59-eng">
-<button id="stk" style="background:#0f3460">💾 Token Save करें</button>
-<p style="font-size:.8rem;color:#666;margin-top:.5rem">Token बनाने का तरीका Help tab में है</p>
+<button id="stk">💾 Token Save करें</button>
+<p style="font-size:.8rem;color:#666;margin-top:.5rem">Token बनाने का तरीका Help tab में देखें</p>
 </div>
 </div>
 
+<!-- Tabs -->
 <div class="tabs">
 <button class="on" data-tab="add">📤 Upload</button>
 <button data-tab="manage">📋 Manage</button>
@@ -137,48 +172,13 @@
 <option value="uppcs">UPPCS</option>
 <option value="pet">PET</option>
 <option value="ba-ma">BA/MA</option>
-
-<optgroup label="UPSC Papers">
-<option value="upsc-prelims-gs1">📘 UPSC Prelims GS Paper 1</option>
-<option value="upsc-prelims-csat">🧮 UPSC Prelims CSAT (Paper 2)</option>
-<option value="upsc-mains-essay">✍️ UPSC Mains Essay Paper</option>
-<option value="upsc-mains-gs1">📜 UPSC Mains GS Paper 1</option>
-<option value="upsc-mains-gs2">🏛️ UPSC Mains GS Paper 2</option>
-<option value="upsc-mains-gs3">💰 UPSC Mains GS Paper 3</option>
-<option value="upsc-mains-gs4">🎭 UPSC Mains GS Paper 4 (Ethics)</option>
-</optgroup>
-<optgroup label="UPPCS Papers">
-<option value="uppcs-prelims-gs">📘 UPPCS Prelims GS</option>
-<option value="uppcs-prelims-csat">🧮 UPPCS Prelims CSAT</option>
-<option value="uppcs-mains-hindi">🇮🇳 UPPCS Mains सामान्य हिंदी</option>
-<option value="uppcs-mains-essay">✍️ UPPCS Mains निबंध</option>
-<option value="uppcs-mains-gs1">📜 UPPCS Mains GS Paper 1</option>
-<option value="uppcs-mains-gs2">🏛️ UPPCS Mains GS Paper 2</option>
-<option value="uppcs-mains-gs3">💰 UPPCS Mains GS Paper 3</option>
-<option value="uppcs-mains-gs4">🎭 UPPCS Mains GS Paper 4</option>
-<option value="uppcs-mains-gs5">⭐ UPPCS Mains GS Paper 5</option>
-<option value="uppcs-mains-gs6">🌾 UPPCS Mains GS Paper 6</option>
-</optgroup>
-
 <option value="ugc-net">🎓 UGC NET / JRF</option>
-<option value="net-paper1">📚 UGC NET Paper 1</option>
-<option value="net-hindi">📖 UGC NET हिंदी</option>
-<option value="net-english">🇬🇧 UGC NET English</option>
-<option value="net-history">📜 UGC NET इतिहास</option>
-<option value="net-polity">🏛️ UGC NET राजनीति शास्त्र</option>
-<option value="net-economics">💰 UGC NET अर्थशास्त्र</option>
-<option value="net-sociology">👥 UGC NET समाजशास्त्र</option>
-<option value="net-psychology">🧠 UGC NET मनोविज्ञान</option>
-<option value="net-geography">🌍 UGC NET भूगोल</option>
-<option value="net-education">👨‍🏫 UGC NET Education</option>
-<option value="net-commerce">📊 UGC NET Commerce</option>
-<option value="net-philosophy">🕉️ UGC NET Philosophy</option>
-<option value="net-sanskrit">📜 UGC NET संस्कृत</option>
-
+<option value="net-paper1">📚 NET Paper 1</option>
+<optgroup label="BA Subjects">
 <option value="ba-hindi">BA हिंदी</option>
 <option value="ba-english">BA English</option>
 <option value="ba-history">BA इतिहास</option>
-<option value="ba-polity">BA राजनीति शास्त्र</option>
+<option value="ba-polity">BA राजनीति</option>
 <option value="ba-economics">BA अर्थशास्त्र</option>
 <option value="ba-sociology">BA समाजशास्त्र</option>
 <option value="ba-psychology">BA मनोविज्ञान</option>
@@ -187,15 +187,52 @@
 <option value="ba-urdu">BA उर्दू</option>
 <option value="ba-finearts">BA फाइन आर्ट्स</option>
 <option value="ba-journalism">BA पत्रकारिता</option>
+</optgroup>
+<optgroup label="MA Subjects">
 <option value="ma-hindi">MA हिंदी</option>
 <option value="ma-english">MA English</option>
 <option value="ma-history">MA इतिहास</option>
-<option value="ma-polity">MA राजनीति शास्त्र</option>
+<option value="ma-polity">MA राजनीति</option>
 <option value="ma-economics">MA अर्थशास्त्र</option>
 <option value="ma-sociology">MA समाजशास्त्र</option>
 <option value="ma-psychology">MA मनोविज्ञान</option>
 <option value="ma-geography">MA भूगोल</option>
-
+</optgroup>
+<optgroup label="NET Subjects">
+<option value="net-hindi">NET हिंदी</option>
+<option value="net-english">NET English</option>
+<option value="net-history">NET इतिहास</option>
+<option value="net-polity">NET राजनीति</option>
+<option value="net-economics">NET अर्थशास्त्र</option>
+<option value="net-sociology">NET समाजशास्त्र</option>
+<option value="net-psychology">NET मनोविज्ञान</option>
+<option value="net-geography">NET भूगोल</option>
+<option value="net-education">NET Education</option>
+<option value="net-commerce">NET Commerce</option>
+<option value="net-philosophy">NET Philosophy</option>
+<option value="net-sanskrit">NET संस्कृत</option>
+</optgroup>
+<optgroup label="UPSC Papers">
+<option value="upsc-prelims-gs1">UPSC Prelims GS</option>
+<option value="upsc-prelims-csat">UPSC CSAT</option>
+<option value="upsc-mains-essay">UPSC Essay</option>
+<option value="upsc-mains-gs1">UPSC GS1</option>
+<option value="upsc-mains-gs2">UPSC GS2</option>
+<option value="upsc-mains-gs3">UPSC GS3</option>
+<option value="upsc-mains-gs4">UPSC GS4</option>
+</optgroup>
+<optgroup label="UPPCS Papers">
+<option value="uppcs-prelims-gs">UPPCS Prelims GS</option>
+<option value="uppcs-prelims-csat">UPPCS CSAT</option>
+<option value="uppcs-mains-hindi">UPPCS हिंदी</option>
+<option value="uppcs-mains-essay">UPPCS निबंध</option>
+<option value="uppcs-mains-gs1">UPPCS GS1</option>
+<option value="uppcs-mains-gs2">UPPCS GS2</option>
+<option value="uppcs-mains-gs3">UPPCS GS3</option>
+<option value="uppcs-mains-gs4">UPPCS GS4</option>
+<option value="uppcs-mains-gs5">UPPCS GS5</option>
+<option value="uppcs-mains-gs6">UPPCS GS6</option>
+</optgroup>
 </select>
 
 <label>📂 Type चुनें</label>
@@ -214,9 +251,9 @@
 <label>📎 PDF File चुनें</label>
 <div class="up-area" id="upArea">
 <div class="icon">📄</div>
-<div class="txt">PDF select करने के लिए यहाँ tap करें</div>
-<div class="sub">या phone से file चुनें (multiple भी)</div>
-<input type="file" id="fileInput" accept="application/pdf" multiple>
+<div class="txt">PDF select करने के लिए tap करें</div>
+<div class="sub">एक साथ कई PDF भी चुन सकते हैं</div>
+<input type="file" id="fileInput" accept="application/pdf,.pdf" multiple>
 </div>
 <div class="file-list" id="fileList" style="display:none"></div>
 </div>
@@ -251,33 +288,45 @@
 
 <!-- HELP TAB -->
 <div id="tab-help" style="display:none">
-<div class="fc help">
-<h3>🔑 Token कैसे बनाएँ?</h3>
-<ol>
+<div class="fc">
+<h3 style="color:#0f3460">🔑 Token कैसे बनाएँ?</h3>
+<ol style="line-height:1.9;font-size:.9rem;padding-left:1.2rem">
 <li><a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a> खोलें</li>
-<li>Note: <code>admin-panel</code></li>
+<li>Note: <code>admin-app</code></li>
 <li>Expiration: No expiration</li>
-<li>Scopes: ✅ <strong>repo</strong> वाला box tick करें</li>
+<li>Scopes: ✅ <strong>repo</strong> tick करें</li>
 <li>Generate token दबाएँ</li>
 <li>Token copy करके ऊपर paste करें</li>
 </ol>
-<h3 style="margin-top:1rem">📤 PDF कैसे Upload करें?</h3>
-<ol>
+<h3 style="color:#0f3460;margin-top:1.2rem">📤 PDF कैसे Upload करें?</h3>
+<ol style="line-height:1.9;font-size:.9rem;padding-left:1.2rem">
 <li>Exam और Type चुनें</li>
 <li>Title डालें</li>
-<li>PDF file select करें (phone से)</li>
+<li>PDF File tap करके phone से चुनें</li>
 <li>Upload दबाएँ</li>
-<li>PDF website पर upload हो जाएगी</li>
-<li>अपने आप resources में add हो जाएगा</li>
+<li>PDF अपने आप website पर add हो जाएगी</li>
 </ol>
-<h3 style="margin-top:1rem">✅ Token एक बार save</h3>
-<p>Token localStorage में save रहता है — दोबारा नहीं डालना पड़ेगा, चाहे app बंद कर दें।</p>
+<h3 style="color:#0f3460;margin-top:1.2rem">📲 App कैसे Install करें?</h3>
+<ol style="line-height:1.9;font-size:.9rem;padding-left:1.2rem">
+<li>Chrome में admin.html खोलें</li>
+<li>ऊपर "App Install" बटन दबाएँ</li>
+<li>या Chrome menu (⋮) → "Add to Home screen"</li>
+<li>अब app icon होम स्क्रीन पर होगा</li>
+<li>Icon दबाकर सीधे खुलेगा — URL टाइप नहीं करना</li>
+</ol>
 </div>
 </div>
 
 </div>
 </div>
 </main>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav" id="bnav" style="display:none">
+<button data-btab="add" class="on"><span class="bic">📤</span>Upload</button>
+<button data-btab="manage"><span class="bic">📋</span>Manage</button>
+<button data-btab="help"><span class="bic">❓</span>Help</button>
+</nav>
 
 <script>
 var REPO = 'ravishankarkamal59-eng/ravishankarkamal59-eng.github.io';
@@ -291,7 +340,24 @@ var EXAM_NAMES = {
   'llb':'LLB','cat-mba':'CAT/MBA','gate':'GATE','b-ed':'B.Ed','nda-cds':'NDA/CDS','bca-mca':'BCA/MCA',
   'nursing':'Nursing','cuet':'CUET','ctet':'CTET','bihar-police':'बिहार पुलिस','up-police':'UP Police',
   'mppsc':'MPPSC','ras':'RAS','bihar-si':'बिहार SI','up-lekhpal':'UP लेखपाल','jpsc':'JPSC',
-  'ukpsc':'UKPSC','uppcs':'UPPCS','pet':'PET','ba-ma':'BA/MA'
+  'ukpsc':'UKPSC','uppcs':'UPPCS','pet':'PET','ba-ma':'BA/MA',
+  'ugc-net':'UGC NET','net-paper1':'NET Paper 1',
+  'ba-hindi':'BA हिंदी','ba-english':'BA English','ba-history':'BA इतिहास','ba-polity':'BA राजनीति',
+  'ba-economics':'BA अर्थशास्त्र','ba-sociology':'BA समाजशास्त्र','ba-psychology':'BA मनोविज्ञान',
+  'ba-geography':'BA भूगोल','ba-sanskrit':'BA संस्कृत','ba-urdu':'BA उर्दू','ba-finearts':'BA फाइन आर्ट्स',
+  'ba-journalism':'BA पत्रकारिता',
+  'ma-hindi':'MA हिंदी','ma-english':'MA English','ma-history':'MA इतिहास','ma-polity':'MA राजनीति',
+  'ma-economics':'MA अर्थशास्त्र','ma-sociology':'MA समाजशास्त्र','ma-psychology':'MA मनोविज्ञान',
+  'ma-geography':'MA भूगोल',
+  'net-hindi':'NET हिंदी','net-english':'NET English','net-history':'NET इतिहास','net-polity':'NET राजनीति',
+  'net-economics':'NET अर्थशास्त्र','net-sociology':'NET समाजशास्त्र','net-psychology':'NET मनोविज्ञान',
+  'net-geography':'NET भूगोल','net-education':'NET Education','net-commerce':'NET Commerce',
+  'net-philosophy':'NET Philosophy','net-sanskrit':'NET संस्कृत',
+  'upsc-prelims-gs1':'UPSC Prelims GS','upsc-prelims-csat':'UPSC CSAT','upsc-mains-essay':'UPSC Essay',
+  'upsc-mains-gs1':'UPSC GS1','upsc-mains-gs2':'UPSC GS2','upsc-mains-gs3':'UPSC GS3','upsc-mains-gs4':'UPSC GS4',
+  'uppcs-prelims-gs':'UPPCS Prelims GS','uppcs-prelims-csat':'UPPCS CSAT','uppcs-mains-hindi':'UPPCS हिंदी',
+  'uppcs-mains-essay':'UPPCS निबंध','uppcs-mains-gs1':'UPPCS GS1','uppcs-mains-gs2':'UPPCS GS2',
+  'uppcs-mains-gs3':'UPPCS GS3','uppcs-mains-gs4':'UPPCS GS4','uppcs-mains-gs5':'UPPCS GS5','uppcs-mains-gs6':'UPPCS GS6'
 };
 
 function $(id) { return document.getElementById(id); }
@@ -308,12 +374,9 @@ function doLogin() {
 function showAdmin() {
   $('loginBox').style.display = 'none';
   $('ac').style.display = 'block';
+  $('bnav').style.display = 'flex';
   $('lo').style.display = 'inline';
-  $('lo').onclick = function(e) {
-    e.preventDefault();
-    localStorage.removeItem('admIn');
-    location.reload();
-  };
+  $('lo').onclick = function(e) { e.preventDefault(); localStorage.removeItem('admIn'); location.reload(); };
   checkToken();
   loadRes();
 }
@@ -332,7 +395,7 @@ function checkToken() {
 function saveToken() {
   var t = $('tk').value.trim();
   var u = $('un').value.trim();
-  if (!t || !u) { alert('Token और Username दोनों डालें'); return; }
+  if (!t || !u) { alert('Token और Username डालें'); return; }
   localStorage.setItem('ghTk', t);
   localStorage.setItem('ghUn', u);
   checkToken();
@@ -340,21 +403,25 @@ function saveToken() {
 }
 
 function changeToken() {
+  if (!confirm('Token हटाना है?')) return;
   localStorage.removeItem('ghTk');
   checkToken();
 }
 
 function showTab(tab, btn) {
-  var btns = document.querySelectorAll('.tabs button');
-  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('on');
-  btn.classList.add('on');
-  var names = ['add', 'manage', 'help'];
-  for (var j = 0; j < names.length; j++) {
-    $('tab-' + names[j]).style.display = names[j] === tab ? 'block' : 'none';
+  document.querySelectorAll('.tabs button').forEach(function(b) { b.classList.remove('on'); });
+  document.querySelectorAll('.bnav button').forEach(function(b) { b.classList.remove('on'); });
+  if (btn) {
+    btn.classList.add('on');
+  } else {
+    document.querySelectorAll('[data-tab="' + tab + '"], [data-btab="' + tab + '"]').forEach(function(b) { b.classList.add('on'); });
   }
+  ['add', 'manage', 'help'].forEach(function(t) {
+    $('tab-' + t).style.display = t === tab ? 'block' : 'none';
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// File selection
 function handleFiles(e) {
   files = Array.from(e.target.files);
   var list = $('fileList');
@@ -371,7 +438,6 @@ function handleFiles(e) {
   list.style.display = 'block';
 }
 
-// Show link input when videos/books type
 function checkType() {
   var ty = $('ty').value;
   if (ty === 'videos' || ty === 'books') {
@@ -386,54 +452,34 @@ function checkType() {
 function fileToBase64(file) {
   return new Promise(function(resolve, reject) {
     var reader = new FileReader();
-    reader.onload = function() {
-      var base64 = reader.result.split(',')[1];
-      resolve(base64);
-    };
+    reader.onload = function() { resolve(reader.result.split(',')[1]); };
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
 }
 
 function sanitizeName(name) {
-  return name.toLowerCase()
-    .replace(/[^a-z0-9.]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  return name.toLowerCase().replace(/[^a-z0-9.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
 async function uploadFileToGitHub(file, path, tk, un) {
   var base64 = await fileToBase64(file);
   var api = 'https://api.github.com/repos/' + REPO + '/contents/' + path;
   var sha = null;
-  
-  // Check if exists
   try {
-    var check = await fetch(api + '?t=' + Date.now(), {
-      headers: { 'Authorization': 'token ' + tk }
-    });
+    var check = await fetch(api + '?t=' + Date.now(), { headers: { 'Authorization': 'token ' + tk } });
     if (check.ok) {
       var existing = await check.json();
       sha = existing.sha;
     }
   } catch(e) {}
-  
-  var body = {
-    message: 'Upload ' + path,
-    content: base64,
-    committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
-  };
+  var body = { message: 'Upload ' + path, content: base64, committer: { name: 'Admin', email: un + '@users.noreply.github.com' } };
   if (sha) body.sha = sha;
-  
   var res = await fetch(api, {
     method: 'PUT',
-    headers: {
-      'Authorization': 'token ' + tk,
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': 'token ' + tk, 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
-  
   if (!res.ok) {
     var err = await res.json();
     throw new Error(err.message || 'Upload failed');
@@ -480,31 +526,22 @@ function loadItems() {
     html += '</div>';
   }
   c.innerHTML = html;
-  var del = c.querySelectorAll('.dl');
-  for (var k = 0; k < del.length; k++) {
-    del[k].onclick = function() {
-      removeItem(this.dataset.ex, this.dataset.ty, parseInt(this.dataset.idx));
-    };
-  }
+  c.querySelectorAll('.dl').forEach(function(btn) {
+    btn.onclick = function() { removeItem(this.dataset.ex, this.dataset.ty, parseInt(this.dataset.idx)); };
+  });
 }
 
 async function addResource() {
   var tk = localStorage.getItem('ghTk');
   var un = localStorage.getItem('ghUn');
   if (!tk || !un) { msg('addMsg', '❌ पहले Token save करें', 'err'); return; }
-  
   var ex = $('ex').value;
   var ty = $('ty').value;
   var title = $('ttl').value.trim();
-  
   if (!title) { msg('addMsg', '❌ Title डालें', 'err'); return; }
   
   var isFile = (ty === 'notes' || ty === 'pyq' || ty === 'syllabus');
-  
-  if (isFile && !files.length) {
-    msg('addMsg', '❌ PDF file select करें', 'err');
-    return;
-  }
+  if (isFile && !files.length) { msg('addMsg', '❌ PDF file select करें', 'err'); return; }
   
   if (!isFile) {
     var lnk = $('lnk').value.trim();
@@ -513,41 +550,32 @@ async function addResource() {
     return;
   }
   
-  // Upload files
   $('addBtn').disabled = true;
   $('prog').style.display = 'block';
-  msg('addMsg', '⏳ Upload हो रहा है... कृपया प्रतीक्षा करें', 'info');
+  msg('addMsg', '⏳ Upload हो रहा है...', 'info');
   
   try {
     for (var i = 0; i < files.length; i++) {
       var file = files[i];
       var safeName = sanitizeName(file.name);
       var path = 'resources/' + ex + '/' + ty + '/' + Date.now() + '-' + safeName;
-      
       $('progBar').style.width = ((i / files.length) * 70) + '%';
       msg('addMsg', '⏳ Upload: ' + file.name + ' (' + (i+1) + '/' + files.length + ')', 'info');
-      
       await uploadFileToGitHub(file, path, tk, un);
-      
       var fileTitle = files.length === 1 ? title : title + ' - ' + file.name.replace('.pdf', '');
       var fileUrl = 'https://ravishankarkamal59-eng.github.io/' + path;
-      
       await addToJson(ex, ty, fileTitle, fileUrl, 'PDF', tk, un);
     }
-    
     $('progBar').style.width = '100%';
-    msg('addMsg', '✅ सफल! ' + files.length + ' PDF upload हो गई। Website पर 30 सेकंड में दिखेंगी।', 'ok');
-    
+    msg('addMsg', '✅ सफल! ' + files.length + ' PDF upload हो गई। 30 सेकंड में website पर दिखेंगी।', 'ok');
     files = [];
     $('fileInput').value = '';
     $('fileList').style.display = 'none';
     $('ttl').value = '';
     loadRes();
-    
   } catch(e) {
     msg('addMsg', '❌ Error: ' + e.message, 'err');
   }
-  
   $('addBtn').disabled = false;
   setTimeout(function() { $('prog').style.display = 'none'; $('progBar').style.width = '0%'; }, 2000);
 }
@@ -567,21 +595,13 @@ async function addToJson(ex, ty, title, link, type, tk, un) {
   }
   if (!resourcesData[ex][ty]) resourcesData[ex][ty] = [];
   resourcesData[ex][ty].push({ title: title, link: link, type: type });
-  
-  // Push to GitHub
   var api = 'https://api.github.com/repos/' + REPO + '/contents/data/resources.json';
-  var g = await fetch(api + '?t=' + Date.now(), {
-    headers: { 'Authorization': 'token ' + tk }
-  });
+  var g = await fetch(api + '?t=' + Date.now(), { headers: { 'Authorization': 'token ' + tk } });
   var cur = await g.json();
   var content = btoa(unescape(encodeURIComponent(JSON.stringify(resourcesData, null, 2))));
-  
   var p = await fetch(api, {
     method: 'PUT',
-    headers: {
-      'Authorization': 'token ' + tk,
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': 'token ' + tk, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       message: 'Add ' + ty + ' for ' + ex + ': ' + title,
       content: content,
@@ -589,7 +609,6 @@ async function addToJson(ex, ty, title, link, type, tk, un) {
       committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
     })
   });
-  
   if (!p.ok) throw new Error('JSON update failed');
 }
 
@@ -598,22 +617,14 @@ async function removeItem(ex, ty, i) {
   var tk = localStorage.getItem('ghTk');
   var un = localStorage.getItem('ghUn');
   if (!tk) { alert('Token save करें'); return; }
-  
   resourcesData[ex][ty].splice(i, 1);
-  
   var api = 'https://api.github.com/repos/' + REPO + '/contents/data/resources.json';
-  var g = await fetch(api + '?t=' + Date.now(), {
-    headers: { 'Authorization': 'token ' + tk }
-  });
+  var g = await fetch(api + '?t=' + Date.now(), { headers: { 'Authorization': 'token ' + tk } });
   var cur = await g.json();
   var content = btoa(unescape(encodeURIComponent(JSON.stringify(resourcesData, null, 2))));
-  
   var p = await fetch(api, {
     method: 'PUT',
-    headers: {
-      'Authorization': 'token ' + tk,
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': 'token ' + tk, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       message: 'Delete from ' + ex,
       content: content,
@@ -621,7 +632,6 @@ async function removeItem(ex, ty, i) {
       committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
     })
   });
-  
   if (p.ok) { loadItems(); alert('✅ Deleted'); }
   else alert('❌ Error');
 }
@@ -632,6 +642,36 @@ function msg(id, text, cls) {
   e.className = 'msg ' + cls;
 }
 
+// ===== PWA INSTALL =====
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  $('installBtn').classList.add('show');
+});
+
+function installApp() {
+  if (!deferredPrompt) {
+    alert('Chrome menu (⋮) → "Add to Home screen" दबाएँ');
+    return;
+  }
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function(choice) {
+    deferredPrompt = null;
+    $('installBtn').classList.remove('show');
+  });
+}
+
+// ===== OFFLINE DETECTION =====
+function updateOnline() {
+  if (navigator.onLine) {
+    $('offlineBar').classList.remove('show');
+  } else {
+    $('offlineBar').classList.add('show');
+  }
+}
+
+// ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
   $('lb').addEventListener('click', doLogin);
   $('ap').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
@@ -643,12 +683,22 @@ document.addEventListener('DOMContentLoaded', function() {
   $('mEx').addEventListener('change', loadItems);
   $('mTy').addEventListener('change', loadItems);
   $('upArea').addEventListener('click', function() { $('fileInput').click(); });
+  $('installBtn').addEventListener('click', installApp);
   
-  var tabs = document.querySelectorAll('.tabs button');
-  for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', function() {
-      showTab(this.dataset.tab, this);
-    });
+  document.querySelectorAll('.tabs button').forEach(function(b) {
+    b.addEventListener('click', function() { showTab(this.dataset.tab, this); });
+  });
+  document.querySelectorAll('.bnav button').forEach(function(b) {
+    b.addEventListener('click', function() { showTab(this.dataset.btab, null); });
+  });
+  
+  window.addEventListener('online', updateOnline);
+  window.addEventListener('offline', updateOnline);
+  updateOnline();
+  
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('admin-sw.js').catch(function() {});
   }
   
   checkType();
