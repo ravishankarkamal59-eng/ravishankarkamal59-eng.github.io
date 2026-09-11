@@ -681,16 +681,17 @@
     "notes": [
       {
         "title": "UPAGTA",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789145618531-upsssc-agta-exam-analysis-2026-ravishankar-insights.pdf",
-        "type": "PDF"
-      },
-      {
-        "title": "UPAGTA",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789145708419-up-gk-special-agta-2026-ravishankar-insights-comprehensive.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789145661786-agta-100-question-1.pdf",
         "type": "PDF"
       }
     ],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "UPAGTA",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/pyq/1789145754908-agta-100-question-1.pdf",
+        "type": "PDF"
+      }
+    ],
     "syllabus": [],
     "videos": [],
     "books": []
