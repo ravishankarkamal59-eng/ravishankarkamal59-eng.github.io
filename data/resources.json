@@ -278,5 +278,165 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "ba-hindi": {
+    "name": "BA हिंदी",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-english": {
+    "name": "BA English",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-history": {
+    "name": "BA इतिहास",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-polity": {
+    "name": "BA राजनीति शास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-economics": {
+    "name": "BA अर्थशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-sociology": {
+    "name": "BA समाजशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-psychology": {
+    "name": "BA मनोविज्ञान",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-geography": {
+    "name": "BA भूगोल",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-sanskrit": {
+    "name": "BA संस्कृत",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-urdu": {
+    "name": "BA उर्दू",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-finearts": {
+    "name": "BA फाइन आर्ट्स",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-journalism": {
+    "name": "BA पत्रकारिता",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-hindi": {
+    "name": "MA हिंदी",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-english": {
+    "name": "MA English",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-history": {
+    "name": "MA इतिहास",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-polity": {
+    "name": "MA राजनीति शास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-economics": {
+    "name": "MA अर्थशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-sociology": {
+    "name": "MA समाजशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-psychology": {
+    "name": "MA मनोविज्ञान",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ma-geography": {
+    "name": "MA भूगोल",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
