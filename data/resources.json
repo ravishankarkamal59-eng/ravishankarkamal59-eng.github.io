@@ -1,13 +1,7 @@
 {
   "upsc": {
     "name": "UPSC Civil Services",
-    "notes": [
-      {
-        "title": "Polity Complete Notes",
-        "link": "https://drive.google.com/",
-        "type": "PDF"
-      }
-    ],
+    "notes": [],
     "pyq": [
       {
         "title": "UPSC Prelims 2024 PYQ",
