@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - The Ravishankar Insights</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.admin-wrap{max-width:900px;margin:1rem auto;padding:1rem}
+.admin-header{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;margin-bottom:1.5rem}
+.admin-header h1{color:#fff;margin:0}
+.login-box{background:#fff;padding:2rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.1);max-width:400px;margin:3rem auto}
+.login-box h2{color:#0f3460;text-align:center;margin-bottom:1rem}
+.login-box input{width:100%;padding:.9rem;border:2px solid #e0e6ed;border-radius:10px;margin-bottom:.8rem;font-size:1rem}
+.login-box button{width:100%;padding:.9rem;background:#e94560;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer}
+.admin-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.admin-tabs button{padding:.6rem 1.2rem;border:2px solid #e0e6ed;background:#fff;border-radius:20px;cursor:pointer;font-weight:500}
+.admin-tabs button.active{background:#e94560;color:#fff;border-color:#e94560}
+.form-card{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,.08);margin-bottom:1rem}
+.form-card label{display:block;font-weight:600;color:#0f3460;margin:.8rem 0 .3rem}
+.form-card input,.form-card select{width:100%;padding:.7rem;border:2px solid #e0e6ed;border-radius:8px;font-size:.95rem}
+.form-card button{margin-top:1rem;padding:.8rem 1.5rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:1rem}
+.toast-msg{padding:1rem;border-radius:10px;margin:1rem 0;display:none}
+.toast-msg.success{background:#d4edda;color:#155724;display:block}
+.toast-msg.error{background:#f8d7da;color:#721c24;display:block}
+.item-list{background:#f8fafc;border-radius:10px;padding:1rem;margin-top:1rem;max-height:400px;overflow-y:auto}
+.item-row{display:flex;align-items:center;gap:.5rem;padding:.6rem;border-bottom:1px solid #e0e6ed}
+.item-row .title{flex:1;font-size:.9rem}
+.item-row .type{background:#e8f4ff;color:#0f3460;padding:.15rem .5rem;border-radius:8px;font-size:.75rem}
+.item-row .del{background:#e74c3c;color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer}
+.info-banner{background:#fff3cd;border-left:4px solid #f39c12;padding:1rem;border-radius:10px;margin-bottom:1rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+<div class="top-bar">🔐 Admin Panel</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<ul class="nav-links"><li><a href="index.html">होम</a></li><li><a href="#" id="logoutBtn" style="display:none">लॉगआउट</a></li></ul>
+</nav>
+</header>
+<main>
+<div class="admin-wrap">
+<div class="login-box" id="loginBox">
+<h2>🔐 Admin Login</h2>
+<input type="password" id="adminPass" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="loginError" style="color:#e74c3c;text-align:center;margin-top:.8rem"></p>
+</div>
+<div id="adminContent" style="display:none">
+<div class="admin-header"><h1>📚 Content Manager</h1><p>Notes, PYQ, Syllabus, Videos, Books add करें</p></div>
+<div class="info-banner"><strong>📌 पहले GitHub Token save करें, फिर content add करें।</strong></div>
+<div class="form-card">
+<label>🔑 GitHub Token</label>
+<input type="password" id="ghToken" placeholder="ghp_...">
+<label>👤 GitHub Username</label>
+<input type="text" id="ghUser" value="ravishankarkamal59-eng">
+<button onclick="saveToken()" style="background:#0f3460">Save Token</button>
+<p id="tokenStatus" style="font-size:.85rem;color:#27ae60;margin-top:.5rem"></p>
+</div>
+<div class="admin-tabs">
+<button class="active" onclick="showTab('add',this)">➕ Add Content</button>
+<button onclick="showTab('manage',this)">📋 Manage</button>
+<button onclick="showTab('help',this)">❓ Help</button>
+</div>
+<div id="tab-add">
+<div class="form-card">
+<label>📚 Exam चुनें</label>
+<select id="examSelect">
+<option value="upsc">UPSC</option><option value="bpsc">BPSC</option>
+<option value="ssc-cgl">SSC CGL</option><option value="ssc-chsl">SSC CHSL</option>
+<option value="ssc-mts">SSC MTS</option><option value="ssc-gd">SSC GD</option>
+<option value="railway">Railway</option><option value="banking">Banking</option>
+<option value="jee-mains">JEE Mains</option><option value="neet">NEET</option>
+<option value="llb">LLB</option><option value="cat-mba">CAT/MBA</option>
+<option value="gate">GATE</option><option value="b-ed">B.Ed</option>
+<option value="nda-cds">NDA/CDS</option><option value="bca-mca">BCA/MCA</option>
+<option value="nursing">Nursing</option><option value="cuet">CUET</option>
+<option value="ctet">CTET</option><option value="bihar-police">बिहार पुलिस</option>
+<option value="up-police">UP Police</option><option value="mppsc">MPPSC</option>
+<option value="ras">RAS</option><option value="bihar-si">बिहार SI</option>
+<option value="up-lekhpal">UP लेखपाल</option><option value="jpsc">JPSC</option>
+<option value="ukpsc">UKPSC</option><option value="uppcs">UPPCS</option>
+<option value="pet">PET</option><option value="ba-ma">BA/MA</option>
+</select>
+<label>📂 Type</label>
+<select id="typeSelect">
+<option value="notes">📝 Notes PDF</option>
+<option value="pyq">📄 PYQ Papers</option>
+<option value="syllabus">📚 Syllabus PDF</option>
+<option value="videos">🎥 Video Lectures</option>
+<option value="books">📖 Books</option>
+</select>
+<label>📌 Title</label>
+<input type="text" id="titleInput" placeholder="Polity Complete Notes">
+<label>🔗 Link</label>
+<input type="text" id="linkInput" placeholder="https://drive.google.com/...">
+<button onclick="addResource()">➕ Add करें</button>
+<div id="addMsg" class="toast-msg"></div>
+</div>
+</div>
+<div id="tab-manage" style="display:none">
+<div class="form-card">
+<label>📚 Exam</label>
+<select id="manageExam" onchange="loadItems()"></select>
+<label>📂 Type</label>
+<select id="manageType" onchange="loadItems()">
+<option value="notes">📝 Notes</option>
+<option value="pyq">📄 PYQ</option>
+<option value="syllabus">📚 Syllabus</option>
+<option value="videos">🎥 Videos</option>
+<option value="books">📖 Books</option>
+</select>
+<div class="item-list" id="itemList">Loading...</div>
+</div>
+</div>
+<div id="tab-help" style="display:none">
+<div class="form-card">
+<h3>🔑 GitHub Token बनाएँ</h3>
+<ol style="line-height:2">
+<li><a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens</a> खोलें</li>
+<li>Note: admin-panel</li>
+<li>Expiration: No expiration</li>
+<li>Scopes: ✅ repo tick करें</li>
+<li>Generate token → copy</li>
+<li>ऊपर paste करें</li>
+</ol>
+<h3 style="margin-top:1.5rem">📤 Content Add</h3>
+<ol style="line-height:2">
+<li>PDF Google Drive पर upload करें</li>
+<li>Share → Anyone with link</li>
+<li>Link copy करें</li>
+<li>Admin Panel में paste करें</li>
+<li>Add दबाएँ</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+const ADMIN_PASSWORD='Ravishankar@2026';
+const GITHUB_REPO='ravishankarkamal59-eng/ravishankarkamal59-eng.github.io';
+let resourcesData=null;
+window.addEventListener('load',()=>{
+  const t=localStorage.getItem('ghToken');
+  if(t){document.getElementById('ghToken').value=t;document.getElementById('tokenStatus').textContent='✅ Token saved';}
+  if(localStorage.getItem('adminLoggedIn')==='yes'){showAdmin();}
+});
+function login(){
+  if(document.getElementById('adminPass').value===ADMIN_PASSWORD){
+    localStorage.setItem('adminLoggedIn','yes');showAdmin();
+  } else {document.getElementById('loginError').textContent='❌ गलत पासवर्ड';}
+}
+function showAdmin(){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('adminContent').style.display='block';
+  const lb=document.getElementById('logoutBtn');lb.style.display='inline';
+  lb.onclick=(e)=>{e.preventDefault();localStorage.removeItem('adminLoggedIn');location.reload();};
+  loadResources();
+}
+function showTab(tab,btn){
+  document.querySelectorAll('.admin-tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ['add','manage','help'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===tab?'block':'none';});
+}
+function saveToken(){
+  const t=document.getElementById('ghToken').value.trim();
+  const u=document.getElementById('ghUser').value.trim();
+  if(!t||!u) return alert('Token और Username डालें');
+  localStorage.setItem('ghToken',t);localStorage.setItem('ghUser',u);
+  document.getElementById('tokenStatus').textContent='✅ Token saved';
+}
+async function loadResources(){
+  try{
+    const r=await fetch('data/resources.json?v='+Date.now());
+    resourcesData=await r.json();
+    populateManageExams();loadItems();
+  }catch(e){console.error(e);}
+}
+function populateManageExams(){
+  const sel=document.getElementById('manageExam');sel.innerHTML='';
+  const names={upsc:'UPSC',bpsc:'BPSC','ssc-cgl':'SSC CGL','ssc-chsl':'SSC CHSL','ssc-mts':'SSC MTS','ssc-gd':'SSC GD',railway:'Railway',banking:'Banking','jee-mains':'JEE','neet:'NEET',llb:'LLB','cat-mba':'CAT/MBA',gate:'GATE','b-ed':'B.Ed','nda-cds':'NDA', 'bca-mca':'BCA/MCA',nursing:'Nursing',cuet:'CUET',ctet:'CTET','bihar-police':'बिहार पुलिस','up-police':'UP Police',mppsc:'MPPSC',ras:'RAS','bihar-si':'बिहार SI','up-lekhpal':'UP लेखपाल',jpsc:'JPSC',ukpsc:'UKPSC',uppcs:'UPPCS',pet:'PET','ba-ma':'BA/MA'};
+  Object.keys(names).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=names[k];sel.appendChild(o);});
+}
+function loadItems(){
+  if(!resourcesData) return;
+  const ex=document.getElementById('manageExam').value;
+  const ty=document.getElementById('manageType').value;
+  const items=(resourcesData[ex]&&resourcesData[ex][ty])||[];
+  const c=document.getElementById('itemList');
+  if(!items.length){c.innerHTML='<p style="text-align:center;color:#999;padding:1rem">कोई item नहीं है।</p>';return;}
+  c.innerHTML=items.map((it,i)=>'<div class="item-row"><span class="title">'+it.title+'</span><span class="type">'+(it.type||'PDF')+'</span><button class="del" onclick="deleteItem(\''+ex+'\',\''+ty+'\','+i+')">×</button></div>').join('');
+}
+async function addResource(){
+  const tk=localStorage.getItem('ghToken');
+  const us=localStorage.getItem('ghUser');
+  if(!tk||!us){showMsg('addMsg','❌ पहले GitHub Token save करें','error');return;}
+  const ex=document.getElementById('examSelect').value;
+  const ty=document.getElementById('typeSelect').value;
+  const ti=document.getElementById('titleInput').value.trim();
+  const li=document.getElementById('linkInput').value.trim();
+  if(!ti||!li){showMsg('addMsg','❌ Title और Link दोनों भरें','error');return;}
+  if(!resourcesData[ex]) resourcesData[ex]={name:ex,notes:[],pyq:[],syllabus:[],videos:[],books:[]};
+  if(!resourcesData[ex][ty]) resourcesData[ex][ty]=[];
+  const itemType=ty==='videos'?'Video':(ty==='books'?'Book':'PDF');
+  resourcesData[ex][ty].push({title:ti,link:li,type:itemType});
+  showMsg('addMsg','⏳ Saving...','success');
+  const ok=await pushToGitHub(resourcesData,'Add '+ty+' for '+ex+': '+ti);
+  if(ok){showMsg('addMsg','✅ Success! 30 सेकंड में live।','success');document.getElementById('titleInput').value='';document.getElementById('linkInput').value='';loadItems();}
+  else{showMsg('addMsg','❌ Error! Token check करें।','error');}
+}
+async function deleteItem(ex,ty,i){
+  if(!confirm('Delete?')) return;
+  const tk=localStorage.getItem('ghToken');
+  if(!tk) return alert('Token save करें');
+  resourcesData[ex][ty].splice(i,1);
+  const ok=await pushToGitHub(resourcesData,'Delete from '+ex);
+  if(ok){loadItems();alert('✅ Deleted');}else{alert('❌ Error');}
+}
+async function pushToGitHub(data,msg){
+  const tk=localStorage.getItem('ghToken');
+  const us=localStorage.getItem('ghUser');
+  const api='https://api.github.com/repos/'+GITHUB_REPO+'/contents/data/resources.json';
+  try{
+    const g=await fetch(api+'?t='+Date.now(),{headers:{'Authorization':'token '+tk}});
+    const cur=await g.json();
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
+    const p=await fetch(api,{method:'PUT',headers:{'Authorization':'token '+tk,'Content-Type':'application/json'},body:JSON.stringify({message:msg,content:content,sha:cur.sha,committer:{name:'Admin',email:us+'@users.noreply.github.com'}})});
+    return p.ok;
+  }catch(e){console.error(e);return false;}
+}
+function showMsg(id,txt,cls){
+  const e=document.getElementById(id);e.textContent=txt;e.className='toast-msg '+cls;
+}
+</script>
+</body>
+</html>
