@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>बुकमार्क | The Ravishankar Insights</title>
+<meta name="description" content="आपके सेव किए गए पेज और बुकमार्क।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/bookmarks.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1rem 0}
+.card{background:#fff;padding:1.2rem;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:4px solid #e94560;transition:all 0.3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+.card h3{color:#0f3460;margin-bottom:0.5rem;font-size:1.05rem}
+.card p{font-size:0.9rem;color:#666;margin-bottom:0.7rem}
+.card a{color:#e94560;font-weight:600;text-decoration:none;font-size:0.9rem}
+.tip-box{background:linear-gradient(135deg,#f0f4f8,#fff);padding:1.2rem;border-radius:12px;margin:1rem 0;border-left:4px solid #0f3460}
+.tip-box h3{color:#0f3460;margin-bottom:0.5rem}
+.dtable{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;margin:1rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.dtable th{background:#0f3460;color:#fff;padding:0.8rem;text-align:left;font-size:0.9rem}
+.dtable td{padding:0.7rem;border-bottom:1px solid #eee;font-size:0.9rem}
+.cta-dark{text-align:center;padding:2rem 1rem;background:linear-gradient(135deg,#0f3460,#16213e);color:#fff;border-radius:12px;margin:2rem 0}
+.cta-dark h2{color:#fff;border:none}
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin:1rem 0;padding:1rem;background:#f5f7fa;border-radius:12px}
+.filter-bar button{background:#fff;border:2px solid #e0e6ed;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;font-size:0.9rem;font-weight:500}
+.filter-bar button.active{background:#e94560;color:#fff;border-color:#e94560}
+.search-input{width:100%;padding:0.9rem 1rem;border:2px solid #e0e6ed;border-radius:10px;font-size:1rem;font-family:inherit;margin:1rem 0}
+.search-input:focus{outline:none;border-color:#e94560}
+body.dark-mode .card,body.dark-mode .tip-box,body.dark-mode .dtable{background:#16213e;color:#e0e0e0}
+body.dark-mode .card h3,body.dark-mode .tip-box h3{color:#6dd5fa}
+body.dark-mode .filter-bar{background:#0a1628}
+body.dark-mode .filter-bar button{background:#16213e;color:#e0e0e0;border-color:#333}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">मुख्य सामग्री</a>
+<header>
+<div class="top-bar">⭐ बुकमार्क</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="exams.html">परीक्षाएँ</a></li>
+<li><a href="syllabus.html">सिलेबस</a></li>
+<li><a href="pyq.html">PYQ</a></li>
+<li><a href="test-series.html">टेस्ट</a></li>
+<li><a href="study-material.html">स्टडी मटेरियल</a></li>
+<li><a href="exam-calendar.html">📅 कैलेंडर</a></li>
+<li><a href="bookmarks.html">⭐ बुकमार्क</a></li>
+<li><a href="notes.html">नोट्स</a></li>
+<li><a href="ai-chat.html">🤖 AI</a></li>
+<li><a href="contact.html">संपर्क</a></li>
+</ul>
+</nav>
+</header>
+<main id="main">
+<div class="breadcrumb"><a href="index.html">होम</a> › Bookmarks</div>
+<div class="content">
+<h1>⭐ आपके बुकमार्क</h1>
+<p>यहाँ आपके सेव किए गए पेज दिखेंगे। किसी भी पेज पर ⭐ बटन दबाकर बुकमार्क करें।</p>
+<div id="bookmarksList"></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const list = document.getElementById('bookmarksList');
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('bookmark_') && localStorage.getItem(k) === 'yes');
+  if (!keys.length) {
+    list.innerHTML = '<div class="tip-box"><h3>📌 कोई बुकमार्क नहीं</h3><p>किसी भी पेज पर ⭐ (star) बटन दबाकर उसे बुकमार्क करें। बुकमार्क किए गए पेज यहाँ दिखेंगे।</p></div><p style="text-align:center;margin-top:1rem"><a href="index.html" class="btn">होम पर जाएँ</a> <a href="exams.html" class="btn">परीक्षाएँ देखें</a></p>';
+    return;
+  }
+  let html = '<div class="card-grid">';
+  keys.forEach(k => {
+    const url = k.replace('bookmark_', '');
+    const name = url.replace('/', 'होम').replace('.html','').replace(/-/g,' ').replace(/\//g, '') || 'पेज';
+    html += '<div class="card"><h3>⭐ ' + (name || 'Home') + '</h3><p>' + url + '</p><a href="' + url + '">खोलें →</a></div>';
+  });
+  html += '</div>';
+  list.innerHTML = html;
+});
+</script><div id="shareBox" style="background:#fff;padding:1.2rem;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)"></div>
+</main>
+<footer>
+<div class="footer-grid">
+<div><h4>📚 The Ravishankar Insights</h4><p style="font-size:0.9rem;color:#aaa">सभी परीक्षाओं की मुफ़्त तैयारी।</p></div>
+<div><h4>महत्वपूर्ण</h4><a href="syllabus.html">सिलेबस</a><a href="pyq.html">PYQ Papers</a><a href="test-series.html">टेस्ट सीरीज़</a><a href="study-material.html">स्टडी मटेरियल</a><a href="exam-calendar.html">Exam Calendar</a><a href="scholarship.html">Scholarship</a></div>
+<div><h4>संसाधन</h4><a href="notes.html">नोट्स</a><a href="ai-chat.html">AI सहायक</a><a href="current-affairs.html">करंट अफेयर्स</a><a href="quiz.html">क्विज़</a></div>
+<div><h4>फॉलो</h4><a href="https://wa.me/918931050393" target="_blank">📱 WhatsApp</a><a href="https://youtube.com/@theravishankarinsights" target="_blank">📺 YouTube</a><a href="https://www.instagram.com/the.ravishankar.insights" target="_blank">📷 Instagram</a></div>
+</div>
+<div class="footer-bottom">© 2026 The Ravishankar Insights</div>
+</footer>
+<a href="https://wa.me/918931050393" class="whatsapp-float" target="_blank">💬</a>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/features.js"></script>
+<script src="assets/js/pwa.js"></script>
+<script src="assets/js/professional.js"></script>
+<script src="assets/js/advanced.js"></script>
+</body>
+</html>
