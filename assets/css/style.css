@@ -833,3 +833,142 @@ h1, h2, h3, h4, p, a, span {
 /* ============================================ */
 /* END DESKTOP LAYOUT FIX */
 /* ============================================ */
+
+/* ============================================ */
+/* URGENT FIX - Search बटन mobile पर hide करें */
+/* ============================================ */
+@media (max-width: 768px) {
+  /* Search floating button को mobile पर HIDE करें */
+  #searchBtn {
+    display: none !important;
+  }
+  
+  /* Font controls भी hide */
+  body > div[style*="top:135px"] {
+    display: none !important;
+  }
+  
+  /* Print और Bookmark भी mobile पर hide */
+  body > button[title="प्रिंट करें"] {
+    display: none !important;
+  }
+  
+  /* सिर्फ जरूरी buttons दिखें */
+  .dark-toggle {
+    display: flex !important;
+    top: 80px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+  }
+  
+  #langToggle {
+    display: flex !important;
+    top: 130px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  body > button[title="बुकमार्क करें"] {
+    display: none !important;
+  }
+  
+  /* Header layout - 3 columns */
+  header nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.3rem !important;
+    padding: 0 !important;
+  }
+  
+  .logo {
+    flex: 1 !important;
+    min-width: 0 !important;
+    font-size: 1rem !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  
+  .logo span {
+    display: inline !important;
+  }
+  
+  /* User box - अच्छे से दिखे */
+  .user-box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 16px !important;
+    font-size: 0.75rem !important;
+    flex-shrink: 0 !important;
+    max-width: 130px !important;
+    order: 2 !important;
+  }
+  
+  .user-box a {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    max-width: 70px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+  
+  .user-box .btn-small {
+    padding: 0.2rem 0.4rem !important;
+    font-size: 0.65rem !important;
+    border-radius: 10px !important;
+    background: #e74c3c !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Menu toggle */
+  .menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.4rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    order: 3 !important;
+    border: none !important;
+    color: #fff !important;
+  }
+  
+  /* Nav links dropdown */
+  .nav-links {
+    top: 55px !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 75vh !important;
+    overflow-y: auto !important;
+    border-radius: 0 0 14px 14px !important;
+    padding: 0.5rem 0 !important;
+  }
+  
+  .nav-links a {
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.9rem !important;
+    display: block !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  }
+}

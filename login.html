@@ -115,12 +115,27 @@
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       try {
+        let user;
         if (mode === 'login') {
-          await signInWithEmailAndPassword(auth, email, password);
+          const cred = await signInWithEmailAndPassword(auth, email, password);
+          user = cred.user;
         } else {
           const cred = await createUserWithEmailAndPassword(auth, email, password);
-          if (nameField.value) await updateProfile(cred.user, { displayName: nameField.value });
+          user = cred.user;
+          if (nameField.value) await updateProfile(user, { displayName: nameField.value });
         }
+        // localStorage में user info save करें
+        try {
+          var displayName = user.displayName || (nameField && nameField.value) || user.email.split('@')[0];
+          localStorage.setItem('userName', displayName);
+          localStorage.setItem('userEmail', user.email);
+          localStorage.setItem('userId', user.uid);
+          localStorage.setItem('user', JSON.stringify({
+            displayName: displayName,
+            email: user.email,
+            uid: user.uid
+          }));
+        } catch(e) {}
         msg.style.color = 'green'; msg.textContent = '✅ सफल! रीडायरेक्ट...';
         setTimeout(() => location.href = 'index.html', 800);
       } catch (err) {
@@ -132,6 +147,21 @@
       try { await signInWithRedirect(auth, provider); }
       catch (err) { msg.style.color = 'red'; msg.textContent = err.message; }
     };
+
+    // Google redirect के बाद user info save
+    getRedirectResult(auth).then((result) => {
+      if (result && result.user) {
+        var u = result.user;
+        try {
+          var displayName = u.displayName || u.email.split('@')[0];
+          localStorage.setItem('userName', displayName);
+          localStorage.setItem('userEmail', u.email);
+          localStorage.setItem('userId', u.uid);
+          localStorage.setItem('user', JSON.stringify({ displayName: displayName, email: u.email, uid: u.uid }));
+        } catch(e) {}
+        location.href = 'index.html';
+      }
+    }).catch(() => {});
 
     document.getElementById('resetBtn').onclick = async (e) => {
       e.preventDefault();
