@@ -362,3 +362,474 @@ body.dark-mode .res-request { background:#0a1628; color:#6dd5fa; }
     font-size: 0.72rem !important;
   }
 }
+
+/* ============================================ */
+/* DESKTOP LAYOUT FIX - बड़ी स्क्रीन के लिए */
+/* ============================================ */
+
+/* Container - content को center में, max width ====== */
+main {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 1.5rem 1rem !important;
+}
+
+/* Header - desktop पर साफ लुक ====== */
+header {
+  padding: 0.8rem 1rem !important;
+}
+
+nav {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* Logo size ====== */
+.logo {
+  font-size: 1.3rem !important;
+}
+
+/* Hero - desktop पर छोटा ====== */
+.hero {
+  max-width: 100% !important;
+  padding: 3rem 2rem !important;
+  border-radius: 14px !important;
+}
+
+.hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  line-height: 1.3 !important;
+  max-width: 800px !important;
+  margin: 0 auto 1rem !important;
+}
+
+.hero p {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem) !important;
+  max-width: 700px !important;
+  margin: 0 auto 1.5rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Content boxes - proper width ====== */
+.content {
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 1.5rem !important;
+}
+
+.content h1 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem) !important;
+}
+
+.content h2 {
+  font-size: clamp(1.1rem, 2vw, 1.4rem) !important;
+}
+
+.content p, .content li {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Section titles ====== */
+.section-title {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem) !important;
+  margin: 2rem 0 1.2rem !important;
+}
+
+/* Stats - fix size ====== */
+.stats {
+  max-width: 1000px !important;
+  margin: 1.5rem auto !important;
+  gap: 1rem !important;
+}
+
+.stat h3 {
+  font-size: clamp(1.4rem, 2vw, 1.8rem) !important;
+}
+
+/* Exam cards grid - proper sizes ====== */
+.grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Grid-3 ====== */
+.grid-3 {
+  max-width: 1000px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Exam card ====== */
+.exam-card {
+  padding: 1.3rem !important;
+}
+
+.exam-card h3 {
+  font-size: 1.05rem !important;
+}
+
+.exam-card p {
+  font-size: 0.9rem !important;
+}
+
+/* Feature box ====== */
+.feature-box {
+  padding: 1.5rem 1rem !important;
+}
+
+.feature-box .f-icon {
+  font-size: 2rem !important;
+}
+
+.feature-box h3 {
+  font-size: 1rem !important;
+}
+
+.feature-box p {
+  font-size: 0.88rem !important;
+}
+
+/* CTA box ====== */
+.cta-box {
+  max-width: 900px !important;
+  margin: 2rem auto !important;
+  padding: 2.5rem 1.5rem !important;
+}
+
+.cta-box h2 {
+  font-size: clamp(1.3rem, 2vw, 1.6rem) !important;
+}
+
+.cta-box p {
+  font-size: 1rem !important;
+  max-width: 600px !important;
+  margin: 0.5rem auto 1rem !important;
+}
+
+/* Footer - desktop पर compact ====== */
+footer {
+  padding: 2rem 1rem 1rem !important;
+}
+
+.footer-grid {
+  max-width: 1200px !important;
+  margin: 0 auto 1.5rem !important;
+  gap: 1.5rem !important;
+}
+
+.footer-grid h4 {
+  font-size: 1rem !important;
+}
+
+.footer-grid a {
+  font-size: 0.85rem !important;
+}
+
+/* News items ====== */
+.news-item {
+  max-width: 900px !important;
+  margin: 0 auto 1rem !important;
+  padding: 1.2rem !important;
+}
+
+.news-item h3 {
+  font-size: 1.05rem !important;
+}
+
+.news-item p {
+  font-size: 0.9rem !important;
+}
+
+/* Ad slots - proper width ====== */
+.ad-slot {
+  max-width: 900px !important;
+  margin: 1.5rem auto !important;
+}
+
+/* Sub-grids (BA/MA etc) ====== */
+.sub-grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+.sub-card {
+  padding: 1.2rem !important;
+}
+
+.sub-card h4 {
+  font-size: 1rem !important;
+}
+
+.sub-card p {
+  font-size: 0.85rem !important;
+}
+
+/* Notes grid ====== */
+.notes-grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Resource grid ====== */
+.resource-grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Cards grid ====== */
+.card-grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Papers grid ====== */
+.papers-grid {
+  max-width: 1100px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
+
+/* Breadcrumb ====== */
+.breadcrumb {
+  max-width: 900px !important;
+  margin: 0.5rem auto 1rem !important;
+  padding: 0 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Quick info grid ====== */
+.qinfo, .quick-info {
+  max-width: 900px !important;
+  margin: 1.5rem auto !important;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  gap: 1rem !important;
+}
+
+.qinfo > div, .quick-info > div {
+  padding: 1rem !important;
+}
+
+/* Tables - proper width ====== */
+.dtable, .data-table {
+  max-width: 900px !important;
+  margin: 1.5rem auto !important;
+  font-size: 0.95rem !important;
+}
+
+/* Filter tabs ====== */
+.filter-tabs, .filter-bar, .tabs {
+  max-width: 900px !important;
+  margin: 0 auto 1.5rem !important;
+}
+
+/* Chat wrapper ====== */
+.chat-wrapper {
+  max-width: 900px !important;
+  margin: 1.5rem auto !important;
+}
+
+/* Quiz setup ====== */
+.setup, .lg {
+  max-width: 500px !important;
+  margin: 2rem auto !important;
+}
+
+/* Fix float buttons position on desktop ====== */
+#searchBtn {
+  top: 80px !important;
+  right: 20px !important;
+  bottom: auto !important;
+}
+
+.dark-toggle {
+  top: 135px !important;
+  right: 20px !important;
+  bottom: auto !important;
+}
+
+/* Font controls */
+body > div[style*="top:135px"] {
+  top: 190px !important;
+  right: 20px !important;
+}
+
+/* Print button */
+body > button[title="प्रिंट करें"] {
+  top: 245px !important;
+  right: 20px !important;
+}
+
+/* Bookmark button */
+body > button[title="बुकमार्क करें"] {
+  top: 300px !important;
+  right: 20px !important;
+}
+
+/* Language toggle */
+#langToggle {
+  top: 355px !important;
+  right: 20px !important;
+  bottom: auto !important;
+}
+
+/* Top button */
+.top-btn {
+  bottom: 20px !important;
+  right: 20px !important;
+}
+
+/* WhatsApp float */
+.whatsapp-float {
+  bottom: 20px !important;
+  right: 80px !important;
+  left: auto !important;
+}
+
+/* Tablet & small desktop */
+@media (max-width: 1024px) {
+  main {
+    padding: 1rem 0.8rem !important;
+  }
+  
+  .hero {
+    padding: 2.5rem 1.5rem !important;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+}
+
+/* Small desktop */
+@media (max-width: 900px) {
+  .content {
+    padding: 1.2rem !important;
+  }
+  
+  .grid, .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  }
+}
+
+/* Print button, bookmark hide on smaller screens */
+@media (max-width: 850px) {
+  body > button[title="प्रिंट करें"],
+  body > button[title="बुकमार्क करें"],
+  body > div[style*="top:135px"] {
+    display: none !important;
+  }
+  
+  #langToggle {
+    top: 190px !important;
+  }
+}
+
+/* ============================================ */
+/* Fix grid layouts for BA/MA, UPSC pages etc */
+/* ============================================ */
+
+/* Any div with inline grid-template-columns */
+main > div[style*="grid"] {
+  max-width: 1100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Homepage specific - hero + sections */
+main > .hero,
+main > .stats,
+main > section {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+section {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+section h2 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem) !important;
+}
+
+/* Fix very large text on some pages */
+.content ul, .content ol {
+  max-width: 800px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Fix counts on resource cards */
+.res-count {
+  font-size: 0.75rem !important;
+}
+
+/* Fix sub-card headings */
+.sub-card h4 {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Fix long Hindi text wrapping */
+h1, h2, h3, h4, p, a, span {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Better look for big screens */
+@media (min-width: 1400px) {
+  main {
+    max-width: 1300px !important;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem !important;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Desktop navigation - proper spacing */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.8rem !important;
+    justify-content: flex-end !important;
+  }
+  
+  .nav-links a {
+    font-size: 0.88rem !important;
+    padding: 0.3rem 0.5rem !important;
+  }
+  
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+/* ============================================ */
+/* END DESKTOP LAYOUT FIX */
+/* ============================================ */
