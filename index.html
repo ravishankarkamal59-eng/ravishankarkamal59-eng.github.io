@@ -69,6 +69,9 @@ const analytics = getAnalytics(app);
   </script>
   <meta name="google-site-verification" content="YGGk5qXvczcERzkPBRZXaNElNu8Nac1VP1xoCCBiSVo" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"क्या यह वेबसाइट मुफ़्त है?","acceptedAnswer":{"@type":"Answer","text":"हाँ, सभी नोट्स, क्विज़ और करंट अफेयर्स पूरी तरह मुफ़्त हैं।"}},{"@type":"Question","name":"AI सहायक क्या कर सकता है?","acceptedAnswer":{"@type":"Answer","text":"किसी भी विषय का सवाल पूछें - पढ़ाई, GK, गणित, विज्ञान - हिंदी में तुरंत जवाब मिलेगा।"}}]}
+</script>
 </head>
 <body>
   <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
@@ -88,6 +91,7 @@ const analytics = getAnalytics(app);
         <li><a href="current-affairs.html">करंट अफेयर्स</a></li>
         <li><a href="quiz.html">क्विज़</a></li>
         <li><a href="blog.html">ब्लॉग</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">संपर्क</a></li>
       </ul>
     </nav>
@@ -102,11 +106,25 @@ const analytics = getAnalytics(app);
     </section>
 
     <div class="stats">
-      <div class="stat"><h3>50+</h3><p>सरकारी परीक्षाएँ</p></div>
-      <div class="stat"><h3>5000+</h3><p>प्रैक्टिस प्रश्न</p></div>
-      <div class="stat"><h3>1000+</h3><p>नोट्स PDF</p></div>
-      <div class="stat"><h3>100%</h3><p>मुफ़्त सामग्री</p></div>
+      <div class="stat"><h3 data-target="50" data-suffix="+">0</h3><p>सरकारी परीक्षाएँ</p></div>
+      <div class="stat"><h3 data-target="5000" data-suffix="+">0</h3><p>प्रैक्टिस प्रश्न</p></div>
+      <div class="stat"><h3 data-target="1000" data-suffix="+">0</h3><p>नोट्स PDF</p></div>
+      <div class="stat"><h3 data-target="100" data-suffix="%">0</h3><p>मुफ़्त सामग्री</p></div>
     </div>
+
+    
+    <div class="content" style="text-align:center;background:linear-gradient(135deg,#fff5f5,#fff);border:2px solid #ffe0e0">
+      <h3 style="color:#e94560;margin-bottom:0.5rem">⏰ अगली बड़ी परीक्षा में बचा समय</h3>
+      <p style="font-size:1.3rem;color:#0f3460" id="examCountdown">गणना हो रही है...</p>
+      <p style="font-size:0.9rem;color:#666;margin-top:0.5rem">तैयारी शुरू करें — आज ही!</p>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initCountdown === 'function') {
+          initCountdown('2026-12-31T09:00:00', 'examCountdown');
+        }
+      });
+    </script>
 
     <h2 class="section-title">लोकप्रिय परीक्षाएँ</h2>
     <div class="grid">
@@ -291,5 +309,6 @@ const analytics = getAnalytics(app);
   <script src="assets/js/main.js"></script>
   <script src="assets/js/pwa.js"></script>
   <script src="assets/js/features.js"></script>
+  <script src="assets/js/professional.js"></script>
 </body>
 </html>
