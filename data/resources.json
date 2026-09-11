@@ -550,5 +550,141 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "upsc-prelims-gs1": {
+    "name": "UPSC Prelims GS Paper 1",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-prelims-csat": {
+    "name": "UPSC Prelims CSAT (Paper 2)",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-mains-essay": {
+    "name": "UPSC Mains Essay Paper",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-mains-gs1": {
+    "name": "UPSC Mains GS Paper 1",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-mains-gs2": {
+    "name": "UPSC Mains GS Paper 2",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-mains-gs3": {
+    "name": "UPSC Mains GS Paper 3",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "upsc-mains-gs4": {
+    "name": "UPSC Mains GS Paper 4 (Ethics)",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-prelims-gs": {
+    "name": "UPPCS Prelims GS",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-prelims-csat": {
+    "name": "UPPCS Prelims CSAT",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-hindi": {
+    "name": "UPPCS Mains सामान्य हिंदी",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-essay": {
+    "name": "UPPCS Mains निबंध",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs1": {
+    "name": "UPPCS Mains GS Paper 1",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs2": {
+    "name": "UPPCS Mains GS Paper 2",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs3": {
+    "name": "UPPCS Mains GS Paper 3",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs4": {
+    "name": "UPPCS Mains GS Paper 4",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs5": {
+    "name": "UPPCS Mains GS Paper 5",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs-mains-gs6": {
+    "name": "UPPCS Mains GS Paper 6",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
