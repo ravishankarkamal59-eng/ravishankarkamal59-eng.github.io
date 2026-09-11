@@ -2,19 +2,281 @@
   "upsc": {
     "name": "UPSC Civil Services",
     "notes": [
-      {"title": "Polity Complete Notes", "link": "https://drive.google.com/", "type": "PDF"},
-      {"title": "Modern History Notes", "link": "https://drive.google.com/", "type": "PDF"}
+      {
+        "title": "Polity Complete Notes",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      },
+      {
+        "title": "Modern History Notes",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
     ],
     "pyq": [
-      {"title": "UPSC Prelims 2024 PYQ", "link": "https://drive.google.com/", "type": "PDF"},
-      {"title": "UPSC Mains 2023 PYQ", "link": "https://drive.google.com/", "type": "PDF"}
+      {
+        "title": "UPSC Prelims 2024 PYQ",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      },
+      {
+        "title": "UPSC Mains 2023 PYQ",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
     ],
-    "syllabus": [{"title": "UPSC Full Syllabus 2026", "link": "https://drive.google.com/", "type": "PDF"}],
-    "videos": [{"title": "UPSC Strategy by Toppers", "link": "https://youtube.com/", "type": "Video"}],
-    "books": [{"title": "Laxmikanth - Indian Polity", "link": "https://amazon.in/", "type": "Book"}]
+    "syllabus": [
+      {
+        "title": "UPSC Full Syllabus 2026",
+        "link": "https://drive.google.com/",
+        "type": "PDF"
+      }
+    ],
+    "videos": [
+      {
+        "title": "UPSC Strategy by Toppers",
+        "link": "https://youtube.com/",
+        "type": "Video"
+      }
+    ],
+    "books": [
+      {
+        "title": "Laxmikanth - Indian Polity",
+        "link": "https://amazon.in/",
+        "type": "Book"
+      }
+    ]
   },
-  "bpsc": {"name": "BPSC", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "ssc-cgl": {"name": "SSC CGL", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "railway": {"name": "Railway", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []},
-  "banking": {"name": "Banking", "notes": [], "pyq": [], "syllabus": [], "videos": [], "books": []}
+  "bpsc": {
+    "name": "BPSC",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ssc-cgl": {
+    "name": "SSC CGL",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "railway": {
+    "name": "Railway",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "banking": {
+    "name": "Banking",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ssc-chsl": {
+    "name": "SSC CHSL",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ssc-mts": {
+    "name": "SSC MTS",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ssc-gd": {
+    "name": "SSC GD",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "jee-mains": {
+    "name": "JEE Mains",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "neet": {
+    "name": "NEET",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "llb": {
+    "name": "LLB/LLM",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "cat-mba": {
+    "name": "CAT/MBA",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "gate": {
+    "name": "GATE",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "b-ed": {
+    "name": "B.Ed",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "nda-cds": {
+    "name": "NDA/CDS",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bca-mca": {
+    "name": "BCA/MCA",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "nursing": {
+    "name": "Nursing",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "cuet": {
+    "name": "CUET",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ctet": {
+    "name": "CTET",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bihar-police": {
+    "name": "बिहार पुलिस",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "up-police": {
+    "name": "UP Police",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "mppsc": {
+    "name": "MPPSC",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ras": {
+    "name": "RAS",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bihar-si": {
+    "name": "बिहार SI",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "up-lekhpal": {
+    "name": "UP लेखपाल",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "jpsc": {
+    "name": "JPSC",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ukpsc": {
+    "name": "UKPSC",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "uppcs": {
+    "name": "UPPCS",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "pet": {
+    "name": "PET",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ba-ma": {
+    "name": "BA/MA",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  }
 }
