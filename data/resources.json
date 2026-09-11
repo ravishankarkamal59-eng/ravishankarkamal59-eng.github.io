@@ -678,7 +678,13 @@
   },
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
-    "notes": [],
+    "notes": [
+      {
+        "title": "UPAGTA",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789145618531-upsssc-agta-exam-analysis-2026-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
