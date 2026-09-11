@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Forum - सवाल पूछें, मदद पाएँ | The Ravishankar Insights</title>
+<meta name="description" content="Student Discussion Forum - सवाल पूछें, अन्य students से मदद पाएँ।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/forum.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.fm-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:2rem 1.5rem;border-radius:14px;text-align:center;margin-bottom:1.5rem}
+.fm-hd h1{color:#fff;margin:0;font-size:1.5rem}
+.fm-hd p{opacity:0.95;margin-top:0.4rem;font-size:0.9rem}
+.new-btn{background:#27ae60;color:#fff;padding:0.9rem 1.5rem;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;width:100%;margin-bottom:1.5rem}
+.form-card{background:#fff;padding:1.2rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);margin-bottom:1.2rem;display:none}
+.form-card.on{display:block}
+.form-card label{display:block;font-weight:600;color:#0f3460;margin:0.6rem 0 0.3rem;font-size:0.9rem}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:0.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem;font-family:inherit;box-sizing:border-box}
+.form-card textarea{min-height:100px;resize:vertical}
+.form-card button{margin-top:0.8rem;padding:0.9rem;background:#0f3460;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:0.95rem;width:100%}
+.filter-bar{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem;padding:0.6rem;background:#f5f7fa;border-radius:12px}
+.filter-bar button{flex:1;padding:0.6rem;border:2px solid transparent;background:transparent;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.82rem;color:#666;min-width:70px}
+.filter-bar button.on{background:#fff;color:#e94560;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.q-item{background:#fff;padding:1.2rem;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);margin-bottom:1rem;border-left:4px solid #e94560}
+.q-item .top{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.8rem;color:#888}
+.q-item .avatar{width:32px;height:32px;border-radius:50%;background:#0f3460;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+.q-item h3{color:#0f3460;margin:0.3rem 0;font-size:1rem;line-height:1.5}
+.q-item p{font-size:0.9rem;color:#555;line-height:1.5}
+.q-item .tags{margin-top:0.6rem;display:flex;gap:0.4rem;flex-wrap:wrap}
+.q-item .tags span{background:#e8f4ff;color:#0f3460;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.72rem;font-weight:600}
+.q-item .bottom{margin-top:0.8rem;display:flex;gap:1rem;font-size:0.82rem;color:#666}
+.q-item .bottom span{cursor:pointer;user-select:none}
+.q-item .bottom span:hover{color:#e94560}
+.reply-box{background:#f8fafc;border-radius:10px;padding:0.8rem;margin-top:0.7rem;font-size:0.88rem}
+.reply-box .reply{padding:0.5rem 0;border-bottom:1px solid #e0e6ed;color:#333}
+.reply-box .reply:last-child{border:none}
+.reply-form{margin-top:0.5rem;display:flex;gap:0.4rem}
+.reply-form input{flex:1;padding:0.6rem;border:2px solid #e0e6ed;border-radius:8px;font-size:0.85rem}
+.reply-form button{background:#e94560;color:#fff;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem}
+body.dark-mode .form-card,body.dark-mode .q-item{background:#16213e;color:#e0e0e0}
+body.dark-mode .q-item h3{color:#6dd5fa}
+body.dark-mode .filter-bar{background:#0a1628}
+body.dark-mode .filter-bar button.on{background:#16213e;color:#6dd5fa}
+body.dark-mode .reply-box{background:#0a1628}
+</style>
+</head>
+<body>
+<header>
+<div class="top-bar">💬 Student Discussion Forum</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="forum.html" class="active">💬 Forum</a></li>
+<li><a href="ai-chat.html">🤖 AI सहायक</a></li>
+<li><a href="contact.html">संपर्क</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<div class="fm-hd">
+<h1>💬 Student Forum</h1>
+<p>सवाल पूछें, अन्य students से मदद पाएँ, अपनी बात रखें</p>
+</div>
+
+<button class="new-btn" id="newQBtn">✏️ नया सवाल पूछें</button>
+
+<div class="form-card" id="qForm">
+<label>आपका नाम</label>
+<input type="text" id="qName" placeholder="जैसे: राहुल" maxlength="30">
+<label>विषय चुनें</label>
+<select id="qCat">
+<option value="UPSC">UPSC</option>
+<option value="BPSC">BPSC</option>
+<option value="SSC">SSC</option>
+<option value="Railway">Railway</option>
+<option value="Banking">Banking</option>
+<option value="General">General</option>
+<option value="Doubt">Doubt</option>
+<option value="Motivation">Motivation</option>
+</select>
+<label>आपका सवाल / बात</label>
+<textarea id="qText" placeholder="कृपया विस्तार से लिखें..." maxlength="500"></textarea>
+<button id="qSubmit">📤 Post करें</button>
+</div>
+
+<div class="filter-bar">
+<button class="on" data-f="all">सभी</button>
+<button data-f="UPSC">UPSC</button>
+<button data-f="BPSC">BPSC</button>
+<button data-f="SSC">SSC</button>
+<button data-f="Doubt">Doubt</button>
+<button data-f="Motivation">Motivation</button>
+</div>
+
+<div id="qList"></div>
+
+<div class="content" style="margin-top:1.5rem;text-align:center;padding:1.5rem">
+<h3 style="color:#0f3460">💡 तुरंत जवाब चाहिए?</h3>
+<p style="margin:0.5rem 0">AI सहायक से पूछें — 2 सेकंड में जवाब मिलेगा।</p>
+<a href="ai-chat.html" class="btn">🤖 AI सहायक</a>
+</div>
+</main>
+
+<footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+
+<script>
+function $(id){ return document.getElementById(id); }
+
+var DEFAULT_QS = [
+  { name: 'Rahul', cat: 'UPSC', text: 'UPSC Prelims के लिए कौन सी किताबें पढ़ें? मैं पहली बार तैयारी शुरू कर रहा हूँ।', time: 'आज', likes: 12, replies: ['Laxmikanth, Spectrum, GC Leong जरूर पढ़ें। NCERT से शुरू करें।'] },
+  { name: 'Priya', cat: 'Motivation', text: 'लंबी तैयारी में मोटिवेशन कैसे बनाए रखें? कभी-कभी मन उचट जाता है।', time: 'आज', likes: 8, replies: ['रोज़ छोटे लक्ष्य बनाएँ। टॉपर्स की कहानियाँ पढ़ें।'] },
+  { name: 'Amit', cat: 'SSC', text: 'SSC CGL Tier 1 में कितने घंटे की तैयारी चाहिए?', time: 'कल', likes: 15, replies: ['रोज़ 4-5 घंटे काफी है अगर consistent रहें।'] },
+  { name: 'Sneha', cat: 'Doubt', text: 'करंट अफेयर्स के लिए कौन सा source सबसे अच्छा है?', time: '2 दिन पहले', likes: 20, replies: ['The Hindu + Vision IAS monthly magazine।'] }
+];
+
+function loadQs(){
+  var saved = JSON.parse(localStorage.getItem('forumQs') || 'null');
+  if (!saved) { saved = DEFAULT_QS.slice(); localStorage.setItem('forumQs', JSON.stringify(saved)); }
+  return saved;
+}
+
+var qs = loadQs();
+
+function render(filter){
+  var list = filter === 'all' ? qs : qs.filter(function(q){ return q.cat === filter; });
+  if (!list.length) { $('qList').innerHTML = '<p style="text-align:center;color:#888;padding:2rem">कोई सवाल नहीं। पहला सवाल आप पूछें!</p>'; return; }
+  var html = '';
+  list.slice().reverse().forEach(function(q, idx){
+    var realIdx = qs.indexOf(q);
+    var repliesHtml = (q.replies || []).map(function(r){ return '<div class="reply">💬 ' + r + '</div>'; }).join('');
+    html += '<div class="q-item">';
+    html += '<div class="top"><div class="avatar">' + (q.name || 'A').charAt(0).toUpperCase() + '</div><span>' + (q.name || 'Anonymous') + '</span><span>• ' + (q.time || 'अभी') + '</span></div>';
+    html += '<h3>' + q.text.substring(0, 100) + '</h3>';
+    if (q.text.length > 100) html += '<p>' + q.text.substring(100) + '</p>';
+    html += '<div class="tags"><span>' + q.cat + '</span></div>';
+    html += '<div class="bottom"><span data-like="' + realIdx + '">👍 ' + (q.likes || 0) + ' Likes</span><span>💬 ' + (q.replies || []).length + ' Replies</span></div>';
+    if (repliesHtml) html += '<div class="reply-box">' + repliesHtml + '</div>';
+    html += '<div class="reply-form"><input type="text" placeholder="जवाब दें..." data-reply-input="' + realIdx + '"><button data-reply-btn="' + realIdx + '">भेजें</button></div>';
+    html += '</div>';
+  });
+  $('qList').innerHTML = html;
+  
+  document.querySelectorAll('[data-like]').forEach(function(b){
+    b.onclick = function(){
+      var i = parseInt(this.dataset.like);
+      qs[i].likes = (qs[i].likes || 0) + 1;
+      localStorage.setItem('forumQs', JSON.stringify(qs));
+      render(filter);
+    };
+  });
+  
+  document.querySelectorAll('[data-reply-btn]').forEach(function(b){
+    b.onclick = function(){
+      var i = parseInt(this.dataset.replyBtn);
+      var inp = document.querySelector('[data-reply-input="' + i + '"]');
+      var val = inp.value.trim();
+      if (!val) return;
+      if (!qs[i].replies) qs[i].replies = [];
+      qs[i].replies.push(val);
+      localStorage.setItem('forumQs', JSON.stringify(qs));
+      render(filter);
+    };
+  });
+}
+
+document.querySelectorAll('.filter-bar button').forEach(function(b){
+  b.onclick = function(){
+    document.querySelectorAll('.filter-bar button').forEach(function(x){ x.classList.remove('on'); });
+    this.classList.add('on');
+    render(this.dataset.f);
+  };
+});
+
+$('newQBtn').onclick = function(){
+  var f = $('qForm');
+  f.classList.toggle('on');
+  if (f.classList.contains('on')) $('qName').focus();
+};
+
+$('qSubmit').onclick = function(){
+  var name = $('qName').value.trim() || 'Anonymous';
+  var cat = $('qCat').value;
+  var text = $('qText').value.trim();
+  if (!text || text.length < 5) { alert('कृपया पूरा सवाल लिखें'); return; }
+  qs.push({ name: name, cat: cat, text: text, time: 'अभी', likes: 0, replies: [] });
+  localStorage.setItem('forumQs', JSON.stringify(qs));
+  $('qForm').classList.remove('on');
+  $('qName').value = ''; $('qText').value = '';
+  render('all');
+  // Reset filter
+  document.querySelectorAll('.filter-bar button').forEach(function(x){ x.classList.remove('on'); });
+  document.querySelector('.filter-bar button').classList.add('on');
+  alert('✅ आपका सवाल post हो गया!');
+};
+
+render('all');
+</script>
+</body>
+</html>

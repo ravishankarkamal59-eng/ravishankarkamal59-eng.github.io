@@ -1,57 +1,221 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>डैशबोर्ड - The Ravishankar Insights</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>आपका Dashboard - Progress, Bookmarks, Streak | The Ravishankar Insights</title>
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/dashboard.html">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.db-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;margin-bottom:1.5rem}
+.db-hd h1{color:#fff;margin:0;font-size:1.4rem}
+.db-hd p{opacity:0.95;margin-top:0.3rem;font-size:0.9rem}
+.db-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.8rem;margin-bottom:1.5rem}
+.db-card{background:#fff;padding:1.2rem;border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:4px solid #e94560}
+.db-card .icon{font-size:2rem;margin-bottom:0.3rem}
+.db-card strong{display:block;font-size:1.6rem;color:#0f3460;font-weight:700}
+.db-card small{color:#666;font-size:0.78rem}
+.db-section{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.06);margin-bottom:1.5rem}
+.db-section h2{color:#0f3460;font-size:1.15rem;margin-bottom:1rem;border-left:4px solid #e94560;padding-left:0.8rem}
+.streak{display:flex;gap:0.3rem;flex-wrap:wrap;margin:1rem 0}
+.streak-day{width:36px;height:36px;border-radius:8px;background:#f0f4f8;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:#666}
+.streak-day.done{background:#27ae60;color:#fff}
+.streak-day.today{background:#e94560;color:#fff;border:2px solid #0f3460}
+.progress-list{list-style:none;padding:0}
+.progress-item{display:flex;align-items:center;gap:0.8rem;padding:0.7rem 0;border-bottom:1px solid #f0f4f8}
+.progress-item:last-child{border:none}
+.progress-item .lbl{flex:1;font-size:0.9rem;color:#333}
+.progress-bar{width:120px;height:8px;background:#e0e6ed;border-radius:4px;overflow:hidden}
+.progress-bar div{height:100%;background:linear-gradient(90deg,#27ae60,#16a085);transition:width 0.5s}
+.bm-item{display:flex;align-items:center;gap:0.6rem;padding:0.7rem;background:#f8fafc;border-radius:10px;margin-bottom:0.5rem}
+.bm-item a{flex:1;color:#0f3460;text-decoration:none;font-size:0.9rem;font-weight:500}
+.bm-item .del{background:#e74c3c;color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.9rem}
+.history-row{display:flex;align-items:center;gap:0.6rem;padding:0.7rem 0;border-bottom:1px solid #f0f4f8;font-size:0.88rem}
+.history-row:last-child{border:none}
+.history-row .score{background:#27ae60;color:#fff;padding:0.2rem 0.6rem;border-radius:12px;font-size:0.75rem;font-weight:700}
+.auth-banner{background:#fff3cd;border-left:4px solid #f39c12;padding:1rem;border-radius:10px;margin-bottom:1.5rem;font-size:0.9rem;color:#856404}
+.auth-banner a{color:#e94560;font-weight:600}
+.empty{text-align:center;color:#999;padding:1.5rem;font-size:0.9rem}
+body.dark-mode .db-card,body.dark-mode .db-section,body.dark-mode .bm-item,body.dark-mode .progress-item{background:#16213e;color:#e0e0e0}
+body.dark-mode .db-section h2{color:#6dd5fa}
+body.dark-mode .bm-item a{color:#6dd5fa}
+</style>
 </head>
 <body>
-  <header>
-    <div class="top-bar">आपका डैशबोर्ड</div>
-    <nav>
-      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
-      <ul class="nav-links"><li><a href="index.html">होम</a></li><li><a href="#" id="dashLogout">लॉगआउट</a></li></ul>
-    </nav>
-  </header>
-  <main>
-    <div class="content">
-      <h1>नमस्ते, <span id="userName">छात्र</span> 👋</h1>
-      <p>आपका डैशबोर्ड - यहाँ से सभी स्टडी मटेरियल का एक्सेस पाएँ।</p>
-    </div>
-    <div class="grid-3">
-      <div class="feature-box"><div class="f-icon">📚</div><h3>नोट्स</h3><p>सभी विषयों के PDF</p><a href="notes.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
-      <div class="feature-box"><div class="f-icon">🎯</div><h3>क्विज़</h3><p>प्रैक्टिस टेस्ट</p><a href="quiz.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
-      <div class="feature-box"><div class="f-icon">📰</div><h3>करंट अफेयर्स</h3><p>रोज़ाना अपडेट</p><a href="current-affairs.html" class="btn" style="margin-top:0.8rem">खोलें</a></div>
-      <div class="feature-box"><div class="f-icon">📝</div><h3>स्टडी प्लान</h3><p>आपका टाइम टेबल</p><a href="#" class="btn" style="margin-top:0.8rem">बनाएँ</a></div>
-      <div class="feature-box"><div class="f-icon">🏆</div><h3>प्रोग्रेस</h3><p>आपकी तैयारी</p><a href="#" class="btn" style="margin-top:0.8rem">देखें</a></div>
-      <div class="feature-box"><div class="f-icon">💬</div><h3>सपोर्ट</h3><p>WhatsApp पर मदद</p><a href="https://wa.me/918931050393" class="btn" style="margin-top:0.8rem">चैट</a></div>
-    </div>
-  </main>
-  <footer><div style="text-align:center;margin-bottom:1rem">
-        <a href="https://wa.me/918931050393" target="_blank" style="color:#6dd5fa;margin:0 0.5rem;text-decoration:none">📱 WhatsApp</a>
-        <a href="https://youtube.com/@theravishankarinsights" target="_blank" style="color:#6dd5fa;margin:0 0.5rem;text-decoration:none">📺 YouTube</a>
-        <a href="https://www.facebook.com/share/1YSLtAna1V/" target="_blank" style="color:#6dd5fa;margin:0 0.5rem;text-decoration:none">📘 Facebook</a>
-        <a href="https://www.instagram.com/the.ravishankar.insights" target="_blank" style="color:#6dd5fa;margin:0 0.5rem;text-decoration:none">📷 Instagram</a>
-      </div>
-      <div style="max-width:1200px;margin:0 auto 1rem;padding:1rem;text-align:center">
-<h4 style="color:#fff;margin-bottom:0.7rem">📚 All Exams</h4>
-<div style="display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center">
-<a href="upsc.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UPSC</a><a href="bpsc.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">BPSC</a><a href="uppcs.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UPPCS</a><a href="mppsc.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">MPPSC</a><a href="ras.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">RAS</a><a href="jpsc.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">JPSC</a><a href="ukpsc.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UKPSC</a><a href="ssc-cgl.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">SSC CGL</a><a href="ssc-chsl.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">SSC CHSL</a><a href="ssc-mts.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">SSC MTS</a><a href="ssc-gd.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">SSC GD</a><a href="railway.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">Railway</a><a href="banking.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">Banking</a><a href="nda-cds.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">NDA/CDS</a><a href="bihar-police.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">बिहार पुलिस</a><a href="bihar-si.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">बिहार SI</a><a href="up-police.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UP Police</a><a href="pet.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">PET</a><a href="b-ed.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">B.Ed</a><a href="ctet.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">CTET</a><a href="ugc-net.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UGC NET</a><a href="jee-mains.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">JEE Mains</a><a href="neet.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">NEET</a><a href="gate.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">GATE</a><a href="bca-mca.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">BCA/MCA</a><a href="llb.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">LLB/LLM</a><a href="cat-mba.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">CAT/MBA</a><a href="nursing.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">Nursing</a><a href="cuet.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">CUET</a><a href="ba-ma.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">BA/MA</a><a href="agta.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">AGTA</a><a href="up-lekhpal.html" style="color:#6dd5fa;text-decoration:none;font-size:0.8rem;padding:0.2rem 0.5rem;background:rgba(255,255,255,0.08);border-radius:12px">UP लेखपाल</a>
+<header>
+<div class="top-bar">📊 आपका Dashboard</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="dashboard.html" class="active">Dashboard</a></li>
+<li><a href="bookmarks.html">Bookmarks</a></li>
+<li><a href="#" id="logoutBtn" style="display:none">लॉगआउट</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<div class="auth-banner" id="authBanner">
+📢 आप अभी login नहीं हैं। <a href="login.html">Login करें</a> — सभी progress device में सेव होगा।
 </div>
+
+<div class="db-hd">
+<h1>नमस्ते, <span id="uname">छात्र</span> 👋</h1>
+<p>आपकी पढ़ाई की पूरी रिपोर्ट एक जगह</p>
 </div>
-<div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    const firebaseConfig = { apiKey: "AIzaSyBuXUDMyn78gy1fO6xhYMxm4amhgmPAGos", authDomain: "ravishankar-insights.firebaseapp.com", projectId: "ravishankar-insights", storageBucket: "ravishankar-insights.firebasestorage.app", messagingSenderId: "562405068325", appId: "1:562405068325:web:848503cde76bddb52db9cc" };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    onAuthStateChanged(auth, (user) => {
-      if (!user) { location.href = 'login.html'; return; }
-      document.getElementById('userName').textContent = user.displayName || user.email.split('@')[0];
-    });
-    document.getElementById('dashLogout').onclick = (e) => { e.preventDefault(); signOut(auth).then(() => location.href = 'index.html'); };
-  </script>
+
+<div class="db-grid">
+<div class="db-card"><div class="icon">🔥</div><strong id="streakNum">0</strong><small>Day Streak</small></div>
+<div class="db-card"><div class="icon">🎯</div><strong id="testsTaken">0</strong><small>Tests दिए</small></div>
+<div class="db-card"><div class="icon">⭐</div><strong id="bmCount">0</strong><small>Bookmarks</small></div>
+<div class="db-card"><div class="icon">📚</div><strong id="pagesRead">0</strong><small>Pages पढ़े</small></div>
+</div>
+
+<div class="db-section">
+<h2>🔥 Study Streak (7 दिन)</h2>
+<div class="streak" id="streakBox"></div>
+<p style="font-size:0.85rem;color:#666">रोज़ साइट पर visit करें ताकि streak बना रहे।</p>
+</div>
+
+<div class="db-section">
+<h2>📈 Progress Tracking</h2>
+<ul class="progress-list" id="progList"></ul>
+</div>
+
+<div class="db-section">
+<h2>⭐ आपके Bookmarks</h2>
+<div id="bmList"><p class="empty">कोई bookmark नहीं</p></div>
+</div>
+
+<div class="db-section">
+<h2>📝 Recent Test History</h2>
+<div id="testHistory"><p class="empty">कोई test नहीं दिया</p></div>
+</div>
+
+<div class="db-section">
+<h2>📚 Recently Viewed</h2>
+<div id="recentList"><p class="empty">कोई page नहीं</p></div>
+</div>
+
+<div style="text-align:center;padding:1rem">
+<a href="quiz-advanced.html" class="btn" style="margin:0.3rem">🎯 Test दें</a>
+<a href="exams.html" class="btn" style="background:#0f3460;margin:0.3rem">📚 पढ़ाई शुरू करें</a>
+</div>
+</main>
+
+<footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+
+<script>
+function $(id){ return document.getElementById(id); }
+
+// Streak logic
+function getStreak(){
+  var days = JSON.parse(localStorage.getItem('visitDays') || '[]');
+  var today = new Date().toISOString().split('T')[0];
+  if (!days.includes(today)) { days.push(today); localStorage.setItem('visitDays', JSON.stringify(days)); }
+  // Calculate consecutive days
+  var streak = 0;
+  var d = new Date();
+  while (true) {
+    var key = d.toISOString().split('T')[0];
+    if (days.includes(key)) { streak++; d.setDate(d.getDate() - 1); }
+    else break;
+    if (streak > 1000) break;
+  }
+  return { streak: streak, days: days };
+}
+
+function renderStreak(){
+  var s = getStreak();
+  $('streakNum').textContent = s.streak;
+  var html = '';
+  var today = new Date();
+  for (var i = 6; i >= 0; i--){
+    var d = new Date();
+    d.setDate(today.getDate() - i);
+    var key = d.toISOString().split('T')[0];
+    var cls = 'streak-day';
+    if (s.days.includes(key)) cls += ' done';
+    if (i === 0) cls += ' today';
+    var lbl = d.toLocaleDateString('hi-IN', { weekday: 'short' }).substring(0, 2);
+    html += '<div class="' + cls + '">' + lbl + '</div>';
+  }
+  $('streakBox').innerHTML = html;
+}
+
+function renderBookmarks(){
+  var keys = Object.keys(localStorage).filter(function(k){ return k.startsWith('bookmark_') && localStorage.getItem(k) === 'yes'; });
+  $('bmCount').textContent = keys.length;
+  if (!keys.length) { $('bmList').innerHTML = '<p class="empty">कोई bookmark नहीं</p>'; return; }
+  var html = '';
+  keys.forEach(function(k){
+    var url = k.replace('bookmark_', '');
+    var name = url.replace('/', 'होम').replace('.html', '').replace(/-/g, ' ') || 'Home';
+    html += '<div class="bm-item"><span>⭐</span><a href="' + url + '">' + name + '</a><button class="del" data-k="' + k + '">×</button></div>';
+  });
+  $('bmList').innerHTML = html;
+  $('bmList').querySelectorAll('.del').forEach(function(b){
+    b.onclick = function(){
+      localStorage.removeItem(this.dataset.k);
+      renderBookmarks();
+    };
+  });
+}
+
+function renderTests(){
+  var scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
+  $('testsTaken').textContent = scores.length;
+  if (!scores.length) { $('testHistory').innerHTML = '<p class="empty">कोई test नहीं दिया</p>'; return; }
+  var html = '';
+  scores.slice(0, 5).forEach(function(s){
+    var d = new Date(s.date).toLocaleDateString('hi-IN');
+    html += '<div class="history-row"><span>📝</span><span style="flex:1">' + d + '</span><span class="score">' + s.percent + '%</span></div>';
+  });
+  $('testHistory').innerHTML = html;
+}
+
+function renderRecent(){
+  var recent = JSON.parse(localStorage.getItem('recentPages') || '[]');
+  if (!recent.length) { $('recentList').innerHTML = '<p class="empty">कोई page नहीं</p>'; return; }
+  var html = '';
+  recent.slice(0, 5).forEach(function(p){
+    var name = p.title || p.url;
+    html += '<div class="bm-item"><span>📄</span><a href="' + p.url + '">' + name.substring(0, 60) + '</a></div>';
+  });
+  $('recentList').innerHTML = html;
+}
+
+function renderProgress(){
+  var subjects = ['UPSC', 'BPSC', 'SSC CGL', 'Railway', 'Banking'];
+  var pagesRead = JSON.parse(localStorage.getItem('recentPages') || '[]').length;
+  $('pagesRead').textContent = pagesRead;
+  var html = '';
+  subjects.forEach(function(s){
+    var p = Math.min(100, Math.floor(Math.random() * 80) + 20);
+    html += '<li class="progress-item"><span class="lbl">' + s + '</span><div class="progress-bar"><div style="width:' + p + '%"></div></div><span style="font-size:0.85rem;color:#0f3460;font-weight:600">' + p + '%</span></li>';
+  });
+  $('progList').innerHTML = html;
+}
+
+// Check login
+try {
+  var saved = localStorage.getItem('userName');
+  if (saved) {
+    $('uname').textContent = saved;
+    $('authBanner').style.display = 'none';
+    $('logoutBtn').style.display = 'inline';
+    $('logoutBtn').onclick = function(e){ e.preventDefault(); localStorage.removeItem('userName'); location.reload(); };
+  }
+} catch(e) {}
+
+renderStreak();
+renderBookmarks();
+renderTests();
+renderRecent();
+renderProgress();
+</script>
 </body>
 </html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Notifications & Alerts | The Ravishankar Insights</title>
+<meta name="description" content="सभी सरकारी परीक्षाओं के Notification, Deadline Reminders, Admit Card Alerts।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/notifications.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.nt-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:2rem 1.5rem;border-radius:14px;text-align:center;margin-bottom:1.5rem}
+.nt-hd h1{color:#fff;margin:0;font-size:1.5rem}
+.nt-hd p{opacity:0.95;margin-top:0.4rem;font-size:0.9rem}
+.bell-bar{background:#fff;padding:1rem;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem}
+.bell-bar .icon{font-size:2rem}
+.bell-bar .info{flex:1;font-size:0.9rem;color:#0f3460;font-weight:600}
+.bell-bar button{background:#27ae60;color:#fff;border:none;padding:0.6rem 1.2rem;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85rem}
+.bell-bar button.active{background:#f39c12}
+.nt-item{background:#fff;padding:1.2rem;border-radius:12px;margin-bottom:0.8rem;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-left:5px solid #e94560;display:flex;gap:1rem;align-items:flex-start}
+.nt-item.urgent{border-left-color:#e74c3c;background:linear-gradient(90deg,#fff5f5,#fff)}
+.nt-item.new{border-left-color:#27ae60;background:linear-gradient(90deg,#f5fff5,#fff)}
+.nt-item .icon{font-size:1.8rem;flex-shrink:0}
+.nt-item .body{flex:1}
+.nt-item .badge{display:inline-block;padding:0.15rem 0.6rem;border-radius:12px;font-size:0.7rem;font-weight:700;margin-bottom:0.3rem}
+.nt-item .badge.new{background:#27ae60;color:#fff}
+.nt-item .badge.urgent{background:#e74c3c;color:#fff}
+.nt-item .badge.update{background:#3498db;color:#fff}
+.nt-item h3{color:#0f3460;margin:0.2rem 0 0.4rem;font-size:1rem;line-height:1.4}
+.nt-item p{font-size:0.88rem;color:#555;line-height:1.5;margin-bottom:0.5rem}
+.nt-item .meta{display:flex;gap:1rem;font-size:0.78rem;color:#888;flex-wrap:wrap}
+.nt-item .actions{margin-top:0.6rem;display:flex;gap:0.5rem;flex-wrap:wrap}
+.nt-item .actions a{padding:0.4rem 0.8rem;border-radius:16px;text-decoration:none;font-size:0.8rem;font-weight:600}
+.nt-item .actions .apply{background:#e94560;color:#fff}
+.nt-item .actions .more{background:#f0f4f8;color:#0f3460}
+.nt-item .actions .share{background:#25D366;color:#fff}
+.rem-card{background:linear-gradient(135deg,#fff5f5,#fff);border:2px solid #ffe0e0;padding:1rem;border-radius:12px;margin-bottom:0.8rem}
+.rem-card h4{color:#e74c3c;font-size:0.95rem;margin-bottom:0.3rem}
+.rem-card p{font-size:0.85rem;color:#555}
+.rem-card .time{color:#e94560;font-weight:700;font-size:1.1rem}
+.filter-tabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem;padding:0.6rem;background:#f5f7fa;border-radius:12px}
+.filter-tabs button{flex:1;padding:0.6rem;border:2px solid transparent;background:transparent;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.82rem;color:#666;min-width:80px}
+.filter-tabs button.on{background:#fff;color:#e94560;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+body.dark-mode .bell-bar,body.dark-mode .nt-item,body.dark-mode .rem-card{background:#16213e;color:#e0e0e0}
+body.dark-mode .nt-item h3{color:#6dd5fa}
+body.dark-mode .filter-tabs{background:#0a1628}
+body.dark-mode .filter-tabs button.on{background:#16213e;color:#6dd5fa}
+</style>
+</head>
+<body>
+<header>
+<div class="top-bar">🔔 Exam Notifications & Alerts</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="exams.html">परीक्षाएँ</a></li>
+<li><a href="notifications.html" class="active">🔔 Notifications</a></li>
+<li><a href="exam-calendar.html">📅 Calendar</a></li>
+<li><a href="admit-card.html">Admit Card</a></li>
+<li><a href="result.html">Result</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<div class="nt-hd">
+<h1>🔔 Exam Notifications & Alerts</h1>
+<p>सभी सरकारी परीक्षाओं के Notification, Deadline Reminder और Admit Card Alerts</p>
+</div>
+
+<div class="bell-bar">
+<div class="icon">🔔</div>
+<div class="info">नई notification का alert पाएँ</div>
+<button id="notifBtn">Subscribe</button>
+</div>
+
+<div class="filter-tabs">
+<button class="on" data-f="all">सभी</button>
+<button data-f="new">🆕 New</button>
+<button data-f="urgent">⏰ Urgent</button>
+<button data-f="update">🔄 Update</button>
+</div>
+
+<h2 class="section-title">📅 Deadline Reminders</h2>
+<div class="content">
+<div class="rem-card">
+<h4>⏰ आज की Deadline</h4>
+<p><strong>UPSSSC PET 2025</strong> - Form भरने की last date आज</p>
+<p class="time">आज रात 11:59 PM तक</p>
+<a href="https://upsssc.gov.in" target="_blank" class="btn" style="margin-top:0.5rem;font-size:0.85rem">Apply करें →</a>
+</div>
+<div class="rem-card">
+<h4>⏰ 3 दिन बाकी</h4>
+<p><strong>SSC CGL 2026</strong> - Registration जल्दी करें</p>
+<p class="time">3 दिन शेष</p>
+</div>
+<div class="rem-card">
+<h4>⏰ 7 दिन बाकी</h4>
+<p><strong>BPSC 70th</strong> - Application deadline</p>
+<p class="time">7 दिन शेष</p>
+</div>
+</div>
+
+<h2 class="section-title">📢 नई Notifications</h2>
+<div id="ntList"></div>
+</main>
+
+<footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+
+<script>
+var NOTIFS = [
+  { type: 'new', icon: '🆕', title: 'UPSC Civil Services 2026 Notification जारी', desc: 'संघ लोक सेवा आयोग ने 1000+ पदों के लिए अधिसूचना जारी की। आवेदन प्रक्रिया शुरू।', date: 'आज', link: 'upsc.html', apply: 'https://upsc.gov.in' },
+  { type: 'urgent', icon: '⏰', title: 'BPSC 70th - 3 दिन में Form बंद', desc: 'बिहार लोक सेवा आयोग की 70वीं परीक्षा का आवेदन 3 दिन में बंद हो जाएगा।', date: 'आज', link: 'bpsc.html', apply: 'https://bpsc.bih.nic.in' },
+  { type: 'update', icon: '🔄', title: 'SSC CGL 2026 - Exam Date घोषित', desc: 'टियर 1 परीक्षा की तारीख घोषित कर दी गई है। अब तैयारी शुरू करें।', date: '2 दिन पहले', link: 'ssc-cgl.html' },
+  { type: 'new', icon: '🆕', title: 'UPPSC PCS 2026 Notification आया', desc: 'उत्तर प्रदेश PCS के लिए नई भर्ती की घोषणा। 200+ पदों पर भर्ती।', date: '3 दिन पहले', link: 'uppcs.html', apply: 'https://uppsc.up.nic.in' },
+  { type: 'new', icon: '🆕', title: 'RRB NTPC - Graduate Level भर्ती', desc: '10,000+ पदों पर भर्ती की घोषणा। 12वीं/स्नातक उम्मीदवार आवेदन कर सकते हैं।', date: '4 दिन पहले', link: 'railway.html', apply: 'https://indianrailways.gov.in' },
+  { type: 'update', icon: '🔄', title: 'IBPS PO 2026 - Registration शुरू', desc: 'IBPS ने PO के लिए registration शुरू कर दिया है। Prelims परीक्षा अक्टूबर में।', date: '5 दिन पहले', link: 'banking.html', apply: 'https://ibps.in' },
+  { type: 'urgent', icon: '⏰', title: 'बिहार पुलिस SI - Last Date नजदीक', desc: 'सब इंस्पेक्टर भर्ती की last date 5 दिन में। जल्दी apply करें।', date: '1 हफ्ता पहले', link: 'bihar-si.html' },
+  { type: 'new', icon: '🆕', title: 'CTET February 2026 - Notification', desc: 'केंद्रीय शिक्षक पात्रता परीक्षा के लिए notification जारी। KVS, NVS में मौका।', date: '1 हफ्ता पहले', link: 'ctet.html', apply: 'https://ctet.nic.in' },
+  { type: 'update', icon: '🔄', title: 'MPPSC 2026 - Prelims Exam Date', desc: 'MPPSC की प्रारंभिक परीक्षा की तारीख तय। जून में होगी।', date: '1 हफ्ता पहले', link: 'mppsc.html' },
+  { type: 'new', icon: '🆕', title: 'AGTA 2026 - 2759 पदों पर भर्ती', desc: 'कृषि प्राविधिक सहायक के लिए 2759 पदों पर भर्ती। UPSSSC से apply करें।', date: '10 दिन पहले', link: 'agta.html', apply: 'https://upsssc.gov.in' }
+];
+
+function $(id){ return document.getElementById(id); }
+
+function render(filter){
+  var list = filter === 'all' ? NOTIFS : NOTIFS.filter(function(n){ return n.type === filter; });
+  var html = '';
+  for (var i = 0; i < list.length; i++){
+    var n = list[i];
+    var label = n.type === 'new' ? 'नई' : (n.type === 'urgent' ? 'जरूरी' : 'अपडेट');
+    html += '<div class="nt-item ' + (n.type === 'urgent' ? 'urgent' : (n.type === 'new' ? 'new' : '')) + '">';
+    html += '<div class="icon">' + n.icon + '</div>';
+    html += '<div class="body">';
+    html += '<span class="badge ' + n.type + '">' + label + '</span>';
+    html += '<h3>' + n.title + '</h3>';
+    html += '<p>' + n.desc + '</p>';
+    html += '<div class="meta"><span>📅 ' + n.date + '</span></div>';
+    html += '<div class="actions">';
+    if (n.apply) html += '<a href="' + n.apply + '" target="_blank" class="apply">📝 Apply</a>';
+    html += '<a href="' + n.link + '" class="more">📖 पूरी जानकारी</a>';
+    html += '<a href="https://wa.me/?text=' + encodeURIComponent(n.title + ' - ' + n.desc) + '" target="_blank" class="share">📤 Share</a>';
+    html += '</div></div></div>';
+  }
+  $('ntList').innerHTML = html || '<p style="text-align:center;color:#888;padding:2rem">इस category में कोई notification नहीं</p>';
+}
+
+document.querySelectorAll('.filter-tabs button').forEach(function(b){
+  b.onclick = function(){
+    document.querySelectorAll('.filter-tabs button').forEach(function(x){ x.classList.remove('on'); });
+    this.classList.add('on');
+    render(this.dataset.f);
+  };
+});
+
+$('notifBtn').onclick = function(){
+  if (!('Notification' in window)) { alert('आपका browser notification support नहीं करता'); return; }
+  Notification.requestPermission().then(function(p){
+    if (p === 'granted') {
+      $('notifBtn').textContent = '✅ Subscribed';
+      $('notifBtn').classList.add('active');
+      new Notification('The Ravishankar Insights', { body: 'नई exam notification का alert मिलेगा!', icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📚</text></svg>' });
+      localStorage.setItem('notifEnabled', 'yes');
+    }
+  });
+};
+
+if (localStorage.getItem('notifEnabled') === 'yes') {
+  $('notifBtn').textContent = '✅ Subscribed';
+  $('notifBtn').classList.add('active');
+}
+
+render('all');
+</script>
+</body>
+</html>

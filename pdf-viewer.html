@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Viewer - Online Notes पढ़ें | The Ravishankar Insights</title>
+<meta name="description" content="मुफ़्त Online PDF Viewer - Notes, PDF files browser में पढ़ें, कोई download नहीं।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/pdf-viewer.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.pv-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;text-align:center;margin-bottom:1.5rem}
+.pv-hd h1{color:#fff;margin:0;font-size:1.4rem}
+.pv-hd p{opacity:0.95;margin-top:0.3rem;font-size:0.9rem}
+.pv-input{background:#fff;padding:1.2rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);margin-bottom:1.5rem}
+.pv-input input{width:100%;padding:0.9rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem;box-sizing:border-box}
+.pv-input button{margin-top:0.8rem;padding:0.9rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:0.95rem;width:100%}
+.pv-frame{width:100%;height:70vh;border:none;border-radius:14px;background:#fff;box-shadow:0 3px 15px rgba(0,0,0,0.08)}
+.pv-info{background:#f0f4f8;padding:1rem;border-radius:12px;margin-bottom:1rem;font-size:0.9rem;color:#0f3460}
+.pv-info strong{display:block;margin-bottom:0.3rem}
+.pv-btns{display:flex;gap:0.5rem;margin:1rem 0;flex-wrap:wrap}
+.pv-btns button,.pv-btns a{flex:1;padding:0.7rem;border-radius:10px;border:none;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;text-align:center;min-width:100px}
+.pv-btns .dl{background:#e94560;color:#fff}
+.pv-btns .ai{background:#27ae60;color:#fff}
+.pv-btns .close{background:#f0f4f8;color:#0f3460}
+body.dark-mode .pv-input,body.dark-mode .pv-info{background:#16213e;color:#e0e0e0}
+</style>
+</head>
+<body>
+<header>
+<div class="top-bar">📄 PDF Viewer</div>
+<nav>
+<div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="notes.html">नोट्स</a></li>
+<li><a href="pdf-viewer.html" class="active">📄 PDF Viewer</a></li>
+<li><a href="ai-chat.html">🤖 AI</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<div class="pv-hd">
+<h1>📄 Online PDF Viewer</h1>
+<p>PDF को browser में सीधे पढ़ें - Download की जरूरत नहीं</p>
+</div>
+
+<div class="pv-info">
+<strong>💡 कैसे use करें?</strong>
+Google Drive link या कोई भी PDF URL नीचे paste करें, या "?url=" query parameter में भेजें। Reader में automatically खुल जाएगी।
+</div>
+
+<div class="pv-input">
+<label style="display:block;font-weight:600;color:#0f3460;margin-bottom:0.5rem">📎 PDF Link paste करें</label>
+<input type="text" id="pdfUrl" placeholder="https://drive.google.com/file/d/...  या कोई भी PDF URL">
+<button id="openBtn">📖 PDF खोलें</button>
+</div>
+
+<div id="viewerArea" style="display:none">
+<div class="pv-btns">
+<a id="dlBtn" class="dl" href="#" download>⬇️ Download</a>
+<a id="aiBtn" class="ai" href="ai-chat.html" target="_blank">🤖 AI से पूछें</a>
+<button class="close" onclick="closeViewer()">❌ बंद करें</button>
+</div>
+<iframe id="pdfFrame" class="pv-frame" src="" allow="autoplay"></iframe>
+</div>
+
+<div class="content" style="margin-top:1.5rem">
+<h2>📚 Popular Notes</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem">
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #e94560"><strong>📖 Polity Notes</strong><br><small style="color:#666">Indian Constitution</small></a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #27ae60"><strong>📜 History Notes</strong><br><small style="color:#666">प्राचीन से आधुनिक</small></a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #3498db"><strong>🌍 Geography Notes</strong><br><small style="color:#666">भारत और विश्व</small></a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #f39c12"><strong>🔬 Science Notes</strong><br><small style="color:#666">Physics, Chemistry</small></a>
+</div>
+</div>
+</main>
+
+<footer><div class="footer-bottom">© 2026 The Ravishankar Insights</div></footer>
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+
+<script>
+function $(id){ return document.getElementById(id); }
+
+function getDriveEmbed(url){
+  // Convert Google Drive link to embed format
+  var m = url.match(/\/file\/d\/([^\/]+)/);
+  if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+  m = url.match(/[?&]id=([^&]+)/);
+  if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+  return url;
+}
+
+function openPdf(url){
+  if (!url || !url.trim()) { alert('PDF URL डालें'); return; }
+  url = url.trim();
+  var embed = getDriveEmbed(url);
+  $('pdfFrame').src = embed;
+  $('dlBtn').href = url;
+  $('viewerArea').style.display = 'block';
+  $('viewerArea').scrollIntoView({ behavior: 'smooth' });
+}
+
+$('openBtn').onclick = function(){ openPdf($('pdfUrl').value); };
+
+function closeViewer(){
+  $('pdfFrame').src = '';
+  $('viewerArea').style.display = 'none';
+}
+
+// URL parameter से auto-open
+var params = new URLSearchParams(location.search);
+if (params.get('url')) {
+  var u = decodeURIComponent(params.get('url'));
+  $('pdfUrl').value = u;
+  openPdf(u);
+}
+</script>
+</body>
+</html>
