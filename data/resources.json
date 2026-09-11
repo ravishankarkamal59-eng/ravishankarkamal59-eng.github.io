@@ -695,5 +695,101 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "notes-history": {
+    "name": "Notes: भारतीय इतिहास",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-geography": {
+    "name": "Notes: भूगोल",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-polity": {
+    "name": "Notes: राजनीति विज्ञान",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-economics": {
+    "name": "Notes: अर्थशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-science": {
+    "name": "Notes: सामान्य विज्ञान",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-environment": {
+    "name": "Notes: पर्यावरण",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-maths": {
+    "name": "Notes: अंकगणित",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-adv-maths": {
+    "name": "Notes: उन्नत गणित",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-reasoning": {
+    "name": "Notes: रीजनिंग",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-hindi": {
+    "name": "Notes: हिंदी व्याकरण",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-english": {
+    "name": "Notes: English Grammar",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "notes-essay": {
+    "name": "Notes: निबंध और पत्र लेखन",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
