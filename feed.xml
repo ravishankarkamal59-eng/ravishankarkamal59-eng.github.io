@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The Ravishankar Insights - सरकारी परीक्षा तैयारी</title>
+    <link>https://ravishankarkamal59-eng.github.io/</link>
+    <description>सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़, AI सहायक</description>
+    <language>hi</language>
+    <item>
+      <title>डेली करंट अफेयर्स</title>
+      <link>https://ravishankarkamal59-eng.github.io/current-affairs.html</link>
+      <description>रोज़ाना अपडेट करंट अफेयर्स</description>
+    </item>
+    <item>
+      <title>UPSC, BPSC, SSC स्टडी प्लान</title>
+      <link>https://ravishankarkamal59-eng.github.io/study-plan.html</link>
+      <description>हर परीक्षा के लिए स्टडी प्लान</description>
+    </item>
+    <item>
+      <title>AI सहायक - कोई भी सवाल पूछें</title>
+      <link>https://ravishankarkamal59-eng.github.io/ai-chat.html</link>
+      <description>मुफ़्त AI सहायक 2 सेकंड में जवाब</description>
+    </item>
+  </channel>
+</rss>
