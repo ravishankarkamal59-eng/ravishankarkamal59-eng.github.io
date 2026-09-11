@@ -438,5 +438,117 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "ugc-net": {
+    "name": "UGC NET / JRF",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-paper1": {
+    "name": "UGC NET Paper 1",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-hindi": {
+    "name": "UGC NET हिंदी",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-english": {
+    "name": "UGC NET English",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-history": {
+    "name": "UGC NET इतिहास",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-polity": {
+    "name": "UGC NET राजनीति शास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-economics": {
+    "name": "UGC NET अर्थशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-sociology": {
+    "name": "UGC NET समाजशास्त्र",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-psychology": {
+    "name": "UGC NET मनोविज्ञान",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-geography": {
+    "name": "UGC NET भूगोल",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-education": {
+    "name": "UGC NET Education",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-commerce": {
+    "name": "UGC NET Commerce",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-philosophy": {
+    "name": "UGC NET Philosophy",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "net-sanskrit": {
+    "name": "UGC NET संस्कृत",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
