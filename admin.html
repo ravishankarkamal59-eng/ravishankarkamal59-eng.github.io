@@ -11,19 +11,13 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f4f8; color: #333; padding-bottom: 80px; min-height: 100vh; }
-
-/* Header */
 .app-header { background: linear-gradient(135deg, #0f3460, #1a5276); color: #fff; padding: 0.8rem 1rem; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 .app-header .top-bar { background: #e94560; text-align: center; padding: 0.3rem; font-size: 0.78rem; margin: -0.8rem -1rem 0.8rem; }
 .app-header nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; max-width: 900px; margin: 0 auto; }
 .app-header img { height: 40px; width: auto; }
 .app-header .title { color: #fff; font-weight: 700; font-size: 0.95rem; }
 .app-header .logout { background: rgba(255,255,255,0.2); color: #fff; border: none; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; }
-
-/* Container */
 .container { max-width: 700px; margin: 0 auto; padding: 1rem; }
-
-/* Login box */
 .login-box { background: #fff; padding: 2rem 1.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 400px; margin: 3rem auto; text-align: center; }
 .login-box .lock { font-size: 3rem; margin-bottom: 1rem; }
 .login-box h1 { color: #0f3460; font-size: 1.3rem; margin-bottom: 0.3rem; }
@@ -33,89 +27,57 @@ body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f4f8; color: 
 .login-box button { width: 100%; padding: 1rem; background: #e94560; color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; }
 .login-box button:active { background: #c73650; }
 .login-box .err { color: #e74c3c; font-size: 0.85rem; margin-top: 0.8rem; min-height: 1.2rem; }
-
-/* Token banner */
-.token-box { background: #d4edda; border: 2px solid #27ae60; padding: 0.8rem 1rem; border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; color: #155724; font-size: 0.88rem; }
-.token-box .ok { font-size: 1.4rem; }
-.token-box .info { flex: 1; }
-.token-box button { background: #e74c3c; color: #fff; border: none; padding: 0.3rem 0.7rem; border-radius: 8px; cursor: pointer; font-size: 0.78rem; }
-
-/* Cards */
 .card { background: #fff; padding: 1.2rem; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 1rem; }
 .card h2 { color: #0f3460; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
-
-/* Forms */
 label { display: block; font-weight: 600; color: #0f3460; margin: 0.7rem 0 0.4rem; font-size: 0.88rem; }
 input[type="text"], input[type="password"], input[type="email"], select, textarea { width: 100%; padding: 0.75rem; border: 2px solid #e0e6ed; border-radius: 10px; font-size: 0.92rem; font-family: inherit; background: #fff; }
 input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus { outline: none; border-color: #e94560; }
-
-/* Buttons */
 .btn { display: block; width: 100%; padding: 0.9rem; background: #27ae60; color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 0.8rem; }
 .btn:active { opacity: 0.85; }
 .btn:disabled { background: #ccc; cursor: not-allowed; }
 .btn-blue { background: #0f3460; }
-.btn-red { background: #e94560; }
-
-/* Upload area */
+.token-box { background: #d4edda; border: 2px solid #27ae60; padding: 0.8rem 1rem; border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; color: #155724; font-size: 0.88rem; }
+.token-box .ok { font-size: 1.4rem; }
+.token-box .info { flex: 1; }
+.token-box button { background: #e74c3c; color: #fff; border: none; padding: 0.3rem 0.7rem; border-radius: 8px; cursor: pointer; font-size: 0.78rem; }
 .upload-area { border: 3px dashed #0f3460; border-radius: 14px; padding: 1.8rem 1rem; text-align: center; background: #f8fafc; cursor: pointer; margin: 0.5rem 0; transition: all 0.2s; }
 .upload-area:active { border-color: #e94560; background: #fff5f5; }
 .upload-area .up-icon { font-size: 2.8rem; margin-bottom: 0.4rem; }
 .upload-area .up-title { color: #0f3460; font-weight: 700; font-size: 1rem; }
 .upload-area .up-sub { color: #888; font-size: 0.78rem; margin-top: 0.2rem; }
 .upload-area input[type="file"] { display: none; }
-
-/* File list */
 .file-list { background: #f8fafc; padding: 0.7rem; border-radius: 10px; margin-top: 0.5rem; font-size: 0.85rem; display: none; }
 .file-list.on { display: block; }
 .file-row { padding: 0.4rem 0; border-bottom: 1px solid #e0e6ed; display: flex; justify-content: space-between; }
 .file-row:last-child { border: none; }
 .file-row.total { font-weight: 700; color: #0f3460; padding-top: 0.5rem; }
-
-/* Progress */
 .progress { height: 8px; background: #e0e6ed; border-radius: 4px; overflow: hidden; margin: 0.8rem 0; display: none; }
 .progress.on { display: block; }
 .progress-bar { height: 100%; background: linear-gradient(90deg, #e94560, #f39c12); width: 0%; transition: width 0.3s; }
-
-/* Messages */
 .msg { padding: 0.8rem 1rem; border-radius: 10px; margin-top: 0.8rem; font-size: 0.88rem; display: none; }
 .msg.on { display: block; }
 .msg.ok { background: #d4edda; color: #155724; }
 .msg.err { background: #f8d7da; color: #721c24; }
 .msg.info { background: #d1ecf1; color: #0c5460; }
-
-/* Item list (manage) */
 .item-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem; background: #f8fafc; border-radius: 10px; margin-bottom: 0.5rem; font-size: 0.85rem; }
 .item-row .item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .item-row .item-type { background: #e8f4ff; color: #0f3460; padding: 0.15rem 0.5rem; border-radius: 8px; font-size: 0.7rem; }
 .item-row .del-btn { background: #e74c3c; color: #fff; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; }
 .empty { text-align: center; color: #999; padding: 2rem; font-size: 0.88rem; }
-
-/* Bottom nav */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; box-shadow: 0 -2px 12px rgba(0,0,0,0.1); display: none; justify-content: space-around; padding: 0.5rem 0; z-index: 90; }
 .bottom-nav.on { display: flex; }
 .bottom-nav button { background: none; border: none; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; color: #999; font-size: 0.7rem; cursor: pointer; padding: 0.4rem 1rem; flex: 1; max-width: 120px; font-family: inherit; }
 .bottom-nav button .nav-icon { font-size: 1.5rem; }
 .bottom-nav button.on { color: #e94560; font-weight: 700; }
-
-/* Tabs */
 .tabs { display: flex; gap: 0.4rem; background: #f5f7fa; padding: 0.4rem; border-radius: 12px; margin-bottom: 1rem; }
 .tabs button { flex: 1; padding: 0.7rem 0.5rem; border: 2px solid transparent; background: transparent; border-radius: 8px; font-weight: 600; font-size: 0.85rem; color: #666; cursor: pointer; font-family: inherit; }
 .tabs button.on { background: #fff; color: #e94560; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-
-/* Tab content */
 .tab-content { display: none; }
 .tab-content.on { display: block; }
-
-/* Hidden */
 .hidden { display: none !important; }
-
-/* Help list */
 .help-list { line-height: 2; padding-left: 1.2rem; font-size: 0.88rem; color: #555; }
 .help-list a { color: #e94560; }
 .help-list code { background: #f0f0f0; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.82rem; }
-
-/* Info banner */
-.info-banner { background: #fff3cd; border-left: 4px solid #f39c12; padding: 0.9rem 1rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.85rem; color: #856404; }
 </style>
 </head>
 <body>
@@ -129,90 +91,74 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 </nav>
 </header>
 
-<!-- LOGIN SCREEN -->
 <div class="login-box" id="loginScreen">
 <div class="lock">🔐</div>
 <h1>Admin Login</h1>
-<p>RS Admin Panel में आपका स्वागत है</p>
+<p>RS Admin Panel</p>
 <input type="password" id="adminPass" placeholder="Password डालें" autocomplete="current-password">
 <button id="loginBtn">Login करें</button>
 <p class="err" id="loginErr"></p>
 </div>
 
-<!-- MAIN APP -->
 <div class="container hidden" id="appScreen">
 
-<!-- Token saved banner -->
 <div class="token-box hidden" id="tokenBanner">
 <span class="ok">✅</span>
 <div class="info"><strong>Token Saved</strong><br><span style="font-size:0.78rem">अब हर बार नहीं डालना पड़ेगा</span></div>
 <button id="changeTokenBtn">बदलें</button>
 </div>
 
-<!-- Token form -->
 <div class="card hidden" id="tokenForm">
-<h2>🔑 GitHub Token सेट करें (सिर्फ एक बार)</h2>
+<h2>🔑 GitHub Token सेट करें</h2>
 <label>GitHub Token</label>
 <input type="password" id="ghToken" placeholder="ghp_...">
 <label>GitHub Username</label>
-<input type="text" id="ghUser" placeholder="username" value="ravishankarkamal59-eng">
+<input type="text" id="ghUser" value="ravishankarkamal59-eng">
 <button class="btn btn-blue" id="saveTokenBtn">💾 Token Save करें</button>
 <div class="msg" id="tokenMsg"></div>
 </div>
 
-<!-- Tabs -->
 <div class="tabs">
 <button class="on" data-tab="upload">📤 Upload</button>
 <button data-tab="manage">📋 Manage</button>
 <button data-tab="help">❓ Help</button>
 </div>
 
-<!-- UPLOAD TAB -->
 <div class="tab-content on" id="tab-upload">
 <div class="card">
 <h2>📤 PDF / Video / Book Add करें</h2>
-
 <label>📚 Exam चुनें</label>
 <select id="examSelect"></select>
-
 <label>📂 Type चुनें</label>
 <select id="typeSelect">
 <option value="notes">📝 Notes PDF</option>
 <option value="pyq">📄 PYQ Papers</option>
 <option value="syllabus">📚 Syllabus PDF</option>
-<option value="videos">🎥 Video (YouTube link)</option>
-<option value="books">📖 Books (Amazon link)</option>
+<option value="videos">🎥 Video (YouTube)</option>
+<option value="books">📖 Books (Amazon)</option>
 </select>
-
 <label>📌 Title</label>
 <input type="text" id="titleInput" placeholder="जैसे: Polity Complete Notes">
-
-<!-- PDF upload area (notes/pyq/syllabus) -->
 <div id="pdfArea">
 <label>📎 PDF File चुनें</label>
 <div class="upload-area" id="uploadArea">
 <div class="up-icon">📄</div>
-<div class="up-title">PDF select करने के लिए यहाँ tap करें</div>
+<div class="up-title">PDF select करने के लिए tap करें</div>
 <div class="up-sub">एक साथ कई PDF चुन सकते हैं</div>
 <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple>
 </div>
 <div class="file-list" id="fileList"></div>
 </div>
-
-<!-- Link area (videos/books) -->
 <div id="linkArea" class="hidden">
 <label>🔗 Link paste करें</label>
 <input type="text" id="linkInput" placeholder="https://youtube.com/... या https://amazon.in/...">
 </div>
-
 <div class="progress" id="progressBar"><div class="progress-bar" id="progressFill"></div></div>
-
 <button class="btn" id="uploadBtn">📤 Upload & Add करें</button>
 <div class="msg" id="uploadMsg"></div>
 </div>
 </div>
 
-<!-- MANAGE TAB -->
 <div class="tab-content" id="tab-manage">
 <div class="card">
 <h2>📋 Content Manage करें</h2>
@@ -230,17 +176,16 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 </div>
 </div>
 
-<!-- HELP TAB -->
 <div class="tab-content" id="tab-help">
 <div class="card">
 <h2>🔑 GitHub Token कैसे बनाएँ?</h2>
 <ol class="help-list">
 <li><a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a> खोलें</li>
 <li>Note: <code>admin-panel</code></li>
-<li>Expiration: <strong>No expiration</strong></li>
-<li>Scopes: ✅ <strong>repo</strong> वाला box tick करें</li>
-<li>Generate token दबाएँ</li>
-<li>Token copy करके ऊपर paste करें</li>
+<li>Expiration: No expiration</li>
+<li>Scopes: ✅ <strong>repo</strong> tick करें</li>
+<li>Generate token → copy</li>
+<li>ऊपर paste करें</li>
 </ol>
 </div>
 <div class="card">
@@ -248,25 +193,14 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 <ol class="help-list">
 <li>Exam और Type चुनें</li>
 <li>Title डालें</li>
-<li>PDF File select करें (phone से)</li>
+<li>PDF File select करें</li>
 <li>Upload दबाएँ</li>
-<li>PDF automatically website पर add हो जाएगी</li>
-</ol>
-</div>
-<div class="card">
-<h2>📲 Admin App कैसे Install करें?</h2>
-<ol class="help-list">
-<li>Chrome में यह पेज खोलें</li>
-<li>Chrome menu (⋮) → "Install app" या "Add to Home screen"</li>
-<li>Icon होम स्क्रीन पर आ जाएगा</li>
-<li>Icon दबाकर सीधे खुलेगा</li>
 </ol>
 </div>
 </div>
 
 </div>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav" id="bottomNav">
 <button class="on" data-tab="upload"><span class="nav-icon">📤</span>Upload</button>
 <button data-tab="manage"><span class="nav-icon">📋</span>Manage</button>
@@ -283,35 +217,18 @@ var resourcesData = null;
 var EXAM_NAMES = {
   'upsc':'UPSC Civil Services','bpsc':'BPSC','uppcs':'UPPCS','mppsc':'MPPSC','ras':'RAS Rajasthan',
   'jpsc':'JPSC Jharkhand','ukpsc':'UKPSC Uttarakhand','ssc-cgl':'SSC CGL','ssc-chsl':'SSC CHSL',
-  'ssc-mts':'SSC MTS','ssc-gd':'SSC GD','railway':'Railway (RRB)','banking':'Banking (IBPS/SBI)',
+  'ssc-mts':'SSC MTS','ssc-gd':'SSC GD','railway':'Railway (RRB)','banking':'Banking',
   'nda-cds':'NDA / CDS','bihar-police':'बिहार पुलिस','bihar-si':'बिहार SI','up-police':'UP Police',
-  'pet':'PET Physical Test','b-ed':'B.Ed','ctet':'CTET','ugc-net':'UGC NET / JRF',
+  'pet':'PET','b-ed':'B.Ed','ctet':'CTET','ugc-net':'UGC NET / JRF',
   'jee-mains':'JEE Mains','neet':'NEET','gate':'GATE','bca-mca':'BCA / MCA','llb':'LLB / LLM',
   'cat-mba':'CAT / MBA','nursing':'Nursing','cuet':'CUET','ba-ma':'BA / MA','agta':'AGTA (Agriculture)',
   'up-lekhpal':'UP लेखपाल',
   'notes-history':'Notes: भारतीय इतिहास','notes-geography':'Notes: भूगोल','notes-polity':'Notes: राजनीति',
   'notes-economics':'Notes: अर्थशास्त्र','notes-science':'Notes: सामान्य विज्ञान','notes-environment':'Notes: पर्यावरण',
   'notes-maths':'Notes: अंकगणित','notes-adv-maths':'Notes: उन्नत गणित','notes-reasoning':'Notes: रीजनिंग',
-  'notes-hindi':'Notes: हिंदी व्याकरण','notes-english':'Notes: English Grammar','notes-essay':'Notes: निबंध',
-  'ba-hindi':'BA हिंदी','ba-english':'BA English','ba-history':'BA इतिहास','ba-polity':'BA राजनीति',
-  'ba-economics':'BA अर्थशास्त्र','ba-sociology':'BA समाजशास्त्र','ba-psychology':'BA मनोविज्ञान',
-  'ba-geography':'BA भूगोल','ba-sanskrit':'BA संस्कृत','ba-urdu':'BA उर्दू','ba-finearts':'BA फाइन आर्ट्स',
-  'ba-journalism':'BA पत्रकारिता',
-  'ma-hindi':'MA हिंदी','ma-english':'MA English','ma-history':'MA इतिहास','ma-polity':'MA राजनीति',
-  'ma-economics':'MA अर्थशास्त्र','ma-sociology':'MA समाजशास्त्र','ma-psychology':'MA मनोविज्ञान',
-  'ma-geography':'MA भूगोल',
-  'net-paper1':'NET Paper 1','net-hindi':'NET हिंदी','net-english':'NET English','net-history':'NET इतिहास',
-  'net-polity':'NET राजनीति','net-economics':'NET अर्थशास्त्र','net-sociology':'NET समाजशास्त्र',
-  'net-psychology':'NET मनोविज्ञान','net-geography':'NET भूगोल','net-education':'NET Education',
-  'net-commerce':'NET Commerce','net-philosophy':'NET Philosophy','net-sanskrit':'NET संस्कृत',
-  'upsc-prelims-gs1':'UPSC Prelims GS','upsc-prelims-csat':'UPSC CSAT','upsc-mains-essay':'UPSC Essay',
-  'upsc-mains-gs1':'UPSC GS1','upsc-mains-gs2':'UPSC GS2','upsc-mains-gs3':'UPSC GS3','upsc-mains-gs4':'UPSC GS4',
-  'uppcs-prelims-gs':'UPPCS Prelims GS','uppcs-prelims-csat':'UPPCS CSAT','uppcs-mains-hindi':'UPPCS हिंदी',
-  'uppcs-mains-essay':'UPPCS निबंध','uppcs-mains-gs1':'UPPCS GS1','uppcs-mains-gs2':'UPPCS GS2',
-  'uppcs-mains-gs3':'UPPCS GS3','uppcs-mains-gs4':'UPPCS GS4','uppcs-mains-gs5':'UPPCS GS5','uppcs-mains-gs6':'UPPCS GS6'
+  'notes-hindi':'Notes: हिंदी व्याकरण','notes-english':'Notes: English Grammar','notes-essay':'Notes: निबंध'
 };
 
-// ===== HELPERS =====
 function $(id) { return document.getElementById(id); }
 
 function showMsg(id, text, type) {
@@ -320,12 +237,6 @@ function showMsg(id, text, type) {
   el.className = 'msg on ' + type;
 }
 
-function hideMsg(id) {
-  var el = $(id);
-  el.className = 'msg';
-}
-
-// ===== LOGIN =====
 function doLogin() {
   var pass = $('adminPass').value;
   if (pass === ADMIN_PASSWORD) {
@@ -352,7 +263,6 @@ function logout() {
   }
 }
 
-// ===== TOKEN =====
 function checkToken() {
   var tk = localStorage.getItem('ghTk');
   if (tk) {
@@ -368,15 +278,13 @@ function saveToken() {
   var t = $('ghToken').value.trim();
   var u = $('ghUser').value.trim();
   if (!t || !u) {
-    showMsg('tokenMsg', '❌ Token और Username दोनों डालें', 'err');
+    showMsg('tokenMsg', '❌ Token और Username डोनों डालें', 'err');
     return;
   }
   localStorage.setItem('ghTk', t);
   localStorage.setItem('ghUn', u);
-  showMsg('tokenMsg', '✅ Token saved! अब upload शुरू करें', 'ok');
-  setTimeout(function() {
-    checkToken();
-  }, 1000);
+  showMsg('tokenMsg', '✅ Token saved!', 'ok');
+  setTimeout(function() { checkToken(); }, 1000);
 }
 
 function changeToken() {
@@ -386,7 +294,6 @@ function changeToken() {
   }
 }
 
-// ===== TABS =====
 function showTab(tab) {
   document.querySelectorAll('.tabs button').forEach(function(b) {
     b.classList.toggle('on', b.dataset.tab === tab);
@@ -398,13 +305,10 @@ function showTab(tab) {
     c.classList.toggle('on', c.id === 'tab-' + tab);
   });
   if (tab === 'manage') loadItems();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ===== EXAM DROPDOWNS =====
 function populateExams() {
   var html = '';
-  // Group by category
   var groups = {
     'Central Exams': ['upsc','bpsc','uppcs','mppsc','ras','jpsc','ukpsc'],
     'SSC & Railway': ['ssc-cgl','ssc-chsl','ssc-mts','ssc-gd','railway'],
@@ -413,12 +317,7 @@ function populateExams() {
     'Teaching': ['b-ed','ctet','ugc-net'],
     'UG & PG': ['jee-mains','neet','gate','bca-mca','llb','cat-mba','nursing','cuet','ba-ma'],
     'Special': ['agta','up-lekhpal'],
-    '📝 Notes Categories': ['notes-history','notes-geography','notes-polity','notes-economics','notes-science','notes-environment','notes-maths','notes-adv-maths','notes-reasoning','notes-hindi','notes-english','notes-essay'],
-    'BA Subjects': ['ba-hindi','ba-english','ba-history','ba-polity','ba-economics','ba-sociology','ba-psychology','ba-geography','ba-sanskrit','ba-urdu','ba-finearts','ba-journalism'],
-    'MA Subjects': ['ma-hindi','ma-english','ma-history','ma-polity','ma-economics','ma-sociology','ma-psychology','ma-geography'],
-    'UGC NET Papers': ['net-paper1','net-hindi','net-english','net-history','net-polity','net-economics','net-sociology','net-psychology','net-geography','net-education','net-commerce','net-philosophy','net-sanskrit'],
-    'UPSC Papers': ['upsc-prelims-gs1','upsc-prelims-csat','upsc-mains-essay','upsc-mains-gs1','upsc-mains-gs2','upsc-mains-gs3','upsc-mains-gs4'],
-    'UPPCS Papers': ['uppcs-prelims-gs','uppcs-prelims-csat','uppcs-mains-hindi','uppcs-mains-essay','uppcs-mains-gs1','uppcs-mains-gs2','uppcs-mains-gs3','uppcs-mains-gs4','uppcs-mains-gs5','uppcs-mains-gs6']
+    'Notes Categories': ['notes-history','notes-geography','notes-polity','notes-economics','notes-science','notes-environment','notes-maths','notes-adv-maths','notes-reasoning','notes-hindi','notes-english','notes-essay']
   };
   
   for (var groupName in groups) {
@@ -435,7 +334,6 @@ function populateExams() {
   $('manageExam').innerHTML = html;
 }
 
-// ===== FILE HANDLING =====
 function handleFiles(e) {
   selectedFiles = Array.from(e.target.files);
   var list = $('fileList');
@@ -466,7 +364,6 @@ function checkType() {
   }
 }
 
-// ===== BASE64 =====
 function fileToBase64(file) {
   return new Promise(function(resolve, reject) {
     var reader = new FileReader();
@@ -480,12 +377,10 @@ function sanitizeName(name) {
   return name.toLowerCase().replace(/[^a-z0-9.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
-// ===== UPLOAD FILE =====
 async function uploadFileToGitHub(file, path, tk, un) {
   var base64 = await fileToBase64(file);
   var api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/' + path;
   var sha = null;
-  
   try {
     var check = await fetch(api + '?t=' + Date.now(), {
       headers: { 'Authorization': 'token ' + tk }
@@ -495,14 +390,12 @@ async function uploadFileToGitHub(file, path, tk, un) {
       sha = existing.sha;
     }
   } catch(e) {}
-  
   var body = {
     message: 'Upload ' + path,
     content: base64,
     committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
   };
   if (sha) body.sha = sha;
-  
   var res = await fetch(api, {
     method: 'PUT',
     headers: {
@@ -511,7 +404,6 @@ async function uploadFileToGitHub(file, path, tk, un) {
     },
     body: JSON.stringify(body)
   });
-  
   if (!res.ok) {
     var err = await res.json();
     throw new Error(err.message || 'Upload failed');
@@ -519,7 +411,6 @@ async function uploadFileToGitHub(file, path, tk, un) {
   return true;
 }
 
-// ===== LOAD RESOURCES =====
 async function loadResources() {
   try {
     var r = await fetch('data/resources.json?v=' + Date.now());
@@ -527,24 +418,20 @@ async function loadResources() {
     if (!resourcesData || typeof resourcesData !== 'object') resourcesData = {};
     loadItems();
   } catch(e) {
-    console.error(e);
     resourcesData = {};
   }
 }
 
-// ===== ITEM LIST (MANAGE) =====
 function loadItems() {
   if (!resourcesData) return;
   var ex = $('manageExam').value;
   var ty = $('manageType').value;
   var items = (resourcesData[ex] && resourcesData[ex][ty]) || [];
   var c = $('itemList');
-  
   if (!items.length) {
-    c.innerHTML = '<p class="empty">कोई item नहीं है। Upload tab से जोड़ें।</p>';
+    c.innerHTML = '<p class="empty">कोई item नहीं है।</p>';
     return;
   }
-  
   var html = '';
   items.forEach(function(item, i) {
     html += '<div class="item-row">';
@@ -554,7 +441,6 @@ function loadItems() {
     html += '</div>';
   });
   c.innerHTML = html;
-  
   c.querySelectorAll('.del-btn').forEach(function(btn) {
     btn.onclick = function() {
       deleteItem(this.dataset.ex, this.dataset.ty, parseInt(this.dataset.idx));
@@ -562,21 +448,18 @@ function loadItems() {
   });
 }
 
-// ===== ADD TO JSON =====
 async function addToJson(ex, ty, title, link, type, tk, un) {
   if (!resourcesData[ex]) {
     resourcesData[ex] = { name: EXAM_NAMES[ex] || ex, notes: [], pyq: [], syllabus: [], videos: [], books: [] };
   }
   if (!resourcesData[ex][ty]) resourcesData[ex][ty] = [];
   resourcesData[ex][ty].push({ title: title, link: link, type: type });
-  
   var api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/data/resources.json';
   var g = await fetch(api + '?t=' + Date.now(), {
     headers: { 'Authorization': 'token ' + tk }
   });
   var cur = await g.json();
   var content = btoa(unescape(encodeURIComponent(JSON.stringify(resourcesData, null, 2))));
-  
   var p = await fetch(api, {
     method: 'PUT',
     headers: {
@@ -590,14 +473,12 @@ async function addToJson(ex, ty, title, link, type, tk, un) {
       committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
     })
   });
-  
   if (!p.ok) {
     var err = await p.json();
     throw new Error(err.message || 'JSON update failed');
   }
 }
 
-// ===== UPLOAD BUTTON HANDLER =====
 async function uploadContent() {
   var tk = localStorage.getItem('ghTk');
   var un = localStorage.getItem('ghUn');
@@ -605,23 +486,18 @@ async function uploadContent() {
     showMsg('uploadMsg', '❌ पहले GitHub Token save करें', 'err');
     return;
   }
-  
   var ex = $('examSelect').value;
   var ty = $('typeSelect').value;
   var title = $('titleInput').value.trim();
-  
   if (!title) {
     showMsg('uploadMsg', '❌ Title डालें', 'err');
     return;
   }
-  
   var isFile = (ty === 'notes' || ty === 'pyq' || ty === 'syllabus');
-  
   if (isFile && !selectedFiles.length) {
     showMsg('uploadMsg', '❌ PDF file select करें', 'err');
     return;
   }
-  
   if (!isFile) {
     var lnk = $('linkInput').value.trim();
     if (!lnk) {
@@ -633,7 +509,7 @@ async function uploadContent() {
     try {
       var itemType = ty === 'videos' ? 'Video' : 'Book';
       await addToJson(ex, ty, title, lnk, itemType, tk, un);
-      showMsg('uploadMsg', '✅ Success! 30 सेकंड में website पर live होगा।', 'ok');
+      showMsg('uploadMsg', '✅ Success! 30 सेकंड में live', 'ok');
       $('titleInput').value = '';
       $('linkInput').value = '';
       loadResources();
@@ -643,42 +519,31 @@ async function uploadContent() {
     $('uploadBtn').disabled = false;
     return;
   }
-  
-  // File upload
   $('uploadBtn').disabled = true;
   $('progressBar').classList.add('on');
-  showMsg('uploadMsg', '⏳ Upload हो रहा है... कृपया प्रतीक्षा करें', 'info');
-  
+  showMsg('uploadMsg', '⏳ Upload हो रहा है...', 'info');
   try {
     for (var i = 0; i < selectedFiles.length; i++) {
       var file = selectedFiles[i];
       var safeName = sanitizeName(file.name);
       var path = 'resources/' + ex + '/' + ty + '/' + Date.now() + '-' + safeName;
-      
       $('progressFill').style.width = ((i / selectedFiles.length) * 70) + '%';
       showMsg('uploadMsg', '⏳ Upload: ' + file.name + ' (' + (i+1) + '/' + selectedFiles.length + ')', 'info');
-      
       await uploadFileToGitHub(file, path, tk, un);
-      
       var fileTitle = selectedFiles.length === 1 ? title : title + ' - ' + file.name.replace('.pdf', '');
       var fileUrl = 'https://ravishankarkamal59-eng.github.io/' + path;
-      
       await addToJson(ex, ty, fileTitle, fileUrl, 'PDF', tk, un);
     }
-    
     $('progressFill').style.width = '100%';
-    showMsg('uploadMsg', '✅ सफल! ' + selectedFiles.length + ' PDF upload हो गईं। 30 सेकंड में website पर दिखेंगी।', 'ok');
-    
+    showMsg('uploadMsg', '✅ सफल! ' + selectedFiles.length + ' PDF upload हो गईं।', 'ok');
     selectedFiles = [];
     $('fileInput').value = '';
     $('fileList').classList.remove('on');
     $('titleInput').value = '';
     loadResources();
-    
   } catch(e) {
     showMsg('uploadMsg', '❌ Error: ' + e.message, 'err');
   }
-  
   $('uploadBtn').disabled = false;
   setTimeout(function() {
     $('progressBar').classList.remove('on');
@@ -686,15 +551,12 @@ async function uploadContent() {
   }, 2000);
 }
 
-// ===== DELETE =====
 async function deleteItem(ex, ty, i) {
   if (!confirm('Delete करना है?')) return;
   var tk = localStorage.getItem('ghTk');
   var un = localStorage.getItem('ghUn');
   if (!tk) { alert('Token save करें'); return; }
-  
   resourcesData[ex][ty].splice(i, 1);
-  
   try {
     var api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/data/resources.json';
     var g = await fetch(api + '?t=' + Date.now(), {
@@ -702,7 +564,6 @@ async function deleteItem(ex, ty, i) {
     });
     var cur = await g.json();
     var content = btoa(unescape(encodeURIComponent(JSON.stringify(resourcesData, null, 2))));
-    
     var p = await fetch(api, {
       method: 'PUT',
       headers: {
@@ -716,7 +577,6 @@ async function deleteItem(ex, ty, i) {
         committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
       })
     });
-    
     if (p.ok) {
       loadItems();
       alert('✅ Deleted');
@@ -728,59 +588,34 @@ async function deleteItem(ex, ty, i) {
   }
 }
 
-// ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
   populateExams();
   checkType();
-  
   $('loginBtn').addEventListener('click', doLogin);
   $('adminPass').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') doLogin();
   });
-  
   $('logoutBtn').addEventListener('click', logout);
   $('saveTokenBtn').addEventListener('click', saveToken);
   $('changeTokenBtn').addEventListener('click', changeToken);
   $('uploadBtn').addEventListener('click', uploadContent);
-  
   $('fileInput').addEventListener('change', handleFiles);
   $('typeSelect').addEventListener('change', checkType);
   $('uploadArea').addEventListener('click', function() {
     $('fileInput').click();
   });
-  
   $('manageExam').addEventListener('change', loadItems);
   $('manageType').addEventListener('change', loadItems);
-  
   document.querySelectorAll('.tabs button').forEach(function(b) {
     b.addEventListener('click', function() { showTab(this.dataset.tab); });
   });
   document.querySelectorAll('.bottom-nav button').forEach(function(b) {
     b.addEventListener('click', function() { showTab(this.dataset.tab); });
   });
-  
-  // Auto login if already logged in
   if (localStorage.getItem('adminLoggedIn') === 'yes') {
     showApp();
   }
-  
-  // Register service worker
-  );
-  }
 });
-</script>
-<!-- SW-UNREGISTER -->
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(regs) {
-    regs.forEach(function(reg) { reg.unregister(); });
-  });
-  if ('caches' in window) {
-    caches.keys().then(function(names) {
-      names.forEach(function(name) { caches.delete(name); });
-    });
-  }
-}
 </script>
 </body>
 </html>
