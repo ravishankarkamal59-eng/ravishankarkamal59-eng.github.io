@@ -266,5 +266,18 @@ body.dark-mode .pinfo strong,body.dark-mode .paper-card h4{color:#6dd5fa}
 <script src="assets/js/pdf-watermark.js"></script>
 <script src="assets/js/mobile-header-fix.js"></script>
 <script src="assets/js/force-reload.js"></script>
+<!-- SW-UNREGISTER -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs) {
+    regs.forEach(function(reg) { reg.unregister(); });
+  });
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      names.forEach(function(name) { caches.delete(name); });
+    });
+  }
+}
+</script>
 </body>
 </html>
