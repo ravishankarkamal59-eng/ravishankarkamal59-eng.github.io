@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Register service worker
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('admin-sw.js').catch(function() {});
+    navigator.serviceWorker.register('admin-sw.js?v=' + Date.now()).catch(function() {});
   }
   
   checkType();
