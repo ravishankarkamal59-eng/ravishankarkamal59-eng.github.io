@@ -48,7 +48,13 @@
     "name": "SSC CGL",
     "notes": [],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "SSC CGL syllabus",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ssc-cgl/syllabus/1789236269359-ssc-cgl-complete-bilingual-syllabus-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "videos": [],
     "books": []
   },
