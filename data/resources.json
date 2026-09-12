@@ -684,14 +684,14 @@
   },
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
-    "notes": [
+    "notes": [],
+    "pyq": [
       {
-        "title": "Agta Notes",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789236403477-the-ravishankar-insights-up-agta-10-years-pyq-bank.pdf",
+        "title": "Agta pyq",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/pyq/1789236440338-the-ravishankar-insights-up-agta-2026-pyq-vol-1.pdf",
         "type": "PDF"
       }
     ],
-    "pyq": [],
     "syllabus": [],
     "videos": [],
     "books": []
