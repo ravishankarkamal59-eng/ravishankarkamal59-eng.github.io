@@ -94,6 +94,7 @@
     {
       title: '🌾 Special',
       items: [
+        { href: 'agriculture.html', label: '🌾 Agriculture' },
         { href: 'agta.html', label: 'AGTA (Agriculture)' },
         { href: 'up-lekhpal.html', label: 'UP लेखपाल' }
       ]

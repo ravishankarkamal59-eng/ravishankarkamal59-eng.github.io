@@ -128,7 +128,40 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 <div class="card">
 <h2>📤 PDF / Video / Book Add करें</h2>
 <label>📚 Exam चुनें</label>
-<select id="examSelect"></select>
+<select id="examSelect">
+<optgroup label="🌾 Agriculture (Class 11, 12, BSc)">
+<option value="agriculture">🌾 Agriculture Main</option>
+<option value="agri-11-biology">Class 11: Agriculture Biology</option>
+<option value="agri-11-crop">Class 11: Crop Production</option>
+<option value="agri-11-soil">Class 11: Soil Science</option>
+<option value="agri-11-horticulture">Class 11: Horticulture</option>
+<option value="agri-11-animal">Class 11: Animal Husbandry</option>
+<option value="agri-11-farm">Class 11: Farm Machinery</option>
+<option value="agri-11-rural">Class 11: Rural Development</option>
+<option value="agri-12-crop">Class 12: Crop Production Mgmt</option>
+<option value="agri-12-genetics">Class 12: Genetics & Plant Breeding</option>
+<option value="agri-12-animal">Class 12: Animal Husbandry</option>
+<option value="agri-12-soil">Class 12: Soil Science</option>
+<option value="agri-12-economics">Class 12: Agriculture Economics</option>
+<option value="agri-12-extension">Class 12: Extension Education</option>
+<option value="agri-12-horticulture">Class 12: Horticulture</option>
+<option value="bsc-agronomy">BSc: Agronomy</option>
+<option value="bsc-horticulture">BSc: Horticulture</option>
+<option value="bsc-plant-breeding">BSc: Plant Breeding & Genetics</option>
+<option value="bsc-soil-science">BSc: Soil Science</option>
+<option value="bsc-entomology">BSc: Entomology</option>
+<option value="bsc-plant-pathology">BSc: Plant Pathology</option>
+<option value="bsc-animal-husbandry">BSc: Animal Husbandry</option>
+<option value="bsc-agri-economics">BSc: Agricultural Economics</option>
+<option value="bsc-extension">BSc: Extension Education</option>
+<option value="bsc-agri-engineering">BSc: Agricultural Engineering</option>
+<option value="bsc-biochemistry">BSc: Biochemistry</option>
+<option value="bsc-microbiology">BSc: Microbiology</option>
+<option value="bsc-forestry">BSc: Forestry</option>
+<option value="bsc-statistics">BSc: Agricultural Statistics</option>
+<option value="bsc-plant-physiology">BSc: Plant Physiology</option>
+</optgroup>
+</select>
 <label>📂 Type चुनें</label>
 <select id="typeSelect">
 <option value="notes">📝 Notes PDF</option>
@@ -215,6 +248,36 @@ var selectedFiles = [];
 var resourcesData = null;
 
 var EXAM_NAMES = {
+  'agriculture': 'Agriculture Main Page',
+  'bsc-plant-physiology': 'BSc: Plant Physiology',
+  'bsc-statistics': 'BSc: Agricultural Statistics',
+  'bsc-forestry': 'BSc: Forestry',
+  'bsc-microbiology': 'BSc: Microbiology',
+  'bsc-biochemistry': 'BSc: Biochemistry',
+  'bsc-agri-engineering': 'BSc: Agricultural Engineering',
+  'bsc-extension': 'BSc: Extension Education',
+  'bsc-agri-economics': 'BSc: Agricultural Economics',
+  'bsc-animal-husbandry': 'BSc: Animal Husbandry',
+  'bsc-plant-pathology': 'BSc: Plant Pathology',
+  'bsc-entomology': 'BSc: Entomology',
+  'bsc-soil-science': 'BSc: Soil Science',
+  'bsc-plant-breeding': 'BSc: Plant Breeding & Genetics',
+  'bsc-horticulture': 'BSc: Horticulture',
+  'bsc-agronomy': 'BSc: Agronomy',
+  'agri-12-horticulture': 'Class 12: Horticulture',
+  'agri-12-extension': 'Class 12: Extension Education',
+  'agri-12-economics': 'Class 12: Agriculture Economics',
+  'agri-12-soil': 'Class 12: Soil Science',
+  'agri-12-animal': 'Class 12: Animal Husbandry',
+  'agri-12-genetics': 'Class 12: Genetics & Plant Breeding',
+  'agri-12-crop': 'Class 12: Crop Production Mgmt',
+  'agri-11-rural': 'Class 11: Rural Development',
+  'agri-11-farm': 'Class 11: Farm Machinery',
+  'agri-11-animal': 'Class 11: Animal Husbandry',
+  'agri-11-horticulture': 'Class 11: Horticulture',
+  'agri-11-soil': 'Class 11: Soil Science',
+  'agri-11-crop': 'Class 11: Crop Production',
+  'agri-11-biology': 'Class 11: Agriculture Biology',
   // Central Exams
   'upsc':'UPSC Civil Services','bpsc':'BPSC','uppcs':'UPPCS','mppsc':'MPPSC','ras':'RAS Rajasthan',
   'jpsc':'JPSC Jharkhand','ukpsc':'UKPSC Uttarakhand',

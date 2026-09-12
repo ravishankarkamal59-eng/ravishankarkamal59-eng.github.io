@@ -779,5 +779,245 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "agri-11-biology": {
+    "name": "Class 11: Agriculture Biology",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-crop": {
+    "name": "Class 11: Crop Production",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-soil": {
+    "name": "Class 11: Soil Science",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-horticulture": {
+    "name": "Class 11: Horticulture",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-animal": {
+    "name": "Class 11: Animal Husbandry",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-farm": {
+    "name": "Class 11: Farm Machinery",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-11-rural": {
+    "name": "Class 11: Rural Development",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-crop": {
+    "name": "Class 12: Crop Production Mgmt",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-genetics": {
+    "name": "Class 12: Genetics & Plant Breeding",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-animal": {
+    "name": "Class 12: Animal Husbandry",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-soil": {
+    "name": "Class 12: Soil Science",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-economics": {
+    "name": "Class 12: Agriculture Economics",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-extension": {
+    "name": "Class 12: Extension Education",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agri-12-horticulture": {
+    "name": "Class 12: Horticulture",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-agronomy": {
+    "name": "BSc: Agronomy",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-horticulture": {
+    "name": "BSc: Horticulture",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-plant-breeding": {
+    "name": "BSc: Plant Breeding & Genetics",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-soil-science": {
+    "name": "BSc: Soil Science",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-entomology": {
+    "name": "BSc: Entomology",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-plant-pathology": {
+    "name": "BSc: Plant Pathology",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-animal-husbandry": {
+    "name": "BSc: Animal Husbandry",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-agri-economics": {
+    "name": "BSc: Agricultural Economics",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-extension": {
+    "name": "BSc: Extension Education",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-agri-engineering": {
+    "name": "BSc: Agricultural Engineering",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-biochemistry": {
+    "name": "BSc: Biochemistry",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-microbiology": {
+    "name": "BSc: Microbiology",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-forestry": {
+    "name": "BSc: Forestry",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-statistics": {
+    "name": "BSc: Agricultural Statistics",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bsc-plant-physiology": {
+    "name": "BSc: Plant Physiology",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "agriculture": {
+    "name": "Agriculture Main Page",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
