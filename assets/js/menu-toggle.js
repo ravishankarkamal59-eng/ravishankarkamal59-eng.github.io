@@ -1,29 +1,33 @@
-// ===== Menu Toggle (Single Source of Truth) =====
+// ===== Menu Toggle - Robust Version =====
 (function() {
   'use strict';
   
-  function init() {
+  function setupMenu() {
     var toggle = document.querySelector('.menu-toggle');
     var navLinks = document.querySelector('.nav-links');
     
     if (!toggle || !navLinks) {
-      // अगर नहीं मिला, 500ms बाद फिर try करें
-      setTimeout(init, 500);
+      setTimeout(setupMenu, 300);
       return;
     }
     
-    // अगर पहले से initialized है, skip
-    if (toggle.dataset.menuInit === 'yes') return;
-    toggle.dataset.menuInit = 'yes';
+    // अगर पहले से setup है, skip
+    if (toggle.dataset.menuReady === 'yes') {
+      // Force ensure display: flex
+      if (window.innerWidth <= 768) {
+        toggle.style.display = 'flex';
+        toggle.style.visibility = 'visible';
+      }
+      return;
+    }
     
-    console.log('✅ Menu toggle initialized');
+    toggle.dataset.menuReady = 'yes';
     
     function openMenu() {
       navLinks.classList.add('active');
       document.body.classList.add('menu-open');
       document.body.style.overflow = 'hidden';
       toggle.setAttribute('aria-expanded', 'true');
-      console.log('📂 Menu opened');
     }
     
     function closeMenu() {
@@ -31,52 +35,24 @@
       document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
       toggle.setAttribute('aria-expanded', 'false');
-      console.log('📁 Menu closed');
     }
     
-    function toggleMenu(e) {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
+    // Remove old listeners
+    var newToggle = toggle.cloneNode(true);
+    toggle.parentNode.replaceChild(newToggle, toggle);
+    newToggle.dataset.menuReady = 'yes';
+    
+    newToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       
       if (navLinks.classList.contains('active')) {
         closeMenu();
       } else {
         openMenu();
       }
-    }
-    
-    // Remove any old listeners and add new one
-    var newToggle = toggle.cloneNode(true);
-    toggle.parentNode.replaceChild(newToggle, toggle);
-    toggle = newToggle;
-    toggle.dataset.menuInit = 'yes';
-    
-    toggle.addEventListener('click', toggleMenu, true);
-    toggle.addEventListener('touchstart', function(e){
-      // Prevent double firing
-    }, { passive: true });
-    
-    // Close button (×) - click detection on top-right corner
-    document.addEventListener('click', function(e) {
-      if (!document.body.classList.contains('menu-open')) return;
-      
-      // Close button area detection
-      var rect = e.target.getBoundingClientRect();
-      var topRightX = window.innerWidth - 70;
-      var topRightY = 70;
-      
-      if (e.clientX > topRightX && e.clientY < topRightY) {
-        closeMenu();
-        return;
-      }
-      
-      // Outside click on overlay
-      if (e.target === navLinks) {
-        closeMenu();
-      }
+      return false;
     }, true);
     
     // ESC key
@@ -86,24 +62,42 @@
       }
     });
     
-    // Link click → menu बंद
+    // Close button
+    var closeBtn = document.getElementById('menuCloseBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeMenu();
+      });
+    }
+    
+    // Link click → close menu
     navLinks.addEventListener('click', function(e) {
       if (e.target.tagName === 'A') {
         setTimeout(closeMenu, 100);
       }
     });
     
-    // Expose globally for debugging
-    window.openMenu = openMenu;
-    window.closeMenu = closeMenu;
+    // Force display for menu-toggle (mobile)
+    function ensureVisible() {
+      if (window.innerWidth <= 768) {
+        newToggle.style.setProperty('display', 'flex', 'important');
+        newToggle.style.setProperty('visibility', 'visible', 'important');
+        newToggle.style.setProperty('opacity', '1', 'important');
+      }
+    }
+    ensureVisible();
+    window.addEventListener('resize', ensureVisible);
   }
   
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', setupMenu);
   } else {
-    init();
+    setupMenu();
   }
   
-  // Backup: 1 second बाद फिर try करें
-  setTimeout(init, 1000);
+  // Multiple checks
+  setTimeout(setupMenu, 300);
+  setTimeout(setupMenu, 1000);
+  setTimeout(setupMenu, 2000);
 })();
