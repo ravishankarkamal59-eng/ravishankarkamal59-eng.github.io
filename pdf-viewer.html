@@ -47,6 +47,7 @@ body.dark-mode .pv-input,body.dark-mode .pv-info{background:#16213e;color:#e0e0e
 
 <main>
 <div class="pv-hd">
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:70px;width:auto;display:block;margin:0 auto 0.8rem;filter:drop-shadow(0 3px 10px rgba(255,215,0,0.3))">
 <h1>📄 Online PDF Viewer</h1>
 <p>PDF को browser में सीधे पढ़ें - Download की जरूरत नहीं</p>
 </div>
@@ -63,12 +64,21 @@ Google Drive link या कोई भी PDF URL नीचे paste करे�
 </div>
 
 <div id="viewerArea" style="display:none">
-<div class="pv-btns">
+<div class="pdf-container">
+<div class="pdf-brand-bar">
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights">
+<div>
+<div class="pdf-title">📄 The Ravishankar Insights</div>
+<div class="pdf-sub">Education • Knowledge • Success</div>
+</div>
+</div>
+<div class="pv-btns" style="margin-top:0.6rem">
 <a id="dlBtn" class="dl" href="#" download>⬇️ Download</a>
 <a id="aiBtn" class="ai" href="ai-chat.html" target="_blank">🤖 AI से पूछें</a>
 <button class="close" onclick="closeViewer()">❌ बंद करें</button>
 </div>
 <iframe id="pdfFrame" class="pv-frame" src="" allow="autoplay"></iframe>
+</div>
 </div>
 
 <div class="content" style="margin-top:1.5rem">
@@ -126,5 +136,6 @@ if (params.get('url')) {
 <script src="assets/js/login-state.js"></script>
 <script src="assets/js/full-menu.js"></script>
 <script src="assets/js/menu-toggle.js"></script>
+<script src="assets/js/pdf-watermark.js"></script>
 </body>
 </html>

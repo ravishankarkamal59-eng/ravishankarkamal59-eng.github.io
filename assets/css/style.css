@@ -1841,3 +1841,152 @@ body.menu-open::before {
   0%, 100% { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35)); }
   50% { filter: drop-shadow(0 4px 18px rgba(255,215,0,0.5)); }
 }
+
+/* ============================================ */
+/* HEADER FIX - Search button & emoji हटाएँ */
+/* ============================================ */
+
+/* Search floating button completely hide */
+#searchBtn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Font size controls hide */
+body > div[style*="top:135px"],
+body > div[style*="top: 135px"],
+body > div[style*="font-size"] {
+  display: none !important;
+}
+
+/* Print button hide */
+body > button[title="प्रिंट करें"] {
+  display: none !important;
+}
+
+/* Bookmark button hide */  
+body > button[title="बुकमार्क करें"] {
+  display: none !important;
+}
+
+/* Language toggle hide (optional - user can remove this line if needed) */
+/* #langToggle { display: none !important; } */
+
+/* Header logo image */
+.header-logo-img {
+  height: 48px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)) !important;
+  transition: all 0.3s ease !important;
+}
+
+.header-logo-img:hover {
+  filter: drop-shadow(0 4px 12px rgba(255,215,0,0.5)) brightness(1.08) !important;
+  transform: scale(1.03);
+}
+
+/* Logo container */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+.logo a {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+/* Mobile - छोटा logo */
+@media (max-width: 768px) {
+  .header-logo-img {
+    height: 40px !important;
+    max-width: 150px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-logo-img {
+    height: 34px !important;
+    max-width: 125px !important;
+  }
+}
+
+/* ============================================ */
+/* AI CHAT LOGO */
+/* ============================================ */
+.ai-header-logo {
+  height: 35px !important;
+  width: auto !important;
+  max-width: 140px !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+.ai-welcome-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  height: 70px;
+  width: auto;
+  filter: drop-shadow(0 3px 10px rgba(255,215,0,0.3));
+  animation: aiLogoPulse 3s ease-in-out infinite;
+}
+
+@keyframes aiLogoPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 3px 10px rgba(255,215,0,0.3)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 5px 18px rgba(255,215,0,0.5)); }
+}
+
+/* ============================================ */
+/* PDF Viewer Logo Watermark */
+/* ============================================ */
+.pdf-watermark {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 60px;
+  width: auto;
+  opacity: 0.85;
+  z-index: 10;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+.pdf-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.pdf-brand-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+}
+
+.pdf-brand-bar img {
+  height: 32px;
+  width: auto;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
+.pdf-brand-bar .pdf-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.pdf-brand-bar .pdf-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.85);
+}
