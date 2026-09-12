@@ -303,7 +303,7 @@ function renderCards(){
     });
 }
 
-function renderCard(c, pdfs){
+function renderCard(c, pdfs) {
   var html = '<div class="note-card">';
   html += '<div class="head"><span class="icon">' + c.icon + '</span><h3>' + c.title + '</h3></div>';
   html += '<p>' + c.desc + '</p>';
@@ -312,28 +312,58 @@ function renderCard(c, pdfs){
     html += '<div class="empty-note">📌 जल्द ही PDF upload होंगे</div>';
     html += '<a href="https://wa.me/918931050393?text=' + encodeURIComponent(c.title + ' PDF चाहिए') + '" class="dl-btn" style="background:#f39c12;margin-top:0.7rem" target="_blank">💬 WhatsApp पर माँगें</a>';
   } else {
-    html += '<span class="count">📄 ' + pdfs.length + ' PDF</span>';
-    html += '<ul class="pdf-list">';
-    pdfs.slice(0, 3).forEach(function(p){
+    html += '<span class="count">📄 ' + pdfs.length + ' PDF उपलब्ध</span>';
+    html += '<ul class="pdf-list" style="max-height:300px;overflow-y:auto">';
+    pdfs.forEach(function(p) {
       var pdfUrl = p.link || '';
-      var viewerUrl = 'pdf-viewer.html?url=' + encodeURIComponent(pdfUrl);
-      html += '<li><a href="' + viewerUrl + '" target="_blank">';
-      html += '<span class="pdf-icon">📄</span>';
-      html += '<span>' + (p.title || 'Notes PDF') + '</span>';
-      html += '<span class="pdf-dl">→</span>';
-      html += '</a></li>';
+      var title = (p.title || 'Notes PDF').replace(/"/g, '&quot;');
+      html += '<li style="display:flex;align-items:center;gap:0.4rem;padding:0.5rem 0;border-bottom:1px solid #f0f4f8">';
+      html += '<span style="font-size:0.9rem;color:#e74c3c">📄</span>';
+      html += '<span style="flex:1;font-size:0.85rem;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (p.title || 'Notes PDF') + '</span>';
+      html += '<button class="pdf-dl-btn" data-url="' + pdfUrl + '" data-title="' + title + '" style="background:#e94560;color:#fff;border:none;padding:0.3rem 0.7rem;border-radius:16px;font-size:0.72rem;font-weight:600;cursor:pointer">⬇️ PDF</button>';
+      html += '</li>';
     });
-    if (pdfs.length > 3) {
-      html += '<li style="text-align:center;color:#888;font-size:0.8rem;padding-top:0.4rem">... और ' + (pdfs.length - 3) + ' PDF</li>';
-    }
     html += '</ul>';
-    html += '<a href="pdf-viewer.html?url=' + encodeURIComponent(pdfs[0].link) + '" class="dl-btn" style="margin-top:0.7rem" target="_blank">📖 पहली PDF पढ़ें</a>';
   }
   html += '</div>';
   return html;
 }
 
 renderCards();
+
+// Download buttons attach करें
+setTimeout(function() {
+  document.querySelectorAll('.pdf-dl-btn').forEach(function(btn) {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = 'yes';
+    btn.addEventListener('click', function() {
+      var url = this.dataset.url;
+      var title = this.dataset.title;
+      if (window.downloadPdfWithWatermark) {
+        window.downloadPdfWithWatermark(url, title);
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  });
+}, 1500);
+
+// हर 2 सेकंड में check करें नए buttons के लिए
+setInterval(function() {
+  document.querySelectorAll('.pdf-dl-btn').forEach(function(btn) {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = 'yes';
+    btn.addEventListener('click', function() {
+      var url = this.dataset.url;
+      var title = this.dataset.title;
+      if (window.downloadPdfWithWatermark) {
+        window.downloadPdfWithWatermark(url, title);
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  });
+}, 2000);
 </script>
 <script src="assets/js/pdf-watermark.js"></script>
 <script src="assets/js/mobile-header-fix.js"></script>
@@ -351,5 +381,6 @@ if ('serviceWorker' in navigator) {
   }
 }
 </script>
+<script src="assets/js/pdf-download-watermark.js"></script>
 </body>
 </html>
