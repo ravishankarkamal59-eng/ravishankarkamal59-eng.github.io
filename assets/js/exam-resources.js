@@ -1,4 +1,4 @@
-// ===== Exam Resources Loader (Updated - shows ALL PDFs with download) =====
+// ===== Exam Resources Loader v3 - PDF + Video + Book fix =====
 (function() {
   var path = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
   var examKey = document.querySelector('[data-exam-key]')?.dataset.examKey || path;
@@ -18,7 +18,7 @@
       var container = document.querySelector('.exam-resources-container');
       var sections = [
         {key: 'notes', icon: '📝', title: 'Notes PDF', color: '#e94560'},
-        {key: 'pyq', icon: '📄', title: 'Previous Year Papers (PYQ)', color: '#0f3460'},
+        {key: 'pyq', icon: '📄', title: 'Previous Year Papers', color: '#0f3460'},
         {key: 'syllabus', icon: '📚', title: 'Syllabus PDF', color: '#27ae60'},
         {key: 'videos', icon: '🎥', title: 'Video Lectures', color: '#e74c3c'},
         {key: 'books', icon: '📖', title: 'Recommended Books', color: '#f39c12'}
@@ -42,18 +42,44 @@
           html += '<ul style="list-style:none;padding:0.5rem 0;margin:0;max-height:400px;overflow-y:auto">';
           items.forEach(function(item, idx) {
             var isPdf = (item.type === 'PDF' || !item.type);
+            var isVideo = (item.type === 'Video' || s.key === 'videos');
+            var isBook = (item.type === 'Book' || s.key === 'books');
+            
             html += '<li style="padding:0;border-bottom:1px solid #f0f4f8">';
             html += '<div style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem 1rem">';
-            html += '<span style="font-size:1rem">' + (isPdf ? '📄' : '🔗') + '</span>';
-            html += '<div style="flex:1;min-width:0">';
-            html += '<div style="font-size:0.88rem;color:#333;font-weight:500;overflow:hidden;text-overflow:ellipsis">' + (item.title || 'Untitled') + '</div>';
-            html += '<div style="font-size:0.72rem;color:#999;margin-top:0.15rem">' + (item.type || 'PDF') + '</div>';
-            html += '</div>';
+            
             if (isPdf) {
-              html += '<button class="pdf-dl-btn" data-url="' + item.link + '" data-title="' + (item.title || 'notes').replace(/"/g, '&quot;') + '" style="background:#e94560;color:#fff;border:none;padding:0.4rem 0.8rem;border-radius:20px;font-size:0.78rem;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap">⬇️ PDF</button>';
+              // PDF - viewer में खोलें
+              var pdfViewerUrl = 'pdf-viewer.html?url=' + encodeURIComponent(item.link);
+              html += '<span style="font-size:1rem">📄</span>';
+              html += '<div style="flex:1;min-width:0">';
+              html += '<a href="' + pdfViewerUrl + '" style="font-size:0.88rem;color:#0f3460;font-weight:500;text-decoration:none;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (item.title || 'Untitled') + '</a>';
+              html += '<div style="font-size:0.72rem;color:#999;margin-top:0.15rem">📖 पढ़ें | ⬇️ Download</div>';
+              html += '</div>';
+              html += '<a href="' + pdfViewerUrl + '" style="background:#e94560;color:#fff;padding:0.4rem 0.8rem;border-radius:20px;font-size:0.78rem;font-weight:600;text-decoration:none;flex-shrink:0;white-space:nowrap">📖 खोलें</a>';
+            } else if (isVideo) {
+              // Video - YouTube thumbnail + play button
+              html += '<div style="flex:1">';
+              html += '<a href="' + item.link + '" target="_blank" rel="noopener" style="text-decoration:none;display:block">';
+              html += '<div style="display:flex;align-items:center;gap:0.6rem">';
+              html += '<div style="width:60px;height:40px;background:#000;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;flex-shrink:0">▶️</div>';
+              html += '<div style="flex:1;min-width:0">';
+              html += '<div style="font-size:0.88rem;color:#333;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (item.title || 'Video') + '</div>';
+              html += '<div style="font-size:0.72rem;color:#e74c3c;margin-top:0.15rem;font-weight:600">🎥 YouTube पर देखें</div>';
+              html += '</div></div></a></div>';
+            } else if (isBook) {
+              // Book - खरीदें
+              html += '<span style="font-size:1rem">📖</span>';
+              html += '<div style="flex:1;min-width:0">';
+              html += '<div style="font-size:0.88rem;color:#333;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (item.title || 'Book') + '</div>';
+              html += '<div style="font-size:0.72rem;color:#999;margin-top:0.15rem">अनुशंसित पुस्तक</div>';
+              html += '</div>';
+              html += '<a href="' + item.link + '" target="_blank" rel="noopener" style="background:#f39c12;color:#fff;padding:0.4rem 0.8rem;border-radius:20px;font-size:0.78rem;font-weight:600;text-decoration:none;flex-shrink:0;white-space:nowrap">🛒 खरीदें</a>';
             } else {
-              html += '<a href="' + item.link + '" target="_blank" style="background:#0f3460;color:#fff;padding:0.4rem 0.8rem;border-radius:20px;font-size:0.78rem;font-weight:600;text-decoration:none;flex-shrink:0;white-space:nowrap">खोलें →</a>';
+              // Unknown - सीधा link
+              html += '<a href="' + item.link + '" target="_blank" style="color:#0f3460;text-decoration:none;font-size:0.88rem;flex:1">' + (item.title || 'Link') + '</a>';
             }
+            
             html += '</div>';
             html += '</li>';
           });
@@ -67,19 +93,6 @@
       
       html += '</div>';
       container.innerHTML = html;
-      
-      // Download buttons attach करें
-      container.querySelectorAll('.pdf-dl-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var url = this.dataset.url;
-          var title = this.dataset.title;
-          if (window.downloadPdfWithWatermark) {
-            window.downloadPdfWithWatermark(url, title);
-          } else {
-            window.open(url, '_blank');
-          }
-        });
-      });
     })
     .catch(function(err) {
       console.error('Error loading resources:', err);
