@@ -92,7 +92,7 @@ body.dark-mode .result h2,body.dark-mode .leaderboard h3{color:#6dd5fa}
 <p>Timer, Detailed Result, Leaderboard के साथ असली परीक्षा जैसा अनुभव</p>
 </div>
 <div class="setup">
-<label>📚 विषय चुनें</label>
+<label>विषय चुनें</label>
 <select id="selCat">
 <option value="gk">सामान्य ज्ञान (Mixed)</option>
 <option value="history">इतिहास</option>
@@ -362,7 +362,7 @@ function finishQuiz(){
   
   var msg = percent >= 80 ? '🏆 शानदार! आप बहुत अच्छा कर रहे हैं!' :
             percent >= 60 ? '👍 अच्छा प्रदर्शन! थोड़ी और मेहनत करें।' :
-            percent >= 40 ? '📚 ठीक है, लेकिन practice जरूरी है।' :
+            percent >= 40 ? 'ठीक है, लेकिन practice जरूरी है।' :
             '💪 चिंता न करें, practice से सुधर जाएगा।';
   $('scoreMsg').textContent = msg;
   
