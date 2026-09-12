@@ -215,18 +215,54 @@ var selectedFiles = [];
 var resourcesData = null;
 
 var EXAM_NAMES = {
+  // Central Exams
   'upsc':'UPSC Civil Services','bpsc':'BPSC','uppcs':'UPPCS','mppsc':'MPPSC','ras':'RAS Rajasthan',
-  'jpsc':'JPSC Jharkhand','ukpsc':'UKPSC Uttarakhand','ssc-cgl':'SSC CGL','ssc-chsl':'SSC CHSL',
-  'ssc-mts':'SSC MTS','ssc-gd':'SSC GD','railway':'Railway (RRB)','banking':'Banking',
-  'nda-cds':'NDA / CDS','bihar-police':'बिहार पुलिस','bihar-si':'बिहार SI','up-police':'UP Police',
-  'pet':'PET','b-ed':'B.Ed','ctet':'CTET','ugc-net':'UGC NET / JRF',
+  'jpsc':'JPSC Jharkhand','ukpsc':'UKPSC Uttarakhand',
+  // SSC
+  'ssc-cgl':'SSC CGL','ssc-chsl':'SSC CHSL','ssc-mts':'SSC MTS','ssc-gd':'SSC GD',
+  // Railway & Banking
+  'railway':'Railway (RRB)','banking':'Banking (IBPS/SBI)',
+  // Defence
+  'nda-cds':'NDA / CDS',
+  // Police & PET
+  'bihar-police':'बिहार पुलिस','bihar-si':'बिहार SI','up-police':'UP Police','pet':'PET',
+  // Teaching
+  'b-ed':'B.Ed','ctet':'CTET','ugc-net':'UGC NET / JRF',
+  // UG & PG
   'jee-mains':'JEE Mains','neet':'NEET','gate':'GATE','bca-mca':'BCA / MCA','llb':'LLB / LLM',
-  'cat-mba':'CAT / MBA','nursing':'Nursing','cuet':'CUET','ba-ma':'BA / MA','agta':'AGTA (Agriculture)',
-  'up-lekhpal':'UP लेखपाल',
+  'cat-mba':'CAT / MBA','nursing':'Nursing','cuet':'CUET','ba-ma':'BA / MA',
+  // Special
+  'agta':'AGTA (Agriculture)','up-lekhpal':'UP लेखपाल',
+  // Notes Categories
   'notes-history':'Notes: भारतीय इतिहास','notes-geography':'Notes: भूगोल','notes-polity':'Notes: राजनीति',
   'notes-economics':'Notes: अर्थशास्त्र','notes-science':'Notes: सामान्य विज्ञान','notes-environment':'Notes: पर्यावरण',
   'notes-maths':'Notes: अंकगणित','notes-adv-maths':'Notes: उन्नत गणित','notes-reasoning':'Notes: रीजनिंग',
-  'notes-hindi':'Notes: हिंदी व्याकरण','notes-english':'Notes: English Grammar','notes-essay':'Notes: निबंध'
+  'notes-hindi':'Notes: हिंदी व्याकरण','notes-english':'Notes: English Grammar','notes-essay':'Notes: निबंध',
+  // BA Subjects
+  'ba-hindi':'BA हिंदी','ba-english':'BA English','ba-history':'BA इतिहास','ba-polity':'BA राजनीति',
+  'ba-economics':'BA अर्थशास्त्र','ba-sociology':'BA समाजशास्त्र','ba-psychology':'BA मनोविज्ञान',
+  'ba-geography':'BA भूगोल','ba-sanskrit':'BA संस्कृत','ba-urdu':'BA उर्दू',
+  'ba-finearts':'BA फाइन आर्ट्स','ba-journalism':'BA पत्रकारिता',
+  // MA Subjects
+  'ma-hindi':'MA हिंदी','ma-english':'MA English','ma-history':'MA इतिहास','ma-polity':'MA राजनीति',
+  'ma-economics':'MA अर्थशास्त्र','ma-sociology':'MA समाजशास्त्र','ma-psychology':'MA मनोविज्ञान',
+  'ma-geography':'MA भूगोल',
+  // UGC NET Papers
+  'net-paper1':'NET Paper 1 (General)','net-hindi':'NET हिंदी','net-english':'NET English',
+  'net-history':'NET इतिहास','net-polity':'NET राजनीति','net-economics':'NET अर्थशास्त्र',
+  'net-sociology':'NET समाजशास्त्र','net-psychology':'NET मनोविज्ञान','net-geography':'NET भूगोल',
+  'net-education':'NET Education','net-commerce':'NET Commerce','net-philosophy':'NET Philosophy',
+  'net-sanskrit':'NET संस्कृत',
+  // UPSC Papers
+  'upsc-prelims-gs1':'UPSC Prelims GS Paper 1','upsc-prelims-csat':'UPSC Prelims CSAT',
+  'upsc-mains-essay':'UPSC Mains Essay','upsc-mains-gs1':'UPSC Mains GS1',
+  'upsc-mains-gs2':'UPSC Mains GS2','upsc-mains-gs3':'UPSC Mains GS3','upsc-mains-gs4':'UPSC Mains GS4',
+  // UPPCS Papers
+  'uppcs-prelims-gs':'UPPCS Prelims GS','uppcs-prelims-csat':'UPPCS Prelims CSAT',
+  'uppcs-mains-hindi':'UPPCS Mains हिंदी','uppcs-mains-essay':'UPPCS Mains निबंध',
+  'uppcs-mains-gs1':'UPPCS Mains GS1','uppcs-mains-gs2':'UPPCS Mains GS2',
+  'uppcs-mains-gs3':'UPPCS Mains GS3','uppcs-mains-gs4':'UPPCS Mains GS4',
+  'uppcs-mains-gs5':'UPPCS Mains GS5','uppcs-mains-gs6':'UPPCS Mains GS6'
 };
 
 function $(id) { return document.getElementById(id); }
@@ -311,22 +347,29 @@ function populateExams() {
   var html = '';
   var groups = {
     'Central Exams': ['upsc','bpsc','uppcs','mppsc','ras','jpsc','ukpsc'],
-    'SSC & Railway': ['ssc-cgl','ssc-chsl','ssc-mts','ssc-gd','railway'],
-    'Banking & Defence': ['banking','nda-cds'],
+    'SSC Exams': ['ssc-cgl','ssc-chsl','ssc-mts','ssc-gd'],
+    'Railway & Banking': ['railway','banking'],
+    'Defence': ['nda-cds'],
     'Police & PET': ['bihar-police','bihar-si','up-police','pet'],
     'Teaching': ['b-ed','ctet','ugc-net'],
     'UG & PG': ['jee-mains','neet','gate','bca-mca','llb','cat-mba','nursing','cuet','ba-ma'],
     'Special': ['agta','up-lekhpal'],
-    'Notes Categories': ['notes-history','notes-geography','notes-polity','notes-economics','notes-science','notes-environment','notes-maths','notes-adv-maths','notes-reasoning','notes-hindi','notes-english','notes-essay']
+    'Notes Categories': ['notes-history','notes-geography','notes-polity','notes-economics','notes-science','notes-environment','notes-maths','notes-adv-maths','notes-reasoning','notes-hindi','notes-english','notes-essay'],
+    'BA Subjects': ['ba-hindi','ba-english','ba-history','ba-polity','ba-economics','ba-sociology','ba-psychology','ba-geography','ba-sanskrit','ba-urdu','ba-finearts','ba-journalism'],
+    'MA Subjects': ['ma-hindi','ma-english','ma-history','ma-polity','ma-economics','ma-sociology','ma-psychology','ma-geography'],
+    'UGC NET Papers': ['net-paper1','net-hindi','net-english','net-history','net-polity','net-economics','net-sociology','net-psychology','net-geography','net-education','net-commerce','net-philosophy','net-sanskrit'],
+    'UPSC Papers': ['upsc-prelims-gs1','upsc-prelims-csat','upsc-mains-essay','upsc-mains-gs1','upsc-mains-gs2','upsc-mains-gs3','upsc-mains-gs4'],
+    'UPPCS Papers': ['uppcs-prelims-gs','uppcs-prelims-csat','uppcs-mains-hindi','uppcs-mains-essay','uppcs-mains-gs1','uppcs-mains-gs2','uppcs-mains-gs3','uppcs-mains-gs4','uppcs-mains-gs5','uppcs-mains-gs6']
   };
   
   for (var groupName in groups) {
     html += '<optgroup label="' + groupName + '">';
-    groups[groupName].forEach(function(key) {
+    for (var i = 0; i < groups[groupName].length; i++) {
+      var key = groups[groupName][i];
       if (EXAM_NAMES[key]) {
         html += '<option value="' + key + '">' + EXAM_NAMES[key] + '</option>';
       }
-    });
+    }
     html += '</optgroup>';
   }
   
