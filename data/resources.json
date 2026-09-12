@@ -390,7 +390,13 @@
   },
   "ma-polity": {
     "name": "MA राजनीति शास्त्र",
-    "notes": [],
+    "notes": [
+      {
+        "title": "Peleto ka adarsh Raj",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789215482174-pol501-1-.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
