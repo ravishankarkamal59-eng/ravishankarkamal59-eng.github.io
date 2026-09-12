@@ -2,11 +2,10 @@
 (function() {
   'use strict';
   
-  // Check अगर user ने पहले देखा है (24 घंटे में एक बार)
+  // Check अगर user ने इस session में पहले देखा है
+  // sessionStorage use करने से हर नए tab/browser open पर दिखेगा
   function alreadyWatched() {
-    var lastWatched = localStorage.getItem('videoAdWatched');
-    if (!lastWatched) return false;
-    return (Date.now() - parseInt(lastWatched)) < (6 * 60 * 60 * 1000); // 6 hours
+    return sessionStorage.getItem('videoAdWatchedInSession') === 'yes';
   }
   
   // Check अगर homepage पर हैं
@@ -224,7 +223,7 @@
       if (closed) return;
       closed = true;
       cancelAnimationFrame(animationFrame);
-      localStorage.setItem('videoAdWatched', Date.now().toString());
+      sessionStorage.setItem('videoAdWatchedInSession', 'yes');
       overlay.style.animation = 'adSlideIn 0.4s ease reverse';
       setTimeout(function() {
         overlay.remove();
