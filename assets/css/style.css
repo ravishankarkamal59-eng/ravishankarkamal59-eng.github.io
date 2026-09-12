@@ -2542,3 +2542,192 @@ body > button[title="बुकमार्क करें"] {
     display: none !important;
   }
 }
+
+/* ============================================ */
+/* FIX - Ravishankar text visible + bigger logo */
+/* ============================================ */
+
+@media screen and (max-width: 768px) {
+  
+  /* Brand text container - bigger */
+  html body .brand-text,
+  html body header .brand-text,
+  html body nav .brand-text {
+    display: flex !important;
+    visibility: visible !important;
+    position: static !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    flex-direction: column !important;
+    line-height: 1.05 !important;
+    margin-left: 0.5rem !important;
+    padding-left: 0.5rem !important;
+    border-left: 2px solid rgba(255,215,0,0.6) !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: 160px !important;
+    justify-content: center !important;
+  }
+  
+  /* THE line */
+  html body .brand-text .brand-line-1 {
+    display: block !important;
+    font-size: 0.62rem !important;
+    font-weight: 600 !important;
+    color: #ffd700 !important;
+    -webkit-text-fill-color: #ffd700 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.1rem !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
+  }
+  
+  /* Ravishankar line - PLAIN GOLD (no gradient issue) */
+  html body .brand-text .brand-line-2 {
+    display: block !important;
+    font-family: 'Georgia', 'Times New Roman', serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(255,215,0,0.4) !important;
+    filter: none !important;
+  }
+  
+  /* INSIGHTS line */
+  html body .brand-text .brand-line-3 {
+    display: block !important;
+    font-size: 0.58rem !important;
+    color: #ffd700 !important;
+    -webkit-text-fill-color: #ffd700 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    letter-spacing: 2.8px !important;
+    text-transform: uppercase !important;
+    margin-top: 0.1rem !important;
+    white-space: nowrap !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
+  }
+  
+  /* Header nav */
+  html body header nav {
+    gap: 0.3rem !important;
+    padding: 0.4rem 0.2rem !important;
+  }
+  
+  /* ===== LOGO BIGGER ===== */
+  html body header nav > a:first-child {
+    flex: 0 0 auto !important;
+    max-width: 60px !important;
+    overflow: visible !important;
+  }
+  
+  html body header nav > a:first-child img {
+    height: 48px !important;
+    max-width: 58px !important;
+    width: auto !important;
+  }
+  
+  /* User box - compact but fine */
+  html body #userBox {
+    max-width: 100px !important;
+    padding: 0.15rem 0.35rem !important;
+    font-size: 0.66rem !important;
+    flex: 0 1 auto !important;
+    margin-left: auto !important;
+  }
+  
+  html body #userBox a {
+    max-width: 52px !important;
+    font-size: 0.66rem !important;
+  }
+  
+  html body #userBox #logoutBtn {
+    padding: 0.12rem 0.35rem !important;
+    font-size: 0.58rem !important;
+  }
+  
+  /* Menu button */
+  html body .menu-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    flex: 0 0 40px !important;
+    font-size: 1.3rem !important;
+    margin-left: 0.2rem !important;
+  }
+}
+
+/* Small mobile - adjust */
+@media screen and (max-width: 400px) {
+  html body .brand-text {
+    max-width: 130px !important;
+    margin-left: 0.4rem !important;
+    padding-left: 0.4rem !important;
+  }
+  
+  html body .brand-text .brand-line-1 {
+    font-size: 0.55rem !important;
+    letter-spacing: 1.8px !important;
+  }
+  
+  html body .brand-text .brand-line-2 {
+    font-size: 0.92rem !important;
+  }
+  
+  html body .brand-text .brand-line-3 {
+    font-size: 0.52rem !important;
+    letter-spacing: 2.4px !important;
+  }
+  
+  html body header nav > a:first-child {
+    max-width: 50px !important;
+  }
+  
+  html body header nav > a:first-child img {
+    height: 42px !important;
+    max-width: 48px !important;
+  }
+  
+  html body #userBox {
+    max-width: 85px !important;
+  }
+  
+  html body #userBox a {
+    max-width: 42px !important;
+  }
+  
+  html body .menu-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    flex: 0 0 36px !important;
+  }
+}
+
+/* Very small - hide INSIGHTS line if needed */
+@media screen and (max-width: 340px) {
+  html body .brand-text .brand-line-3 {
+    display: none !important;
+  }
+  html body .brand-text {
+    max-width: 110px !important;
+  }
+}

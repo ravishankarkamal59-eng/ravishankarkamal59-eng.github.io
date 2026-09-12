@@ -75,76 +75,11 @@ body.dark-mode .result h2,body.dark-mode .leaderboard h3{color:#6dd5fa}
 <div class="top-bar">🎯 Advanced Quiz System</div>
 <nav>
 <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0">
-<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:50px;width:auto;max-width:180px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.35))" loading="eager">
-      <div class="brand-text" style="display:flex !important;flex-direction:column !important;line-height:1.05 !important;margin-left:0.6rem !important;padding-left:0.6rem !important;border-left:2px solid rgba(255,215,0,0.5) !important;flex-shrink:0 !important">
-<div class="brand-line-1" style="font-size:0.7rem !important;font-weight:500 !important;color:#ffd700 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;margin-bottom:0.1rem !important">The</div>
-<div class="brand-line-2" style="font-family:Georgia,serif !important;font-size:1.15rem !important;font-weight:700 !important;background:linear-gradient(135deg,#fff 0%,#ffd700 50%,#f39c12 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;letter-spacing:0.5px !important;white-space:nowrap !important">Ravishankar</div>
-<div class="brand-line-3" style="font-size:0.62rem !important;color:rgba(255,255,255,0.75) !important;letter-spacing:3px !important;text-transform:uppercase !important;margin-top:0.15rem !important">Insights</div>
-</div>
-</a>
-<button class="menu-toggle" aria-label="मेनू">☰</button>
-<div id="userBox" class="user-box"></div>
-<ul class="nav-links">
-<li><a href="index.html">होम</a></li>
-<li><a href="quiz.html">साधारण Quiz</a></li>
-<li><a href="quiz-advanced.html" class="active">Advanced Quiz</a></li>
-<li><a href="ai-chat.html">🤖 AI</a></li>
-</ul>
-</nav>
-</header>
-
-<main>
-<div class="content" id="setupScreen">
-<div class="qz-hd">
-<h1>🎯 Advanced Quiz</h1>
-<p>Timer, Detailed Result, Leaderboard के साथ असली परीक्षा जैसा अनुभव</p>
-</div>
-<div class="setup">
-<label>विषय चुनें</label>
-<select id="selCat">
-<option value="gk">सामान्य ज्ञान (Mixed)</option>
-<option value="history">इतिहास</option>
-<option value="polity">राजनीति</option>
-<option value="geography">भूगोल</option>
-<option value="science">विज्ञान</option>
-<option value="maths">गणित</option>
-<option value="reasoning">रीजनिंग</option>
-</select>
-<label>⏱️ समय (मिनट)</label>
-<select id="selTime">
-<option value="1">1 मिनट (Demo)</option>
-<option value="5">5 मिनट</option>
-<option value="10" selected>10 मिनट</option>
-<option value="15">15 मिनट</option>
-<option value="20">20 मिनट</option>
-</select>
-<label>📊 कितने प्रश्न</label>
-<select id="selQ">
-<option value="5">5 प्रश्न</option>
-<option value="10" selected>10 प्रश्न</option>
-<option value="15">15 प्रश्न</option>
-<option value="20">20 प्रश्न</option>
-</select>
-<button id="startBtn">🚀 Quiz शुरू करें</button>
-</div>
-</div>
-
-<div class="content" id="quizScreen" style="display:none">
-<div class="qz-top">
-<div class="prog"><span id="qCounter">1</span> / <span id="qTotal">10</span></div>
-<div class="timer" id="timer">10:00</div>
-</div>
-<div class="progress-bar-q"><div id="progBar"></div></div>
-<div class="qz-q">
-<h2 id="qText">प्रश्न लोड हो रहा है...</h2>
-<div id="options"></div>
-<div class="qz-nav">
-<button class="prev" id="prevBtn">← पिछला</button>
-<button class="skip" id="skipBtn">Skip</button>
-<button class="next" id="nextBtn">अगला →</button>
-<button class="submit" id="submitBtn" style="display:none">Submit करें</button>
-</div>
-</div>
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:48px;width:auto;max-width:58px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" loading="eager" class="header-logo-img">
+      <div class="brand-text" style="display:flex !important;flex-direction:column !important;line-height:1.05 !important;margin-left:0.5rem !important;padding-left:0.5rem !important;border-left:2px solid rgba(255,215,0,0.6) !important;flex:1 1 auto !important;max-width:160px !important;justify-content:center !important">
+<div class="brand-line-1" style="display:block !important;font-size:0.62rem !important;font-weight:600 !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2px !important;text-transform:uppercase !important;margin-bottom:0.1rem !important;white-space:nowrap !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">THE</div>
+<div class="brand-line-2" style="display:block !important;font-family:Georgia,serif !important;font-size:1.05rem !important;font-weight:700 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;letter-spacing:0.3px !important;white-space:nowrap !important;line-height:1.15 !important;text-shadow:0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(255,215,0,0.4) !important;background:none !important">Ravishankar</div>
+<div class="brand-line-3" style="display:block !important;font-size:0.58rem !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2.8px !important;text-transform:uppercase !important;margin-top:0.1rem !important;white-space:nowrap !important;font-weight:600 !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">INSIGHTS</div>
 </div>
 
 <div class="content" id="resultScreen" style="display:none">

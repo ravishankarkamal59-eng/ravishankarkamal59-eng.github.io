@@ -40,75 +40,11 @@
 <div class="top-bar">🔐 Admin Panel</div>
 <nav>
 <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0">
-<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:50px;width:auto;max-width:180px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.35))" loading="eager">
-      <div class="brand-text" style="display:flex !important;flex-direction:column !important;line-height:1.05 !important;margin-left:0.6rem !important;padding-left:0.6rem !important;border-left:2px solid rgba(255,215,0,0.5) !important;flex-shrink:0 !important">
-<div class="brand-line-1" style="font-size:0.7rem !important;font-weight:500 !important;color:#ffd700 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;margin-bottom:0.1rem !important">The</div>
-<div class="brand-line-2" style="font-family:Georgia,serif !important;font-size:1.15rem !important;font-weight:700 !important;background:linear-gradient(135deg,#fff 0%,#ffd700 50%,#f39c12 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;letter-spacing:0.5px !important;white-space:nowrap !important">Ravishankar</div>
-<div class="brand-line-3" style="font-size:0.62rem !important;color:rgba(255,255,255,0.75) !important;letter-spacing:3px !important;text-transform:uppercase !important;margin-top:0.15rem !important">Insights</div>
-</div>
-</a>
-<ul class="nav-links"><li><a href="index.html">होम</a></li><li><a href="#" id="logoutBtn" style="display:none">लॉगआउट</a></li></ul>
-</nav>
-</header>
-<main>
-<div class="admin-wrap">
-<div class="login-box" id="loginBox">
-<h2>🔐 Admin Login</h2>
-<input type="password" id="adminPass" placeholder="Password">
-<button id="loginBtn">Login</button>
-<p id="loginError" style="color:#e74c3c;text-align:center;margin-top:.8rem"></p>
-</div>
-<div id="adminContent" style="display:none">
-<div class="admin-header"><h1>Content Manager</h1><p>Notes, PYQ, Syllabus, Videos, Books add करें</p></div>
-<div class="info-banner"><strong>📌 पहले GitHub Token save करें, फिर content add करें।</strong></div>
-<div class="form-card">
-<label>🔑 GitHub Token</label>
-<input type="password" id="ghToken" placeholder="ghp_...">
-<label>👤 GitHub Username</label>
-<input type="text" id="ghUser" value="ravishankarkamal59-eng">
-<button id="saveTokenBtn" style="background:#0f3460">Save Token</button>
-<p id="tokenStatus" style="font-size:.85rem;color:#27ae60;margin-top:.5rem"></p>
-</div>
-<div class="admin-tabs">
-<button class="active" data-tab="add">➕ Add Content</button>
-<button data-tab="manage">📋 Manage</button>
-<button data-tab="help">❓ Help</button>
-</div>
-<div id="tab-add">
-<div class="form-card">
-<label>Exam चुनें</label>
-<select id="examSelect">
-<option value="upsc">UPSC</option><option value="bpsc">BPSC</option>
-<option value="ssc-cgl">SSC CGL</option><option value="ssc-chsl">SSC CHSL</option>
-<option value="ssc-mts">SSC MTS</option><option value="ssc-gd">SSC GD</option>
-<option value="railway">Railway</option><option value="banking">Banking</option>
-<option value="jee-mains">JEE Mains</option><option value="neet">NEET</option>
-<option value="llb">LLB</option><option value="cat-mba">CAT/MBA</option>
-<option value="gate">GATE</option><option value="b-ed">B.Ed</option>
-<option value="nda-cds">NDA/CDS</option><option value="bca-mca">BCA/MCA</option>
-<option value="nursing">Nursing</option><option value="cuet">CUET</option>
-<option value="ctet">CTET</option><option value="bihar-police">बिहार पुलिस</option>
-<option value="up-police">UP Police</option><option value="mppsc">MPPSC</option>
-<option value="ras">RAS</option><option value="bihar-si">बिहार SI</option>
-<option value="up-lekhpal">UP लेखपाल</option><option value="jpsc">JPSC</option>
-<option value="ukpsc">UKPSC</option><option value="uppcs">UPPCS</option>
-<option value="pet">PET</option><option value="ba-ma">BA/MA</option>
-</select>
-<label>📂 Type</label>
-<select id="typeSelect">
-<option value="notes">📝 Notes PDF</option>
-<option value="pyq">📄 PYQ Papers</option>
-<option value="syllabus">Syllabus PDF</option>
-<option value="videos">🎥 Video Lectures</option>
-<option value="books">📖 Books</option>
-</select>
-<label>📌 Title</label>
-<input type="text" id="titleInput" placeholder="Polity Complete Notes">
-<label>🔗 Link</label>
-<input type="text" id="linkInput" placeholder="https://drive.google.com/...">
-<button id="addBtn">➕ Add करें</button>
-<div id="addMsg" class="toast-msg"></div>
-</div>
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:48px;width:auto;max-width:58px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" loading="eager" class="header-logo-img">
+      <div class="brand-text" style="display:flex !important;flex-direction:column !important;line-height:1.05 !important;margin-left:0.5rem !important;padding-left:0.5rem !important;border-left:2px solid rgba(255,215,0,0.6) !important;flex:1 1 auto !important;max-width:160px !important;justify-content:center !important">
+<div class="brand-line-1" style="display:block !important;font-size:0.62rem !important;font-weight:600 !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2px !important;text-transform:uppercase !important;margin-bottom:0.1rem !important;white-space:nowrap !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">THE</div>
+<div class="brand-line-2" style="display:block !important;font-family:Georgia,serif !important;font-size:1.05rem !important;font-weight:700 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;letter-spacing:0.3px !important;white-space:nowrap !important;line-height:1.15 !important;text-shadow:0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(255,215,0,0.4) !important;background:none !important">Ravishankar</div>
+<div class="brand-line-3" style="display:block !important;font-size:0.58rem !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2.8px !important;text-transform:uppercase !important;margin-top:0.1rem !important;white-space:nowrap !important;font-weight:600 !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">INSIGHTS</div>
 </div>
 <div id="tab-manage" style="display:none">
 <div class="form-card">
