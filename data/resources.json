@@ -1025,5 +1025,45 @@
     "syllabus": [],
     "videos": [],
     "books": []
+  },
+  "ibps-afo": {
+    "name": "IBPS AFO - Agriculture Field Officer",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "nabard-grade-a": {
+    "name": "NABARD Grade A",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "icar-jrf": {
+    "name": "ICAR JRF/SRF",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "ars": {
+    "name": "ARS - Agricultural Research Service",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
+  },
+  "bhu-agri": {
+    "name": "BHU / ICAR UG Entrance",
+    "notes": [],
+    "pyq": [],
+    "syllabus": [],
+    "videos": [],
+    "books": []
   }
 }
