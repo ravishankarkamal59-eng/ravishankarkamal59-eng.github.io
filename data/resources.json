@@ -19,6 +19,11 @@
         "title": "UPSC Full Syllabus 2026",
         "link": "https://drive.google.com/",
         "type": "PDF"
+      },
+      {
+        "title": "UPSC CSE Syllabus 2026",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/upsc/syllabus/1789236938235-upsc-cse-syllabus-2026.pdf",
+        "type": "PDF"
       }
     ],
     "videos": [
@@ -110,7 +115,13 @@
   },
   "llb": {
     "name": "LLB/LLM",
-    "notes": [],
+    "notes": [
+      {
+        "title": "LLB_Semester_1_Complete_Study_Material",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/llb/notes/1789237353991-llb-semester-1-complete-study-material.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
@@ -395,6 +406,11 @@
         "title": "Peleto ka adarsh Raj",
         "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789215482174-pol501-1-.pdf",
         "type": "PDF"
+      },
+      {
+        "title": "ps01-1st-Western Political Thought.pdf Hindi",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789236804247-ma-ps01-1st-western-political-thought.pdf-hindi-medium-.pdf",
+        "type": "PDF"
       }
     ],
     "pyq": [],
@@ -436,7 +452,18 @@
   },
   "ugc-net": {
     "name": "UGC NET / JRF",
-    "notes": [],
+    "notes": [
+      {
+        "title": "net_jrf_reasoning_mastery",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ugc-net/notes/1789237069713-net-jrf-reasoning-mastery.pdf",
+        "type": "PDF"
+      },
+      {
+        "title": "The_Ravishankar_Insights_UGC_NET_JRF_Paper_I_II_Political_Science_Bilingual_COMPLETE",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ugc-net/notes/1789237172294-the-ravishankar-insights-ugc-net-jrf-paper-i-ii-political-science-bilingual-complete.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
@@ -685,7 +712,13 @@
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
     "notes": [],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "Agta 100 question",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/pyq/1789236600172-agta-100-question-1.pdf",
+        "type": "PDF"
+      }
+    ],
     "syllabus": [],
     "videos": [],
     "books": []
