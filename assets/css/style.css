@@ -1760,3 +1760,84 @@ body.menu-open::before {
     display: grid !important;
   }
 }
+
+/* ============================================ */
+/* LOGO STYLES - SVG */
+/* ============================================ */
+.logo img,
+.logo svg {
+  height: 50px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35)) !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+}
+
+.logo img:hover {
+  filter: drop-shadow(0 4px 15px rgba(255,215,0,0.5)) brightness(1.1) !important;
+  transform: scale(1.03);
+}
+
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+  gap: 0.3rem !important;
+}
+
+.logo a {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+/* Footer logo */
+.footer-logo {
+  height: 70px !important;
+  width: auto !important;
+  margin-bottom: 0.8rem !important;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)) !important;
+}
+
+/* Login page logo */
+.login-logo {
+  height: 90px !important;
+  width: auto !important;
+  display: block !important;
+  margin: 0 auto 1.5rem !important;
+  filter: drop-shadow(0 4px 15px rgba(255,215,0,0.35)) !important;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+/* Admin logo */
+.admin-logo {
+  height: 60px !important;
+  width: auto !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo img {
+    height: 40px !important;
+    max-width: 140px !important;
+  }
+  .login-logo {
+    height: 70px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo img {
+    height: 36px !important;
+    max-width: 130px !important;
+  }
+}
+
+/* Glow animation */
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35)); }
+  50% { filter: drop-shadow(0 4px 18px rgba(255,215,0,0.5)); }
+}

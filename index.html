@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://ravishankarkamal59-eng.github.io/">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg"><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -80,7 +80,9 @@ const analytics = getAnalytics(app);
   <header>
     <div class="top-bar">🎯 सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, क्विज़, करंट अफेयर्स</div>
     <nav aria-label="मुख्य नेविगेशन">
-      <div class="logo">📚 The <span>Ravishankar</span> Insights</div>
+      <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0">
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:50px;width:auto;max-width:180px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.35))" loading="eager">
+</a>
       <div id="userBox" class="user-box"></div>
       <button id="installBtn" class="btn-small" style="display:none; background:#27ae60">📲 ऐप इंस्टॉल</button>
       <button class="menu-toggle" aria-label="मेनू" aria-expanded="false">☰</button>
@@ -327,7 +329,7 @@ const analytics = getAnalytics(app);
   <footer>
     <div class="footer-grid">
       <div>
-        <h4>📚 The Ravishankar Insights</h4>
+        <img src="assets/images/logo.svg" alt="The Ravishankar Insights" class="footer-logo"><h4 style="display:none">The Ravishankar Insights</h4>
         <p style="font-size:0.9rem; color:#aaa">सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, करंट अफेयर्स, क्विज़ और स्टडी मटेरियल हिंदी में।</p>
       </div>
       <div>
