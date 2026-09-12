@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Full-Length Mock Tests | The Ravishankar Insights</title>
+<meta name="description" content="सभी सरकारी परीक्षाओं के लिए मुफ़्त Full-Length Mock Tests - Real exam जैसा experience।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/mock-tests.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<style>
+.mock-card{background:#fff;border-radius:14px;padding:1.3rem;box-shadow:0 3px 15px rgba(0,0,0,0.08);border-left:5px solid #e94560;margin-bottom:1rem}
+.mock-card h3{color:#0f3460;margin-bottom:0.5rem;font-size:1.1rem}
+.mock-card .meta{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#666;margin-bottom:0.8rem}
+.mock-card .meta span{background:#f0f4f8;padding:0.2rem 0.7rem;border-radius:12px}
+.mock-card .btn{margin-top:0.5rem;display:inline-block;padding:0.7rem 1.5rem;background:#e94560;color:#fff;text-decoration:none;border-radius:25px;font-weight:600;font-size:0.9rem}
+.mock-card .btn:active{background:#c73650}
+.exam-timer{position:fixed;top:70px;right:10px;background:#e94560;color:#fff;padding:0.5rem 1rem;border-radius:25px;font-weight:700;z-index:100;box-shadow:0 3px 12px rgba(233,69,96,0.4);display:none}
+.exam-timer.on{display:block}
+.mock-q{background:#fff;padding:1.3rem;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.mock-q h3{color:#0f3460;font-size:1rem;margin-bottom:0.8rem;line-height:1.4}
+.mock-opt{display:block;padding:0.7rem 1rem;margin:0.4rem 0;background:#f8fafc;border-radius:8px;cursor:pointer;border:2px solid transparent;font-size:0.92rem}
+.mock-opt.sel{background:#0f3460;color:#fff;border-color:#0f3460}
+.result-box{background:#fff;padding:1.5rem;border-radius:14px;text-align:center;box-shadow:0 3px 15px rgba(0,0,0,0.1)}
+.result-box .big{font-size:2.5rem;font-weight:700;color:#0f3460;margin-bottom:0.5rem}
+.result-box .stat{display:inline-block;padding:0.7rem 1.2rem;margin:0.5rem;border-radius:10px;background:#f0f4f8;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+<div class="top-bar">🎯 Free Full-Length Mock Tests</div>
+<nav>
+<a href="index.html" style="display:flex;align-items:center;text-decoration:none">
+<img src="assets/images/logo.svg" alt="Logo" style="height:45px;width:auto;max-width:55px">
+</a>
+<div id="userBox" class="user-box"></div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="exams.html">परीक्षाएँ</a></li>
+<li><a href="mock-tests.html" class="active">🎯 Mock Tests</a></li>
+<li><a href="quiz-advanced.html">Advanced Quiz</a></li>
+<li><a href="ai-chat.html">🤖 AI</a></li>
+</ul>
+</nav>
+</header>
+
+<div class="exam-timer" id="examTimer">⏱️ <span id="timerDisplay">60:00</span></div>
+
+<main id="main">
+<div id="mockHome">
+<div class="content" style="text-align:center;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border-radius:14px">
+<h1 style="color:#fff;margin:0;font-size:1.5rem">🎯 Free Mock Tests</h1>
+<p style="margin-top:0.5rem;opacity:0.95">असली परीक्षा जैसा अनुभव - Timer, Negative Marking, Detailed Result</p>
+</div>
+
+<div class="content" style="background:#fff3cd;border-left:4px solid #f39c12;margin-top:1rem">
+<strong>💡 निर्देश:</strong> हर Mock Test में 30 प्रश्न हैं, 30 मिनट का समय। हर गलत उत्तर पर 0.25 अंक कटेंगे। Skip कर सकते हैं।
+</div>
+
+<div class="ad-container" style="margin:1rem 0;text-align:center;min-height:0">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8411032765700351" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<h2 class="section-title">📋 सभी Mock Tests</h2>
+
+<div class="mock-card">
+<h3>🏛️ UPSC Prelims Full Mock Test</h3>
+<div class="meta"><span>30 प्रश्न</span><span>30 मिनट</span><span>+7.5/-2.5</span><span>Level: Advanced</span></div>
+<button class="btn" onclick="startMock('upsc')">🚀 शुरू करें</button>
+</div>
+
+<div class="mock-card">
+<h3>📖 BPSC Prelims Mock Test</h3>
+<div class="meta"><span>30 प्रश्न</span><span>30 मिनट</span><span>+1/-0.25</span><span>Level: Medium</span></div>
+<button class="btn" onclick="startMock('bpsc')">🚀 शुरू करें</button>
+</div>
+
+<div class="mock-card">
+<h3>🎓 SSC CGL Tier 1 Mock Test</h3>
+<div class="meta"><span>30 प्रश्न</span><span>30 मिनट</span><span>+2/-0.5</span><span>Level: Medium</span></div>
+<button class="btn" onclick="startMock('ssc')">🚀 शुरू करें</button>
+</div>
+
+<div class="mock-card">
+<h3>🚆 Railway NTPC Mock Test</h3>
+<div class="meta"><span>30 प्रश्न</span><span>30 मिनट</span><span>+1/-0.33</span><span>Level: Easy</span></div>
+<button class="btn" onclick="startMock('railway')">🚀 शुरू करें</button>
+</div>
+
+<div class="mock-card">
+<h3>🏦 Banking PO Mock Test</h3>
+<div class="meta"><span>30 प्रश्न</span><span>30 मिनट</span><span>+1/-0.25</span><span>Level: Hard</span></div>
+<button class="btn" onclick="startMock('banking')">🚀 शुरू करें</button>
+</div>
+</div>
+
+<div id="mockTest" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0f3460;color:#fff;padding:0.8rem 1rem;border-radius:12px;margin-bottom:1rem">
+<div><strong id="mockTitle">Mock Test</strong></div>
+<div><span id="qProgress">1/30</span></div>
+</div>
+<div id="questionsArea"></div>
+<div style="display:flex;gap:0.5rem;margin-top:1rem;position:sticky;bottom:10px">
+<button onclick="prevQ()" style="flex:1;padding:0.8rem;background:#f0f4f8;color:#0f3460;border:none;border-radius:10px;font-weight:600;cursor:pointer">← पिछला</button>
+<button onclick="nextQ()" style="flex:1;padding:0.8rem;background:#27ae60;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer">अगला →</button>
+<button onclick="submitMock()" style="flex:1;padding:0.8rem;background:#e94560;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer">Submit</button>
+</div>
+</div>
+
+<div id="mockResult" style="display:none"></div>
+
+<div id="shareBox" style="background:#fff;padding:1.2rem;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)"></div>
+</main>
+
+<footer>
+<div style="max-width:1100px;margin:0 auto;padding:1rem;text-align:center;color:#aaa;font-size:0.85rem">
+<img src="assets/images/logo.svg" alt="Logo" style="height:40px;width:auto;margin-bottom:0.5rem"><br>
+© 2026 The Ravishankar Insights
+</div>
+</footer>
+
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/login-state.js"></script>
+<script src="assets/js/full-menu.js"></script>
+<script src="assets/js/menu-toggle.js"></script>
+
+<script>
+var MOCKS = {
+  upsc: {
+    title: 'UPSC Prelims Mock Test',
+    duration: 30,
+    questions: [
+      { q: 'भारतीय संविधान कब लागू हुआ?', o: ['1947', '1950', '1949', '1948'], a: 1 },
+      { q: 'सबसे लंबी नदी?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
+      { q: 'मौर्य वंश संस्थापक?', o: ['अशोक', 'चंद्रगुप्त', 'बिंदुसार', 'समुद्रगुप्त'], a: 1 },
+      { q: 'भारत का राष्ट्रीय पशु?', o: ['शेर', 'बाघ', 'हाथी', 'तेंदुआ'], a: 1 },
+      { q: 'UNO स्थापना?', o: ['1945', '1947', '1950', '1948'], a: 0 },
+      { q: 'RBI की स्थापना?', o: ['1935', '1947', '1950', '1969'], a: 0 },
+      { q: 'सबसे ऊँचा पर्वत?', o: ['K2', 'एवरेस्ट', 'कंचनजंगा', 'मकालू'], a: 1 },
+      { q: 'भारत का राष्ट्रीय पक्षी?', o: ['मोर', 'कबूतर', 'तोता', 'बाज'], a: 0 },
+      { q: 'ताज महल कहाँ?', o: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], a: 1 },
+      { q: 'भारत में कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 },
+      { q: 'ISRO मुख्यालय?', o: ['मुंबई', 'बेंगलुरु', 'दिल्ली', 'हैदराबाद'], a: 1 },
+      { q: 'नोबेल किस देश में?', o: ['USA', 'UK', 'स्वीडन', 'फ्रांस'], a: 2 },
+      { q: 'गंगा कहाँ से?', o: ['गंगोत्री', 'यमुनोत्री', 'बद्रीनाथ', 'केदारनाथ'], a: 0 },
+      { q: 'पंचायती राज कब?', o: ['1993', '1990', '1985', '1995'], a: 0 },
+      { q: 'सबसे छोटा राज्य?', o: ['गोवा', 'सिक्किम', 'त्रिपुरा', 'मणिपुर'], a: 0 },
+      { q: 'मुगल संस्थापक?', o: ['अकबर', 'बाबर', 'हुमायूं', 'जहाँगीर'], a: 1 },
+      { q: '1857 विद्रोह?', o: ['दिल्ली', 'मेरठ', 'कानपुर', 'लखनऊ'], a: 1 },
+      { q: 'भारत छोड़ो?', o: ['1942', '1930', '1920', '1945'], a: 0 },
+      { q: 'अनुच्छेद संख्या?', o: ['395', '448', '400', '450'], a: 0 },
+      { q: 'अनुसूचियाँ?', o: ['8', '10', '12', '14'], a: 2 },
+      { q: 'राष्ट्रपति कार्यकाल?', o: ['4 साल', '5 साल', '6 साल', '7 साल'], a: 1 },
+      { q: 'राज्यसभा सदस्य?', o: ['250', '245', '238', '240'], a: 1 },
+      { q: 'पानी का सूत्र?', o: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
+      { q: 'प्रकाश की गति?', o: ['3×10^8 m/s', '3×10^6', '3×10^10', '3×10^5'], a: 0 },
+      { q: 'मानव हड्डियाँ?', o: ['200', '206', '210', '215'], a: 1 },
+      { q: 'सबसे बड़ा ग्रह?', o: ['शुक्र', 'बृहस्पति', 'शनि', 'मंगल'], a: 1 },
+      { q: 'विश्व पर्यावरण दिवस?', o: ['5 जून', '22 अप्रैल', '16 सितंबर', '1 दिसंबर'], a: 0 },
+      { q: 'राष्ट्रीय फूल?', o: ['कमल', 'गुलाब', 'सूरजमुखी', 'चमेली'], a: 0 },
+      { q: 'नोबेल शांति पुरस्कार कहाँ मिलता?', o: ['स्वीडन', 'नॉर्वे', 'USA', 'UK'], a: 1 },
+      { q: 'भारतीय संविधान के जनक?', o: ['गांधी', 'अंबेडकर', 'नेहरू', 'पटेल'], a: 1 }
+    ]
+  },
+  bpsc: {
+    title: 'BPSC Prelims Mock Test',
+    duration: 30,
+    questions: [
+      { q: 'बिहार की राजधानी?', o: ['गया', 'पटना', 'भागलपुर', 'मुजफ्फरपुर'], a: 1 },
+      { q: 'बिहार का सबसे बड़ा शहर?', o: ['गया', 'पटना', 'भागलपुर', 'दरभंगा'], a: 1 },
+      { q: 'बिहार की स्थापना?', o: ['1912', '1911', '1947', '1950'], a: 0 },
+      { q: 'बिहार का राजकीय पशु?', o: ['हाथी', 'बैल', 'बाघ', 'शेर'], a: 1 },
+      { q: 'बिहार का राजकीय पक्षी?', o: ['मोर', 'कबूतर', 'तोता', 'गौरैया'], a: 3 },
+      { q: 'पटना का पुराना नाम?', o: ['पाटलिपुत्र', 'कुसुमपुर', 'अजीमाबाद', 'तीनों'], a: 3 },
+      { q: 'बिहार दिवस?', o: ['22 मार्च', '15 अगस्त', '26 जनवरी', '2 अक्टूबर'], a: 0 },
+      { q: 'महात्मा गांधी ने चंपारण सत्याग्रह कब?', o: ['1917', '1920', '1930', '1942'], a: 0 },
+      { q: 'बिहार में जिलों की संख्या?', o: ['38', '37', '39', '40'], a: 0 },
+      { q: 'बोधगया किस लिए प्रसिद्ध?', o: ['महाबोधि मंदिर', 'राम मंदिर', 'जैन मंदिर', 'सिक्ख'], a: 0 },
+      { q: 'नालंदा विश्वविद्यालय किस राज्य?', o: ['UP', 'बिहार', 'WB', 'MP'], a: 1 },
+      { q: 'बिहार का सबसे ऊँचा पर्वत?', o: ['सोमेश्वर', 'कैमूर', 'विंध्य', 'हिमालय'], a: 0 },
+      { q: 'राजगीर किस लिए प्रसिद्ध?', o: ['बौद्ध', 'हिंदू', 'जैन', 'सिक्ख'], a: 0 },
+      { q: 'बिहार की सबसे लंबी नदी?', o: ['गंगा', 'गंडक', 'कोसी', 'सोन'], a: 0 },
+      { q: 'बिहार का क्षेत्रफल?', o: ['94,163 km²', '95,000 km²', '93,000 km²', '92,000 km²'], a: 0 },
+      { q: 'बिहार का राजकीय वृक्ष?', o: ['पीपल', 'बरगद', 'आम', 'नीम'], a: 0 },
+      { q: 'प्रसिद्ध बोधि वृक्ष कहाँ?', o: ['राजगीर', 'बोधगया', 'नालंदा', 'वैशाली'], a: 1 },
+      { q: 'बिहार का सबसे छोटा जिला?', o: ['शेखपुरा', 'लखीसराय', 'अरवल', 'जहानाबाद'], a: 0 },
+      { q: 'वैशाली किस लिए प्रसिद्ध?', o: ['पहला गणराज्य', 'बुद्ध', 'महावीर', 'अशोक'], a: 0 },
+      { q: 'बिहार का सबसे बड़ा जिला?', o: ['पटना', 'पश्चिम चंपारण', 'गया', 'भोजपुर'], a: 1 },
+      { q: 'बिहार का मुख्यमंत्री कौन?', o: ['नितीश कुमार', 'लालू', 'सुशील', 'तेजस्वी'], a: 0 },
+      { q: 'बिहार विधानसभा सदस्य?', o: ['243', '240', '245', '250'], a: 0 },
+      { q: 'बिहार का राजकीय फूल?', o: ['कमल', 'गुलाब', 'कचनार', 'गेंदा'], a: 2 },
+      { q: 'बिहार का सबसे पुराना शहर?', o: ['पटना', 'गया', 'बोधगया', 'वैशाली'], a: 3 },
+      { q: 'बिहार की प्रमुख फसल?', o: ['धान', 'गेहूँ', 'मक्का', 'दाल'], a: 0 },
+      { q: 'जय प्रकाश नारायण का जन्म?', o: ['सारण', 'पटना', 'गया', 'भोजपुर'], a: 0 },
+      { q: 'डॉ. राजेंद्र प्रसाद का जन्म?', o: ['सारण', 'पटना', 'गया', 'भोजपुर'], a: 0 },
+      { q: 'बिहार का सबसे बड़ा बांध?', o: ['कोसी', 'गंडक', 'सोन', 'बागमती'], a: 0 },
+      { q: 'बिहार में कितने प्रमंडल?', o: ['9', '8', '10', '7'], a: 0 },
+      { q: 'बिहार की साक्षरता दर?', o: ['61.8%', '63%', '65%', '60%'], a: 0 }
+    ]
+  },
+  ssc: {
+    title: 'SSC CGL Mock Test',
+    duration: 30,
+    questions: [
+      { q: '15% of 200?', o: ['25', '30', '35', '40'], a: 1 },
+      { q: '√144?', o: ['11', '12', '13', '14'], a: 1 },
+      { q: '2+3×4?', o: ['20', '14', '24', '18'], a: 1 },
+      { q: '50 का 20%?', o: ['5', '10', '15', '20'], a: 1 },
+      { q: '7²+3²?', o: ['49', '58', '56', '54'], a: 1 },
+      { q: '100÷4?', o: ['20', '25', '30', '35'], a: 1 },
+      { q: 'π?', o: ['3.14', '3.41', '2.14', '3.16'], a: 0 },
+      { q: '5! = ?', o: ['60', '120', '100', '80'], a: 1 },
+      { q: '2,4,6,8,?', o: ['9', '10', '12', '11'], a: 1 },
+      { q: 'A,C,E,G,?', o: ['H', 'I', 'J', 'K'], a: 1 },
+      { q: '5,10,20,40,?', o: ['60', '80', '100', '50'], a: 1 },
+      { q: '1,1,2,3,5,?', o: ['6', '7', '8', '9'], a: 2 },
+      { q: 'Z,X,V,T,?', o: ['R', 'S', 'Q', 'P'], a: 0 },
+      { q: '10,20,30,?', o: ['35', '40', '45', '50'], a: 1 },
+      { q: '2,6,12,20,?', o: ['28', '30', '32', '34'], a: 1 },
+      { q: 'भारत का राष्ट्रीय खेल?', o: ['क्रिकेट', 'हॉकी', 'कबड्डी', 'फुटबॉल'], a: 1 },
+      { q: 'RBI स्थापना?', o: ['1935', '1947', '1950', '1969'], a: 0 },
+      { q: 'सबसे बड़ा राज्य?', o: ['MP', 'राजस्थान', 'महाराष्ट्र', 'UP'], a: 1 },
+      { q: 'ISRO मुख्यालय?', o: ['मुंबई', 'बेंगलुरु', 'दिल्ली', 'हैदराबाद'], a: 1 },
+      { q: 'भारत का राष्ट्रीय पक्षी?', o: ['मोर', 'कबूतर', 'तोता', 'बाज'], a: 0 },
+      { q: 'गंगा कहाँ से?', o: ['गंगोत्री', 'यमुनोत्री', 'बद्रीनाथ', 'केदारनाथ'], a: 0 },
+      { q: 'पंचायती राज कब?', o: ['1993', '1990', '1985', '1995'], a: 0 },
+      { q: 'भारत में कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 },
+      { q: 'सूर्य से दूरी?', o: ['15 करोड़ km', '20 करोड़ km', '10 करोड़ km', '5 करोड़ km'], a: 0 },
+      { q: 'ताज महल कहाँ?', o: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], a: 1 },
+      { q: 'पानी का सूत्र?', o: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
+      { q: 'सबसे ऊँचा पर्वत?', o: ['K2', 'एवरेस्ट', 'कंचनजंगा', 'मकालू'], a: 1 },
+      { q: 'मानव हड्डियाँ?', o: ['200', '206', '210', '215'], a: 1 },
+      { q: 'अनुच्छेद संख्या?', o: ['395', '448', '400', '450'], a: 0 },
+      { q: 'भारत छोड़ो?', o: ['1942', '1930', '1920', '1945'], a: 0 }
+    ]
+  },
+  railway: {
+    title: 'Railway NTPC Mock Test',
+    duration: 30,
+    questions: [
+      { q: 'पानी का सूत्र?', o: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
+      { q: 'प्रकाश गति?', o: ['3×10^8 m/s', '3×10^6', '3×10^10', '3×10^5'], a: 0 },
+      { q: '15% of 200?', o: ['25', '30', '35', '40'], a: 1 },
+      { q: 'भारत का राष्ट्रीय पशु?', o: ['शेर', 'बाघ', 'हाथी', 'तेंदुआ'], a: 1 },
+      { q: '2,4,6,8,?', o: ['9', '10', '12', '11'], a: 1 },
+      { q: 'RBI स्थापना?', o: ['1935', '1947', '1950', '1969'], a: 0 },
+      { q: 'सबसे लंबी नदी?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
+      { q: 'A,C,E,G,?', o: ['H', 'I', 'J', 'K'], a: 1 },
+      { q: 'मानव हड्डियाँ?', o: ['200', '206', '210', '215'], a: 1 },
+      { q: 'सबसे बड़ा ग्रह?', o: ['शुक्र', 'बृहस्पति', 'शनि', 'मंगल'], a: 1 },
+      { q: 'भारत का राष्ट्रीय फूल?', o: ['कमल', 'गुलाब', 'सूरजमुखी', 'चमेली'], a: 0 },
+      { q: '5,10,20,40,?', o: ['60', '80', '100', '50'], a: 1 },
+      { q: 'गंगा कहाँ से?', o: ['गंगोत्री', 'यमुनोत्री', 'बद्रीनाथ', 'केदारनाथ'], a: 0 },
+      { q: 'भारत में कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 },
+      { q: '7²+3²?', o: ['49', '58', '56', '54'], a: 1 },
+      { q: 'ताज महल कहाँ?', o: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], a: 1 },
+      { q: '100÷4?', o: ['20', '25', '30', '35'], a: 1 },
+      { q: 'सूर्य से दूरी?', o: ['15 करोड़ km', '20 करोड़ km', '10 करोड़ km', '5 करोड़ km'], a: 0 },
+      { q: 'UNO स्थापना?', o: ['1945', '1947', '1950', '1948'], a: 0 },
+      { q: '2+3×4?', o: ['20', '14', '24', '18'], a: 1 },
+      { q: 'पंचायती राज कब?', o: ['1993', '1990', '1985', '1995'], a: 0 },
+      { q: 'Z,X,V,T,?', o: ['R', 'S', 'Q', 'P'], a: 0 },
+      { q: '50 का 20%?', o: ['5', '10', '15', '20'], a: 1 },
+      { q: 'सबसे ऊँचा पर्वत?', o: ['K2', 'एवरेस्ट', 'कंचनजंगा', 'मकालू'], a: 1 },
+      { q: 'भारत छोड़ो?', o: ['1942', '1930', '1920', '1945'], a: 0 },
+      { q: 'अनुच्छेद संख्या?', o: ['395', '448', '400', '450'], a: 0 },
+      { q: '1,1,2,3,5,?', o: ['6', '7', '8', '9'], a: 2 },
+      { q: 'π?', o: ['3.14', '3.41', '2.14', '3.16'], a: 0 },
+      { q: 'अनुसूचियाँ?', o: ['8', '10', '12', '14'], a: 2 },
+      { q: '√144?', o: ['11', '12', '13', '14'], a: 1 }
+    ]
+  },
+  banking: {
+    title: 'Banking PO Mock Test',
+    duration: 30,
+    questions: [
+      { q: 'RBI की स्थापना?', o: ['1935', '1947', '1950', '1969'], a: 0 },
+      { q: 'SBI का पूरा नाम?', o: ['State Bank of India', 'State Bank', 'SBI', 'None'], a: 0 },
+      { q: '15% of 200?', o: ['25', '30', '35', '40'], a: 1 },
+      { q: 'ब्याज दर कौन तय करता?', o: ['PM', 'RBI', 'FM', 'President'], a: 1 },
+      { q: '√144?', o: ['11', '12', '13', '14'], a: 1 },
+      { q: 'NEFT का मतलब?', o: ['National Electronic Funds Transfer', 'National Fund', 'New Fund', 'None'], a: 0 },
+      { q: '2+3×4?', o: ['20', '14', '24', '18'], a: 1 },
+      { q: 'UPI का पूरा नाम?', o: ['Unified Payments Interface', 'United Pay', 'Union Pay', 'None'], a: 0 },
+      { q: '50 का 20%?', o: ['5', '10', '15', '20'], a: 1 },
+      { q: 'GST कब लागू?', o: ['2016', '2017', '2018', '2015'], a: 1 },
+      { q: '7²+3²?', o: ['49', '58', '56', '54'], a: 1 },
+      { q: 'भारत का केंद्रीय बैंक?', o: ['SBI', 'RBI', 'HDFC', 'ICICI'], a: 1 },
+      { q: '100÷4?', o: ['20', '25', '30', '35'], a: 1 },
+      { q: 'भारत में कितने बैंक राष्ट्रीयकृत?', o: ['14', '20', '19', '21'], a: 1 },
+      { q: 'π?', o: ['3.14', '3.41', '2.14', '3.16'], a: 0 },
+      { q: 'IFSC कोड में कितने अक्षर?', o: ['11', '10', '12', '9'], a: 0 },
+      { q: 'A,C,E,G,?', o: ['H', 'I', 'J', 'K'], a: 1 },
+      { q: 'मुद्रास्फीति का मतलब?', o: ['Inflation', 'Deflation', 'Growth', 'None'], a: 0 },
+      { q: '5,10,20,40,?', o: ['60', '80', '100', '50'], a: 1 },
+      { q: 'GDP का पूरा नाम?', o: ['Gross Domestic Product', 'Gross Data', 'Global Product', 'None'], a: 0 },
+      { q: '1,1,2,3,5,?', o: ['6', '7', '8', '9'], a: 2 },
+      { q: 'बजट कौन पेश करता?', o: ['PM', 'FM', 'President', 'RBI'], a: 1 },
+      { q: 'Z,X,V,T,?', o: ['R', 'S', 'Q', 'P'], a: 0 },
+      { q: 'मुद्रा के प्रकार?', o: ['2', '3', '4', '5'], a: 1 },
+      { q: '2,6,12,20,?', o: ['28', '30', '32', '34'], a: 1 },
+      { q: 'बैंक का मुख्य काम?', o: ['पैसा रखना', 'लोन देना', 'दोनों', 'कुछ नहीं'], a: 2 },
+      { q: 'शेयर बाजार कहाँ?', o: ['मुंबई', 'दिल्ली', 'कोलकाता', 'चेन्नई'], a: 0 },
+      { q: 'NPA का मतलब?', o: ['Non-Performing Asset', 'New Asset', 'No Asset', 'None'], a: 0 },
+      { q: 'बैंकिंग Ombudsman?', o: ['शिकायत सुनने वाला', 'बैंक मैनेजर', 'RBI', 'PM'], a: 0 },
+      { q: 'SEBI क्या देखता?', o: ['बैंक', 'शेयर बाजार', 'RBI', 'सरकार'], a: 1 }
+    ]
+  }
+};
+
+var currentMock = null;
+var currentQ = 0;
+var answers = [];
+var timerInterval = null;
+var timeLeft = 0;
+
+function $(id) { return document.getElementById(id); }
+function shuffle(arr) { return arr.slice().sort(function() { return Math.random() - 0.5; }); }
+
+function startMock(exam) {
+  var mock = MOCKS[exam];
+  if (!mock) { alert('Mock नहीं मिला'); return; }
+  
+  currentMock = mock;
+  currentQ = 0;
+  answers = new Array(mock.questions.length).fill(null);
+  timeLeft = mock.duration * 60;
+  
+  $('mockHome').style.display = 'none';
+  $('mockTest').style.display = 'block';
+  $('mockResult').style.display = 'none';
+  $('mockTitle').textContent = mock.title;
+  $('examTimer').classList.add('on');
+  
+  if (timerInterval) clearInterval(timerInterval);
+  updateTimer();
+  timerInterval = setInterval(function() {
+    timeLeft--;
+    updateTimer();
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      submitMock();
+    }
+  }, 1000);
+  
+  renderQ();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateTimer() {
+  var m = Math.floor(timeLeft / 60);
+  var s = timeLeft % 60;
+  $('timerDisplay').textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function renderQ() {
+  var q = currentMock.questions[currentQ];
+  $('qProgress').textContent = (currentQ + 1) + '/' + currentMock.questions.length;
+  
+  var html = '<div class="mock-q">';
+  html += '<h3>Q' + (currentQ + 1) + '. ' + q.q + '</h3>';
+  for (var i = 0; i < q.o.length; i++) {
+    var cls = answers[currentQ] === i ? 'mock-opt sel' : 'mock-opt';
+    html += '<div class="' + cls + '" data-i="' + i + '">' + String.fromCharCode(65 + i) + '. ' + q.o[i] + '</div>';
+  }
+  html += '</div>';
+  $('questionsArea').innerHTML = html;
+  
+  var opts = document.querySelectorAll('.mock-opt');
+  for (var j = 0; j < opts.length; j++) {
+    opts[j].onclick = function() {
+      answers[currentQ] = parseInt(this.dataset.i);
+      renderQ();
+    };
+  }
+}
+
+function nextQ() {
+  if (currentQ < currentMock.questions.length - 1) {
+    currentQ++;
+    renderQ();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function prevQ() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQ();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function submitMock() {
+  if (!confirm('Mock Test submit करें?')) return;
+  
+  clearInterval(timerInterval);
+  $('examTimer').classList.remove('on');
+  $('mockTest').style.display = 'none';
+  $('mockResult').style.display = 'block';
+  
+  var correct = 0, wrong = 0, skip = 0;
+  for (var i = 0; i < currentMock.questions.length; i++) {
+    if (answers[i] === null) skip++;
+    else if (answers[i] === currentMock.questions[i].a) correct++;
+    else wrong++;
+  }
+  
+  var total = currentMock.questions.length;
+  var score = correct - (wrong * 0.25);
+  var percent = Math.round((correct / total) * 100);
+  
+  var html = '<div class="result-box">';
+  html += '<h2 style="color:#0f3460;margin-bottom:1rem">🎉 Mock Test Complete!</h2>';
+  html += '<div class="big">' + percent + '%</div>';
+  html += '<p style="color:#666;margin-bottom:1.5rem">Score: ' + score.toFixed(2) + ' / ' + total + '</p>';
+  html += '<div>';
+  html += '<span class="stat" style="background:#d4edda;color:#155724">✅ ' + correct + ' सही</span>';
+  html += '<span class="stat" style="background:#f8d7da;color:#721c24">❌ ' + wrong + ' गलत</span>';
+  html += '<span class="stat" style="background:#fff3cd;color:#856404">⏭️ ' + skip + ' छोड़े</span>';
+  html += '</div>';
+  html += '<p style="margin:1.5rem 0;color:#555">' + (percent >= 80 ? '🏆 बहुत बढ़िया प्रदर्शन!' : percent >= 60 ? '👍 अच्छा, और मेहनत करें' : '📚 Practice और जरूरी है') + '</p>';
+  html += '<button onclick="location.reload()" style="padding:1rem 2rem;background:#0f3460;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin:0.3rem">🔄 दोबारा दें</button>';
+  html += '<button onclick="showReview()" style="padding:1rem 2rem;background:#27ae60;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin:0.3rem">📋 Review</button>';
+  html += '</div>';
+  
+  html += '<div id="reviewSection" style="display:none;margin-top:1.5rem"></div>';
+  
+  $('mockResult').innerHTML = html;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  try {
+    var scores = JSON.parse(localStorage.getItem('mockScores') || '[]');
+    scores.push({ exam: currentMock.title, percent: percent, date: new Date().toISOString() });
+    localStorage.setItem('mockScores', JSON.stringify(scores.slice(-20)));
+  } catch(e) {}
+}
+
+function showReview() {
+  var html = '<h2 style="color:#0f3460;margin-bottom:1rem">📋 Answer Review</h2>';
+  for (var i = 0; i < currentMock.questions.length; i++) {
+    var q = currentMock.questions[i];
+    var ua = answers[i];
+    var badge = ua === null ? '⏭️ छोड़ा' : (ua === q.a ? '✅ सही' : '❌ गलत');
+    var color = ua === null ? '#f39c12' : (ua === q.a ? '#27ae60' : '#e74c3c');
+    html += '<div style="background:#fff;padding:1rem;border-radius:12px;margin-bottom:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)">';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><strong style="color:#0f3460">Q' + (i+1) + '</strong><span style="color:' + color + ';font-weight:600;font-size:0.85rem">' + badge + '</span></div>';
+    html += '<p style="margin-bottom:0.5rem;font-size:0.92rem">' + q.q + '</p>';
+    for (var j = 0; j < q.o.length; j++) {
+      var bg = j === q.a ? '#d4edda' : (j === ua ? '#f8d7da' : '#f8fafc');
+      var border = j === q.a ? '#27ae60' : (j === ua ? '#e74c3c' : 'transparent');
+      html += '<div style="padding:0.5rem 0.8rem;margin:0.3rem 0;background:' + bg + ';border:2px solid ' + border + ';border-radius:8px;font-size:0.88rem">' + String.fromCharCode(65+j) + '. ' + q.o[j] + '</div>';
+    }
+    html += '</div>';
+  }
+  $('reviewSection').innerHTML = html;
+  $('reviewSection').style.display = 'block';
+  $('reviewSection').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

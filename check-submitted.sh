@@ -1,0 +1,93 @@
+#!/bin/bash
+
+echo "=================================================="
+echo "📊 GOOGLE SEARCH CONSOLE - SUBMISSION TRACKER"
+echo "=================================================="
+echo ""
+echo "जो URLs submit हो चुके हैं उनके आगे [x] करें"
+echo ""
+
+# सभी URLs की list with checkboxes
+URLS=(
+  "upsc.html"
+  "bpsc.html"
+  "ssc-cgl.html"
+  "railway.html"
+  "banking.html"
+  "notes.html"
+  "current-affairs.html"
+  "quiz.html"
+  "ai-chat.html"
+  "index.html"
+  "exams.html"
+  "nda-cds.html"
+  "bihar-police.html"
+  "exam-calendar.html"
+  "privacy.html"
+  "admit-card.html"
+  "result.html"
+  "answer-key.html"
+  "notifications.html"
+  "scholarship.html"
+  "blog.html"
+  "about.html"
+  "contact.html"
+  "terms.html"
+  "faq.html"
+  "forum.html"
+  "pdf-viewer.html"
+  "quiz-advanced.html"
+  "bookmarks.html"
+  "dashboard.html"
+  "ssc-chsl.html"
+  "ssc-mts.html"
+  "ssc-gd.html"
+  "jee-mains.html"
+  "neet.html"
+  "gate.html"
+  "bca-mca.html"
+  "llb.html"
+  "cat-mba.html"
+  "nursing.html"
+  "cuet.html"
+  "ba-ma.html"
+  "uppcs.html"
+  "mppsc.html"
+  "ras.html"
+  "jpsc.html"
+  "ukpsc.html"
+  "bihar-si.html"
+  "up-police.html"
+  "pet.html"
+  "b-ed.html"
+  "ctet.html"
+  "ugc-net.html"
+  "agta.html"
+  "up-lekhpal.html"
+)
+
+echo "📋 Total URLs: ${#URLS[@]}"
+echo ""
+echo "Priority-wise सबसे जरूरी URLs:"
+echo ""
+echo "🥇 WEEK 1 (Top 15):"
+for i in {0..14}; do
+  echo "   https://ravishankarkamal59-eng.github.io/${URLS[$i]}"
+done
+echo ""
+echo "🥈 WEEK 2 (Next 15):"
+for i in {15..29}; do
+  echo "   https://ravishankarkamal59-eng.github.io/${URLS[$i]}"
+done
+echo ""
+echo "🥉 WEEK 3 (Next 15):"
+for i in {30..44}; do
+  echo "   https://ravishankarkamal59-eng.github.io/${URLS[$i]}"
+done
+echo ""
+echo "🏅 WEEK 4 (बाकी):"
+for i in {45..54}; do
+  if [ -n "${URLS[$i]}" ]; then
+    echo "   https://ravishankarkamal59-eng.github.io/${URLS[$i]}"
+  fi
+done
