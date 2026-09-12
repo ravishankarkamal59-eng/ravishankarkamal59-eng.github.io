@@ -397,13 +397,19 @@
         "type": "PDF"
       },
       {
-        "title": "ps01-1st-Western Political Thought.pdf Hindi",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789236804247-ma-ps01-1st-western-political-thought.pdf-hindi-medium-.pdf",
+        "title": "MA_Political_Science_Semester2_Ravishankar_Insights",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789236856100-ma-political-science-semester2-ravishankar-insights.pdf",
         "type": "PDF"
       }
     ],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "The_Ravishankar_Insights_MA_Political_Science_Semester_1",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/syllabus/1789236698191-the-ravishankar-insights-ma-political-science-semester-1.pdf",
+        "type": "PDF"
+      }
+    ],
     "videos": [],
     "books": []
   },
@@ -689,14 +695,14 @@
   },
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
-    "notes": [],
-    "pyq": [
+    "notes": [
       {
-        "title": "Agta 100 question",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/pyq/1789236600172-agta-100-question-1.pdf",
+        "title": "Up special GK GS",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789236564192-the-ravishankar-insights-up-agta-2026-vol-4.pdf",
         "type": "PDF"
       }
     ],
+    "pyq": [],
     "syllabus": [],
     "videos": [],
     "books": []
