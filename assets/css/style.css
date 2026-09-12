@@ -2234,3 +2234,134 @@ body > button[title="बुकमार्क करें"] {
     max-width: 38px !important;
   }
 }
+
+/* ============================================ */
+/* ULTRA AGGRESSIVE MOBILE HEADER FIX */
+/* ============================================ */
+
+@media screen and (max-width: 768px) {
+  
+  /* Brand text completely hide */
+  html body .brand-text,
+  html body .logo .brand-text,
+  html body header .brand-text,
+  html body nav .brand-text {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -99999px !important;
+    opacity: 0 !important;
+  }
+  
+  /* Menu toggle always visible */
+  html body .menu-toggle,
+  html body header .menu-toggle,
+  html body nav .menu-toggle {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    flex: 0 0 42px !important;
+    font-size: 1.4rem !important;
+    background: rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+    border: 2px solid rgba(255,255,255,0.3) !important;
+    border-radius: 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: auto !important;
+    order: 999 !important;
+    cursor: pointer !important;
+  }
+  
+  /* Header nav compact */
+  html body header nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0.25rem !important;
+    justify-content: space-between !important;
+    padding: 0.3rem 0 !important;
+  }
+  
+  /* Logo compact */
+  html body header nav > a:first-child {
+    flex: 0 0 auto !important;
+    max-width: 55px !important;
+    overflow: hidden !important;
+  }
+  
+  html body header nav > a:first-child img {
+    height: 36px !important;
+    max-width: 48px !important;
+    width: auto !important;
+  }
+  
+  /* User box compact */
+  html body #userBox {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.2rem !important;
+    padding: 0.15rem 0.4rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    border-radius: 12px !important;
+    font-size: 0.68rem !important;
+    max-width: 105px !important;
+    flex: 0 1 auto !important;
+    margin-left: auto !important;
+    order: 50 !important;
+  }
+  
+  html body #userBox a {
+    max-width: 55px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.68rem !important;
+    color: #fff !important;
+  }
+  
+  html body #userBox #logoutBtn {
+    padding: 0.15rem 0.35rem !important;
+    font-size: 0.58rem !important;
+    white-space: nowrap !important;
+    background: #e74c3c !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+  }
+  
+  /* Install button hide */
+  html body #installBtn {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html body #userBox a {
+    max-width: 45px !important;
+  }
+  html body header nav > a:first-child {
+    max-width: 48px !important;
+  }
+  html body header nav > a:first-child img {
+    height: 32px !important;
+    max-width: 42px !important;
+  }
+  html body .menu-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    flex: 0 0 38px !important;
+    font-size: 1.3rem !important;
+  }
+}
