@@ -48,13 +48,7 @@
     "name": "SSC CGL",
     "notes": [],
     "pyq": [],
-    "syllabus": [
-      {
-        "title": "SSC CGL syllabus",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/ssc-cgl/syllabus/1789236269359-ssc-cgl-complete-bilingual-syllabus-ravishankar-insights.pdf",
-        "type": "PDF"
-      }
-    ],
+    "syllabus": [],
     "videos": [],
     "books": []
   },
@@ -690,7 +684,13 @@
   },
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
-    "notes": [],
+    "notes": [
+      {
+        "title": "AGTA 100 QUESTION",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789236358888-the-ravishankar-insights-up-agta-2026-pyq-guide.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
