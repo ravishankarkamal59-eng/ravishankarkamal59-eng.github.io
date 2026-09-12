@@ -1990,3 +1990,126 @@ body > button[title="बुकमार्क करें"] {
   font-size: 0.72rem;
   color: rgba(255,255,255,0.85);
 }
+
+/* ============================================ */
+/* MODERN TEXT LOGO - "The Ravishankar Insights" */
+/* ============================================ */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  margin-left: 0.7rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid rgba(255,215,0,0.5);
+  flex-shrink: 0;
+}
+
+.brand-text .brand-line-1 {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #ffd700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+  opacity: 0.95;
+}
+
+.brand-text .brand-line-2 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #f39c12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.brand-text .brand-line-3 {
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .brand-text .brand-line-1 {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+  }
+  .brand-text .brand-line-2 {
+    font-size: 1rem;
+  }
+  .brand-text .brand-line-3 {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brand-text {
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 1.5px solid rgba(255,215,0,0.5);
+  }
+  .brand-text .brand-line-1 {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+  }
+  .brand-text .brand-line-2 {
+    font-size: 0.88rem;
+    letter-spacing: 0.3px;
+  }
+  .brand-text .brand-line-3 {
+    display: none;
+  }
+}
+
+/* Very small */
+@media (max-width: 400px) {
+  .brand-text {
+    display: none;
+  }
+}
+
+/* Logo container - flex */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  gap: 0 !important;
+}
+
+.logo a {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+/* Header logo image - compact */
+.header-logo-img {
+  height: 42px !important;
+  width: auto !important;
+  max-width: 60px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)) !important;
+  transition: all 0.3s ease !important;
+}
+
+.header-logo-img:hover {
+  filter: drop-shadow(0 4px 12px rgba(255,215,0,0.5)) brightness(1.08) !important;
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .header-logo-img {
+    height: 36px !important;
+    max-width: 50px !important;
+  }
+}
