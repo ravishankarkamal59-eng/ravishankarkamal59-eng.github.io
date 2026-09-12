@@ -8,6 +8,8 @@
       items: [
         { href: 'index.html', label: '🏠 होम' },
         { href: 'exams.html', label: '📚 सभी परीक्षाएँ' },
+        { href: 'success-stories.html', label: '🏆 Success Stories' },
+        { href: 'mock-tests.html', label: '🎯 Mock Tests' },
         { href: 'syllabus.html', label: '📖 सिलेबस' },
         { href: 'pyq.html', label: '📄 PYQ Papers' },
         { href: 'notes.html', label: '📝 नोट्स' },
@@ -94,6 +96,15 @@
       items: [
         { href: 'agta.html', label: 'AGTA (Agriculture)' },
         { href: 'up-lekhpal.html', label: 'UP लेखपाल' }
+      ]
+    },
+    {
+      title: '🏆 Success & Tests',
+      items: [
+        { href: 'success-stories.html', label: '🏆 Success Stories' },
+        { href: 'mock-tests.html', label: '🎯 Full Mock Tests' },
+        { href: 'quiz-advanced.html', label: '📊 Advanced Quiz' },
+        { href: 'test-series.html', label: '📈 Test Series' }
       ]
     },
     {
