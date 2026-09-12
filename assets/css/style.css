@@ -1493,3 +1493,218 @@ main {
     font-size: 0.65rem !important;
   }
 }
+
+/* ============================================ */
+/* DESKTOP MEGA MENU FIX */
+/* ============================================ */
+
+/* Desktop पर भी hamburger दिखाएँ */
+@media (min-width: 769px) {
+  /* Menu toggle - हमेशा दिखे */
+  .menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.5rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    margin-left: auto !important;
+    order: 10 !important;
+    padding: 0 !important;
+    transition: all 0.2s !important;
+  }
+  
+  .menu-toggle:hover {
+    background: rgba(255,255,255,0.25) !important;
+  }
+  
+  /* Nav links - desktop पर hidden by default */
+  .nav-links {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: #0f3460 !important;
+    padding: 5rem 2rem 2rem !important;
+    z-index: 9998 !important;
+    overflow-y: auto !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 1rem 2rem !important;
+    align-content: start !important;
+  }
+  
+  .nav-links.active {
+    display: grid !important;
+  }
+  
+  /* बंद करने के लिए × button */
+  body.menu-open::before {
+    content: '×';
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: #fff;
+    z-index: 99999;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(233,69,96,0.9);
+    border-radius: 50%;
+    line-height: 1;
+  }
+  
+  /* Sections */
+  .nav-links > li {
+    list-style: none !important;
+    background: rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    padding: 0.5rem !important;
+    break-inside: avoid;
+  }
+  
+  .nav-links > li > div {
+    color: #ffd700 !important;
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.8rem !important;
+    margin-bottom: 0.3rem !important;
+    border-bottom: 2px solid rgba(255,215,0,0.3) !important;
+  }
+  
+  .nav-links > li ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.1rem !important;
+    padding: 0 !important;
+  }
+  
+  .nav-links > li ul li {
+    list-style: none !important;
+    width: 100% !important;
+  }
+  
+  .nav-links > li ul a {
+    display: block !important;
+    padding: 0.5rem 0.8rem !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    border-radius: 6px !important;
+    transition: all 0.15s !important;
+    border-bottom: none !important;
+  }
+  
+  .nav-links > li ul a:hover {
+    background: rgba(255,215,0,0.15) !important;
+    color: #ffd700 !important;
+    padding-left: 1rem !important;
+  }
+  
+  /* Search बटन desktop पर दिखे */
+  #searchBtn {
+    display: flex !important;
+    top: 80px !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+  }
+}
+
+/* ============================================ */
+/* MOBILE MEGA MENU IMPROVEMENTS */
+/* ============================================ */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: #0f3460 !important;
+    padding: 5rem 1rem 5rem !important;
+    z-index: 9998 !important;
+    overflow-y: auto !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  .nav-links.active {
+    display: flex !important;
+  }
+  
+  /* Close button */
+  body.menu-open::before {
+    content: '×';
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.2rem;
+    color: #fff;
+    z-index: 99999;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(233,69,96,0.9);
+    border-radius: 50%;
+    line-height: 1;
+    font-weight: 300;
+  }
+  
+  .nav-links > li {
+    background: rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    padding: 0.5rem !important;
+    width: 100% !important;
+  }
+  
+  .nav-links > li > div {
+    color: #ffd700 !important;
+    font-size: 0.85rem !important;
+    padding: 0.4rem 0.6rem !important;
+    margin-bottom: 0.3rem !important;
+    border-bottom: 2px solid rgba(255,215,0,0.3) !important;
+    font-weight: 700 !important;
+  }
+  
+  .nav-links > li ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .nav-links > li ul li {
+    width: 100% !important;
+    list-style: none !important;
+  }
+  
+  .nav-links > li ul a {
+    display: block !important;
+    padding: 0.55rem 0.7rem !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  }
+  
+  .nav-links > li ul a:active {
+    background: rgba(255,215,0,0.15) !important;
+    color: #ffd700 !important;
+  }
+}
