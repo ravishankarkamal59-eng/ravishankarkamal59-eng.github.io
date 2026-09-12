@@ -115,7 +115,13 @@
   },
   "llb": {
     "name": "LLB/LLM",
-    "notes": [],
+    "notes": [
+      {
+        "title": "LLB_Semester_1_Complete_Study_Material",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/llb/notes/1789237353991-llb-semester-1-complete-study-material.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
