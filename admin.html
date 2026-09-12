@@ -129,6 +129,39 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 <h2>📤 PDF / Video / Book Add करें</h2>
 <label>📚 Exam चुनें</label>
 <select id="examSelect">
+<optgroup label="🌾 Agriculture">
+<option value="agriculture">🌾 Agriculture Main</option>
+<option value="agri-11-biology">Class 11: Agriculture Biology</option>
+<option value="agri-11-crop">Class 11: Crop Production</option>
+<option value="agri-11-soil">Class 11: Soil Science</option>
+<option value="agri-11-horticulture">Class 11: Horticulture</option>
+<option value="agri-11-animal">Class 11: Animal Husbandry</option>
+<option value="agri-11-farm">Class 11: Farm Machinery</option>
+<option value="agri-11-rural">Class 11: Rural Development</option>
+<option value="agri-12-crop">Class 12: Crop Production Mgmt</option>
+<option value="agri-12-genetics">Class 12: Genetics & Plant Breeding</option>
+<option value="agri-12-animal">Class 12: Animal Husbandry</option>
+<option value="agri-12-soil">Class 12: Soil Science</option>
+<option value="agri-12-economics">Class 12: Agriculture Economics</option>
+<option value="agri-12-extension">Class 12: Extension Education</option>
+<option value="agri-12-horticulture">Class 12: Horticulture</option>
+<option value="bsc-agronomy">BSc: Agronomy</option>
+<option value="bsc-horticulture">BSc: Horticulture</option>
+<option value="bsc-plant-breeding">BSc: Plant Breeding & Genetics</option>
+<option value="bsc-soil-science">BSc: Soil Science</option>
+<option value="bsc-entomology">BSc: Entomology</option>
+<option value="bsc-plant-pathology">BSc: Plant Pathology</option>
+<option value="bsc-animal-husbandry">BSc: Animal Husbandry</option>
+<option value="bsc-agri-economics">BSc: Agricultural Economics</option>
+<option value="bsc-extension">BSc: Extension Education</option>
+<option value="bsc-agri-engineering">BSc: Agricultural Engineering</option>
+<option value="bsc-biochemistry">BSc: Biochemistry</option>
+<option value="bsc-microbiology">BSc: Microbiology</option>
+<option value="bsc-forestry">BSc: Forestry</option>
+<option value="bsc-statistics">BSc: Agricultural Statistics</option>
+<option value="bsc-plant-physiology">BSc: Plant Physiology</option>
+</optgroup>
+
 <optgroup label="🌾 Agriculture (Class 11, 12, BSc)">
 <option value="agriculture">🌾 Agriculture Main</option>
 <option value="agri-11-biology">Class 11: Agriculture Biology</option>
@@ -409,6 +442,7 @@ function showTab(tab) {
 function populateExams() {
   var html = '';
   var groups = {
+    '🌾 Agriculture': ['agriculture','agri-11-biology','agri-11-crop','agri-11-soil','agri-11-horticulture','agri-11-animal','agri-11-farm','agri-11-rural','agri-12-crop','agri-12-genetics','agri-12-animal','agri-12-soil','agri-12-economics','agri-12-extension','agri-12-horticulture','bsc-agronomy','bsc-horticulture','bsc-plant-breeding','bsc-soil-science','bsc-entomology','bsc-plant-pathology','bsc-animal-husbandry','bsc-agri-economics','bsc-extension','bsc-agri-engineering','bsc-biochemistry','bsc-microbiology','bsc-forestry','bsc-statistics','bsc-plant-physiology'],
     'Central Exams': ['upsc','bpsc','uppcs','mppsc','ras','jpsc','ukpsc'],
     'SSC Exams': ['ssc-cgl','ssc-chsl','ssc-mts','ssc-gd'],
     'Railway & Banking': ['railway','banking'],
