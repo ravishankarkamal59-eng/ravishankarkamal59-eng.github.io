@@ -1,0 +1,8 @@
+# Backup files
+*backup*
+*broken*
+*-old.html
+ads-backup/
+node_modules/
+.DS_Store
+*.log
