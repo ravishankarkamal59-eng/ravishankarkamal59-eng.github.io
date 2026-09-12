@@ -1,151 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ravishankarkamal59-eng.github.io/</loc><lastmod>2026-09-10</lastmod><priority>1.0</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/exams.html</loc><lastmod>2026-09-10</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/notes.html</loc><lastmod>2026-09-10</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-affairs.html</loc><lastmod>2026-09-10</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/quiz.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/blog.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/about.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/contact.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/privacy.html</loc><lastmod>2026-09-10</lastmod><priority>0.4</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/terms.html</loc><lastmod>2026-09-10</lastmod><priority>0.4</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/study-plan.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ai-chat.html</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/faq.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/feed.xml</loc><priority>0.3</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-ma.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/jee-mains.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/neet.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/pet.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/llb.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/cat-mba.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/gate.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/b-ed.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/nda-cds.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bca-mca.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/nursing.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ssc-cgl.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ssc-chsl.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ssc-mts.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ssc-gd.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/cuet.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ctet.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bihar-police.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/up-police.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/mppsc.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ras.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/exam-calendar.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/scholarship.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/pyq.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/syllabus.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/test-series.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bookmarks.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/study-material.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc.html</loc><lastmod>2026-09-11</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bpsc.html</loc><lastmod>2026-09-11</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/railway.html</loc><lastmod>2026-09-11</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/banking.html</loc><lastmod>2026-09-11</lastmod><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/admit-card.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/result.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/answer-key.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bihar-si.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/up-lekhpal.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/jpsc.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ukpsc.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-hindi.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-english.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-history.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-polity.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-economics.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-sociology.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-psychology.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-geography.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-sanskrit.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-urdu.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-finearts.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ba-journalism.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-hindi.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-english.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-history.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-polity.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-economics.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-sociology.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-psychology.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ma-geography.html</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-national.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-international.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-sports.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-science.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-economy.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/current-culture.html</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/ugc-net.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-paper1.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-hindi.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-english.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-history.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-polity.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-economics.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-sociology.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-psychology.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-geography.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-education.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-commerce.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-philosophy.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/net-sanskrit.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-prelims-gs1.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-prelims-csat.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-mains-essay.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-mains-gs1.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-mains-gs2.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-mains-gs3.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/upsc-mains-gs4.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-prelims-gs.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-prelims-csat.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-hindi.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-essay.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs1.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs2.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs3.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs4.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs5.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/uppcs-mains-gs6.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agta.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/quiz-advanced.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/notifications.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/pdf-viewer.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/forum.html</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/success-stories.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/mock-tests.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agriculture.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-biology.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-crop.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-soil.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-horticulture.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-animal.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-farm.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-11-rural.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-crop.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-genetics.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-animal.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-soil.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-economics.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-extension.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/agri-12-horticulture.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-agronomy.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-horticulture.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-plant-breeding.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-soil-science.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-entomology.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-plant-pathology.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-animal-husbandry.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-agri-economics.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-extension.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-agri-engineering.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-biochemistry.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-microbiology.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-forestry.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-statistics.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://ravishankarkamal59-eng.github.io/bsc-plant-physiology.html</loc><lastmod>2026-09-12</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/</loc><lastmod>2026-09-13</lastmod><priority>1.0</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/exams.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/notes.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/pyq.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/syllabus.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/current-affairs.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/quiz.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/quiz-advanced.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/mock-tests.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ai-chat.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/test-series.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/study-material.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/blog.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/faq.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/about.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/contact.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/agriculture.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/success-stories.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/notifications.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/exam-calendar.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/admit-card.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/result.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/answer-key.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/scholarship.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/pdf-viewer.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/forum.html</loc><lastmod>2026-09-13</lastmod><priority>0.7</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bookmarks.html</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/dashboard.html</loc><lastmod>2026-09-13</lastmod><priority>0.6</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/upsc.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bpsc.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/uppcs.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/mppsc.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ras.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/jpsc.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ukpsc.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ssc-cgl.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ssc-chsl.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ssc-mts.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ssc-gd.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/railway.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/banking.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/nda-cds.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bihar-police.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bihar-si.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/up-police.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/pet.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/b-ed.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ctet.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ugc-net.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/jee-mains.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/neet.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/gate.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bca-mca.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/llb.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/cat-mba.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/nursing.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/cuet.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ba-ma.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/agta.html</loc><lastmod>2026-09-13</lastmod><priority>0.9</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ibps-afo.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/nabard-grade-a.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/icar-jrf.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/ars.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/bhu-agri.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/up-lekhpal.html</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/privacy.html</loc><lastmod>2026-09-13</lastmod><priority>0.4</priority></url>
+<url><loc>https://ravishankarkamal59-eng.github.io/terms.html</loc><lastmod>2026-09-13</lastmod><priority>0.4</priority></url>
 </urlset>
