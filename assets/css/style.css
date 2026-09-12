@@ -2785,3 +2785,44 @@ header nav > a img {
     max-width: 68px !important;
   }
 }
+
+/* ============================================ */
+/* AD CONTAINER FIX - खाली जगह हटाएँ */
+/* ============================================ */
+
+/* Ad containers को empty होने पर छिपाएँ */
+.ad-container {
+  min-height: 0 !important;
+  margin: 1rem 0 !important;
+}
+
+.ad-container:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* अगर ad load नहीं हुआ तो container collapse हो जाए */
+.ad-container ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
+.ad-container ins.adsbygoogle[data-ad-status="unfilled"] + script + * {
+  display: none !important;
+}
+
+/* AdSense की auto height */
+.ad-container ins.adsbygoogle {
+  display: block;
+  min-height: 0;
+}
+
+/* WhatsApp floating button को नीचे लाएँ */
+.whatsapp-float {
+  bottom: 20px !important;
+  z-index: 100 !important;
+}
+
+.top-btn {
+  bottom: 20px !important;
+}
