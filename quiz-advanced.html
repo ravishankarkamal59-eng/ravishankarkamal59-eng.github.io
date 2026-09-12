@@ -3,370 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Quiz - Timer, Score, Rank | The Ravishankar Insights</title>
-<meta name="description" content="मुफ़्त Advanced Quiz System - Timer, Detailed Result, All India Rank के साथ।">
+<title>Advanced Quiz - Timer, Score, Leaderboard | The Ravishankar Insights</title>
+<meta name="description" content="मुफ़्त Advanced Quiz - Timer, Detailed Result, Leaderboard के साथ।">
 <link rel="canonical" href="https://ravishankarkamal59-eng.github.io/quiz-advanced.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
-<style>
-/* CRITICAL CSS - पेज पहले दिखे तुरंत */
-*{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI',Tahoma,sans-serif;line-height:1.6;color:#333;background:#f9f9f9;visibility:visible!important}
-header{background:#1a5276;color:#fff;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
-nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;gap:1rem;flex-wrap:wrap}
-.logo{font-size:1.5rem;font-weight:bold;display:flex;align-items:center;gap:0.5rem}
-main{max-width:1200px;margin:0 auto;padding:1rem}
-h1{font-size:2rem;color:#0f3460;margin-bottom:1rem}
-h2{color:#0f3460}
-.hero{text-align:center;padding:3rem 1rem;background:linear-gradient(135deg,#0f3460,#16213e 50%,#e94560);color:#fff;border-radius:12px;margin-bottom:2rem}
-.hero h1,.hero h2{color:#fff}
-.btn{display:inline-block;background:#e94560;color:#fff;padding:0.8rem 1.5rem;text-decoration:none;border-radius:25px;font-weight:bold;margin:0.3rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
-.content{background:#fff;padding:2rem;border-radius:12px;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text-align:center}
-.top-bar{background:#e94560;text-align:center;padding:0.3rem;font-size:0.85rem;margin:-1rem -1rem 1rem}
-.user-box{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem}
-.btn-small{background:#e94560;color:#fff;padding:0.4rem 0.9rem;border-radius:20px;text-decoration:none;font-size:0.85rem;border:none;cursor:pointer}
-.menu-toggle{background:rgba(255,255,255,0.15);color:#fff;border:none;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;padding:0}
-.nav-links{list-style:none;display:flex;gap:1rem;flex-wrap:wrap;padding:0;margin:0}
-.nav-links a{color:#fff;text-decoration:none;font-weight:500;font-size:0.9rem;padding:0.3rem 0.5rem}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0}
-.stat{background:#fff;padding:1.5rem 1rem;border-radius:10px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:4px solid #e94560}
-.stat h3{font-size:1.8rem;color:#0f3460;margin:0 0 0.3rem}
-.exam-card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:5px solid #e94560;text-decoration:none;color:inherit;display:block}
-.exam-card .icon{font-size:2.2rem;margin-bottom:0.5rem}
-.exam-card h3{color:#0f3460;margin-bottom:0.5rem}
-.feature-box{background:#fff;padding:1.8rem 1.2rem;border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
-.cta-box{background:linear-gradient(135deg,#0f3460,#16213e);color:#fff;padding:2.5rem 1.5rem;border-radius:12px;text-align:center;margin:2rem 0}
-.cta-box h2{color:#fff}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto 1.5rem;text-align:left}
-.footer-grid a{color:#aaa;text-decoration:none;display:block;padding:0.2rem 0;font-size:0.9rem}
-.footer-grid a:hover{color:#e94560}
-.footer-grid h4{color:#fff;margin-bottom:0.8rem}
-.footer-bottom{text-align:center;padding-top:1rem;border-top:1px solid #333;font-size:0.85rem;color:#888}
-@media(max-width:768px){
-  .menu-toggle{display:flex!important}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#0f3460;padding:1rem;gap:0.5rem;z-index:100}
-  .nav-links.active{display:flex}
-  .nav-links a{display:block;padding:0.6rem 0.8rem;border-bottom:1px solid rgba(255,255,255,0.1)}
-  .hero h1{font-size:1.5rem}
-  .hero{padding:2rem 1rem}
-  .content{padding:1.2rem}
-}
-</style>
-<link rel="stylesheet" href="assets/css/style.css?v=10">
-<style>
-.qz-hd{background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;text-align:center;margin-bottom:1.5rem}
-.qz-hd h1{color:#fff;margin:0;font-size:1.5rem}
-.qz-hd p{opacity:0.95;margin-top:0.3rem;font-size:0.9rem}
-.setup{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);max-width:500px;margin:0 auto}
-.setup label{display:block;font-weight:600;color:#0f3460;margin:0.8rem 0 0.4rem}
-.setup select{width:100%;padding:0.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem}
-.setup button{margin-top:1rem;padding:1rem;background:#e94560;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:1rem;width:100%}
-.qz-top{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:1rem;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06);position:sticky;top:70px;z-index:50}
-.qz-top .timer{font-size:1.3rem;font-weight:700;color:#e94560}
-.qz-top .prog{font-size:0.9rem;color:#0f3460;font-weight:600}
-.qz-top .timer.warning{color:#e74c3c;animation:pulse 0.6s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-.qz-q{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);margin-bottom:1rem}
-.qz-q h2{color:#0f3460;font-size:1.1rem;margin-bottom:1rem;line-height:1.5;border-left:4px solid #e94560;padding-left:0.8rem}
-.qz-opt{display:block;padding:0.9rem 1rem;margin:0.5rem 0;background:#f8fafc;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:all 0.2s;font-size:0.95rem}
-.qz-opt:hover{background:#e8f4ff;border-color:#0f3460}
-.qz-opt.selected{background:#0f3460;color:#fff;border-color:#0f3460}
-.qz-opt.correct{background:#d4edda;border-color:#27ae60;color:#155724}
-.qz-opt.wrong{background:#f8d7da;border-color:#e74c3c;color:#721c24}
-.qz-nav{display:flex;gap:0.5rem;margin-top:1rem}
-.qz-nav button{flex:1;padding:0.9rem;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.95rem}
-.qz-nav .prev{background:#f0f4f8;color:#0f3460}
-.qz-nav .next{background:#27ae60;color:#fff}
-.qz-nav .skip{background:#f39c12;color:#fff}
-.qz-nav .submit{background:#e94560;color:#fff}
-.qz-nav button:disabled{background:#ccc;cursor:not-allowed}
-.result{background:#fff;padding:2rem 1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);text-align:center}
-.result .score-circle{width:150px;height:150px;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:700;color:#fff;background:conic-gradient(#27ae60 var(--p,0%), #e0e6ed 0%);position:relative}
-.result .score-circle::before{content:'';position:absolute;width:120px;height:120px;border-radius:50%;background:#fff}
-.result .score-circle span{position:relative;z-index:1;color:#0f3460}
-.result h2{color:#0f3460;margin-bottom:0.5rem}
-.result .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:1.5rem 0}
-.result .stat-box{padding:0.8rem;border-radius:10px;background:#f8fafc}
-.result .stat-box strong{display:block;font-size:1.3rem;color:#0f3460}
-.result .stat-box small{color:#666;font-size:0.75rem}
-.result .stat-box.correct-bg{background:#d4edda}
-.result .stat-box.wrong-bg{background:#f8d7da}
-.result .stat-box.skip-bg{background:#fff3cd}
-.leaderboard{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);margin-top:1.5rem}
-.leaderboard h3{color:#0f3460;margin-bottom:1rem}
-.lb-row{display:flex;align-items:center;gap:0.8rem;padding:0.7rem;border-bottom:1px solid #eee}
-.lb-row .rank{width:30px;height:30px;border-radius:50%;background:#0f3460;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
-.lb-row:first-child .rank{background:#f39c12}
-.lb-row:nth-child(2) .rank{background:#95a5a6}
-.lb-row:nth-child(3) .rank{background:#cd7f32}
-.lb-row .info{flex:1;font-size:0.9rem}
-.lb-row .sc{font-weight:700;color:#27ae60}
-.progress-bar-q{width:100%;height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-bottom:1rem}
-.progress-bar-q div{height:100%;background:linear-gradient(90deg,#e94560,#f39c12);transition:width 0.3s}
-body.dark-mode .setup,body.dark-mode .qz-q,body.dark-mode .qz-top,body.dark-mode .result,body.dark-mode .leaderboard{background:#16213e;color:#e0e0e0}
-body.dark-mode .qz-q h2{color:#6dd5fa}
-body.dark-mode .qz-opt{background:#0a1628;color:#e0e0e0}
-body.dark-mode .qz-opt.selected{background:#6dd5fa;color:#0a1628}
-body.dark-mode .result .score-circle::before{background:#16213e}
-body.dark-mode .result h2,body.dark-mode .leaderboard h3{color:#6dd5fa}
-</style>
-<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=2">
-<link rel="apple-touch-icon" href="assets/images/logo.svg?v=2">
-<link rel="shortcut icon" href="assets/images/logo.svg?v=2">
 </head>
 <body>
-<button id="menuCloseBtn" aria-label="Menu बंद करें" type="button">×</button>
 <header>
 <div class="top-bar">🎯 Advanced Quiz System</div>
 <nav>
-<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0">
-<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height: 60px;width:auto;max-width: 75px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" loading="eager" class="header-logo-img">
-      <div class="brand-text" style="display:flex !important;flex-direction:column !important;line-height:1.05 !important;margin-left:0.5rem !important;padding-left:0.5rem !important;border-left:2px solid rgba(255,215,0,0.6) !important;flex:1 1 auto !important;max-width:160px !important;justify-content:center !important">
-<div class="brand-line-1" style="display:block !important;font-size:0.62rem !important;font-weight:600 !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2px !important;text-transform:uppercase !important;margin-bottom:0.1rem !important;white-space:nowrap !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">THE</div>
-<div class="brand-line-2" style="display:block !important;font-family:Georgia,serif !important;font-size:1.05rem !important;font-weight:700 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;letter-spacing:0.3px !important;white-space:nowrap !important;line-height:1.15 !important;text-shadow:0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(255,215,0,0.4) !important;background:none !important">Ravishankar</div>
-<div class="brand-line-3" style="display:block !important;font-size:0.58rem !important;color:#ffd700 !important;-webkit-text-fill-color:#ffd700 !important;letter-spacing:2.8px !important;text-transform:uppercase !important;margin-top:0.1rem !important;white-space:nowrap !important;font-weight:600 !important;text-shadow:0 1px 2px rgba(0,0,0,0.4) !important;background:none !important">INSIGHTS</div>
+<a href="index.html" style="display:flex;align-items:center;text-decoration:none">
+<img src="assets/images/logo.svg" alt="Logo" style="height:45px;width:auto;max-width:55px">
+</a>
+<div id="userBox" class="user-box"></div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="quiz.html">साधारण Quiz</a></li>
+<li><a href="quiz-advanced.html" class="active">Advanced Quiz</a></li>
+<li><a href="ai-chat.html">🤖 AI</a></li>
+</ul>
+</nav>
+</header>
+
+<main id="main">
+<div class="content" id="setupScreen">
+<div style="text-align:center;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.8rem;border-radius:14px;margin-bottom:1.5rem">
+<h1 style="color:#fff;margin:0;font-size:1.5rem">🎯 Advanced Quiz</h1>
+<p style="margin-top:0.4rem;opacity:0.95;font-size:0.9rem">Timer, Detailed Result, Leaderboard के साथ</p>
+</div>
+
+<label style="display:block;font-weight:600;color:#0f3460;margin-bottom:0.4rem">📚 विषय चुनें</label>
+<select id="selCat" style="width:100%;padding:0.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem">
+<option value="gk">सामान्य ज्ञान (Mixed)</option>
+<option value="history">इतिहास</option>
+<option value="polity">राजनीति</option>
+<option value="geography">भूगोल</option>
+<option value="science">विज्ञान</option>
+<option value="maths">गणित</option>
+<option value="reasoning">रीजनिंग</option>
+</select>
+
+<label style="display:block;font-weight:600;color:#0f3460;margin:0.8rem 0 0.4rem">⏱️ समय</label>
+<select id="selTime" style="width:100%;padding:0.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem">
+<option value="1">1 मिनट (Demo)</option>
+<option value="5">5 मिनट</option>
+<option value="10" selected>10 मिनट</option>
+<option value="15">15 मिनट</option>
+<option value="20">20 मिनट</option>
+</select>
+
+<label style="display:block;font-weight:600;color:#0f3460;margin:0.8rem 0 0.4rem">📊 कितने प्रश्न</label>
+<select id="selQ" style="width:100%;padding:0.8rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem">
+<option value="5">5 प्रश्न</option>
+<option value="10" selected>10 प्रश्न</option>
+<option value="15">15 प्रश्न</option>
+<option value="20">20 प्रश्न</option>
+</select>
+
+<button id="startBtn" style="display:block;width:100%;margin-top:1rem;padding:1rem;background:#e94560;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:700;font-size:1rem">🚀 Quiz शुरू करें</button>
+</div>
+
+<div class="content" id="quizScreen" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;padding:1rem;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06);position:sticky;top:70px;z-index:50">
+<div style="font-size:0.9rem;color:#0f3460;font-weight:600"><span id="qCounter">1</span> / <span id="qTotal">10</span></div>
+<div id="timer" style="font-size:1.3rem;font-weight:700;color:#e94560">10:00</div>
+</div>
+<div style="width:100%;height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-bottom:1rem">
+<div id="progBar" style="height:100%;background:linear-gradient(90deg,#e94560,#f39c12);width:0%;transition:width 0.3s"></div>
+</div>
+<div style="background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08)">
+<h2 id="qText" style="color:#0f3460;font-size:1.1rem;margin-bottom:1rem;line-height:1.5;border-left:4px solid #e94560;padding-left:0.8rem">लोड हो रहा है...</h2>
+<div id="options"></div>
+<div style="display:flex;gap:0.5rem;margin-top:1rem">
+<button class="qz-btn prev" id="prevBtn" style="flex:1;padding:0.9rem;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.95rem;background:#f0f4f8;color:#0f3460">← पिछला</button>
+<button class="qz-btn skip" id="skipBtn" style="flex:1;padding:0.9rem;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.95rem;background:#f39c12;color:#fff">Skip</button>
+<button class="qz-btn next" id="nextBtn" style="flex:1;padding:0.9rem;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.95rem;background:#27ae60;color:#fff">अगला →</button>
+<button class="qz-btn submit" id="submitBtn" style="display:none;flex:1;padding:0.9rem;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.95rem;background:#e94560;color:#fff">Submit</button>
+</div>
+</div>
 </div>
 
 <div class="content" id="resultScreen" style="display:none">
-<div class="qz-hd">
-<h1>🎉 Quiz पूरा हुआ!</h1>
+<div style="text-align:center;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:1.5rem;border-radius:14px;margin-bottom:1.5rem">
+<h1 style="color:#fff;margin:0;font-size:1.5rem">🎉 Quiz पूरा!</h1>
 </div>
-<div class="result">
-<div class="score-circle" id="scoreCircle"><span id="scorePercent">0%</span></div>
-<h2 id="scoreText">आपका स्कोर</h2>
-<p id="scoreMsg" style="color:#666">प्रदर्शन का विश्लेषण</p>
-<div class="stats">
-<div class="stat-box correct-bg"><strong id="correctCount">0</strong><small>सही</small></div>
-<div class="stat-box wrong-bg"><strong id="wrongCount">0</strong><small>गलत</small></div>
-<div class="stat-box skip-bg"><strong id="skipCount">0</strong><small>छोड़े</small></div>
+<div style="background:#fff;padding:2rem 1.5rem;border-radius:14px;box-shadow:0 3px 15px rgba(0,0,0,0.08);text-align:center">
+<div id="scorePercent" style="font-size:3rem;font-weight:700;color:#0f3460;margin-bottom:0.5rem">0%</div>
+<h2 style="color:#0f3460;margin-bottom:0.5rem" id="scoreText">आपका स्कोर</h2>
+<p id="scoreMsg" style="color:#666;margin-bottom:1.5rem">प्रदर्शन का विश्लेषण</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:1.5rem 0">
+<div style="padding:0.8rem;border-radius:10px;background:#d4edda"><strong id="correctCount" style="display:block;font-size:1.3rem;color:#155724">0</strong><small style="color:#155724">सही</small></div>
+<div style="padding:0.8rem;border-radius:10px;background:#f8d7da"><strong id="wrongCount" style="display:block;font-size:1.3rem;color:#721c24">0</strong><small style="color:#721c24">गलत</small></div>
+<div style="padding:0.8rem;border-radius:10px;background:#fff3cd"><strong id="skipCount" style="display:block;font-size:1.3rem;color:#856404">0</strong><small style="color:#856404">छोड़े</small></div>
 </div>
-<div style="display:flex;gap:0.5rem;margin-top:1rem">
-<button onclick="location.reload()" style="flex:1;padding:0.9rem;background:#0f3460;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600">🔄 दोबारा</button>
-<button onclick="showReview()" style="flex:1;padding:0.9rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600">📋 Review</button>
-</div>
-</div>
-<div class="leaderboard">
-<h3>🏆 Leaderboard (आपका Best)</h3>
-<div id="lbList"><p style="color:#888;font-size:0.9rem">अभी कोई record नहीं</p></div>
+<button onclick="location.reload()" style="width:100%;padding:0.9rem;background:#0f3460;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;margin-bottom:0.5rem">🔄 दोबारा</button>
+<button id="reviewBtn" style="width:100%;padding:0.9rem;background:#27ae60;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600">📋 Answer Review</button>
 </div>
 <div id="reviewSection" style="display:none;margin-top:1.5rem"></div>
 </div>
 </main>
 
-<footer style="padding:1.2rem 1rem 0.8rem;background:#1a1a2e;color:#ccc;margin-top:2rem">
-<div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;text-align:left">
-
-<div>
-<img src="assets/images/logo.svg" alt="The Ravishankar Insights" style="height:45px;width:auto;margin-bottom:0.4rem">
-<p style="font-size:0.8rem;color:#aaa;line-height:1.4">सभी सरकारी परीक्षाओं की मुफ़्त तैयारी।</p>
-<div style="margin-top:0.7rem;display:flex;flex-direction:column;gap:0.35rem">
-<a href="https://wa.me/918931050393" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">📱 WhatsApp</a>
-<a href="https://youtube.com/@theravishankarinsights" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">📺 YouTube</a>
-<a href="https://www.facebook.com/share/1YSLtAna1V/" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">📘 Facebook</a>
-<a href="https://www.instagram.com/the.ravishankar.insights" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">📷 Instagram</a>
-<a href="https://twitter.com/theravishankar" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">🐦 Twitter</a>
-<a href="https://t.me/theravishankarinsights" target="_blank" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">✈️ Telegram</a>
+<footer>
+<div style="text-align:center;padding:1.5rem 1rem;background:#1a1a2e;color:#888;font-size:0.8rem;margin-top:2rem">
+<img src="assets/images/logo.svg" alt="Logo" style="height:40px;width:auto;margin-bottom:0.5rem"><br>
+© 2026 The Ravishankar Insights
 </div>
-</div>
-
-<div>
-<h4 style="color:#ffd700;font-size:0.85rem;margin-bottom:0.5rem">🔗 लिंक</h4>
-<div style="display:flex;flex-wrap:wrap;gap:0.35rem 0.6rem">
-<a href="exams.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">परीक्षाएँ</a>
-<a href="notes.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">नोट्स</a>
-<a href="pyq.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">PYQ</a>
-<a href="syllabus.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">सिलेबस</a>
-<a href="current-affairs.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">करंट अफेयर्स</a>
-<a href="quiz.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">क्विज़</a>
-<a href="quiz-advanced.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Advanced Quiz</a>
-<a href="test-series.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">टेस्ट</a>
-<a href="study-material.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">स्टडी मटेरियल</a>
-<a href="ai-chat.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">AI सहायक</a>
-<a href="pdf-viewer.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">PDF Reader</a>
-<a href="forum.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Forum</a>
-<a href="bookmarks.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Bookmarks</a>
-<a href="dashboard.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Dashboard</a>
-<a href="blog.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Blog</a>
-<a href="faq.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">FAQ</a>
-<a href="about.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">About</a>
-<a href="contact.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">संपर्क</a>
-<a href="privacy.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Privacy</a>
-<a href="terms.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Terms</a>
-</div>
-</div>
-
-<div>
-<h4 style="color:#ffd700;font-size:0.85rem;margin-bottom:0.5rem">📚 सभी Exams</h4>
-<div style="display:flex;flex-wrap:wrap;gap:0.35rem 0.6rem">
-<a href="upsc.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UPSC</a>
-<a href="bpsc.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">BPSC</a>
-<a href="uppcs.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UPPCS</a>
-<a href="mppsc.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">MPPSC</a>
-<a href="ras.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">RAS</a>
-<a href="jpsc.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">JPSC</a>
-<a href="ukpsc.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UKPSC</a>
-<a href="ssc-cgl.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">SSC CGL</a>
-<a href="ssc-chsl.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">SSC CHSL</a>
-<a href="ssc-mts.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">SSC MTS</a>
-<a href="ssc-gd.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">SSC GD</a>
-<a href="railway.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Railway</a>
-<a href="banking.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Banking</a>
-<a href="nda-cds.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">NDA/CDS</a>
-<a href="bihar-police.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">बिहार पुलिस</a>
-<a href="bihar-si.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">बिहार SI</a>
-<a href="up-police.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UP Police</a>
-<a href="pet.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">PET</a>
-<a href="b-ed.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">B.Ed</a>
-<a href="ctet.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">CTET</a>
-<a href="ugc-net.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UGC NET</a>
-<a href="jee-mains.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">JEE Mains</a>
-<a href="neet.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">NEET</a>
-<a href="gate.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">GATE</a>
-<a href="bca-mca.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">BCA/MCA</a>
-<a href="llb.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">LLB</a>
-<a href="cat-mba.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">CAT/MBA</a>
-<a href="nursing.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">Nursing</a>
-<a href="cuet.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">CUET</a>
-<a href="ba-ma.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">BA/MA</a>
-<a href="agta.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">AGTA</a>
-<a href="up-lekhpal.html" style="color:#ccc;text-decoration:none;font-size:0.78rem">UP लेखपाल</a>
-<a href="exams.html" style="color:#ffd700;text-decoration:none;font-size:0.78rem;font-weight:600">सभी →</a>
-</div>
-</div>
-
-<div>
-<h4 style="color:#ffd700;font-size:0.85rem;margin-bottom:0.5rem">📅 Updates</h4>
-<div style="display:flex;flex-direction:column;gap:0.35rem">
-<a href="notifications.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">🔔 Notifications</a>
-<a href="exam-calendar.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">📅 Exam Calendar</a>
-<a href="admit-card.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">🎫 Admit Card</a>
-<a href="result.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">🏆 Result</a>
-<a href="answer-key.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">✅ Answer Key</a>
-<a href="scholarship.html" style="color:#6dd5fa;text-decoration:none;font-size:0.78rem">🎓 Scholarship</a>
-</div>
-</div>
-
-</div>
-<div style="text-align:center;padding-top:0.8rem;margin-top:0.5rem;border-top:1px solid #333;font-size:0.72rem;color:#888">© 2026 The Ravishankar Insights. सर्वाधिकार सुरक्षित।</div>
 </footer>
+
 <button id="darkToggle" class="dark-toggle">🌙</button>
 <button id="topBtn" class="top-btn">↑</button>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/login-state.js"></script>
+<script src="assets/js/full-menu.js"></script>
+<script src="assets/js/menu-toggle.js"></script>
 
 <script>
 var QUESTIONS = {
   gk: [
     { q: 'भारत का संविधान कब लागू हुआ?', o: ['15 अगस्त 1947', '26 जनवरी 1950', '26 नवंबर 1949', '2 अक्टूबर 1950'], a: 1 },
-    { q: 'भारत के पहले प्रधानमंत्री कौन थे?', o: ['सरदार पटेल', 'जवाहरलाल नेहरू', 'राजेंद्र प्रसाद', 'लाल बहादुर'], a: 1 },
-    { q: 'सबसे लंबी नदी कौन सी है?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
-    { q: 'ताज महल किस शहर में है?', o: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], a: 1 },
+    { q: 'भारत के पहले प्रधानमंत्री?', o: ['सरदार पटेल', 'जवाहरलाल नेहरू', 'राजेंद्र प्रसाद', 'लाल बहादुर'], a: 1 },
+    { q: 'सबसे लंबी नदी?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
+    { q: 'ताज महल कहाँ है?', o: ['दिल्ली', 'आगरा', 'जयपुर', 'लखनऊ'], a: 1 },
     { q: 'भारत का राष्ट्रीय खेल?', o: ['क्रिकेट', 'हॉकी', 'कबड्डी', 'फुटबॉल'], a: 1 },
-    { q: 'RBI की स्थापना कब हुई?', o: ['1935', '1947', '1950', '1969'], a: 0 },
+    { q: 'RBI की स्थापना?', o: ['1935', '1947', '1950', '1969'], a: 0 },
     { q: 'विश्व पर्यावरण दिवस?', o: ['5 जून', '22 अप्रैल', '16 सितंबर', '1 दिसंबर'], a: 0 },
-    { q: 'सबसे बड़ा राज्य क्षेत्रफल में?', o: ['MP', 'राजस्थान', 'महाराष्ट्र', 'UP'], a: 1 },
-    { q: 'ISRO का मुख्यालय?', o: ['मुंबई', 'बेंगलुरु', 'दिल्ली', 'हैदराबाद'], a: 1 },
+    { q: 'सबसे बड़ा राज्य?', o: ['MP', 'राजस्थान', 'महाराष्ट्र', 'UP'], a: 1 },
+    { q: 'ISRO मुख्यालय?', o: ['मुंबई', 'बेंगलुरु', 'दिल्ली', 'हैदराबाद'], a: 1 },
     { q: 'नोबेल किस देश में?', o: ['USA', 'UK', 'स्वीडन', 'फ्रांस'], a: 2 },
-    { q: 'भारत का राष्ट्रीय पक्षी?', o: ['मोर', 'कबूतर', 'तोता', 'बाज'], a: 0 },
+    { q: 'राष्ट्रीय पक्षी?', o: ['मोर', 'कबूतर', 'तोता', 'बाज'], a: 0 },
     { q: 'सूर्य से दूरी?', o: ['15 करोड़ km', '20 करोड़ km', '10 करोड़ km', '5 करोड़ km'], a: 0 },
-    { q: 'भारत का राष्ट्रीय फूल?', o: ['कमल', 'गुलाब', 'सूरजमुखी', 'चमेली'], a: 0 },
-    { q: 'पंचायती राज कब लागू?', o: ['1993', '1990', '1985', '1995'], a: 0 },
-    { q: 'भारत का राष्ट्रपति भवन?', o: ['नई दिल्ली', 'मुंबई', 'कोलकाता', 'चेन्नई'], a: 0 },
-    { q: 'UNO की स्थापना?', o: ['1945', '1947', '1950', '1948'], a: 0 },
-    { q: 'भारतीय संविधान के जनक?', o: ['गांधी', 'अंबेडकर', 'नेहरू', 'पटेल'], a: 1 },
+    { q: 'राष्ट्रीय फूल?', o: ['कमल', 'गुलाब', 'सूरजमुखी', 'चमेली'], a: 0 },
+    { q: 'पंचायती राज कब?', o: ['1993', '1990', '1985', '1995'], a: 0 },
+    { q: 'UNO स्थापना?', o: ['1945', '1947', '1950', '1948'], a: 0 },
+    { q: 'संविधान जनक?', o: ['गांधी', 'अंबेडकर', 'नेहरू', 'पटेल'], a: 1 },
     { q: 'सबसे ऊँचा पर्वत?', o: ['K2', 'एवरेस्ट', 'कंचनजंगा', 'मकालू'], a: 1 },
-    { q: 'भारत का सबसे छोटा राज्य?', o: ['गोवा', 'सिक्किम', 'त्रिपुरा', 'मणिपुर'], a: 0 },
-    { q: 'गंगा कहाँ से निकलती?', o: ['गंगोत्री', 'यमुनोत्री', 'बद्रीनाथ', 'केदारनाथ'], a: 0 }
+    { q: 'सबसे छोटा राज्य?', o: ['गोवा', 'सिक्किम', 'त्रिपुरा', 'मणिपुर'], a: 0 },
+    { q: 'गंगा कहाँ से?', o: ['गंगोत्री', 'यमुनोत्री', 'बद्रीनाथ', 'केदारनाथ'], a: 0 },
+    { q: 'कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 }
   ],
   history: [
-    { q: 'सिंधु घाटी सभ्यता कब थी?', o: ['3000-1500 BC', '2000-1000 BC', '1500-500 BC', '500 BC-500 AD'], a: 0 },
-    { q: 'मौर्य साम्राज्य के संस्थापक?', o: ['अशोक', 'चंद्रगुप्त', 'बिंदुसार', 'समुद्रगुप्त'], a: 1 },
-    { q: 'मुगल साम्राज्य के संस्थापक?', o: ['अकबर', 'बाबर', 'हुमायूं', 'जहाँगीर'], a: 1 },
-    { q: '1857 का विद्रोह कहाँ से?', o: ['दिल्ली', 'मेरठ', 'कानपुर', 'लखनऊ'], a: 1 },
-    { q: 'भारत छोड़ो आंदोलन?', o: ['1942', '1930', '1920', '1945'], a: 0 },
-    { q: 'जलियाँवाला बाग हत्याकांड?', o: ['1919', '1920', '1918', '1921'], a: 0 },
-    { q: 'स्वतंत्रता आंदोलन के पिता?', o: ['गांधी', 'नेहरू', 'तिलक', 'गोखले'], a: 0 },
+    { q: 'सिंधु घाटी सभ्यता?', o: ['3000-1500 BC', '2000-1000 BC', '1500-500 BC', '500 BC-500 AD'], a: 0 },
+    { q: 'मौर्य संस्थापक?', o: ['अशोक', 'चंद्रगुप्त', 'बिंदुसार', 'समुद्रगुप्त'], a: 1 },
+    { q: 'मुगल संस्थापक?', o: ['अकबर', 'बाबर', 'हुमायूं', 'जहाँगीर'], a: 1 },
+    { q: '1857 विद्रोह?', o: ['दिल्ली', 'मेरठ', 'कानपुर', 'लखनऊ'], a: 1 },
+    { q: 'भारत छोड़ो?', o: ['1942', '1930', '1920', '1945'], a: 0 },
+    { q: 'जलियाँवाला?', o: ['1919', '1920', '1918', '1921'], a: 0 },
+    { q: 'स्वतंत्रता पिता?', o: ['गांधी', 'नेहरू', 'तिलक', 'गोखले'], a: 0 },
     { q: 'अशोक का धर्म?', o: ['हिंदू', 'बौद्ध', 'जैन', 'सिख'], a: 1 },
     { q: 'वेदों की संख्या?', o: ['2', '3', '4', '5'], a: 2 },
-    { q: 'गुप्त काल को कहा जाता?', o: ['स्वर्ण युग', 'रजत युग', 'कांस्य युग', 'लौह युग'], a: 0 }
+    { q: 'गुप्त काल?', o: ['स्वर्ण युग', 'रजत युग', 'कांस्य युग', 'लौह युग'], a: 0 }
   ],
   polity: [
-    { q: 'भारत के राष्ट्रपति का कार्यकाल?', o: ['4 साल', '5 साल', '6 साल', '7 साल'], a: 1 },
-    { q: 'राज्यसभा के सदस्य?', o: ['250', '245', '238', '245'], a: 1 },
-    { q: 'लोकसभा के सदस्य?', o: ['545', '552', '550', '543'], a: 0 },
-    { q: 'मौलिक अधिकार कितने?', o: ['5', '6', '7', '8'], a: 1 },
-    { q: 'DPSP कहाँ से लिया?', o: ['USA', 'Ireland', 'UK', 'Canada'], a: 1 },
-    { q: 'संविधान सभा के अध्यक्ष?', o: ['अंबेडकर', 'राजेंद्र प्रसाद', 'नेहरू', 'पटेल'], a: 1 },
-    { q: 'सुप्रीम कोर्ट कहाँ?', o: ['मुंबई', 'नई दिल्ली', 'कोलकाता', 'चेन्नई'], a: 1 },
-    { q: 'राज्यपाल की नियुक्ति?', o: ['PM', 'राष्ट्रपति', 'CM', 'चुनाव'], a: 1 },
-    { q: 'संविधान में कुल अनुच्छेद?', o: ['395', '448', '400', '450'], a: 0 },
-    { q: 'संविधान में कुल अनुसूचियाँ?', o: ['8', '10', '12', '14'], a: 2 }
+    { q: 'राष्ट्रपति कार्यकाल?', o: ['4 साल', '5 साल', '6 साल', '7 साल'], a: 1 },
+    { q: 'राज्यसभा सदस्य?', o: ['250', '245', '238', '240'], a: 1 },
+    { q: 'लोकसभा सदस्य?', o: ['545', '552', '550', '543'], a: 0 },
+    { q: 'मौलिक अधिकार?', o: ['5', '6', '7', '8'], a: 1 },
+    { q: 'DPSP कहाँ से?', o: ['USA', 'Ireland', 'UK', 'Canada'], a: 1 },
+    { q: 'संविधान सभा अध्यक्ष?', o: ['अंबेडकर', 'राजेंद्र प्रसाद', 'नेहरू', 'पटेल'], a: 1 },
+    { q: 'सुप्रीम कोर्ट?', o: ['मुंबई', 'नई दिल्ली', 'कोलकाता', 'चेन्नई'], a: 1 },
+    { q: 'राज्यपाल नियुक्ति?', o: ['PM', 'राष्ट्रपति', 'CM', 'चुनाव'], a: 1 },
+    { q: 'अनुच्छेद?', o: ['395', '448', '400', '450'], a: 0 },
+    { q: 'अनुसूचियाँ?', o: ['8', '10', '12', '14'], a: 2 }
   ],
   geography: [
-    { q: 'भारत का सबसे बड़ा राज्य?', o: ['MP', 'राजस्थान', 'महाराष्ट्र', 'UP'], a: 1 },
-    { q: 'भारत का सबसे छोटा राज्य?', o: ['गोवा', 'सिक्किम', 'त्रिपुरा', 'मणिपुर'], a: 0 },
-    { q: 'भारत की सबसे लंबी नदी?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
+    { q: 'सबसे बड़ा राज्य?', o: ['MP', 'राजस्थान', 'महाराष्ट्र', 'UP'], a: 1 },
+    { q: 'सबसे छोटा राज्य?', o: ['गोवा', 'सिक्किम', 'त्रिपुरा', 'मणिपुर'], a: 0 },
+    { q: 'सबसे लंबी नदी?', o: ['यमुना', 'गंगा', 'गोदावरी', 'ब्रह्मपुत्र'], a: 1 },
     { q: 'सबसे ऊँचा पर्वत?', o: ['K2', 'एवरेस्ट', 'कंचनजंगा', 'मकालू'], a: 1 },
-    { q: 'भारत का सबसे बड़ा राज्य (जनसंख्या)?', o: ['महाराष्ट्र', 'UP', 'बिहार', 'WB'], a: 1 },
-    { q: 'भारत में कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 },
-    { q: 'भारत में कितने UT?', o: ['7', '8', '9', '10'], a: 1 },
     { q: 'सबसे बड़ा महासागर?', o: ['अटलांटिक', 'हिंद', 'प्रशांत', 'आर्कटिक'], a: 2 },
-    { q: 'भारत का सबसे बड़ा बंदरगाह?', o: ['मुंबई', 'जवाहरलाल', 'कोलकाता', 'चेन्नई'], a: 1 },
-    { q: 'भारत का क्षेत्रफल?', o: ['32 लाख km²', '33 लाख km²', '31 लाख km²', '34 लाख km²'], a: 0 }
+    { q: 'भारत में कितने राज्य?', o: ['28', '29', '27', '30'], a: 0 },
+    { q: 'UT?', o: ['7', '8', '9', '10'], a: 1 },
+    { q: 'क्षेत्रफल?', o: ['32 लाख km²', '33 लाख km²', '31 लाख km²', '34 लाख km²'], a: 0 },
+    { q: 'सबसे बड़ा बंदरगाह?', o: ['मुंबई', 'जवाहरलाल', 'कोलकाता', 'चेन्नई'], a: 1 },
+    { q: 'गंगा की लंबाई?', o: ['2525 km', '3000 km', '2000 km', '1500 km'], a: 0 }
   ],
   science: [
     { q: 'पानी का सूत्र?', o: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
-    { q: 'सूर्य का मुख्य गैस?', o: ['O2', 'H2', 'CO2', 'N2'], a: 1 },
+    { q: 'सूर्य का गैस?', o: ['O2', 'H2', 'CO2', 'N2'], a: 1 },
     { q: 'प्रकाश की गति?', o: ['3×10^8 m/s', '3×10^6', '3×10^10', '3×10^5'], a: 0 },
-    { q: 'मानव शरीर में हड्डियाँ?', o: ['200', '206', '210', '215'], a: 1 },
-    { q: 'सबसे कठोर पदार्थ?', o: ['लोहा', 'हीरा', 'सोना', 'तांबा'], a: 1 },
-    { q: 'बिजली का आविष्कार?', o: ['एडिसन', 'टेस्ला', 'फैराडे', 'न्यूटन'], a: 0 },
-    { q: 'गुरुत्वाकर्षण के नियम?', o: ['न्यूटन', 'आइंस्टीन', 'गैलीलियो', 'केप्लर'], a: 0 },
-    { q: 'DNA की खोज?', o: ['वाटसन-क्रिक', 'डार्विन', 'मेंडल', 'लुई'], a: 0 },
+    { q: 'हड्डियाँ?', o: ['200', '206', '210', '215'], a: 1 },
+    { q: 'कठोर पदार्थ?', o: ['लोहा', 'हीरा', 'सोना', 'तांबा'], a: 1 },
+    { q: 'बिजली आविष्कार?', o: ['एडिसन', 'टेस्ला', 'फैराडे', 'न्यूटन'], a: 0 },
+    { q: 'गुरुत्वाकर्षण?', o: ['न्यूटन', 'आइंस्टीन', 'गैलीलियो', 'केप्लर'], a: 0 },
+    { q: 'DNA?', o: ['वाटसन-क्रिक', 'डार्विन', 'मेंडल', 'लुई'], a: 0 },
     { q: 'सबसे बड़ा ग्रह?', o: ['शुक्र', 'बृहस्पति', 'शनि', 'मंगल'], a: 1 },
     { q: 'रक्त का रंग?', o: ['लाल', 'नीला', 'हरा', 'पीला'], a: 0 }
   ],
   maths: [
-    { q: '15% of 200 = ?', o: ['25', '30', '35', '40'], a: 1 },
-    { q: '√144 = ?', o: ['11', '12', '13', '14'], a: 1 },
-    { q: '2 + 3 × 4 = ?', o: ['20', '14', '24', '18'], a: 1 },
-    { q: '50 का 20% = ?', o: ['5', '10', '15', '20'], a: 1 },
-    { q: '7² + 3² = ?', o: ['49', '58', '56', '54'], a: 1 },
-    { q: '0.5 × 100 = ?', o: ['5', '50', '500', '0.5'], a: 1 },
-    { q: '100 ÷ 4 = ?', o: ['20', '25', '30', '35'], a: 1 },
-    { q: '3! = ?', o: ['3', '6', '9', '12'], a: 1 },
-    { q: 'sin 30° = ?', o: ['0.5', '1', '0', '√3/2'], a: 0 },
-    { q: 'π का मान?', o: ['3.14', '3.41', '2.14', '3.16'], a: 0 }
+    { q: '15% of 200?', o: ['25', '30', '35', '40'], a: 1 },
+    { q: '√144?', o: ['11', '12', '13', '14'], a: 1 },
+    { q: '2+3×4?', o: ['20', '14', '24', '18'], a: 1 },
+    { q: '50 का 20%?', o: ['5', '10', '15', '20'], a: 1 },
+    { q: '7²+3²?', o: ['49', '58', '56', '54'], a: 1 },
+    { q: '0.5×100?', o: ['5', '50', '500', '0.5'], a: 1 },
+    { q: '100÷4?', o: ['20', '25', '30', '35'], a: 1 },
+    { q: '3!?', o: ['3', '6', '9', '12'], a: 1 },
+    { q: 'sin30°?', o: ['0.5', '1', '0', '√3/2'], a: 0 },
+    { q: 'π?', o: ['3.14', '3.41', '2.14', '3.16'], a: 0 }
   ],
   reasoning: [
-    { q: '2, 4, 6, 8, ?', o: ['9', '10', '12', '11'], a: 1 },
-    { q: '1, 4, 9, 16, ?', o: ['20', '25', '30', '24'], a: 1 },
-    { q: 'A, C, E, G, ?', o: ['H', 'I', 'J', 'K'], a: 1 },
-    { q: '5, 10, 20, 40, ?', o: ['60', '80', '100', '50'], a: 1 },
-    { q: 'Z, X, V, T, ?', o: ['R', 'S', 'Q', 'P'], a: 0 },
-    { q: '1, 1, 2, 3, 5, ?', o: ['6', '7', '8', '9'], a: 2 },
-    { q: 'CAT का code 3-1-20 = ?', o: ['24', '26', '20', '22'], a: 0 },
-    { q: 'मंगल, बुध, बृहस्पति, ?', o: ['शुक्र', 'शनि', 'पृथ्वी', 'राहु'], a: 1 },
-    { q: '10, 20, 30, ?', o: ['35', '40', '45', '50'], a: 1 },
-    { q: '2, 6, 12, 20, ?', o: ['28', '30', '32', '34'], a: 1 }
+    { q: '2,4,6,8,?', o: ['9', '10', '12', '11'], a: 1 },
+    { q: '1,4,9,16,?', o: ['20', '25', '30', '24'], a: 1 },
+    { q: 'A,C,E,G,?', o: ['H', 'I', 'J', 'K'], a: 1 },
+    { q: '5,10,20,40,?', o: ['60', '80', '100', '50'], a: 1 },
+    { q: 'Z,X,V,T,?', o: ['R', 'S', 'Q', 'P'], a: 0 },
+    { q: '1,1,2,3,5,?', o: ['6', '7', '8', '9'], a: 2 },
+    { q: 'CAT=3-1-20?', o: ['24', '26', '20', '22'], a: 0 },
+    { q: 'मंगल,बुध,बृहस्पति,?', o: ['शुक्र', 'शनि', 'पृथ्वी', 'राहु'], a: 1 },
+    { q: '10,20,30,?', o: ['35', '40', '45', '50'], a: 1 },
+    { q: '2,6,12,20,?', o: ['28', '30', '32', '34'], a: 1 }
   ]
 };
 
-var state = {
-  questions: [],
-  answers: [],
-  current: 0,
-  timeLeft: 0,
-  timerInterval: null,
-  startTime: 0
-};
+var state = { questions: [], answers: [], current: 0, timeLeft: 0, timerInterval: null };
 
-function $(id){ return document.getElementById(id); }
+function $(id) { return document.getElementById(id); }
+function shuffle(arr) { return arr.slice().sort(function() { return Math.random() - 0.5; }); }
 
-$('startBtn').onclick = startQuiz;
-
-function shuffle(arr){ return arr.slice().sort(() => Math.random() - 0.5); }
-
-function startQuiz(){
+$('startBtn').onclick = function() {
   var cat = $('selCat').value;
   var mins = parseInt($('selTime').value);
   var numQ = parseInt($('selQ').value);
@@ -375,7 +233,6 @@ function startQuiz(){
   state.answers = new Array(state.questions.length).fill(null);
   state.current = 0;
   state.timeLeft = mins * 60;
-  state.startTime = Date.now();
   
   $('setupScreen').style.display = 'none';
   $('quizScreen').style.display = 'block';
@@ -383,31 +240,32 @@ function startQuiz(){
   
   state.timerInterval = setInterval(tick, 1000);
   renderQuestion();
-}
+};
 
-function tick(){
+function tick() {
   state.timeLeft--;
   var m = Math.floor(state.timeLeft / 60);
   var s = state.timeLeft % 60;
   $('timer').textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-  if (state.timeLeft <= 30) $('timer').classList.add('warning');
+  if (state.timeLeft <= 30) $('timer').style.color = '#e74c3c';
   if (state.timeLeft <= 0) { clearInterval(state.timerInterval); finishQuiz(); }
 }
 
-function renderQuestion(){
+function renderQuestion() {
   var q = state.questions[state.current];
-  $('qText').textContent = (state.current+1) + '. ' + q.q;
+  $('qText').textContent = (state.current + 1) + '. ' + q.q;
   $('qCounter').textContent = state.current + 1;
-  $('progBar').style.width = ((state.current+1) / state.questions.length * 100) + '%';
+  $('progBar').style.width = ((state.current + 1) / state.questions.length * 100) + '%';
   
-  var opts = '';
-  for (var i = 0; i < q.o.length; i++){
-    var cls = state.answers[state.current] === i ? 'qz-opt selected' : 'qz-opt';
-    opts += '<div class="' + cls + '" data-i="' + i + '">' + String.fromCharCode(65+i) + '. ' + q.o[i] + '</div>';
+  var html = '';
+  for (var i = 0; i < q.o.length; i++) {
+    var selected = state.answers[state.current] === i;
+    html += '<div class="opt" data-i="' + i + '" style="padding:0.9rem 1rem;margin:0.5rem 0;background:' + (selected ? '#0f3460' : '#f8fafc') + ';color:' + (selected ? '#fff' : '#333') + ';border-radius:10px;cursor:pointer;border:2px solid ' + (selected ? '#0f3460' : 'transparent') + ';font-size:0.95rem">' + String.fromCharCode(65+i) + '. ' + q.o[i] + '</div>';
   }
-  $('options').innerHTML = opts;
-  document.querySelectorAll('.qz-opt').forEach(function(el){
-    el.onclick = function(){
+  $('options').innerHTML = html;
+  
+  document.querySelectorAll('.opt').forEach(function(el) {
+    el.onclick = function() {
       state.answers[state.current] = parseInt(this.dataset.i);
       renderQuestion();
     };
@@ -418,104 +276,63 @@ function renderQuestion(){
   $('submitBtn').style.display = state.current === state.questions.length - 1 ? 'block' : 'none';
 }
 
-$('prevBtn').onclick = function(){ if (state.current > 0) { state.current--; renderQuestion(); } };
-$('nextBtn').onclick = function(){ if (state.current < state.questions.length - 1) { state.current++; renderQuestion(); } };
-$('skipBtn').onclick = function(){ if (state.current < state.questions.length - 1) { state.current++; renderQuestion(); } };
-$('submitBtn').onclick = function(){ if (confirm('Quiz submit करें?')) { clearInterval(state.timerInterval); finishQuiz(); } };
+$('prevBtn').onclick = function() { if (state.current > 0) { state.current--; renderQuestion(); } };
+$('nextBtn').onclick = function() { if (state.current < state.questions.length - 1) { state.current++; renderQuestion(); } };
+$('skipBtn').onclick = function() { if (state.current < state.questions.length - 1) { state.current++; renderQuestion(); } };
+$('submitBtn').onclick = function() { if (confirm('Quiz submit करें?')) { clearInterval(state.timerInterval); finishQuiz(); } };
 
-function finishQuiz(){
+function finishQuiz() {
   clearInterval(state.timerInterval);
   $('quizScreen').style.display = 'none';
   $('resultScreen').style.display = 'block';
   
   var correct = 0, wrong = 0, skip = 0;
-  for (var i = 0; i < state.questions.length; i++){
+  for (var i = 0; i < state.questions.length; i++) {
     if (state.answers[i] === null) skip++;
     else if (state.answers[i] === state.questions[i].a) correct++;
     else wrong++;
   }
   
-  var total = state.questions.length;
-  var percent = Math.round((correct / total) * 100);
-  
-  $('scoreCircle').style.setProperty('--p', percent + '%');
+  var percent = Math.round((correct / state.questions.length) * 100);
   $('scorePercent').textContent = percent + '%';
   $('correctCount').textContent = correct;
   $('wrongCount').textContent = wrong;
   $('skipCount').textContent = skip;
   
-  var msg = percent >= 80 ? '🏆 शानदार! आप बहुत अच्छा कर रहे हैं!' :
-            percent >= 60 ? '👍 अच्छा प्रदर्शन! थोड़ी और मेहनत करें।' :
-            percent >= 40 ? 'ठीक है, लेकिन practice जरूरी है।' :
-            '💪 चिंता न करें, practice से सुधर जाएगा।';
+  var msg = percent >= 80 ? '🏆 शानदार! बहुत अच्छा!' : percent >= 60 ? '👍 अच्छा प्रदर्शन!' : percent >= 40 ? '📚 Practice जरूरी है।' : '💪 Practice से सुधर जाएगा।';
   $('scoreMsg').textContent = msg;
   
-  saveScore(percent, correct, total);
-  renderLeaderboard();
+  // Save score
+  try {
+    var scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
+    scores.push({ percent: percent, date: new Date().toISOString() });
+    scores.sort(function(a, b) { return b.percent - a.percent; });
+    localStorage.setItem('quizScores', JSON.stringify(scores.slice(0, 5)));
+  } catch(e) {}
 }
 
-function saveScore(percent, correct, total){
-  var scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
-  scores.push({ percent: percent, correct: correct, total: total, date: new Date().toISOString() });
-  scores.sort(function(a,b){ return b.percent - a.percent; });
-  scores = scores.slice(0, 5);
-  localStorage.setItem('quizScores', JSON.stringify(scores));
-}
-
-function renderLeaderboard(){
-  var scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
-  var c = $('lbList');
-  if (!scores.length) { c.innerHTML = '<p style="color:#888">कोई record नहीं</p>'; return; }
-  var html = '';
-  for (var i = 0; i < scores.length; i++){
-    var s = scores[i];
-    var d = new Date(s.date).toLocaleDateString('hi-IN');
-    html += '<div class="lb-row"><div class="rank">' + (i+1) + '</div><div class="info">' + d + '</div><div class="sc">' + s.percent + '%</div></div>';
-  }
-  c.innerHTML = html;
-}
-
-function showReview(){
+$('reviewBtn').onclick = function() {
   var sec = $('reviewSection');
-  var html = '<h3 style="color:#0f3460;margin-bottom:1rem">📋 Answer Review</h3>';
-  for (var i = 0; i < state.questions.length; i++){
+  var html = '<h2 style="color:#0f3460;margin-bottom:1rem">📋 Answer Review</h2>';
+  for (var i = 0; i < state.questions.length; i++) {
     var q = state.questions[i];
     var ua = state.answers[i];
-    var cls = ua === null ? 'skip' : (ua === q.a ? 'correct' : 'wrong');
     var badge = ua === null ? '⏭️ छोड़ा' : (ua === q.a ? '✅ सही' : '❌ गलत');
-    html += '<div class="qz-q" style="margin-bottom:0.8rem">';
-    html += '<h2 style="font-size:1rem">Q' + (i+1) + '. ' + q.q + ' ' + badge + '</h2>';
-    for (var j = 0; j < q.o.length; j++){
-      var ocls = 'qz-opt';
-      if (j === q.a) ocls += ' correct';
-      else if (j === ua) ocls += ' wrong';
-      html += '<div class="' + ocls + '">' + String.fromCharCode(65+j) + '. ' + q.o[j] + '</div>';
+    var color = ua === null ? '#f39c12' : (ua === q.a ? '#27ae60' : '#e74c3c');
+    html += '<div style="background:#fff;padding:1rem;border-radius:12px;margin-bottom:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)">';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><strong style="color:#0f3460">Q' + (i+1) + '</strong><span style="color:' + color + ';font-weight:600;font-size:0.85rem">' + badge + '</span></div>';
+    html += '<p style="margin-bottom:0.5rem;font-size:0.95rem">' + q.q + '</p>';
+    for (var j = 0; j < q.o.length; j++) {
+      var oColor = j === q.a ? '#d4edda' : (j === ua ? '#f8d7da' : '#f8fafc');
+      var oBorder = j === q.a ? '#27ae60' : (j === ua ? '#e74c3c' : 'transparent');
+      html += '<div style="padding:0.5rem 0.8rem;margin:0.3rem 0;background:' + oColor + ';border:2px solid ' + oBorder + ';border-radius:8px;font-size:0.88rem">' + String.fromCharCode(65+j) + '. ' + q.o[j] + '</div>';
     }
     html += '</div>';
   }
   sec.innerHTML = html;
   sec.style.display = 'block';
   sec.scrollIntoView({ behavior: 'smooth' });
-}
-</script>
-<script src="assets/js/login-state.js"></script>
-<script src="assets/js/full-menu.js"></script>
-<script src="assets/js/menu-toggle.js"></script>
-<script src="assets/js/pdf-watermark.js"></script>
-<script src="assets/js/mobile-header-fix.js"></script>
-<script src="assets/js/force-reload.js"></script>
-<!-- SW-UNREGISTER -->
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(regs) {
-    regs.forEach(function(reg) { reg.unregister(); });
-  });
-  if ('caches' in window) {
-    caches.keys().then(function(names) {
-      names.forEach(function(name) { caches.delete(name); });
-    });
-  }
-}
+};
 </script>
 </body>
 </html>
