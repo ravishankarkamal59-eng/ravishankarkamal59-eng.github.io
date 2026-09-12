@@ -1,15 +1,7 @@
+// ===== Main JS (clean version - no menu toggle conflict) =====
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu
-  const toggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-    });
-  }
 
-  // Top button
+  // ===== Top button =====
   const topBtn = document.getElementById('topBtn');
   if (topBtn) {
     window.addEventListener('scroll', () => {
@@ -18,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Search exams
+  // ===== Search exams =====
   const searchInput = document.getElementById('examSearch');
   if (searchInput) {
     const cards = document.querySelectorAll('.exam-card');
@@ -29,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+  
+  // Note: Menu toggle अब सिर्फ menu-toggle.js handle करेगा
 });
 
-// Quiz Functionality
+// ===== Quiz Functionality (legacy) =====
 function initQuiz(questions) {
   const container = document.getElementById('quizContainer');
   if (!container) return;

@@ -1708,3 +1708,55 @@ main {
     color: #ffd700 !important;
   }
 }
+
+/* ============================================ */
+/* CLOSE BUTTON - Click करने योग्य */
+/* ============================================ */
+body.menu-open #menuCloseBtn {
+  display: flex !important;
+}
+
+#menuCloseBtn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 45px;
+  height: 45px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  font-weight: 300;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+#menuCloseBtn:hover {
+  background: #c73650;
+  transform: scale(1.1);
+}
+
+#menuCloseBtn:active {
+  transform: scale(0.95);
+}
+
+/* Remove old pseudo-element approach */
+body.menu-open::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Desktop nav-links when active */
+@media (min-width: 769px) {
+  .nav-links.active {
+    display: grid !important;
+  }
+}
