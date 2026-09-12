@@ -678,13 +678,7 @@
   },
   "agta": {
     "name": "AGTA (Agriculture Technical Assistant)",
-    "notes": [
-      {
-        "title": "UPAGTA",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/agta/notes/1789145661786-agta-100-question-1.pdf",
-        "type": "PDF"
-      }
-    ],
+    "notes": [],
     "pyq": [],
     "syllabus": [],
     "videos": [],
