@@ -2731,3 +2731,57 @@ body > button[title="बुकमार्क करें"] {
     max-width: 110px !important;
   }
 }
+
+/* ============================================ */
+/* LOGO SIZE INCREASE - सिर्फ logo बड़ा */
+/* ============================================ */
+
+/* Desktop */
+.header-logo-img,
+header nav > a:first-child img,
+header nav > a img {
+  height: 60px !important;
+  max-width: 75px !important;
+  width: auto !important;
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .header-logo-img,
+  header nav > a:first-child img,
+  header nav > a img {
+    height: 58px !important;
+    max-width: 72px !important;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  html body .header-logo-img,
+  html body header nav > a:first-child img,
+  html body header nav > a img {
+    height: 60px !important;
+    max-width: 72px !important;
+    width: auto !important;
+  }
+  
+  /* Logo link container भी बड़ा */
+  html body header nav > a:first-child {
+    max-width: 75px !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 400px) {
+  html body .header-logo-img,
+  html body header nav > a:first-child img,
+  html body header nav > a img {
+    height: 55px !important;
+    max-width: 65px !important;
+  }
+  
+  html body header nav > a:first-child {
+    max-width: 68px !important;
+  }
+}
