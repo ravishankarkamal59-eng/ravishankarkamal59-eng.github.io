@@ -972,3 +972,206 @@ h1, h2, h3, h4, p, a, span {
     border-bottom: 1px solid rgba(255,255,255,0.08) !important;
   }
 }
+
+/* ============================================ */
+/* CRITICAL FIX: Dark mode और buttons की जगह */
+/* ============================================ */
+
+/* Mobile पर सभी floating buttons LEFT side पर shift करें */
+@media (max-width: 768px) {
+  
+  /* Dark mode - LEFT side, header के नीचे */
+  .dark-toggle {
+    position: fixed !important;
+    top: 110px !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.1rem !important;
+    z-index: 85 !important;
+    background: #0f3460 !important;
+    color: #fff !important;
+    border: 2px solid rgba(255,255,255,0.3) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.3) !important;
+  }
+  
+  /* Language toggle - LEFT side */
+  #langToggle {
+    position: fixed !important;
+    top: 160px !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 42px !important;
+    height: 42px !important;
+    z-index: 85 !important;
+    font-size: 0.72rem !important;
+    background: #0f3460 !important;
+    color: #fff !important;
+    border: 2px solid rgba(255,255,255,0.3) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.3) !important;
+  }
+  
+  /* Search button mobile पर completely hide */
+  #searchBtn {
+    display: none !important;
+  }
+  
+  /* Font controls hide */
+  body > div[style*="top:135px"],
+  body > div[style*="top: 135px"] {
+    display: none !important;
+  }
+  
+  /* Print button hide */
+  body > button[title="प्रिंट करें"] {
+    display: none !important;
+  }
+  
+  /* Bookmark button hide */
+  body > button[title="बुकमार्क करें"] {
+    display: none !important;
+  }
+  
+  /* Top button - bottom right */
+  .top-btn {
+    bottom: 20px !important;
+    right: 15px !important;
+    left: auto !important;
+    width: 44px !important;
+    height: 44px !important;
+    z-index: 80 !important;
+  }
+  
+  /* WhatsApp float - bottom left */
+  .whatsapp-float {
+    bottom: 20px !important;
+    left: 15px !important;
+    right: auto !important;
+    width: 50px !important;
+    height: 50px !important;
+    z-index: 80 !important;
+  }
+  
+  /* Header - 3 columns साफ */
+  header {
+    padding: 0.5rem 0.7rem !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+  }
+  
+  header nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.4rem !important;
+    flex-wrap: nowrap !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  /* Logo */
+  .logo {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    order: 1 !important;
+  }
+  
+  /* User Box - beech mein */
+  .user-box {
+    order: 2 !important;
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.2rem !important;
+    padding: 0.2rem 0.5rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    border-radius: 14px !important;
+    font-size: 0.72rem !important;
+    max-width: 120px !important;
+  }
+  
+  .user-box a {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 65px !important;
+  }
+  
+  .user-box .btn-small {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.62rem !important;
+    background: #e74c3c !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Menu toggle - सबसे दाईं तरफ */
+  .menu-toggle {
+    order: 3 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.5rem !important;
+    background: rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    z-index: 101 !important;
+    position: relative !important;
+  }
+  
+  /* nav-links dropdown */
+  .nav-links {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #0f3460 !important;
+    flex-direction: column !important;
+    padding: 0.4rem 0 !important;
+    max-height: 72vh !important;
+    overflow-y: auto !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+    z-index: 99 !important;
+    border-radius: 0 0 14px 14px !important;
+  }
+  
+  .nav-links li {
+    width: 100% !important;
+    list-style: none !important;
+  }
+  
+  .nav-links a {
+    display: block !important;
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.92rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+  
+  .nav-links a:active {
+    background: rgba(255,255,255,0.15) !important;
+  }
+}
