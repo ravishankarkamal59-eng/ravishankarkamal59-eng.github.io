@@ -646,7 +646,14 @@
       }
     ],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "📘 UPPCS Prelims GS Paper 1 - Complete Syllabus",
+        "link": "uppcs-prelims-gs1-syllabus.html",
+        "type": "SyllabusPage",
+        "description": "हिंदी + English | पूरा विस्तृत सिलेबस"
+      }
+    ],
     "videos": [],
     "books": []
   },
@@ -654,7 +661,14 @@
     "name": "UPPCS Prelims CSAT",
     "notes": [],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "📗 UPPCS Prelims CSAT - Complete Syllabus",
+        "link": "uppcs-prelims-csat-syllabus.html",
+        "type": "SyllabusPage",
+        "description": "हिंदी + English | पूरा विस्तृत सिलेबस"
+      }
+    ],
     "videos": [],
     "books": []
   },

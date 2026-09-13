@@ -57,6 +57,14 @@
               html += '<div style="font-size:0.72rem;color:#999;margin-top:0.15rem">📖 पढ़ें | ⬇️ Download</div>';
               html += '</div>';
               html += '<a href="' + pdfViewerUrl + '" style="background:#e94560;color:#fff;padding:0.4rem 0.8rem;border-radius:20px;font-size:0.78rem;font-weight:600;text-decoration:none;flex-shrink:0;white-space:nowrap">📖 खोलें</a>';
+            } else if (item.type === 'SyllabusPage') {
+              // Syllabus Page - सीधा HTML page खोलें
+              html += '<span style="font-size:1rem">📋</span>';
+              html += '<div style="flex:1;min-width:0">';
+              html += '<div style="font-size:0.88rem;color:#0f3460;font-weight:600;line-height:1.3">' + (item.title || 'Syllabus Page') + '</div>';
+              html += '<div style="font-size:0.72rem;color:#2980b9;margin-top:0.2rem;font-weight:600">📋 ' + (item.description || 'पूरा सिलेबस') + '</div>';
+              html += '</div>';
+              html += '<a href="' + item.link + '" style="background:linear-gradient(135deg,#1a5276,#2980b9);color:#fff;padding:0.5rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;flex-shrink:0;white-space:nowrap;box-shadow:0 2px 8px rgba(41,128,185,0.3)">📖 देखें + PDF</a>';
             } else if (item.type === 'NotesPage') {
               // Notes Page - सीधा HTML page खोलें
               html += '<span style="font-size:1rem">📘</span>';
