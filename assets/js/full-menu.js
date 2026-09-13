@@ -3,6 +3,12 @@
   'use strict';
 
   var MENU_SECTIONS = [
+    { icon: '🤖', title: 'AI Assistant', highlight: true, items: [
+      { href: 'ai-chat.html', label: '🤖 AI Chat - तुरंत सवाल पूछें' },
+      { href: 'ai-chat.html#ask', label: '💬 AI से पूछें' },
+      { href: 'ai-chat.html#notes', label: '📝 AI Notes Generator' },
+      { href: 'ai-chat.html#quiz', label: '❓ AI Quiz' }
+    ]},
     { icon: '🏠', title: 'मुख्य', items: [
       { href: 'index.html', label: '🏠 होम' },
       { href: 'exams.html', label: '📚 सभी परीक्षाएँ' },
