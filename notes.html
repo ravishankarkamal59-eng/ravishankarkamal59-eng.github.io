@@ -346,7 +346,7 @@ function renderCard(c, pdfs) {
   
   if (pdfs.length === 0) {
     html += '<div class="empty-note">📌 जल्द ही PDF upload होंगे</div>';
-    var printUrl = 'agri-content-soil.html';  // Default print page
+    var printUrl = c.key + '.html';  // हर subject का अपना page
           if (c.key.indexOf('history') > -1) printUrl = 'notes-history.html';
           if (c.key.indexOf('geography') > -1) printUrl = 'notes-geography.html';
           if (c.key.indexOf('polity') > -1) printUrl = 'notes-polity.html';
