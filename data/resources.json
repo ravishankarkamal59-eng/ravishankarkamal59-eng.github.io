@@ -713,7 +713,14 @@
       }
     ],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "📘 UPPCS Mains GS Paper 1 - Complete Syllabus",
+        "link": "uppcs-mains-gs1-syllabus.html",
+        "type": "SyllabusPage",
+        "description": "हिंदी + English | विस्तृत टॉपिक्स"
+      }
+    ],
     "videos": [],
     "books": []
   },
