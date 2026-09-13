@@ -1053,7 +1053,13 @@
   },
   "agriculture": {
     "name": "Agriculture Main Page",
-    "notes": [],
+    "notes": [
+      {
+        "title": "Class 11 Agriculture - Crop Production Complete Notes",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agriculture/notes/1789292450828-class-11-agriculture-crop-production-complete-notes.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
