@@ -645,7 +645,14 @@
         "description": "हिंदी + English | पूरा सिलेबस"
       }
     ],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "📄 UPPCS Prelims GS Paper 1 - All PYQ (2015-2025)",
+        "link": "uppcs-prelims-gs1-pyq.html",
+        "type": "PYQPage",
+        "description": "10 साल के प्रश्न पत्र + Solutions"
+      }
+    ],
     "syllabus": [
       {
         "title": "📘 UPPCS Prelims GS Paper 1 - Complete Syllabus",
@@ -660,7 +667,14 @@
   "uppcs-prelims-csat": {
     "name": "UPPCS Prelims CSAT",
     "notes": [],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "📄 UPPCS Prelims CSAT - All PYQ (2015-2025)",
+        "link": "uppcs-prelims-csat-pyq.html",
+        "type": "PYQPage",
+        "description": "10 साल के प्रश्न पत्र + Solutions"
+      }
+    ],
     "syllabus": [
       {
         "title": "📗 UPPCS Prelims CSAT - Complete Syllabus",
