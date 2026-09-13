@@ -704,7 +704,14 @@
   },
   "uppcs-mains-gs1": {
     "name": "UPPCS Mains GS Paper 1",
-    "notes": [],
+    "notes": [
+      {
+        "title": "📘 UPPCS Mains GS Paper 1 - Complete Notes",
+        "link": "uppcs-mains-gs1-notes.html",
+        "type": "NotesPage",
+        "description": "हिंदी + English | कला, संस्कृति, इतिहास, भूगोल"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
