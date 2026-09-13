@@ -346,7 +346,15 @@ function renderCard(c, pdfs) {
   
   if (pdfs.length === 0) {
     html += '<div class="empty-note">📌 जल्द ही PDF upload होंगे</div>';
-    html += '<a href="https://wa.me/918931050393?text=' + encodeURIComponent(c.title + ' PDF चाहिए') + '" class="dl-btn" style="background:#f39c12;margin-top:0.7rem" target="_blank">💬 WhatsApp पर माँगें</a>';
+    var printUrl = 'agri-content-soil.html';  // Default print page
+          if (c.key.indexOf('history') > -1) printUrl = 'notes-history.html';
+          if (c.key.indexOf('geography') > -1) printUrl = 'notes-geography.html';
+          if (c.key.indexOf('polity') > -1) printUrl = 'notes-polity.html';
+          if (c.key.indexOf('economics') > -1) printUrl = 'notes-economics.html';
+          if (c.key.indexOf('science') > -1) printUrl = 'notes-science.html';
+          if (c.key.indexOf('environment') > -1) printUrl = 'notes-environment.html';
+          html += '<a href="' + printUrl + '" class="dl-btn" style="background:#27ae60;margin-top:0.7rem">📖 अभी पढ़ें और PDF बनाएँ</a>';
+          html += '<a href="https://wa.me/918931050393?text=' + encodeURIComponent(c.title + ' PDF चाहिए') + '" class="dl-btn" style="background:#f39c12;margin-top:0.3rem;display:block" target="_blank">💬 WhatsApp पर माँगें</a>';
   } else {
     html += '<span class="count">📄 ' + pdfs.length + ' PDF उपलब्ध</span>';
     html += '<ul class="pdf-list" style="">';
