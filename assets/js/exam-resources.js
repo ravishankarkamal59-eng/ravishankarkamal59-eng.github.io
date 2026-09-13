@@ -39,7 +39,7 @@
         if (items.length === 0) {
           html += '<p style="padding:1.5rem 1rem;text-align:center;color:#999;font-size:0.88rem">जल्द ही अपडेट होंगे...</p>';
         } else {
-          html += '<ul style="list-style:none;padding:0.5rem 0;margin:0;max-height:400px;overflow-y:auto">';
+          html += '<ul style="list-style:none;padding:0.5rem 0;margin:0;">';
           items.forEach(function(item, idx) {
             var isPdf = (item.type === 'PDF' || !item.type);
             var isVideo = (item.type === 'Video' || s.key === 'videos');

@@ -349,7 +349,7 @@ function renderCard(c, pdfs) {
     html += '<a href="https://wa.me/918931050393?text=' + encodeURIComponent(c.title + ' PDF चाहिए') + '" class="dl-btn" style="background:#f39c12;margin-top:0.7rem" target="_blank">💬 WhatsApp पर माँगें</a>';
   } else {
     html += '<span class="count">📄 ' + pdfs.length + ' PDF उपलब्ध</span>';
-    html += '<ul class="pdf-list" style="max-height:300px;overflow-y:auto">';
+    html += '<ul class="pdf-list" style="">';
     pdfs.forEach(function(p) {
       var pdfUrl = p.link || '';
       var title = (p.title || 'Notes PDF').replace(/"/g, '&quot;');
