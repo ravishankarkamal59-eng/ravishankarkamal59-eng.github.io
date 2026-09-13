@@ -269,21 +269,24 @@
     var currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
     var html = '';
-    html += '<style>';
-    html += '.nav-links .acc-wrap{max-height:calc(100vh - 90px);overflow-y:auto;padding:0.5rem 0;width:100%}';
-    html += '.nav-links .acc-cat{border-bottom:1px solid #eef2f7}';
-    html += '.nav-links .acc-btn{width:100%;background:none;border:none;text-align:left;padding:0.85rem 1.2rem;font-size:0.95rem;font-weight:600;color:#0f3460;cursor:pointer;display:flex;align-items:center;gap:0.6rem;font-family:inherit}';
-    html += '.nav-links .acc-btn:hover{background:#f5f7fa}';
-    html += '.nav-links .acc-btn .arr{margin-left:auto;transition:transform 0.25s;font-size:0.8rem;color:#999}';
-    html += '.nav-links .acc-cat.open .acc-btn .arr{transform:rotate(90deg)}';
-    html += '.nav-links .acc-btn .ic{font-size:1.15rem}';
-    html += '.nav-links .acc-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease;background:#f8fafc}';
-    html += '.nav-links .acc-cat.open .acc-body{max-height:1500px}';
-    html += '.nav-links .acc-body a{display:block;padding:0.6rem 1.2rem 0.6rem 3rem;font-size:0.86rem;color:#333;text-decoration:none;border-bottom:1px solid #eef2f7}';
-    html += '.nav-links .acc-body a:hover{background:#fff;color:#e94560;padding-left:3.2rem}';
-    html += '.nav-links .acc-body a.active{color:#e94560;font-weight:600;background:#fff;border-left:3px solid #e94560}';
-    html += '.nav-links .acc-search{padding:0.7rem 1.2rem;border-bottom:2px solid #e94560}';
-    html += '.nav-links .acc-search input{width:100%;padding:0.6rem;border:1px solid #ddd;border-radius:20px;font-size:0.9rem;font-family:inherit}';
+        html += '<style>';
+    html += '.nav-links .acc-wrap{max-height:calc(100vh - 90px);overflow-y:auto;padding:0.5rem 0;width:100%;background:#0f3460}';
+    html += '.nav-links .acc-cat{border-bottom:1px solid rgba(255,255,255,0.1)}';
+    html += '.nav-links .acc-btn{width:100%;background:transparent;border:none;text-align:left;padding:0.9rem 1.2rem;font-size:0.95rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.7rem;font-family:inherit}';
+    html += '.nav-links .acc-btn:hover{background:rgba(255,255,255,0.06)}';
+    html += '.nav-links .acc-btn .arr{margin-left:auto;transition:transform 0.25s;font-size:0.75rem;color:#e94560}';
+    html += '.nav-links .acc-cat.open .acc-btn .arr{transform:rotate(90deg);color:#e94560}';
+    html += '.nav-links .acc-btn .ic{font-size:1.2rem;line-height:1}';
+    html += '.nav-links .acc-btn .txt{flex:1;color:#ffffff}';
+    html += '.nav-links .acc-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease;background:rgba(0,0,0,0.15)}';
+    html += '.nav-links .acc-cat.open .acc-body{max-height:2000px}';
+    html += '.nav-links .acc-body a{display:block;padding:0.7rem 1.2rem 0.7rem 3rem;font-size:0.88rem;color:#d1d9e6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.15s}';
+    html += '.nav-links .acc-body a:hover{background:rgba(233,69,96,0.15);color:#ffffff;padding-left:3.2rem}';
+    html += '.nav-links .acc-body a.active{color:#ffffff;font-weight:600;background:rgba(233,69,96,0.25);border-left:3px solid #e94560}';
+    html += '.nav-links .acc-search{padding:0.7rem 1rem;border-bottom:2px solid #e94560;background:#0f3460}';
+    html += '.nav-links .acc-search input{width:100%;padding:0.65rem 1rem;border:1px solid rgba(255,255,255,0.2);border-radius:20px;font-size:0.9rem;font-family:inherit;background:rgba(255,255,255,0.1);color:#fff;outline:none}';
+    html += '.nav-links .acc-search input::placeholder{color:rgba(255,255,255,0.6)}';
+    html += '.nav-links .acc-search input:focus{border-color:#e94560;background:rgba(255,255,255,0.15)}';
     html += '@media(min-width:769px){.nav-links .acc-wrap{max-height:80vh}}';
     html += '</style>';
 
@@ -296,7 +299,7 @@
       html += '<div class="acc-cat' + (hasActive ? ' open' : '') + '" id="' + secId + '">';
       html += '<button class="acc-btn" type="button" aria-expanded="' + (hasActive ? 'true' : 'false') + '">';
       html += '<span class="ic">' + section.icon + '</span>';
-      html += '<span>' + section.title.replace(/^[^\s]+\s/, '') + '</span>';
+      html += '<span class="txt">' + section.title.replace(section.icon, '').trim() + '</span>';
       html += '<span class="arr">▶</span>';
       html += '</button>';
       html += '<div class="acc-body">';
