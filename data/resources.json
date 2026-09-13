@@ -631,7 +631,20 @@
   },
   "uppcs-prelims-gs": {
     "name": "UPPCS Prelims GS",
-    "notes": [],
+    "notes": [
+      {
+        "title": "📜 भारतीय इतिहास - Complete Notes (विस्तृत)",
+        "link": "indian-history-notes.html",
+        "type": "NotesPage",
+        "description": "प्राचीन + मध्यकाल + आधुनिक | हिंदी + English"
+      },
+      {
+        "title": "📘 UPPCS Prelims GS Paper 1 - Complete Notes",
+        "link": "uppcs-prelims-gs-notes.html",
+        "type": "NotesPage",
+        "description": "हिंदी + English | पूरा सिलेबस"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
