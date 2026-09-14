@@ -411,11 +411,6 @@
         "title": "ps01-1st-Western Political Thought.pdf Hindi",
         "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789236804247-ma-ps01-1st-western-political-thought.pdf-hindi-medium-.pdf",
         "type": "PDF"
-      },
-      {
-        "title": "Abul Fazal theory of state.pdf",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789407973506-abul-fazal-theory-of-state.pdf",
-        "type": "PDF"
       }
     ],
     "pyq": [],
@@ -520,7 +515,13 @@
   },
   "net-polity": {
     "name": "UGC NET राजनीति शास्त्र",
-    "notes": [],
+    "notes": [
+      {
+        "title": "The_Ravishankar_Insights_UGC_NET_JRF_Paper_I_II_Political_Science_Bilingual_COMPLETE",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/net-polity/notes/1789408080420-the-ravishankar-insights-ugc-net-jrf-paper-i-ii-political-science-bilingual-complete.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
