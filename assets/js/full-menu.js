@@ -1,12 +1,12 @@
-// ===== Full Menu Builder - Accordion Version (Inline Styles for max compatibility) =====
+// ===== Full Menu Builder - Compact Accordion (v5) =====
 (function() {
   'use strict';
 
   var MENU_SECTIONS = [
     { icon: '🤖', title: 'AI Assistant', highlight: true, items: [
-      { href: 'ai-chat.html', label: '🤖 AI Chat - तुरंत सवाल पूछें' },
+      { href: 'ai-chat.html', label: '🤖 AI Chat' },
       { href: 'ai-chat.html#ask', label: '💬 AI से पूछें' },
-      { href: 'ai-chat.html#notes', label: '📝 AI Notes Generator' },
+      { href: 'ai-chat.html#notes', label: '📝 AI Notes' },
       { href: 'ai-chat.html#quiz', label: '❓ AI Quiz' }
     ]},
     { icon: '🏠', title: 'मुख्य', items: [
@@ -43,9 +43,7 @@
       { href: 'uppcs-mains-gs5.html', label: 'GS Paper 5' },
       { href: 'uppcs-mains-gs6.html', label: 'GS Paper 6' },
       { href: 'uppcs-mains-essay.html', label: 'निबंध' },
-      { href: 'uppcs-mains-hindi.html', label: 'हिंदी' },
-      { href: 'uppcs-mains-gs1-syllabus.html', label: 'GS1 Syllabus' },
-      { href: 'uppcs-mains-gs1-notes.html', label: 'GS1 Notes' }
+      { href: 'uppcs-mains-hindi.html', label: 'हिंदी' }
     ]},
     { icon: '📗', title: 'UPPCS Prelims', items: [
       { href: 'uppcs-prelims-gs.html', label: 'GS Paper 1' },
@@ -61,9 +59,7 @@
       { href: 'upsc-mains-gs2.html', label: 'GS Paper 2' },
       { href: 'upsc-mains-gs3.html', label: 'GS Paper 3' },
       { href: 'upsc-mains-gs4.html', label: 'GS Paper 4' },
-      { href: 'upsc-mains-essay.html', label: 'निबंध' },
-      { href: 'upsc-prelims-gs1.html', label: 'UPSC Prelims GS' },
-      { href: 'upsc-prelims-csat.html', label: 'UPSC Prelims CSAT' }
+      { href: 'upsc-mains-essay.html', label: 'निबंध' }
     ]},
     { icon: '🎓', title: 'UGC NET / JRF', items: [
       { href: 'ugc-net.html', label: 'UGC NET मुख्य' },
@@ -91,10 +87,6 @@
       { href: 'ba-sociology.html', label: 'BA समाजशास्त्र' },
       { href: 'ba-psychology.html', label: 'BA मनोविज्ञान' },
       { href: 'ba-geography.html', label: 'BA भूगोल' },
-      { href: 'ba-sanskrit.html', label: 'BA संस्कृत' },
-      { href: 'ba-urdu.html', label: 'BA उर्दू' },
-      { href: 'ba-finearts.html', label: 'BA फाइन आर्ट्स' },
-      { href: 'ba-journalism.html', label: 'BA पत्रकारिता' },
       { href: 'ma-hindi.html', label: 'MA हिंदी' },
       { href: 'ma-english.html', label: 'MA English' },
       { href: 'ma-history.html', label: 'MA इतिहास' },
@@ -116,31 +108,7 @@
       { href: 'bsc-horticulture.html', label: 'BSc Horticulture' },
       { href: 'bsc-forestry.html', label: 'BSc Forestry' },
       { href: 'bsc-plant-pathology.html', label: 'BSc Plant Pathology' },
-      { href: 'bsc-entomology.html', label: 'BSc Entomology' },
-      { href: 'bsc-soil-science.html', label: 'BSc Soil Science' },
-      { href: 'bsc-microbiology.html', label: 'BSc Microbiology' },
-      { href: 'bsc-biochemistry.html', label: 'BSc Biochemistry' },
-      { href: 'bsc-statistics.html', label: 'BSc Statistics' },
-      { href: 'bsc-agri-economics.html', label: 'BSc Agri Economics' },
-      { href: 'bsc-extension.html', label: 'BSc Extension' },
-      { href: 'bsc-plant-breeding.html', label: 'BSc Plant Breeding' },
-      { href: 'bsc-plant-physiology.html', label: 'BSc Plant Physiology' },
-      { href: 'bsc-animal-husbandry.html', label: 'BSc Animal Husbandry' },
-      { href: 'bsc-agri-engineering.html', label: 'BSc Agri Engineering' },
-      { href: 'agri-11-crop.html', label: 'Class 11 - Crop' },
-      { href: 'agri-11-soil.html', label: 'Class 11 - Soil' },
-      { href: 'agri-11-biology.html', label: 'Class 11 - Biology' },
-      { href: 'agri-11-animal.html', label: 'Class 11 - Animal' },
-      { href: 'agri-11-farm.html', label: 'Class 11 - Farm' },
-      { href: 'agri-11-horticulture.html', label: 'Class 11 - Horticulture' },
-      { href: 'agri-11-rural.html', label: 'Class 11 - Rural' },
-      { href: 'agri-12-crop.html', label: 'Class 12 - Crop' },
-      { href: 'agri-12-soil.html', label: 'Class 12 - Soil' },
-      { href: 'agri-12-genetics.html', label: 'Class 12 - Genetics' },
-      { href: 'agri-12-animal.html', label: 'Class 12 - Animal' },
-      { href: 'agri-12-economics.html', label: 'Class 12 - Economics' },
-      { href: 'agri-12-extension.html', label: 'Class 12 - Extension' },
-      { href: 'agri-12-horticulture.html', label: 'Class 12 - Horticulture' }
+      { href: 'bsc-soil-science.html', label: 'BSc Soil Science' }
     ]},
     { icon: '🎯', title: 'अन्य परीक्षाएँ', items: [
       { href: 'cuet.html', label: 'CUET' },
@@ -164,22 +132,16 @@
       { href: 'notes-english.html', label: 'English' },
       { href: 'notes-hindi.html', label: 'हिंदी' },
       { href: 'notes-maths.html', label: 'गणित' },
-      { href: 'notes-adv-maths.html', label: 'Advanced Maths' },
       { href: 'notes-reasoning.html', label: 'रीजनिंग' },
-      { href: 'notes-science.html', label: 'विज्ञान' },
-      { href: 'notes-environment.html', label: 'पर्यावरण' },
-      { href: 'notes-essay.html', label: 'निबंध' },
-      { href: 'indian-history-notes.html', label: 'भारतीय इतिहास' }
+      { href: 'notes-science.html', label: 'विज्ञान' }
     ]},
     { icon: '📝', title: 'अभ्यास / मटेरियल', items: [
       { href: 'syllabus.html', label: '📖 सिलेबस' },
       { href: 'pyq.html', label: '📄 PYQ Papers' },
       { href: 'mock-tests.html', label: '🎯 Mock Tests' },
       { href: 'quiz.html', label: '❓ क्विज़' },
-      { href: 'quiz-advanced.html', label: '❓ Advanced Quiz' },
       { href: 'test-series.html', label: '📊 टेस्ट सीरीज़' },
-      { href: 'study-material.html', label: '📚 स्टडी मटेरियल' },
-      { href: 'study-plan.html', label: '📅 Study Plan' }
+      { href: 'study-material.html', label: '📚 स्टडी मटेरियल' }
     ]},
     { icon: '📅', title: 'अपडेट', items: [
       { href: 'notifications.html', label: '🔔 Notifications' },
@@ -189,21 +151,10 @@
       { href: 'answer-key.html', label: '✅ Answer Key' },
       { href: 'scholarship.html', label: '🎓 Scholarship' }
     ]},
-    { icon: '📰', title: 'करंट अफेयर्स', items: [
-      { href: 'current-affairs.html', label: 'सभी करंट अफेयर्स' },
-      { href: 'current-national.html', label: 'राष्ट्रीय' },
-      { href: 'current-international.html', label: 'अंतर्राष्ट्रीय' },
-      { href: 'current-economy.html', label: 'अर्थव्यवस्था' },
-      { href: 'current-science.html', label: 'विज्ञान' },
-      { href: 'current-sports.html', label: 'खेल' },
-      { href: 'current-culture.html', label: 'कला-संस्कृति' }
-    ]},
     { icon: '🛠️', title: 'अन्य', items: [
-      { href: 'ai-chat.html', label: '🤖 AI Chat' },
       { href: 'blog.html', label: '📝 ब्लॉग' },
       { href: 'forum.html', label: '💬 फोरम' },
       { href: 'dashboard.html', label: '📊 Dashboard' },
-      { href: 'bookmarks.html', label: '🔖 Bookmarks' },
       { href: 'about.html', label: 'ℹ️ हमारे बारे में' },
       { href: 'contact.html', label: '📞 संपर्क' },
       { href: 'faq.html', label: '❓ FAQ' }
@@ -218,81 +169,78 @@
 
     var currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Wipe everything
     navLinks.innerHTML = '';
 
-    // Wrapper (inline styles - nothing can override)
     var wrap = document.createElement('div');
-    wrap.setAttribute('style', 'max-height:calc(100vh - 90px);overflow-y:auto;width:100%;background:#0f3460;padding:0;margin:0;display:block;');
+    wrap.style.cssText = 'max-height:calc(100vh - 90px);overflow-y:auto;width:100%;background:#0f3460;padding:0;margin:0;';
 
     // Search box
     var searchBox = document.createElement('div');
-    searchBox.setAttribute('style', 'padding:0.7rem 1rem;background:#0f3460;border-bottom:2px solid #e94560;position:sticky;top:0;z-index:10;');
+    searchBox.style.cssText = 'padding:0.6rem 1rem;background:#0f3460;border-bottom:2px solid #e94560;position:sticky;top:0;z-index:10;';
     var searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = '🔍 खोजें...';
-    searchInput.setAttribute('style', 'width:100%;padding:0.65rem 1rem;border:1px solid rgba(255,255,255,0.3);border-radius:20px;font-size:0.9rem;font-family:inherit;background:rgba(255,255,255,0.12);color:#ffffff;outline:none;box-sizing:border-box;');
-    searchInput.addEventListener('focus', function(){ this.style.borderColor = '#e94560'; });
-    searchInput.addEventListener('blur', function(){ this.style.borderColor = 'rgba(255,255,255,0.3)'; });
+    searchInput.style.cssText = 'width:100%;padding:0.6rem 1rem;border:1px solid rgba(255,255,255,0.3);border-radius:20px;font-size:0.9rem;font-family:inherit;background:rgba(255,255,255,0.12);color:#fff;outline:none;box-sizing:border-box;';
     searchBox.appendChild(searchInput);
     wrap.appendChild(searchBox);
 
-    // Build categories
     MENU_SECTIONS.forEach(function(section, idx) {
       var hasActive = section.items.some(function(it) { return it.href === currentPath; });
 
       var cat = document.createElement('div');
-      cat.setAttribute('style', 'border-bottom:1px solid rgba(255,255,255,0.12);');
+      cat.style.cssText = 'border-bottom:1px solid rgba(255,255,255,0.12);';
 
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.setAttribute('style', 'width:100%;background:transparent;border:none;text-align:left;padding:0.95rem 1.2rem;font-size:0.95rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.4rem;font-family:inherit;box-sizing:border-box;white-space:nowrap;line-height:1.4;');
-      btn.innerHTML = '<span style="font-size:1.15rem;line-height:1;flex-shrink:0;display:inline-block;width:1.5rem;text-align:center;">' + section.icon + '</span><span style="flex:1;color:#ffffff;font-size:0.95rem;font-weight:600;text-align:left;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:0.5rem;">' + section.title + '</span><span class="acc-arrow" style="font-size:0.7rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;">▶</span>';line-height:1;flex-shrink:0;display:inline-block;width:1.5rem;text-align:center;">' + section.icon + '</span><span style="flex:1;color:#ffffff;font-size:0.95rem;font-weight:600;text-align:left;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:0.5rem;">' + section.title + '</span><span class="acc-arrow" style="font-size:0.7rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;">▶</span>';
-      btn.addEventListener('mouseenter', function(){ btn.style.background = 'rgba(255,255,255,0.08)'; });
-      btn.addEventListener('mouseleave', function(){ btn.style.background = 'transparent'; });
+      var btnBg = section.highlight 
+        ? 'linear-gradient(90deg,#e94560,#ff6b6b)' 
+        : 'transparent';
+      btn.style.cssText = 'width:100%;background:' + btnBg + ';border:none;text-align:left;padding:0.85rem 1.2rem;font-size:0.95rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.6rem;font-family:inherit;box-sizing:border-box;line-height:1.4;';
+      
+      // Build button HTML safely
+      var iconSpan = document.createElement('span');
+      iconSpan.style.cssText = 'font-size:1.15rem;line-height:1;flex-shrink:0;display:inline-block;width:1.5rem;text-align:center;';
+      iconSpan.textContent = section.icon;
+      
+      var titleSpan = document.createElement('span');
+      titleSpan.style.cssText = 'flex:1;color:#ffffff;font-size:0.95rem;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+      titleSpan.textContent = section.title;
+      
+      var arrowSpan = document.createElement('span');
+      arrowSpan.className = 'acc-arrow';
+      arrowSpan.style.cssText = 'font-size:0.7rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;';
+      arrowSpan.textContent = '▶';
+      
+      btn.appendChild(iconSpan);
+      btn.appendChild(titleSpan);
+      btn.appendChild(arrowSpan);
 
       var body = document.createElement('div');
-      body.setAttribute('style', 'max-height:0;overflow:hidden;transition:max-height 0.35s ease;background:rgba(0,0,0,0.18);');
+      body.style.cssText = 'max-height:0;overflow:hidden;transition:max-height 0.35s ease;background:rgba(0,0,0,0.18);';
 
       section.items.forEach(function(item) {
         var a = document.createElement('a');
         a.href = item.href;
         a.textContent = item.label;
-        var baseStyle = 'display:block;padding:0.7rem 1.2rem 0.7rem 3rem;font-size:0.88rem;color:#d1d9e6 !important;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);transition:all 0.15s;box-sizing:border-box;background:transparent;';
+        var linkStyle = 'display:block;padding:0.6rem 1.2rem 0.6rem 2.8rem;font-size:0.86rem;color:#d1d9e6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);';
         if (item.href === currentPath) {
-          baseStyle += 'color:#ffffff !important;font-weight:600;background:rgba(233,69,96,0.25);border-left:3px solid #e94560;';
+          linkStyle += 'color:#fff;font-weight:600;background:rgba(233,69,96,0.25);border-left:3px solid #e94560;';
         }
-        a.setAttribute('style', baseStyle);
-        a.addEventListener('mouseenter', function(){
-          a.style.background = 'rgba(233,69,96,0.18)';
-          a.style.color = '#ffffff';
-          a.style.paddingLeft = '3.2rem';
-        });
-        a.addEventListener('mouseleave', function(){
-          if (item.href === currentPath) {
-            a.style.background = 'rgba(233,69,96,0.25)';
-          } else {
-            a.style.background = 'transparent';
-          }
-          a.style.color = '#d1d9e6';
-          a.style.paddingLeft = '3rem';
-        });
-        // store label for search
+        a.style.cssText = linkStyle;
         a.setAttribute('data-label', item.label.toLowerCase());
         body.appendChild(a);
       });
 
-      // Click to open/close
       var isOpen = hasActive;
       function setOpen(open) {
         isOpen = open;
         if (open) {
           body.style.maxHeight = '2000px';
-          btn.querySelector('.acc-arrow').style.transform = 'rotate(90deg)';
+          arrowSpan.style.transform = 'rotate(90deg)';
           btn.setAttribute('aria-expanded', 'true');
         } else {
           body.style.maxHeight = '0';
-          btn.querySelector('.acc-arrow').style.transform = 'rotate(0deg)';
+          arrowSpan.style.transform = 'rotate(0deg)';
           btn.setAttribute('aria-expanded', 'false');
         }
       }
@@ -314,13 +262,8 @@
     // Search functionality
     searchInput.addEventListener('input', function() {
       var q = this.value.toLowerCase().trim();
-      var cats = wrap.querySelectorAll('div[style*="border-bottom:1px solid rgba(255,255,255,0.12)"]');
-      var buttons = wrap.querySelectorAll('button');
-      var bodies = wrap.querySelectorAll('div[style*="max-height"]');
-
-      // Iterate by index instead - simpler
       MENU_SECTIONS.forEach(function(section, idx) {
-        var cat = wrap.children[idx + 1]; // +1 because first child is searchBox
+        var cat = wrap.children[idx + 1];
         if (!cat) return;
         var catBtn = cat.children[0];
         var catBody = cat.children[1];
@@ -339,7 +282,6 @@
           }
         } else {
           cat.style.display = 'block';
-          // close all on clear
           catBody.style.maxHeight = '0';
           catBtn.querySelector('.acc-arrow').style.transform = 'rotate(0deg)';
         }
