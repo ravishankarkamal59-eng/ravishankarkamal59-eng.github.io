@@ -107,67 +107,55 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
   }
 }
 </script>
+
 <style id="trs-logo-force">
-/* Force Logo Size - overrides everything */
-header img.header-logo-img,
-header .header-logo-img,
-.header-logo-img,
-.logo img,
-.logo svg,
-nav img,
-nav svg,
-header img,
-header svg {
-  height: 90px !important;
-  max-height: 90px !important;
-  min-height: 90px !important;
+#mainLogo,
+#mainLogo.header-logo-img,
+img#mainLogo {
+  height: 120px !important;
+  max-height: 120px !important;
+  min-height: 120px !important;
   width: auto !important;
-  max-width: 130px !important;
+  max-width: 160px !important;
+  min-width: 90px !important;
   object-fit: contain !important;
   display: inline-block !important;
+  transform: none !important;
 }
 header, nav, .top-bar + nav {
-  min-height: 105px !important;
+  min-height: 130px !important;
   height: auto !important;
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  overflow: visible !important;
+}
+header *, nav * {
+  overflow: visible !important;
 }
 @media (max-width: 768px) {
-  header img.header-logo-img,
-  header .header-logo-img,
-  .header-logo-img,
-  .logo img,
-  .logo svg,
-  nav img,
-  nav svg,
-  header img,
-  header svg {
-    height: 70px !important;
-    max-height: 70px !important;
-    min-height: 70px !important;
-    max-width: 100px !important;
+  #mainLogo,
+  #mainLogo.header-logo-img,
+  img#mainLogo {
+    height: 95px !important;
+    max-height: 95px !important;
+    min-height: 95px !important;
+    max-width: 130px !important;
   }
   header, nav {
-    min-height: 85px !important;
+    min-height: 110px !important;
   }
 }
 @media (max-width: 480px) {
-  header img.header-logo-img,
-  header .header-logo-img,
-  .header-logo-img,
-  .logo img,
-  .logo svg,
-  nav img,
-  nav svg,
-  header img,
-  header svg {
-    height: 65px !important;
-    max-height: 65px !important;
-    min-height: 65px !important;
-    max-width: 90px !important;
+  #mainLogo,
+  #mainLogo.header-logo-img,
+  img#mainLogo {
+    height: 85px !important;
+    max-height: 85px !important;
+    min-height: 85px !important;
+    max-width: 115px !important;
   }
   header, nav {
-    min-height: 80px !important;
+    min-height: 100px !important;
   }
 }
 </style>
@@ -180,7 +168,7 @@ header, nav, .top-bar + nav {
 <div class="top-bar">🎯 सभी सरकारी परीक्षाओं की मुफ़्त तैयारी - नोट्स, क्विज़, करंट अफेयर्स</div>
 <nav aria-label="मुख्य नेविगेशन">
 <a href="index.html" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
-<img src="assets/images/logo.svg" alt="The Ravishankar Insights" class="header-logo-img" style="height: 70px;width:auto;max-width: 120px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" loading="eager">
+<img src="assets/images/logo.svg" alt="The Ravishankar Insights" id="mainLogo" class="header-logo-img" style="height:120px;width:auto;max-width:160px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))" loading="eager">
 <div class="brand-text">
 <div class="brand-line-1">THE</div>
 <div class="brand-line-2">Ravishankar</div>
