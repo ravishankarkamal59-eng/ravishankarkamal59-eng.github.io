@@ -94,7 +94,7 @@ footer { background: var(--dark); color: #ccc; padding: 2rem 1rem 1rem; margin-t
 .footer-grid a { color: #aaa; text-decoration: none; display: block; padding: 0.2rem 0; font-size: 0.9rem; }
 .footer-grid a:hover { color: var(--accent); }
 .footer-bottom { text-align: center; padding-top: 1rem; border-top: 1px solid #333; font-size: 0.85rem; color: #888; }
-.ad-slot { background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; text-align: center; border-radius: 8px; margin: 1.5rem 0; color: #999; font-size: 0.85rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+.ad-slot { background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; text-align: center; border-radius: 8px; margin: 1.5rem 0; color: #999; font-size: 0.85rem; min-height: 70px; display: flex; align-items: center; justify-content: center; }
 .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem; }
 .badge-free { background: #d4edda; color: #155724; }
 .badge-premium { background: #fff3cd; color: #856404; }
@@ -1766,7 +1766,7 @@ body.menu-open::before {
 /* ============================================ */
 .logo img,
 .logo svg {
-  height: 90px !important;
+  height: 70px !important;
   width: auto !important;
   max-width: 120px !important;
   object-fit: contain !important;
@@ -1803,7 +1803,7 @@ body.menu-open::before {
 
 /* Login page logo */
 .login-logo {
-  height: 90px !important;
+  height: 70px !important;
   width: auto !important;
   display: block !important;
   margin: 0 auto 1.5rem !important;
@@ -1821,7 +1821,7 @@ body.menu-open::before {
 /* Mobile */
 @media (max-width: 768px) {
   .logo img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 120px !important;
   }
   .login-logo {
@@ -1831,7 +1831,7 @@ body.menu-open::before {
 
 @media (max-width: 400px) {
   .logo img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 120px !important;
   }
 }
@@ -1876,7 +1876,7 @@ body > button[title="बुकमार्क करें"] {
 
 /* Header logo image */
 .header-logo-img {
-  height: 90px !important;
+  height: 70px !important;
   width: auto !important;
   max-width: 200px !important;
   object-fit: contain !important;
@@ -1906,14 +1906,14 @@ body > button[title="बुकमार्क करें"] {
 /* Mobile - छोटा logo */
 @media (max-width: 768px) {
   .header-logo-img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 150px !important;
   }
 }
 
 @media (max-width: 400px) {
   .header-logo-img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 125px !important;
   }
 }
@@ -2094,7 +2094,7 @@ body > button[title="बुकमार्क करें"] {
 
 /* Header logo image - compact */
 .header-logo-img {
-  height: 90px !important;
+  height: 70px !important;
   width: auto !important;
   max-width: 60px !important;
   object-fit: contain !important;
@@ -2109,7 +2109,7 @@ body > button[title="बुकमार्क करें"] {
 
 @media (max-width: 768px) {
   .header-logo-img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 50px !important;
   }
 }
@@ -2740,7 +2740,7 @@ body > button[title="बुकमार्क करें"] {
 .header-logo-img,
 header nav > a:first-child img,
 header nav > a img {
-  height: 90px !important;
+  height: 70px !important;
   max-width: 75px !important;
   width: auto !important;
 }
@@ -2750,7 +2750,7 @@ header nav > a img {
   .header-logo-img,
   header nav > a:first-child img,
   header nav > a img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 72px !important;
   }
 }
@@ -2760,7 +2760,7 @@ header nav > a img {
   html body .header-logo-img,
   html body header nav > a:first-child img,
   html body header nav > a img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 72px !important;
     width: auto !important;
   }
@@ -2777,7 +2777,7 @@ header nav > a img {
   html body .header-logo-img,
   html body header nav > a:first-child img,
   html body header nav > a img {
-    height: 90px !important;
+    height: 70px !important;
     max-width: 65px !important;
   }
   
