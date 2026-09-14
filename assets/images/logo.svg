@@ -27,7 +27,7 @@
     <text x="0" y="140" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FDBA3B" letter-spacing="6">THE</text>
     
     <!-- Ravishankar - pure white, extra bold, with subtle stroke for visibility -->
-    <text x="0" y="200" font-family="Roboto, Arial, Helvetica, sans-serif" font-weight="900" font-size="68" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.5" paint-order="stroke fill" letter-spacing="0.5">Ravishankar</text>
+    <text x="0" y="205" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="76" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3.5" paint-order="stroke fill" letter-spacing="0">Ravishankar</text>
     
     <rect x="2" y="216" width="420" height="2" fill="#FFFFFF" opacity="0.3"/>
     
