@@ -3,15 +3,19 @@
   'use strict';
   
   // 30 सेकंड के अंदर दोबारा नहीं (refresh spam रोकने के लिए)
-  function alreadyWatched() {
-    var lastShown = localStorage.getItem('videoAdLastShown');
-    if (!lastShown) return false;
-    var diff = Date.now() - parseInt(lastShown);
-    // 30 seconds = 30000 ms
-    if (diff < 30000) {
-      console.log('Video ad skipped - last shown', Math.floor(diff/1000), 'seconds ago');
-      return true;
-    }
+    // Ad सिर्फ 1 घंटे में 1 बार दिखे
+function alreadyWatched() {
+    try {
+      var lastShown = localStorage.getItem('videoAdLastShown');
+      if (lastShown) {
+        var diff = Date.now() - parseInt(lastShown);
+        var oneHour = 60 * 60 * 1000;
+        if (diff < oneHour) {
+          console.log('Video ad skipped - last shown', Math.floor(diff/60000), 'minutes ago');
+          return true;
+        }
+      }
+    } catch (e) {}
     return false;
   }
   
