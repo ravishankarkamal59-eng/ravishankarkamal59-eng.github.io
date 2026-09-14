@@ -246,10 +246,8 @@
 
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.setAttribute('style', 'width:100%;background:transparent;border:none;text-align:left;padding:0.95rem 1.2rem;font-size:0.98rem;font-weight:600;color:#ffffff !important;cursor:pointer;display:flex;align-items:center;gap:0.7rem;font-family:inherit;box-sizing:border-box;');
-      btn.innerHTML = '<span style="font-size:1.25rem;line-height:1;flex-shrink:0;">' + section.icon + '</span>' +
-                      '<span style="flex:1;color:#ffffff !important;font-size:0.98rem;font-weight:600;text-align:left;display:block;">' + section.title + '</span>' +
-                      '<span class="acc-arrow" style="margin-left:auto;font-size:0.75rem;color:#e94560;transition:transform 0.25s;flex-shrink:0;">▶</span>';
+      btn.setAttribute('style', 'width:100%;background:transparent;border:none;text-align:left;padding:0.95rem 1.2rem;font-size:0.95rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.4rem;font-family:inherit;box-sizing:border-box;white-space:nowrap;line-height:1.4;');
+      btn.innerHTML = '<span style="font-size:1.15rem;line-height:1;flex-shrink:0;display:inline-block;width:1.5rem;text-align:center;">' + section.icon + '</span><span style="flex:1;color:#ffffff;font-size:0.95rem;font-weight:600;text-align:left;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:0.5rem;">' + section.title + '</span><span class="acc-arrow" style="font-size:0.7rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;">▶</span>';
       btn.addEventListener('mouseenter', function(){ btn.style.background = 'rgba(255,255,255,0.08)'; });
       btn.addEventListener('mouseleave', function(){ btn.style.background = 'transparent'; });
 
