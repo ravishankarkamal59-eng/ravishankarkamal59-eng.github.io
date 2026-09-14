@@ -9,6 +9,11 @@
       { href: 'ai-chat.html#notes', label: '📝 AI Notes' },
       { href: 'ai-chat.html#quiz', label: '❓ AI Quiz' }
     ]},
+    { icon: '🎬', title: 'हमारा YouTube', highlight: true, items: [
+      { href: 'https://youtu.be/_wkfMaJqZk8', label: '▶️ नया वीडियो देखें' },
+      { href: 'https://youtube.com/@theravishankarinsights', label: '🔔 YouTube Channel' },
+      { href: 'https://youtube.com/@theravishankarinsights?sub_confirmation=1', label: '✅ Subscribe करें' }
+    ]},
     { icon: '🏠', title: 'मुख्य', items: [
       { href: 'index.html', label: '🏠 होम' },
       { href: 'exams.html', label: '📚 सभी परीक्षाएँ' },
