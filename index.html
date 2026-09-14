@@ -110,16 +110,19 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
 
 
 
+
 <style id="trs-logo-force">
-img.header-logo-img, #mainLogo, .header-logo-img {
+img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
   height: 90px !important;
   max-height: 90px !important;
   min-height: 90px !important;
   width: auto !important;
   max-width: 130px !important;
-  min-width: 80px !important;
   object-fit: contain !important;
-  display: inline-block !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)) !important;
+  visibility: visible !important;
+  mix-blend-mode: normal !important;
 }
 header, nav {
   min-height: 75px !important;
@@ -128,7 +131,7 @@ header, nav {
   padding-bottom: 3px !important;
 }
 @media (max-width: 768px) {
-  img.header-logo-img, #mainLogo, .header-logo-img {
+  img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
     height: 80px !important;
     max-height: 80px !important;
     min-height: 80px !important;
@@ -137,7 +140,7 @@ header, nav {
   header, nav { min-height: 68px !important; }
 }
 @media (max-width: 480px) {
-  img.header-logo-img, #mainLogo, .header-logo-img {
+  img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
     height: 72px !important;
     max-height: 72px !important;
     min-height: 72px !important;
