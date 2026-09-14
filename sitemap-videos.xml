@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://ravishankarkamal59-eng.github.io/youtube.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/_wkfMaJqZk8/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>सभी सरकारी परीक्षाओं की मुफ़्त तैयारी | The Ravishankar Insights</video:title>
+      <video:description>UPSC, BPSC, SSC, Railway, Banking سمیت تمام government exams کی free preparation۔ Notes, PDF, AI Assistant اور Quiz ایک ہی website پر۔</video:description>
+      <video:player_loc>https://www.youtube.com/embed/_wkfMaJqZk8</video:player_loc>
+      <video:duration>44</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+</urlset>
