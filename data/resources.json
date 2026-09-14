@@ -413,8 +413,8 @@
         "type": "PDF"
       },
       {
-        "title": "अबुल फजल- राज्य की अवधारणा.pdf",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789407934806-.pdf",
+        "title": "Abul Fazal theory of state.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/ma-polity/notes/1789407973506-abul-fazal-theory-of-state.pdf",
         "type": "PDF"
       }
     ],
@@ -893,7 +893,13 @@
   },
   "agri-11-biology": {
     "name": "Class 11: Agriculture Biology",
-    "notes": [],
+    "notes": [
+      {
+        "title": "Class 11 Agriculture - Crop Production Complete",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/agri-11-biology/notes/1789407865723-class-11-agriculture-crop-production-complete-notes.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
@@ -1029,13 +1035,7 @@
   },
   "bsc-soil-science": {
     "name": "BSc: Soil Science",
-    "notes": [
-      {
-        "title": "Soil Science - Complete Notes _ The Ravishankar Insights.pdf",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/bsc-soil-science/notes/1789407796460-soil-science-complete-notes-the-ravishankar-insights.pdf",
-        "type": "PDF"
-      }
-    ],
+    "notes": [],
     "pyq": [],
     "syllabus": [],
     "videos": [],
