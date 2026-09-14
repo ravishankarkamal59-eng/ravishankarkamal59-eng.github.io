@@ -1024,7 +1024,13 @@
   },
   "bsc-soil-science": {
     "name": "BSc: Soil Science",
-    "notes": [],
+    "notes": [
+      {
+        "title": "Soil Science - Complete Notes _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/bsc-soil-science/notes/1789407796460-soil-science-complete-notes-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
