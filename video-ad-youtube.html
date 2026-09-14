@@ -266,10 +266,78 @@
   var progress = document.getElementById('progress');
   var urlBadge = document.getElementById('urlBadge');
   var currentSlide = 0;
-  var slideDuration = 4000; // 4 seconds per slide
+  var slideDuration = 5500; // 5.5 seconds per slide (voiceover ke liye)
   var totalDuration = slides.length * slideDuration;
   var startTime = Date.now();
 
+  // ============ VOICEOVER SCRIPT (हिंदी) ============
+  var NARRATIONS = [
+    "नमस्ते दोस्तों! The Ravishankar Insights पर आपका स्वागत है। यहाँ सभी सरकारी परीक्षाओं की तैयारी बिल्कुल मुफ़्त में मिलती है।",
+    "पचास से ज़्यादा परीक्षाएँ — UPSC, BPSC, UPPCS, SSC, Railway, Banking, UGC NET और भी बहुत कुछ। हर परीक्षा का पूरा सिलेबस और गाइड उपलब्ध है।",
+    "एक हज़ार से ज़्यादा नोट्स PDF — इतिहास, भूगोल, राजनीति, अर्थशास्त्र, विज्ञान, गणित सभी विषय हिंदी में। सब कुछ बिल्कुल मुफ़्त।",
+    "AI सहायक से कोई भी सवाल पूछें — दो सेकंड में हिंदी में जवाब मिलेगा। चौबीस घंटे उपलब्ध, सभी विषय के लिए।",
+    "Advanced Quiz के साथ अपनी तैयारी परखें — Timer, Leaderboard और Detailed Result के साथ।",
+    "डेली करंट अफेयर्स — राष्ट्रीय, अंतर्राष्ट्रीय, खेल, विज्ञान, अर्थव्यवस्था। रोज़ाना अपडेट मिलता है।",
+    "अपनी पढ़ाई track करें Dashboard से — Study Streak, Bookmarks, Test History और Progress।",
+    "तो देर किस बात की? अभी जुड़ें — बिल्कुल मुफ़्त। कोई payment नहीं, कोई hidden charges नहीं। Website visit करें और तैयारी शुरू करें!"
+  ];
+
+  var voices = [];
+  var hindiVoice = null;
+
+  // Voices load करो
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].lang.indexOf('hi') === 0) {
+        hindiVoice = voices[i];
+        break;
+      }
+    }
+    // अगर Hindi voice नहीं मिली तो English voice use करो
+    if (!hindiVoice && voices.length > 0) {
+      hindiVoice = voices[0];
+    }
+  }
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+  }
+
+  function speak(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel(); // पहले वाला रोको
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'hi-IN';
+    utter.rate = 0.9;
+    utter.pitch = 1;
+    utter.volume = 1;
+    if (hindiVoice) utter.voice = hindiVoice;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // ============ BACKGROUND MUSIC ============
+  // Free music URL (यह काम करेगी)
+  var bgMusic = new Audio();
+  bgMusic.src = 'https://www.bensound.com/bensound-music/bensound-tomorrow.mp3';
+  bgMusic.loop = true;
+  bgMusic.volume = 0.08; // बहुत हल्का (voiceover के नीचे)
+
+  var musicStarted = false;
+  function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    bgMusic.play().catch(function(e) {
+      console.log('Music autoplay blocked:', e);
+    });
+  }
+
+  // User interaction पर music शुरू करो
+  document.addEventListener('click', startMusic, {once: true});
+  document.addEventListener('touchstart', startMusic, {once: true});
+
+  // ============ SLIDE ANIMATION ============
   function updateProgress() {
     var elapsed = Date.now() - startTime;
     var percent = Math.min(100, (elapsed / totalDuration) * 100);
@@ -282,9 +350,10 @@
       slides[currentSlide].classList.remove('active');
       slides[newSlide].classList.add('active');
       currentSlide = newSlide;
+      // हर नए slide पर voiceover बोलो
+      speak(NARRATIONS[currentSlide]);
     }
 
-    // Show URL badge on last slide
     if (elapsed > (slides.length - 1) * slideDuration) {
       urlBadge.style.display = 'block';
     }
@@ -292,18 +361,35 @@
     if (elapsed < totalDuration) {
       requestAnimationFrame(updateProgress);
     } else {
-      // Loop restart (optional - comment out to stop)
+      // End पर loop restart
       setTimeout(function() {
         slides[currentSlide].classList.remove('active');
         slides[0].classList.add('active');
         currentSlide = 0;
         startTime = Date.now();
+        speak(NARRATIONS[0]);
         updateProgress();
       }, 2000);
     }
   }
 
-  requestAnimationFrame(updateProgress);
+  // Start button बनाओ
+  var startBtn = document.createElement('button');
+  startBtn.id = 'startBtn';
+  startBtn.innerHTML = '▶️ START VIDEO';
+  startBtn.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;background:linear-gradient(135deg,#e94560,#f39c12);color:#fff;border:4px solid #fff;padding:2rem 4rem;border-radius:60px;font-size:2rem;font-weight:900;cursor:pointer;box-shadow:0 20px 60px rgba(0,0,0,0.5);font-family:inherit;letter-spacing:2px';
+  document.body.appendChild(startBtn);
+
+  startBtn.addEventListener('click', function() {
+    startBtn.remove();
+    startMusic();
+    // पहली narration शुरू करो
+    setTimeout(function() {
+      speak(NARRATIONS[0]);
+      startTime = Date.now();
+      requestAnimationFrame(updateProgress);
+    }, 500);
+  });
 })();
 </script>
 
