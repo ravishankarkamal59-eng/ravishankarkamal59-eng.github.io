@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>The Ravishankar Insights - Video Ad</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+    background: #000;
+  }
+  .stage {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 1.2s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .icon {
+    font-size: 8rem;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  h1 {
+    color: #fff;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    font-weight: 900;
+  }
+  h2 {
+    color: rgba(255,255,255,0.95);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    max-width: 900px;
+    margin-top: 1rem;
+  }
+  .feature {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    animation: fadeUp 0.6s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    background: #fff;
+    transition: width 0.1s linear;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+  }
+  .logo-badge {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    z-index: 1000;
+  }
+  .url-badge {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(233,69,96,0.95);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 1000;
+    box-shadow: 0 8px 30px rgba(233,69,96,0.5);
+  }
+  /* Slide background gradients */
+  .bg-1 { background: linear-gradient(135deg, #0f3460, #1a5276, #2980b9); }
+  .bg-2 { background: linear-gradient(135deg, #8e44ad, #c0392b, #e94560); }
+  .bg-3 { background: linear-gradient(135deg, #27ae60, #16a085, #0f3460); }
+  .bg-4 { background: linear-gradient(135deg, #e94560, #f39c12, #c0392b); }
+  .bg-5 { background: linear-gradient(135deg, #1a5276, #8e44ad, #0f3460); }
+  .bg-6 { background: linear-gradient(135deg, #16a085, #27ae60, #0f3460); }
+  .bg-7 { background: linear-gradient(135deg, #c0392b, #e94560, #f39c12); }
+  .bg-8 { background: linear-gradient(135deg, #0f3460, #e94560, #0f3460); }
+</style>
+</head>
+<body>
+
+<div class="logo-badge">THE RAVISHANKAR INSIGHTS</div>
+
+<div class="stage" id="stage">
+
+  <!-- Slide 1 -->
+  <div class="slide bg-1 active">
+    <div class="icon">📚</div>
+    <h1>The Ravishankar Insights</h1>
+    <h2>सभी सरकारी परीक्षाओं की मुफ़्त तैयारी</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">UPSC</div>
+      <div class="feature" style="animation-delay:0.4s">BPSC</div>
+      <div class="feature" style="animation-delay:0.5s">SSC</div>
+      <div class="feature" style="animation-delay:0.6s">Railway</div>
+      <div class="feature" style="animation-delay:0.7s">Banking</div>
+      <div class="feature" style="animation-delay:0.8s">Police</div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide bg-2">
+    <div class="icon">🎯</div>
+    <h1>50+ परीक्षाएँ</h1>
+    <h2>हर परीक्षा का पूरा सिलेबस और गाइड</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">JEE Mains</div>
+      <div class="feature" style="animation-delay:0.4s">NEET</div>
+      <div class="feature" style="animation-delay:0.5s">LLB</div>
+      <div class="feature" style="animation-delay:0.6s">MBA</div>
+      <div class="feature" style="animation-delay:0.7s">GATE</div>
+      <div class="feature" style="animation-delay:0.8s">B.Ed</div>
+      <div class="feature" style="animation-delay:0.9s">NDA</div>
+      <div class="feature" style="animation-delay:1.0s">UGC NET</div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide bg-3">
+    <div class="icon">📝</div>
+    <h1>1000+ नोट्स PDF</h1>
+    <h2>सभी विषयों के हिंदी में नोट्स — बिल्कुल मुफ़्त</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">इतिहास</div>
+      <div class="feature" style="animation-delay:0.4s">भूगोल</div>
+      <div class="feature" style="animation-delay:0.5s">राजनीति</div>
+      <div class="feature" style="animation-delay:0.6s">अर्थशास्त्र</div>
+      <div class="feature" style="animation-delay:0.7s">विज्ञान</div>
+      <div class="feature" style="animation-delay:0.8s">गणित</div>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide bg-4">
+    <div class="icon">🤖</div>
+    <h1>AI सहायक</h1>
+    <h2>कोई भी सवाल पूछें — 2 सेकंड में जवाब</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">हिंदी में जवाब</div>
+      <div class="feature" style="animation-delay:0.4s">24×7 उपलब्ध</div>
+      <div class="feature" style="animation-delay:0.5s">सभी विषय</div>
+      <div class="feature" style="animation-delay:0.6s">100% मुफ़्त</div>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide bg-5">
+    <div class="icon">🎯</div>
+    <h1>Advanced Quiz</h1>
+    <h2>Timer, Leaderboard, Detailed Result</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">सभी विषय</div>
+      <div class="feature" style="animation-delay:0.4s">Beginner Level</div>
+      <div class="feature" style="animation-delay:0.5s">Intermediate</div>
+      <div class="feature" style="animation-delay:0.6s">Advanced</div>
+      <div class="feature" style="animation-delay:0.7s">Answer Review</div>
+    </div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide bg-6">
+    <div class="icon">📰</div>
+    <h1>डेली करंट अफेयर्स</h1>
+    <h2>रोज़ाना अपडेट — सभी परीक्षाओं के लिए</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">राष्ट्रीय</div>
+      <div class="feature" style="animation-delay:0.4s">अंतर्राष्ट्रीय</div>
+      <div class="feature" style="animation-delay:0.5s">खेल</div>
+      <div class="feature" style="animation-delay:0.6s">विज्ञान</div>
+      <div class="feature" style="animation-delay:0.7s">अर्थव्यवस्था</div>
+    </div>
+  </div>
+
+  <!-- Slide 7 -->
+  <div class="slide bg-7">
+    <div class="icon">📊</div>
+    <h1>Dashboard + Progress</h1>
+    <h2>अपनी पढ़ाई track करें</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">Study Streak</div>
+      <div class="feature" style="animation-delay:0.4s">Bookmarks</div>
+      <div class="feature" style="animation-delay:0.5s">Test History</div>
+      <div class="feature" style="animation-delay:0.6s">Progress</div>
+    </div>
+  </div>
+
+  <!-- Slide 8 - Final CTA -->
+  <div class="slide bg-8">
+    <div class="icon">🎓</div>
+    <h1>अभी जुड़ें — 100% मुफ़्त</h1>
+    <h2>कोई payment नहीं, कोई hidden charges नहीं</h2>
+    <div class="features">
+      <div class="feature" style="animation-delay:0.3s">🎁 लॉगिन करें</div>
+      <div class="feature" style="animation-delay:0.4s">📚 सभी content access</div>
+      <div class="feature" style="animation-delay:0.5s">💾 Progress save</div>
+    </div>
+    <div style="margin-top:3rem;font-size:1.8rem;color:#fff;font-weight:700;animation:fadeUp 1s ease 0.8s both">
+      👉 अभी visit करें 👈
+    </div>
+  </div>
+
+</div>
+
+<div class="progress-bar" id="progress"></div>
+<div class="url-badge" id="urlBadge" style="display:none">ravishankarkamal59-eng.github.io</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var progress = document.getElementById('progress');
+  var urlBadge = document.getElementById('urlBadge');
+  var currentSlide = 0;
+  var slideDuration = 4000; // 4 seconds per slide
+  var totalDuration = slides.length * slideDuration;
+  var startTime = Date.now();
+
+  function updateProgress() {
+    var elapsed = Date.now() - startTime;
+    var percent = Math.min(100, (elapsed / totalDuration) * 100);
+    progress.style.width = percent + '%';
+
+    var newSlide = Math.floor(elapsed / slideDuration);
+    if (newSlide >= slides.length) newSlide = slides.length - 1;
+
+    if (newSlide !== currentSlide) {
+      slides[currentSlide].classList.remove('active');
+      slides[newSlide].classList.add('active');
+      currentSlide = newSlide;
+    }
+
+    // Show URL badge on last slide
+    if (elapsed > (slides.length - 1) * slideDuration) {
+      urlBadge.style.display = 'block';
+    }
+
+    if (elapsed < totalDuration) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      // Loop restart (optional - comment out to stop)
+      setTimeout(function() {
+        slides[currentSlide].classList.remove('active');
+        slides[0].classList.add('active');
+        currentSlide = 0;
+        startTime = Date.now();
+        updateProgress();
+      }, 2000);
+    }
+  }
+
+  requestAnimationFrame(updateProgress);
+})();
+</script>
+
+</body>
+</html>
