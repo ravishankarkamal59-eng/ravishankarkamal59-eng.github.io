@@ -107,6 +107,70 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
   }
 }
 </script>
+<style id="trs-logo-force">
+/* Force Logo Size - overrides everything */
+header img.header-logo-img,
+header .header-logo-img,
+.header-logo-img,
+.logo img,
+.logo svg,
+nav img,
+nav svg,
+header img,
+header svg {
+  height: 90px !important;
+  max-height: 90px !important;
+  min-height: 90px !important;
+  width: auto !important;
+  max-width: 130px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+}
+header, nav, .top-bar + nav {
+  min-height: 105px !important;
+  height: auto !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+@media (max-width: 768px) {
+  header img.header-logo-img,
+  header .header-logo-img,
+  .header-logo-img,
+  .logo img,
+  .logo svg,
+  nav img,
+  nav svg,
+  header img,
+  header svg {
+    height: 70px !important;
+    max-height: 70px !important;
+    min-height: 70px !important;
+    max-width: 100px !important;
+  }
+  header, nav {
+    min-height: 85px !important;
+  }
+}
+@media (max-width: 480px) {
+  header img.header-logo-img,
+  header .header-logo-img,
+  .header-logo-img,
+  .logo img,
+  .logo svg,
+  nav img,
+  nav svg,
+  header img,
+  header svg {
+    height: 65px !important;
+    max-height: 65px !important;
+    min-height: 65px !important;
+    max-width: 90px !important;
+  }
+  header, nav {
+    min-height: 80px !important;
+  }
+}
+</style>
 </head>
 <body>
 <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
