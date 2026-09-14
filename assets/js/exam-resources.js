@@ -11,7 +11,7 @@
       var exam = data[examKey];
       if (!exam) {
         var container = document.querySelector('.exam-resources-container');
-        container.innerHTML = '<h2 class="section-title">📥 Study Resources</h2><p style="text-align:center;color:#999;padding:2rem">जल्द ही resources add किए जाएँगे</p>';
+        container.innerHTML = '<h2 class="section-title">📥 Study Resources</h2><div style="text-align:center;padding:2rem 1rem;background:#f8fafc;border-radius:12px;margin:1rem 0"><p style="color:#0f3460;font-size:1.05rem;font-weight:600;margin-bottom:0.8rem">📚 इस section में आपको मिलेंगे:</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;max-width:600px;margin:0 auto"><span style="background:#e94560;color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem">📝 Notes PDF</span><span style="background:#0f3460;color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem">📄 PYQ Papers</span><span style="background:#27ae60;color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem">📚 Syllabus</span><span style="background:#e74c3c;color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem">🎥 Video Lectures</span><span style="background:#f39c12;color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem">📖 Books</span></div><p style="color:#666;font-size:0.9rem;margin-top:1.2rem">📌 और material के लिए <a href="notes.html" style="color:#e94560;font-weight:600">Notes</a>, <a href="pyq.html" style="color:#e94560;font-weight:600">PYQ</a> और <a href="syllabus.html" style="color:#e94560;font-weight:600">Syllabus</a> pages देखें।</p></div>';
         return;
       }
       
@@ -37,7 +37,7 @@
         html += '</div>';
         
         if (items.length === 0) {
-          html += '<p style="padding:1.5rem 1rem;text-align:center;color:#999;font-size:0.88rem">जल्द ही अपडेट होंगे...</p>';
+          html += '<div style="padding:1.2rem 1rem;text-align:center"><p style="color:#0f3460;font-size:0.9rem;font-weight:600;margin-bottom:0.6rem">📚 इस section में notes और material उपलब्ध हैं</p><a href="notes.html" style="display:inline-block;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;padding:0.5rem 1.2rem;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:600">📥 Notes देखें</a></div>';
         } else {
           html += '<ul style="list-style:none;padding:0.5rem 0;margin:0;">';
           items.forEach(function(item, idx) {

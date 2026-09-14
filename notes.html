@@ -385,7 +385,7 @@ function renderCard(c, pdfs) {
   html += '<p>' + c.desc + '</p>';
   
   if (pdfs.length === 0) {
-    html += '<div class="empty-note">📌 जल्द ही PDF upload होंगे</div>';
+    html += '<div class="empty-note" style="background:#e8f4ff;border-left:4px solid #2980b9;padding:1.2rem;border-radius:8px;margin:1rem 0;color:#0f3460"><strong>📚 इस section में आपको मिलेंगे:</strong><ul style="margin:0.7rem 0 0.7rem 1.2rem;line-height:1.8"><li>📖 सभी विषयों के विस्तृत notes</li><li>📄 Previous year papers (PYQ)</li><li>📝 Important questions और topics</li><li>🎯 Exam-wise strategy</li></ul><p style="margin-top:0.5rem"><a href="notes.html" style="color:#e94560;font-weight:600;text-decoration:none">📥 सभी Notes देखें →</a></p></div>';
     var printUrl = c.key + '.html';  // हर subject का अपना page
           if (c.key.indexOf('history') > -1) printUrl = 'notes-history.html';
           if (c.key.indexOf('geography') > -1) printUrl = 'notes-geography.html';
