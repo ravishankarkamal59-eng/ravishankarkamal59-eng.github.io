@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>भारत की नदियाँ - Professional Video</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', 'Nirmala UI', Arial, sans-serif;
+    background:#000; overflow:hidden;
+  }
+  .stage { width:100vw; height:100vh; position:relative; overflow:hidden; }
+
+  /* Animated background layer */
+  .bg-layer {
+    position:absolute; inset:0;
+    background: linear-gradient(135deg, #0a1929 0%, #0f3460 35%, #1a5276 70%, #0a1929 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Water ripple effect */
+  .ripples {
+    position:absolute; inset:0; opacity:0.15;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(100,200,255,0.4) 0%, transparent 25%),
+      radial-gradient(circle at 80% 70%, rgba(100,200,255,0.3) 0%, transparent 30%),
+      radial-gradient(circle at 50% 50%, rgba(100,200,255,0.2) 0%, transparent 35%);
+    animation: rippleMove 20s ease-in-out infinite;
+  }
+  @keyframes rippleMove {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.15) rotate(3deg); }
+  }
+
+  /* Floating particles */
+  .particles {
+    position:absolute; inset:0; overflow:hidden;
+  }
+  .particle {
+    position:absolute;
+    width:4px; height:4px;
+    background:rgba(100,200,255,0.6);
+    border-radius:50%;
+    animation: floatUp linear infinite;
+    box-shadow: 0 0 10px rgba(100,200,255,0.8);
+  }
+  @keyframes floatUp {
+    from { transform: translateY(100vh) scale(0); opacity:0; }
+    10% { opacity:1; }
+    90% { opacity:1; }
+    to { transform: translateY(-100px) scale(1); opacity:0; }
+  }
+
+  /* Slides container */
+  .slides-container {
+    position:absolute; inset:0;
+    padding: 100px 60px 120px 60px;
+    display:flex; flex-direction:column;
+  }
+
+  .slide {
+    position:absolute;
+    top: 100px; left: 60px; right: 60px; bottom: 120px;
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    align-items: center;
+    opacity:0;
+    transform: translateX(60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events:none;
+  }
+  .slide.active {
+    opacity:1;
+    transform: translateX(0);
+    pointer-events:auto;
+  }
+  .slide.prev {
+    transform: translateX(-60px);
+    opacity:0;
+  }
+
+  /* LEFT: Content */
+  .content-left {
+    color:#fff;
+    z-index:10;
+  }
+  .slide-number {
+    display:inline-block;
+    background: linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    color:#0a1929;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 25px rgba(253,186,59,0.5);
+  }
+  .slide-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color:#fff;
+    text-shadow: 4px 4px 25px rgba(0,0,0,0.6);
+    animation: titleSlide 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @keyframes titleSlide {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  .slide-title .gold { color:#FDBA3B; }
+  .slide-subtitle {
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 30px;
+    font-weight: 500;
+    animation: subtitleFade 1s ease 0.2s both;
+  }
+  @keyframes subtitleFade {
+    from { opacity:0; transform: translateY(15px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  /* Info grid */
+  .info-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 18px 22px;
+    animation: cardSlide 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .info-card:nth-child(1) { animation-delay: 0.3s; }
+  .info-card:nth-child(2) { animation-delay: 0.4s; }
+  .info-card:nth-child(3) { animation-delay: 0.5s; }
+  .info-card:nth-child(4) { animation-delay: 0.6s; }
+  @keyframes cardSlide {
+    from { opacity:0; transform: translateY(20px) scale(0.95); }
+    to { opacity:1; transform: translateY(0) scale(1); }
+  }
+  .info-card .label {
+    font-size: 0.85rem;
+    color:#FDBA3B;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .info-card .value {
+    font-size: 1.3rem;
+    color:#fff;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  /* RIGHT: Speaking Clone */
+  .clone-section {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .clone-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Rotating rings */
+  .ring-outer {
+    position:absolute; inset:0;
+    border-radius:50%;
+    border: 3px dashed rgba(253,186,59,0.5);
+    animation: spin 20s linear infinite;
+  }
+  .ring-mid {
+    position:absolute; inset:15px;
+    border-radius:50%;
+    border: 2px solid rgba(100,200,255,0.4);
+    animation: spin 15s linear infinite reverse;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Photo - speaking animation */
+  .photo-wrapper {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #fff;
+    box-shadow:
+      0 0 60px rgba(253,186,59,0.6),
+      0 20px 60px rgba(0,0,0,0.6),
+      inset 0 0 40px rgba(0,0,0,0.15);
+    position:relative;
+    z-index: 5;
+    animation: speaking 0.8s ease-in-out infinite;
+    background: linear-gradient(135deg,#1a5276,#0a1929);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .photo-wrapper img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position: center 15%;
+    display:block;
+  }
+  .photo-wrapper .placeholder {
+    font-family:Georgia,serif;
+    font-size:120px;
+    font-weight:900;
+    color:#FDBA3B;
+    opacity:0.5;
+  }
+
+  /* Speaking bob animation */
+  @keyframes speaking {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-3px) scale(1.005); }
+    50% { transform: translateY(0) scale(1); }
+    75% { transform: translateY(-2px) scale(1.003); }
+  }
+
+  /* Audio waves around photo */
+  .audio-wave {
+    position:absolute;
+    inset: -20px;
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .audio-wave::before,
+  .audio-wave::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border: 2px solid rgba(253,186,59,0.6);
+    animation: wavePulse 1.5s ease-out infinite;
+  }
+  .audio-wave::after {
+    animation-delay: 0.75s;
+  }
+  @keyframes wavePulse {
+    from { transform: scale(0.9); opacity: 1; }
+    to { transform: scale(1.4); opacity: 0; }
+  }
+
+  /* Verified badge */
+  .verified-badge {
+    position:absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 28px;
+    color:#fff;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 25px rgba(253,186,59,0.7);
+    z-index: 15;
+    font-weight: bold;
+  }
+
+  /* Name tag */
+  .clone-name {
+    margin-top: 25px;
+    text-align:center;
+    z-index: 10;
+  }
+  .clone-name .name {
+    color:#fff;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+  }
+  .clone-name .role {
+    color:#FDBA3B;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .clone-name .live-indicator {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background: rgba(255,0,0,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 8px;
+    border: 1px solid rgba(255,0,0,0.4);
+  }
+  .clone-name .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #FF0000;
+    border-radius: 50%;
+    animation: blink 1s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .clone-name .live-text {
+    color: #FF6B6B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* Top bar */
+  .top-bar {
+    position:fixed; top:0; left:0; right:0;
+    padding: 20px 50px;
+    display:flex; justify-content:space-between;
+    align-items:center;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), transparent);
+  }
+  .top-logo {
+    display:flex; align-items:center; gap: 12px;
+    color:#fff;
+  }
+  .top-logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    border-radius: 12px;
+    display:flex; align-items:center; justify-content:center;
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 26px;
+    color:#0a1929;
+    box-shadow: 0 6px 20px rgba(253,186,59,0.5);
+  }
+  .top-logo-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .slide-counter {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* Subtitle at bottom */
+  .subtitle {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1200px;
+    padding: 16px 40px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(253,186,59,0.4);
+    z-index: 500;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    line-height: 1.4;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  .subtitle.visible { opacity: 1; }
+
+  /* Progress bar */
+  .progress-container {
+    position:fixed; bottom:0; left:0; right:0;
+    height: 6px;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .progress-bar {
+    height:100%;
+    background: linear-gradient(90deg,#FDBA3B,#FB5D3B);
+    width:0%;
+    box-shadow: 0 0 15px rgba(253,186,59,0.8);
+    transition: width 0.1s linear;
+  }
+
+  /* Start button */
+  #startBtn {
+    position:fixed; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    z-index:99999;
+    background: linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    color:#0a1929;
+    border: 5px solid #fff;
+    padding: 30px 70px;
+    border-radius: 80px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    cursor:pointer;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    letter-spacing: 3px;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+  #startBtn:hover {
+    transform: translate(-50%,-50%) scale(1.08);
+    box-shadow: 0 40px 100px rgba(253,186,59,0.6);
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="ripples"></div>
+<div class="particles" id="particles"></div>
+
+<div class="top-bar">
+  <div class="top-logo">
+    <div class="top-logo-icon">R</div>
+    <div class="top-logo-text">The Ravishankar Insights</div>
+  </div>
+  <div class="slide-counter" id="counter">1 / 14</div>
+</div>
+
+<div class="slides-container" id="slidesContainer"></div>
+
+<div class="subtitle" id="subtitle"></div>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<script>
+(function() {
+  // ===== SLIDES DATA =====
+  var SLIDES = [
+    {
+      num: '01',
+      title: 'भारत की <span class="gold">नदियाँ</span>',
+      subtitle: 'Rivers of India - एक विस्तृत यात्रा',
+      info: [
+        { label: 'क्षेत्रफल', value: '32.87 लाख वर्ग किमी' },
+        { label: 'नदी तंत्र', value: '2 मुख्य श्रेणियाँ' },
+        { label: 'हिमालयी', value: 'सिंधु, गंगा, ब्रह्मपुत्र' },
+        { label: 'प्रायद्वीपीय', value: 'गोदावरी, कृष्णा, कावेरी' }
+      ],
+      narration: 'नमस्ते दोस्तों! आज हम बात करेंगे भारत की नदियों के बारे में। भारत का क्षेत्रफल बत्तीस पॉइंट आठ सात लाख वर्ग किलोमीटर है। यहाँ नदियों की दो मुख्य श्रेणियाँ हैं — हिमालयी और प्रायद्वीपीय।',
+      subtitle: 'भारत की नदियाँ — सम्पूर्ण भूगोल'
+    },
+    {
+      num: '02',
+      title: 'हिमालयी <span class="gold">नदियाँ</span>',
+      subtitle: 'बर्फ पिघलने से निकलने वाली नदियाँ',
+      info: [
+        { label: 'सिंधु', value: '2880 किमी — अरब सागर' },
+        { label: 'गंगा', value: '2525 किमी — बंगाल की खाड़ी' },
+        { label: 'ब्रह्मपुत्र', value: '2900 किमी — कुल लंबाई' },
+        { label: 'यमुना', value: '1376 किमी — गंगा की सहायक' }
+      ],
+      narration: 'हिमालयी नदियाँ बर्फ पिघलने से निकलती हैं और साल भर बहती रहती हैं। इनमें जल की मात्रा बहुत अधिक होती है। मुख्य हिमालयी नदियाँ हैं सिंधु, गंगा, यमुना, ब्रह्मपुत्र, घाघरा और गंडक।',
+      subtitle: 'बर्फ पिघलने से निकलती हैं — साल भर बहती हैं'
+    },
+    {
+      num: '03',
+      title: 'सिंधु <span class="gold">नदी</span>',
+      subtitle: 'Indus River - भारत की पश्चिमी सीमा',
+      info: [
+        { label: 'उद्गम', value: 'बोखर चू (तिब्बत)' },
+        { label: 'लंबाई', value: '2880 किमी' },
+        { label: 'गिरती है', value: 'अरब सागर' },
+        { label: 'सहायक', value: 'झेलम, चिनाब, रावी' }
+      ],
+      narration: 'सिंधु नदी का उद्गम तिब्बत में बोखर चू ग्लेशियर से होता है। इसकी लंबाई दो हज़ार आठ सौ अस्सी किलोमीटर है। ये अरब सागर में कराची के पास गिरती है। इसकी सहायक नदियाँ हैं झेलम, चिनाब, रावी, ब्यास और सतलुज।',
+      subtitle: 'सिंधु नदी — 2880 किमी, अरब सागर में गिरती है'
+    },
+    {
+      num: '04',
+      title: 'गंगा <span class="gold">नदी</span>',
+      subtitle: 'भारत की सबसे लंबी और पवित्र नदी',
+      info: [
+        { label: 'उद्गम', value: 'गंगोत्री (उत्तराखंड)' },
+        { label: 'लंबाई', value: '2525 किमी' },
+        { label: 'गिरती है', value: 'बंगाल की खाड़ी' },
+        { label: 'डेल्टा', value: 'सुंदरवन' }
+      ],
+      narration: 'गंगा नदी का उद्गम उत्तराखंड में गंगोत्री से होता है। इसकी लंबाई दो हज़ार पाँच सौ पच्चीस किलोमीटर है और ये भारत की सबसे लंबी नदी है। ये बंगाल की खाड़ी में सुंदरवन डेल्टा बनाकर गिरती है। गंगा भारत की सबसे पवित्र नदी है।',
+      subtitle: 'गंगा — 2525 किमी, सबसे पवित्र नदी'
+    },
+    {
+      num: '05',
+      title: 'यमुना <span class="gold">नदी</span>',
+      subtitle: 'गंगा की सबसे लंबी सहायक नदी',
+      info: [
+        { label: 'उद्गम', value: 'यमुनोत्री' },
+        { label: 'लंबाई', value: '1376 किमी' },
+        { label: 'शहर', value: 'दिल्ली, आगरा, मथुरा' },
+        { label: 'मिलती है', value: 'प्रयागराज में' }
+      ],
+      narration: 'यमुना नदी यमुनोत्री ग्लेशियर से निकलती है। इसकी लंबाई एक हज़ार तीन सौ छिहत्तर किलोमीटर है और ये गंगा की सबसे लंबी सहायक नदी है। दिल्ली, आगरा और मथुरा इसके किनारे बसे हैं। ये प्रयागराज में गंगा से मिलती है।',
+      subtitle: 'यमुना — दिल्ली, आगरा, मथुरा से गुजरती है'
+    },
+    {
+      num: '06',
+      title: 'ब्रह्मपुत्र <span class="gold">नदी</span>',
+      subtitle: 'तिब्बत से बांग्लादेश तक',
+      info: [
+        { label: 'उद्गम', value: 'मानसरोवर के पास' },
+        { label: 'कुल लंबाई', value: '2900 किमी' },
+        { label: 'तिब्बत में', value: 'त्सांगपो' },
+        { label: 'असम में', value: 'ब्रह्मपुत्र' }
+      ],
+      narration: 'ब्रह्मपुत्र नदी का उद्गम मानसरोवर के पास तिब्बत में होता है। इसकी कुल लंबाई दो हज़ार नौ सौ किलोमीटर है जिसमें से भारत में नौ सौ सोलह किलोमीटर है। तिब्बत में इसे त्सांगपो कहते हैं और बांग्लादेश में जमुना।',
+      subtitle: 'ब्रह्मपुत्र — त्सांगपो, ब्रह्मपुत्र, जमुना'
+    },
+    {
+      num: '07',
+      title: 'प्रायद्वीपीय <span class="gold">नदियाँ</span>',
+      subtitle: 'वर्षा पर निर्भर मौसमी नदियाँ',
+      info: [
+        { label: 'गोदावरी', value: '1465 किमी — सबसे लंबी' },
+        { label: 'कृष्णा', value: '1400 किमी' },
+        { label: 'कावेरी', value: '805 किमी' },
+        { label: 'महानदी', value: '858 किमी' }
+      ],
+      narration: 'अब बात करते हैं प्रायद्वीपीय नदियों की। ये नदियाँ वर्षा पर निर्भर हैं और मौसमी होती हैं। ये पश्चिमी घाट से निकलकर पूर्व या पश्चिम की ओर बहती हैं। मुख्य प्रायद्वीपीय नदियाँ हैं गोदावरी, कृष्णा, कावेरी, नर्मदा, ताप्ती और महानदी।',
+      subtitle: 'प्रायद्वीपीय नदियाँ — वर्षा पर निर्भर'
+    },
+    {
+      num: '08',
+      title: 'गोदावरी <span class="gold">नदी</span>',
+      subtitle: 'दक्षिण गंगा - दक्षिण भारत की सबसे लंबी',
+      info: [
+        { label: 'उद्गम', value: 'त्रयंबकेश्वर (नासिक)' },
+        { label: 'लंबाई', value: '1465 किमी' },
+        { label: 'उपनाम', value: 'दक्षिण गंगा' },
+        { label: 'गिरती है', value: 'बंगाल की खाड़ी' }
+      ],
+      narration: 'गोदावरी नदी का उद्गम नासिक के त्रयंबकेश्वर से होता है। इसकी लंबाई एक हज़ार चार सौ पैंसठ किलोमीटर है और ये दक्षिण भारत की सबसे लंबी नदी है। इसे दक्षिण गंगा या वृद्ध गंगा भी कहा जाता है। ये राजमहेंद्री के पास बंगाल की खाड़ी में गिरती है।',
+      subtitle: 'गोदावरी — दक्षिण गंगा, 1465 किमी'
+    },
+    {
+      num: '09',
+      title: 'कृष्णा <span class="gold">नदी</span>',
+      subtitle: 'महाराष्ट्र से आंध्र तक',
+      info: [
+        { label: 'उद्गम', value: 'महाबलेश्वर' },
+        { label: 'लंबाई', value: '1400 किमी' },
+        { label: 'सहायक', value: 'भीमा, तुंगभद्रा' },
+        { label: 'शहर', value: 'विजयवाड़ा' }
+      ],
+      narration: 'कृष्णा नदी महाराष्ट्र के महाबलेश्वर से निकलती है। इसकी लंबाई एक हज़ार चार सौ किलोमीटर है। इसकी मुख्य सहायक नदियाँ हैं भीमा, तुंगभद्रा, कोयना और घाटप्रभा। विजयवाड़ा और संगमेश्वर इसके किनारे के प्रमुख शहर हैं।',
+      subtitle: 'कृष्णा — 1400 किमी, महाराष्ट्र से आंध्र'
+    },
+    {
+      num: '10',
+      title: 'कावेरी <span class="gold">नदी</span>',
+      subtitle: 'दक्षिण की गंगा - तमिलनाडु की जीवन रेखा',
+      info: [
+        { label: 'उद्गम', value: 'तालकावेरी (कर्नाटक)' },
+        { label: 'लंबाई', value: '805 किमी' },
+        { label: 'उपनाम', value: 'दक्षिण की गंगा' },
+        { label: 'विशेष', value: 'अन्न भंडार' }
+      ],
+      narration: 'कावेरी नदी कर्नाटक के तालकावेरी से निकलती है। इसकी लंबाई आठ सौ पाँच किलोमीटर है। इसे दक्षिण की गंगा कहा जाता है। ये तमिलनाडु का अन्न भंडार है और सिंचाई का मुख्य स्रोत है।',
+      subtitle: 'कावेरी — दक्षिण की गंगा, 805 किमी'
+    },
+    {
+      num: '11',
+      title: 'नर्मदा और <span class="gold">ताप्ती</span>',
+      subtitle: 'पश्चिम की ओर बहने वाली नदियाँ',
+      info: [
+        { label: 'नर्मदा', value: 'अमरकंटक — 1312 किमी' },
+        { label: 'ताप्ती', value: 'बैतूल — 724 किमी' },
+        { label: 'गिरती हैं', value: 'खंभात की खाड़ी' },
+        { label: 'विशेष', value: 'द्रोणी में बहती हैं' }
+      ],
+      narration: 'पश्चिम की ओर बहने वाली दो प्रमुख नदियाँ हैं नर्मदा और ताप्ती। नर्मदा का उद्गम अमरकंटक से होता है और लंबाई एक हज़ार तीन सौ बारह किलोमीटर है। ताप्ती मध्य प्रदेश के बैतूल से निकलती है और सात सौ चौबीस किलोमीटर लंबी है। दोनों खंभात की खाड़ी में गिरती हैं।',
+      subtitle: 'नर्मदा और ताप्ती — पश्चिम की ओर बहती हैं'
+    },
+    {
+      num: '12',
+      title: 'पूर्व बनाम <span class="gold">पश्चिम</span>',
+      subtitle: 'कौन-सी नदियाँ डेल्टा बनाती हैं?',
+      info: [
+        { label: 'पूर्व की ओर', value: 'डेल्टा बनाती हैं' },
+        { label: 'पश्चिम की ओर', value: 'डेल्टा नहीं बनातीं' },
+        { label: 'पूर्व वाली', value: 'बंगाल की खाड़ी' },
+        { label: 'पश्चिम वाली', value: 'अरब सागर' }
+      ],
+      narration: 'पूर्व की ओर बहने वाली नदियाँ जैसे गंगा, ब्रह्मपुत्र, गोदावरी, कृष्णा, कावेरी और महानदी डेल्टा बनाती हैं और बंगाल की खाड़ी में गिरती हैं। जबकि पश्चिम की ओर बहने वाली नदियाँ जैसे नर्मदा और ताप्ती डेल्टा नहीं बनातीं और अरब सागर में गिरती हैं।',
+      subtitle: 'पूर्व की ओर = डेल्टा | पश्चिम की ओर = डेल्टा नहीं'
+    },
+    {
+      num: '13',
+      title: 'नदियों का <span class="gold">महत्व</span>',
+      subtitle: 'कृषि, पेयजल, ऊर्जा और संस्कृति',
+      info: [
+        { label: 'कृषि', value: 'सिंचाई का स्रोत' },
+        { label: 'पेयजल', value: 'करोड़ों लोगों के लिए' },
+        { label: 'ऊर्जा', value: 'जल विद्युत उत्पादन' },
+        { label: 'संस्कृति', value: 'धार्मिक आस्था' }
+      ],
+      narration: 'नदियों का महत्व बहुत अधिक है। ये कृषि के लिए सिंचाई का मुख्य स्रोत हैं, करोड़ों लोगों को पेयजल देती हैं, जल विद्युत उत्पादन करती हैं और धार्मिक आस्था का केंद्र हैं।',
+      subtitle: 'नदियाँ — भारत की जीवन रेखा'
+    },
+    {
+      num: '14',
+      title: 'धन्यवाद! <span class="gold">Subscribe करें</span>',
+      subtitle: 'और भी सीखने के लिए जुड़े रहें',
+      info: [
+        { label: 'Website', value: 'ravishankarkamal59-eng.github.io' },
+        { label: 'Free Notes', value: '1000+ PDF उपलब्ध' },
+        { label: 'AI Assistant', value: '24×7 उपलब्ध' },
+        { label: 'Subscribe', value: '🔔 बेल दबाएँ' }
+      ],
+      narration: 'तो दोस्तों उम्मीद है आपको ये वीडियो पसंद आया होगा। और भी सरकारी परीक्षाओं की तैयारी के लिए हमारी वेबसाइट visit करें — ravishankarkamal59-eng.github.io। चैनल को subscribe करें और वीडियो को like और share करें। धन्यवाद!',
+      subtitle: 'धन्यवाद! Subscribe करें — ravishankarkamal59-eng.github.io'
+    }
+  ];
+
+  var SLIDE_DURATION = 14000; // 14 seconds per slide (fast)
+  var TOTAL_DURATION = SLIDES.length * SLIDE_DURATION;
+
+  // ===== BUILD PARTICLES =====
+  var particlesContainer = document.getElementById('particles');
+  for (var p = 0; p < 40; p++) {
+    var particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (8 + Math.random() * 10) + 's';
+    particle.style.animationDelay = (Math.random() * 10) + 's';
+    particle.style.width = (2 + Math.random() * 4) + 'px';
+    particle.style.height = particle.style.width;
+    particlesContainer.appendChild(particle);
+  }
+
+  // ===== BUILD SLIDES =====
+  var container = document.getElementById('slidesContainer');
+
+  SLIDES.forEach(function(slide, idx) {
+    var slideEl = document.createElement('div');
+    slideEl.className = 'slide' + (idx === 0 ? ' active' : '');
+    slideEl.setAttribute('data-index', idx);
+
+    var infoHtml = '';
+    slide.info.forEach(function(item) {
+      infoHtml += '<div class="info-card"><div class="label">' + item.label + '</div><div class="value">' + item.value + '</div></div>';
+    });
+
+    slideEl.innerHTML =
+      '<div class="content-left">' +
+        '<div class="slide-number">SLIDE ' + slide.num + '</div>' +
+        '<div class="slide-title">' + slide.title + '</div>' +
+        '<div class="slide-subtitle">' + slide.subtitle + '</div>' +
+        '<div class="info-grid">' + infoHtml + '</div>' +
+      '</div>' +
+      '<div class="clone-section">' +
+        '<div class="clone-container">' +
+          '<div class="ring-outer"></div>' +
+          '<div class="ring-mid"></div>' +
+          '<div class="audio-wave"></div>' +
+          '<div class="photo-wrapper">' +
+            '<img src="assets/images/profile.jpg" alt="Ravishankar" onerror="this.style.display=\'none\'; this.parentElement.innerHTML=\'<div class=&quot;placeholder&quot;>R</div>\';">' +
+          '</div>' +
+          '<div class="verified-badge">✓</div>' +
+        '</div>' +
+        '<div class="clone-name">' +
+          '<div class="name">Ravishankar</div>' +
+          '<div class="role">FOUNDER & PRESENTER</div>' +
+          '<div class="live-indicator"><div class="live-dot"></div><div class="live-text">LIVE</div></div>' +
+        '</div>' +
+      '</div>';
+
+    container.appendChild(slideEl);
+  });
+
+  var slides = document.querySelectorAll('.slide');
+  var progress = document.getElementById('progress');
+  var counter = document.getElementById('counter');
+  var subtitleEl = document.getElementById('subtitle');
+
+  // ===== VOICE QUEUE - Proper sequential playback =====
+  var voiceQueue = [];
+  var isSpeaking = false;
+
+  function processQueue() {
+    if (voiceQueue.length === 0) {
+      isSpeaking = false;
+      return;
+    }
+    isSpeaking = true;
+    var item = voiceQueue.shift();
+    speak(item.text, item.onEnd);
+  }
+
+  function speak(text, onEnd) {
+    if (!('speechSynthesis' in window)) {
+      if (onEnd) onEnd();
+      processQueue();
+      return;
+    }
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'hi-IN';
+    utter.rate = 1.0;
+    utter.pitch = 1;
+    utter.volume = 1;
+    if (hindiVoice) utter.voice = hindiVoice;
+    utter.onend = function() {
+      if (onEnd) onEnd();
+      processQueue();
+    };
+    utter.onerror = function() {
+      if (onEnd) onEnd();
+      processQueue();
+    };
+    window.speechSynthesis.speak(utter);
+  }
+
+  function queueSpeech(text, onEnd) {
+    voiceQueue.push({ text: text, onEnd: onEnd });
+    if (!isSpeaking) processQueue();
+  }
+
+  // ===== VOICES =====
+  var voices = [];
+  var hindiVoice = null;
+
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].lang.indexOf('hi') === 0) {
+        hindiVoice = voices[i];
+        break;
+      }
+    }
+  }
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+    setTimeout(loadVoices, 500);
+    setTimeout(loadVoices, 1500);
+  }
+
+  // ===== SLIDE CHANGES =====
+  function goToSlide(idx) {
+    slides.forEach(function(s) { s.classList.remove('active', 'prev'); });
+    if (idx > 0) slides[idx - 1].classList.add('prev');
+    slides[idx].classList.add('active');
+    counter.textContent = (idx + 1) + ' / ' + SLIDES.length;
+  }
+
+  // ===== PROGRESS =====
+  var currentSlide = 0;
+  var startTime = 0;
+
+  function updateProgress() {
+    var elapsed = Date.now() - startTime;
+    var percent = Math.min(100, (elapsed / TOTAL_DURATION) * 100);
+    progress.style.width = percent + '%';
+
+    var newSlide = Math.floor(elapsed / SLIDE_DURATION);
+    if (newSlide >= SLIDES.length) newSlide = SLIDES.length - 1;
+
+    if (newSlide !== currentSlide) {
+      currentSlide = newSlide;
+      goToSlide(currentSlide);
+      subtitleEl.textContent = SLIDES[currentSlide].subtitle;
+    }
+
+    if (elapsed < TOTAL_DURATION) {
+      requestAnimationFrame(updateProgress);
+    }
+  }
+
+  // ===== START =====
+  var startBtn = document.createElement('button');
+  startBtn.id = 'startBtn';
+  startBtn.innerHTML = '▶️ START VIDEO';
+  document.body.appendChild(startBtn);
+
+  startBtn.addEventListener('click', function() {
+    startBtn.remove();
+    loadVoices();
+
+    // Voice queue: play each slide's narration completely before next
+    SLIDES.forEach(function(slide, idx) {
+      queueSpeech(slide.narration, null);
+    });
+
+    // Show subtitle
+    subtitleEl.textContent = SLIDES[0].subtitle;
+    subtitleEl.classList.add('visible');
+
+    // Start progress
+    startTime = Date.now();
+    requestAnimationFrame(updateProgress);
+  });
+})();
+</script>
+
+</body>
+</html>
