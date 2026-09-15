@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>भारत की नदियाँ - Rivers of India | The Ravishankar Insights</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', 'Nirmala UI', Arial, sans-serif;
+    background:#000; overflow:hidden;
+  }
+  .stage {
+    width:100vw; height:100vh;
+    position:relative; overflow:hidden;
+  }
+  .slide {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:3rem 4rem; text-align:center;
+    opacity:0; transform:scale(1.15);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    color:#fff;
+  }
+  .slide.active { opacity:1; transform:scale(1); }
+
+  /* Background gradients */
+  .bg-1 { background: linear-gradient(135deg,#0a1929,#0f3460,#1a5276); }
+  .bg-2 { background: linear-gradient(135deg,#1a5276,#2980b9,#0f3460); }
+  .bg-3 { background: linear-gradient(135deg,#134e5e,#71b280,#0a1929); }
+  .bg-4 { background: linear-gradient(135deg,#0f3460,#2c3e50,#1a5276); }
+  .bg-5 { background: linear-gradient(135deg,#2c3e50,#3498db,#0a1929); }
+  .bg-6 { background: linear-gradient(135deg,#16a085,#0f3460,#1a5276); }
+  .bg-7 { background: linear-gradient(135deg,#2980b9,#1a5276,#0a1929); }
+  .bg-8 { background: linear-gradient(135deg,#8e44ad,#2980b9,#0f3460); }
+  .bg-9 { background: linear-gradient(135deg,#e67e22,#c0392b,#0a1929); }
+  .bg-10 { background: linear-gradient(135deg,#27ae60,#16a085,#0f3460); }
+  .bg-11 { background: linear-gradient(135deg,#34495e,#2c3e50,#0a1929); }
+  .bg-12 { background: linear-gradient(135deg,#c0392b,#e94560,#8e44ad); }
+  .bg-13 { background: linear-gradient(135deg,#0f3460,#1a5276,#27ae60); }
+
+  /* Water pattern overlay */
+  .slide::before {
+    content:''; position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,215,0,0.05) 0%, transparent 40%);
+    pointer-events:none;
+  }
+
+  /* Main heading */
+  h1 {
+    font-size:5rem; font-weight:900; line-height:1.1;
+    margin-bottom:1.5rem;
+    text-shadow: 4px 4px 20px rgba(0,0,0,0.6);
+    animation: slideUp 1s ease;
+  }
+  h1 .gold { color:#FDBA3B; }
+  h1 .small { font-size:3rem; display:block; margin-top:1rem; opacity:0.9; font-weight:600; }
+
+  h2 {
+    font-size:3.5rem; font-weight:800; line-height:1.15;
+    margin-bottom:1.5rem; color:#FDBA3B;
+    text-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+  }
+
+  h3 {
+    font-size:2.5rem; font-weight:700;
+    margin-bottom:1rem; color:#fff;
+  }
+
+  p, .desc {
+    font-size:1.9rem; line-height:1.6;
+    max-width:1200px; margin:0 auto;
+    color:rgba(255,255,255,0.95);
+    font-weight:400;
+  }
+
+  /* Icon */
+  .big-icon {
+    font-size:10rem; margin-bottom:2rem;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  @keyframes slideUp {
+    from { opacity:0; transform: translateY(40px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  /* Info cards */
+  .info-grid {
+    display:grid; grid-template-columns:repeat(2, 1fr);
+    gap:1.5rem; margin-top:2rem; max-width:1400px;
+  }
+  .info-card {
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(20px);
+    border:2px solid rgba(255,255,255,0.2);
+    border-radius:20px;
+    padding:1.8rem 2rem;
+    text-align:left;
+    animation: slideUp 0.8s ease both;
+  }
+  .info-card .label {
+    font-size:1.3rem; color:#FDBA3B;
+    font-weight:700; margin-bottom:0.5rem;
+    text-transform:uppercase; letter-spacing:2px;
+  }
+  .info-card .value {
+    font-size:1.8rem; color:#fff; font-weight:600;
+    line-height:1.4;
+  }
+
+  /* Feature pills */
+  .pills {
+    display:flex; flex-wrap:wrap; gap:1rem;
+    justify-content:center; margin-top:2rem;
+  }
+  .pill {
+    background:rgba(255,255,255,0.15);
+    color:#fff; padding:1rem 2rem;
+    border-radius:50px; font-size:1.5rem;
+    font-weight:600; backdrop-filter:blur(10px);
+    border:2px solid rgba(255,255,255,0.25);
+    animation: slideUp 0.6s ease both;
+  }
+  .pill.gold {
+    background:linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    color:#0a1929; border-color:#FDBA3B;
+  }
+
+  /* Progress bar */
+  .progress-container {
+    position:fixed; bottom:0; left:0; right:0;
+    height:8px; background:rgba(0,0,0,0.4); z-index:9999;
+  }
+  .progress-bar {
+    height:100%; background:linear-gradient(90deg,#FDBA3B,#FB5D3B);
+    width:0%; transition: width 0.1s linear;
+    box-shadow: 0 0 20px rgba(253,186,59,0.8);
+  }
+
+  /* Top bar */
+  .top-bar {
+    position:fixed; top:0; left:0; right:0;
+    padding:1.5rem 3rem; z-index:1000;
+    display:flex; justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);
+  }
+  .top-logo {
+    color:#fff; font-size:1.4rem; font-weight:700;
+    letter-spacing:1px;
+    display:flex; align-items:center; gap:0.8rem;
+  }
+  .top-logo .icon {
+    background:linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    width:44px; height:44px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; color:#0a1929; font-family:Georgia;
+    font-size:26px;
+  }
+  .slide-counter {
+    color:#fff; font-size:1.2rem; font-weight:600;
+    background:rgba(0,0,0,0.4);
+    padding:0.6rem 1.4rem; border-radius:30px;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+  }
+
+  /* Map visual */
+  .map-container {
+    display:flex; justify-content:center; align-items:center;
+    gap:3rem; flex-wrap:wrap; margin-top:1.5rem;
+  }
+  .river-source {
+    display:flex; flex-direction:column; align-items:center;
+    gap:0.8rem;
+  }
+  .river-source .marker {
+    width:80px; height:80px; border-radius:50%;
+    background:linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.5rem;
+    box-shadow: 0 0 40px rgba(253,186,59,0.6);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(253,186,59,0.6); }
+    50% { box-shadow: 0 0 80px rgba(253,186,59,1); }
+  }
+  .river-source .label {
+    font-size:1.2rem; color:#fff; font-weight:600;
+    text-align:center;
+  }
+
+  /* Arrow */
+  .arrow-flow {
+    font-size:3rem; color:#FDBA3B;
+    animation: arrowMove 1.5s ease-in-out infinite;
+  }
+  @keyframes arrowMove {
+    0%, 100% { transform: translateX(0); opacity:0.6; }
+    50% { transform: translateX(15px); opacity:1; }
+  }
+
+  /* Start button */
+  #startBtn {
+    position:fixed; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    z-index:99999;
+    background:linear-gradient(135deg,#FDBA3B,#FB5D3B);
+    color:#0a1929; border:5px solid #fff;
+    padding:2.5rem 5rem; border-radius:80px;
+    font-size:2.5rem; font-weight:900;
+    cursor:pointer; font-family:inherit;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    letter-spacing:2px;
+    transition: all 0.3s;
+  }
+  #startBtn:hover {
+    transform:translate(-50%,-50%) scale(1.05);
+    box-shadow:0 40px 100px rgba(253,186,59,0.5);
+  }
+
+  /* Highlight */
+  .highlight {
+    color:#FDBA3B;
+    position:relative;
+    display:inline-block;
+  }
+  .highlight::after {
+    content:''; position:absolute;
+    bottom:-5px; left:0; right:0;
+    height:6px; background:#FB5D3B;
+    border-radius:3px;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:2rem;
+    margin:2rem 0;
+    max-width:1400px;
+  }
+  .stat-item {
+    text-align:center;
+  }
+  .stat-item .num {
+    font-size:4rem; font-weight:900;
+    color:#FDBA3B;
+    text-shadow: 3px 3px 0 rgba(10,25,41,0.5);
+    line-height:1;
+    margin-bottom:0.5rem;
+  }
+  .stat-item .label {
+    font-size:1.3rem; color:#fff;
+    font-weight:600; line-height:1.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-logo">
+    <div class="icon">R</div>
+    <div>The Ravishankar Insights</div>
+  </div>
+  <div class="slide-counter" id="counter">1 / 17</div>
+</div>
+
+<div class="stage" id="stage">
+
+  <!-- Slide 1: Title -->
+  <div class="slide bg-1 active">
+    <div class="big-icon">🇮🇳</div>
+    <h1>भारत की नदियाँ<br><span class="gold">Rivers of India</span></h1>
+    <h1 class="small">सम्पूर्ण भूगोल - एक विस्तृत यात्रा</h1>
+    <div class="pills" style="margin-top:3rem">
+      <div class="pill gold">हिमालयी नदियाँ</div>
+      <div class="pill">प्रायद्वीपीय नदियाँ</div>
+      <div class="pill">पूर्व व पश्चिम की ओर</div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Intro to India's Geography -->
+  <div class="slide bg-2">
+    <div class="big-icon">🗺️</div>
+    <h2>भारत का भौगोलिक स्वरूप</h2>
+    <p>भारत का क्षेत्रफल <span class="highlight">32.87 लाख वर्ग किमी</span> है। यहाँ नदियों का जाल पूरे देश को सींचता है। भारत की नदियाँ दो मुख्य श्रेणियों में बाँटी जाती हैं — <strong>हिमालयी नदियाँ</strong> और <strong>प्रायद्वीपीय नदियाँ</strong>।</p>
+    <div class="stats-grid" style="margin-top:3rem">
+      <div class="stat-item">
+        <div class="num">32.87</div>
+        <div class="label">लाख वर्ग किमी<br>भारत का क्षेत्रफल</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">2</div>
+        <div class="label">मुख्य<br>नदी तंत्र</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">4000+</div>
+        <div class="label">किमी लंबी<br>प्रमुख नदियाँ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: Himalayan River System -->
+  <div class="slide bg-3">
+    <div class="big-icon">🏔️</div>
+    <h2>हिमालयी नदियाँ</h2>
+    <p style="font-size:2rem;margin-bottom:2rem">ये नदियाँ <span class="highlight">बर्फ पिघलने</span> से निकलती हैं और साल भर बहती हैं। इनमें जल की मात्रा बहुत अधिक होती है।</p>
+    <div class="pills">
+      <div class="pill gold">सिंधु</div>
+      <div class="pill gold">गंगा</div>
+      <div class="pill gold">यमुना</div>
+      <div class="pill gold">ब्रह्मपुत्र</div>
+      <div class="pill gold">घाघरा</div>
+      <div class="pill gold">गंडक</div>
+    </div>
+  </div>
+
+  <!-- Slide 4: Indus River -->
+  <div class="slide bg-4">
+    <div class="big-icon">💧</div>
+    <h2>सिंधु नदी (Indus)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">बोखर चू ग्लेशियर (तिब्बत)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">2880 किमी</div>
+      </div>
+      <div class="info-card">
+        <div class="label">गिरती है</div>
+        <div class="value">अरब सागर (कराची के पास)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">सहायक नदियाँ</div>
+        <div class="value">झेलम, चिनाब, रावी, ब्यास, सतलुज</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Ganga River -->
+  <div class="slide bg-5">
+    <div class="big-icon">🌊</div>
+    <h2>गंगा नदी (Ganga)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">गंगोत्री (उत्तराखंड)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">2525 किमी — भारत की सबसे लंबी नदी</div>
+      </div>
+      <div class="info-card">
+        <div class="label">गिरती है</div>
+        <div class="value">बंगाल की खाड़ी (सुंदरवन डेल्टा)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">महत्व</div>
+        <div class="value">भारत की सबसे पवित्र नदी</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: Yamuna -->
+  <div class="slide bg-6">
+    <div class="big-icon">🛕</div>
+    <h2>यमुना नदी (Yamuna)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">यमुनोत्री ग्लेशियर</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">1376 किमी — गंगा की सबसे लंबी सहायक</div>
+      </div>
+      <div class="info-card">
+        <div class="label">प्रमुख शहर</div>
+        <div class="value">दिल्ली, आगरा, मथुरा</div>
+      </div>
+      <div class="info-card">
+        <div class="label">मिलती है</div>
+        <div class="value">प्रयागराज में गंगा से</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Brahmaputra -->
+  <div class="slide bg-7">
+    <div class="big-icon">🏞️</div>
+    <h2>ब्रह्मपुत्र नदी (Brahmaputra)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">मानसरोवर के पास (तिब्बत)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">2900 किमी (भारत में 916 किमी)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">तिब्बत में नाम</div>
+        <div class="value">त्सांगपो</div>
+      </div>
+      <div class="info-card">
+        <div class="label">विशेषता</div>
+        <div class="value">असम में ब्रह्मपुत्र, बांग्लादेश में जमुना</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: Peninsular Rivers -->
+  <div class="slide bg-8">
+    <div class="big-icon">⛰️</div>
+    <h2>प्रायद्वीपीय नदियाँ</h2>
+    <p style="font-size:2rem">ये नदियाँ <span class="highlight">वर्षा पर निर्भर</span> हैं और मौसमी होती हैं। ये पश्चिमी घाट से निकलकर पूर्व या पश्चिम की ओर बहती हैं।</p>
+    <div class="pills" style="margin-top:2.5rem">
+      <div class="pill gold">गोदावरी</div>
+      <div class="pill gold">कृष्णा</div>
+      <div class="pill gold">कावेरी</div>
+      <div class="pill gold">नर्मदा</div>
+      <div class="pill gold">ताप्ती</div>
+      <div class="pill gold">महानदी</div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Godavari -->
+  <div class="slide bg-9">
+    <div class="big-icon">🌊</div>
+    <h2>गोदावरी नदी (Godavari)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">त्रयंबकेश्वर (नासिक, महाराष्ट्र)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">1465 किमी — दक्षिण भारत की सबसे लंबी नदी</div>
+      </div>
+      <div class="info-card">
+        <div class="label">उपनाम</div>
+        <div class="value">दक्षिण गंगा / वृद्ध गंगा</div>
+      </div>
+      <div class="info-card">
+        <div class="label">गिरती है</div>
+        <div class="value">बंगाल की खाड़ी (राजमहेंद्री के पास)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: Krishna -->
+  <div class="slide bg-10">
+    <div class="big-icon">💦</div>
+    <h2>कृष्णा नदी (Krishna)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">महाबलेश्वर (महाराष्ट्र)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">1400 किमी</div>
+      </div>
+      <div class="info-card">
+        <div class="label">सहायक नदियाँ</div>
+        <div class="value">भीमा, तुंगभद्रा, कोयना, घाटप्रभा</div>
+      </div>
+      <div class="info-card">
+        <div class="label">प्रमुख शहर</div>
+        <div class="value">विजयवाड़ा, संगमेश्वर</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: Kaveri -->
+  <div class="slide bg-11">
+    <div class="big-icon">🌾</div>
+    <h2>कावेरी नदी (Kaveri)</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">उद्गम</div>
+        <div class="value">तालकावेरी (कर्नाटक)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">लंबाई</div>
+        <div class="value">805 किमी</div>
+      </div>
+      <div class="info-card">
+        <div class="label">उपनाम</div>
+        <div class="value">दक्षिण की गंगा</div>
+      </div>
+      <div class="info-card">
+        <div class="label">विशेषता</div>
+        <div class="value">तमिलनाडु का अन्न भंडार</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: Narmada & Tapti -->
+  <div class="slide bg-12">
+    <div class="big-icon">↔️</div>
+    <h2>पश्चिम की ओर बहने वाली नदियाँ</h2>
+    <div class="info-grid" style="grid-template-columns: 1fr 1fr; max-width:1300px">
+      <div class="info-card">
+        <div class="label">नर्मदा नदी</div>
+        <div class="value" style="font-size:1.5rem">उद्गम: अमरकंटक<br>लंबाई: 1312 किमी<br>गिरती है: खंभात की खाड़ी<br>विशेष: द्रोणी में बहती है</div>
+      </div>
+      <div class="info-card">
+        <div class="label">ताप्ती नदी</div>
+        <div class="value" style="font-size:1.5rem">उद्गम: बैतूल (मध्य प्रदेश)<br>लंबाई: 724 किमी<br>गिरती है: खंभात की खाड़ी<br>विशेष: द्रोणी में बहती है</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 13: East vs West Flowing -->
+  <div class="slide bg-13">
+    <div class="big-icon">➡️</div>
+    <h2>पूर्व बनाम पश्चिम की ओर</h2>
+    <div class="info-grid" style="max-width:1400px">
+      <div class="info-card" style="border-color:#27ae60">
+        <div class="label" style="color:#27ae60">पूर्व की ओर बहने वाली</div>
+        <div class="value" style="font-size:1.4rem">गंगा, ब्रह्मपुत्र, गोदावरी, कृष्णा, कावेरी, महानदी<br><br><strong>✓ डेल्टा बनाती हैं</strong><br>✓ बंगाल की खाड़ी में गिरती हैं</div>
+      </div>
+      <div class="info-card" style="border-color:#3498db">
+        <div class="label" style="color:#3498db">पश्चिम की ओर बहने वाली</div>
+        <div class="value" style="font-size:1.4rem">नर्मदा, ताप्ती, माही, साबरमती<br><br><strong>✗ डेल्टा नहीं बनाती</strong><br>✓ अरब सागर में गिरती हैं</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 14: Longest Rivers Comparison -->
+  <div class="slide bg-2">
+    <div class="big-icon">📏</div>
+    <h2>सबसे लंबी नदियाँ</h2>
+    <div class="stats-grid" style="grid-template-columns: repeat(3,1fr); max-width:1400px">
+      <div class="stat-item">
+        <div class="num">2525</div>
+        <div class="label">किमी — गंगा<br>(भारत में सबसे लंबी)</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">2900</div>
+        <div class="label">किमी — ब्रह्मपुत्र<br>(कुल लंबाई)</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">2880</div>
+        <div class="label">किमी — सिंधु<br>(कुल लंबाई)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 15: Rivers Map Summary -->
+  <div class="slide bg-1">
+    <div class="big-icon">🗺️</div>
+    <h2>नदियों का पूरा नक्शा</h2>
+    <p style="font-size:1.9rem;line-height:1.7;max-width:1400px">हिमालय से निकलने वाली नदियाँ उत्तर भारत को सींचती हैं और प्रायद्वीपीय नदियाँ दक्षिण भारत की जीवन रेखा हैं। दोनों मिलकर भारत की कृषि, संस्कृति और अर्थव्यवस्था को समृद्ध बनाती हैं।</p>
+    <div class="pills" style="margin-top:2.5rem">
+      <div class="pill gold">हिमालयी → उत्तर भारत</div>
+      <div class="pill gold">प्रायद्वीपीय → दक्षिण भारत</div>
+    </div>
+  </div>
+
+  <!-- Slide 16: Importance -->
+  <div class="slide bg-10">
+    <div class="big-icon">🌱</div>
+    <h2>नदियों का महत्व</h2>
+    <div class="info-grid" style="max-width:1400px">
+      <div class="info-card">
+        <div class="label">🌾 कृषि</div>
+        <div class="value" style="font-size:1.5rem">सिंचाई का मुख्य स्रोत</div>
+      </div>
+      <div class="info-card">
+        <div class="label">💧 पेयजल</div>
+        <div class="value" style="font-size:1.5rem">करोड़ों लोगों के लिए</div>
+      </div>
+      <div class="info-card">
+        <div class="label">⚡ ऊर्जा</div>
+        <div class="value" style="font-size:1.5rem">जल विद्युत उत्पादन</div>
+      </div>
+      <div class="info-card">
+        <div class="label">🛕 संस्कृति</div>
+        <div class="value" style="font-size:1.5rem">धार्मिक आस्था का केंद्र</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17: CTA -->
+  <div class="slide bg-9">
+    <div class="big-icon">📚</div>
+    <h1>और भी सीखें!</h1>
+    <h1 class="small">Free Notes, PDF, AI Assistant और भी बहुत कुछ</h1>
+    <p style="font-size:2.2rem;margin-top:2rem;font-weight:700">🌐 ravishankarkamal59-eng.github.io</p>
+    <div style="margin-top:3rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap">
+      <div style="background:linear-gradient(135deg,#FF0000,#c0392b);padding:1.5rem 3rem;border-radius:60px;font-size:2rem;font-weight:800;box-shadow:0 15px 40px rgba(255,0,0,0.5)">🔔 Subscribe करें</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.slide');
+  var progress = document.getElementById('progress');
+  var counter = document.getElementById('counter');
+  var currentSlide = 0;
+
+  // 30 seconds per slide → 17 slides = 8.5 minutes
+  var slideDuration = 30000;
+  var totalDuration = slides.length * slideDuration;
+  var startTime = 0;
+  var paused = false;
+
+  // Voiceover narration (Hindi)
+  var NARRATIONS = [
+    "नमस्ते दोस्तों! आज हम बात करेंगे भारत की नदियों के बारे में। यह वीडियो पूरी तरह educational है और आपको भारत की सभी प्रमुख नदियों की पूरी जानकारी देगा।",
+    "भारत का क्षेत्रफल बत्तीस पॉइंट आठ सात लाख वर्ग किलोमीटर है। यहाँ नदियों का जाल पूरे देश को सींचता है। भारत की नदियाँ दो मुख्य श्रेणियों में बाँटी जाती हैं। पहली हिमालयी नदियाँ, और दूसरी प्रायद्वीपीय नदियाँ।",
+    "हिमालयी नदियाँ बर्फ पिघलने से निकलती हैं और साल भर बहती रहती हैं। इनमें जल की मात्रा बहुत अधिक होती है। मुख्य हिमालयी नदियाँ हैं सिंधु, गंगा, यमुना, ब्रह्मपुत्र, घाघरा और गंडक।",
+    "सिंधु नदी का उद्गम तिब्बत में बोखर चू ग्लेशियर से होता है। इसकी लंबाई दो हज़ार आठ सौ अस्सी किलोमीटर है। ये अरब सागर में कराची के पास गिरती है। इसकी मुख्य सहायक नदियाँ हैं झेलम, चिनाब, रावी, ब्यास और सतलुज।",
+    "गंगा नदी का उद्गम उत्तराखंड में गंगोत्री से होता है। इसकी लंबाई दो हज़ार पाँच सौ पच्चीस किलोमीटर है और ये भारत की सबसे लंबी नदी है। ये बंगाल की खाड़ी में सुंदरवन डेल्टा बनाकर गिरती है। गंगा भारत की सबसे पवित्र नदी है।",
+    "यमुना नदी यमुनोत्री ग्लेशियर से निकलती है। इसकी लंबाई एक हज़ार तीन सौ छिहत्तर किलोमीटर है और ये गंगा की सबसे लंबी सहायक नदी है। दिल्ली, आगरा और मथुरा जैसे प्रमुख शहर इसके किनारे बसे हैं। ये प्रयागराज में गंगा से मिलती है।",
+    "ब्रह्मपुत्र नदी का उद्गम मानसरोवर के पास तिब्बत में होता है। इसकी कुल लंबाई दो हज़ार नौ सौ किलोमीटर है, जिसमें से भारत में नौ सौ सोलह किलोमीटर है। तिब्बत में इसे त्सांगपो कहा जाता है, असम में ब्रह्मपुत्र और बांग्लादेश में जमुना।",
+    "अब बात करते हैं प्रायद्वीपीय नदियों की। ये नदियाँ वर्षा पर निर्भर हैं और मौसमी होती हैं। ये पश्चिमी घाट से निकलकर पूर्व या पश्चिम की ओर बहती हैं। मुख्य प्रायद्वीपीय नदियाँ हैं गोदावरी, कृष्णा, कावेरी, नर्मदा, ताप्ती और महानदी।",
+    "गोदावरी नदी का उद्गम नासिक के त्रयंबकेश्वर से होता है। इसकी लंबाई एक हज़ार चार सौ पैंसठ किलोमीटर है और ये दक्षिण भारत की सबसे लंबी नदी है। इसे दक्षिण गंगा या वृद्ध गंगा भी कहा जाता है। ये राजमहेंद्री के पास बंगाल की खाड़ी में गिरती है।",
+    "कृष्णा नदी महाराष्ट्र के महाबलेश्वर से निकलती है। इसकी लंबाई एक हज़ार चार सौ किलोमीटर है। इसकी मुख्य सहायक नदियाँ हैं भीमा, तुंगभद्रा, कोयना और घाटप्रभा। विजयवाड़ा और संगमेश्वर इसके किनारे के प्रमुख शहर हैं।",
+    "कावेरी नदी कर्नाटक के तालकावेरी से निकलती है। इसकी लंबाई आठ सौ पाँच किलोमीटर है। इसे दक्षिण की गंगा कहा जाता है। ये तमिलनाडु का अन्न भंडार है और सिंचाई का मुख्य स्रोत है।",
+    "पश्चिम की ओर बहने वाली दो प्रमुख नदियाँ हैं नर्मदा और ताप्ती। नर्मदा का उद्गम अमरकंटक से होता है और लंबाई एक हज़ार तीन सौ बारह किलोमीटर है। ताप्ती मध्य प्रदेश के बैतूल से निकलती है और सात सौ चौबीस किलोमीटर लंबी है। दोनों खंभात की खाड़ी में गिरती हैं और द्रोणी में बहती हैं।",
+    "पूर्व की ओर बहने वाली नदियाँ जैसे गंगा, ब्रह्मपुत्र, गोदावरी, कृष्णा, कावेरी और महानदी डेल्टा बनाती हैं और बंगाल की खाड़ी में गिरती हैं। जबकि पश्चिम की ओर बहने वाली नदियाँ जैसे नर्मदा, ताप्ती, माही और साबरमती डेल्टा नहीं बनातीं और अरब सागर में गिरती हैं।",
+    "भारत की सबसे लंबी नदी गंगा है जिसकी लंबाई दो हज़ार पाँच सौ पच्चीस किलोमीटर है। ब्रह्मपुत्र की कुल लंबाई दो हज़ार नौ सौ किलोमीटर है और सिंधु की दो हज़ार आठ सौ अस्सी किलोमीटर।",
+    "हिमालय से निकलने वाली नदियाँ उत्तर भारत को सींचती हैं और प्रायद्वीपीय नदियाँ दक्षिण भारत की जीवन रेखा हैं। दोनों मिलकर भारत की कृषि, संस्कृति और अर्थव्यवस्था को समृद्ध बनाती हैं।",
+    "नदियों का महत्व बहुत अधिक है। ये कृषि के लिए सिंचाई का मुख्य स्रोत हैं, करोड़ों लोगों को पेयजल देती हैं, जल विद्युत उत्पादन करती हैं और धार्मिक आस्था का केंद्र हैं।",
+    "तो दोस्तों, उम्मीद है आपको ये वीडियो पसंद आया होगा। और भी सरकारी परीक्षाओं की तैयारी के लिए हमारी वेबसाइट visit करें — ravishankarkamal59-eng.github.io। चैनल को subscribe करें और वीडियो को like और share करें। धन्यवाद!"
+  ];
+
+  var voices = [];
+  var hindiVoice = null;
+
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].lang.indexOf('hi') === 0) {
+        hindiVoice = voices[i];
+        break;
+      }
+    }
+    if (!hindiVoice && voices.length > 0) {
+      hindiVoice = voices[0];
+    }
+  }
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+  }
+
+  function speak(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'hi-IN';
+    utter.rate = 0.85;
+    utter.pitch = 1;
+    utter.volume = 1;
+    if (hindiVoice) utter.voice = hindiVoice;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Background music
+  var bgMusic = new Audio();
+  bgMusic.src = 'https://www.bensound.com/bensound-music/bensound-slowmotion.mp3';
+  bgMusic.loop = true;
+  bgMusic.volume = 0.05;
+  var musicStarted = false;
+
+  function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    bgMusic.play().catch(function(){});
+  }
+
+  function updateProgress() {
+    var elapsed = Date.now() - startTime;
+    var percent = Math.min(100, (elapsed / totalDuration) * 100);
+    progress.style.width = percent + '%';
+
+    var newSlide = Math.floor(elapsed / slideDuration);
+    if (newSlide >= slides.length) newSlide = slides.length - 1;
+
+    if (newSlide !== currentSlide) {
+      slides[currentSlide].classList.remove('active');
+      slides[newSlide].classList.add('active');
+      currentSlide = newSlide;
+      counter.textContent = (currentSlide + 1) + ' / ' + slides.length;
+      speak(NARRATIONS[currentSlide]);
+    }
+
+    if (elapsed < totalDuration) {
+      requestAnimationFrame(updateProgress);
+    }
+  }
+
+  // Start button
+  var startBtn = document.createElement('button');
+  startBtn.id = 'startBtn';
+  startBtn.innerHTML = '▶️ START VIDEO';
+  document.body.appendChild(startBtn);
+
+  startBtn.addEventListener('click', function() {
+    startBtn.remove();
+    startMusic();
+    setTimeout(function() {
+      speak(NARRATIONS[0]);
+      startTime = Date.now();
+      requestAnimationFrame(updateProgress);
+    }, 500);
+  });
+})();
+</script>
+
+</body>
+</html>
