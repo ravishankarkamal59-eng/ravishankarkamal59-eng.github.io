@@ -5021,5 +5021,629 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== BA/MA SUBJECT-WISE DETECTION ====================
+(function(){
+  'use strict';
+  console.log('=== BA/MA Detection loading ===');
+
+  // ============ SUBJECT DATABASE ============
+  var SUBJECT_DATA = {
+    // ===== BA SUBJECTS =====
+    ba_hindi: {
+      name: 'BA हिंदी',
+      icon: '📖',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'साहित्यिक शब्दावली', regex: /रस|छंद|अलंकार|काव्य|गद्य|नाटक|कहानी|उपन्यास|निबंध|कविता|साहित्य|रचना/i, weight: 15, suggestion: 'रस, छंद, अलंकार, काव्य जैसी साहित्यिक शब्दावली ज़रूर use करें' },
+        { name: 'काल विभाजन', regex: /आदिकाल|भक्तिकाल|रीतिकाल|आधुनिक.*काल|वीरगाथा|भक्ति|रीति|छायावाद|प्रगतिवाद|प्रयोगवाद|नई.*कविता/i, weight: 12, suggestion: 'काल विभाजन mention करें — आदिकाल, भक्तिकाल, रीतिकाल, आधुनिक काल' },
+        { name: 'कवि/लेखक के नाम', regex: /तुलसीदास|सूरदास|कबीर|मीराबाई|जायसी|भारतेंदु|प्रेमचंद|निराला|पंत|महादेवी|अज्ञेय|धूमिल|मुक्तिबोध/i, weight: 12, suggestion: 'प्रमुख कवि/लेखकों के नाम और रचनाएँ ज़रूर लिखें' },
+        { name: 'रचना के नाम', regex: /रामचरितमानस|सूरसागर|पद्मावत|गोदान|गबन|कामायनी|कुरुक्षेत्र|यामा|आँगन.*के.*पार|राग.*दरबारी/i, weight: 10, suggestion: 'मूल रचनाओं के नाम लिखें' },
+        { name: 'उद्धरण/पंक्तियाँ', regex: /[""'']|उद्धरण|पंक्ति|पद|दोहा|चौपाई|सवैया|कवित्त/i, weight: 10, suggestion: 'मूल पंक्तियाँ या उद्धरण ज़रूर जोड़ें' },
+        { name: 'विवेचना/विश्लेषण', regex: /विश्लेषण|विवेचना|व्याख्या|समीक्षा|मूल्यांकन|तात्पर्य|अर्थ|भाव/i, weight: 12, suggestion: 'सिर्फ वर्णन न करें — विवेचना और विश्लेषण करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में|कुल.*मिलाकर|इस.*प्रकार/i, weight: 10, suggestion: 'स्पष्ट निष्कर्ष ज़रूर लिखें' },
+        { name: 'हिंदी में लेखन', regex: /[\u0900-\u097F]{15,}/i, weight: 14, suggestion: 'हिंदी में ही लिखें — देवनागरी लिपि का प्रयोग करें' }
+      ],
+      forbidden: [
+        { name: 'कोई कवि/लेखक नहीं', test: function(t){ return !/तुलसी|सूर|कबीर|मीरा|प्रेमचंद|निराला|पंत|महादेवी/i.test(t); }, msg: '❌ कोई कवि/लेखक का नाम नहीं — हिंदी साहित्य में अनिवार्य है' },
+        { name: 'कोई रचना नहीं', test: function(t){ return !/रामचरितमानस|सूरसागर|गोदान|कामायनी|पद्मावत/i.test(t); }, msg: '❌ कोई रचना का नाम नहीं' },
+        { name: 'बिना विवेचना', test: function(t){ return !/विवेचना|विश्लेषण|समीक्षा/i.test(t); }, msg: '⚠️ सिर्फ वर्णन है — विवेचना जोड़ें' }
+      ]
+    },
+
+    ba_english: {
+      name: 'BA English',
+      icon: '📖',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'Literary Terms', regex: /metaphor|simile|irony|symbolism|imagery|theme|plot|character|narrative|sonnet|ballad|ode|elegy|soliloquy|monologue/i, weight: 15, suggestion: 'Literary terms use करें — metaphor, irony, imagery, symbolism' },
+        { name: 'Author Names', regex: /Shakespeare|Milton|Wordsworth|Coleridge|Keats|Shelley|Byron|Dickens|Hardy|Eliot|Joyce|Woolf|Achebe|Naipaul|Rushdie/i, weight: 12, suggestion: 'Author names ज़रूर mention करें' },
+        { name: 'Work/Text Names', regex: /Hamlet|Macbeth|Paradise Lost|Ode to|The Waste Land|Mrs Dalloway|Things Fall Apart|Pride and Prejudice|Great Expectations/i, weight: 12, suggestion: 'Text/work के नाम लिखें (italics/quotes में)' },
+        { name: 'Critical Analysis', regex: /critic|analysis|interpretation|argument|theme of|significance|signifies|implies|suggests|represents/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें — सिर्फ summary नहीं' },
+        { name: 'Textual Evidence', regex: /quote|quotation|line|passage|extract|verse|stanza|paragraph/i, weight: 10, suggestion: 'Text से quotes/evidence ज़रूर जोड़ें' },
+        { name: 'Literary Period', regex: /romantic|victorian|modernist|renaissance|elizabethan|restoration|postcolonial|enlightenment/i, weight: 10, suggestion: 'Literary period का ज़िक्र करें' },
+        { name: 'Comparison/Contrast', regex: /compare|contrast|whereas|while|on the other hand|similarly|unlike|like/i, weight: 8, suggestion: 'Comparison/contrast से answer strong करें' },
+        { name: 'Conclusion', regex: /conclusion|in conclusion|to sum up|thus|therefore|hence/i, weight: 10, suggestion: 'Clear conclusion ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Author Name', test: function(t){ return !/Shakespeare|Milton|Wordsworth|Keats|Dickens|Eliot|Woolf/i.test(t); }, msg: '❌ कोई author का नाम नहीं — English literature में अनिवार्य' },
+        { name: 'No Work Name', test: function(t){ return !/Hamlet|Macbeth|Waste Land|Dalloway|Paradise Lost/i.test(t); }, msg: '❌ कोई text/work का नाम नहीं' },
+        { name: 'Only Summary', test: function(t){ return !/analysis|critic|interpretation|significance|theme/i.test(t); }, msg: '⚠️ सिर्फ summary है — critical analysis जोड़ें' }
+      ]
+    },
+
+    ba_history: {
+      name: 'BA इतिहास',
+      icon: '📜',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'तिथि/वर्ष', regex: /\d{3,4}\s*(ई\.?पू\.?|BC|AD|CE|ई\.?सन्|ईस्वी)?|\d{3,4}\s*(में|मे)/i, weight: 15, suggestion: 'हर तथ्य के साथ तिथि/वर्ष ज़रूर लिखें' },
+        { name: 'ऐतिहासिक व्यक्ति', regex: /अशोक|चंद्रगुप्त|समुद्रगुप्त|अकबर|शाहजहाँ|औरंगजेब|शिवाजी|गांधी|नेहरू|तिलक|सुभाष|अंबेडकर|मुहम्मद|बाबर/i, weight: 12, suggestion: 'प्रमुख ऐतिहासिक व्यक्तियों के नाम ज़रूर लिखें' },
+        { name: 'स्थान/राजवंश', regex: /मौर्य|गुप्त|मुगल|मराठा|दिल्ली.*सल्तनत|विजयनगर|ब्रिटिश|मगध|हड़प्पा|सिंधु|सांची|पाटलिपुत्र/i, weight: 12, suggestion: 'स्थान और राजवंश का नाम ज़रूर mention करें' },
+        { name: 'घटना', regex: /युद्ध|विद्रोह|क्रांति|आंदोलन|संधि|समझौता|स्थापना|पतन|आक्रमण|विजय/i, weight: 12, suggestion: 'घटना का नाम और संदर्भ लिखें' },
+        { name: 'स्रोत/पुस्तक', regex: /रचना|पुस्तक|ग्रंथ|अभिलेख|शिलालेख|इंडिका|अर्थशास्त्र|बाबरनामा|अकबरनामा|नीतिसार/i, weight: 10, suggestion: 'Primary sources का ज़िक्र करें' },
+        { name: 'कारण-परिणाम', regex: /कारण|परिणाम|कारणों|प्रभाव|परिणामस्वरूप|कारणवश|के.*फलस्वरूप/i, weight: 12, suggestion: 'कारण-परिणाम स्पष्ट करें' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|विवेचना|मूल्यांकन|महत्व|ऐतिहासिक.*दृष्टि/i, weight: 10, suggestion: 'ऐतिहासिक विश्लेषण ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में|इस.*प्रकार/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Dates', test: function(t){ return !/\d{3,4}/i.test(t); }, msg: '❌ कोई तिथि/वर्ष नहीं — history में dates अनिवार्य हैं' },
+        { name: 'No Names', test: function(t){ return !/अशोक|अकबर|गांधी|शिवाजी|नेहरू/i.test(t); }, msg: '❌ कोई ऐतिहासिक व्यक्ति का नाम नहीं' }
+      ]
+    },
+
+    ba_polity: {
+      name: 'BA राजनीति विज्ञान',
+      icon: '🏛️',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'राजनीतिक अवधारणाएँ', regex: /लोकतंत्र|संप्रभुता|स्वतंत्रता|समानता|न्याय|अधिकार|शक्ति|सत्ता|राज्य|सरकार|संविधान|sovereignty|democracy|liberty/i, weight: 15, suggestion: 'राजनीतिक अवधारणाएँ — लोकतंत्र, संप्रभुता, न्याय ज़रूर use करें' },
+        { name: 'संवैधानिक अनुच्छेद/अनुसूची', regex: /अनुच्छेद\s*\d+|Article\s*\d+|अनुसूची|Schedule|भाग\s*\d+/i, weight: 15, suggestion: 'Constitutional articles ज़रूर mention करें' },
+        { name: 'विचारक/दार्शनिक', regex: /अरस्तू|प्लेटो|मैकियावेली|हॉब्स|लॉक|रूसो|मार्क्स|मिल|गांधी|अंबेडकर|नेहरू|रॉल्स|डेविड.*ईस्टन/i, weight: 12, suggestion: 'प्रमुख राजनीतिक विचारकों के नाम ज़रूर लिखें' },
+        { name: 'संस्थाएँ', regex: /संसद|राष्ट्रपति|प्रधानमंत्री|सर्वोच्च.*न्यायालय|न्यायपालिका|चुनाव.*आयोग|संघीय|राज्यपाल/i, weight: 12, suggestion: 'Constitutional institutions का ज़िक्र करें' },
+        { name: 'सिद्धांत', regex: /सिद्धांत|शक्तियों.*पृथक्करण|जनसंप्रभुता|वैधता|नियम.*का.*शासन|rule of law|separation/i, weight: 12, suggestion: 'राजनीतिक सिद्धांत ज़रूर explain करें' },
+        { name: 'उदाहरण', regex: /उदाहरण|जैसे|for example|न्यायिक.*समीक्षा|केस|मामला|भारत|अमेरिका|ब्रिटेन/i, weight: 10, suggestion: 'व्यावहारिक उदाहरण ज़रूर जोड़ें' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|आलोचना|मूल्यांकन|तुलना|सीमाएँ|चुनौतियाँ|महत्व/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में|इसलिए/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Concepts', test: function(t){ return !/लोकतंत्र|संप्रभुता|न्याय|अधिकार|शक्ति/i.test(t); }, msg: '❌ कोई राजनीतिक अवधारणा नहीं' },
+        { name: 'No Articles', test: function(t){ return !/अनुच्छेद|Article|अनुसूची/i.test(t); }, msg: '⚠️ कोई constitutional reference नहीं' }
+      ]
+    },
+
+    ba_economics: {
+      name: 'BA अर्थशास्त्र',
+      icon: '💰',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'आर्थिक अवधारणाएँ', regex: /GDP|GNP|मुद्रास्फीति|inflation|मंदी|बजट|कर|tax|व्यय|राजस्व|मांग|आपूर्ति|demand|supply/i, weight: 15, suggestion: 'आर्थिक अवधारणाएँ — GDP, मुद्रास्फीति, बजट ज़रूर use करें' },
+        { name: 'आंकड़े/प्रतिशत', regex: /\d+%|\d+\.?\d*%|₹\d+|करोड़|लाख|crore|billion|million/i, weight: 15, suggestion: 'आंकड़े और percentages ज़रूर जोड़ें' },
+        { name: 'सिद्धांत/विचारक', regex: /मार्शल|केनेस|रिकार्डो|स्मिथ|मार्क्स|अमर्त्य.*सेन|महालनोबिस|रोस्टो|सिद्धांत|law of/i, weight: 12, suggestion: 'अर्थशास्त्रीय सिद्धांत और विचारक ज़रूर लिखें' },
+        { name: 'आर्थिक नीति', regex: /राजकोषीय|monetary|fiscal|नियम|policy|RBI|केंद्रीय.*बैंक|बजट.*2024|योजना|scheme/i, weight: 12, suggestion: 'आर्थिक नीतियों का ज़िक्र करें' },
+        { name: 'आरेख/समीकरण', regex: /मांग.*वक्र|आपूर्ति.*वक्र|curve|demand.*supply|समीकरण|equation|Y\s*=|C\s*\+|I\s*\+/i, weight: 10, suggestion: 'आरेख या समीकरण से समझाएँ' },
+        { name: 'क्षेत्रीय विश्लेषण', regex: /प्राथमिक|द्वितीयक|तृतीयक|कृषि|उद्योग|सेवा|primary|secondary|tertiary/i, weight: 10, suggestion: 'क्षेत्रीय विश्लेषण ज़रूर करें' },
+        { name: 'प्रभाव/समस्या', regex: /प्रभाव|समस्या|चुनौती|परिणाम|लाभ|हानि|सुधार/i, weight: 10, suggestion: 'प्रभाव और समस्याएँ ज़रूर लिखें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|सुझाव|recommendation|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Data', test: function(t){ return !/\d+%|₹\d+|करोड़|लाख|\d+\.\d+%/i.test(t); }, msg: '❌ कोई आंकड़े नहीं — Economics में data अनिवार्य है' },
+        { name: 'No Concepts', test: function(t){ return !/GDP|मुद्रास्फीति|बजट|कर|मांग|आपूर्ति/i.test(t); }, msg: '❌ कोई आर्थिक अवधारणा नहीं' }
+      ]
+    },
+
+    ba_sociology: {
+      name: 'BA समाजशास्त्र',
+      icon: '👥',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'सामाजिक अवधारणाएँ', regex: /समाज|परिवार|जाति|वर्ग|लिंग|समुदाय|संस्कृति|सामाजिक.*संरचना|सामाजिक.*परिवर्तन/i, weight: 15, suggestion: 'सामाजिक अवधारणाएँ — परिवार, जाति, वर्ग ज़रूर use करें' },
+        { name: 'समाजशास्त्रीय विचारक', regex: /दुर्खीम|वेबर|मार्क्स|स्पेन्सर|कॉम्ट|पार्सन्स|श्रीनिवास|अंबेडकर|योगेंद्र.*सिंह/i, weight: 12, suggestion: 'समाजशास्त्रीय विचारकों के नाम ज़रूर लिखें' },
+        { name: 'भारतीय संदर्भ', regex: /भारत|जाति.*व्यवस्था|संस्कृतिकरण|पश्चिमीकरण|आधुनिकीकरण|पंचायत|ग्रामीण|शहरी/i, weight: 12, suggestion: 'भारतीय संदर्भ ज़रूर जोड़ें' },
+        { name: 'सिद्धांत', regex: /कार्यात्मक|संघर्ष|प्रतीकात्मक|सिद्धांत|theory|दृष्टिकोण|perspective/i, weight: 12, suggestion: 'समाजशास्त्रीय सिद्धांत ज़रूर mention करें' },
+        { name: 'उदाहरण/आंकड़े', regex: /\d+%|जनगणना|census|सर्वेक्षण|उदाहरण|अध्ययन/i, weight: 12, suggestion: 'उदाहरण और आंकड़े ज़रूर जोड़ें' },
+        { name: 'सामाजिक मुद्दे', regex: /भेदभाव|असमानता|गरीबी|लैंगिक|दहेज|बाल.*विवाह|शिक्षा|स्वास्थ्य/i, weight: 10, suggestion: 'सामाजिक मुद्दों का ज़िक्र करें' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|कारण|प्रभाव|समीक्षा|आलोचना/i, weight: 10, suggestion: 'विश्लेषण ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|सुझाव|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Thinkers', test: function(t){ return !/दुर्खीम|वेबर|मार्क्स|श्रीनिवास|पार्सन्स/i.test(t); }, msg: '❌ कोई समाजशास्त्रीय विचारक नहीं' },
+        { name: 'No Concepts', test: function(t){ return !/जाति|परिवार|वर्ग|समाज|संस्कृति/i.test(t); }, msg: '❌ कोई सामाजिक अवधारणा नहीं' }
+      ]
+    },
+
+    ba_psychology: {
+      name: 'BA मनोविज्ञान',
+      icon: '🧠',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'मनोवैज्ञानिक अवधारणाएँ', regex: /व्यक्तित्व|बुद्धि|स्मृति|अधिगम|प्रेरणा|भावना|संज्ञान|व्यवहार|personality|intelligence|memory|learning/i, weight: 15, suggestion: 'मनोवैज्ञानिक अवधारणाएँ — व्यक्तित्व, बुद्धि, स्मृति ज़रूर use करें' },
+        { name: 'मनोवैज्ञानिक', regex: /फ्रायड|स्किनर|पावलॉव|थॉर्नडाइक|पियाजे|मास्लो|रोजर्स|बंडूरा|एरिक्सन/i, weight: 12, suggestion: 'मनोवैज्ञानिकों के नाम ज़रूर लिखें' },
+        { name: 'सिद्धांत', regex: /सिद्धांत|theory|psychoanalytic|behavioral|cognitive|humanistic|स्कूल|दृष्टिकोण/i, weight: 12, suggestion: 'मनोवैज्ञानिक सिद्धांत ज़रूर mention करें' },
+        { name: 'प्रयोग/अध्ययन', regex: /प्रयोग|अध्ययन|study|experiment|research|आंकड़े|data|case/i, weight: 12, suggestion: 'प्रयोग या अध्ययन का ज़िक्र करें' },
+        { name: 'व्यवहारिक उदाहरण', regex: /उदाहरण|जैसे|for example|रोज़.*जीवन|व्यवहार|व्यवहारिक/i, weight: 10, suggestion: 'व्यावहारिक उदाहरण ज़रूर जोड़ें' },
+        { name: 'अनुप्रयोग', regex: /उपचार|therapy|चिकित्सा|परामर्श|counselling|शिक्षा|कार्यस्थल/i, weight: 12, suggestion: 'मनोविज्ञान के अनुप्रयोग ज़रूर बताएँ' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|आलोचना|मूल्यांकन|तुलना|सीमाएँ/i, weight: 10, suggestion: 'विश्लेषण ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Psychologists', test: function(t){ return !/फ्रायड|स्किनर|पावलॉव|पियाजे|मास्लो|रोजर्स/i.test(t); }, msg: '❌ कोई मनोवैज्ञानिक का नाम नहीं' },
+        { name: 'No Concepts', test: function(t){ return !/व्यक्तित्व|बुद्धि|स्मृति|अधिगम|व्यवहार/i.test(t); }, msg: '❌ कोई मनोवैज्ञानिक अवधारणा नहीं' }
+      ]
+    },
+
+    ba_geography: {
+      name: 'BA भूगोल',
+      icon: '🌍',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'भौगोलिक अवधारणाएँ', regex: /नदी|पर्वत|मैदान|पठार|जलवायु|मानसून|मृदा|वनस्पति|जनसंख्या|नगरीकरण|river|mountain|climate/i, weight: 15, suggestion: 'भौगोलिक अवधारणाएँ ज़रूर use करें' },
+        { name: 'स्थान/देश', regex: /भारत|हिमालय|गंगा|यमुना|गोदावरी|कृष्णा|नर्मदा|अरब.*सागर|बंगाल.*खाड़ी|अमेरिका|चीन|यूरोप|अफ्रीका/i, weight: 12, suggestion: 'स्थान और देशों के नाम ज़रूर लिखें' },
+        { name: 'आंकड़े', regex: /\d+%|\d+\.?\d*%|\d+\s*(किमी|km|मीटर|meter|मी|मिमी|सेमी)|करोड़|लाख/i, weight: 12, suggestion: 'आंकड़े — क्षेत्रफल, लंबाई, ऊँचाई ज़रूर जोड़ें' },
+        { name: 'भू-आकृतिक विश्लेषण', regex: /अपरदन|अपक्षय|ज्वालामुखी|भूकंप|प्लेट|टेक्टोनिक|तटीय|डेल्टा|ग्लेशियर/i, weight: 12, suggestion: 'भू-आकृतिक प्रक्रियाओं का ज़िक्र करें' },
+        { name: 'आरेख/नक्शा', regex: /नक्शा|map|आरेख|diagram|चित्र|figure|graph/i, weight: 10, suggestion: 'नक्शा या आरेख ज़रूर mention करें' },
+        { name: 'कारण-प्रभाव', regex: /कारण|कारणों|प्रभाव|परिणाम|के.*कारण|की.*वजह/i, weight: 10, suggestion: 'कारण-प्रभाव ज़रूर समझाएँ' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|तुलना|महत्व|विवेचना|समस्या/i, weight: 10, suggestion: 'विश्लेषण ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Data', test: function(t){ return !/\d+%|\d+\s*(किमी|km|मी)/i.test(t); }, msg: '❌ कोई आंकड़े नहीं — Geography में data अनिवार्य' },
+        { name: 'No Locations', test: function(t){ return !/भारत|हिमालय|गंगा|अमेरिका|यूरोप|एशिया/i.test(t); }, msg: '❌ कोई location mention नहीं' }
+      ]
+    },
+
+    ba_sanskrit: {
+      name: 'BA संस्कृत',
+      icon: '🕉️',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'संस्कृत शब्द', regex: /[\u0900-\u097F]{3,}.*(वेद|उपनिषद्|पुराण|शास्त्र|सूत्र|काव्य|नाटक|गीता|रामायण|महाभारत)/i, weight: 15, suggestion: 'संस्कृत शब्दावली ज़रूर use करें' },
+        { name: 'ग्रंथ/रचना', regex: /ऋग्वेद|सामवेद|यजुर्वेद|अथर्ववेद|गीता|रामायण|महाभारत|शकुंतला|मेघदूत|रघुवंश/i, weight: 12, suggestion: 'प्रमुख संस्कृत ग्रंथों के नाम ज़रूर लिखें' },
+        { name: 'रचनाकार', regex: /कालिदास|वाल्मीकि|व्यास|भास|भवभूति|बाणभट्ट|पाणिनि|पतंजलि|शंकर/i, weight: 12, suggestion: 'संस्कृत रचनाकारों के नाम ज़रूर लिखें' },
+        { name: 'व्याकरण', regex: /व्याकरण|संधि|समास|कारक|विभक्ति|धातु|प्रत्यय|लकार|वचन/i, weight: 12, suggestion: 'व्याकरणिक बिंदु ज़रूर mention करें' },
+        { name: 'उद्धरण/श्लोक', regex: /[""'']|श्लोक|सूक्ति|उद्धरण|पद्य|पंक्ति/i, weight: 10, suggestion: 'मूल श्लोक/उद्धरण ज़रूर जोड़ें' },
+        { name: 'विवेचना', regex: /विवेचना|विश्लेषण|व्याख्या|अर्थ|तात्पर्य|समीक्षा/i, weight: 12, suggestion: 'विवेचना ज़रूर करें' },
+        { name: 'देवनागरी लेखन', regex: /[\u0900-\u097F]{20,}/i, weight: 14, suggestion: 'देवनागरी में लिखें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Sanskrit Texts', test: function(t){ return !/वेद|गीता|रामायण|महाभारत|शकुंतला/i.test(t); }, msg: '❌ कोई संस्कृत ग्रंथ का नाम नहीं' },
+        { name: 'No Authors', test: function(t){ return !/कालिदास|वाल्मीकि|व्यास|पाणिनि/i.test(t); }, msg: '❌ कोई संस्कृत रचनाकार का नाम नहीं' }
+      ]
+    },
+
+    ba_urdu: {
+      name: 'BA उर्दू',
+      icon: '📚',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'उर्दू साहित्यिक शब्द', regex: /ग़ज़ल|नज़्म|अफ़साना|नावल|ड्रामा|शायरी|शायर|अदीब|तख़लीक़|तन्क़ीद/i, weight: 15, suggestion: 'उर्दू साहित्यिक शब्द ज़रूर use करें' },
+        { name: 'शायर/अदीब', regex: /ग़ालिब|इक़बाल|मीर|फ़ैज़|जोश|मजाज़|फ़िराक़|क़ुर्रतुल|इस्मत|प्रेमचंद|सआदत/i, weight: 12, suggestion: 'शायर/अदीब के नाम ज़रूर लिखें' },
+        { name: 'रचनाएँ', regex: /दीवान|कुल्लियात|दास्तान|अफ़साना|नज़्म|ग़ज़ल|नावल|मुक़द्दस/i, weight: 10, suggestion: 'रचनाओं के नाम लिखें' },
+        { name: 'उर्दू छंद/शिल्प', regex: /बहर|काफ़िया|रदीफ़|मिसरा|शेर|मतला|मक़्ता|तख़ल्लुस/i, weight: 12, suggestion: 'उर्दू शिल्प — बहर, काफ़िया, रदीफ़ mention करें' },
+        { name: 'उर्दू भाषा', regex: /[\u0600-\u06FF]{5,}|उर्दू|अरबी|फ़ारसी|नस्तालीक़/i, weight: 12, suggestion: 'उर्दू भाषा में लिखें या उर्दू शब्द ज़रूर use करें' },
+        { name: 'विवेचना', regex: /विवेचना|विश्लेषण|व्याख्या|तन्क़ीद|तशरीह|मूल्यांकन/i, weight: 12, suggestion: 'विवेचना ज़रूर करें' },
+        { name: 'उद्धरण/शेर', regex: /[""'']|शेर|मिसरा|उद्धरण/i, weight: 10, suggestion: 'मूल शेर/उद्धरण ज़रूर जोड़ें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में|नतीजा/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Poets', test: function(t){ return !/ग़ालिब|इक़बाल|मीर|फ़ैज़|प्रेमचंद/i.test(t); }, msg: '❌ कोई शायर/अदीब का नाम नहीं' },
+        { name: 'No Literary Terms', test: function(t){ return !/ग़ज़ल|नज़्म|अफ़साना|शायरी/i.test(t); }, msg: '❌ कोई उर्दू साहित्यिक शब्द नहीं' }
+      ]
+    },
+
+    ba_finearts: {
+      name: 'BA फाइन आर्ट्स',
+      icon: '🎨',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'कला अवधारणाएँ', regex: /चित्रकला|मूर्तिकला|वास्तुकला|चित्र|रंग|रेखा|आकृति|कला|शैली|art|painting|sculpture/i, weight: 15, suggestion: 'कला की अवधारणाएँ ज़रूर use करें' },
+        { name: 'कला शैली', regex: /मुगल.*शैली|राजपूत.*शैली|पहाड़ी.*शैली|गांधार|मथुरा|अमरावती|बंगाल.*स्कूल|cubism|impressionism/i, weight: 12, suggestion: 'कला शैलियों के नाम ज़रूर लिखें' },
+        { name: 'कलाकार', regex: /रवि.*वर्मा|अवनींद्र|टैगोर|अमृता.*शेरगिल|हुसैन|रजा|सौज़ा|वर्मा/i, weight: 12, suggestion: 'प्रमुख कलाकारों के नाम ज़रूर लिखें' },
+        { name: 'कला कृतियाँ/स्थल', regex: /अजंता|एलोरा|सांची|खजुराहो|कोणार्क|ताज.*महल|लाल.*किला/i, weight: 12, suggestion: 'कला कृतियों और स्थलों के नाम लिखें' },
+        { name: 'तकनीक', regex: /तकनीक|medium|technique|fresco|watercolor|oil|acrylic|छेनी|तक्षण/i, weight: 10, suggestion: 'कला तकनीक का ज़िक्र करें' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|सौंदर्य|aesthetic|मूल्यांकन|तत्व|composition|संयोजन/i, weight: 12, suggestion: 'सौंदर्यात्मक विश्लेषण ज़रूर करें' },
+        { name: 'ऐतिहासिक संदर्भ', regex: /प्राचीन|मध्यकाल|आधुनिक|काल|युग|period|era/i, weight: 10, suggestion: 'ऐतिहासिक संदर्भ ज़रूर जोड़ें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Artists', test: function(t){ return !/रवि.*वर्मा|हुसैन|अमृता|टैगोर/i.test(t); }, msg: '❌ कोई कलाकार का नाम नहीं' },
+        { name: 'No Art Forms', test: function(t){ return !/चित्रकला|मूर्तिकला|वास्तुकला|शैली/i.test(t); }, msg: '❌ कोई कला रूप नहीं' }
+      ]
+    },
+
+    ba_journalism: {
+      name: 'BA पत्रकारिता',
+      icon: '📰',
+      type: 'ba',
+      requiredPoints: [
+        { name: 'पत्रकारिता अवधारणाएँ', regex: /समाचार|संपादकीय|रिपोर्टिंग|साक्षात्कार|फीचर|स्तंभ|पत्रकारिता|मीडिया|अखबार|टीवी|रेडियो/i, weight: 15, suggestion: 'पत्रकारिता की अवधारणाएँ ज़रूर use करें' },
+        { name: 'मीडिया प्रकार', regex: /प्रिंट|इलेक्ट्रॉनिक|डिजिटल|सोशल.*मीडिया|न्यू.*मीडिया|print|electronic|digital/i, weight: 12, suggestion: 'मीडिया के प्रकार ज़रूर mention करें' },
+        { name: 'आंकड़े/उदाहरण', regex: /\d+%|उदाहरण|जैसे|for example|अध्ययन|सर्वे/i, weight: 12, suggestion: 'आंकड़े और उदाहरण ज़रूर जोड़ें' },
+        { name: 'नैतिकता/सिद्धांत', regex: /नैतिकता|ethics|स्वतंत्रता|freedom|जवाबदेही|responsibility|सत्यता|truth/i, weight: 12, suggestion: 'मीडिया नैतिकता का ज़िक्र करें' },
+        { name: 'कानून/नियम', regex: /कानून|law|act|नियम|regulation|प्रेस.*काउंसिल|PCI|समाचार.*चैनल/i, weight: 10, suggestion: 'मीडिया कानूनों का ज़िक्र करें' },
+        { name: 'विश्लेषण', regex: /विश्लेषण|प्रभाव|महत्व|समस्या|चुनौती|role|भूमिका/i, weight: 12, suggestion: 'विश्लेषण ज़रूर करें' },
+        { name: 'समकालीन मुद्दे', regex: /fake.*news|फेक.*न्यूज़|पेड.*न्यूज़|troll|ट्रोल|प्रचार|propaganda|सेंसरशिप/i, weight: 10, suggestion: 'समकालीन मुद्दों का ज़िक्र करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|सुझाव|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Media Examples', test: function(t){ return !/अखबार|टीवी|रेडियो|समाचार|मीडिया/i.test(t); }, msg: '❌ कोई मीडिया example नहीं' },
+        { name: 'No Concepts', test: function(t){ return !/पत्रकारिता|रिपोर्टिंग|संपादकीय|समाचार/i.test(t); }, msg: '❌ कोई पत्रकारिता अवधारणा नहीं' }
+      ]
+    },
+
+    // ===== MA SUBJECTS =====
+    ma_hindi: {
+      name: 'MA हिंदी',
+      icon: '📚',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'साहित्यिक सिद्धांत', regex: /सिद्धांत|वाद|दर्शन|समीक्षा|आलोचना|शास्त्र|प्रवृत्ति|धारा/i, weight: 15, suggestion: 'साहित्यिक सिद्धांत और वाद ज़रूर mention करें' },
+        { name: 'आधुनिक साहित्यकार', regex: /प्रसाद|निराला|पंत|महादेवी|अज्ञेय|शमशेर|मुक्तिबोध|धूमिल|रघुवीर|केदारनाथ|नामवर|रामविलास/i, weight: 15, suggestion: 'आधुनिक साहित्यकारों के नाम ज़रूर लिखें' },
+        { name: 'साहित्यिक आंदोलन', regex: /छायावाद|प्रगतिवाद|प्रयोगवाद|नई.*कविता|साठोत्तरी|समकालीन|दलित.*साहित्य|स्त्री.*लेखन/i, weight: 12, suggestion: 'साहित्यिक आंदोलनों का ज़िक्र करें' },
+        { name: 'तुलनात्मक विश्लेषण', regex: /तुलना|समानता|अंतर|विश्लेषण|मूल्यांकन|समीक्षा|पुनर्मूल्यांकन/i, weight: 12, suggestion: 'तुलनात्मक विश्लेषण ज़रूर करें' },
+        { name: 'उद्धरण', regex: /[""'']|उद्धरण|पंक्ति|दोहा|श्लोक|कविता/i, weight: 10, suggestion: 'उद्धरण ज़रूर जोड़ें' },
+        { name: 'हिंदी में लेखन', regex: /[\u0900-\u097F]{50,}/i, weight: 14, suggestion: 'हिंदी में लिखें — MA level पर शुद्ध हिंदी ज़रूरी' },
+        { name: 'गहन विवेचना', regex: /विवेचना|गहन|मर्म|तात्पर्य|सार|सारांश|व्याख्या|अर्थ/i, weight: 12, suggestion: 'गहन विवेचना ज़रूर करें' },
+        { name: 'निष्कर्ष', regex: /निष्कर्ष|समापन|अंत.*में|कुल.*मिलाकर/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Modern Writers', test: function(t){ return !/निराला|प्रसाद|महादेवी|अज्ञेय|मुक्तिबोध|धूमिल/i.test(t); }, msg: '❌ कोई आधुनिक साहित्यकार नहीं' },
+        { name: 'No Literary Theory', test: function(t){ return !/सिद्धांत|वाद|आलोचना|समीक्षा/i.test(t); }, msg: '❌ कोई साहित्यिक सिद्धांत नहीं' }
+      ]
+    },
+
+    ma_english: {
+      name: 'MA English',
+      icon: '📚',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Critical Theory', regex: /postcolonial|feminist|marxist|structuralism|poststructuralism|deconstruction|new criticism|psychoanalytic|queer|ecocriticism/i, weight: 15, suggestion: 'Critical theories ज़रूर mention करें — Postcolonial, Feminist, Marxist' },
+        { name: 'Theorists', regex: /Said|Spivak|Butler|Foucault|Derrida|Lacan|Barthes|Fanon|Bhabha|Eagleton|showalter/i, weight: 15, suggestion: 'Theorists के नाम ज़रूर लिखें' },
+        { name: 'Literary Movements', regex: /modernism|postmodernism|romanticism|realism|naturalism|symbolism|surrealism|postcolonialism/i, weight: 12, suggestion: 'Literary movements का ज़िक्र करें' },
+        { name: 'Text Analysis', regex: /text|narrative|discourse|signifier|signified|dichotomy|binary|subaltern|hybridity/i, weight: 12, suggestion: 'Text analysis के लिए theoretical terms use करें' },
+        { name: 'Comparative Analysis', regex: /compare|contrast|juxtapose|while|whereas|on the other hand/i, weight: 10, suggestion: 'Comparative analysis ज़रूर करें' },
+        { name: 'Quotations', regex: /[""''"].{20,}[""'']|quote|passage|excerpt/i, weight: 10, suggestion: 'Critical quotes ज़रूर जोड़ें' },
+        { name: 'Thesis/Argument', regex: /argument|thesis|claim|contention|assert|postulate/i, weight: 12, suggestion: 'Strong thesis या argument ज़रूर रखें' },
+        { name: 'Conclusion', regex: /conclusion|in conclusion|to sum up|thus|therefore/i, weight: 10, suggestion: 'Conclusion ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Theory', test: function(t){ return !/postcolonial|feminist|marxist|structural|deconstruction/i.test(t); }, msg: '❌ कोई critical theory नहीं — MA level पर अनिवार्य' },
+        { name: 'No Theorists', test: function(t){ return !/Said|Spivak|Butler|Foucault|Derrida/i.test(t); }, msg: '❌ कोई theorist का नाम नहीं' }
+      ]
+    },
+
+    ma_history: {
+      name: 'MA इतिहास',
+      icon: '🏺',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Historiography', regex: /इतिहासकार|historian|इतिहास-लेखन|historiography|रोमिला|थापर|मजूमदार|सरकार|शर्मा|हबीब|चंद्र/i, weight: 15, suggestion: 'Historiography और historians का ज़िक्र करें' },
+        { name: 'Primary Sources', regex: /अभिलेख|शिलालेख|ताम्रपत्र|सिक्के|inscription|coin|manuscript|पांडुलिपि|अभिलेखागार/i, weight: 12, suggestion: 'Primary sources का ज़िक्र करें' },
+        { name: 'Dates/Eras', regex: /\d{3,4}\s*(ई\.?पू\.?|BC|AD|CE)|काल|युग|मध्यकाल|प्राचीन|आधुनिक/i, weight: 12, suggestion: 'Dates और periods ज़रूर लिखें' },
+        { name: 'Historical Debate', regex: /विवाद|debate|बहस|मतभेद|दृष्टिकोण|interpretation|व्याख्या/i, weight: 12, suggestion: 'Historical debate ज़रूर mention करें' },
+        { name: 'Regional Context', regex: /भारत|मुगल|मराठा|कश्मीर|बंगाल|पंजाब|मगध|दक्षिण/i, weight: 10, suggestion: 'Regional context ज़रूर जोड़ें' },
+        { name: 'Critical Analysis', regex: /विश्लेषण|आलोचना|पुनर्व्याख्या|समीक्षा|evaluation|मूल्यांकन/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'Comparative View', regex: /तुलना|compare|contrast|समानता|अंतर/i, weight: 10, suggestion: 'Comparative view ज़रूर दें' },
+        { name: 'Conclusion', regex: /निष्कर्ष|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Historians', test: function(t){ return !/थापर|शर्मा|हबीब|चंद्र|सरकार|मजूमदार/i.test(t); }, msg: '❌ कोई historian का नाम नहीं' },
+        { name: 'No Sources', test: function(t){ return !/अभिलेख|शिलालेख|सिक्के|पांडुलिपि|inscription/i.test(t); }, msg: '⚠️ Primary sources का ज़िक्र नहीं' }
+      ]
+    },
+
+    ma_polity: {
+      name: 'MA राजनीति विज्ञान',
+      icon: '⚖️',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Political Theory', regex: /रॉल्स|नोजिक|हेगेल|मार्क्स|वेबर|फूको|हैबरमास|डेरिडा|rawls|nozick|habermas/i, weight: 15, suggestion: 'Political theorists ज़रूर mention करें — Rawls, Nozick, Habermas' },
+        { name: 'Theoretical Concepts', regex: /न्याय|समानता|स्वतंत्रता|सत्ता|वैधता|hegemony|discourse|power|legitimacy/i, weight: 15, suggestion: 'Theoretical concepts ज़रूर use करें' },
+        { name: 'Comparative Politics', regex: /तुलनात्मक|comparative|राजनीतिक.*व्यवस्था|राजनीतिक.*संस्कृति|regime|शासन/i, weight: 12, suggestion: 'Comparative politics का ज़िक्र करें' },
+        { name: 'Constitutional Framework', regex: /संविधान|अनुच्छेद|Article|संशोधन|amendment|न्यायिक.*समीक्षा/i, weight: 10, suggestion: 'Constitutional references ज़रूर जोड़ें' },
+        { name: 'Case Studies', regex: /भारत|अमेरिका|ब्रिटेन|फ्रांस|चीन|केस|case|उदाहरण/i, weight: 10, suggestion: 'Case studies ज़रूर जोड़ें' },
+        { name: 'Critical Analysis', regex: /आलोचना|critique|समीक्षा|मूल्यांकन|evaluation|विश्लेषण/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'Contemporary Relevance', regex: /वर्तमान|contemporary|आधुनिक|प्रासंगिक|वैश्वीकरण|globalization/i, weight: 10, suggestion: 'Contemporary relevance ज़रूर दिखाएँ' },
+        { name: 'Conclusion', regex: /निष्कर्ष|conclusion|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Theorists', test: function(t){ return !/रॉल्स|नोजिक|हेगेल|मार्क्स|वेबर|फूको/i.test(t); }, msg: '❌ कोई political theorist नहीं' },
+        { name: 'No Theory', test: function(t){ return !/सिद्धांत|theory|आलोचना|critique/i.test(t); }, msg: '⚠️ कोई theory नहीं' }
+      ]
+    },
+
+    ma_economics: {
+      name: 'MA अर्थशास्त्र',
+      icon: '📊',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Economic Theories', regex: /केनेसियन|मार्शलियन|मार्क्सवादी|नव.*शास्त्रीय|keynesian|neoclassical|behavioral.*economics|game.*theory/i, weight: 15, suggestion: 'Economic theories ज़रूर mention करें' },
+        { name: 'Economists', regex: /केन्स|मार्शल|रिकार्डो|से|मार्क्स|सैमुअलसन|अमर्त्य.*सेन|स्टिग्लिट्ज़|फ्रीडमैन/i, weight: 12, suggestion: 'Economists के नाम ज़रूर लिखें' },
+        { name: 'Data & Statistics', regex: /\d+%|₹\d+|करोड़|लाख|GDP.*\d+|inflation.*\d+|regression|correlation/i, weight: 15, suggestion: 'Data और statistical analysis ज़रूर जोड़ें' },
+        { name: 'Models & Equations', regex: /model|मॉडल|equation|समीकरण|Y\s*=|C\s*\+|I\s*\+|IS-LM|AD-AS|Phillips.*curve/i, weight: 12, suggestion: 'Economic models और equations ज़रूर use करें' },
+        { name: 'Policy Analysis', regex: /राजकोषीय|monetary|नीति|policy|RBI|केंद्रीय.*बैंक|बजट|taxation|subsidy/i, weight: 12, suggestion: 'Policy analysis ज़रूर करें' },
+        { name: 'Sectoral Analysis', regex: /कृषि|उद्योग|सेवा|primary|secondary|tertiary|agriculture|industry|service/i, weight: 10, suggestion: 'Sectoral analysis ज़रूर करें' },
+        { name: 'Critical Evaluation', regex: /आलोचना|critique|समीक्षा|सीमाएँ|limitations|मूल्यांकन/i, weight: 12, suggestion: 'Critical evaluation ज़रूर करें' },
+        { name: 'Conclusion', regex: /निष्कर्ष|conclusion|सुझाव|recommendation|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Data', test: function(t){ return !/\d+%|₹\d+|करोड़|लाख|\d+\.\d+/i.test(t); }, msg: '❌ कोई data नहीं — MA Economics में अनिवार्य' },
+        { name: 'No Models', test: function(t){ return !/model|मॉडल|equation|समीकरण|curve/i.test(t); }, msg: '⚠️ कोई economic model नहीं' }
+      ]
+    },
+
+    ma_sociology: {
+      name: 'MA समाजशास्त्र',
+      icon: '🌐',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Sociological Theory', regex: /कार्यात्मक|संघर्ष|प्रतीकात्मक|पार्सन्स|दुर्खीम|वेबर|मार्क्स|बूर्दिए|गिडेंस|फूको/i, weight: 15, suggestion: 'Sociological theories ज़रूर mention करें' },
+        { name: 'Theorists', regex: /दुर्खीम|वेबर|मार्क्स|पार्सन्स|मर्टन|बूर्दिए|गिडेंस|हॉब्सबॉम|एंटनी.*गिडेंस/i, weight: 15, suggestion: 'Sociologists के नाम ज़रूर लिखें' },
+        { name: 'Concepts', regex: /संस्कृतिकरण|पश्चिमीकरण|आधुनिकीकरण|जाति|वर्ग|लिंग|समुदाय|anomie|alienation|hegemony/i, weight: 12, suggestion: 'Sociological concepts ज़रूर use करें' },
+        { name: 'Research Methods', regex: /गुणात्मक|मात्रात्मक|qualitative|quantitative|ethnography|survey|interview|case.*study/i, weight: 10, suggestion: 'Research methods का ज़िक्र करें' },
+        { name: 'Empirical Data', regex: /\d+%|जनगणना|census|survey|सर्वेक्षण|NFHS|NSSO|data/i, weight: 12, suggestion: 'Empirical data ज़रूर जोड़ें' },
+        { name: 'Critical Analysis', regex: /आलोचना|critique|समीक्षा|मूल्यांकन|विश्लेषण|evaluation/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'Contemporary Context', regex: /वर्तमान|contemporary|वैश्वीकरण|globalization|समकालीन|आधुनिक/i, weight: 10, suggestion: 'Contemporary context ज़रूर जोड़ें' },
+        { name: 'Conclusion', regex: /निष्कर्ष|conclusion|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Theorists', test: function(t){ return !/दुर्खीम|वेबर|मार्क्स|पार्सन्स|गिडेंस|बूर्दिए/i.test(t); }, msg: '❌ कोई sociologist का नाम नहीं' },
+        { name: 'No Data', test: function(t){ return !/\d+%|जनगणना|census|data|सर्वे/i.test(t); }, msg: '⚠️ कोई empirical data नहीं' }
+      ]
+    },
+
+    ma_psychology: {
+      name: 'MA मनोविज्ञान',
+      icon: '🧠',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Psychological Theories', regex: /सिद्धांत|theory|psychoanalytic|cognitive|behavioral|humanistic|evolutionary|social.*learning/i, weight: 15, suggestion: 'Psychological theories ज़रूर mention करें' },
+        { name: 'Psychologists', regex: /फ्रायड|स्किनर|पावलॉव|पियाजे|मास्लो|रोजर्स|बंडूरा|एरिक्सन|बेकेट|सेलिगमैन/i, weight: 12, suggestion: 'Psychologists के नाम ज़रूर लिखें' },
+        { name: 'Research & Experiments', regex: /प्रयोग|experiment|अध्ययन|study|research|आंकड़े|data|case.*study|sample/i, weight: 12, suggestion: 'Research और experiments का ज़िक्र करें' },
+        { name: 'Concepts', regex: /व्यक्तित्व|बुद्धि|स्मृति|अधिगम|प्रेरणा|भावना|संज्ञान|personality|intelligence|memory/i, weight: 12, suggestion: 'Psychological concepts ज़रूर use करें' },
+        { name: 'Statistical Methods', regex: /माध्य|mean|median|मानक.*विचलन|correlation|regression|t-test|ANOVA|significance/i, weight: 10, suggestion: 'Statistical methods का ज़िक्र करें' },
+        { name: 'Applications', regex: /therapy|चिकित्सा|परामर्श|counselling|clinical|शिक्षा|कार्यस्थल|industrial|organizational/i, weight: 12, suggestion: 'Applications ज़रूर बताएँ' },
+        { name: 'Critical Analysis', regex: /आलोचना|critique|समीक्षा|मूल्यांकन|सीमाएँ|limitations/i, weight: 12, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'Conclusion', regex: /निष्कर्ष|conclusion|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Psychologists', test: function(t){ return !/फ्रायड|स्किनर|पावलॉव|पियाजे|मास्लो|रोजर्स|बंडूरा/i.test(t); }, msg: '❌ कोई psychologist का नाम नहीं' },
+        { name: 'No Experiments', test: function(t){ return !/प्रयोग|experiment|अध्ययन|study|research/i.test(t); }, msg: '⚠️ कोई research/experiment नहीं' }
+      ]
+    },
+
+    ma_geography: {
+      name: 'MA भूगोल',
+      icon: '🌏',
+      type: 'ma',
+      requiredPoints: [
+        { name: 'Geographical Theory', regex: /सिद्धांत|theory|मॉडल|model|वेबर|क्रिस्टालर|हेगरस्ट्रैंड|central.*place|location.*theory/i, weight: 15, suggestion: 'Geographical theories और models ज़रूर mention करें' },
+        { name: 'Spatial Analysis', regex: /स्थानिक|spatial|क्षेत्रीय|regional|distribution|वितरण|pattern|पैटर्न/i, weight: 12, suggestion: 'Spatial analysis ज़रूर करें' },
+        { name: 'Data & Maps', regex: /\d+%|\d+\.?\d*%|\d+\s*(किमी|km|मी|मीटर)|नक्शा|map|graph|chart|आरेख/i, weight: 15, suggestion: 'Data और maps ज़रूर use करें' },
+        { name: 'Physical Processes', regex: /अपरदन|अपक्षय|ज्वालामुखी|भूकंप|प्लेट.*टेक्टोनिक|मानसून|जलवायु|climate|geomorphology/i, weight: 12, suggestion: 'Physical processes का ज़िक्र करें' },
+        { name: 'Human Geography', regex: /जनसंख्या|population|नगरीकरण|urbanization|प्रवासन|migration|कृषि|agriculture|उद्योग|industry/i, weight: 10, suggestion: 'Human geography का ज़िक्र करें' },
+        { name: 'Regional Studies', regex: /भारत|एशिया|यूरोप|अफ्रीका|अमेरिका|हिमालय|गंगा|तटीय|मरुस्थल/i, weight: 10, suggestion: 'Regional studies ज़रूर जोड़ें' },
+        { name: 'Critical Analysis', regex: /विश्लेषण|तुलना|महत्व|समस्या|चुनौती|मूल्यांकन|सीमाएँ/i, weight: 10, suggestion: 'Critical analysis ज़रूर करें' },
+        { name: 'Conclusion', regex: /निष्कर्ष|conclusion|समापन|अंत.*में/i, weight: 10, suggestion: 'निष्कर्ष ज़रूर लिखें' }
+      ],
+      forbidden: [
+        { name: 'No Data', test: function(t){ return !/\d+%|\d+\s*(किमी|km|मी)/i.test(t); }, msg: '❌ कोई data नहीं — MA Geography में अनिवार्य' },
+        { name: 'No Maps/Models', test: function(t){ return !/नक्शा|map|model|मॉडल|theory/i.test(t); }, msg: '⚠️ कोई map या model नहीं' }
+      ]
+    }
+  };
+
+  // ============ GET CURRENT EXAM ============
+  function getCurrentExam(){
+    if(window.state && window.state.exam) return window.state.exam;
+    if(window.AppState && window.AppState.exam) return window.AppState.exam;
+    var active = document.querySelector('.dr-item.on');
+    if(active) return active.getAttribute('data-exam');
+    var eb = document.getElementById('ebN');
+    if(eb){
+      var t = eb.textContent || '';
+      // Try to match BA/MA subjects
+      for(var k in SUBJECT_DATA){
+        if(t.indexOf(SUBJECT_DATA[k].name) > -1) return k;
+      }
+    }
+    return null;
+  }
+
+  // ============ ANALYZE ============
+  function analyzeSubject(text, subjectKey){
+    var data = SUBJECT_DATA[subjectKey];
+    if(!data) return null;
+
+    var results = {
+      name: data.name,
+      icon: data.icon,
+      type: data.type,
+      subjectKey: subjectKey,
+      found: [],
+      missing: [],
+      warnings: [],
+      totalScore: 0,
+      maxScore: 0,
+      words: text.split(/\s+/).filter(function(w){ return w.length > 0; }).length
+    };
+
+    // Required points
+    data.requiredPoints.forEach(function(p){
+      var has = p.regex.test(text);
+      results.maxScore += p.weight;
+      if(has){
+        results.found.push({ name: p.name, weight: p.weight });
+        results.totalScore += p.weight;
+      } else {
+        results.missing.push({ name: p.name, weight: p.weight, suggestion: p.suggestion });
+      }
+    });
+
+    // Forbidden
+    data.forbidden.forEach(function(f){
+      try {
+        if(f.test(text)) results.warnings.push(f.msg);
+      } catch(e){}
+    });
+
+    results.pct = results.maxScore > 0 ? Math.round((results.totalScore / results.maxScore) * 100) : 0;
+    return results;
+  }
+
+  // ============ RENDER ============
+  function renderSubjectDetection(text){
+    var key = getCurrentExam();
+    if(!key) return null;
+    if(!SUBJECT_DATA[key]) return null;
+
+    var r = analyzeSubject(text, key);
+    if(!r) return null;
+
+    var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
+    var scoreStatus = r.pct >= 70 ? '✅ Excellent' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
+    var typeLabel = r.type === 'ba' ? 'BA' : 'MA';
+
+    var h = '';
+
+    // Header
+    h += '<div style="background:linear-gradient(135deg,#0f3460,#8e44ad);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center">';
+    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">' + r.icon + ' ' + r.name + ' - ADVANCED ANALYSIS</div>';
+    h += '<div style="font-size:13px;font-weight:700">' + typeLabel + ' Subject Detection System</div>';
+    h += '</div>';
+
+    // Score card
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
+    h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
+    h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
+    h += '</div>';
+    h += '<div style="height:8px;background:#e0e6ed;border-radius:4px;overflow:hidden"><div style="height:100%;width:' + r.pct + '%;background:' + scoreColor + '"></div></div>';
+    h += '<div style="font-size:11px;color:#666;margin-top:8px">Points: <b>' + r.totalScore + '/' + r.maxScore + '</b> • Words: <b>' + r.words + '</b></div>';
+    h += '</div>';
+
+    // Found
+    if(r.found.length > 0){
+      h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
+      r.found.forEach(function(f){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
+        h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Missing
+    if(r.missing.length > 0){
+      h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
+      r.missing.forEach(function(m){
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+        h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
+        h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
+        h += '</div>';
+        h += '<div style="font-size:11px;color:#666;line-height:1.4">💡 ' + m.suggestion + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Warnings
+    if(r.warnings.length > 0){
+      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
+      r.warnings.forEach(function(w){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Summary
+    var summary = '';
+    if(r.pct >= 70) summary = '🎉 बहुत बढ़िया! ' + r.name + ' का answer तैयार है।';
+    else if(r.pct >= 45) summary = '📈 अच्छा प्रयास! ' + r.missing.length + ' चीज़ें जोड़ें।';
+    else summary = '💪 मेहनत ज़रूरी! ' + r.missing.length + ' important points छूटे हैं।';
+
+    h += '<div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #f39c12;padding:14px;border-radius:10px;margin-bottom:14px;font-size:13px;color:#7a5a00;font-weight:600;line-height:1.6">' + summary + '</div>';
+
+    return h;
+  }
+
+  // ============ HOOK ============
+  function hook(){
+    if(typeof window.showResult === 'function' && !window.showResult._bamaHooked){
+      var orig = window.showResult;
+      window.showResult = function(r){
+        var res = orig.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+            if(!text || text.length < 30){
+              var ta = document.getElementById('ansInput');
+              if(ta) text = ta.value;
+            }
+            if(text && text.length >= 30){
+              var det = renderSubjectDetection(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                  console.log('✅ BA/MA detection added');
+                }
+              }
+            }
+          } catch(e){ console.log('BA/MA err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showResult._bamaHooked = true;
+    }
+
+    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._bamaHooked){
+      var orig2 = window.showDirectResult;
+      window.showDirectResult = function(text, rtu){
+        var res = orig2.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            if(text && text.length >= 30){
+              var det = renderSubjectDetection(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                  console.log('✅ BA/MA detection added');
+                }
+              }
+            }
+          } catch(e){}
+        }, 200);
+        return res;
+      };
+      window.showDirectResult._bamaHooked = true;
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
+  } else {
+    setTimeout(hook, 500);
+  }
+  setTimeout(hook, 1500);
+  setTimeout(hook, 3000);
+  setTimeout(hook, 5000);
+
+  console.log('✅ BA/MA Detection ready');
+})();
+</script>
+
 </body>
 </html>
