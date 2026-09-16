@@ -27,6 +27,10 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .hdr-title .s{font-size:7px;color:#FDBA3B;letter-spacing:1.5px;font-weight:700}
 .hdr-title .b{font-size:13px;font-weight:800;font-family:Georgia,serif}
 .hdr-btn{width:38px;height:38px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:0}
+.hdr-refresh{animation:none}
+.hdr-refresh:active{background:rgba(253,186,59,.3)}
+.hdr-refresh:active span{animation:spin360 .6s linear}
+@keyframes spin360{to{transform:rotate(360deg)}}
 .hdr-btn span{display:block;width:4px;height:4px;background:#FDBA3B;border-radius:50%}
 .hdr-btn:active{background:rgba(255,255,255,.3)}
 
@@ -1130,6 +1134,84 @@ textarea:focus{border-color:#0f3460;background:#fff}
     state.question=best.q;
     state.detected=best;
   }
+
+
+  // ==================== REFRESH PAGE ====================
+  window.refreshPage=function(){
+    // Ask confirmation if content exists
+    var hasContent=state.extracted || (document.getElementById('ansInput') && document.getElementById('ansInput').value.trim());
+    if(hasContent){
+      if(!confirm('🔄 Page refresh करें?\n\nआपका current answer हट जाएगा।')) return;
+    }
+
+    // Reset everything
+    state.question=null;
+    state.extracted='';
+    state.detected=null;
+    state.currentText='';
+    state.detectedExam=null;
+
+    // Clear textarea
+    var ai=document.getElementById('ansInput');
+    if(ai) ai.value='';
+
+    // Clear type zone
+    var tz=document.getElementById('typeZone');
+    if(tz) tz.classList.remove('hidden');
+
+    // Reset mode to type
+    state.mode='type';
+    document.querySelectorAll('.mode-b').forEach(function(b){b.classList.toggle('on',b.dataset.mode==='type')});
+    var pz=document.getElementById('pdfZone');
+    if(pz) pz.classList.remove('on');
+
+    // Reset PDF
+    try{resetPdf()}catch(e){}
+
+    // Close result overlay
+    var rp=document.getElementById('resPanel');
+    if(rp) rp.classList.remove('on');
+    var ro=document.getElementById('resOverlay');
+    if(ro) ro.classList.remove('on');
+    var rb=document.getElementById('resBody');
+    if(rb) rb.innerHTML='';
+
+    // Hide detect panel
+    var di=document.getElementById('detectInfo');
+    if(di) di.classList.remove('on');
+
+    // Reset question card
+    var qc=document.getElementById('qcard');
+    if(qc) qc.classList.add('hidden');
+
+    // Reset word count
+    updateCount();
+
+    // Scroll to top
+    window.scrollTo({top:0,behavior:'smooth'});
+
+    // Show subtle success
+    showToast('🔄 Page refresh हो गया');
+  };
+
+  // Toast notification
+  function showToast(msg){
+    var t=document.createElement('div');
+    t.textContent=msg;
+    t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:12px 24px;border-radius:30px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 30px rgba(39,174,96,.4);animation:toastIn .3s ease';
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.animation='toastOut .3s ease';
+      setTimeout(function(){t.remove()},300);
+    },1800);
+  }
+
+  // Toast animation
+  (function(){
+    var st=document.createElement('style');
+    st.textContent='@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}@keyframes toastOut{from{opacity:1}to{opacity:0;transform:translate(-50%,20px)}}';
+    document.head.appendChild(st);
+  })();
 
   // ==================== CHECK ====================
   window.checkAnswer=function(){
