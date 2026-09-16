@@ -418,86 +418,94 @@ textarea:focus { border-color: #0f3460; background: #fff; }
     <!-- Question selector -->
     <div class="card">
       <div class="card-title">📝 प्रश्न चुनें <span class="badge">UPSC / UPPCS</span></div>
-      <div style="position:relative;margin-bottom:12px">
-        <button id="examMenuBtn" style="width:100%;background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;border:none;padding:12px 16px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 15px rgba(15,52,96,0.25)">
-          <span style="display:flex;align-items:center;gap:8px">
-            <span id="currentExamIcon" style="font-size:18px">🎯</span>
-            <span id="currentExamName">UPSC Mains</span>
+      <div style="position:relative;margin-bottom:16px">
+        <button id="examMenuBtn" onclick="window.toggleExamMenu()" style="width:100%;background:linear-gradient(135deg,#0f3460,#1a5276,#0f3460);color:#fff;border:none;padding:18px 20px;border-radius:16px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 25px rgba(15,52,96,0.35);position:relative;overflow:hidden">
+          <div style="position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(253,186,59,0.15),transparent 60%);pointer-events:none"></div>
+          <span style="display:flex;align-items:center;gap:12px;position:relative;z-index:1">
+            <span id="currentExamIcon" style="font-size:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))">🎯</span>
+            <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.2">
+              <span style="font-size:10px;color:#FDBA3B;letter-spacing:2px;font-weight:800">CURRENT EXAM</span>
+              <span id="currentExamName" style="font-size:17px;font-weight:800">UPSC Mains</span>
+            </span>
           </span>
-          <span style="font-size:20px;transition:transform 0.3s" id="menuArrow">⋮</span>
+          <span style="display:flex;flex-direction:column;gap:3px;padding:6px;background:rgba(255,255,255,0.12);border-radius:8px;position:relative;z-index:1" id="menuArrow">
+            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
+            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
+            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
+          </span>
         </button>
 
-        <div id="examDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.2);z-index:50;margin-top:6px;max-height:400px;overflow-y:auto;border:1px solid #e0e6ed">
+        <div id="examDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.25);z-index:50;margin-top:8px;max-height:450px;overflow-y:auto;border:2px solid #e0e6ed">
           <div style="padding:8px">
-            <div class="menu-section-label" style="font-size:10px;color:#999;font-weight:800;letter-spacing:1px;padding:8px 12px 4px">🎯 GOVERNMENT EXAMS</div>
+            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent)">🎯 GOVERNMENT EXAMS</div>
             <button class="exam-opt" data-exam="upsc" data-icon="🎯" data-name="UPSC Mains">
-              <span style="font-size:16px">🎯</span>
-              <span style="flex:1;text-align:left">UPSC Mains</span>
-              <span style="font-size:11px;color:#999">18 Q</span>
+              <span class="opt-icon">🎯</span>
+              <span class="opt-name">UPSC Mains</span>
+              <span class="q-count">18 Q</span>
             </button>
             <button class="exam-opt" data-exam="uppcs" data-icon="🏛️" data-name="UPPCS Mains">
-              <span style="font-size:16px">🏛️</span>
-              <span style="flex:1;text-align:left">UPPCS Mains</span>
-              <span style="font-size:11px;color:#999">12 Q</span>
+              <span class="opt-icon">🏛️</span>
+              <span class="opt-name">UPPCS Mains</span>
+              <span class="q-count">12 Q</span>
             </button>
             <button class="exam-opt" data-exam="bpsc" data-icon="🏢" data-name="BPSC Mains">
-              <span style="font-size:16px">🏢</span>
-              <span style="flex:1;text-align:left">BPSC Mains</span>
-              <span style="font-size:11px;color:#999">5 Q</span>
+              <span class="opt-icon">🏢</span>
+              <span class="opt-name">BPSC Mains</span>
+              <span class="q-count">5 Q</span>
             </button>
             <button class="exam-opt" data-exam="essay" data-icon="📝" data-name="निबंध">
-              <span style="font-size:16px">📝</span>
-              <span style="flex:1;text-align:left">निबंध (Essay)</span>
-              <span style="font-size:11px;color:#999">3 Q</span>
+              <span class="opt-icon">📝</span>
+              <span class="opt-name">निबंध (Essay)</span>
+              <span class="q-count">3 Q</span>
             </button>
 
-            <div class="menu-section-label" style="font-size:10px;color:#999;font-weight:800;letter-spacing:1px;padding:12px 12px 4px;border-top:1px solid #f0f4f8;margin-top:6px">🌾 AGRICULTURE</div>
+            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent);border-top:2px solid #e0e6ed;margin-top:6px">🌾 AGRICULTURE</div>
             <button class="exam-opt" data-exam="agri_agronomy" data-icon="🌾" data-name="Agronomy">
-              <span style="font-size:16px">🌾</span>
-              <span style="flex:1;text-align:left">Agronomy (शस्य विज्ञान)</span>
-              <span style="font-size:11px;color:#999">8 Q</span>
+              <span class="opt-icon">🌾</span>
+              <span class="opt-name">Agronomy (शस्य विज्ञान)</span>
+              <span class="q-count">8 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_soil" data-icon="🌱" data-name="Soil Science">
-              <span style="font-size:16px">🌱</span>
-              <span style="flex:1;text-align:left">Soil Science (मृदा विज्ञान)</span>
-              <span style="font-size:11px;color:#999">5 Q</span>
+              <span class="opt-icon">🌱</span>
+              <span class="opt-name">Soil Science (मृदा विज्ञान)</span>
+              <span class="q-count">5 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_horticulture" data-icon="🍎" data-name="Horticulture">
-              <span style="font-size:16px">🍎</span>
-              <span style="flex:1;text-align:left">Horticulture (बागवानी)</span>
-              <span style="font-size:11px;color:#999">4 Q</span>
+              <span class="opt-icon">🍎</span>
+              <span class="opt-name">Horticulture (बागवानी)</span>
+              <span class="q-count">4 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_pathology" data-icon="🦠" data-name="Plant Pathology">
-              <span style="font-size:16px">🦠</span>
-              <span style="flex:1;text-align:left">Plant Pathology</span>
-              <span style="font-size:11px;color:#999">3 Q</span>
+              <span class="opt-icon">🦠</span>
+              <span class="opt-name">Plant Pathology</span>
+              <span class="q-count">3 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_entomology" data-icon="🐛" data-name="Entomology">
-              <span style="font-size:16px">🐛</span>
-              <span style="flex:1;text-align:left">Entomology (कीट विज्ञान)</span>
-              <span style="font-size:11px;color:#999">3 Q</span>
+              <span class="opt-icon">🐛</span>
+              <span class="opt-name">Entomology (कीट विज्ञान)</span>
+              <span class="q-count">3 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_extension" data-icon="📢" data-name="Extension Education">
-              <span style="font-size:16px">📢</span>
-              <span style="flex:1;text-align:left">Extension Education</span>
-              <span style="font-size:11px;color:#999">2 Q</span>
+              <span class="opt-icon">📢</span>
+              <span class="opt-name">Extension Education</span>
+              <span class="q-count">2 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_economics" data-icon="💰" data-name="Agri Economics">
-              <span style="font-size:16px">💰</span>
-              <span style="flex:1;text-align:left">Agri Economics</span>
-              <span style="font-size:11px;color:#999">2 Q</span>
+              <span class="opt-icon">💰</span>
+              <span class="opt-name">Agri Economics</span>
+              <span class="q-count">2 Q</span>
             </button>
             <button class="exam-opt" data-exam="agri_animal" data-icon="🐄" data-name="Animal Husbandry">
-              <span style="font-size:16px">🐄</span>
-              <span style="flex:1;text-align:left">Animal Husbandry</span>
-              <span style="font-size:11px;color:#999">2 Q</span>
+              <span class="opt-icon">🐄</span>
+              <span class="opt-name">Animal Husbandry</span>
+              <span class="q-count">2 Q</span>
             </button>
 
-            <div class="menu-section-label" style="font-size:10px;color:#999;font-weight:800;letter-spacing:1px;padding:12px 12px 4px;border-top:1px solid #f0f4f8;margin-top:6px">📚 OTHER SUBJECTS</div>
+            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent);border-top:2px solid #e0e6ed;margin-top:6px">📚 OTHER SUBJECTS</div>
             <button class="exam-opt" data-exam="sociology" data-icon="👥" data-name="Sociology">
-              <span style="font-size:16px">👥</span>
-              <span style="flex:1;text-align:left">Sociology (समाजशास्त्र)</span>
-              <span style="font-size:11px;color:#999">3 Q</span>
+              <span class="opt-icon">👥</span>
+              <span class="opt-name">Sociology (समाजशास्त्र)</span>
+              <span class="q-count">3 Q</span>
             </button>
           </div>
         </div>
@@ -507,25 +515,47 @@ textarea:focus { border-color: #0f3460; background: #fff; }
         .exam-opt {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           width: 100%;
-          padding: 10px 12px;
+          padding: 14px 16px;
           border: none;
           background: transparent;
-          border-radius: 8px;
+          border-radius: 12px;
           cursor: pointer;
           font-family: inherit;
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 600;
           color: #1a1a2e;
-          transition: background 0.15s;
+          transition: all 0.15s;
+          text-align: left;
         }
         .exam-opt:hover, .exam-opt.active {
           background: #f0f4f8;
         }
         .exam-opt.active {
-          background: linear-gradient(135deg, #fff8e1, #fff3cd);
+          background: linear-gradient(135deg, #e8f4ff, #d4e9ff);
           color: #0f3460;
+          border-left: 4px solid #e94560;
+        }
+        .exam-opt .q-count {
+          background: linear-gradient(135deg, #0f3460, #1a5276);
+          color: #fff;
+          font-size: 11px;
+          font-weight: 800;
+          padding: 4px 10px;
+          border-radius: 12px;
+          letter-spacing: 0.3px;
+        }
+        .exam-opt .opt-icon {
+          font-size: 22px;
+          flex-shrink: 0;
+        }
+        .exam-opt .opt-name {
+          flex: 1;
+          font-size: 14px;
+        }
+        .exam-opt.active .opt-name {
+          font-weight: 800;
         }
       </style>
       <div id="questionList"></div>
