@@ -306,8 +306,8 @@ textarea:focus{border-color:#0f3460;background:#fff}
       <div class="pdf-drop" id="pdfDrop">
         <div class="ic">📄</div>
         <div class="tt">PDF drop करें या tap करें</div>
-        <div class="st">Scanned / Handwritten / Typed</div>
-        <div class="ht">Max 30 pages • 20 MB</div>
+        <div class="st">Scanned / Handwritten / Typed • Any size</div>
+        <div class="ht">♾️ Unlimited pages • Unlimited size</div>
         <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
       </div>
       <div class="pdf-info" id="pdfInfo">
@@ -668,6 +668,14 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.getElementById('pdfProgT').textContent=t||Math.round(p)+'%';
   }
 
+  // Time formatting helper
+  function fmtTime(sec){
+    if(sec<60)return Math.ceil(sec)+' sec';
+    var m=Math.floor(sec/60);
+    var s=Math.round(sec%60);
+    return m+' min '+s+' sec';
+  }
+
   document.getElementById('pdfDrop').addEventListener('click',function(){
     document.getElementById('pdfInput').click();
   });
@@ -677,7 +685,12 @@ textarea:focus{border-color:#0f3460;background:#fff}
   });
 
   async function handleFile(f){
-    if(f.size>20*1024*1024){alert('File 20 MB से बड़ी है');return}
+    // Unlimited size - कोई limit नहीं
+    var sizeMB=(f.size/1024/1024).toFixed(1);
+    // Large file warning (सिर्फ warning, block नहीं)
+    if(f.size>50*1024*1024){
+      if(!confirm('⚠️ ये PDF '+sizeMB+' MB की है।\n\nबड़ी PDF process होने में समय लगेगा (5-15 मिनट)।\n\nजारी रखें?')) return;
+    }
     document.getElementById('pdfDrop').style.display='none';
     document.getElementById('pdfInfo').classList.add('on');
     document.getElementById('pdfFn').textContent=f.name+' ('+(f.size/1024).toFixed(0)+' KB)';
@@ -692,32 +705,85 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   async function procPdf(f){
     try{
+      var startTime=Date.now();
+      setProg(2,'PDF load हो रही है...');
+
       var buf=await f.arrayBuffer();
       var pdf=await pdfjsLib.getDocument({data:buf}).promise;
-      var total=Math.min(pdf.numPages,30);
-      setProg(10,total+' pages');
+      var total=pdf.numPages; // UNLIMITED pages
+
+      var sizeMB=(f.size/1024/1024).toFixed(1);
+      setProg(5,'📄 '+total+' pages • '+sizeMB+' MB detected');
+
       var all='';
+      var totalWords=0;
+      var pagesProcessed=0;
+      var ocrCount=0;
+
       for(var i=1;i<=total;i++){
-        setProg(10+(i/total)*85,'Page '+i+'/'+total);
-        var pg=await pdf.getPage(i);
-        var tc=await pg.getTextContent();
-        var txt=tc.items.map(function(x){return x.str}).join(' ');
-        if(txt.trim().length<30){try{txt=await ocrPage(pg)}catch(e){}}
-        if(txt.trim().length>10)all+=txt+'\n\n';
+        var elapsed=(Date.now()-startTime)/1000;
+        var avgPerPage=pagesProcessed>0?elapsed/pagesProcessed:0;
+        var remaining=(total-pagesProcessed)*avgPerPage;
+        var timeStr=avgPerPage>0?' | ~'+fmtTime(remaining)+' बचे':'';
+        var pct=5+((i-1)/total)*90;
+        setProg(pct,'📄 Page '+i+'/'+total+' • '+totalWords+' words'+timeStr);
+
+        try{
+          var pg=await pdf.getPage(i);
+          var tc=await pg.getTextContent();
+          var txt=tc.items.map(function(x){return x.str}).join(' ');
+
+          // अगर text कम है तो OCR try करो
+          if(txt.trim().length<30){
+            setProg(pct,'🔍 Page '+i+' OCR चल रहा है...');
+            try{
+              txt=await ocrPage(pg);
+              ocrCount++;
+            }catch(e){}
+          }
+
+          if(txt.trim().length>10){
+            all+=txt+'\n\n';
+            var wc=txt.split(/\s+/).filter(function(w){return w.length>0}).length;
+            totalWords+=wc;
+          }
+          pagesProcessed++;
+        }catch(pageErr){
+          console.error('Page '+i+' error:',pageErr);
+          // Skip bad page, continue
+          pagesProcessed++;
+        }
+
+        // Yield to UI every 3 pages (so progress bar updates)
+        if(i%3===0){
+          await new Promise(function(r){setTimeout(r,10)});
+        }
       }
+
       state.extracted=all.trim();
-      setProg(100,'✓ Done');
+      var finalTime=fmtTime((Date.now()-startTime)/1000);
+      setProg(100,'✓ '+total+' pages • '+totalWords+' words • '+finalTime);
       updateCount();
-    }catch(e){setProg(0,'❌ '+e.message)}
+
+      // Success message
+      if(totalWords>0){
+        console.log('✅ Processed: '+total+' pages, '+totalWords+' words, '+ocrCount+' OCR pages');
+      }
+    }catch(e){
+      console.error(e);
+      setProg(0,'❌ '+e.message);
+    }
   }
 
   async function ocrPage(pg){
-    var vp=pg.getViewport({scale:1.5});
+    var vp=pg.getViewport({scale:1.2}); // 1.5 से कम किया - memory बचाने के लिए
     var cv=document.createElement('canvas');
     var cx=cv.getContext('2d');
     cv.width=vp.width;cv.height=vp.height;
     await pg.render({canvasContext:cx,viewport:vp}).promise;
-    var r=await Tesseract.recognize(cv.toDataURL('image/png'),'hin+eng');
+    var dataUrl=cv.toDataURL('image/jpeg',0.85); // JPEG - कम size
+    cv.width=0;cv.height=0; // free memory
+    var r=await Tesseract.recognize(dataUrl,'hin+eng');
     return r.data.text;
   }
 
