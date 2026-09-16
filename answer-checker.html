@@ -3484,241 +3484,253 @@ console.log('✅ Fix JS loaded');
 </script>
 
 
+
+
+
+
+
+
 <script>
-// ==================== PDF MODE FIX ====================
+// ==================== DIRECT PDF PROCESSOR ====================
 (function(){
-  console.log('=== PDF Mode Fix loading ===');
+  console.log('=== Direct PDF Processor loading ===');
 
-  // Direct setMode function
-  function setModeDirect(mode){
-    console.log('setMode called:', mode);
-    var STATE = window.AppState || {};
-    STATE.mode = mode;
-
-    // Toggle active on mode buttons
-    var btns = document.querySelectorAll('.mode-b');
-    for(var i = 0; i < btns.length; i++){
-      var isActive = btns[i].getAttribute('data-mode') === mode;
-      btns[i].classList.toggle('on', isActive);
-    }
-
-    // Show/hide zones
-    var tz = document.getElementById('typeZone');
-    var pz = document.getElementById('pdfZone');
-
-    if(mode === 'pdf'){
-      if(tz) tz.classList.add('hidden');
-      if(pz){ pz.classList.add('on'); pz.style.display = 'block'; }
-      console.log('PDF zone shown');
-    } else {
-      if(tz){ tz.classList.remove('hidden'); tz.style.display = 'block'; }
-      if(pz){ pz.classList.remove('on'); pz.style.display = 'none'; }
-      console.log('Type zone shown');
-    }
-
-    // Update word count
-    if(typeof window.updateCount === 'function'){
-      try{ window.updateCount(); }catch(e){}
-    }
-  }
-
-  // Expose globally
-  window.setMode = setModeDirect;
-
-  // Event delegation for mode buttons
-  document.addEventListener('click', function(e){
-    var target = e.target;
-    var modeBtn = target.closest ? target.closest('.mode-b') : null;
-    if(modeBtn){
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      var m = modeBtn.getAttribute('data-mode');
-      setModeDirect(m);
-      return false;
-    }
-  }, true); // Capture phase
-
-  // Also attach direct listeners as backup
-  function attachDirect(){
-    var btns = document.querySelectorAll('.mode-b');
-    for(var i = 0; i < btns.length; i++){
-      if(btns[i]._modeBound) continue;
-      btns[i]._modeBound = true;
-      (function(btn){
-        btn.addEventListener('click', function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          var m = btn.getAttribute('data-mode');
-          setModeDirect(m);
-          return false;
-        });
-      })(btns[i]);
-    }
-  }
-
-  // ==================== PDF DROP HANDLER ====================
-  function attachDrop(){
+  // Wait for DOM
+  function init(){
     var drop = document.getElementById('pdfDrop');
     var input = document.getElementById('pdfInput');
+    var pdfZone = document.getElementById('pdfZone');
 
-    if(drop && !drop._dropBound){
-      drop._dropBound = true;
-      drop.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        if(input){
-          console.log('Opening file picker');
-          input.click();
-        }
-        return false;
-      });
-
-      // Also handle drag & drop
-      drop.addEventListener('dragover', function(e){
-        e.preventDefault();
-        drop.style.borderColor = '#0f3460';
-        drop.style.background = '#e8f4ff';
-      });
-      drop.addEventListener('dragleave', function(e){
-        e.preventDefault();
-        drop.style.borderColor = '#a0aec0';
-        drop.style.background = '#fafbfc';
-      });
-      drop.addEventListener('drop', function(e){
-        e.preventDefault();
-        drop.style.borderColor = '#a0aec0';
-        drop.style.background = '#fafbfc';
-        if(e.dataTransfer.files.length && window.handleFile){
-          try{ window.handleFile(e.dataTransfer.files[0]); }catch(err){ console.log(err); }
-        }
-      });
-    }
-
-    if(input && !input._inputBound){
-      input._inputBound = true;
-      // Remove old listeners by replacing
-      var oldInput = input;
-      var newInput = input.cloneNode(true);
-      oldInput.parentNode.replaceChild(newInput, oldInput);
-
-      newInput.addEventListener('change', function(e){
-        if(e.target.files.length){
-          console.log('File selected:', e.target.files[0].name);
-          if(window.handleFile){
-            try{ window.handleFile(e.target.files[0]); }catch(err){ console.log(err); }
-          } else {
-            console.log('handleFile not available');
-          }
-        }
-      });
-    }
-
-    // Also handle remove button
-    var rm = document.getElementById('pdfRemove');
-    if(rm && !rm._rmBound){
-      rm._rmBound = true;
-      rm.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        if(window.removePdf){ try{ window.removePdf(); }catch(err){} }
-        return false;
-      });
-    }
-  }
-
-  // ==================== INIT ====================
-  function init(){
-    attachDirect();
-    attachDrop();
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 100); });
-  } else {
-    setTimeout(init, 100);
-  }
-
-  // Periodic re-attach
-  setTimeout(init, 800);
-  setTimeout(init, 2000);
-
-  // Re-attach after mode change
-  document.addEventListener('click', function(e){
-    var t = e.target;
-    if(t.closest && (t.closest('.mode-b') || t.closest('.dr-item') || t.closest('.exam-bar'))){
+    if(!drop || !input){
       setTimeout(init, 300);
+      return;
     }
-  }, true);
 
-  console.log('✅ PDF Mode Fix loaded');
-})();
-</script>
+    console.log('PDF elements found — attaching');
 
+    // ============ FIX INPUT (clone to remove old listeners) ============
+    var newInput = input.cloneNode(true);
+    input.parentNode.replaceChild(newInput, input);
+    newInput.id = 'pdfInput';
 
-<script>
-// ==================== PDF VISUAL FEEDBACK ====================
-(function(){
-  console.log('=== PDF Visual Feedback loading ===');
+    // ============ DROP ZONE CLICK ============
+    drop.style.cursor = 'pointer';
+    drop.onclick = function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Drop zone clicked — opening file picker');
+      newInput.click();
+      return false;
+    };
 
-  function ensureFeedbackUI(){
-    var pz = document.getElementById('pdfZone');
-    if(!pz) return;
+    // ============ FILE SELECTED ============
+    newInput.onchange = function(e){
+      if(e.target.files && e.target.files.length > 0){
+        console.log('File selected:', e.target.files[0].name);
+        processPdf(e.target.files[0]);
+      }
+    };
 
-    // अगर पहले से है तो skip
-    if(document.getElementById('pdfFileCard')) return;
+    // ============ DRAG & DROP ============
+    drop.ondragover = function(e){
+      e.preventDefault();
+      drop.style.borderColor = '#0f3460';
+      drop.style.background = '#e8f4ff';
+    };
+    drop.ondragleave = function(e){
+      e.preventDefault();
+      drop.style.borderColor = '#a0aec0';
+      drop.style.background = '#fafbfc';
+    };
+    drop.ondrop = function(e){
+      e.preventDefault();
+      drop.style.borderColor = '#a0aec0';
+      drop.style.background = '#fafbfc';
+      if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
+        console.log('File dropped:', e.dataTransfer.files[0].name);
+        processPdf(e.dataTransfer.files[0]);
+      }
+    };
 
-    // File info card बनाओ
-    var card = document.createElement('div');
-    card.id = 'pdfFileCard';
-    card.style.cssText = 'display:none;background:linear-gradient(135deg,#e8f8f0,#d4f0e0);border:2px solid #27ae60;border-radius:12px;padding:12px;margin-top:12px';
-    card.innerHTML =
-      '<div style="display:flex;align-items:center;gap:10px">' +
-        '<div style="width:42px;height:42px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📄</div>' +
-        '<div style="flex:1;min-width:0">' +
-          '<div id="pdfCardName" style="font-size:12.5px;font-weight:800;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">-</div>' +
-          '<div id="pdfCardSize" style="font-size:10.5px;color:#666;margin-top:2px">-</div>' +
-          '<div id="pdfCardStatus" style="font-size:11px;font-weight:700;color:#27ae60;margin-top:4px">✅ Upload हो गई</div>' +
-        '</div>' +
-        '<button id="pdfCardRemove" style="background:#ffe8e8;color:#c0392b;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0">✕</button>' +
-      '</div>' +
-      '<div id="pdfCardProgress" style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-top:10px;display:none">' +
-        '<div id="pdfCardFill" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);border-radius:3px;transition:width .3s"></div>' +
-      '</div>' +
-      '<div id="pdfCardProgressText" style="font-size:10.5px;color:#666;text-align:center;font-weight:600;margin-top:6px;display:none">-</div>' +
-      '<div id="pdfExtractedPreview" style="display:none;background:#fff;border-radius:8px;padding:10px;margin-top:10px;max-height:120px;overflow-y:auto;font-size:11px;color:#333;line-height:1.5;border:1px solid #e0e6ed">' +
-        '<div style="font-size:9px;color:#999;font-weight:700;margin-bottom:4px;letter-spacing:.5px">📝 EXTRACTED TEXT (PREVIEW)</div>' +
-        '<div id="pdfExtractedText" style="white-space:pre-wrap;font-family:monospace;font-size:10.5px">-</div>' +
-      '</div>';
-
-    // PDF zone के अंदर add करो (drop zone के बाद)
-    var drop = document.getElementById('pdfDrop');
-    if(drop && drop.parentNode){
-      drop.parentNode.insertBefore(card, drop.nextSibling);
-    } else {
-      pz.appendChild(card);
-    }
-    console.log('✅ PDF file card created');
+    console.log('✅ PDF input ready');
   }
 
-  function showFile(file){
-    ensureFeedbackUI();
-    var card = document.getElementById('pdfFileCard');
-    if(!card) return;
+  // ============ PROCESS PDF ============
+  async function processPdf(file){
+    console.log('Processing PDF:', file.name, (file.size/1024).toFixed(1) + ' KB');
 
-    card.style.display = 'block';
-    document.getElementById('pdfCardName').textContent = file.name || 'document.pdf';
-    document.getElementById('pdfCardSize').textContent = (file.size/1024).toFixed(1) + ' KB';
+    // Show UI feedback
+    showFileCard(file.name, file.size);
 
-    // Hide drop zone (file है)
+    // Hide drop zone
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'none';
 
-    setStatus('⏳ Upload हो रही है...', '#f39c12');
-    showProgress(true, 10, 'Upload शुरू हो रही है...');
+    try {
+      // ===== STEP 1: Load PDF =====
+      updateStatus('📄 PDF load हो रही है...', '#f39c12');
+      updateProgress(5, 'File पढ़ रहे हैं...');
+
+      var arrayBuffer = await file.arrayBuffer();
+
+      // ===== STEP 2: Check pdf.js =====
+      if(typeof pdfjsLib === 'undefined'){
+        throw new Error('PDF.js load नहीं हुआ — internet check करें');
+      }
+
+      if(!pdfjsLib.GlobalWorkerOptions.workerSrc){
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+
+      updateProgress(10, 'PDF खोल रहे हैं...');
+      var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      var totalPages = pdf.numPages;
+      console.log('PDF has', totalPages, 'pages');
+
+      updateStatus('📄 ' + totalPages + ' pages मिले', '#f39c12');
+      updateProgress(15, totalPages + ' pages process होंगे');
+
+      // ===== STEP 3: Extract text =====
+      var allText = '';
+      var wordCount = 0;
+      var ocrPages = 0;
+
+      for(var i = 1; i <= totalPages; i++){
+        var pct = 15 + Math.round((i / totalPages) * 75);
+        updateProgress(pct, '📄 Page ' + i + ' / ' + totalPages + ' — ' + wordCount + ' words');
+        updateStatus('📄 Page ' + i + ' / ' + totalPages, '#f39c12');
+
+        try {
+          var page = await pdf.getPage(i);
+          var textContent = await page.getTextContent();
+          var pageText = textContent.items.map(function(item){ return item.str; }).join(' ');
+
+          // अगर text कम है तो OCR try करो
+          if(pageText.trim().length < 30){
+            console.log('Page ' + i + ': text कम है, OCR try कर रहे हैं');
+            updateProgress(pct, '🔍 Page ' + i + ' OCR...');
+            try {
+              if(typeof Tesseract !== 'undefined'){
+                var ocrText = await ocrPage(page);
+                if(ocrText && ocrText.trim().length > 10){
+                  pageText = ocrText;
+                  ocrPages++;
+                }
+              }
+            } catch(ocrErr){
+              console.log('OCR error page ' + i + ':', ocrErr);
+            }
+          }
+
+          if(pageText && pageText.trim().length > 5){
+            allText += pageText + '\n\n';
+            var wc = pageText.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+            wordCount += wc;
+          }
+        } catch(pageErr){
+          console.log('Page ' + i + ' error:', pageErr);
+        }
+
+        // UI update के लिए yield
+        if(i % 2 === 0){
+          await new Promise(function(r){ setTimeout(r, 10); });
+        }
+      }
+
+      // ===== STEP 4: Save to AppState =====
+      var finalText = allText.trim();
+      console.log('Extracted:', wordCount, 'words from', totalPages, 'pages', ocrPages, 'OCR pages');
+
+      // Save to global state
+      if(window.AppState){
+        window.AppState.extracted = finalText;
+      }
+      window._pdfExtractedText = finalText;
+
+      // ===== STEP 5: Show result =====
+      updateProgress(100, '✅ Complete — ' + wordCount + ' words');
+      updateStatus('✅ Upload हो गई — ' + wordCount + ' शब्द निकले', '#27ae60');
+
+      showExtractedText(finalText, wordCount);
+
+      // Update word count if function exists
+      if(typeof window.updateCount === 'function'){
+        try{ window.updateCount(); }catch(e){}
+      }
+
+      // Toast
+      showToast('✅ ' + wordCount + ' शब्द मिले');
+
+    } catch(err){
+      console.error('PDF processing error:', err);
+      updateStatus('❌ Error: ' + err.message, '#e94560');
+      updateProgress(100, '❌ Failed');
+      showToast('❌ ' + err.message);
+
+      // Show drop zone again
+      var drop = document.getElementById('pdfDrop');
+      if(drop) drop.style.display = 'block';
+    }
   }
 
-  function setStatus(text, color){
+  // ============ OCR PAGE ============
+  async function ocrPage(page){
+    var viewport = page.getViewport({ scale: 1.2 });
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+    canvas.width = 0; canvas.height = 0;
+    var result = await Tesseract.recognize(dataUrl, 'hin+eng');
+    return result.data.text;
+  }
+
+  // ============ UI HELPERS ============
+  function showFileCard(name, size){
+    var card = document.getElementById('pdfFileCard');
+    if(!card){
+      // Create card
+      card = document.createElement('div');
+      card.id = 'pdfFileCard';
+      card.style.cssText = 'background:linear-gradient(135deg,#e8f8f0,#d4f0e0);border:2px solid #27ae60;border-radius:12px;padding:12px;margin-top:12px';
+      card.innerHTML =
+        '<div style="display:flex;align-items:center;gap:10px">' +
+          '<div style="width:42px;height:42px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📄</div>' +
+          '<div style="flex:1;min-width:0">' +
+            '<div id="pdfCardName" style="font-size:12.5px;font-weight:800;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">-</div>' +
+            '<div id="pdfCardSize" style="font-size:10.5px;color:#666;margin-top:2px">-</div>' +
+            '<div id="pdfCardStatus" style="font-size:11px;font-weight:700;color:#27ae60;margin-top:4px">⏳</div>' +
+          '</div>' +
+          '<button id="pdfCardRemove" style="background:#ffe8e8;color:#c0392b;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0">✕</button>' +
+        '</div>' +
+        '<div id="pdfCardProgress" style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-top:10px">' +
+          '<div id="pdfCardFill" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);border-radius:3px;transition:width .3s"></div>' +
+        '</div>' +
+        '<div id="pdfCardProgressText" style="font-size:10.5px;color:#666;text-align:center;font-weight:600;margin-top:6px">-</div>' +
+        '<div id="pdfExtractedPreview" style="display:none;background:#fff;border-radius:8px;padding:10px;margin-top:10px;max-height:140px;overflow-y:auto;font-size:11px;color:#333;line-height:1.5;border:1px solid #e0e6ed">' +
+          '<div style="font-size:9px;color:#999;font-weight:700;margin-bottom:4px;letter-spacing:.5px">📝 EXTRACTED TEXT (Preview)</div>' +
+          '<div id="pdfExtractedText" style="white-space:pre-wrap;font-family:monospace;font-size:10.5px">-</div>' +
+        '</div>';
+
+      var pz = document.getElementById('pdfZone');
+      if(pz) pz.appendChild(card);
+
+      // Bind remove
+      document.getElementById('pdfCardRemove').onclick = function(e){
+        e.preventDefault();
+        resetPdfUI();
+        return false;
+      };
+    }
+
+    card.style.display = 'block';
+    document.getElementById('pdfCardName').textContent = name;
+    document.getElementById('pdfCardSize').textContent = (size/1024).toFixed(1) + ' KB';
+  }
+
+  function updateStatus(text, color){
     var el = document.getElementById('pdfCardStatus');
     if(el){
       el.textContent = text;
@@ -3726,149 +3738,94 @@ console.log('✅ Fix JS loaded');
     }
   }
 
-  function showProgress(show, pct, text){
-    var prog = document.getElementById('pdfCardProgress');
+  function updateProgress(pct, text){
     var fill = document.getElementById('pdfCardFill');
     var txt = document.getElementById('pdfCardProgressText');
-    if(prog) prog.style.display = show ? 'block' : 'none';
-    if(fill && pct !== undefined) fill.style.width = Math.min(100, pct) + '%';
-    if(txt){
-      txt.style.display = show ? 'block' : 'none';
-      if(text) txt.textContent = text;
-    }
+    if(fill) fill.style.width = Math.min(100, pct) + '%';
+    if(txt) txt.textContent = text || pct + '%';
   }
 
-  function showExtracted(text){
+  function showExtractedText(text, wordCount){
     var box = document.getElementById('pdfExtractedPreview');
     var el = document.getElementById('pdfExtractedText');
     if(!box || !el) return;
 
     if(!text || !text.trim()){
       box.style.display = 'block';
-      el.textContent = 'कोई text नहीं मिला';
+      el.textContent = 'कोई text नहीं मिला — साफ PDF try करें';
       el.style.color = '#e94560';
-      setStatus('⚠️ कोई text नहीं निकला', '#e94560');
       return;
     }
 
     box.style.display = 'block';
-    var preview = text.length > 400 ? text.substring(0, 400) + '...' : text;
+    var preview = text.length > 500 ? text.substring(0, 500) + '\n\n... (और ' + (text.length - 500) + ' characters)' : text;
     el.textContent = preview;
-    var wc = text.split(/\s+/).filter(function(w){return w.length>0}).length;
-    setStatus('✅ Upload हो गई — ' + wc + ' शब्द निकले', '#27ae60');
   }
 
-  function bindRemove(){
-    var rm = document.getElementById('pdfCardRemove');
-    if(rm && !rm._bound){
-      rm._bound = true;
-      rm.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        resetCard();
-        if(window.removePdf){ try{ window.removePdf(); }catch(err){} }
-        return false;
-      });
-    }
-  }
-
-  function resetCard(){
+  function resetPdfUI(){
     var card = document.getElementById('pdfFileCard');
     if(card) card.style.display = 'none';
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'block';
-    showProgress(false);
-    var ex = document.getElementById('pdfExtractedPreview');
-    if(ex) ex.style.display = 'none';
-  }
 
-  // ============ Hook into handleFile ============
-  function hookHandleFile(){
-    if(!window.handleFile || window.handleFile._hooked) return;
+    if(window.AppState){
+      window.AppState.extracted = '';
+    }
+    window._pdfExtractedText = '';
 
-    var orig = window.handleFile;
-    window.handleFile = async function(file){
-      console.log('handleFile called:', file.name);
-      showFile(file);
-      bindRemove();
+    if(typeof window.removePdf === 'function'){
+      try{ window.removePdf(); }catch(e){}
+    }
 
-      try {
-        // Manual progress simulation while processing
-        var prog = 10;
-        var statusInterval = setInterval(function(){
-          prog += 3;
-          if(prog > 90) prog = 90;
-          showProgress(true, prog, '📄 Process हो रही है... ' + prog + '%');
-        }, 500);
-
-        // Call original
-        await orig.call(this, file);
-
-        clearInterval(statusInterval);
-
-        // Check extracted text
-        var STATE = window.AppState || {};
-        var text = STATE.extracted || '';
-
-        if(text && text.trim().length > 10){
-          showProgress(true, 100, '✅ Complete');
-          setStatus('✅ Upload हो गई — पूरा हो गया', '#27ae60');
-          setTimeout(function(){ showProgress(false); }, 1500);
-          showExtracted(text);
-        } else {
-          showProgress(true, 100, '⚠️ कोई text नहीं');
-          setStatus('⚠️ Text extract नहीं हो पाया', '#e94560');
-          showExtracted('');
-        }
-
-      } catch(e) {
-        console.log('handleFile error:', e);
-        setStatus('❌ Error: ' + e.message, '#e94560');
-        showProgress(true, 100, '❌ Error');
-      }
-    };
-    window.handleFile._hooked = true;
-    console.log('✅ handleFile hooked');
-  }
-
-  // ============ Also monitor STATE.extracted changes ============
-  var lastExtracted = '';
-  function watchExtracted(){
-    var STATE = window.AppState || {};
-    if(STATE.extracted && STATE.extracted !== lastExtracted){
-      lastExtracted = STATE.extracted;
-      if(lastExtracted.trim().length > 10 && document.getElementById('pdfFileCard').style.display !== 'none'){
-        showExtracted(lastExtracted);
-      }
+    if(typeof window.updateCount === 'function'){
+      try{ window.updateCount(); }catch(e){}
     }
   }
 
-  // ============ Init ============
-  function init(){
-    ensureFeedbackUI();
-    hookHandleFile();
+  // ============ TOAST ============
+  function showToast(msg){
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:12px 22px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:80vw;text-align:center';
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.opacity = '0';
+      t.style.transition = 'opacity .3s';
+      setTimeout(function(){ t.remove(); }, 300);
+    }, 2200);
   }
 
+  // ============ MODE TOGGLE (make sure PDF zone shows) ============
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(t.closest && t.closest('.mode-b')){
+      var btn = t.closest('.mode-b');
+      var mode = btn.getAttribute('data-mode');
+      var tz = document.getElementById('typeZone');
+      var pz = document.getElementById('pdfZone');
+
+      if(mode === 'pdf'){
+        if(tz) tz.style.display = 'none';
+        if(pz){ pz.style.display = 'block'; pz.classList.add('on'); }
+      } else {
+        if(tz) tz.style.display = 'block';
+        if(pz){ pz.style.display = 'none'; pz.classList.remove('on'); }
+      }
+    }
+  }, true);
+
+  // ============ INIT ============
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
   } else {
     setTimeout(init, 200);
   }
 
-  setTimeout(init, 1000);
-  setTimeout(init, 2500);
+  // Periodic re-attach
+  setTimeout(init, 1500);
+  setTimeout(init, 3000);
 
-  // Watch for changes every 1 second
-  setInterval(watchExtracted, 1000);
-
-  // Re-init when PDF tab is clicked
-  document.addEventListener('click', function(e){
-    if(e.target.closest && e.target.closest('.mode-b')){
-      setTimeout(init, 300);
-    }
-  }, true);
-
-  console.log('✅ PDF Visual Feedback loaded');
+  console.log('✅ Direct PDF Processor ready');
 })();
 </script>
 
