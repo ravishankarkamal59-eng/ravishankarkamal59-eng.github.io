@@ -415,6 +415,137 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
 
 <!-- ONBOARDING SCREEN -->
+<script>
+// === IMMEDIATE FIX — Direct handlers (before any other script) ===
+function _hideOnboard(){
+  try{localStorage.setItem('acv3_onboard','1')}catch(e){}
+  var o=document.getElementById('onboard');
+  if(o){o.style.display='none';o.classList.add('hide')}
+}
+function _installAppAction(){
+  if(window._deferredPrompt){
+    try{
+      window._deferredPrompt.prompt();
+      window._deferredPrompt.userChoice.then(function(c){
+        if(c.outcome==='accepted'){alert('✅ App install हो गया!')}
+        window._deferredPrompt=null;
+      });
+    }catch(e){}
+  } else {
+    alert('📲 App Install करने के लिए:\n\n1. Chrome menu (⋮) खोलें\n2. "Add to Home Screen" या "Install App" चुनें\n3. Confirm करें');
+  }
+  _hideOnboard();
+}
+function _openAuthScr(){
+  var a=document.getElementById('authScr');
+  if(a){a.classList.add('on');a.style.display='flex'}
+  document.body.style.overflow='hidden';
+}
+function _closeAuthScr(){
+  var a=document.getElementById('authScr');
+  if(a){a.classList.remove('on');a.style.display='none'}
+  document.body.style.overflow='';
+}
+function _switchAuthMode(m){
+  var tabs=document.querySelectorAll('.as-tab');
+  for(var i=0;i<tabs.length;i++){tabs[i].classList.toggle('on',tabs[i].getAttribute('data-mode')===m)}
+  var isSignup=(m==='signup');
+  var el;
+  el=document.getElementById('asTitle');if(el)el.textContent=isSignup?'Create Account':'Welcome Back';
+  el=document.getElementById('asSub');if(el)el.textContent=isSignup?'Free account बनाएँ — answer check शुरू करें':'अपने account में login करें';
+  el=document.getElementById('asBtn');if(el)el.textContent=isSignup?'✅ Create Free Account':'🔐 Login';
+  el=document.getElementById('fldName');if(el)el.style.display=isSignup?'block':'none';
+  el=document.getElementById('fldPhone');if(el)el.style.display=isSignup?'block':'none';
+  el=document.getElementById('fldPass2');if(el)el.style.display=isSignup?'block':'none';
+  el=document.getElementById('asFooter');
+  if(el)el.innerHTML=isSignup?'पहले से account है? <a onclick="_switchAuthMode(\'login\')">Login करें</a>':'नया account बनाना है? <a onclick="_switchAuthMode(\'signup\')">Sign Up करें</a>';
+  el=document.getElementById('asMsg');if(el)el.className='as-msg';
+  var fs=document.querySelectorAll('.as-f');
+  for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
+  window._authMode=m;
+}
+function _doAuth(e){
+  if(e)e.preventDefault();
+  var msg=document.getElementById('asMsg');
+  if(!msg)return false;
+  msg.className='as-msg';
+  var fs=document.querySelectorAll('.as-f');
+  for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
+
+  var email=((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
+  var pass=((document.getElementById('inPass')||{}).value||'');
+
+  if(!email||email.indexOf('@')<1){
+    var fe=document.getElementById('fldEmail');if(fe)fe.classList.add('bad');return false;
+  }
+  if(pass.length<6){
+    var fp=document.getElementById('fldPass');if(fp)fp.classList.add('bad');return false;
+  }
+
+  var accounts={};
+  try{accounts=JSON.parse(localStorage.getItem('acv3_accounts')||'{}')}catch(err){}
+
+  if(window._authMode==='signup'){
+    var name=((document.getElementById('inName')||{}).value||'').trim();
+    var phone=((document.getElementById('inPhone')||{}).value||'').trim();
+    var pass2=((document.getElementById('inPass2')||{}).value||'');
+
+    if(!name){var fn=document.getElementById('fldName');if(fn)fn.classList.add('bad');return false;}
+    if(phone&&!/^[6-9]\d{9}$/.test(phone)){var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');return false;}
+    if(pass!==pass2){var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');return false;}
+    if(accounts[email]){msg.className='as-msg err';msg.textContent='❌ ये ईमेल registered है — Login करें';return false;}
+
+    accounts[email]={name:name,email:email,phone:phone,pass:pass,created:Date.now()};
+    try{localStorage.setItem('acv3_accounts',JSON.stringify(accounts))}catch(err){}
+    try{localStorage.setItem('acv3_user',JSON.stringify({name:name,email:email}))}catch(err){}
+
+    msg.className='as-msg ok';
+    msg.textContent='✅ Account बन गया!';
+    setTimeout(function(){
+      _closeAuthScr();
+      alert('🎉 Welcome '+name+'! अब फिर से Check करें।');
+    },800);
+    return false;
+  }
+
+  // Login
+  if(!accounts[email]){msg.className='as-msg err';msg.textContent='❌ Account नहीं मिला — Sign Up करें';return false;}
+  if(accounts[email].pass!==pass){
+    var fp3=document.getElementById('fldPass');if(fp3)fp3.classList.add('bad');
+    msg.className='as-msg err';msg.textContent='❌ Password गलत है';return false;
+  }
+
+  try{localStorage.setItem('acv3_user',JSON.stringify({name:accounts[email].name,email:email}))}catch(err){}
+  msg.className='as-msg ok';
+  msg.textContent='✅ Login successful!';
+  setTimeout(function(){
+    _closeAuthScr();
+    alert('👋 Welcome back, '+accounts[email].name+'!');
+  },700);
+  return false;
+}
+function _isUserLoggedIn(){
+  try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  window._deferredPrompt=e;
+});
+// Show onboard if not seen yet
+window.addEventListener('load',function(){
+  try{
+    if(localStorage.getItem('acv3_onboard')){
+      var o=document.getElementById('onboard');
+      if(o){o.style.display='none';o.classList.add('hide')}
+    } else {
+      var o=document.getElementById('onboard');
+      if(o){o.style.display='flex';o.classList.remove('hide')}
+    }
+  }catch(e){}
+});
+console.log('✅ Fix JS loaded');
+</script>
+
 <div id="onboard">
   <div class="ob-card">
     <div class="ob-logo">R</div>
@@ -427,8 +558,8 @@ textarea:focus{border-color:#0f3460;background:#fff}
       <div class="ob-f"><div class="i">📚</div><div>Topic Detection</div></div>
       <div class="ob-f"><div class="i">✨</div><div>Requirement Checklist</div></div>
     </div>
-    <button class="ob-btn" onclick="installApp()">📲 App Install करें</button>
-    <button class="ob-btn2" onclick="skipOnboard()">ब्राउज़र में जारी रखें →</button>
+    <button class="ob-btn" onclick="_installAppAction(); return false;">📲 App Install करें</button>
+    <button class="ob-btn2" onclick="_hideOnboard(); return false;">ब्राउज़र में जारी रखें →</button>
     <div class="ob-note">💡 App install करने पर: तेज़ access, home screen icon</div>
   </div>
 </div>
@@ -437,17 +568,17 @@ textarea:focus{border-color:#0f3460;background:#fff}
 <div id="authScr">
   <div class="as-cd">
     <div class="as-hd">
-      <button class="as-x" onclick="closeAuthScr()">✕</button>
+      <button class="as-x" onclick="_closeAuthScr(); return false;">✕</button>
       <div class="as-l">R</div>
       <div class="as-t" id="asTitle">Create Account</div>
       <div class="as-s" id="asSub">Free account बनाएँ — answer check शुरू करें</div>
     </div>
     <div class="as-bd">
       <div class="as-tabs">
-        <button type="button" class="as-tab on" data-mode="signup" onclick="switchAuthMode('signup')">📝 Sign Up</button>
-        <button type="button" class="as-tab" data-mode="login" onclick="switchAuthMode('login')">🔐 Login</button>
+        <button type="button" class="as-tab on" data-mode="signup" onclick="_switchAuthMode('signup'); return false;">📝 Sign Up</button>
+        <button type="button" class="as-tab" data-mode="login" onclick="_switchAuthMode('login'); return false;">🔐 Login</button>
       </div>
-      <form id="asForm" onsubmit="return doAuth(event)">
+      <form id="asForm" onsubmit="return _doAuth(event)">
         <div class="as-f" id="fldName">
           <label>पूरा नाम / Full Name</label>
           <input type="text" id="inName" placeholder="जैसे: रविशंकर">
@@ -477,7 +608,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
         <div class="as-msg" id="asMsg"></div>
       </form>
       <div class="as-ft" id="asFooter">
-        पहले से account है? <a onclick="switchAuthMode('login')">Login करें</a>
+        पहले से account है? <a onclick="_switchAuthMode('login'); return false;">Login करें</a>
       </div>
     </div>
   </div>
@@ -2146,6 +2277,11 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   // ==================== CHECK ====================
   window.checkAnswer=function(){
+    // AUTH GATE
+    if(!_isUserLoggedIn()){
+      _openAuthScr();
+      return;
+    }
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
 
