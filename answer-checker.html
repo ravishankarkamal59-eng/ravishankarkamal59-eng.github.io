@@ -226,6 +226,69 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .app{transition:transform .3s ease}
 .app.pulled{transform:translateY(0)}
 
+
+/* ============ WELCOME / INSTALL PROMPT ============ */
+.welcome-overlay{position:fixed;inset:0;background:linear-gradient(135deg,#0a1929,#0f3460,#1a5276);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center}
+.welcome-overlay.hide{display:none}
+.welcome-box{max-width:400px;width:100%;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border:2px solid rgba(253,186,59,0.3);border-radius:24px;padding:28px 22px;color:#fff;animation:welcomeIn .5s ease}
+@keyframes welcomeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.welcome-logo{width:90px;height:90px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:24px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:52px;color:#0a1929;margin:0 auto 18px;box-shadow:0 15px 40px rgba(253,186,59,0.5)}
+.welcome-title{font-size:24px;font-weight:900;font-family:Georgia,serif;margin-bottom:6px;color:#fff}
+.welcome-sub{font-size:13px;color:rgba(255,255,255,.85);margin-bottom:22px;line-height:1.5}
+.welcome-features{text-align:left;background:rgba(0,0,0,.2);border-radius:14px;padding:14px;margin-bottom:22px}
+.welcome-features .wf{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12px;color:rgba(255,255,255,.9)}
+.welcome-features .wf .wf-i{width:24px;height:24px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.welcome-btn{width:100%;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);color:#0a1929;border:none;padding:15px;border-radius:14px;font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 8px 25px rgba(253,186,59,0.4);margin-bottom:10px;letter-spacing:.5px}
+.welcome-btn:active{transform:scale(.98)}
+.welcome-btn2{width:100%;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:13px;border-radius:14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.welcome-btn2:active{background:rgba(255,255,255,.25)}
+.welcome-note{font-size:10px;color:rgba(255,255,255,.6);margin-top:14px;line-height:1.5}
+
+/* ============ AUTH MODAL ============ */
+.auth-overlay{position:fixed;inset:0;background:rgba(10,25,41,.85);backdrop-filter:blur(8px);z-index:9998;display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.auth-overlay.on{display:flex}
+.auth-box{max-width:420px;width:100%;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:authIn .3s ease;margin:auto}
+@keyframes authIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.auth-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px 22px;color:#fff;position:relative}
+.auth-hdr .auth-logo{width:50px;height:50px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:28px;color:#0a1929;margin-bottom:10px}
+.auth-hdr .auth-t{font-size:19px;font-weight:900;margin-bottom:2px}
+.auth-hdr .auth-s{font-size:11.5px;opacity:.85;line-height:1.4}
+.auth-hdr .auth-x{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;font-weight:700}
+.auth-body{padding:20px 22px}
+.auth-tabs{display:flex;gap:6px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:18px}
+.auth-tab{flex:1;background:transparent;border:none;padding:10px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;color:#666;cursor:pointer}
+.auth-tab.on{background:#fff;color:#0f3460;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.auth-field{margin-bottom:14px}
+.auth-field label{display:block;font-size:11px;font-weight:800;color:#666;letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
+.auth-field input{width:100%;padding:12px 14px;border:1.5px solid #e0e6ed;border-radius:10px;font-family:inherit;font-size:14px;outline:none;background:#fafbfc;color:#1a1a2e;transition:.15s}
+.auth-field input:focus{border-color:#0f3460;background:#fff;box-shadow:0 0 0 3px rgba(15,52,96,.08)}
+.auth-field .hint{font-size:10px;color:#999;margin-top:4px}
+.auth-field .err{font-size:10px;color:#e94560;margin-top:4px;font-weight:600;display:none}
+.auth-field.err-on input{border-color:#e94560;background:#fff5f5}
+.auth-field.err-on .err{display:block}
+.auth-btn{width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(233,69,96,.3);margin-top:6px}
+.auth-btn:active{transform:scale(.98)}
+.auth-btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.auth-msg{padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;margin-top:12px;display:none;line-height:1.4}
+.auth-msg.err{background:#ffe8e8;color:#c0392b;display:block}
+.auth-msg.ok{background:#e8f8f0;color:#27ae60;display:block}
+.auth-footer{margin-top:16px;text-align:center;font-size:11px;color:#666;line-height:1.5}
+.auth-footer a{color:#e94560;font-weight:800;text-decoration:none;cursor:pointer}
+
+/* ============ USER BADGE (header) ============ */
+.user-badge{display:none;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:5px 10px 5px 5px;border-radius:20px;cursor:pointer;border:1.5px solid rgba(255,255,255,.2)}
+.user-badge.on{display:flex}
+.user-badge:active{background:rgba(255,255,255,.25)}
+.user-badge .ub-av{width:26px;height:26px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0a1929}
+.user-badge .ub-nm{color:#fff;font-size:11px;font-weight:700;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ============ PWA INSTALL BUTTON ============ */
+.pwa-install-btn{display:none;position:fixed;bottom:16px;right:16px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);color:#0a1929;border:none;padding:12px 18px;border-radius:30px;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer;box-shadow:0 10px 30px rgba(253,186,59,.5);z-index:500;align-items:center;gap:6px;letter-spacing:.5px;animation:pwaBounce 2s ease infinite}
+.pwa-install-btn.on{display:flex}
+.pwa-install-btn:active{transform:scale(.95)}
+@keyframes pwaBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
@@ -271,6 +334,99 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <div class="ptr-txt" id="ptrTxt">नीचे खींचें</div>
   </div>
 </div>
+
+<!-- WELCOME SCREEN (first-time users) -->
+<div class="welcome-overlay hide" id="welcomeScreen">
+  <div class="welcome-box">
+    <div class="welcome-logo">R</div>
+    <div class="welcome-title">Answer Checker</div>
+    <div class="welcome-sub">UPSC, UPPCS, BPSC, JEE, BA, MA और Agriculture के लिए<br>AI-powered Answer Analysis</div>
+
+    <div class="welcome-features">
+      <div class="wf"><div class="wf-i">📄</div><div>PDF Upload — कोई limit नहीं</div></div>
+      <div class="wf"><div class="wf-i">🎯</div><div>Exam Auto-Detect</div></div>
+      <div class="wf"><div class="wf-i">📊</div><div>Instant Quality Score</div></div>
+      <div class="wf"><div class="wf-i">📚</div><div>Topic Detection & Suggestions</div></div>
+      <div class="wf"><div class="wf-i">✨</div><div>Requirement Checklist</div></div>
+    </div>
+
+    <button class="welcome-btn" onclick="doInstallApp()">
+      📲 App Install करें
+    </button>
+    <button class="welcome-btn2" onclick="skipInstall()">
+      ब्राउज़र में जारी रखें →
+    </button>
+
+    <div class="welcome-note">
+      💡 App install करने पर: तेज़ access, offline support, home screen icon
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authModal">
+  <div class="auth-box">
+    <div class="auth-hdr">
+      <button class="auth-x" onclick="closeAuth()">✕</button>
+      <div class="auth-logo">R</div>
+      <div class="auth-t" id="authTitle">Create Account</div>
+      <div class="auth-s" id="authSub">Free account बनाएँ — answer check शुरू करें</div>
+    </div>
+
+    <div class="auth-body">
+      <div class="auth-tabs">
+        <button class="auth-tab on" data-mode="signup" onclick="setAuthMode('signup')">📝 Sign Up</button>
+        <button class="auth-tab" data-mode="login" onclick="setAuthMode('login')">🔐 Login</button>
+      </div>
+
+      <form id="authForm" onsubmit="return handleAuth(event)">
+        <div class="auth-field" id="fName">
+          <label>पूरा नाम / Full Name</label>
+          <input type="text" id="inName" placeholder="जैसे: रविशंकर" autocomplete="name">
+          <div class="err">कृपया नाम भरें</div>
+        </div>
+
+        <div class="auth-field" id="fEmail">
+          <label>ईमेल / Email</label>
+          <input type="email" id="inEmail" placeholder="you@example.com" autocomplete="email">
+          <div class="err">सही ईमेल भरें</div>
+        </div>
+
+        <div class="auth-field" id="fPhone">
+          <label>मोबाइल / Mobile (Optional)</label>
+          <input type="tel" id="inPhone" placeholder="9876543210" autocomplete="tel" maxlength="10">
+          <div class="hint">सिर्फ updates के लिए, spam नहीं</div>
+          <div class="err">सही 10-अंकीय नंबर भरें</div>
+        </div>
+
+        <div class="auth-field" id="fPass">
+          <label>पासवर्ड / Password</label>
+          <input type="password" id="inPass" placeholder="कम से कम 6 अक्षर" autocomplete="new-password">
+          <div class="err">पासवर्ड कम से कम 6 अक्षर का होना चाहिए</div>
+        </div>
+
+        <div class="auth-field" id="fPass2">
+          <label>पासवर्ड दोबारा / Confirm Password</label>
+          <input type="password" id="inPass2" placeholder="दोबारा लिखें" autocomplete="new-password">
+          <div class="err">पासवर्ड मेल नहीं खाते</div>
+        </div>
+
+        <button type="submit" class="auth-btn" id="authSubmit">✅ Create Free Account</button>
+
+        <div class="auth-msg" id="authMsg"></div>
+      </form>
+
+      <div class="auth-footer" id="authFooter">
+        पहले से account है? <a onclick="setAuthMode('login')">Login करें</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PWA INSTALL FLOATING BUTTON -->
+<button class="pwa-install-btn" id="pwaBtn" onclick="doInstallApp()">
+  📲 Install App
+</button>
 
 <div class="app">
 
@@ -2366,10 +2522,250 @@ textarea:focus{border-color:#0f3460;background:#fff}
     },{passive:true});
   })();
 
+
+  // ==================== AUTH SYSTEM ====================
+  var AUTH_KEY='ac_user';
+  var ACCOUNTS_KEY='ac_accounts';
+  var INSTALL_KEY='ac_install_seen';
+
+  function getAccounts(){
+    try{return JSON.parse(localStorage.getItem(ACCOUNTS_KEY)||'{}')}catch(e){return{}}
+  }
+  function saveAccounts(a){
+    try{localStorage.setItem(ACCOUNTS_KEY,JSON.stringify(a))}catch(e){}
+  }
+  function getCurrentUser(){
+    try{return JSON.parse(localStorage.getItem(AUTH_KEY)||'null')}catch(e){return null}
+  }
+  function setCurrentUser(u){
+    try{
+      if(u){localStorage.setItem(AUTH_KEY,JSON.stringify(u))}
+      else{localStorage.removeItem(AUTH_KEY)}
+    }catch(e){}
+  }
+  function isLoggedIn(){return !!getCurrentUser()}
+
+  function updateUserUI(){
+    var u=getCurrentUser();
+    var b=document.getElementById('userBadge');
+    if(!b)return;
+    if(u){
+      b.classList.add('on');
+      document.getElementById('ubAv').textContent=(u.name||u.email||'U')[0].toUpperCase();
+      document.getElementById('ubNm').textContent=(u.name||u.email.split('@')[0]).substring(0,10);
+    } else {
+      b.classList.remove('on');
+    }
+  }
+
+  window.openUserMenu=function(){
+    var u=getCurrentUser();
+    if(!u)return;
+    var html='<div style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9997;display:flex;align-items:flex-start;justify-content:flex-end;padding:60px 16px 16px;cursor:pointer" onclick="this.remove()">'+
+      '<div style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:8px;min-width:220px;cursor:default" onclick="event.stopPropagation()">'+
+      '<div style="padding:10px 14px;border-bottom:1px solid #f0f4f8">'+
+      '<div style="font-size:13px;font-weight:800;color:#0f3460">'+(u.name||'User')+'</div>'+
+      '<div style="font-size:11px;color:#666;margin-top:2px">'+u.email+'</div>'+
+      '</div>'+
+      '<button onclick="doLogout();this.closest(\'div[style*=\"position:fixed\"]\').remove()" style="width:100%;background:none;border:none;text-align:left;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;color:#e94560;cursor:pointer;border-radius:8px;display:flex;align-items:center;gap:8px">🚪 Logout</button>'+
+      '</div>'+
+    '</div>';
+    document.body.insertAdjacentHTML('beforeend',html);
+  };
+
+  window.doLogout=function(){
+    if(!confirm('Logout करना है?'))return;
+    setCurrentUser(null);
+    updateUserUI();
+    showToast('👋 Logout हो गया');
+    setTimeout(function(){location.reload()},800);
+  };
+
+  // ==================== AUTH MODAL ====================
+  var authMode='signup';
+
+  window.openAuth=function(mode){
+    authMode=mode||'signup';
+    setAuthMode(authMode);
+    document.getElementById('authModal').classList.add('on');
+    document.body.style.overflow='hidden';
+  };
+
+  window.closeAuth=function(){
+    document.getElementById('authModal').classList.remove('on');
+    document.body.style.overflow='';
+  };
+
+  window.setAuthMode=function(m){
+    authMode=m;
+    document.querySelectorAll('.auth-tab').forEach(function(t){t.classList.toggle('on',t.dataset.mode===m)});
+    var isSignup=(m==='signup');
+    document.getElementById('authTitle').textContent=isSignup?'Create Account':'Welcome Back';
+    document.getElementById('authSub').textContent=isSignup?'Free account बनाएँ — answer check शुरू करें':'अपने account में login करें';
+    document.getElementById('authSubmit').textContent=isSignup?'✅ Create Free Account':'🔐 Login';
+    document.getElementById('fName').style.display=isSignup?'block':'none';
+    document.getElementById('fPhone').style.display=isSignup?'block':'none';
+    document.getElementById('fPass2').style.display=isSignup?'block':'none';
+    document.getElementById('authFooter').innerHTML=isSignup?'पहले से account है? <a onclick="setAuthMode(\'login\')">Login करें</a>':'नया account बनाना है? <a onclick="setAuthMode(\'signup\')">Sign Up करें</a>';
+    document.getElementById('authMsg').className='auth-msg';
+    document.querySelectorAll('.auth-field').forEach(function(f){f.classList.remove('err-on')});
+  };
+
+  window.handleAuth=function(e){
+    e.preventDefault();
+    var msg=document.getElementById('authMsg');
+    msg.className='auth-msg';
+
+    // Clear errors
+    document.querySelectorAll('.auth-field').forEach(function(f){f.classList.remove('err-on')});
+
+    var email=(document.getElementById('inEmail').value||'').trim().toLowerCase();
+    var pass=(document.getElementById('inPass').value||'');
+
+    // Validate email
+    if(!email||email.indexOf('@')<1){
+      document.getElementById('fEmail').classList.add('err-on');
+      return false;
+    }
+    // Validate password
+    if(pass.length<6){
+      document.getElementById('fPass').classList.add('err-on');
+      return false;
+    }
+
+    var accounts=getAccounts();
+
+    if(authMode==='signup'){
+      var name=(document.getElementById('inName').value||'').trim();
+      var phone=(document.getElementById('inPhone').value||'').trim();
+      var pass2=(document.getElementById('inPass2').value||'');
+
+      if(!name){
+        document.getElementById('fName').classList.add('err-on');
+        return false;
+      }
+      if(phone && !/^[6-9]\d{9}$/.test(phone)){
+        document.getElementById('fPhone').classList.add('err-on');
+        return false;
+      }
+      if(pass!==pass2){
+        document.getElementById('fPass2').classList.add('err-on');
+        return false;
+      }
+      if(accounts[email]){
+        msg.className='auth-msg err';
+        msg.textContent='❌ ये ईमेल पहले से registered है — कृपया Login करें';
+        return false;
+      }
+
+      // Create account
+      accounts[email]={name:name,email:email,phone:phone,pass:pass,created:Date.now()};
+      saveAccounts(accounts);
+      setCurrentUser({name:name,email:email});
+
+      msg.className='auth-msg ok';
+      msg.textContent='✅ Account बन गया! अब answer check शुरू करें...';
+      setTimeout(function(){
+        closeAuth();
+        updateUserUI();
+        showToast('🎉 Welcome '+name+'!');
+      },1200);
+      return false;
+    }
+
+    // LOGIN
+    if(!accounts[email]){
+      msg.className='auth-msg err';
+      msg.textContent='❌ Account नहीं मिला — पहले Sign Up करें';
+      return false;
+    }
+    if(accounts[email].pass!==pass){
+      document.getElementById('fPass').classList.add('err-on');
+      msg.className='auth-msg err';
+      msg.textContent='❌ Password गलत है';
+      return false;
+    }
+
+    setCurrentUser({name:accounts[email].name,email:email});
+    msg.className='auth-msg ok';
+    msg.textContent='✅ Login successful!';
+    setTimeout(function(){
+      closeAuth();
+      updateUserUI();
+      showToast('👋 Welcome back, '+accounts[email].name+'!');
+    },900);
+    return false;
+  };
+
+  // ==================== INSTALL PROMPT ====================
+  var deferredInstallPrompt=null;
+
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault();
+    deferredInstallPrompt=e;
+    var btn=document.getElementById('pwaBtn');
+    if(btn)btn.classList.add('on');
+  });
+
+  window.doInstallApp=function(){
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function(choice){
+        if(choice.outcome==='accepted'){
+          showToast('✅ App install हो गया!');
+          var w=document.getElementById('welcomeScreen');
+          if(w)w.classList.add('hide');
+          localStorage.setItem(INSTALL_KEY,'1');
+        }
+        deferredInstallPrompt=null;
+        var b=document.getElementById('pwaBtn');
+        if(b)b.classList.remove('on');
+      });
+    } else {
+      // Fallback instructions
+      alert('📲 App Install करने के लिए:\n\n1. Browser menu (⋮) खोलें\n2. "Add to Home Screen" या "Install App" चुनें\n3. Confirm करें');
+      var w=document.getElementById('welcomeScreen');
+      if(w)w.classList.add('hide');
+      localStorage.setItem(INSTALL_KEY,'1');
+    }
+  };
+
+  window.skipInstall=function(){
+    localStorage.setItem(INSTALL_KEY,'1');
+    document.getElementById('welcomeScreen').classList.add('hide');
+  };
+
+  function checkFirstVisit(){
+    var seen=localStorage.getItem(INSTALL_KEY);
+    if(!seen){
+      // Show welcome only for first-time
+      var w=document.getElementById('welcomeScreen');
+      if(w)w.classList.remove('hide');
+    }
+  }
+
+  // ==================== AUTH GATE for Check ====================
+  // Override checkAnswer to require login
+  var _origCheck=window.checkAnswer;
+  window.checkAnswer=function(){
+    if(!isLoggedIn()){
+      openAuth('signup');
+      showToast('🔐 पहले Sign Up करें');
+      return;
+    }
+    if(_origCheck)_origCheck.apply(this,arguments);
+  };
+
+
   // ==================== INIT ====================
   loadQs();
   renderQList();
   updateCount();
+  updateUserUI();
+  checkFirstVisit();
+
+  // Re-check auth UI every 2 seconds (in case of login from another tab)
+  setInterval(updateUserUI,2000);
 
 })();
 </script>
