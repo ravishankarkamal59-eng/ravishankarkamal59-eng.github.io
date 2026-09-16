@@ -1071,6 +1071,388 @@ textarea:focus{border-color:#0f3460;background:#fff}
     return h;
   }
 
+
+  // ==================== ADVANCED EXAM DATABASE ====================
+  var EXAM_ADVANCED = {
+    upsc: {
+      name: 'UPSC Mains',
+      totalMarks: 1750,
+      questionTypes: [
+        {type:'10 marks', words:'150', structure:'Simple - 3 points'},
+        {type:'15 marks', words:'250', structure:'Standard - 5 points'},
+        {type:'20 marks', words:'300', structure:'Essay - detailed'},
+        {type:'Essay', words:'1000-1200', structure:'Full essay'}
+      ],
+      requirements: [
+        'Introduction with context/definition',
+        'Multi-dimensional analysis (Political, Economic, Social, Technological, Environmental, Legal)',
+        'Data/Statistics from official sources (Census, NITI Aayog, Economic Survey)',
+        'Committee/Commission reports references',
+        'Supreme Court judgments (recent)',
+        'Government schemes with names',
+        'International examples for comparison',
+        'Balanced view - both pros and cons',
+        'Way forward with specific solutions',
+        'Quote from thinkers/leaders (optional)',
+        'Diagram/Flowchart (if applicable)',
+        'Conclusion with positive outlook'
+      ],
+      keyPoints: {
+        structure: {
+          intro: ['Definition', 'Context', 'Data point', 'Report reference'],
+          body: ['Multi-dimensional', 'Examples', 'Case studies', 'Critical analysis'],
+          conclusion: ['Way forward', 'Balanced view', 'Realistic solution', 'Positive note']
+        },
+        scoring: 'Content 40% + Structure 30% + Presentation 20% + Language 10%'
+      },
+      commonMistakes: [
+        'Missing introduction or conclusion',
+        'One-sided analysis (only pros or only cons)',
+        'No data/statistics',
+        'Generic statements without examples',
+        'No government scheme references',
+        'Poor structure - no headings/bullets',
+        'Exceeding word limit significantly'
+      ]
+    },
+    uppcs: {
+      name: 'UPPCS Mains',
+      totalMarks: 1500,
+      questionTypes: [
+        {type:'10 marks', words:'125-150', structure:'Short - 3 points'},
+        {type:'15 marks', words:'200-250', structure:'Medium - 5 points'},
+        {type:'20 marks', words:'250-300', structure:'Detailed - 6+ points'}
+      ],
+      requirements: [
+        'UP-specific examples and case studies',
+        'UP government schemes (state-level)',
+        'UP historical/cultural context',
+        'UP statistics (economy, agriculture, population)',
+        'Hindi or English medium - proper language',
+        'Introduction with UP context',
+        'Local issues and their solutions',
+        'UP Budget allocations',
+        'Committee reports on UP',
+        'Diagrams/Maps of UP (if relevant)',
+        'Balanced view with UP perspective',
+        'Practical and actionable conclusion'
+      ],
+      keyPoints: {
+        structure: {
+          intro: ['UP context', 'State data', 'Relevance'],
+          body: ['UP examples', 'State schemes', 'Regional analysis'],
+          conclusion: ['UP-specific solution', 'Practical step']
+        },
+        scoring: 'UP Content 50% + Structure 25% + Examples 15% + Language 10%'
+      },
+      commonMistakes: [
+        'No UP-specific examples',
+        'Only national-level data',
+        'Missing UP government schemes',
+        'Generic analysis without state context',
+        'No local case studies',
+        'Poor Hindi/English language'
+      ]
+    },
+    bpsc: {
+      name: 'BPSC Mains',
+      totalMarks: 900,
+      questionTypes: [
+        {type:'10 marks', words:'125-150', structure:'Short answer'},
+        {type:'15 marks', words:'200', structure:'Medium answer'},
+        {type:'20 marks', words:'250-300', structure:'Long answer'}
+      ],
+      requirements: [
+        'Bihar-specific examples and data',
+        'Bihar government schemes',
+        'Bihar history, culture, geography',
+        'Bihar economy statistics',
+        'Bihar development indicators',
+        'Local issues (flood, migration, education)',
+        'Bihar Budget highlights',
+        'Recent Bihar initiatives',
+        'Cultural and social aspects of Bihar',
+        'Bihar in freedom struggle (if relevant)',
+        'Bihar-specific solutions',
+        'Language proficiency (Hindi)'
+      ],
+      keyPoints: {
+        structure: {
+          intro: ['Bihar context', 'Historical relevance', 'Data'],
+          body: ['Bihar examples', 'State schemes', 'Local issues'],
+          conclusion: ['Bihar-specific solution', 'Future vision']
+        },
+        scoring: 'Bihar Content 50% + Structure 25% + Examples 15% + Language 10%'
+      },
+      commonMistakes: [
+        'Missing Bihar examples',
+        'No state-specific data',
+        'Only national perspective',
+        'Forgetting Bihar history/culture',
+        'No local schemes mentioned',
+        'Poor Hindi writing'
+      ]
+    }
+  };
+
+  // ==================== TOPIC DETECTION ====================
+  var TOPIC_KEYWORDS = {
+    'History': {
+      ancient: ['harappa','indus','vedic','maurya','gupta','ashoka','buddha','mahavira','sangam','satavahana'],
+      medieval: ['mughal','delhi','sultanate','maratha','shivaji','akbar','aurangzeb','bahmani','vijayanagar'],
+      modern: ['british','east india','1857','revolt','congress','gandhi','nehru','freedom','partition','nationalism','swadeshi']
+    },
+    'Geography': {
+      physical: ['monsoon','climate','himalaya','plateau','river','drainage','soil','erosion'],
+      human: ['population','urbanization','migration','settlement','tribal'],
+      economic: ['agriculture','industry','mineral','energy','transport']
+    },
+    'Polity': {
+      constitution: ['constitution','fundamental rights','dpsp','amendment','preamble'],
+      institutions: ['president','parliament','judiciary','governor','election','supreme court'],
+      governance: ['federalism','panchayat','civil services','rti','lokpal']
+    },
+    'Economy': {
+      macro: ['gdp','inflation','fiscal','monetary','budget','taxation'],
+      sectors: ['agriculture','industry','service','msme','manufacturing'],
+      issues: ['unemployment','poverty','inequality','financial inclusion']
+    },
+    'Environment': {
+      climate: ['climate change','global warming','carbon','emission','paris'],
+      conservation: ['biodiversity','forest','wildlife','pollution','waste'],
+      policy: ['environment','act','sdg','sustainable']
+    },
+    'Society': {
+      issues: ['caste','gender','women','minority','dalit','tribal','communal'],
+      change: ['modernization','urbanization','globalization','westernization'],
+      reforms: ['social reform','education','health','empowerment']
+    },
+    'International Relations': {
+      bilateral: ['india','china','pakistan','usa','russia','japan'],
+      multilateral: ['un','brics','g20','wto','quad','sco','asean'],
+      issues: ['terrorism','trade','security','diplomacy','border']
+    },
+    'Governance': {
+      administration: ['civil services','bureaucracy','administration','policy'],
+      transparency: ['rti','accountability','corruption','transparency'],
+      welfare: ['scheme','welfare','subsidy','development']
+    },
+    'Science & Technology': {
+      space: ['isro','satellite','chandrayaan','mangalyaan','navic'],
+      it: ['cyber','digital','ai','internet','data'],
+      biotech: ['health','vaccine','dna','genetic']
+    },
+    'Art & Culture': {
+      performing: ['dance','music','theater','folk'],
+      visual: ['architecture','painting','sculpture'],
+      traditions: ['festival','ritual','heritage','literature']
+    },
+    'Agriculture': {
+      crops: ['crop','food','wheat','rice','pulses','oilseeds'],
+      issues: ['irrigation','fertilizer','pest','market','msp'],
+      schemes: ['pm-kisan','pmfby','soil health','organic']
+    }
+  };
+
+  function detectTopics(text){
+    var lower=text.toLowerCase();
+    var detected=[];
+    for(var topic in TOPIC_KEYWORDS){
+      var subTopics=TOPIC_KEYWORDS[topic];
+      var matchCount=0;
+      var matchedSubs=[];
+      for(var sub in subTopics){
+        var hits=0;
+        subTopics[sub].forEach(function(k){
+          if(lower.indexOf(k.toLowerCase())!==-1) hits++;
+        });
+        if(hits>=2){
+          matchCount+=hits;
+          matchedSubs.push(sub);
+        }
+      }
+      if(matchCount>=3){
+        detected.push({topic:topic, subtopics:matchedSubs, score:matchCount});
+      }
+    }
+    detected.sort(function(a,b){return b.score-a.score});
+    return detected.slice(0,3);
+  }
+
+  function detectExamFromContent(text){
+    var lower=text.toLowerCase();
+
+    // UP-specific keywords
+    var upKeys=['uttar pradesh','up ','lucknow','kanpur','varanasi','allahabad','prayagraj','ayodhya','mathura','agra','yogi','up government','up budget','up economy'];
+    var upCount=0;
+    upKeys.forEach(function(k){if(lower.indexOf(k)!==-1)upCount++;});
+
+    // Bihar-specific keywords
+    var biharKeys=['bihar','patna','gaya','bhagalpur','nalanda','bodh gaya','nitish','bihar government','bihar budget','bihar economy','kosi','champaran','jp movement'];
+    var biharCount=0;
+    biharKeys.forEach(function(k){if(lower.indexOf(k)!==-1)biharCount++;});
+
+    // UPSC keywords (broader national/international)
+    var upscKeys=['constitution','article','supreme court','parliament','niti aayog','economic survey','ministry','cabinet','commission','committee','bill','act','policy'];
+    var upscCount=0;
+    upscKeys.forEach(function(k){if(lower.indexOf(k)!==-1)upscCount++;});
+
+    var result={upsc:upscCount,uppcs:upCount*2,bpsc:biharCount*2};
+    var best=null;
+    for(var ex in result){
+      if(!best || result[ex]>result[best])best=ex;
+    }
+    return {exam:best, scores:result, total:result[best]};
+  }
+
+  // ==================== REQUIREMENT CHECK ====================
+  function checkRequirements(text, exam){
+    var lower=text.toLowerCase();
+    var examData=EXAM_ADVANCED[exam];
+    if(!examData)return null;
+
+    var checks=[];
+
+    // Common checks
+    checks.push({
+      name:'Introduction',
+      present:/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ|context/i.test(text),
+      required:true,
+      suggestion:'पहले 2-3 lines में topic का परिचय + definition + data दें'
+    });
+
+    checks.push({
+      name:'Conclusion',
+      present:/निष्कर्ष|conclusion|अंत में|समापन|सुझाव|way forward/i.test(text),
+      required:true,
+      suggestion:'Way forward + positive outlook के साथ समापन करें'
+    });
+
+    checks.push({
+      name:'Multi-dimensional Analysis',
+      present:(function(){
+        var dims=['राजनीतिक','आर्थिक','सामाजिक','political','economic','social','तकनीकी','environmental'];
+        var hits=0;
+        dims.forEach(function(d){if(lower.indexOf(d.toLowerCase())!==-1)hits++;});
+        return hits>=2;
+      })(),
+      required:true,
+      suggestion:'Political + Economic + Social angles ज़रूर cover करें'
+    });
+
+    checks.push({
+      name:'Data/Statistics',
+      present:/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख|billion|million|crore/i.test(text),
+      required:true,
+      suggestion:'Numbers, %, dates जोड़ें (Economic Survey, Census से)'
+    });
+
+    checks.push({
+      name:'Government Schemes',
+      present:/योजना|scheme|मिशन|mission|अधिनियम|act|policy|program/i.test(text),
+      required:true,
+      suggestion:'Relevant schemes का नाम + वर्ष ज़रूर जोड़ें'
+    });
+
+    checks.push({
+      name:'Examples/Case Studies',
+      present:/उदाहरण|example|जैसे|for instance|case study|केस/i.test(text),
+      required:true,
+      suggestion:'2-3 real examples (देश/राज्य/संस्था) जोड़ें'
+    });
+
+    checks.push({
+      name:'Committee/Report References',
+      present:/समिति|committee|आयोग|commission|रिपोर्ट|report|न्यायमूर्ति|justice/i.test(text),
+      required:false,
+      suggestion:'2nd ARC, Sarkaria, Punchhi जैसी committee का reference जोड़ें'
+    });
+
+    checks.push({
+      name:'Supreme Court Judgments',
+      present:/supreme court|सर्वोच्च न्यायालय|judgment|निर्णय|मामला|केस/i.test(text),
+      required:false,
+      suggestion:'Relevant landmark judgment जोड़ें'
+    });
+
+    checks.push({
+      name:'Balanced View',
+      present:(function(){
+        var pros=/(?:लाभ|फायदे|benefit|advantage|positive|सकारात्मक)/i.test(text);
+        var cons=/(?:हानि|नुकसान|challenge|problem|negative|चुनौती)/i.test(text);
+        return pros && cons;
+      })(),
+      required:true,
+      suggestion:'दोनों पक्ष रखें — लाभ + हानि, या समर्थन + आलोचना'
+    });
+
+    // Exam-specific checks
+    if(exam==='uppcs'){
+      checks.push({
+        name:'UP-Specific Content',
+        present:/uttar pradesh|उत्तर प्रदेश|up |lucknow|kanpur|varanasi|allahabad|up government|up scheme/i.test(text),
+        required:true,
+        suggestion:'UP के specific examples/data/schemes ज़रूर जोड़ें'
+      });
+      checks.push({
+        name:'UP Government Schemes',
+        present:/up |उत्तर प्रदेश|yogi|up budget|up mission/i.test(text),
+        required:false,
+        suggestion:'UP की कोई specific योजना (जैसे Mission Shakti, Kanya Sumangala) जोड़ें'
+      });
+    }
+
+    if(exam==='bpsc'){
+      checks.push({
+        name:'Bihar-Specific Content',
+        present:/bihar|बिहार|patna|gaya|nalanda|bihar government|nitish/i.test(text),
+        required:true,
+        suggestion:'Bihar के specific examples/data ज़रूर जोड़ें'
+      });
+      checks.push({
+        name:'Bihar Government Schemes',
+        present:/bihar|बिहार|nitish|bihar budget|bihar scheme/i.test(text),
+        required:false,
+        suggestion:'Bihar की कोई specific योजना (जैसे Jal Jeevan Hariyali) जोड़ें'
+      });
+    }
+
+    if(exam==='upsc'){
+      checks.push({
+        name:'International Examples',
+        present:/usa|china|uk|japan|europe|world|global|international|विश्व|अंतर्राष्ट्रीय/i.test(text),
+        required:false,
+        suggestion:'तुलना के लिए international example जोड़ें'
+      });
+      checks.push({
+        name:'SDG/Global Goals',
+        present:/sdg|sustainable|पेरिस|paris|climate|2030/i.test(text),
+        required:false,
+        suggestion:'Relevant SDG या global target का reference दें'
+      });
+    }
+
+    // Calculate score
+    var required=checks.filter(function(c){return c.required});
+    var optional=checks.filter(function(c){return !c.required});
+    var requiredPresent=required.filter(function(c){return c.present}).length;
+    var optionalPresent=optional.filter(function(c){return c.present}).length;
+
+    var reqScore=required.length>0?Math.round((requiredPresent/required.length)*70):0;
+    var optScore=optional.length>0?Math.round((optionalPresent/optional.length)*30):0;
+    var totalScore=reqScore+optScore;
+
+    return {
+      checks:checks,
+      requiredPresent:requiredPresent,
+      requiredTotal:required.length,
+      optionalPresent:optionalPresent,
+      optionalTotal:optional.length,
+      totalScore:totalScore,
+      missing:checks.filter(function(c){return !c.present && c.required})
+    };
+  }
+
   // ==================== AUTO DETECT ====================
   function autoDetect(text){
     if(!text || text.trim().length<20)return null;
@@ -1577,6 +1959,13 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var words=text.split(/\s+/).filter(function(w){return w.length>0});
     var wc=words.length;
 
+    // ⚡ ADVANCED DETECTION
+    var examDetect=detectExamFromContent(text);
+    var topics=detectTopics(text);
+    var detectedExam=examDetect.exam;
+    var reqCheck=checkRequirements(text, detectedExam);
+    var examInfo=EXAM_ADVANCED[detectedExam];
+
     // Quality parameters
     var params={
       hasIntro:/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ|context/i.test(text),
@@ -1621,9 +2010,121 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
     // Header
     h+='<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center">';
-    h+='<div style="font-size:11px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">📊 ANALYSIS</div>';
-    h+='<div style="font-size:14px;font-weight:800">PDF Content Quality Report</div>';
+    h+='<div style="font-size:11px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">🔍 ADVANCED DETECTION</div>';
+    h+='<div style="font-size:14px;font-weight:800">Exam + Topic + Requirements Analysis</div>';
     h+='</div>';
+
+    // ⚡ DETECTED EXAM
+    if(examInfo){
+      h+='<div style="background:linear-gradient(135deg,#e8f8f0,#d4f0e0);border:2px solid #27ae60;border-radius:14px;padding:14px;margin-bottom:12px">';
+      h+='<div style="font-size:10px;font-weight:800;color:#27ae60;letter-spacing:1.5px;margin-bottom:8px">✅ DETECTED EXAM</div>';
+      h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
+      h+='<div style="font-size:16px;font-weight:900;color:#0f3460">🎯 '+examInfo.name+'</div>';
+      h+='<div style="background:#27ae60;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:10px">'+examDetect.total+' pts</div>';
+      h+='</div>';
+      // All exam scores
+      h+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.upsc>=10?'#27ae60':'#999')+'">'+examDetect.scores.upsc+'</div></div>';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPPCS</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.uppcs>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.uppcs/2)+'</div></div>';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">BPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.bpsc>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.bpsc/2)+'</div></div>';
+      h+='</div>';
+      h+='</div>';
+    }
+
+    // ⚡ DETECTED TOPICS
+    if(topics.length>0){
+      h+='<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:14px;padding:14px;margin-bottom:12px">';
+      h+='<div style="font-size:10px;font-weight:800;color:#2980b9;letter-spacing:1.5px;margin-bottom:8px">📚 DETECTED TOPICS</div>';
+      topics.forEach(function(t,i){
+        h+='<div style="background:#fff;border-radius:10px;padding:10px;margin-bottom:6px">';
+        h+='<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+        h+='<div style="font-size:13px;font-weight:800;color:#0f3460">'+(i+1)+'. '+t.topic+'</div>';
+        h+='<div style="background:#2980b9;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px">'+t.score+' hits</div>';
+        h+='</div>';
+        if(t.subtopics.length){
+          h+='<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">';
+          t.subtopics.forEach(function(s){
+            h+='<span style="background:#e8f4ff;color:#2980b9;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">'+s+'</span>';
+          });
+          h+='</div>';
+        }
+        h+='</div>';
+      });
+      h+='</div>';
+    }
+
+    // ⚡ REQUIREMENT CHECK (only for UPSC/UPPCS/BPSC)
+    if(reqCheck && examInfo){
+      var rp=reqCheck;
+      var reqPct=rp.totalScore;
+      var reqColor=reqPct>=70?'#27ae60':(reqPct>=45?'#f39c12':'#e94560');
+      var reqStatus=reqPct>=70?'✅ Exam-Ready':(reqPct>=45?'⚠️ और सुधार चाहिए':'❌ कई चीज़ें missing');
+
+      h+='<div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f39c12;border-radius:14px;padding:14px;margin-bottom:12px">';
+      h+='<div style="font-size:10px;font-weight:800;color:#b8860b;letter-spacing:1.5px;margin-bottom:8px">📋 '+examInfo.name+' REQUIREMENTS</div>';
+
+      // Score bar
+      h+='<div style="background:#fff;padding:10px;border-radius:10px;margin-bottom:10px">';
+      h+='<div style="display:flex;justify-content:space-between;margin-bottom:6px">';
+      h+='<div style="font-size:12px;font-weight:800;color:#0f3460">'+reqStatus+'</div>';
+      h+='<div style="font-size:16px;font-weight:900;color:'+reqColor+'">'+reqPct+'%</div>';
+      h+='</div>';
+      h+='<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+reqPct+'%;background:'+reqColor+';border-radius:3px"></div></div>';
+      h+='<div style="font-size:10px;color:#666;margin-top:6px">Required: '+rp.requiredPresent+'/'+rp.requiredTotal+' • Optional: '+rp.optionalPresent+'/'+rp.optionalTotal+'</div>';
+      h+='</div>';
+
+      // Checklist
+      rp.checks.forEach(function(c){
+        var bg=c.present?'#e8f8f0':'#ffe8e8';
+        var bd=c.present?'#27ae60':'#e94560';
+        var ic=c.present?'✓':'✗';
+        h+='<div style="background:'+bg+';border-left:3px solid '+bd+';border-radius:8px;padding:8px 10px;margin-bottom:6px">';
+        h+='<div style="display:flex;justify-content:space-between;align-items:center">';
+        h+='<div style="font-size:11.5px;font-weight:800;color:'+bd+'">'+ic+' '+c.name+(c.required?' *':'')+'</div>';
+        h+='<div style="font-size:9px;color:#666;font-weight:700">'+(c.required?'Required':'Optional')+'</div>';
+        h+='</div>';
+        if(!c.present && c.suggestion){
+          h+='<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">💡 '+c.suggestion+'</div>';
+        }
+        h+='</div>';
+      });
+
+      // What to add section
+      if(rp.missing.length>0){
+        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #e94560">';
+        h+='<div style="font-size:11px;font-weight:800;color:#e94560;margin-bottom:8px">🎯 ये जोड़ना ज़रूरी है ('+rp.missing.length+')</div>';
+        rp.missing.forEach(function(c){
+          h+='<div style="background:#ffe8e8;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
+          h+='<div style="font-size:11.5px;font-weight:800;color:#c0392b;margin-bottom:2px">• '+c.name+'</div>';
+          h+='<div style="font-size:10.5px;color:#666;line-height:1.4">'+c.suggestion+'</div>';
+          h+='</div>';
+        });
+        h+='</div>';
+      } else {
+        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #27ae60;text-align:center">';
+        h+='<div style="font-size:12px;font-weight:800;color:#27ae60">🎉 सभी required elements मौजूद हैं!</div>';
+        h+='</div>';
+      }
+
+      h+='</div>';
+
+      // Exam-specific guide
+      h+='<div style="background:#f0f4ff;border:1.5px solid #2980b9;border-radius:14px;padding:14px;margin-bottom:12px">';
+      h+='<div style="font-size:10px;font-weight:800;color:#2980b9;letter-spacing:1.5px;margin-bottom:8px">📖 '+examInfo.name+' में क्या-क्या ज़रूरी है</div>';
+      h+='<div style="font-size:11px;color:#333;font-weight:700;margin-bottom:6px">📋 Requirements:</div>';
+      h+='<ul style="list-style:none;padding:0;margin-bottom:10px">';
+      examInfo.requirements.slice(0,6).forEach(function(r){
+        h+='<li style="font-size:11px;color:#333;padding:3px 0;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#2980b9">▸</span>'+r+'</li>';
+      });
+      h+='</ul>';
+      h+='<div style="font-size:11px;color:#333;font-weight:700;margin-bottom:6px">⚠️ Common Mistakes:</div>';
+      h+='<ul style="list-style:none;padding:0">';
+      examInfo.commonMistakes.slice(0,4).forEach(function(m){
+        h+='<li style="font-size:11px;color:#c0392b;padding:3px 0;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#e94560">✗</span>'+m+'</li>';
+      });
+      h+='</ul>';
+      h+='</div>';
+    }
 
     // Score
     h+='<div class="score-card"><div class="score-lbl">CONTENT QUALITY</div><div><span class="score-v">'+pct+'</span><span class="score-mx"> / 100</span></div><div class="score-pct">'+wc+' शब्द • '+(rtu?rtu.sentences:0)+' वाक्य</div><div class="verdict '+vc+'">'+v+'</div></div>';
