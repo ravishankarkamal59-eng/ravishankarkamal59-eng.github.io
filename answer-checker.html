@@ -713,13 +713,12 @@ console.log('✅ Fix JS loaded');
 
     <!-- PDF zone -->
     <div class="pdf-z" id="pdfZone">
-      <label for="pdfInput" class="pdf-drop" id="pdfDrop" style="display:block;cursor:pointer">
-          <div class="ic">📄</div>
-          <div class="tt">PDF drop करें या tap करें</div>
-          <div class="st">Scanned / Handwritten / Typed • Any size</div>
-          <div class="ht">♾️ Unlimited pages • Unlimited size</div>
-          <input type="file" id="pdfInput" accept="application/pdf,image/*" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        </label>
+      <div id="pdfDrop" onclick="window.triggerFilePicker(event)" style="border:3px dashed #a0aec0;border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;background:#fafbfc;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);user-select:none">
+          <div style="font-size:44px;margin-bottom:8px">📄</div>
+          <div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:4px">PDF drop करें या tap करें</div>
+          <div style="font-size:11px;color:#666;margin-bottom:8px">Scanned / Handwritten / Typed</div>
+          <div style="font-size:10px;color:#e94560;font-weight:700;background:#ffe8e8;padding:3px 10px;border-radius:10px;display:inline-block">♾️ Unlimited pages</div>
+        </div>
       <div class="pdf-info" id="pdfInfo">
         <div class="fi">📄</div>
         <div class="fn" id="pdfFn">-</div>
@@ -3496,117 +3495,55 @@ console.log('✅ Fix JS loaded');
 
 
 
+
+
+
 <script>
-// ==================== PDF BULLETPROOF FIX ====================
+// ==================== FILE PICKER TRIGGER ====================
 (function(){
-  console.log('=== PDF Bulletproof Fix loading ===');
+  console.log('=== File Picker Trigger loading ===');
 
-  function init(){
-    var drop = document.getElementById('pdfDrop');
-    var input = document.getElementById('pdfInput');
-    var pdfZone = document.getElementById('pdfZone');
-
-    if(!drop || !input){
-      console.log('Elements missing — retry');
-      setTimeout(init, 400);
-      return;
+  // Global function to trigger file picker
+  window.triggerFilePicker = function(e){
+    if(e){
+      e.preventDefault();
+      e.stopPropagation();
     }
+    console.log('Trigger clicked');
 
-    console.log('All PDF elements found');
+    // Create fresh input
+    var inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = 'application/pdf,image/*';
+    inp.style.position = 'absolute';
+    inp.style.left = '-9999px';
 
-    // ⚡ STEP 1: Fix any CSS issues that break label clicking
-    // Make sure label has cursor and pointer events
-    drop.style.cursor = 'pointer';
-    drop.style.pointerEvents = 'auto';
-    drop.style.userSelect = 'none';
-    drop.style.webkitUserSelect = 'none';
-    drop.style.webkitTapHighlightColor = 'rgba(0,0,0,0)';
-
-    // Make input properly accessible but hidden
-    input.style.position = 'absolute';
-    input.style.left = '-9999px';
-    input.style.top = '0';
-    input.style.width = '1px';
-    input.style.height = '1px';
-    input.style.opacity = '0';
-    input.style.pointerEvents = 'auto';
-
-    // ⚡ STEP 2: Remove ALL old listeners by cloning
-    var newInput = input.cloneNode(true);
-    newInput.id = 'pdfInput'; // Ensure id preserved
-    if(input.parentNode){
-      input.parentNode.replaceChild(newInput, input);
-    }
-    input = newInput;
-
-    // ⚡ STEP 3: Multiple binding strategies for maximum reliability
-
-    // Strategy A: Direct label click → triggers input
-    drop.onclick = null; // Clear old
-    drop.addEventListener('click', function(e){
-      console.log('Drop zone clicked');
-      // Don't preventDefault — let label work naturally
-      // Just add fallback trigger
-      setTimeout(function(){
-        try{ input.click(); }catch(err){ console.log('fallback click err:', err); }
-      }, 10);
-    }, false);
-
-    // Strategy B: Direct input click binding
-    input.addEventListener('click', function(e){
-      console.log('Input clicked');
-    }, false);
-
-    // Strategy C: Input change handler
-    input.addEventListener('change', function(e){
-      console.log('Input change fired');
-      if(e.target.files && e.target.files.length > 0){
-        console.log('File selected:', e.target.files[0].name);
-        processFile(e.target.files[0]);
+    // On change
+    inp.onchange = function(ev){
+      if(ev.target.files && ev.target.files.length > 0){
+        console.log('File selected:', ev.target.files[0].name);
+        if(typeof window.processPickedFile === 'function'){
+          window.processPickedFile(ev.target.files[0]);
+        }
+        // Clean up
+        setTimeout(function(){ inp.remove(); }, 500);
       }
-    }, false);
+    };
 
-    // Strategy D: Parent label click via event
-    var parentLabel = drop.closest ? drop.closest('label') : null;
-    if(parentLabel){
-      parentLabel.style.cursor = 'pointer';
-      parentLabel.addEventListener('click', function(e){
-        console.log('Label wrapper clicked');
-        // Let default behavior work
-      }, false);
-    }
+    // Add to DOM temporarily
+    document.body.appendChild(inp);
 
-    // ⚡ STEP 4: Drag & drop as backup
-    drop.addEventListener('dragover', function(e){
-      e.preventDefault();
-      drop.style.borderColor = '#0f3460';
-      drop.style.background = '#e8f4ff';
-    });
-    drop.addEventListener('dragleave', function(e){
-      e.preventDefault();
-      drop.style.borderColor = '#a0aec0';
-      drop.style.background = '#fafbfc';
-    });
-    drop.addEventListener('drop', function(e){
-      e.preventDefault();
-      drop.style.borderColor = '#a0aec0';
-      drop.style.background = '#fafbfc';
-      if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
-        console.log('File dropped:', e.dataTransfer.files[0].name);
-        processFile(e.dataTransfer.files[0]);
-      }
-    });
+    // Trigger click
+    inp.click();
 
-    console.log('✅ All handlers attached');
-  }
+    return false;
+  };
 
-  // ============ PROCESS FILE ============
-  async function processFile(file){
+  // ============ FILE PROCESSOR ============
+  window.processPickedFile = async function(file){
     console.log('Processing:', file.name, (file.size/1024).toFixed(1) + ' KB');
 
-    // Show card
     showCard(file.name, file.size);
-
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'none';
 
@@ -3617,7 +3554,7 @@ console.log('✅ Fix JS loaded');
       var buf = await file.arrayBuffer();
 
       if(typeof pdfjsLib === 'undefined'){
-        throw new Error('PDF.js load नहीं हुआ');
+        throw new Error('PDF.js load नहीं हुआ — internet check करें');
       }
 
       if(!pdfjsLib.GlobalWorkerOptions.workerSrc){
@@ -3627,15 +3564,15 @@ console.log('✅ Fix JS loaded');
       updateProgress(10, 'PDF खोल रहे हैं...');
       var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
       var total = pdf.numPages;
-      console.log('Total pages:', total);
 
       updateStatus('📄 ' + total + ' pages', '#f39c12');
+      updateProgress(15, total + ' pages process होंगे');
 
       var allText = '';
       var wordCount = 0;
 
       for(var i = 1; i <= total; i++){
-        var pct = 15 + Math.round((i / total) * 80);
+        var pct = 15 + Math.round((i/total) * 80);
         updateProgress(pct, '📄 Page ' + i + '/' + total + ' — ' + wordCount + ' words');
 
         try {
@@ -3643,7 +3580,6 @@ console.log('✅ Fix JS loaded');
           var tc = await page.getTextContent();
           var pageText = tc.items.map(function(it){ return it.str; }).join(' ');
 
-          // OCR fallback for scanned pages
           if(pageText.trim().length < 30 && typeof Tesseract !== 'undefined'){
             updateProgress(pct, '🔍 Page ' + i + ' OCR...');
             try {
@@ -3679,8 +3615,6 @@ console.log('✅ Fix JS loaded');
       if(window.AppState) window.AppState.extracted = finalText;
       window._pdfExtractedText = finalText;
 
-      console.log('Extracted:', wordCount, 'words');
-
       updateProgress(100, '✅ Complete — ' + wordCount + ' words');
       updateStatus('✅ ' + wordCount + ' शब्द मिले', '#27ae60');
       showExtracted(finalText);
@@ -3692,16 +3626,16 @@ console.log('✅ Fix JS loaded');
       showToast('✅ ' + wordCount + ' शब्द मिले');
 
     } catch(err){
-      console.error('PDF error:', err);
+      console.error('Error:', err);
       updateStatus('❌ ' + err.message, '#e94560');
       updateProgress(100, '❌ Failed');
       showToast('❌ ' + err.message);
       var drop = document.getElementById('pdfDrop');
       if(drop) drop.style.display = 'block';
     }
-  }
+  };
 
-  // ============ UI ============
+  // ============ UI HELPERS ============
   function showCard(name, size){
     var card = document.getElementById('pdfFileCard');
     if(!card){
@@ -3791,17 +3725,7 @@ console.log('✅ Fix JS loaded');
     }, 2200);
   }
 
-  // INIT
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
-  } else {
-    setTimeout(init, 200);
-  }
-
-  setTimeout(init, 1500);
-  setTimeout(init, 3000);
-
-  console.log('✅ PDF Bulletproof Fix ready');
+  console.log('✅ File Picker Trigger ready');
 })();
 </script>
 
