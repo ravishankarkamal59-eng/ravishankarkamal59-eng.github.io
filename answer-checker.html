@@ -8425,5 +8425,460 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== AGRICULTURE ULTRA EXAMINER ====================
+(function(){
+  'use strict';
+  console.log('=== Agriculture Ultra loading ===');
+
+  var AGRI_RULES = {
+
+    agri_agronomy: {
+      name: 'Agronomy (शस्य विज्ञान)', icon: '🌾',
+      maxMarks: 100,
+      elements: [
+        { name: 'Scientific Name', test: function(t){ return /Oryza|Triticum|Zea|Saccharum|Gossypium|Pisum|Cicer|Solanum|Poaceae|Fabaceae|Malvaceae|indica|aestivum|sativa/i.test(t); }, w: 15, c: true },
+        { name: 'Seed Rate', test: function(t){ return /\d+\s*(kg|किग्रा|किलो)\s*\/?\s*(ha|हेक्टेयर|हे)|seed\s*rate|बीज\s*दर|kg\/ha/i.test(t); }, w: 12, c: true },
+        { name: 'NPK Fertilizer Dose', test: function(t){ return /N\s*:\s*P\s*:\s*K|N:P:K|नाइट्रोजन.*फास्फोरस|urea|यूरिया|DAP|MOP|NPK|fertilizer\s*dose|उर्वरक\s*मात्रा/i.test(t); }, w: 12, c: true },
+        { name: 'Spacing', test: function(t){ return /\d+\s*[×xX]\s*\d+\s*(cm|सेमी)|spacing|दूरी|plant\s*to\s*plant|row\s*to\s*row/i.test(t); }, w: 10, c: false },
+        { name: 'Irrigation Method', test: function(t){ return /सिंचाई|irrigation|drip|ड्रिप|sprinkler|फव्वारा|flood|basin|furrow/i.test(t); }, w: 10, c: false },
+        { name: 'Pest/Disease', test: function(t){ return /pest|कीट|रोग|disease|blast|blight|rust|smut|borer|hopper|सुंडी|तना\s*छेदक/i.test(t); }, w: 12, c: true },
+        { name: 'Harvesting & Yield', test: function(t){ return /harvest|कटाई|maturity|पकाई|परिपक्वता|yield|उत्पादन|उपज|q\/ha|क्विंटल/i.test(t); }, w: 12, c: true },
+        { name: 'Cropping System', test: function(t){ return /crop\s*rotation|फसल\s*चक्र|intercropping|अंतरवर्तीय|mixed\s*cropping|multiple\s*cropping/i.test(t); }, w: 12, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/Oryza|Triticum|Zea|Saccharum|Gossypium|Poaceae|Fabaceae/i.test(t); }, msg: '❌ फसल का वैज्ञानिक नाम नहीं — Agronomy में अनिवार्य' },
+        { test: function(t){ return !/N:P:K|NPK|urea|यूरिया|DAP|fertilizer/i.test(t); }, msg: '❌ उर्वरक मात्रा नहीं — NPK dose ज़रूर लिखें' },
+        { test: function(t){ return !/pest|कीट|रोग|disease|borer|blast/i.test(t); }, msg: '⚠️ कीट/रोग का ज़िक्र नहीं' }
+      ]
+    },
+
+    agri_soil: {
+      name: 'Soil Science (मृदा विज्ञान)', icon: '🌱',
+      maxMarks: 100,
+      elements: [
+        { name: 'Soil Type', test: function(t){ return /alluvial|जलोढ़|black|काली|रेगुर|red|लाल|laterite|लैटेराइट|sandy|रेतीली|clay|चिकनी|loam|दोमट/i.test(t); }, w: 15, c: true },
+        { name: 'Physical Properties', test: function(t){ return /texture|बनावट|structure|संरचना|porosity|सरंध्रता|permeability|पारगम्यता|color|रंग|density/i.test(t); }, w: 12, c: true },
+        { name: 'Chemical Properties', test: function(t){ return /pH|अम्लीय|क्षारीय|saline|sodic|CEC|cation|exchange|base\s*saturation/i.test(t); }, w: 12, c: true },
+        { name: 'Nutrients', test: function(t){ return /नाइट्रोजन|nitrogen|फास्फोरस|phosphorus|पोटाश|potassium|zinc|iron|micronutrient|सूक्ष्म\s*पोषक/i.test(t); }, w: 12, c: true },
+        { name: 'Soil Testing', test: function(t){ return /मृदा\s*परीक्षण|soil\s*test|soil\s*health|मृदा\s*स्वास्थ्य|soil\s*card|मृदा\s*कार्ड/i.test(t); }, w: 10, c: false },
+        { name: 'Erosion & Conservation', test: function(t){ return /erosion|अपरदन|conservation|संरक्षण|contour|समोच्च|terrace|सीढ़ीदार|mulching|windbreak/i.test(t); }, w: 12, c: true },
+        { name: 'Organic Matter', test: function(t){ return /organic\s*matter|जैविक\s*पदार्थ|humus|ह्यूमस|compost|कंपोस्ट|vermicompost|green\s*manure|हरी\s*खाद/i.test(t); }, w: 12, c: true },
+        { name: 'Reclamation', test: function(t){ return /reclamation|सुधार|gypsum|जिप्सम|lime|चूना|drainage|जल\s*निकास|leaching|निक्षालन/i.test(t); }, w: 15, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/alluvial|जलोढ़|black|काली|red|लाल|laterite|sandy|clay/i.test(t); }, msg: '❌ मृदा का प्रकार नहीं' },
+        { test: function(t){ return !/texture|structure|pH|porosity|CEC/i.test(t); }, msg: '❌ मृदा के गुण नहीं' },
+        { test: function(t){ return !/erosion|अपरदन|conservation|संरक्षण/i.test(t); }, msg: '⚠️ अपरदन/संरक्षण का ज़िक्र नहीं' }
+      ]
+    },
+
+    agri_horticulture: {
+      name: 'Horticulture (बागवानी)', icon: '🍎',
+      maxMarks: 100,
+      elements: [
+        { name: 'Scientific Name', test: function(t){ return /Mangifera|Musa|Citrus|Vitis|Solanum|Lycopersicon|Allium|Capsicum|Rosa|Jasminum|indica|paradisiaca/i.test(t); }, w: 15, c: true },
+        { name: 'Variety', test: function(t){ return /variety|किस्म|Dashehari|Langra|Alphonso|Robusta|Cavendish|Pusa|Arka|Pant|G-9|G-11/i.test(t); }, w: 12, c: true },
+        { name: 'Propagation Method', test: function(t){ return /grafting|कलम|budding|कलिकायन|cutting|कटिंग|layering|दाब|seed|बीज|tissue\s*culture|उत्तक\s*संवर्धन/i.test(t); }, w: 12, c: true },
+        { name: 'Planting Spacing', test: function(t){ return /\d+\s*[×xX]\s*\d+\s*(m|मी|cm|सेमी)|spacing|दूरी|पौध.*से.*पौध/i.test(t); }, w: 10, c: false },
+        { name: 'Training & Pruning', test: function(t){ return /training|प्रशिक्षण|pruning|छँटाई|heading|canopy|कैनोपी/i.test(t); }, w: 10, c: false },
+        { name: 'Harvesting & Yield', test: function(t){ return /harvest|कटाई|तुड़ाई|yield|उपज|उत्पादन|tonnes|टन|maturity/i.test(t); }, w: 12, c: true },
+        { name: 'Pest & Disease', test: function(t){ return /pest|कीट|disease|रोग|fruit\s*fly|मक्खी|hopper|भुनगा|anthracnose|powdery|mildew/i.test(t); }, w: 12, c: true },
+        { name: 'Post-harvest', test: function(t){ return /post\s*harvest|कटाई\s*उपरांत|storage|भंडारण|cold\s*storage|शीत\s*भंडारण|packaging|marketing|विपणन/i.test(t); }, w: 17, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/Mangifera|Musa|Citrus|Vitis|Solanum|Allium/i.test(t); }, msg: '❌ वैज्ञानिक नाम नहीं' },
+        { test: function(t){ return !/grafting|budding|cutting|layering|tissue/i.test(t); }, msg: '⚠️ प्रसारण विधि नहीं' }
+      ]
+    },
+
+    agri_pathology: {
+      name: 'Plant Pathology (पादप रोग)', icon: '🦠',
+      maxMarks: 100,
+      elements: [
+        { name: 'Disease Name', test: function(t){ return /blast|ब्लास्ट|blight|ब्लाइट|rust|रतुआ|smut|स्मट|wilt|उकठा|rot|सड़न|mildew|मिल्ड्यू|bunt|tungro/i.test(t); }, w: 15, c: true },
+        { name: 'Pathogen', test: function(t){ return /Pyricularia|Xanthomonas|Puccinia|Ustilago|Fusarium|Alternaria|Colletotrichum|Phytophthora|Rhizoctonia|Pythium|virus|fungus|bacteria/i.test(t); }, w: 15, c: true },
+        { name: 'Symptoms', test: function(t){ return /symptom|लक्षण|spot|धब्बे|leaf|पत्ती|stem|तना|root|जड़|wilting|मुरझान|yellowing|necrosis/i.test(t); }, w: 12, c: true },
+        { name: 'Disease Cycle', test: function(t){ return /cycle|चक्र|spread|फैलाव|transmission|संचरण|overwinter|inoculum|संक्रमण/i.test(t); }, w: 10, c: false },
+        { name: 'Fungicide/Pesticide', test: function(t){ return /fungicide|फफूंदनाशक|bactericide|bavistin|carbendazim|mancozeb|copper|streptocycline|थीरम|thiram/i.test(t); }, w: 12, c: true },
+        { name: 'Resistant Variety', test: function(t){ return /resistant|प्रतिरोधी|tolerant|सहनशील|variety|किस्म|Pusa|IR-|Pant|HD-|PBW/i.test(t); }, w: 12, c: true },
+        { name: 'Management Methods', test: function(t){ return /management|प्रबंधन|control|नियंत्रण|IPM|seed\s*treatment|बीजोपचार|crop\s*rotation/i.test(t); }, w: 15, c: true },
+        { name: 'Economic Loss', test: function(t){ return /loss|हानि|नुकसान|\d+%|yield.*loss|economic\s*damage/i.test(t); }, w: 9, c: false }
+      ],
+      forbidden: [
+        { test: function(t){ return !/blast|blight|rust|smut|wilt|rot|mildew|bunt/i.test(t); }, msg: '❌ रोग का नाम नहीं' },
+        { test: function(t){ return !/Pyricularia|Xanthomonas|Puccinia|Ustilago|Fusarium|fungus|bacteria|virus/i.test(t); }, msg: '❌ रोगजनक का नाम नहीं' },
+        { test: function(t){ return !/fungicide|फफूंदनाशक|bavistin|carbendazim|mancozeb/i.test(t); }, msg: '⚠️ रोगनाशक का ज़िक्र नहीं' }
+      ]
+    },
+
+    agri_entomology: {
+      name: 'Entomology (कीट विज्ञान)', icon: '🐛',
+      maxMarks: 100,
+      elements: [
+        { name: 'Pest Name', test: function(t){ return /borer|छेदक|hopper|फुदका|aphid|माहू|thrips|थ्रिप्स|whitefly|सफेद\s*मक्खी|bug|armyworm|cutworm|termite|locust/i.test(t); }, w: 15, c: true },
+        { name: 'Scientific Name', test: function(t){ return /Scirpophaga|Nilaparvata|Chilo|Helicoverpa|Spodoptera|Aphis|Bemisia|Thrips|Sitophilus|Tribolium/i.test(t); }, w: 15, c: true },
+        { name: 'Damage Symptoms', test: function(t){ return /damage|नुकसान|dead\s*heart|मृत\s*हृदय|hopper\s*burn|skeleton|window|खिड़की|mine|सुरंग|gall/i.test(t); }, w: 12, c: true },
+        { name: 'Life Cycle', test: function(t){ return /life\s*cycle|जीवन\s*चक्र|egg|अंडा|larva|लार्वा|pupa|प्यूपा|adult|वयस्क|instar|निम्फ|generation/i.test(t); }, w: 12, c: true },
+        { name: 'Insecticide', test: function(t){ return /insecticide|कीटनाशक|imidacloprid|chlorpyriphos|monocrotophos|malathion|neem|नीम|Bt|biopesticide|जैविक/i.test(t); }, w: 12, c: true },
+        { name: 'IPM', test: function(t){ return /IPM|integrated|एकीकृत|biological|जैविक|parasitoid|परजीवी|predator|भक्षक|pheromone|फेरोमोन|trap|जाल|light\s*trap/i.test(t); }, w: 12, c: true },
+        { name: 'ETL', test: function(t){ return /ETL|economic\s*threshold|आर्थिक\s*सीमा|threshold|सीमा|damage\s*level/i.test(t); }, w: 10, c: false },
+        { name: 'Resistant Variety', test: function(t){ return /resistant|प्रतिरोधी|Bt\s*cotton|Bt\s*brinjal|tolerant|variety|किस्म/i.test(t); }, w: 12, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/borer|hopper|aphid|thrips|whitefly|bug|armyworm|termite/i.test(t); }, msg: '❌ कीट का नाम नहीं' },
+        { test: function(t){ return !/Scirpophaga|Nilaparvata|Chilo|Helicoverpa|Spodoptera|Aphis|Bemisia/i.test(t); }, msg: '❌ कीट का वैज्ञानिक नाम नहीं' },
+        { test: function(t){ return !/life\s*cycle|जीवन\s*चक्र|larva|pupa|egg|instar/i.test(t); }, msg: '⚠️ जीवन चक्र का ज़िक्र नहीं' }
+      ]
+    },
+
+    agri_extension: {
+      name: 'Extension Education (प्रसार शिक्षा)', icon: '📢',
+      maxMarks: 100,
+      elements: [
+        { name: 'Extension Concept', test: function(t){ return /extension|प्रसार|education|शिक्षा|transfer\s*of\s*technology|तकनीक\s*हस्तांतरण|adoption|अपनाना/i.test(t); }, w: 15, c: true },
+        { name: 'Communication Methods', test: function(t){ return /communication|संचार|individual|व्यक्तिगत|group|समूह|mass|जन|contact|संपर्क|demonstration|प्रदर्शन|campaign|अभियान|radio|टीवी/i.test(t); }, w: 12, c: true },
+        { name: 'Extension Agencies', test: function(t){ return /KVK|कृषि\s*विज्ञान\s*केंद्र|ATMA|कृषि\s*प्रौद्योगिकी|ICAR|कृषि\s*विश्वविद्यालय|कृषि\s*विभाग|NGO|स्वयंसेवी/i.test(t); }, w: 12, c: true },
+        { name: 'Adoption & Diffusion', test: function(t){ return /adoption|अपनाना|diffusion|प्रसार|innovation|नवाचार|laggard|पिछड़ा|early.*adopter|अग्रणी|Rogers|रोजर्स/i.test(t); }, w: 15, c: true },
+        { name: 'Farmer Problems', test: function(t){ return /farmer|किसान|problem|समस्या|challenge|चुनौती|awareness|जागरूकता|literacy|साक्षरता|small.*land/i.test(t); }, w: 12, c: true },
+        { name: 'Training Methods', test: function(t){ return /training|प्रशिक्षण|workshop|कार्यशाला|demonstration|प्रदर्शन|field.*trial|field.*day|कृषक.*दिवस|kisan.*ghoshthi/i.test(t); }, w: 10, c: false },
+        { name: 'Programme Planning', test: function(t){ return /planning|योजना|programme|कार्यक्रम|need.*assessment|आवश्यकता|evaluation|मूल्यांकन|impact|प्रभाव/i.test(t); }, w: 12, c: true },
+        { name: 'Success Stories', test: function(t){ return /success|सफलता|case.*study|केस\s*स्टडी|उदाहरण|example|impact|before.*after/i.test(t); }, w: 12, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/extension|प्रसार|transfer.*technology|तकनीक.*हस्तांतरण/i.test(t); }, msg: '❌ Extension education की अवधारणा नहीं' },
+        { test: function(t){ return !/communication|संचार|demonstration|प्रदर्शन/i.test(t); }, msg: '⚠️ संचार विधि का ज़िक्र नहीं' },
+        { test: function(t){ return !/KVK|ATMA|ICAR|कृषि.*विश्वविद्यालय|कृषि.*विभाग/i.test(t); }, msg: '⚠️ Extension agency का ज़िक्र नहीं' }
+      ]
+    },
+
+    agri_economics: {
+      name: 'Agricultural Economics (कृषि अर्थशास्त्र)', icon: '💰',
+      maxMarks: 100,
+      elements: [
+        { name: 'Economic Concepts', test: function(t){ return /GDP|GNP|मुद्रास्फीति|inflation|demand|मांग|supply|आपूर्ति|price|कीमत|cost|लागत|profit|लाभ|income|आय|market|बाजार/i.test(t); }, w: 15, c: true },
+        { name: 'MSP/CACP', test: function(t){ return /MSP|minimum.*support|न्यूनतम.*समर्थन|CACP|कृषि.*लागत|cost.*cultivation|कृषि.*मूल्य|price.*policy|मूल्य.*नीति/i.test(t); }, w: 15, c: true },
+        { name: 'Data & Statistics', test: function(t){ return /\d+%|₹\d+|करोड़|लाख|रुपये|percent|percentage|\d+\.\d+/i.test(t); }, w: 12, c: true },
+        { name: 'Marketing System', test: function(t){ return /APMC|mandi|मंडी|e-NAM|ई-नाम|contract.*farming|अनुबंध.*खेती|FPO|किसान.*उत्पादक|direct.*marketing|supply.*chain/i.test(t); }, w: 12, c: true },
+        { name: 'Farm Management', test: function(t){ return /farm.*management|कृषि.*प्रबंधन|farm.*size|जोत.*आकार|cost.*benefit|B:C|benefit.*cost.*ratio|farm.*income/i.test(t); }, w: 10, c: false },
+        { name: 'Schemes/Policy', test: function(t){ return /PM-KISAN|PMFBY|फसल.*बीमा|किसान.*सम्मान|interest.*subvention|ब्याज.*सहायता|subsidy|सब्सिडी|loan|ऋण/i.test(t); }, w: 12, c: true },
+        { name: 'Problems/Challenges', test: function(t){ return /problem|समस्या|challenge|चुनौती|indebtedness|ऋणग्रस्तता|fragmentation|विखंडन|migration|प्रवासन|risk|जोखिम/i.test(t); }, w: 12, c: true },
+        { name: 'Policy Suggestions', test: function(t){ return /निष्कर्ष|conclusion|सुझाव|recommendation|suggestion|policy|नीति|सुधार|reform/i.test(t); }, w: 12, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/\d+%|₹\d+|करोड़|लाख|\d+\.\d+/i.test(t); }, msg: '❌ कोई आंकड़े नहीं — Agri Economics में अनिवार्य' },
+        { test: function(t){ return !/MSP|PM-KISAN|PMFBY|CACP|सब्सिडी|subsidy/i.test(t); }, msg: '⚠️ MSP या scheme का ज़िक्र नहीं' },
+        { test: function(t){ return !/demand|supply|price|cost|profit|income|market/i.test(t); }, msg: '❌ कोई आर्थिक अवधारणा नहीं' }
+      ]
+    },
+
+    agri_animal: {
+      name: 'Animal Husbandry (पशुपालन)', icon: '🐄',
+      maxMarks: 100,
+      elements: [
+        { name: 'Animal Species', test: function(t){ return /cattle|मवेशी|buffalo|भैंस|goat|बकरी|sheep|भेड़|pig|सूअर|poultry|मुर्गी|chicken|मुर्गा|hen|layer|broiler|fish|मछली/i.test(t); }, w: 15, c: true },
+        { name: 'Scientific Name/Breed', test: function(t){ return /Bos\s*indicus|Bubalus|Capra|Ovis|Gallus|Sus|Sahiwal|Gir|Tharparkar|Murrah|Mehsana|Jaffarabadi|Rambouillet|Barbari|Beetal/i.test(t); }, w: 15, c: true },
+        { name: 'Feed & Nutrition', test: function(t){ return /feed|चारा|fodder|nutrition|पोषण|ration|राशन|protein|प्रोटीन|TDN|dry.*matter|शुष्क.*पदार्थ|concentrate|दाना|green.*fodder|हरा.*चारा/i.test(t); }, w: 12, c: true },
+        { name: 'Disease/Vaccination', test: function(t){ return /disease|रोग|vaccination|टीकाकरण|FMD|मुंहपका|HS|Brucella|mastitis|थनैला|PPR|Ranikhet|रानीखेत/i.test(t); }, w: 12, c: true },
+        { name: 'Breeding Methods', test: function(t){ return /breeding|प्रजनन|AI|artificial.*insemination|कृत्रिम.*गर्भाधान|cross.*breeding|संकरण|selection|चयन|upgradation|genetic.*improvement/i.test(t); }, w: 12, c: true },
+        { name: 'Production', test: function(t){ return /milk|दूध|egg|अंडा|meat|मांस|wool|ऊन|production|उत्पादन|litre|लीटर|kg|किग्रा|yield|उपज/i.test(t); }, w: 12, c: true },
+        { name: 'Housing & Management', test: function(t){ return /housing|आवास|shed|शेड|ventilation|हवादार|hygiene|स्वच्छता|sanitation|सफाई|comfort|space.*requirement/i.test(t); }, w: 10, c: false },
+        { name: 'Government Schemes', test: function(t){ return /white.*revolution|श्वेत.*क्रांति|operation.*flood|राष्ट्रीय.*पशु|Rashtriya.*Gokul|कामधेनु|dairy.*scheme|NABARD|किसान.*क्रेडिट/i.test(t); }, w: 12, c: true }
+      ],
+      forbidden: [
+        { test: function(t){ return !/cattle|buffalo|goat|sheep|pig|poultry|chicken|hen|layer|broiler|fish/i.test(t); }, msg: '❌ पशु/पक्षी का ज़िक्र नहीं' },
+        { test: function(t){ return !/Bos|Bubalus|Capra|Ovis|Gallus|Sahiwal|Murrah|Barbari|Beetal/i.test(t); }, msg: '❌ वैज्ञानिक नाम या breed नहीं' },
+        { test: function(t){ return !/milk|दूध|egg|अंडा|meat|मांस|wool|ऊन|litre|kg/i.test(t); }, msg: '⚠️ Production data का ज़िक्र नहीं' }
+      ]
+    }
+  };
+
+  function getCurrentExam(){
+    var ex = (window.state && window.state.exam) || (window.AppState && window.AppState.exam);
+    if(ex && AGRI_RULES[ex]) return ex;
+    var active = document.querySelector('.dr-item.on');
+    if(active){
+      var a = active.getAttribute('data-exam');
+      if(a && AGRI_RULES[a]) return a;
+    }
+    return null;
+  }
+
+  function ultraAnalyze(text, key){
+    var rules = AGRI_RULES[key];
+    if(!rules) return null;
+
+    var words = text.split(/\s+/).filter(function(w){ return w.length > 0; });
+    var sentences = text.split(/[।\.!\?]+/).filter(function(s){ return s.trim().length > 5; });
+    var paragraphs = text.split(/\n\s*\n/).filter(function(p){ return p.trim().length > 30; });
+
+    var r = {
+      name: rules.name, icon: rules.icon, key: key,
+      maxMarks: rules.maxMarks,
+      words: words.length, sentences: sentences.length, paragraphs: paragraphs.length,
+      found: [], missing: [], criticalMissing: [], warnings: [],
+      predictedMarks: 0, qualityScore: 0, grade: '',
+      marksBreakdown: { content: 0, structure: 0, presentation: 0, language: 0 }
+    };
+
+    var totalWeight = 0, foundWeight = 0;
+    rules.elements.forEach(function(el){
+      totalWeight += el.w;
+      var has = false;
+      try { has = el.test(text); } catch(e){}
+      if(has){ r.found.push({ name: el.name, w: el.w, c: el.c }); foundWeight += el.w; }
+      else {
+        r.missing.push({ name: el.name, w: el.w, c: el.c });
+        if(el.c) r.criticalMissing.push(el.name);
+      }
+    });
+
+    rules.forbidden.forEach(function(f){
+      try { if(f.test(text)) r.warnings.push(f.msg); } catch(e){}
+    });
+
+    var contentMarks = Math.round((foundWeight / totalWeight) * (rules.maxMarks * 0.6));
+
+    var structScore = 0;
+    if(paragraphs.length >= 3) structScore += 8;
+    if(sentences.length >= 8) structScore += 6;
+    if(r.found.length >= 5) structScore += 6;
+    var structMarks = Math.round((structScore / 20) * (rules.maxMarks * 0.2));
+
+    var presScore = 0;
+    if(/\d+%|\d{4}|उदाहरण/i.test(text)) presScore += 5;
+    if(/[""'']|उद्धरण|quote/i.test(text)) presScore += 3;
+    if(/[1-9][\.\)]\s|•/m.test(text)) presScore += 2;
+    var presMarks = Math.round((presScore / 10) * (rules.maxMarks * 0.1));
+
+    var langScore = 10;
+    langScore -= r.warnings.length * 1.5;
+    if(words.length < 100) langScore -= 2;
+    langScore = Math.max(0, Math.min(10, langScore));
+    var langMarks = Math.round((langScore / 10) * (rules.maxMarks * 0.1));
+
+    var total = contentMarks + structMarks + presMarks + langMarks;
+    if(words.length < 80) total = Math.round(total * 0.7);
+    total = Math.min(total, rules.maxMarks);
+
+    r.predictedMarks = total;
+    r.qualityScore = Math.round((total / rules.maxMarks) * 100);
+
+    if(r.qualityScore >= 85) r.grade = 'A+';
+    else if(r.qualityScore >= 70) r.grade = 'A';
+    else if(r.qualityScore >= 60) r.grade = 'B';
+    else if(r.qualityScore >= 50) r.grade = 'C';
+    else if(r.qualityScore >= 40) r.grade = 'D';
+    else r.grade = 'F';
+
+    r.marksBreakdown = {
+      content: contentMarks, structure: structMarks,
+      presentation: presMarks, language: langMarks,
+      maxContent: Math.round(rules.maxMarks * 0.6),
+      maxStructure: Math.round(rules.maxMarks * 0.2),
+      maxPresentation: Math.round(rules.maxMarks * 0.1),
+      maxLanguage: Math.round(rules.maxMarks * 0.1)
+    };
+    return r;
+  }
+
+  function render(text){
+    var key = getCurrentExam();
+    if(!key) return null;
+    var r = ultraAnalyze(text, key);
+    if(!r) return null;
+
+    var qs = r.qualityScore;
+    var scoreColor = qs >= 70 ? '#27ae60' : (qs >= 50 ? '#f39c12' : '#e94560');
+
+    var h = '';
+    h += '<div style="background:linear-gradient(135deg,#27ae60,#16a085,#0f3460);color:#fff;border-radius:14px;padding:18px;margin-bottom:14px;text-align:center">';
+    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2.5px;margin-bottom:6px">🌾 AGRICULTURE ULTRA ANALYSIS</div>';
+    h += '<div style="font-size:15px;font-weight:900">' + r.icon + ' ' + r.name + '</div>';
+    h += '</div>';
+
+    // Score
+    h += '<div style="background:linear-gradient(135deg,#fff8e1,#ffe8a3);border:3px solid ' + scoreColor + ';border-radius:16px;padding:20px;margin-bottom:14px;text-align:center">';
+    h += '<div style="font-size:10px;color:#b8860b;font-weight:800;letter-spacing:2px;margin-bottom:8px">📊 MARKS PREDICTION</div>';
+    h += '<div style="display:flex;justify-content:center;align-items:baseline;gap:6px;margin-bottom:8px">';
+    h += '<div style="font-size:64px;font-weight:900;color:' + scoreColor + ';line-height:1">' + r.predictedMarks + '</div>';
+    h += '<div style="font-size:24px;color:#999;font-weight:700">/ ' + r.maxMarks + '</div>';
+    h += '</div>';
+    h += '<div style="display:inline-block;background:' + scoreColor + ';color:#fff;padding:6px 20px;border-radius:20px;font-size:15px;font-weight:900;margin-bottom:10px">GRADE: ' + r.grade + '</div>';
+    h += '<div style="font-size:12px;color:#666;font-weight:700">Quality Score: ' + qs + '%</div>';
+    h += '<div style="height:10px;background:rgba(0,0,0,.1);border-radius:5px;overflow:hidden;margin-top:10px">';
+    h += '<div style="height:100%;width:' + qs + '%;background:linear-gradient(90deg,' + scoreColor + ',' + scoreColor + 'dd);border-radius:5px"></div>';
+    h += '</div></div>';
+
+    // Breakdown
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
+    var breakdown = [
+      { n: '📝 Content (60%)', g: r.marksBreakdown.content, m: r.marksBreakdown.maxContent },
+      { n: '🏗️ Structure (20%)', g: r.marksBreakdown.structure, m: r.marksBreakdown.maxStructure },
+      { n: '🎨 Presentation (10%)', g: r.marksBreakdown.presentation, m: r.marksBreakdown.maxPresentation },
+      { n: '💬 Language (10%)', g: r.marksBreakdown.language, m: r.marksBreakdown.maxLanguage }
+    ];
+    breakdown.forEach(function(b){
+      var pct = Math.round((b.g / b.m) * 100);
+      var col = pct >= 70 ? '#27ae60' : (pct >= 40 ? '#f39c12' : '#e94560');
+      h += '<div style="margin-bottom:10px">';
+      h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+      h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">' + b.n + '</span>';
+      h += '<span style="font-size:12px;font-weight:900;color:' + col + '">' + b.g + '/' + b.m + '</span>';
+      h += '</div>';
+      h += '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + col + '"></div></div>';
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // Critical Missing
+    if(r.criticalMissing.length > 0){
+      h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ' + r.name + ' में अनिवार्य</div>';
+      r.criticalMissing.forEach(function(m){
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div></div>';
+      });
+      h += '</div>';
+    }
+
+    // Elements
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
+    r.found.forEach(function(el){
+      h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<span style="font-size:11.5px;font-weight:700;color:#1a1a2e">✓ ' + el.name + '</span>';
+      h += '<span style="font-size:10px;color:#27ae60;font-weight:800">+' + el.w + '</span></div>';
+    });
+    r.missing.forEach(function(el){
+      h += '<div style="background:#ffe8e8;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<span style="font-size:11.5px;font-weight:700;color:#c0392b">✗ ' + el.name + '</span>';
+      h += '<span style="font-size:10px;color:#e94560;font-weight:800">-' + el.w + '</span></div>';
+    });
+    h += '</div>';
+
+    // Stats
+    h += '<div style="background:#f0f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
+    h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📊 Content Stats</div>';
+    h += '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">';
+    var stats = [
+      { l: 'Words', v: r.words, c: r.words >= 150 ? '#27ae60' : '#e94560' },
+      { l: 'Sentences', v: r.sentences, c: '#2980b9' },
+      { l: 'Paragraphs', v: r.paragraphs, c: r.paragraphs >= 3 ? '#27ae60' : '#f39c12' }
+    ];
+    stats.forEach(function(s){
+      h += '<div style="background:#fff;padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
+      h += '<div style="font-size:9px;color:#666;font-weight:700">' + s.l.toUpperCase() + '</div>';
+      h += '<div style="font-size:18px;font-weight:900;color:' + s.c + '">' + s.v + '</div></div>';
+    });
+    h += '</div></div>';
+
+    // Warnings
+    if(r.warnings.length > 0){
+      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ सुधार ज़रूरी</div>';
+      r.warnings.forEach(function(w){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Action Plan
+    h += '<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:14px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#2980b9;margin-bottom:10px">🎯 Action Plan</div>';
+
+    var actions = [];
+    r.criticalMissing.slice(0, 3).forEach(function(m){
+      actions.push({ p: 'HIGH', t: m + ' ज़रूर जोड़ें' });
+    });
+    if(r.words < 150) actions.push({ p: 'HIGH', t: 'और ' + (150 - r.words) + ' शब्द लिखें' });
+    if(r.paragraphs < 3) actions.push({ p: 'MED', t: '3-4 paragraphs बनाएँ' });
+    if(r.found.length < 5) actions.push({ p: 'MED', t: 'और elements जोड़ें — scientific name, dose, yield' });
+
+    if(actions.length === 0){
+      h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:14px">🎉 Excellent! कोई major issue नहीं</div>';
+    } else {
+      actions.forEach(function(a){
+        var col = a.p === 'HIGH' ? '#e94560' : '#f39c12';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
+        h += '<div style="font-size:9px;background:' + col + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.p + '</div>';
+        h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.t + '</div></div>';
+      });
+    }
+    h += '</div>';
+    return h;
+  }
+
+  function hook(){
+    if(typeof window.showResult === 'function' && !window.showResult._agriUltraHooked){
+      var orig = window.showResult;
+      window.showResult = function(r){
+        var res = orig.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+            if(!text || text.length < 30){
+              var ta = document.getElementById('ansInput');
+              if(ta) text = ta.value;
+            }
+            if(text && text.length >= 30){
+              var det = render(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                  console.log('✅ Agriculture Ultra detection added');
+                }
+              }
+            }
+          } catch(e){ console.log('Agri Ultra err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showResult._agriUltraHooked = true;
+    }
+
+    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._agriUltraHooked){
+      var orig2 = window.showDirectResult;
+      window.showDirectResult = function(text, rtu){
+        var res = orig2.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            if(text && text.length >= 30){
+              var det = render(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                }
+              }
+            }
+          } catch(e){}
+        }, 200);
+        return res;
+      };
+      window.showDirectResult._agriUltraHooked = true;
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
+  } else {
+    setTimeout(hook, 500);
+  }
+  setTimeout(hook, 1500);
+  setTimeout(hook, 3000);
+  setTimeout(hook, 5000);
+
+  console.log('✅ Agriculture Ultra ready');
+})();
+</script>
+
 </body>
 </html>
