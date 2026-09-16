@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Upload - Answer Checker</title>
+<meta name="theme-color" content="#0f3460">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=11">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; background: #f0f4f8; color: #1a1a2e; min-height: 100vh; }
+
+.hdr { background: linear-gradient(135deg, #0f3460, #1a5276); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+.hdr-left { display: flex; align-items: center; gap: 10px; }
+.hdr-logo { width: 38px; height: 38px; background: linear-gradient(135deg, #FDBA3B, #FB5D3B); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 900; font-size: 20px; color: #0a1929; }
+.hdr-title { color: #fff; font-size: 15px; font-weight: 800; }
+.hdr-back { background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+.main { max-width: 640px; margin: 0 auto; padding: 16px; padding-bottom: 40px; }
+
+.card { background: #fff; border-radius: 14px; padding: 18px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.card-title { font-size: 15px; font-weight: 800; color: #0f3460; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+/* PDF Upload Zone */
+.upload-zone { display: block; border: 3px dashed #a0aec0; border-radius: 14px; padding: 30px 16px; text-align: center; cursor: pointer; background: #fafbfc; transition: all 0.2s; }
+.upload-zone:active { border-color: #0f3460; background: #e8f4ff; }
+.upload-zone .icon { font-size: 50px; margin-bottom: 10px; }
+.upload-zone .title { font-size: 15px; font-weight: 800; color: #0f3460; margin-bottom: 6px; }
+.upload-zone .sub { font-size: 12px; color: #666; margin-bottom: 10px; }
+.upload-zone .badge { font-size: 10px; color: #e94560; font-weight: 700; background: #ffe8e8; padding: 4px 12px; border-radius: 10px; display: inline-block; }
+
+.file-info { display: none; background: #e8f8f0; border: 2px solid #27ae60; border-radius: 12px; padding: 14px; margin-top: 14px; }
+.file-info.show { display: block; }
+.file-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.file-icon { width: 46px; height: 46px; background: linear-gradient(135deg, #e94560, #c0392b); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.file-details { flex: 1; min-width: 0; }
+.file-name { font-size: 13px; font-weight: 800; color: #0f3460; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-size { font-size: 11px; color: #666; margin-top: 2px; }
+.file-status { font-size: 12px; font-weight: 700; color: #f39c12; margin-top: 4px; }
+.file-status.done { color: #27ae60; }
+.file-status.err { color: #e94560; }
+
+.progress-bar { height: 8px; background: #e0e6ed; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #FDBA3B, #FB5D3B); border-radius: 4px; transition: width 0.3s; }
+.progress-text { font-size: 11px; color: #666; text-align: center; margin-top: 6px; font-weight: 600; }
+
+.preview-box { display: none; background: #fff; border: 1px solid #e0e6ed; border-radius: 10px; padding: 12px; margin-top: 12px; max-height: 150px; overflow-y: auto; font-size: 11px; line-height: 1.5; font-family: monospace; color: #333; white-space: pre-wrap; }
+.preview-box.show { display: block; }
+.preview-label { font-size: 9px; color: #999; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
+
+/* Buttons */
+.btn-row { display: flex; gap: 10px; margin-top: 14px; }
+.btn-primary { flex: 1; background: linear-gradient(135deg, #0f3460, #e94560); color: #fff; border: none; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(233,69,96,0.3); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-secondary { background: #f0f4f8; color: #0f3460; border: none; padding: 15px 22px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; }
+
+/* Toast */
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #0f3460, #1a5276); color: #fff; padding: 12px 22px; border-radius: 25px; font-size: 13px; font-weight: 700; z-index: 99999; box-shadow: 0 8px 25px rgba(0,0,0,0.3); max-width: 85vw; text-align: center; }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-logo">R</div>
+    <div class="hdr-title">PDF Upload</div>
+  </div>
+  <button class="hdr-back" onclick="location.href='answer-checker.html'">← वापस</button>
+</div>
+
+<div class="main">
+
+  <div class="card">
+    <div class="card-title">📄 PDF Upload करें</div>
+
+    <label class="upload-zone" for="pdfFileInput" id="uploadZone">
+      <div class="icon">📄</div>
+      <div class="title">PDF tap करके select करें</div>
+      <div class="sub">Scanned / Handwritten / Typed</div>
+      <div class="badge">♾️ Unlimited pages</div>
+    </label>
+
+    <input type="file" id="pdfFileInput" accept="application/pdf,image/*" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+    <div class="file-info" id="fileInfo">
+      <div class="file-row">
+        <div class="file-icon">📄</div>
+        <div class="file-details">
+          <div class="file-name" id="fileName">-</div>
+          <div class="file-size" id="fileSize">-</div>
+          <div class="file-status" id="fileStatus">⏳ शुरू हो रहा है...</div>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">-</div>
+      <div class="preview-box" id="previewBox">
+        <div class="preview-label">📝 Extracted Text</div>
+        <div id="previewText">-</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-secondary" id="clearBtn" onclick="resetAll()">🗑️</button>
+      <button class="btn-primary" id="checkBtn" disabled onclick="goToChecker()">⚡ Answer Check करें</button>
+    </div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #f39c12">
+    <div style="font-size:13px;font-weight:800;color:#b8860b;margin-bottom:8px">💡 Tips</div>
+    <div style="font-size:11.5px;color:#7a5a00;line-height:1.7">
+      • PDF साफ़ हो तो accuracy ज़्यादा<br>
+      • Handwritten के लिए अच्छी लिखावट चाहिए<br>
+      • Processing में 30 sec से 5 min लग सकते हैं
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  if(typeof pdfjsLib !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc){
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var input = document.getElementById('pdfFileInput');
+  var zone = document.getElementById('uploadZone');
+  var fileInfo = document.getElementById('fileInfo');
+
+  console.log('PDF Upload page ready');
+
+  // Input change
+  input.addEventListener('change', function(e){
+    if(e.target.files && e.target.files.length > 0){
+      console.log('File:', e.target.files[0].name);
+      processFile(e.target.files[0]);
+    }
+  });
+
+  // Drag and drop
+  zone.addEventListener('dragover', function(e){
+    e.preventDefault();
+    zone.style.borderColor = '#0f3460';
+    zone.style.background = '#e8f4ff';
+  });
+  zone.addEventListener('dragleave', function(e){
+    e.preventDefault();
+    zone.style.borderColor = '#a0aec0';
+    zone.style.background = '#fafbfc';
+  });
+  zone.addEventListener('drop', function(e){
+    e.preventDefault();
+    zone.style.borderColor = '#a0aec0';
+    zone.style.background = '#fafbfc';
+    if(e.dataTransfer.files.length) processFile(e.dataTransfer.files[0]);
+  });
+
+  function showFileInfo(file){
+    zone.style.display = 'none';
+    fileInfo.classList.add('show');
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('fileSize').textContent = (file.size/1024).toFixed(1) + ' KB';
+  }
+
+  function setStatus(text, isDone, isErr){
+    var el = document.getElementById('fileStatus');
+    el.textContent = text;
+    el.className = 'file-status' + (isDone ? ' done' : '') + (isErr ? ' err' : '');
+  }
+
+  function setProgress(pct, text){
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = text || pct + '%';
+  }
+
+  async function processFile(file){
+    console.log('Processing:', file.name);
+    showFileInfo(file);
+    setStatus('⏳ Load हो रही है...', false, false);
+    setProgress(5, 'शुरू...');
+
+    try {
+      var buf = await file.arrayBuffer();
+      console.log('Buffer:', buf.byteLength);
+
+      if(typeof pdfjsLib === 'undefined') throw new Error('PDF.js load नहीं हुआ');
+
+      setProgress(10, 'PDF खोल रहे हैं...');
+      var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+      var total = pdf.numPages;
+      console.log('Pages:', total);
+
+      setStatus('📄 ' + total + ' pages', false, false);
+
+      var all = '';
+      var wc = 0;
+
+      for(var i = 1; i <= total; i++){
+        var pct = 10 + Math.round((i/total) * 85);
+        setProgress(pct, 'Page ' + i + '/' + total + ' — ' + wc + ' words');
+
+        try {
+          var page = await pdf.getPage(i);
+          var tc = await page.getTextContent();
+          var txt = tc.items.map(function(x){ return x.str; }).join(' ');
+
+          if(txt.trim().length < 30 && typeof Tesseract !== 'undefined'){
+            setProgress(pct, 'Page ' + i + ' OCR...');
+            try {
+              var vp = page.getViewport({ scale: 1.2 });
+              var cv = document.createElement('canvas');
+              var cx = cv.getContext('2d');
+              cv.width = vp.width;
+              cv.height = vp.height;
+              await page.render({ canvasContext: cx, viewport: vp }).promise;
+              var url = cv.toDataURL('image/jpeg', 0.85);
+              cv.width = 0; cv.height = 0;
+              var ocr = await Tesseract.recognize(url, 'hin+eng');
+              if(ocr && ocr.data && ocr.data.text) txt = ocr.data.text;
+            } catch(e){}
+          }
+
+          if(txt && txt.trim().length > 5){
+            all += txt + '\n\n';
+            wc += txt.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+          }
+        } catch(pe){}
+
+        if(i % 2 === 0) await new Promise(function(r){ setTimeout(r, 10); });
+      }
+
+      console.log('Done:', wc, 'words');
+      setProgress(100, '✅ ' + wc + ' शब्द');
+      setStatus('✅ ' + wc + ' शब्द मिले', true, false);
+
+      // Save to sessionStorage for checker page
+      try{
+        sessionStorage.setItem('pdfExtractedText', all.trim());
+        sessionStorage.setItem('pdfWordCount', wc);
+      }catch(e){}
+
+      // Show preview
+      var preview = document.getElementById('previewText');
+      preview.textContent = all.length > 500 ? all.substring(0, 500) + '...' : all;
+      document.getElementById('previewBox').classList.add('show');
+
+      // Enable check button
+      document.getElementById('checkBtn').disabled = false;
+
+      showToast('✅ ' + wc + ' शब्द मिले');
+
+    } catch(err){
+      console.error('Error:', err);
+      setProgress(100, '❌ Failed');
+      setStatus('❌ ' + err.message, false, true);
+      showToast('❌ ' + err.message);
+    }
+  }
+
+  window.resetAll = function(){
+    input.value = '';
+    zone.style.display = 'block';
+    fileInfo.classList.remove('show');
+    document.getElementById('previewBox').classList.remove('show');
+    document.getElementById('checkBtn').disabled = true;
+    try{
+      sessionStorage.removeItem('pdfExtractedText');
+      sessionStorage.removeItem('pdfWordCount');
+    }catch(e){}
+    setProgress(0, '-');
+  };
+
+  window.goToChecker = function(){
+    location.href = 'answer-checker.html?from=pdf';
+  };
+
+  function showToast(msg){
+    var t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.opacity = '0';
+      t.style.transition = 'opacity 0.3s';
+      setTimeout(function(){ t.remove(); }, 300);
+    }, 2200);
+  }
+
+})();
+</script>
+
+</body>
+</html>
