@@ -3,6 +3,12 @@
   'use strict';
 
   var MENU_SECTIONS = [
+    { icon: '🎯', title: 'Answer Checker', highlight: true, items: [
+      { href: 'answer-checker.html', label: '✍️ Answer Check करें' },
+      { href: 'answer-checker.html#pdf', label: '📄 PDF Upload करें' },
+      { href: 'answer-checker.html#history', label: '📊 आपकी Progress' },
+      { href: 'answer-checker.html#guide', label: '📚 Answer Writing Guide' }
+    ]},
     { icon: '🤖', title: 'AI Assistant', highlight: true, items: [
       { href: 'ai-chat.html', label: '🤖 AI Chat' },
       { href: 'ai-chat.html#ask', label: '💬 AI से पूछें' },
