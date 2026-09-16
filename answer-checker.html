@@ -7,114 +7,6 @@
 <meta name="theme-color" content="#0f3460">
 <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=11">
 
-  // ==================== AUTH GATE ====================
-  window._acIsLoggedIn = function(){
-    try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
-  };
-
-  window._acShowAuth = function(mode){
-    var a=document.getElementById('authScr');
-    if(!a) return;
-    var m=mode||'signup';
-    window._acMode=m;
-    a.style.display='flex';
-    a.classList.add('on');
-    document.body.style.overflow='hidden';
-  };
-
-  window._acCloseAuth = function(){
-    var a=document.getElementById('authScr');
-    if(a){a.style.display='none';a.classList.remove('on')}
-    document.body.style.overflow='';
-  };
-
-  window._acSubmit = function(e){
-    if(e)e.preventDefault();
-    var msg=document.getElementById('asMsg');
-    if(!msg) return false;
-    msg.className='as-msg';
-
-    var email=((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
-    var pass=((document.getElementById('inPass')||{}).value||'');
-
-    if(!email||email.indexOf('@')<1){
-      var fe=document.getElementById('fldEmail');if(fe)fe.classList.add('bad');
-      return false;
-    }
-    if(pass.length<6){
-      var fp=document.getElementById('fldPass');if(fp)fp.classList.add('bad');
-      return false;
-    }
-
-    var accounts={};
-    try{accounts=JSON.parse(localStorage.getItem('acv3_accounts')||'{}')}catch(err){}
-
-    // LOGIN
-    if(window._acMode==='login'){
-      if(!accounts[email]){
-        msg.className='as-msg err';
-        msg.textContent='Account nahi mila - Sign Up karein';
-        return false;
-      }
-      if(accounts[email].pass!==pass){
-        msg.className='as-msg err';
-        msg.textContent='Password galat hai';
-        return false;
-      }
-      try{localStorage.setItem('acv3_user',JSON.stringify({name:accounts[email].name,email:email}))}catch(err){}
-      msg.className='as-msg ok';
-      msg.textContent='Login successful!';
-      setTimeout(function(){
-        _acCloseAuth();
-        alert('Welcome back, '+accounts[email].name+'!');
-        if(confirm('Ab answer check karein?')){window._acOriginalCheck && window._acOriginalCheck()}
-      },800);
-      return false;
-    }
-
-    // SIGNUP
-    var name=((document.getElementById('inName')||{}).value||'').trim();
-    var phone=((document.getElementById('inPhone')||{}).value||'').trim();
-    var pass2=((document.getElementById('inPass2')||{}).value||'');
-
-    if(!name){var fn=document.getElementById('fldName');if(fn)fn.classList.add('bad');return false;}
-    if(phone&&!/^[6-9][0-9]{9}$/.test(phone)){var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');return false;}
-    if(pass!==pass2){var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');return false;}
-    if(accounts[email]){
-      msg.className='as-msg err';
-      msg.textContent='Ye email registered hai - Login karein';
-      return false;
-    }
-
-    accounts[email]={name:name,email:email,phone:phone,pass:pass,created:Date.now()};
-    try{localStorage.setItem('acv3_accounts',JSON.stringify(accounts))}catch(err){}
-    try{localStorage.setItem('acv3_user',JSON.stringify({name:name,email:email}))}catch(err){}
-
-    msg.className='as-msg ok';
-    msg.textContent='Account ban gaya!';
-    setTimeout(function(){
-      _acCloseAuth();
-      alert('Welcome '+name+'!');
-      if(confirm('Ab answer check karein?')){window._acOriginalCheck && window._acOriginalCheck()}
-    },800);
-    return false;
-  };
-
-  // Save original
-  window._acOriginalCheck = window.checkAnswer;
-
-  // Override with auth gate
-  window.checkAnswer = function(){
-    if(!window._acIsLoggedIn()){
-      window._acShowAuth('signup');
-      return;
-    }
-    if(window._acOriginalCheck){
-      window._acOriginalCheck.apply(this, arguments);
-    }
-  };
-
-  console.log('Auth gate loaded');
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
@@ -3019,6 +2911,216 @@ console.log('✅ Fix JS loaded');
 
   console.log('✅ Simple auth system loaded');
 
+</script>
+
+
+<script>
+// ==================== AUTH GATE - FINAL OVERRIDE ====================
+(function(){
+  console.log('=== Auth Gate loading (final override) ===');
+
+  window._acIsLoggedIn = function(){
+    try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
+  };
+
+  window._acShowAuth = function(mode){
+    var a=document.getElementById('authScr');
+    if(!a){console.log('authScr not found');return;}
+    var m=mode||'signup';
+    window._acMode=m;
+
+    // Update title/subtitle
+    var isSignup=(m==='signup');
+    var el;
+    el=document.getElementById('asTitle');if(el)el.textContent=isSignup?'Create Account':'Welcome Back';
+    el=document.getElementById('asSub');if(el)el.textContent=isSignup?'Free account banayein - answer check shuru karein':'Apne account mein login karein';
+    el=document.getElementById('asBtn');if(el)el.textContent=isSignup?'Create Free Account':'Login';
+    el=document.getElementById('fldName');if(el)el.style.display=isSignup?'block':'none';
+    el=document.getElementById('fldPhone');if(el)el.style.display=isSignup?'block':'none';
+    el=document.getElementById('fldPass2');if(el)el.style.display=isSignup?'block':'none';
+
+    // Tabs
+    var tabs=document.querySelectorAll('.as-tab');
+    for(var i=0;i<tabs.length;i++){
+      tabs[i].classList.toggle('on',tabs[i].getAttribute('data-mode')===m);
+    }
+
+    // Footer
+    el=document.getElementById('asFooter');
+    if(el){
+      if(isSignup){
+        el.innerHTML='Pehle se account hai? <a href="#" onclick="window._acShowAuth(&quot;login&quot;);return false" style="color:#e94560;font-weight:800">Login karein</a>';
+      } else {
+        el.innerHTML='Naya account banayein? <a href="#" onclick="window._acShowAuth(&quot;signup&quot;);return false" style="color:#e94560;font-weight:800">Sign Up karein</a>';
+      }
+    }
+
+    // Clear errors
+    var fs=document.querySelectorAll('.as-f');
+    for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
+    el=document.getElementById('asMsg');if(el){el.className='as-msg';el.textContent=''}
+
+    // Show
+    a.style.display='flex';
+    a.classList.add('on');
+    document.body.style.overflow='hidden';
+    console.log('Auth modal shown, mode='+m);
+  };
+
+  window._acCloseAuth = function(){
+    var a=document.getElementById('authScr');
+    if(a){a.style.display='none';a.classList.remove('on')}
+    document.body.style.overflow='';
+  };
+
+  window._acSubmit = function(e){
+    if(e)e.preventDefault();
+    console.log('Auth submit, mode='+(window._acMode||'signup'));
+    var msg=document.getElementById('asMsg');
+    if(!msg) return false;
+    msg.className='as-msg';
+    msg.textContent='';
+
+    var fs=document.querySelectorAll('.as-f');
+    for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
+
+    var email=((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
+    var pass=((document.getElementById('inPass')||{}).value||'');
+
+    if(!email||email.indexOf('@')<1){
+      var fe=document.getElementById('fldEmail');if(fe)fe.classList.add('bad');
+      return false;
+    }
+    if(pass.length<6){
+      var fp=document.getElementById('fldPass');if(fp)fp.classList.add('bad');
+      return false;
+    }
+
+    var accounts={};
+    try{accounts=JSON.parse(localStorage.getItem('acv3_accounts')||'{}')}catch(err){}
+
+    // LOGIN
+    if(window._acMode==='login'){
+      if(!accounts[email]){
+        msg.className='as-msg err';
+        msg.textContent='Account nahi mila - Sign Up karein';
+        return false;
+      }
+      if(accounts[email].pass!==pass){
+        msg.className='as-msg err';
+        msg.textContent='Password galat hai';
+        return false;
+      }
+      try{localStorage.setItem('acv3_user',JSON.stringify({name:accounts[email].name,email:email}))}catch(err){}
+      msg.className='as-msg ok';
+      msg.textContent='Login successful!';
+      setTimeout(function(){
+        window._acCloseAuth();
+        var fn = window._acOriginalCheck;
+        alert('Welcome back, '+accounts[email].name+'!');
+        if(fn){
+          var go = confirm('Ab answer check karein?');
+          if(go){
+            try{fn.call(window)}catch(e){console.log(e)}
+          }
+        }
+      },800);
+      return false;
+    }
+
+    // SIGNUP
+    var name=((document.getElementById('inName')||{}).value||'').trim();
+    var phone=((document.getElementById('inPhone')||{}).value||'').trim();
+    var pass2=((document.getElementById('inPass2')||{}).value||'');
+
+    if(!name){var fn2=document.getElementById('fldName');if(fn2)fn2.classList.add('bad');return false;}
+    if(phone&&!/^[6-9][0-9]{9}$/.test(phone)){var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');return false;}
+    if(pass!==pass2){var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');return false;}
+    if(accounts[email]){
+      msg.className='as-msg err';
+      msg.textContent='Ye email registered hai - Login karein';
+      return false;
+    }
+
+    accounts[email]={name:name,email:email,phone:phone,pass:pass,created:Date.now()};
+    try{localStorage.setItem('acv3_accounts',JSON.stringify(accounts))}catch(err){}
+    try{localStorage.setItem('acv3_user',JSON.stringify({name:name,email:email}))}catch(err){}
+
+    msg.className='as-msg ok';
+    msg.textContent='Account ban gaya!';
+    setTimeout(function(){
+      window._acCloseAuth();
+      var fn = window._acOriginalCheck;
+      alert('Welcome '+name+'!');
+      if(fn){
+        var go = confirm('Ab answer check karein?');
+        if(go){
+          try{fn.call(window)}catch(e){console.log(e)}
+        }
+      }
+    },800);
+    return false;
+  };
+
+  // Force attach auth form submit
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var form=document.getElementById('asForm');
+      if(form && !form._acBound){
+        form._acBound=true;
+        form.onsubmit = function(e){
+          e.preventDefault();
+          return window._acSubmit(e);
+        };
+        console.log('Auth form bound');
+      }
+
+      // Bind auth tabs
+      var tabs=document.querySelectorAll('.as-tab');
+      for(var i=0;i<tabs.length;i++){
+        (function(tab){
+          tab.onclick = function(e){
+            e.preventDefault();
+            var m = tab.getAttribute('data-mode');
+            window._acShowAuth(m);
+            return false;
+          };
+        })(tabs[i]);
+      }
+
+      // Bind close button
+      var closeBtn=document.querySelector('#authScr .as-x');
+      if(closeBtn){
+        closeBtn.onclick = function(e){
+          e.preventDefault();
+          window._acCloseAuth();
+          return false;
+        };
+      }
+
+      console.log('Auth handlers attached');
+    }, 100);
+  });
+
+  // Save original checkAnswer (whatever it is at this point)
+  setTimeout(function(){
+    window._acOriginalCheck = window.checkAnswer;
+    console.log('Captured checkAnswer:', typeof window.checkAnswer);
+
+    // Override
+    window.checkAnswer = function(){
+      console.log('checkAnswer called, logged in =', window._acIsLoggedIn());
+      if(!window._acIsLoggedIn()){
+        window._acShowAuth('signup');
+        return;
+      }
+      if(window._acOriginalCheck){
+        return window._acOriginalCheck.apply(this, arguments);
+      }
+    };
+    console.log('Auth gate override installed');
+  }, 50);
+})();
 </script>
 
 </body>
