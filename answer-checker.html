@@ -248,10 +248,10 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   <!-- EXAM BAR -->
   <div class="exam-bar" onclick="openDrawer()">
-    <div class="eb-i" id="ebI">🎯</div>
+    <div class="eb-i" id="ebI">🔍</div>
     <div class="eb-t">
-      <div class="eb-l">CURRENT EXAM</div>
-      <div class="eb-n" id="ebN">UPSC Mains</div>
+      <div class="eb-l">CURRENT MODE</div>
+      <div class="eb-n" id="ebN">Har Exam (Auto-Detect)</div>
     </div>
     <div class="eb-c">बदलें ▾</div>
   </div>
@@ -353,8 +353,15 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <button class="dr-x" onclick="closeDrawer()">✕</button>
   </div>
 
+  <div class="dr-sec">🌟 All Exams (Auto-Detect)</div>
+  <button class="dr-item on" data-exam="all" data-icon="🔍" data-name="Har Exam (Auto-Detect)">
+    <div class="ic">🔍</div>
+    <div class="if"><div class="nm">🎯 Har Exam</div><div class="sb">कोई भी PDF — खुद पहचानेगा</div></div>
+    <div class="ct">ALL</div>
+  </button>
+
   <div class="dr-sec">🎯 Government Exams</div>
-  <button class="dr-item on" data-exam="upsc" data-icon="🎯" data-name="UPSC Mains">
+  <button class="dr-item" data-exam="upsc" data-icon="🎯" data-name="UPSC Mains">
     <div class="ic">🎯</div>
     <div class="if"><div class="nm">UPSC Mains</div><div class="sb">Civil Services</div></div>
     <div class="ct">18</div>
@@ -483,7 +490,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   if(typeof pdfjsLib!=='undefined'){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
 
-  var state={exam:'upsc',icon:'🎯',name:'UPSC Mains',question:null,mode:'type',extracted:''};
+  var state={exam:'all',icon:'🔍',name:'Har Exam (Auto-Detect)',question:null,mode:'type',extracted:'',detected:null,currentText:'',detectedExam:null};
 
   var QUESTIONS={};
   function loadQs(){
@@ -525,25 +532,67 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   document.querySelectorAll('.dr-item').forEach(function(it){
     it.addEventListener('click',function(){
+      // ⚡ FULL RESET EVERYTHING
       state.exam=this.dataset.exam;
       state.icon=this.dataset.icon;
       state.name=this.dataset.name;
       state.question=null;
+      state.extracted='';
+      state.detected=null;
+      state.currentText='';
+      state.detectedExam=null;
 
+      // Clear textarea
+      var ai=document.getElementById('ansInput');
+      if(ai) ai.value='';
+
+      // Clear results
+      var rp=document.getElementById('resBody');
+      if(rp) rp.innerHTML='';
+      var rpn=document.getElementById('resPanel');
+      if(rpn) rpn.classList.remove('on');
+      var ro=document.getElementById('resOverlay');
+      if(ro) ro.classList.remove('on');
+
+      // Clear detection panel
+      var di=document.getElementById('detectInfo');
+      if(di) di.classList.remove('on');
+
+      // Reset PDF
+      try{resetPdf()}catch(e){}
+
+      // Update header
       document.getElementById('ebI').textContent=state.icon;
       document.getElementById('ebN').textContent=state.name;
 
       document.querySelectorAll('.dr-item').forEach(function(d){d.classList.remove('on')});
       this.classList.add('on');
       closeDrawer();
-      renderQList();
-      resetQuestion();
+
+      updateCount();
+
+      // Show info for "all" mode
+      if(state.exam==='all'){
+        showAllExamInfo();
+      }
     });
   });
+
+  function showAllExamInfo(){
+    var ai=document.getElementById('ansInput');
+    if(ai){
+      ai.placeholder='🔍 किसी भी exam का answer लिखें या PDF upload करें —\nसिस्टम खुद पहचान लेगा:\n• UPSC / UPPCS / BPSC\n• JEE / NEET\n• BA / MA\n• Agriculture (Agronomy, Soil, etc.)\n\nकोई limit नहीं • कोई selection नहीं';
+    }
+  }
 
   // ==================== QUESTION LIST ====================
   function renderQList(){
     var list=document.getElementById('qlist');
+    if(!list) return;
+    if(state.exam==='all'){
+      list.innerHTML='<div style="padding:12px;font-size:11px;color:#666;text-align:center;line-height:1.6"><b style="color:#0f3460">🔍 Har Exam Mode</b><br>कोई भी PDF upload करें या answer लिखें<br>सिस्टम खुद पहचान लेगा</div>';
+      return;
+    }
     var qs=QUESTIONS[state.exam]||[];
     if(qs.length===0){
       list.innerHTML='<div class="empty"><div class="ei">📭</div><div class="et">कोई प्रश्न नहीं</div></div>';
@@ -959,11 +1008,22 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var words=text.split(/\s+/).filter(function(w){return w.length>0});
     var wc=words.length;
 
-    // Iterate over ALL questions
     var best=null;
     var altMatches=[];
 
-    for(var exam in QUESTIONS){
+    // ⚡ अगर selected exam "all" है → सब search करो
+    // वरना सिर्फ selected exam के questions search करो
+    var searchExams=[];
+    if(state.exam==='all'){
+      // सब exam
+      for(var e in QUESTIONS){searchExams.push(e)}
+    } else {
+      // सिर्फ selected
+      searchExams=[state.exam];
+    }
+
+    for(var ei=0;ei<searchExams.length;ei++){
+      var exam=searchExams[ei];
       var qs=QUESTIONS[exam];
       if(!qs || qs.length===0)continue;
 
@@ -1044,7 +1104,16 @@ textarea:focus{border-color:#0f3460;background:#fff}
     if(pct<50)panel.classList.add('warn');
 
     document.getElementById('diExam').textContent=getExamName(best.exam);
-    document.getElementById('diSubject').textContent=best.q.subject||'General';
+    document.getElementById('diSubject').textContent=(state.exam==='all'?'🔍 Auto: ':'')+(best.q.subject||'General');
+
+    // Match with selected exam
+    if(state.exam!=='all' && best.exam!==state.exam){
+      // अगर selected exam से match नहीं करता
+      var panel=document.getElementById('detectInfo');
+      panel.classList.add('warn');
+      document.getElementById('diConf').innerHTML='⚠️ ये content "'+getExamName(best.exam)+'" का है — आपने "'+state.name+'" चुना है।<br><b>कृपया सही exam चुनें या "🔍 Har Exam" mode use करें।</b>';
+      return;
+    }
     document.getElementById('diQuestion').innerHTML='<b>प्रश्न:</b> '+best.q.q.substring(0,120)+(best.q.q.length>120?'...':'');
 
     var conf=pct>=70?'🎯 High confidence':(pct>=45?'⚠️ Medium confidence':'❓ Low - कृपया जाँचें');
@@ -1067,10 +1136,19 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
 
-    // Auto-detect if not already
+    // Auto-detect
     var best=autoDetect(t);
+
     if(!best || best.score<15){
-      alert('❌ Content पहचान नहीं पाया। कृपया exam/database से मेल खाता content लिखें।\n\nया अधिक विस्तृत answer दें।');
+      var msg='❌ Content पहचान नहीं पाया।\n\n';
+      if(state.exam!=='all'){
+        msg+='आपने "'+state.name+'" चुना है।\n';
+        msg+='कृपया उसी exam से मेल खाता content लिखें।\n\n';
+        msg+='या "🔍 Har Exam" mode चुनें — खुद पहचान लेगा।';
+      } else {
+        msg+='कृपया अधिक विस्तृत answer दें या अन्य PDF try करें।';
+      }
+      alert(msg);
       return;
     }
 
@@ -1182,8 +1260,10 @@ textarea:focus{border-color:#0f3460;background:#fff}
     if(state.detected){
       var d=state.detected;
       h+='<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:12px;margin-bottom:12px">';
-      h+='<div style="font-size:10px;font-weight:800;color:#27ae60;letter-spacing:1px;margin-bottom:8px">🎯 DETECTED</div>';
-      h+='<div style="font-size:12px;color:#0f3460;font-weight:800;margin-bottom:6px">'+getExamName(d.exam)+' • '+(d.q.subject||'General')+'</div>';
+      h+='<div style="font-size:10px;font-weight:800;color:#27ae60;letter-spacing:1px;margin-bottom:8px">🎯 DETECTED EXAM</div>';
+      h+='<div style="font-size:13px;color:#0f3460;font-weight:800;margin-bottom:4px">📚 '+getExamName(d.exam)+'</div>';
+      h+='<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:6px">✓ Subject: '+(d.q.subject||'General')+'</div>';
+      h+='<div style="font-size:10px;color:#666;font-weight:600;margin-bottom:6px">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b></div>';
       h+='<div style="font-size:11px;color:#333;line-height:1.5;background:#fff;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
       h+='<div style="font-size:10px;color:#666;font-weight:600">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b> • Keywords: '+d.kwFound+'/'+d.kwTotal+'</div>';
       h+='</div>';
