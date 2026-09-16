@@ -3994,5 +3994,173 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== CHECK BUTTON FIX ====================
+(function(){
+  'use strict';
+  console.log('=== Check Fix loading ===');
+
+  function getUser(){
+    try{return JSON.parse(localStorage.getItem('acx_session_v3')||'null')}catch(e){return null}
+  }
+  function isLoggedIn(){return !!getUser()}
+
+  function showAuthModal(){
+    // पहले से जो modal है उसे show करो
+    var m = document.getElementById('acxAuth');
+    if(!m){
+      // अगर नहीं है तो alert fallback
+      alert('🔐 पहले Sign Up करें — फिर Check करें');
+      return;
+    }
+    m.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function getPdfText(){
+    return (window.acxPdfText || '').trim();
+  }
+
+  function getTypedText(){
+    var ta = document.getElementById('ansInput');
+    return ta ? (ta.value||'').trim() : '';
+  }
+
+  function checkReady(){
+    var pdf = getPdfText();
+    var typed = getTypedText();
+    return (pdf.length > 20) || (typed.length > 20);
+  }
+
+  // Main check action
+  window.acxDoCheck = function(){
+    console.log('=== acxDoCheck ===');
+
+    // 1. Check content
+    if(!checkReady()){
+      alert('पहले PDF upload करें या 20+ शब्द लिखें');
+      return false;
+    }
+
+    // 2. Check login
+    if(!isLoggedIn()){
+      console.log('Not logged in - showing auth');
+      showAuthModal();
+      return false;
+    }
+
+    // 3. Logged in - find original checkAnswer and call it
+    console.log('Logged in - proceeding to check');
+
+    var pdf = getPdfText();
+    var typed = getTypedText();
+    var text = pdf.length > 20 ? pdf : typed;
+
+    // Set in various places so original function finds it
+    var ta = document.getElementById('ansInput');
+    if(ta && pdf.length > 20){
+      ta.value = pdf;
+    }
+
+    // Try to call the original checkAnswer
+    if(typeof window._acOriginalCheck === 'function'){
+      try{
+        window._acOriginalCheck.call(window);
+        return true;
+      } catch(e){
+        console.error('orig check err:', e);
+      }
+    }
+
+    // Try window.checkAnswer
+    if(typeof window.checkAnswer === 'function' && window.checkAnswer !== window.acxDoCheck){
+      try{
+        window.checkAnswer.call(window);
+        return true;
+      } catch(e){
+        console.error('checkAnswer err:', e);
+      }
+    }
+
+    // Fallback: show alert with content
+    alert('✅ Content ready!\n\nWords: ' + text.split(/\s+/).length + '\n\nCheck processing...');
+    return true;
+  };
+
+  // Attach to button
+  function attach(){
+    var btn = document.getElementById('btnCheck');
+    if(!btn){
+      setTimeout(attach, 300);
+      return;
+    }
+
+    console.log('Button found, attaching...');
+
+    // Remove ALL existing onclick
+    btn.onclick = null;
+
+    // Remove all listeners by cloning
+    var newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    newBtn.id = 'btnCheck';
+
+    // New handler
+    newBtn.onclick = function(e){
+      if(e){ e.preventDefault(); e.stopPropagation(); }
+      console.log('Button clicked!');
+      window.acxDoCheck();
+      return false;
+    };
+
+    // Also add touchstart for mobile
+    newBtn.addEventListener('touchend', function(e){
+      // Small delay to avoid double-trigger
+      setTimeout(function(){ window.acxDoCheck(); }, 50);
+    }, {passive:true});
+
+    console.log('✅ Check button attached');
+  }
+
+  // Also make sure the button is enabled when content exists
+  function enableButton(){
+    var btn = document.getElementById('btnCheck');
+    if(!btn) return;
+    var ta = document.getElementById('ansInput');
+    var typed = ta ? (ta.value||'').trim() : '';
+    var pdf = getPdfText();
+
+    if((typed.length > 20 || pdf.length > 20) && btn.disabled){
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      console.log('Button enabled');
+    }
+  }
+
+  // Update button status every second
+  setInterval(enableButton, 1000);
+
+  // Init
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(attach, 200); });
+  } else {
+    setTimeout(attach, 200);
+  }
+  setTimeout(attach, 1500);
+  setTimeout(attach, 3000);
+
+  // Re-attach when PDF tab clicked
+  document.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('.mode-b')){
+      setTimeout(attach, 300);
+    }
+  }, true);
+
+  console.log('✅ Check Fix ready');
+})();
+</script>
+
 </body>
 </html>
