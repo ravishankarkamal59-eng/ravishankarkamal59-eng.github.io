@@ -167,6 +167,32 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .btn-r{flex:1;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer}
 .btn-s{background:#f0f4f8;color:#0f3460;border:none;padding:14px 20px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}
 
+
+.auto-info{background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:12px;color:#fff}
+.auto-info .ai-ic{width:44px;height:44px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.auto-info .ai-tx{flex:1;min-width:0}
+.auto-info .ai-t{font-size:13px;font-weight:800;margin-bottom:2px}
+.auto-info .ai-s{font-size:10px;color:rgba(255,255,255,.75);line-height:1.4}
+
+/* Detected info panel */
+.detect-info{display:none;background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:12px;margin-bottom:12px;animation:slideDown .3s ease}
+.detect-info.on{display:block}
+.detect-info.warn{background:#fff8e1;border-color:#f39c12}
+.detect-info .di-t{font-size:11px;font-weight:800;color:#27ae60;margin-bottom:8px;display:flex;align-items:center;gap:6px;letter-spacing:.5px;text-transform:uppercase}
+.detect-info.warn .di-t{color:#b8860b}
+.detect-info .di-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.detect-info .di-item{background:#fff;padding:8px 10px;border-radius:8px}
+.detect-info .di-l{font-size:9px;color:#999;font-weight:700;letter-spacing:1px;margin-bottom:2px}
+.detect-info .di-v{font-size:12px;font-weight:800;color:#0f3460}
+.detect-info .di-q{background:#fff;padding:10px;border-radius:8px;margin-top:8px;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.5}
+.detect-info .di-conf{background:#fff;padding:8px 10px;border-radius:8px;margin-top:8px;font-size:10.5px;color:#666;font-weight:600}
+.detect-info .di-conf b{color:#27ae60}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Match suggestion */
+.match-alt{background:#f0f4f8;border-radius:10px;padding:10px;margin-top:8px;font-size:10.5px;color:#666;line-height:1.5}
+.match-alt b{color:#0f3460}
+
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
@@ -233,30 +259,25 @@ textarea:focus{border-color:#0f3460;background:#fff}
   <!-- MIDDLE CONTENT -->
   <div class="mid">
 
-    <!-- Question picker -->
-    <div class="qpick">
-      <button class="qpick-btn" id="qpBtn" onclick="toggleQList()">
-        <div class="qp-i">?</div>
-        <div class="qp-t">
-          <div class="qp-l">SELECT QUESTION</div>
-          <div class="qp-n" id="qpName">प्रश्न चुनें</div>
-        </div>
-        <div class="qp-a" id="qpArrow">▼</div>
-      </button>
-      <div class="qlist" id="qlist"></div>
+    <!-- Auto-detect Info -->
+    <div class="auto-info">
+      <div class="ai-ic">🤖</div>
+      <div class="ai-tx">
+        <div class="ai-t">Auto-Detect Answer Checker</div>
+        <div class="ai-s">PDF upload करें — सिस्टम खुद पहचान लेगा कौन-सा topic है</div>
+      </div>
     </div>
 
-    <!-- Question card -->
-    <div class="qcard hidden" id="qcard">
-      <div class="qh">
-        <div class="s">प्रश्न</div>
-        <div class="sub" id="qSub">History</div>
+    
+    <!-- Auto-detect result -->
+    <div class="detect-info" id="detectInfo">
+      <div class="di-t">🎯 Detected</div>
+      <div class="di-grid">
+        <div class="di-item"><div class="di-l">EXAM</div><div class="di-v" id="diExam">-</div></div>
+        <div class="di-item"><div class="di-l">SUBJECT</div><div class="di-v" id="diSubject">-</div></div>
       </div>
-      <div class="qt" id="qText"></div>
-      <div class="qm">
-        <span id="qWords">150 शब्द</span>
-        <span id="qMarks">10 अंक</span>
-      </div>
+      <div class="di-q" id="diQuestion">-</div>
+      <div class="di-conf" id="diConf">-</div>
     </div>
 
     <!-- Mode toggle -->
@@ -267,10 +288,16 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
     <!-- Type zone -->
     <div class="ans-box" id="typeZone">
-      <textarea id="ansInput" placeholder="यहाँ अपना उत्तर लिखें..."></textarea>
+      <textarea id="ansInput" placeholder="यहाँ कोई भी answer लिखें या paste करें — कोई limit नहीं...
+
+सिस्टम खुद पहचान लेगा:
+• कौन-से exam का है
+• कौन-सा subject है
+• कौन-सा question है
+• सही-गलत क्या है"></textarea>
       <div class="wcnt">
         <span>Words: <span class="c" id="wCnt">0</span></span>
-        <span id="wStatus">पहले प्रश्न चुनें</span>
+        <span id="wStatus">कोई limit नहीं</span>
       </div>
     </div>
 
@@ -544,16 +571,28 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
     var st=document.getElementById(stId);
     var btn=document.getElementById('btnCheck');
-    st.style.color='#e94560';
+    st.style.color='#27ae60';
 
-    if(!state.question){st.textContent='पहले प्रश्न चुनें';btn.disabled=true;return}
-    var tgt=state.question.words;
+    // unlimited words - no limit check
+    if(w===0){st.textContent=state.mode==='pdf'?'PDF upload करें':'लिखना शुरू करें';st.style.color='#999';btn.disabled=true}
+    else if(w<10){st.textContent='कम से कम 10 शब्द लिखें';st.style.color='#e94560';btn.disabled=true}
+    else{st.textContent='✓ '+w+' शब्द (कोई limit नहीं)';st.style.color='#27ae60';btn.disabled=false}
 
-    if(w===0){st.textContent=state.mode==='pdf'?'PDF upload करें':'लिखना शुरू करें';btn.disabled=true}
-    else if(w<30){st.textContent='बहुत कम ('+w+')';btn.disabled=true}
-    else if(w<tgt*0.4){st.textContent='कम है ('+w+'/'+tgt+')';st.style.color='#f39c12';btn.disabled=false}
-    else if(w>tgt*1.5){st.textContent='ज़्यादा ('+w+'/'+tgt+')';st.style.color='#f39c12';btn.disabled=false}
-    else{st.textContent='✓ '+w+'/'+tgt;st.style.color='#27ae60';btn.disabled=false}
+    // Auto detect from text (if typing)
+    if(state.mode==='type' && w>=15){
+      debounceDetect(t);
+    }
+  }
+
+  var detectTimer=null;
+  function debounceDetect(text){
+    if(detectTimer)clearTimeout(detectTimer);
+    detectTimer=setTimeout(function(){
+      var best=autoDetect(text);
+      if(best && best.score>0){
+        updateDetectPanel(best);
+      }
+    },800);
   }
 
   document.getElementById('ansInput').addEventListener('input',updateCount);
@@ -646,11 +685,129 @@ textarea:focus{border-color:#0f3460;background:#fff}
     }catch(e){setProg(0,'❌ '+e.message)}
   }
 
+
+  // ==================== AUTO DETECT ====================
+  function autoDetect(text){
+    if(!text || text.trim().length<20)return null;
+    var lower=text.toLowerCase();
+    var words=text.split(/\s+/).filter(function(w){return w.length>0});
+    var wc=words.length;
+
+    // Iterate over ALL questions
+    var best=null;
+    var altMatches=[];
+
+    for(var exam in QUESTIONS){
+      var qs=QUESTIONS[exam];
+      if(!qs || qs.length===0)continue;
+
+      for(var i=0;i<qs.length;i++){
+        var q=qs[i];
+        var score=0;
+
+        // 1. Keyword match (0-60)
+        var kwFound=0;
+        var syn=window.AC_SYNONYMS||{};
+        for(var k=0;k<q.keywords.length;k++){
+          var kw=q.keywords[k].toLowerCase();
+          if(lower.indexOf(kw)!==-1){kwFound++;continue}
+          if(syn[kw]){
+            for(var s=0;s<syn[kw].length;s++){
+              if(lower.indexOf(syn[kw][s].toLowerCase())!==-1){kwFound++;break}
+            }
+          }
+        }
+        var kwRatio=kwFound/q.keywords.length;
+        score+=kwRatio*60;
+
+        // 2. Question text match (0-25)
+        var qWords=q.q.toLowerCase().split(/\s+/).filter(function(w){return w.length>3});
+        var qMatch=0;
+        for(var qw=0;qw<qWords.length;qw++){
+          if(lower.indexOf(qWords[qw])!==-1)qMatch++;
+        }
+        if(qWords.length>0)score+=(qMatch/qWords.length)*25;
+
+        // 3. Subject match (0-10)
+        if(q.subject){
+          var subLower=q.subject.toLowerCase();
+          if(lower.indexOf(subLower)!==-1)score+=10;
+        }
+
+        // 4. Length similarity bonus (0-5)
+        var ratio=wc/q.words;
+        if(ratio>=0.7 && ratio<=1.5)score+=5;
+
+        if(!best || score>best.score){
+          if(best)altMatches.push(best);
+          best={score:score,exam:exam,q:q,qIndex:i,kwFound:kwFound,kwTotal:q.keywords.length};
+        } else {
+          altMatches.push({score:score,exam:exam,q:q,qIndex:i,kwFound:kwFound,kwTotal:q.keywords.length});
+        }
+      }
+    }
+
+    if(best){
+      altMatches.sort(function(a,b){return b.score-a.score});
+      best.alternates=altMatches.slice(0,3);
+      return best;
+    }
+    return null;
+  }
+
+  function getExamName(exam){
+    var names={
+      upsc:'UPSC Mains',uppcs:'UPPCS Mains',bpsc:'BPSC Mains',essay:'निबंध',
+      agri_agronomy:'Agronomy',agri_soil:'Soil Science',agri_horticulture:'Horticulture',
+      agri_pathology:'Plant Pathology',agri_entomology:'Entomology',
+      agri_extension:'Extension Education',agri_economics:'Agri Economics',
+      agri_animal:'Animal Husbandry',sociology:'Sociology'
+    };
+    return names[exam]||exam;
+  }
+
+  function updateDetectPanel(best){
+    var panel=document.getElementById('detectInfo');
+    if(!best){panel.classList.remove('on');return}
+
+    var pct=Math.round(best.score);
+    panel.classList.remove('warn');
+    if(pct<50)panel.classList.add('warn');
+
+    document.getElementById('diExam').textContent=getExamName(best.exam);
+    document.getElementById('diSubject').textContent=best.q.subject||'General';
+    document.getElementById('diQuestion').innerHTML='<b>प्रश्न:</b> '+best.q.q.substring(0,120)+(best.q.q.length>120?'...':'');
+
+    var conf=pct>=70?'🎯 High confidence':(pct>=45?'⚠️ Medium confidence':'❓ Low - कृपया जाँचें');
+    var confHtml=conf+' &nbsp;|&nbsp; Keywords matched: <b>'+best.kwFound+'/'+best.kwTotal+'</b>';
+
+    if(best.alternates && best.alternates.length>0 && best.alternates[0].score>30){
+      confHtml+='<div class="match-alt"><b>अन्य संभावित:</b> '+getExamName(best.alternates[0].exam)+' • '+best.alternates[0].q.q.substring(0,60)+'...'+(best.alternates[0].q.subject?' ('+best.alternates[0].q.subject+')':'')+'</div>';
+    }
+
+    document.getElementById('diConf').innerHTML=confHtml;
+    panel.classList.add('on');
+
+    // Set as current question
+    state.question=best.q;
+    state.detected=best;
+  }
+
   // ==================== CHECK ====================
   window.checkAnswer=function(){
-    if(!state.question){alert('पहले प्रश्न चुनें');return}
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
+
+    // Auto-detect if not already
+    var best=autoDetect(t);
+    if(!best || best.score<15){
+      alert('❌ Content पहचान नहीं पाया। कृपया exam/database से मेल खाता content लिखें।\n\nया अधिक विस्तृत answer दें।');
+      return;
+    }
+
+    state.question=best.q;
+    state.detected=best;
+    updateDetectPanel(best);
 
     document.getElementById('loadT').textContent='Check हो रहा है...';
     document.getElementById('load').classList.add('on');
@@ -744,6 +901,18 @@ textarea:focus{border-color:#0f3460;background:#fff}
     if(r.missing.length>0)warn.push(r.missing.length+' keywords छूटे');
 
     var h='';
+
+    // Detected info section
+    if(state.detected){
+      var d=state.detected;
+      h+='<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:12px;margin-bottom:12px">';
+      h+='<div style="font-size:10px;font-weight:800;color:#27ae60;letter-spacing:1px;margin-bottom:8px">🎯 DETECTED</div>';
+      h+='<div style="font-size:12px;color:#0f3460;font-weight:800;margin-bottom:6px">'+getExamName(d.exam)+' • '+(d.q.subject||'General')+'</div>';
+      h+='<div style="font-size:11px;color:#333;line-height:1.5;background:#fff;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
+      h+='<div style="font-size:10px;color:#666;font-weight:600">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b> • Keywords: '+d.kwFound+'/'+d.kwTotal+'</div>';
+      h+='</div>';
+    }
+
     h+='<div class="score-card"><div class="score-lbl">आपका SCORE</div><div><span class="score-v">'+r.score+'</span><span class="score-mx"> / '+r.maxScore+'</span></div><div class="score-pct">'+r.pct+'%</div><div class="verdict '+vc+'">'+v+'</div></div>';
 
     h+='<div class="bd-grid">'+bd('Keywords',r.kw,30,'fg')+bd('Structure',r.str,20,'fb')+bd('Length',r.len,15,'fo')+bd('Quality',r.ql,15,'fb')+bd('Data/Facts',r.dt,20,'fg')+bd('Total',r.score,r.maxScore,'fr')+'</div>';
