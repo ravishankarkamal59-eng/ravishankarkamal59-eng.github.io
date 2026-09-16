@@ -3483,5 +3483,177 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== PDF MODE FIX ====================
+(function(){
+  console.log('=== PDF Mode Fix loading ===');
+
+  // Direct setMode function
+  function setModeDirect(mode){
+    console.log('setMode called:', mode);
+    var STATE = window.AppState || {};
+    STATE.mode = mode;
+
+    // Toggle active on mode buttons
+    var btns = document.querySelectorAll('.mode-b');
+    for(var i = 0; i < btns.length; i++){
+      var isActive = btns[i].getAttribute('data-mode') === mode;
+      btns[i].classList.toggle('on', isActive);
+    }
+
+    // Show/hide zones
+    var tz = document.getElementById('typeZone');
+    var pz = document.getElementById('pdfZone');
+
+    if(mode === 'pdf'){
+      if(tz) tz.classList.add('hidden');
+      if(pz){ pz.classList.add('on'); pz.style.display = 'block'; }
+      console.log('PDF zone shown');
+    } else {
+      if(tz){ tz.classList.remove('hidden'); tz.style.display = 'block'; }
+      if(pz){ pz.classList.remove('on'); pz.style.display = 'none'; }
+      console.log('Type zone shown');
+    }
+
+    // Update word count
+    if(typeof window.updateCount === 'function'){
+      try{ window.updateCount(); }catch(e){}
+    }
+  }
+
+  // Expose globally
+  window.setMode = setModeDirect;
+
+  // Event delegation for mode buttons
+  document.addEventListener('click', function(e){
+    var target = e.target;
+    var modeBtn = target.closest ? target.closest('.mode-b') : null;
+    if(modeBtn){
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      var m = modeBtn.getAttribute('data-mode');
+      setModeDirect(m);
+      return false;
+    }
+  }, true); // Capture phase
+
+  // Also attach direct listeners as backup
+  function attachDirect(){
+    var btns = document.querySelectorAll('.mode-b');
+    for(var i = 0; i < btns.length; i++){
+      if(btns[i]._modeBound) continue;
+      btns[i]._modeBound = true;
+      (function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          var m = btn.getAttribute('data-mode');
+          setModeDirect(m);
+          return false;
+        });
+      })(btns[i]);
+    }
+  }
+
+  // ==================== PDF DROP HANDLER ====================
+  function attachDrop(){
+    var drop = document.getElementById('pdfDrop');
+    var input = document.getElementById('pdfInput');
+
+    if(drop && !drop._dropBound){
+      drop._dropBound = true;
+      drop.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(input){
+          console.log('Opening file picker');
+          input.click();
+        }
+        return false;
+      });
+
+      // Also handle drag & drop
+      drop.addEventListener('dragover', function(e){
+        e.preventDefault();
+        drop.style.borderColor = '#0f3460';
+        drop.style.background = '#e8f4ff';
+      });
+      drop.addEventListener('dragleave', function(e){
+        e.preventDefault();
+        drop.style.borderColor = '#a0aec0';
+        drop.style.background = '#fafbfc';
+      });
+      drop.addEventListener('drop', function(e){
+        e.preventDefault();
+        drop.style.borderColor = '#a0aec0';
+        drop.style.background = '#fafbfc';
+        if(e.dataTransfer.files.length && window.handleFile){
+          try{ window.handleFile(e.dataTransfer.files[0]); }catch(err){ console.log(err); }
+        }
+      });
+    }
+
+    if(input && !input._inputBound){
+      input._inputBound = true;
+      // Remove old listeners by replacing
+      var oldInput = input;
+      var newInput = input.cloneNode(true);
+      oldInput.parentNode.replaceChild(newInput, oldInput);
+
+      newInput.addEventListener('change', function(e){
+        if(e.target.files.length){
+          console.log('File selected:', e.target.files[0].name);
+          if(window.handleFile){
+            try{ window.handleFile(e.target.files[0]); }catch(err){ console.log(err); }
+          } else {
+            console.log('handleFile not available');
+          }
+        }
+      });
+    }
+
+    // Also handle remove button
+    var rm = document.getElementById('pdfRemove');
+    if(rm && !rm._rmBound){
+      rm._rmBound = true;
+      rm.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(window.removePdf){ try{ window.removePdf(); }catch(err){} }
+        return false;
+      });
+    }
+  }
+
+  // ==================== INIT ====================
+  function init(){
+    attachDirect();
+    attachDrop();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 100); });
+  } else {
+    setTimeout(init, 100);
+  }
+
+  // Periodic re-attach
+  setTimeout(init, 800);
+  setTimeout(init, 2000);
+
+  // Re-attach after mode change
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(t.closest && (t.closest('.mode-b') || t.closest('.dr-item') || t.closest('.exam-bar'))){
+      setTimeout(init, 300);
+    }
+  }, true);
+
+  console.log('✅ PDF Mode Fix loaded');
+})();
+</script>
+
 </body>
 </html>
