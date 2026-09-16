@@ -2914,27 +2914,35 @@ console.log('✅ Fix JS loaded');
 </script>
 
 
+
+
+
 <script>
-// ==================== AUTH GATE - FINAL OVERRIDE ====================
+// ==================== AUTH GATE ON CHECK BUTTON ====================
 (function(){
-  console.log('=== Auth Gate loading (final override) ===');
+  console.log('=== Auth Gate loaded ===');
 
-  window._acIsLoggedIn = function(){
+  // Auth check
+  function isLoggedIn(){
     try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
-  };
+  }
 
-  window._acShowAuth = function(mode){
+  // Show auth modal
+  function showAuth(mode){
     var a=document.getElementById('authScr');
-    if(!a){console.log('authScr not found');return;}
+    if(!a){console.log('authScr missing');return;}
     var m=mode||'signup';
     window._acMode=m;
 
-    // Update title/subtitle
     var isSignup=(m==='signup');
     var el;
+
+    // Update titles
     el=document.getElementById('asTitle');if(el)el.textContent=isSignup?'Create Account':'Welcome Back';
     el=document.getElementById('asSub');if(el)el.textContent=isSignup?'Free account banayein - answer check shuru karein':'Apne account mein login karein';
     el=document.getElementById('asBtn');if(el)el.textContent=isSignup?'Create Free Account':'Login';
+
+    // Show/hide fields
     el=document.getElementById('fldName');if(el)el.style.display=isSignup?'block':'none';
     el=document.getElementById('fldPhone');if(el)el.style.display=isSignup?'block':'none';
     el=document.getElementById('fldPass2');if(el)el.style.display=isSignup?'block':'none';
@@ -2943,16 +2951,6 @@ console.log('✅ Fix JS loaded');
     var tabs=document.querySelectorAll('.as-tab');
     for(var i=0;i<tabs.length;i++){
       tabs[i].classList.toggle('on',tabs[i].getAttribute('data-mode')===m);
-    }
-
-    // Footer
-    el=document.getElementById('asFooter');
-    if(el){
-      if(isSignup){
-        el.innerHTML='Pehle se account hai? <a href="#" onclick="window._acShowAuth(&quot;login&quot;);return false" style="color:#e94560;font-weight:800">Login karein</a>';
-      } else {
-        el.innerHTML='Naya account banayein? <a href="#" onclick="window._acShowAuth(&quot;signup&quot;);return false" style="color:#e94560;font-weight:800">Sign Up karein</a>';
-      }
     }
 
     // Clear errors
@@ -2964,18 +2962,20 @@ console.log('✅ Fix JS loaded');
     a.style.display='flex';
     a.classList.add('on');
     document.body.style.overflow='hidden';
-    console.log('Auth modal shown, mode='+m);
-  };
 
-  window._acCloseAuth = function(){
+    console.log('Auth modal shown');
+  }
+
+  // Close auth
+  function closeAuth(){
     var a=document.getElementById('authScr');
     if(a){a.style.display='none';a.classList.remove('on')}
     document.body.style.overflow='';
-  };
+  }
 
-  window._acSubmit = function(e){
+  // Submit auth
+  function submitAuth(e){
     if(e)e.preventDefault();
-    console.log('Auth submit, mode='+(window._acMode||'signup'));
     var msg=document.getElementById('asMsg');
     if(!msg) return false;
     msg.className='as-msg';
@@ -2989,17 +2989,19 @@ console.log('✅ Fix JS loaded');
 
     if(!email||email.indexOf('@')<1){
       var fe=document.getElementById('fldEmail');if(fe)fe.classList.add('bad');
+      msg.className='as-msg err';msg.textContent='Sahi email bharein';
       return false;
     }
     if(pass.length<6){
       var fp=document.getElementById('fldPass');if(fp)fp.classList.add('bad');
+      msg.className='as-msg err';msg.textContent='Password kam se kam 6 characters';
       return false;
     }
 
     var accounts={};
     try{accounts=JSON.parse(localStorage.getItem('acv3_accounts')||'{}')}catch(err){}
 
-    // LOGIN
+    // LOGIN mode
     if(window._acMode==='login'){
       if(!accounts[email]){
         msg.className='as-msg err';
@@ -3015,30 +3017,42 @@ console.log('✅ Fix JS loaded');
       msg.className='as-msg ok';
       msg.textContent='Login successful!';
       setTimeout(function(){
-        window._acCloseAuth();
-        var fn = window._acOriginalCheck;
-        alert('Welcome back, '+accounts[email].name+'!');
-        if(fn){
-          var go = confirm('Ab answer check karein?');
-          if(go){
-            try{fn.call(window)}catch(e){console.log(e)}
-          }
+        closeAuth();
+        console.log('User logged in:', accounts[email].name);
+        // Auto-resume check
+        var origBtn = document.getElementById('btnCheck');
+        if(origBtn && !origBtn.disabled){
+          // Re-trigger check by directly calling original function
+          var orig = window._originalCheck;
+          if(orig){ orig.call(window); }
         }
-      },800);
+      },600);
       return false;
     }
 
-    // SIGNUP
+    // SIGNUP mode
     var name=((document.getElementById('inName')||{}).value||'').trim();
     var phone=((document.getElementById('inPhone')||{}).value||'').trim();
     var pass2=((document.getElementById('inPass2')||{}).value||'');
 
-    if(!name){var fn2=document.getElementById('fldName');if(fn2)fn2.classList.add('bad');return false;}
-    if(phone&&!/^[6-9][0-9]{9}$/.test(phone)){var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');return false;}
-    if(pass!==pass2){var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');return false;}
+    if(!name){
+      var fn=document.getElementById('fldName');if(fn)fn.classList.add('bad');
+      msg.className='as-msg err';msg.textContent='Naam bharein';
+      return false;
+    }
+    if(phone && !/^[6-9][0-9]{9}$/.test(phone)){
+      var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');
+      msg.className='as-msg err';msg.textContent='Sahi mobile number (10 digits)';
+      return false;
+    }
+    if(pass!==pass2){
+      var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');
+      msg.className='as-msg err';msg.textContent='Passwords match nahi karte';
+      return false;
+    }
     if(accounts[email]){
       msg.className='as-msg err';
-      msg.textContent='Ye email registered hai - Login karein';
+      msg.textContent='Ye email pehle se registered hai - Login karein';
       return false;
     }
 
@@ -3049,77 +3063,110 @@ console.log('✅ Fix JS loaded');
     msg.className='as-msg ok';
     msg.textContent='Account ban gaya!';
     setTimeout(function(){
-      window._acCloseAuth();
-      var fn = window._acOriginalCheck;
-      alert('Welcome '+name+'!');
-      if(fn){
-        var go = confirm('Ab answer check karein?');
-        if(go){
-          try{fn.call(window)}catch(e){console.log(e)}
-        }
+      closeAuth();
+      console.log('Account created:', name);
+      // Auto-resume check
+      var origBtn = document.getElementById('btnCheck');
+      if(origBtn && !origBtn.disabled){
+        var orig = window._originalCheck;
+        if(orig){ orig.call(window); }
       }
-    },800);
+    },600);
     return false;
-  };
+  }
 
-  // Force attach auth form submit
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var form=document.getElementById('asForm');
-      if(form && !form._acBound){
-        form._acBound=true;
-        form.onsubmit = function(e){
-          e.preventDefault();
-          return window._acSubmit(e);
-        };
-        console.log('Auth form bound');
+  // Expose globally
+  window._acShowAuth = showAuth;
+  window._acCloseAuth = closeAuth;
+  window._acSubmit = submitAuth;
+
+  // Wait for page load, then attach to Check button
+  function attach() {
+    var btn = document.getElementById('btnCheck');
+    if(!btn){
+      setTimeout(attach, 200);
+      return;
+    }
+
+    console.log('Check button found, attaching auth gate');
+
+    // Save original checkAnswer once
+    if(!window._originalCheck && typeof window.checkAnswer === 'function'){
+      window._originalCheck = window.checkAnswer;
+      console.log('Original checkAnswer saved');
+    }
+
+    // Attach click listener (capture phase to run BEFORE onclick)
+    btn.addEventListener('click', function(e){
+      if(!isLoggedIn()){
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        console.log('Not logged in - showing auth');
+        showAuth('signup');
+        return false;
       }
+      console.log('Logged in - proceeding');
+    }, true); // true = capture phase
 
-      // Bind auth tabs
-      var tabs=document.querySelectorAll('.as-tab');
-      for(var i=0;i<tabs.length;i++){
-        (function(tab){
-          tab.onclick = function(e){
-            e.preventDefault();
-            var m = tab.getAttribute('data-mode');
-            window._acShowAuth(m);
-            return false;
-          };
-        })(tabs[i]);
-      }
+    // Bind auth form
+    var form=document.getElementById('asForm');
+    if(form){
+      form.onsubmit = function(e){
+        e.preventDefault();
+        return submitAuth(e);
+      };
+      console.log('Auth form bound');
+    }
 
-      // Bind close button
-      var closeBtn=document.querySelector('#authScr .as-x');
-      if(closeBtn){
-        closeBtn.onclick = function(e){
+    // Bind tabs
+    var tabs=document.querySelectorAll('.as-tab');
+    for(var i=0;i<tabs.length;i++){
+      (function(tab){
+        tab.onclick = function(e){
           e.preventDefault();
-          window._acCloseAuth();
+          showAuth(tab.getAttribute('data-mode'));
           return false;
         };
-      }
+      })(tabs[i]);
+    }
 
-      console.log('Auth handlers attached');
-    }, 100);
-  });
+    // Bind close
+    var closeBtn=document.querySelector('#authScr .as-x');
+    if(closeBtn){
+      closeBtn.onclick = function(e){
+        e.preventDefault();
+        closeAuth();
+        return false;
+      };
+    }
 
-  // Save original checkAnswer (whatever it is at this point)
-  setTimeout(function(){
-    window._acOriginalCheck = window.checkAnswer;
-    console.log('Captured checkAnswer:', typeof window.checkAnswer);
+    // Bind footer links
+    var footer=document.getElementById('asFooter');
+    if(footer){
+      footer.addEventListener('click', function(e){
+        if(e.target.tagName==='A'){
+          e.preventDefault();
+          var txt = e.target.textContent.toLowerCase();
+          if(txt.indexOf('login')>-1){ showAuth('login'); }
+          else { showAuth('signup'); }
+        }
+      });
+    }
 
-    // Override
-    window.checkAnswer = function(){
-      console.log('checkAnswer called, logged in =', window._acIsLoggedIn());
-      if(!window._acIsLoggedIn()){
-        window._acShowAuth('signup');
-        return;
-      }
-      if(window._acOriginalCheck){
-        return window._acOriginalCheck.apply(this, arguments);
-      }
-    };
-    console.log('Auth gate override installed');
-  }, 50);
+    console.log('✅ Auth gate fully attached to Check button');
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(attach, 100); });
+  } else {
+    setTimeout(attach, 100);
+  }
+
+  // Also bind after any DOM changes
+  setTimeout(attach, 1000);
+  setTimeout(attach, 3000);
+
 })();
 </script>
 
