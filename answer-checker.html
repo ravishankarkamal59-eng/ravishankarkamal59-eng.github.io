@@ -6016,5 +6016,627 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== NEXT LEVEL EXAMINER DETECTION ====================
+(function(){
+  'use strict';
+  console.log('=== Examiner Detection loading ===');
+
+  // ============ TOPIC KEYWORDS (जो UPSC/UPPCS/BPSC में पूछे जाते हैं) ============
+  var TOPICS = {
+    Polity: {
+      keywords: ['संविधान','constitution','अनुच्छेद','article','संसद','parliament','न्यायपालिका','judiciary','राष्ट्रपति','president','राज्यपाल','governor','चुनाव','election','संघीय','federal','मौलिक अधिकार','fundamental rights','DPSP','नीति निदेशक','राज्यसभा','राज्य सभा','लोकसभा','सुप्रीम कोर्ट','supreme court','न्यायिक समीक्षा','judicial review'],
+      topics: ['Constitutional framework','Federal structure','Parliament','Judiciary','Elections','Local governance']
+    },
+    Economy: {
+      keywords: ['GDP','अर्थव्यवस्था','budget','बजट','मुद्रास्फीति','inflation','रुपया','RBI','बैंकिंग','banking','MSP','कृषि','agriculture','उद्योग','industry','व्यापार','trade','GST','कर','tax','रोजगार','employment','गरीबी','poverty','सब्सिडी','subsidy','NITI Aayog','आर्थिक सर्वेक्षण','economic survey'],
+      topics: ['Macro economy','Fiscal policy','Monetary policy','Agriculture economy','Industry','Trade','Poverty & employment']
+    },
+    History: {
+      keywords: ['सिंधु','harappa','मौर्य','maurya','गुप्त','gupta','मुगल','mughal','दिल्ली सल्तनत','स्वतंत्रता','1857','कांग्रेस','congress','गांधी','gandhi','नेहरू','nehru','अंबेडकर','ambedkar','तिलक','tilak','सुभाष','subhash','विद्रोह','revolt','आंदोलन','movement'],
+      topics: ['Ancient India','Medieval India','Modern India','Freedom struggle','Post-independence']
+    },
+    Geography: {
+      keywords: ['नदी','river','हिमालय','himalaya','मानसून','monsoon','जलवायु','climate','मृदा','soil','वनस्पति','vegetation','जनसंख्या','population','नगरीकरण','urbanization','खनिज','mineral','कृषि','agriculture'],
+      topics: ['Physical geography','Climate','Rivers','Soils','Resources','Population']
+    },
+    Environment: {
+      keywords: ['पर्यावरण','environment','जलवायु परिवर्तन','climate change','प्रदूषण','pollution','जैव विविधता','biodiversity','वन','forest','SDG','सतत','sustainable','कार्बन','carbon','पेरिस','paris'],
+      topics: ['Climate change','Pollution','Biodiversity','Conservation','SDG']
+    },
+    Society: {
+      keywords: ['जाति','caste','वर्ग','class','लिंग','gender','महिला','women','दलित','dalit','जनजाति','tribal','परिवार','family','शिक्षा','education','स्वास्थ्य','health','गरीबी','poverty','सामाजिक','social'],
+      topics: ['Caste system','Gender issues','Social inequality','Family structure','Social change']
+    },
+    IR: {
+      keywords: ['भारत','india','चीन','china','पाकिस्तान','pakistan','अमेरिका','usa','रूस','russia','UN','संयुक्त राष्ट्र','BRICS','G20','SAARC','WTO','विदेश नीति','foreign policy','कूटनीति','diplomacy'],
+      topics: ['India-China','India-Pakistan','India-US','Multilateral','Foreign policy']
+    },
+    Governance: {
+      keywords: ['शासन','governance','प्रशासन','administration','सिविल सेवा','civil services','RTI','जवाबदेही','accountability','भ्रष्टाचार','corruption','पारदर्शिता','transparency','लोकपाल','lokpal'],
+      topics: ['Civil services','Accountability','Transparency','Reforms','Good governance']
+    },
+    Science: {
+      keywords: ['विज्ञान','science','तकनीक','technology','ISRO','इसरो','अंतरिक्ष','space','AI','कृत्रिम बुद्धिमत्ता','cyber','साइबर','DNA','biotech','जैव'],
+      topics: ['Space tech','IT & AI','Biotech','Defence tech']
+    },
+    // BPSC specific
+    Bihar: {
+      keywords: ['बिहार','bihar','पटना','patna','नालंदा','nalanda','मगध','मौर्य','गंगा','ganga','कौसी','kosi','बाढ़','flood','प्रवासन','migration','जाति','caste'],
+      topics: ['Bihar history','Bihar geography','Bihar economy','Bihar society','Bihar politics']
+    },
+    // UPPCS specific
+    UP: {
+      keywords: ['उत्तर प्रदेश','uttar pradesh','लखनऊ','lucknow','कानपुर','kanpur','वाराणसी','varanasi','अयोध्या','ayodhya','प्रयागराज','prayagraj','मथुरा','आगरा','नोएडा','गोरखपुर','मेरठ','योगी','yogi'],
+      topics: ['UP history','UP geography','UP economy','UP society','UP politics','UP schemes']
+    }
+  };
+
+  // ============ EXAM REQUIREMENTS ============
+  var EXAM_REQ = {
+    upsc: {
+      name: 'UPSC Mains',
+      totalMarks: 250,
+      time: '3 hours',
+      sections: {
+        intro: { weight: 15, name: 'Introduction' },
+        body: { weight: 60, name: 'Main Body' },
+        conclusion: { weight: 25, name: 'Conclusion' }
+      },
+      mustHave: [
+        'Multi-dimensional analysis (Political, Economic, Social, Tech, Environment, Legal)',
+        'Data from Census, NITI Aayog, Economic Survey',
+        'Committee/Commission references (2nd ARC, Sarkaria)',
+        'Supreme Court judgments',
+        'Government schemes with year',
+        'International comparisons',
+        'Way forward with specific solutions'
+      ],
+      expectedTopics: ['Polity','Economy','Geography','History','Environment','Society','IR','Governance']
+    },
+    uppcs: {
+      name: 'UPPCS Mains',
+      totalMarks: 200,
+      time: '3 hours',
+      sections: {
+        intro: { weight: 15, name: 'Introduction' },
+        body: { weight: 60, name: 'Main Body' },
+        conclusion: { weight: 25, name: 'Conclusion' }
+      },
+      mustHave: [
+        'UP-specific examples and case studies',
+        'UP government schemes (with year)',
+        'UP historical/cultural context',
+        'UP statistics (economy, agriculture, population)',
+        'UP Budget allocations',
+        'Local issues with solutions'
+      ],
+      expectedTopics: ['UP','Polity','Economy','Geography','History','Society','Governance']
+    },
+    bpsc: {
+      name: 'BPSC Mains',
+      totalMarks: 200,
+      time: '3 hours',
+      sections: {
+        intro: { weight: 15, name: 'Introduction' },
+        body: { weight: 60, name: 'Main Body' },
+        conclusion: { weight: 25, name: 'Conclusion' }
+      },
+      mustHave: [
+        'Bihar-specific examples and data',
+        'Bihar government schemes (with year)',
+        'Bihar history, culture, geography',
+        'Bihar economy statistics',
+        'Local issues (flood, migration, education)',
+        'Bihar Budget highlights'
+      ],
+      expectedTopics: ['Bihar','Polity','Economy','Geography','History','Society']
+    },
+    essay: {
+      name: 'निबंध (Essay)',
+      totalMarks: 250,
+      time: '3 hours',
+      sections: {
+        intro: { weight: 20, name: 'Introduction' },
+        body: { weight: 60, name: 'Main Body' },
+        conclusion: { weight: 20, name: 'Conclusion' }
+      },
+      mustHave: [
+        'Powerful introduction with quote/fact',
+        'Multi-dimensional approach (4-5 dimensions)',
+        'Historical + Contemporary context',
+        'Real examples and case studies',
+        'Philosophical depth',
+        'Quotes from thinkers/leaders',
+        'Balanced view (both sides)',
+        'Forward-looking conclusion'
+      ],
+      expectedTopics: ['Philosophy','Society','Economy','Polity','Environment','Culture','Ethics','History']
+    }
+  };
+
+  // ============ GET CURRENT EXAM ============
+  function getCurrentExam(){
+    if(window.state && window.state.exam){
+      var ex = window.state.exam;
+      if(ex === 'upsc' || ex === 'uppcs' || ex === 'bpsc' || ex === 'essay') return ex;
+    }
+    if(window.AppState && window.AppState.exam){
+      var e = window.AppState.exam;
+      if(e === 'upsc' || e === 'uppcs' || e === 'bpsc' || e === 'essay') return e;
+    }
+    var active = document.querySelector('.dr-item.on');
+    if(active){
+      var a = active.getAttribute('data-exam');
+      if(a === 'upsc' || a === 'uppcs' || a === 'bpsc' || a === 'essay') return a;
+    }
+    return null;
+  }
+
+  // ============ ANALYZE ============
+  function analyze(text, examKey){
+    var req = EXAM_REQ[examKey];
+    if(!req) return null;
+
+    var lower = text.toLowerCase();
+    var words = text.split(/\s+/).filter(function(w){ return w.length > 0; });
+    var wc = words.length;
+    var sentences = text.split(/[।\.!\?]+/).filter(function(s){ return s.trim().length > 5; });
+
+    var r = {
+      exam: req.name,
+      examKey: examKey,
+      totalMarks: req.totalMarks,
+      wordCount: wc,
+      sentenceCount: sentences.length,
+      avgWordsPerSentence: sentences.length > 0 ? Math.round(wc / sentences.length) : 0,
+
+      // Section-wise analysis
+      introScore: 0,
+      bodyScore: 0,
+      conclusionScore: 0,
+
+      // Detected topics
+      detectedTopics: [],
+      missingTopics: [],
+
+      // Requirements check
+      requirementsFound: [],
+      requirementsMissing: [],
+
+      // Data/Stats
+      dataPoints: 0,
+      examples: 0,
+      quotes: 0,
+      schemes: 0,
+      judgments: 0,
+      committees: 0,
+
+      // Point-by-point
+      strongSentences: [],
+      weakSentences: [],
+
+      // Marks prediction
+      predictedMarks: 0,
+      totalExpected: req.totalMarks,
+      markBreakdown: {}
+    };
+
+    // ========== 1. INTRO ANALYSIS (0-15) ==========
+    var introText = text.substring(0, Math.min(400, text.length));
+    var introScore = 0;
+    if(/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ|context/i.test(introText)) introScore += 5;
+    if(/\d+%|\d+\.\d+|\d{4}|₹|करोड़|लाख/i.test(introText)) introScore += 4;
+    if(/[""'']|कहा|अनुसार|according|quote/i.test(introText)) introScore += 3;
+    if(/समिति|committee|रिपोर्ट|report|आयोग/i.test(introText)) introScore += 3;
+    r.introScore = Math.min(introScore, 15);
+
+    // ========== 2. BODY ANALYSIS (0-60) ==========
+    var bodyScore = 0;
+
+    // Count points (numbered/bulleted)
+    var points = (text.match(/[1-9][\.\)]\s|\b(पहला|दूसरा|तृतीय|प्रथम|द्वितीय|चतुर्थ)\b|•|\-\s/g) || []).length;
+    if(points >= 5) bodyScore += 12;
+    else if(points >= 3) bodyScore += 8;
+    else if(points >= 1) bodyScore += 4;
+
+    // Multi-dimensional check
+    var dimensions = 0;
+    var dimList = ['राजनीतिक','आर्थिक','सामाजिक','तकनीकी','पर्यावरणीय','कानूनी','political','economic','social','technological','environmental','legal','सांस्कृतिक','cultural','ऐतिहासिक','historical'];
+    dimList.forEach(function(d){ if(lower.indexOf(d) !== -1) dimensions++; });
+    if(dimensions >= 5) bodyScore += 12;
+    else if(dimensions >= 3) bodyScore += 8;
+    else if(dimensions >= 2) bodyScore += 4;
+
+    // Data points
+    var dataMatches = text.match(/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख|billion|million|crore/gi) || [];
+    r.dataPoints = dataMatches.length;
+    if(r.dataPoints >= 5) bodyScore += 10;
+    else if(r.dataPoints >= 3) bodyScore += 6;
+    else if(r.dataPoints >= 1) bodyScore += 3;
+
+    // Examples
+    var exMatches = text.match(/उदाहरण|example|जैसे|for instance|case study|केस/gi) || [];
+    r.examples = exMatches.length;
+    if(r.examples >= 3) bodyScore += 8;
+    else if(r.examples >= 1) bodyScore += 4;
+
+    // Schemes
+    var schemeMatches = text.match(/योजना|scheme|मिशन|mission|अधिनियम|act|policy|program/gi) || [];
+    r.schemes = schemeMatches.length;
+    if(r.schemes >= 4) bodyScore += 10;
+    else if(r.schemes >= 2) bodyScore += 6;
+    else if(r.schemes >= 1) bodyScore += 3;
+
+    // Judgments
+    var judgmentMatches = text.match(/सर्वोच्च न्यायालय|supreme court|judgment|निर्णय|केस|मामला/gi) || [];
+    r.judgments = judgmentMatches.length;
+    if(r.judgments >= 1) bodyScore += 4;
+
+    // Committees
+    var committeeMatches = text.match(/समिति|committee|आयोग|commission|न्यायमूर्ति|justice|ARC|सरकारिया|सरकारिया/gi) || [];
+    r.committees = committeeMatches.length;
+    if(r.committees >= 1) bodyScore += 4;
+
+    r.bodyScore = Math.min(bodyScore, 60);
+
+    // ========== 3. CONCLUSION ANALYSIS (0-25) ==========
+    var conclScore = 0;
+    var conclText = text.substring(Math.max(0, text.length - 500));
+    if(/निष्कर्ष|conclusion|अंत में|समापन|सुझाव|way forward/i.test(conclText)) conclScore += 10;
+    if(/सुझाव|recommendation|solution|समाधान|रास्ता/i.test(conclText)) conclScore += 6;
+    if(/भविष्य|future|आगे|positive|सकारात्मक/i.test(conclText)) conclScore += 5;
+    if(/\d+%|वर्ष 20\d{2}|लक्ष्य|target/i.test(conclText)) conclScore += 4;
+    r.conclusionScore = Math.min(conclScore, 25);
+
+    // ========== 4. TOPIC DETECTION ==========
+    var expectedTopics = req.expectedTopics || [];
+    var detectedTopics = [];
+
+    // Check every topic keyword set
+    for(var topicName in TOPICS){
+      var topic = TOPICS[topicName];
+      var hits = 0;
+      topic.keywords.forEach(function(k){
+        if(lower.indexOf(k.toLowerCase()) !== -1) hits++;
+      });
+      if(hits >= 2){
+        detectedTopics.push({ name: topicName, hits: hits, subtopics: topic.topics });
+      }
+    }
+
+    // Sort by hits
+    detectedTopics.sort(function(a, b){ return b.hits - a.hits; });
+    r.detectedTopics = detectedTopics.slice(0, 5);
+
+    // Missing topics (for exam-specific)
+    if(examKey === 'bpsc'){
+      if(!/बिहार|bihar/i.test(text)){
+        r.missingTopics.push({ name: 'Bihar Specific Content', severity: 'CRITICAL', suggestion: 'बिहार के specific examples, schemes, और data ज़रूर जोड़ें' });
+      }
+    }
+    if(examKey === 'uppcs'){
+      if(!/उत्तर प्रदेश|uttar pradesh|यूपी|up /i.test(text)){
+        r.missingTopics.push({ name: 'UP Specific Content', severity: 'CRITICAL', suggestion: 'उत्तर प्रदेश के specific examples, schemes, और data ज़रूर जोड़ें' });
+      }
+    }
+
+    // ========== 5. REQUIREMENTS CHECK ==========
+    var requirementsFound = [];
+    var requirementsMissing = [];
+
+    req.mustHave.forEach(function(rq){
+      var found = false;
+      if(/multi-dimensional|बहुआयामी|राजनीतिक.*आर्थिक/i.test(rq)){
+        found = dimensions >= 3;
+      } else if(/data|statistics|Census|NITI|Survey/i.test(rq)){
+        found = r.dataPoints >= 3;
+      } else if(/Committee|Commission|ARC/i.test(rq)){
+        found = r.committees >= 1;
+      } else if(/Supreme Court|judgment/i.test(rq)){
+        found = r.judgments >= 1;
+      } else if(/scheme/i.test(rq)){
+        found = r.schemes >= 2;
+      } else if(/international|global/i.test(rq)){
+        found = /usa|china|uk|usa|international|विश्व|अंतर्राष्ट्रीय/i.test(text);
+      } else if(/way forward|solution/i.test(rq)){
+        found = /way forward|सुझाव|solution|समाधान/i.test(text);
+      } else if(/UP|उत्तर प्रदेश/i.test(rq)){
+        found = /उत्तर प्रदेश|uttar pradesh|यूपी/i.test(text);
+      } else if(/Bihar|बिहार/i.test(rq)){
+        found = /बिहार|bihar/i.test(text);
+      } else if(/example|case study/i.test(rq)){
+        found = r.examples >= 2;
+      } else {
+        found = true;
+      }
+
+      if(found) requirementsFound.push(rq);
+      else requirementsMissing.push(rq);
+    });
+
+    r.requirementsFound = requirementsFound;
+    r.requirementsMissing = requirementsMissing;
+
+    // ========== 6. SENTENCE-LEVEL ANALYSIS ==========
+    sentences.forEach(function(s){
+      s = s.trim();
+      if(s.length < 15) return;
+      var sLower = s.toLowerCase();
+      // Strong sentence: has data, example, or specific
+      if(/\d+|उदाहरण|example|समिति|committee|योजना|scheme|केस|judgment/i.test(s)){
+        if(r.strongSentences.length < 5) r.strongSentences.push(s.substring(0, 100));
+      }
+      // Weak: very generic
+      else if(/यह अच्छा है|यह बुरा है|सब ठीक|कोई बात नहीं|बहुत अच्छा|बहुत बुरा/i.test(s)){
+        if(r.weakSentences.length < 5) r.weakSentences.push(s.substring(0, 100));
+      }
+    });
+
+    // ========== 7. MARKS PREDICTION ==========
+    // Total score = intro + body + conclusion (out of 100)
+    var totalScore = r.introScore + r.bodyScore + r.conclusionScore;
+
+    // Word count penalty
+    var expectedWords = examKey === 'essay' ? 1000 : 250;
+    var wordRatio = wc / expectedWords;
+    if(wordRatio < 0.5) totalScore = Math.round(totalScore * 0.5);
+    else if(wordRatio < 0.75) totalScore = Math.round(totalScore * 0.75);
+    else if(wordRatio > 1.5) totalScore = Math.round(totalScore * 0.9);
+
+    // Cap
+    totalScore = Math.min(totalScore, 100);
+
+    // Convert to actual marks
+    var predictedMarks = Math.round((totalScore / 100) * req.totalMarks);
+    r.predictedMarks = predictedMarks;
+
+    r.markBreakdown = {
+      intro: r.introScore,
+      body: r.bodyScore,
+      conclusion: r.conclusionScore,
+      totalScore: totalScore
+    };
+
+    return r;
+  }
+
+  // ============ RENDER ============
+  function render(text){
+    var examKey = getCurrentExam();
+    if(!examKey) return null;
+
+    var r = analyze(text, examKey);
+    if(!r) return null;
+
+    var pct = r.markBreakdown.totalScore;
+    var scoreColor = pct >= 70 ? '#27ae60' : (pct >= 50 ? '#f39c12' : '#e94560');
+    var scoreStatus = pct >= 70 ? '🏆 Excellent - Examiner Impressed' : (pct >= 50 ? '👍 Good - Average से ऊपर' : '❌ Weak - सुधार ज़रूरी');
+
+    var h = '';
+
+    // Header
+    h += '<div style="background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border-radius:14px;padding:18px;margin-bottom:12px;text-align:center">';
+    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">🎯 ' + r.exam + '</div>';
+    h += '<div style="font-size:14px;font-weight:700">Next Level Examiner Detection</div>';
+    h += '</div>';
+
+    // ===== MARKS PREDICTION (Most Important) =====
+    h += '<div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border:3px solid #f39c12;border-radius:14px;padding:18px;margin-bottom:14px">';
+    h += '<div style="font-size:11px;color:#b8860b;font-weight:800;letter-spacing:2px;margin-bottom:10px;text-align:center">📊 MARKS PREDICTION</div>';
+    h += '<div style="display:flex;justify-content:center;align-items:baseline;gap:8px;margin-bottom:8px">';
+    h += '<div style="font-size:52px;font-weight:900;color:' + scoreColor + '">' + r.predictedMarks + '</div>';
+    h += '<div style="font-size:22px;color:#999;font-weight:700">/ ' + r.totalMarks + '</div>';
+    h += '</div>';
+    h += '<div style="text-align:center;font-size:13px;font-weight:800;color:#b8860b;margin-bottom:12px">' + scoreStatus + '</div>';
+    h += '<div style="height:10px;background:#e0e6ed;border-radius:5px;overflow:hidden;margin-bottom:8px">';
+    h += '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,' + scoreColor + ',' + scoreColor + 'dd);border-radius:5px;transition:width .5s"></div>';
+    h += '</div>';
+    h += '<div style="font-size:11px;color:#666;text-align:center;font-weight:700">' + pct + '% Quality Score</div>';
+    h += '</div>';
+
+    // ===== SECTION-WISE BREAKDOWN =====
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Section-wise Marks</div>';
+    var sections = [
+      { name: 'Introduction', got: r.introScore, max: 15 },
+      { name: 'Main Body', got: r.bodyScore, max: 60 },
+      { name: 'Conclusion', got: r.conclusionScore, max: 25 }
+    ];
+    sections.forEach(function(s){
+      var sPct = Math.round((s.got / s.max) * 100);
+      var sColor = sPct >= 70 ? '#27ae60' : (sPct >= 40 ? '#f39c12' : '#e94560');
+      h += '<div style="margin-bottom:10px">';
+      h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+      h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">' + s.name + '</span>';
+      h += '<span style="font-size:12px;font-weight:900;color:' + sColor + '">' + s.got + '/' + s.max + '</span>';
+      h += '</div>';
+      h += '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:' + sPct + '%;background:' + sColor + '"></div></div>';
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // ===== TOPIC DETECTION =====
+    if(r.detectedTopics.length > 0){
+      h += '<div style="background:#e8f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📚 Detected Topics (क्या-क्या cover हुआ)</div>';
+      r.detectedTopics.forEach(function(t){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
+        h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+        h += '<span style="font-size:12px;font-weight:800;color:#0f3460">✓ ' + t.name + '</span>';
+        h += '<span style="font-size:10px;color:#2980b9;font-weight:700">' + t.hits + ' hits</span>';
+        h += '</div>';
+        h += '<div style="font-size:10px;color:#666">Sub-topics: ' + t.subtopics.slice(0, 3).join(', ') + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // ===== MISSING TOPICS (Critical) =====
+    if(r.missingTopics.length > 0){
+      h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ये topics पूरी तरह missing हैं</div>';
+      r.missingTopics.forEach(function(m){
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b;margin-bottom:4px">✗ ' + m.name + ' [' + m.severity + ']</div>';
+        h += '<div style="font-size:11px;color:#666">💡 ' + m.suggestion + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // ===== REQUIREMENTS CHECK =====
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Examiner Requirements Check</div>';
+    h += '<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:8px">✓ FOUND (' + r.requirementsFound.length + ')</div>';
+    r.requirementsFound.forEach(function(rq){
+      h += '<div style="background:#e8f8f0;padding:6px 10px;border-radius:6px;margin-bottom:4px;font-size:11px;color:#1a1a2e;font-weight:600">✓ ' + rq + '</div>';
+    });
+    if(r.requirementsMissing.length > 0){
+      h += '<div style="font-size:11px;color:#e94560;font-weight:700;margin:12px 0 8px">✗ MISSING (' + r.requirementsMissing.length + ')</div>';
+      r.requirementsMissing.forEach(function(rq){
+        h += '<div style="background:#ffe8e8;padding:8px 10px;border-radius:6px;margin-bottom:4px;border-left:3px solid #e94560">';
+        h += '<div style="font-size:11px;font-weight:800;color:#c0392b">✗ ' + rq + '</div>';
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+
+    // ===== CONTENT STATS =====
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Content Statistics</div>';
+    h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
+    var stats = [
+      { label: 'Words', value: r.wordCount, color: '#0f3460', ideal: examKey === 'essay' ? '800-1200' : '150-250' },
+      { label: 'Sentences', value: r.sentenceCount, color: '#2980b9', ideal: '15-30' },
+      { label: 'Data Points', value: r.dataPoints, color: '#27ae60', ideal: '5+' },
+      { label: 'Examples', value: r.examples, color: '#e94560', ideal: '3+' },
+      { label: 'Schemes', value: r.schemes, color: '#8e44ad', ideal: '3+' },
+      { label: 'Judgments', value: r.judgments, color: '#f39c12', ideal: '1+' },
+      { label: 'Committees', value: r.committees, color: '#16a085', ideal: '1+' },
+      { label: 'Avg/सentence', value: r.avgWordsPerSentence, color: '#c0392b', ideal: '10-20' }
+    ];
+    stats.forEach(function(s){
+      h += '<div style="background:#f8fafc;padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
+      h += '<div style="font-size:9px;color:#666;font-weight:700;margin-bottom:2px">' + s.label.toUpperCase() + '</div>';
+      h += '<div style="font-size:18px;font-weight:900;color:' + s.color + '">' + s.value + '</div>';
+      h += '<div style="font-size:9px;color:#999">Ideal: ' + s.ideal + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+    h += '</div>';
+
+    // ===== WEAK SENTENCES =====
+    if(r.weakSentences.length > 0){
+      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये sentences कमजोर हैं (Generic)</div>';
+      r.weakSentences.forEach(function(s){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
+      });
+      h += '<div style="font-size:10px;color:#999;margin-top:8px">💡 इनको specific facts, data, examples से replace करें</div>';
+      h += '</div>';
+    }
+
+    // ===== IMPROVEMENT ROADMAP =====
+    h += '<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:14px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#2980b9;margin-bottom:10px">🎯 Improvement Roadmap</div>';
+
+    var improvements = [];
+    if(r.introScore < 10) improvements.push('Introduction को मज़बूत करें — definition + data + context');
+    if(r.bodyScore < 35) improvements.push('Body में multi-dimensional analysis जोड़ें (राजनीतिक + आर्थिक + सामाजिक)');
+    if(r.conclusionScore < 15) improvements.push('Conclusion में way forward + positive outlook जोड़ें');
+    if(r.dataPoints < 3) improvements.push('कम से कम 3-4 data points जोड़ें (%, years, ₹, करोड़)');
+    if(r.examples < 2) improvements.push('2-3 real examples/case studies जोड़ें');
+    if(r.schemes < 2) improvements.push('Government schemes के नाम + year जोड़ें');
+    if(r.judgments < 1) improvements.push('Supreme Court judgment ज़रूर जोड़ें');
+    if(r.committees < 1) improvements.push('Committee report (2nd ARC, Sarkaria) का reference जोड़ें');
+    if(examKey === 'bpsc' && !/बिहार|bihar/i.test(text)) improvements.push('🚨 Bihar-specific content ज़रूर जोड़ें');
+    if(examKey === 'uppcs' && !/उत्तर प्रदेश|uttar pradesh/i.test(text)) improvements.push('🚨 UP-specific content ज़रूर जोड़ें');
+    if(r.avgWordsPerSentence > 25) improvements.push('वाक्य छोटे करें — average 10-20 शब्द रखें');
+
+    if(improvements.length === 0){
+      h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:10px">🎉 कोई major improvement नहीं चाहिए!</div>';
+    } else {
+      improvements.forEach(function(imp){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#1a1a2e;font-weight:600;border-left:3px solid #2980b9">→ ' + imp + '</div>';
+      });
+    }
+    h += '</div>';
+
+    return h;
+  }
+
+  // ============ HOOK ============
+  function hook(){
+    if(typeof window.showResult === 'function' && !window.showResult._examinerHooked){
+      var orig = window.showResult;
+      window.showResult = function(r){
+        var res = orig.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+            if(!text || text.length < 30){
+              var ta = document.getElementById('ansInput');
+              if(ta) text = ta.value;
+            }
+            if(text && text.length >= 30){
+              var det = render(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                  console.log('✅ Examiner detection added');
+                }
+              }
+            }
+          } catch(e){ console.log('Examiner err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showResult._examinerHooked = true;
+      console.log('✅ showResult hooked');
+    }
+
+    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._examinerHooked){
+      var orig2 = window.showDirectResult;
+      window.showDirectResult = function(text, rtu){
+        var res = orig2.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            if(text && text.length >= 30){
+              var det = render(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                }
+              }
+            }
+          } catch(e){}
+        }, 200);
+        return res;
+      };
+      window.showDirectResult._examinerHooked = true;
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
+  } else {
+    setTimeout(hook, 500);
+  }
+  setTimeout(hook, 1500);
+  setTimeout(hook, 3000);
+  setTimeout(hook, 5000);
+
+  console.log('✅ Examiner Detection ready');
+})();
+</script>
+
 </body>
 </html>
