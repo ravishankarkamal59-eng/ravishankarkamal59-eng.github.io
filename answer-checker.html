@@ -207,6 +207,25 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .other-info .oi-points{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .other-info .oi-p{background:rgba(255,255,255,.15);padding:6px 10px;border-radius:8px;font-size:10.5px;font-weight:600}
 
+
+/* ============ PULL TO REFRESH ============ */
+.ptr-indicator{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(135deg,#0f3460,#1a5276);display:flex;align-items:center;justify-content:center;z-index:9998;transform:translateY(-100%);transition:transform .3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(15,52,96,.3)}
+.ptr-indicator.on{transform:translateY(0)}
+.ptr-indicator .ptr-inner{display:flex;align-items:center;gap:10px;color:#fff}
+.ptr-indicator .ptr-spin{width:28px;height:28px;border:3px solid rgba(253,186,59,.25);border-top-color:#FDBA3B;border-radius:50%;animation:ptrSpin 1s linear infinite}
+.ptr-indicator .ptr-arrow{font-size:24px;color:#FDBA3B;transition:transform .3s}
+.ptr-indicator.ready .ptr-arrow{transform:rotate(180deg)}
+.ptr-indicator.loading .ptr-spin{display:block}
+.ptr-indicator.loading .ptr-arrow{display:none}
+.ptr-indicator .ptr-arrow{display:block}
+.ptr-indicator .ptr-spin{display:none}
+.ptr-indicator .ptr-txt{font-size:13px;font-weight:800;letter-spacing:.5px}
+@keyframes ptrSpin{to{transform:rotate(360deg)}}
+
+/* Content offset when pulled */
+.app{transition:transform .3s ease}
+.app.pulled{transform:translateY(0)}
+
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
@@ -243,6 +262,15 @@ textarea:focus{border-color:#0f3460;background:#fff}
 </style>
 </head>
 <body>
+
+<!-- PULL TO REFRESH INDICATOR -->
+<div class="ptr-indicator" id="ptrIndicator">
+  <div class="ptr-inner">
+    <div class="ptr-arrow">↓</div>
+    <div class="ptr-spin"></div>
+    <div class="ptr-txt" id="ptrTxt">नीचे खींचें</div>
+  </div>
+</div>
 
 <div class="app">
 
@@ -1408,6 +1436,136 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.getElementById('resOverlay').classList.add('on');
   }
 
+
+  // ==================== PULL TO REFRESH ====================
+  (function(){
+    var startY=0;
+    var currentY=0;
+    var isPulling=false;
+    var maxPull=120;
+    var threshold=80;
+    var indicator=document.getElementById('ptrIndicator');
+    var ptrTxt=document.getElementById('ptrTxt');
+    var mid=document.querySelector('.mid');
+
+    if(!indicator || !mid) return;
+
+    function getScrollTop(){
+      return mid.scrollTop || 0;
+    }
+
+    function onTouchStart(e){
+      if(getScrollTop()>0) return;
+      if(document.getElementById('dr').classList.contains('on')) return;
+      if(document.getElementById('resPanel').classList.contains('on')) return;
+      startY=e.touches[0].clientY;
+      isPulling=true;
+    }
+
+    function onTouchMove(e){
+      if(!isPulling) return;
+      if(getScrollTop()>0){
+        isPulling=false;
+        return;
+      }
+      currentY=e.touches[0].clientY;
+      var diff=currentY-startY;
+      if(diff<=0){
+        indicator.classList.remove('on','ready');
+        return;
+      }
+
+      e.preventDefault();
+
+      var pull=Math.min(diff*0.6,maxPull);
+      var pct=Math.min((pull/threshold)*100,100);
+
+      indicator.classList.add('on');
+      indicator.style.transform='translateY('+(pull-70)+'px)';
+
+      if(pull>=threshold){
+        indicator.classList.add('ready');
+        ptrTxt.textContent='छोड़ें — Refresh होगा';
+      } else {
+        indicator.classList.remove('ready');
+        ptrTxt.textContent='नीचे खींचें';
+      }
+    }
+
+    function onTouchEnd(e){
+      if(!isPulling) return;
+      isPulling=false;
+
+      var pull=Math.min((currentY-startY)*0.6,maxPull);
+
+      if(pull>=threshold){
+        // Trigger refresh
+        indicator.classList.add('loading');
+        indicator.classList.remove('ready');
+        indicator.style.transform='translateY(0)';
+        ptrTxt.textContent='Refresh हो रहा है...';
+
+        setTimeout(function(){
+          doRefresh();
+        },400);
+      } else {
+        indicator.classList.remove('on','ready');
+        indicator.style.transform='translateY(-100%)';
+      }
+    }
+
+    function doRefresh(){
+      // Call existing refreshPage function
+      state.question=null;
+      state.extracted='';
+      state.detected=null;
+      state.currentText='';
+      state.detectedExam=null;
+
+      var ai=document.getElementById('ansInput');
+      if(ai) ai.value='';
+
+      var tz=document.getElementById('typeZone');
+      if(tz) tz.classList.remove('hidden');
+
+      state.mode='type';
+      document.querySelectorAll('.mode-b').forEach(function(b){b.classList.toggle('on',b.dataset.mode==='type')});
+      var pz=document.getElementById('pdfZone');
+      if(pz) pz.classList.remove('on');
+
+      try{resetPdf()}catch(e){}
+
+      var rp=document.getElementById('resPanel');
+      if(rp) rp.classList.remove('on');
+      var ro=document.getElementById('resOverlay');
+      if(ro) ro.classList.remove('on');
+      var rb=document.getElementById('resBody');
+      if(rb) rb.innerHTML='';
+
+      var di=document.getElementById('detectInfo');
+      if(di) di.classList.remove('on');
+
+      var qc=document.getElementById('qcard');
+      if(qc) qc.classList.add('hidden');
+
+      updateCount();
+
+      setTimeout(function(){
+        indicator.classList.remove('on','loading','ready');
+        indicator.style.transform='translateY(-100%)';
+        ptrTxt.textContent='नीचे खींचें';
+        showToast('🔄 Refresh हो गया');
+      },500);
+    }
+
+    mid.addEventListener('touchstart',onTouchStart,{passive:true});
+    mid.addEventListener('touchmove',onTouchMove,{passive:false});
+    mid.addEventListener('touchend',onTouchEnd,{passive:true});
+    mid.addEventListener('touchcancel',onTouchEnd,{passive:true});
+
+    console.log('✅ Pull-to-refresh loaded');
+  })();
+
   // ==================== CHECK ====================
   window.checkAnswer=function(){
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
@@ -1605,6 +1763,55 @@ textarea:focus{border-color:#0f3460;background:#fff}
     resetPdf();
     updateCount();
   };
+
+
+  // Desktop pull-to-refresh (mouse wheel)
+  (function(){
+    var indicator=document.getElementById('ptrIndicator');
+    var ptrTxt=document.getElementById('ptrTxt');
+    var mid=document.querySelector('.mid');
+    var wheelStart=0;
+    var lastScroll=0;
+    var wheelTimer=null;
+
+    if(!indicator || !mid) return;
+
+    mid.addEventListener('wheel',function(e){
+      if(mid.scrollTop>0) return;
+      if(e.deltaY<-100){
+        // Scrolling up at top
+        if(!indicator.classList.contains('on')){
+          indicator.classList.add('on');
+          indicator.style.transform='translateY(-30px)';
+          ptrTxt.textContent='ऊपर scroll करते रहें...';
+        }
+        clearTimeout(wheelTimer);
+        wheelTimer=setTimeout(function(){
+          if(indicator.classList.contains('on')){
+            indicator.style.transform='translateY(0)';
+            indicator.classList.add('loading');
+            ptrTxt.textContent='Refresh हो रहा है...';
+            setTimeout(function(){
+              // Refresh
+              var ai=document.getElementById('ansInput');
+              if(ai) ai.value='';
+              try{resetPdf()}catch(e){}
+              var rp=document.getElementById('resPanel');
+              if(rp) rp.classList.remove('on');
+              var ro=document.getElementById('resOverlay');
+              if(ro) ro.classList.remove('on');
+              updateCount();
+              setTimeout(function(){
+                indicator.classList.remove('on','loading');
+                indicator.style.transform='translateY(-100%)';
+                showToast('🔄 Refresh हो गया');
+              },400);
+            },300);
+          }
+        },700);
+      }
+    },{passive:true});
+  })();
 
   // ==================== INIT ====================
   loadQs();
