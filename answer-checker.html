@@ -3482,5 +3482,99 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== MODE SWITCH FORCE ====================
+(function(){
+  console.log('=== Mode Force loading ===');
+
+  function showPDF(){
+    console.log('showPDF called');
+    var tz = document.getElementById('typeZone');
+    var pz = document.getElementById('pdfZone');
+
+    if(tz) tz.style.setProperty('display','none','important');
+    if(pz) pz.style.setProperty('display','block','important');
+
+    // Buttons
+    var btns = document.querySelectorAll('.mode-b');
+    for(var i = 0; i < btns.length; i++){
+      var isPdf = btns[i].getAttribute('data-mode') === 'pdf';
+      btns[i].classList.toggle('on', isPdf);
+      btns[i].style.background = isPdf ? '#fff' : 'transparent';
+      btns[i].style.color = isPdf ? '#0f3460' : '#666';
+      btns[i].style.boxShadow = isPdf ? '0 2px 8px rgba(0,0,0,.08)' : 'none';
+    }
+  }
+
+  function showType(){
+    console.log('showType called');
+    var tz = document.getElementById('typeZone');
+    var pz = document.getElementById('pdfZone');
+
+    if(tz) tz.style.setProperty('display','block','important');
+    if(pz) pz.style.setProperty('display','none','important');
+
+    var btns = document.querySelectorAll('.mode-b');
+    for(var i = 0; i < btns.length; i++){
+      var isType = btns[i].getAttribute('data-mode') === 'type';
+      btns[i].classList.toggle('on', isType);
+      btns[i].style.background = isType ? '#fff' : 'transparent';
+      btns[i].style.color = isType ? '#0f3460' : '#666';
+      btns[i].style.boxShadow = isType ? '0 2px 8px rgba(0,0,0,.08)' : 'none';
+    }
+  }
+
+  function attach(){
+    var typeBtn = document.querySelector('.mode-b[data-mode="type"]');
+    var pdfBtn = document.querySelector('.mode-b[data-mode="pdf"]');
+
+    if(!typeBtn || !pdfBtn){
+      setTimeout(attach, 300);
+      return;
+    }
+
+    // Remove inline onclick to prevent conflicts
+    typeBtn.removeAttribute('onclick');
+    pdfBtn.removeAttribute('onclick');
+
+    // Add fresh handlers
+    typeBtn.onclick = function(e){
+      if(e) e.preventDefault();
+      showType();
+      return false;
+    };
+    pdfBtn.onclick = function(e){
+      if(e) e.preventDefault();
+      showPDF();
+      return false;
+    };
+
+    // Also add touchstart for mobile
+    pdfBtn.addEventListener('touchstart', function(e){
+      showPDF();
+    }, {passive:true});
+    typeBtn.addEventListener('touchstart', function(e){
+      showType();
+    }, {passive:true});
+
+    // Set initial state
+    showType();
+
+    console.log('✅ Mode buttons attached');
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(attach, 200); });
+  } else {
+    setTimeout(attach, 200);
+  }
+  setTimeout(attach, 1500);
+  setTimeout(attach, 3000);
+
+  console.log('✅ Mode Force ready');
+})();
+</script>
+
 </body>
 </html>
