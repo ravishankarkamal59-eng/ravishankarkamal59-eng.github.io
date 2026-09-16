@@ -2,710 +2,404 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Answer Checker - UPSC/UPPCS Mains | The Ravishankar Insights</title>
-<meta name="description" content="UPSC, UPPCS Mains के लिए अपना answer लिखें और तुरंत score पाएँ। AI-powered answer checking।">
+<meta name="description" content="UPSC, UPPCS Mains के लिए answer checking tool। अपना answer type करें या PDF upload करें और instant score पाएँ।">
 <meta name="theme-color" content="#0f3460">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="manifest" href="assets/manifest-answer-checker.json">
 <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=11">
-<link rel="apple-touch-icon" href="assets/images/logo.svg?v=11">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
-<!-- PDF.js for PDF text extraction -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<!-- Tesseract.js for OCR -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 body {
-  font-family: 'Poppins', 'Noto Sans Devanagari', -apple-system, sans-serif;
+  font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
   background: #f0f4f8;
   color: #1a1a2e;
-  overflow-x: hidden;
   min-height: 100vh;
+  padding-bottom: 100px;
 }
 
-/* App Header */
+/* Header */
 .app-header {
   position: sticky; top: 0; z-index: 100;
   background: linear-gradient(135deg, #0f3460, #1a5276, #16213e);
-  padding: 16px 20px;
+  padding: 14px 18px;
   display: flex; align-items: center; justify-content: space-between;
   box-shadow: 0 4px 20px rgba(15,52,96,0.3);
 }
-.app-header .logo-area {
-  display: flex; align-items: center; gap: 10px;
-}
+.app-header .logo-area { display: flex; align-items: center; gap: 10px; }
 .app-header .logo-icon {
-  width: 42px; height: 42px;
+  width: 40px; height: 40px;
   background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
-  border-radius: 12px;
+  border-radius: 11px;
   display: flex; align-items: center; justify-content: center;
-  font-family: Georgia, serif; font-weight: 900; font-size: 24px; color: #0a1929;
-  box-shadow: 0 4px 15px rgba(253,186,59,0.4);
+  font-family: Georgia, serif; font-weight: 900; font-size: 22px; color: #0a1929;
 }
-.app-header .logo-text {
-  color: #fff; line-height: 1.1;
-}
-.app-header .logo-text .small {
-  font-size: 10px; color: #FDBA3B; letter-spacing: 2px; font-weight: 700;
-}
-.app-header .logo-text .big {
-  font-size: 15px; font-weight: 800; font-family: Georgia, serif;
-}
-.app-header .install-btn {
-  background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
-  color: #0a1929;
-  border: none; padding: 8px 16px; border-radius: 20px;
-  font-size: 12px; font-weight: 800;
-  cursor: pointer; font-family: inherit;
-  box-shadow: 0 4px 15px rgba(253,186,59,0.4);
-  display: none;
-}
-.app-header .install-btn.show { display: inline-block; }
+.app-header .logo-text { color: #fff; line-height: 1.1; }
+.app-header .logo-text .small { font-size: 9px; color: #FDBA3B; letter-spacing: 2px; font-weight: 700; }
+.app-header .logo-text .big { font-size: 14px; font-weight: 800; font-family: Georgia, serif; }
 
-/* Main Content */
-.app-main {
-  max-width: 720px; margin: 0 auto; padding: 16px 16px 100px;
-}
+/* Container */
+.app-main { max-width: 720px; margin: 0 auto; padding: 14px; }
 
-/* Section Cards */
-.section-card {
-  background: #fff; border-radius: 18px;
-  padding: 20px; margin-bottom: 16px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+/* Cards */
+.card {
+  background: #fff; border-radius: 16px;
+  padding: 18px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
-.section-title {
-  font-size: 16px; font-weight: 800;
-  color: #0f3460; margin-bottom: 14px;
+.card-title {
+  font-size: 15px; font-weight: 800;
+  color: #0f3460; margin-bottom: 12px;
   display: flex; align-items: center; gap: 8px;
 }
-.section-title .badge {
+.badge {
   background: linear-gradient(135deg, #e94560, #c0392b);
-  color: #fff; font-size: 10px; padding: 2px 8px;
+  color: #fff; font-size: 9px; padding: 2px 8px;
   border-radius: 10px; font-weight: 700; letter-spacing: 0.5px;
 }
 
-/* Question Selector */
-.question-tabs {
-  display: flex; gap: 8px; overflow-x: auto;
-  padding-bottom: 4px; margin-bottom: 14px;
-  scrollbar-width: none;
-}
-.question-tabs::-webkit-scrollbar { display: none; }
-.qtab {
+/* Tabs */
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
   background: #f0f4f8; color: #0f3460;
-  border: none; padding: 10px 18px; border-radius: 12px;
-  font-size: 13px; font-weight: 700; white-space: nowrap;
-  cursor: pointer; font-family: inherit;
-  transition: all 0.2s;
+  border: none; padding: 9px 16px; border-radius: 10px;
+  font-size: 12px; font-weight: 700; white-space: nowrap;
+  cursor: pointer; font-family: inherit; transition: all 0.2s;
 }
-.qtab.active {
+.tab.active {
   background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+  color: #fff; box-shadow: 0 4px 15px rgba(233,69,96,0.3);
 }
 
-/* Question Display */
-.question-box {
+/* Question box */
+.q-box {
   background: linear-gradient(135deg, #f8fafc, #e8f4ff);
   border-left: 4px solid #e94560;
-  padding: 16px; border-radius: 12px;
-  margin-bottom: 14px;
+  padding: 14px; border-radius: 12px;
+  margin-bottom: 10px; cursor: pointer;
+  transition: all 0.2s;
 }
-.question-box .q-label {
-  font-size: 11px; color: #e94560;
-  font-weight: 800; letter-spacing: 1px;
-  margin-bottom: 6px;
+.q-box.selected {
+  border-left-color: #FDBA3B;
+  background: linear-gradient(135deg, #fff8e1, #fff3cd);
+  box-shadow: 0 4px 15px rgba(253,186,59,0.2);
 }
-.question-box .q-text {
-  font-size: 15px; font-weight: 600;
-  line-height: 1.6; color: #1a1a2e;
+.q-box .q-num {
+  font-size: 10px; color: #e94560;
+  font-weight: 800; letter-spacing: 1px; margin-bottom: 5px;
 }
-.question-box .q-meta {
-  display: flex; gap: 12px; margin-top: 10px;
-  font-size: 11px; color: #666;
+.q-box .q-text {
+  font-size: 14px; font-weight: 600;
+  line-height: 1.55; color: #1a1a2e;
 }
-.question-box .q-meta span {
-  background: #fff; padding: 3px 10px;
-  border-radius: 10px; border: 1px solid #e0e6ed;
-  font-weight: 600;
+.q-box .q-meta {
+  display: flex; gap: 8px; margin-top: 8px;
+  font-size: 10px; color: #666; flex-wrap: wrap;
+}
+.q-box .q-meta span {
+  background: #fff; padding: 3px 9px;
+  border-radius: 10px; border: 1px solid #e0e6ed; font-weight: 600;
 }
 
-/* Answer Textarea */
-.answer-textarea {
-  width: 100%; min-height: 220px;
-  padding: 16px;
-  border: 2px solid #e0e6ed;
-  border-radius: 14px;
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 1.8;
-  resize: vertical;
-  outline: none;
-  transition: border-color 0.2s;
-  background: #fafbfc;
-  color: #1a1a2e;
+/* Mode Tabs */
+.mode-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.mode-tab {
+  flex: 1; background: #f0f4f8; color: #0f3460;
+  border: none; padding: 12px; border-radius: 12px;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
 }
-.answer-textarea:focus {
-  border-color: #0f3460;
-  background: #fff;
+.mode-tab.active {
+  background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff; box-shadow: 0 4px 15px rgba(233,69,96,0.3);
 }
-.answer-textarea::placeholder {
-  color: #999;
+
+/* Textarea */
+textarea {
+  width: 100%; min-height: 200px;
+  padding: 14px; border: 2px solid #e0e6ed;
+  border-radius: 12px; font-family: inherit;
+  font-size: 14px; line-height: 1.7;
+  resize: vertical; outline: none;
+  background: #fafbfc; color: #1a1a2e;
 }
+textarea:focus { border-color: #0f3460; background: #fff; }
 
 /* Word counter */
-.word-counter {
+.word-row {
   display: flex; justify-content: space-between;
-  margin-top: 10px; font-size: 12px;
+  margin-top: 8px; font-size: 12px;
   font-weight: 600; color: #666;
 }
-.word-counter .count {
-  color: #0f3460; font-weight: 800;
-}
-.word-counter .status.good { color: #27ae60; }
-.word-counter .status.warn { color: #f39c12; }
-.word-counter .status.bad { color: #e94560; }
+.word-row .count { color: #0f3460; font-weight: 800; }
 
-/* Action Buttons */
-.action-buttons {
-  display: flex; gap: 10px; margin-top: 16px;
+/* PDF Upload */
+.pdf-drop {
+  border: 3px dashed #a0aec0;
+  border-radius: 14px; padding: 28px 16px;
+  text-align: center; cursor: pointer;
+  background: #fafbfc; transition: all 0.3s;
 }
+.pdf-drop:hover, .pdf-drop.dragover {
+  border-color: #0f3460; background: #e8f4ff;
+}
+.pdf-drop .icon { font-size: 44px; margin-bottom: 8px; }
+.pdf-drop .title { font-size: 14px; font-weight: 800; color: #0f3460; margin-bottom: 4px; }
+.pdf-drop .sub { font-size: 11px; color: #666; margin-bottom: 8px; }
+.pdf-drop .hint {
+  font-size: 10px; color: #e94560; font-weight: 700;
+  background: #ffe8e8; padding: 3px 10px; border-radius: 10px;
+  display: inline-block;
+}
+
+.pdf-file-info { margin-top: 14px; }
+.pdf-file-row {
+  display: flex; align-items: center; gap: 12px;
+  background: #f8fafc; padding: 12px;
+  border-radius: 12px; margin-bottom: 12px;
+}
+.pdf-file-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.pdf-file-info .name {
+  font-size: 12px; font-weight: 700; color: #0f3460;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.pdf-file-info .meta { font-size: 10px; color: #666; margin-top: 2px; }
+.pdf-remove {
+  background: #ffe8e8; color: #c0392b;
+  border: none; width: 30px; height: 30px;
+  border-radius: 50%; font-size: 14px;
+  font-weight: 700; cursor: pointer; flex-shrink: 0;
+}
+
+.progress-bar {
+  height: 6px; background: #e0e6ed;
+  border-radius: 3px; overflow: hidden;
+  margin: 10px 0 6px;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #FDBA3B, #FB5D3B);
+  border-radius: 3px; transition: width 0.3s;
+}
+.progress-text {
+  font-size: 11px; color: #666;
+  text-align: center; font-weight: 600; margin-bottom: 12px;
+}
+
+.page-thumbs {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 6px; margin-top: 10px;
+  max-height: 200px; overflow-y: auto;
+}
+.page-thumb {
+  aspect-ratio: 3/4; background: #fff;
+  border: 1px solid #e0e6ed; border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; color: #999; position: relative;
+}
+.page-thumb.done { border-color: #27ae60; background: #e8f8f0; color: #27ae60; }
+.page-thumb.processing { border-color: #f39c12; background: #fff8e1; }
+.page-thumb.error { border-color: #e94560; background: #ffe8e8; color: #e94560; }
+.page-thumb .num {
+  position: absolute; bottom: 2px; right: 3px;
+  font-size: 8px; color: #666; font-weight: 700;
+}
+
+.ocr-preview {
+  background: #f8fafc; border: 2px solid #e0e6ed;
+  border-radius: 10px; padding: 12px;
+  margin-top: 12px; max-height: 150px;
+  overflow-y: auto; font-size: 12px;
+  line-height: 1.6; color: #333;
+  white-space: pre-wrap;
+}
+.ocr-label {
+  font-size: 10px; color: #666; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+
+/* Buttons */
 .btn-primary {
-  flex: 1;
-  background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff; border: none;
-  padding: 16px; border-radius: 14px;
-  font-family: inherit;
+  width: 100%; background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff; border: none; padding: 16px;
+  border-radius: 12px; font-family: inherit;
   font-size: 15px; font-weight: 800;
-  cursor: pointer;
+  cursor: pointer; margin-top: 12px;
   box-shadow: 0 6px 20px rgba(233,69,96,0.3);
-  transition: transform 0.15s;
-  letter-spacing: 0.5px;
 }
-.btn-primary:active { transform: scale(0.98); }
-.btn-primary:disabled {
-  opacity: 0.5; cursor: not-allowed;
-}
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-secondary {
   background: #f0f4f8; color: #0f3460;
-  border: none; padding: 16px 20px;
-  border-radius: 14px;
-  font-family: inherit;
-  font-size: 15px; font-weight: 700;
-  cursor: pointer;
+  border: none; padding: 12px 20px;
+  border-radius: 12px; font-family: inherit;
+  font-size: 14px; font-weight: 700; cursor: pointer;
 }
 
-/* Results Section */
-.results-section {
-  display: none;
-  animation: slideUp 0.5s ease;
-}
-.results-section.show { display: block; }
+/* RESULTS */
+#resultsArea { display: none; }
+#resultsArea.show { display: block; }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Score Card */
 .score-card {
   background: linear-gradient(135deg, #0f3460, #1a5276);
-  border-radius: 18px;
-  padding: 24px; margin-bottom: 16px;
+  border-radius: 18px; padding: 24px;
   color: #fff; text-align: center;
-  position: relative; overflow: hidden;
+  margin-bottom: 14px; position: relative; overflow: hidden;
 }
 .score-card::before {
   content: ''; position: absolute;
-  top: -50%; right: -50%;
-  width: 200%; height: 200%;
+  top: -50%; right: -50%; width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(253,186,59,0.15), transparent 60%);
-  pointer-events: none;
 }
-.score-card .label {
-  font-size: 13px; color: #FDBA3B;
+.score-label {
+  font-size: 12px; color: #FDBA3B;
   font-weight: 700; letter-spacing: 2px;
-  margin-bottom: 12px; text-transform: uppercase;
+  margin-bottom: 10px; text-transform: uppercase;
 }
-.score-card .score-display {
-  display: flex; align-items: center; justify-content: center;
-  gap: 8px; margin-bottom: 8px;
+.score-value {
+  font-size: 68px; font-weight: 900;
+  line-height: 1; color: #FDBA3B;
+  text-shadow: 0 0 30px rgba(253,186,59,0.5);
 }
-.score-card .big-score {
-  font-size: 72px; font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.score-max { font-size: 22px; color: rgba(255,255,255,0.5); font-weight: 700; }
+.score-percent {
+  font-size: 14px; color: rgba(255,255,255,0.8);
+  margin-top: 8px; font-weight: 700;
 }
-.score-card .max-score {
-  font-size: 24px; color: rgba(255,255,255,0.5);
-  font-weight: 700;
-}
-.score-card .verdict {
-  font-size: 18px; font-weight: 800;
-  margin-top: 10px;
-  padding: 8px 20px;
-  border-radius: 30px;
-  display: inline-block;
+.verdict {
+  font-size: 16px; font-weight: 800;
+  margin-top: 12px; padding: 8px 20px;
+  border-radius: 30px; display: inline-block;
 }
 .verdict.excellent { background: rgba(39,174,96,0.3); color: #6ee7a3; }
 .verdict.good { background: rgba(52,152,219,0.3); color: #7dd3fc; }
 .verdict.average { background: rgba(243,156,18,0.3); color: #fcd34d; }
 .verdict.poor { background: rgba(233,69,96,0.3); color: #fca5a5; }
 
-/* Breakdown Grid */
-.breakdown-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-bottom: 16px;
+.breakdown {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px; margin-bottom: 14px;
 }
-.breakdown-item {
-  background: #fff;
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+.bd-item {
+  background: #fff; border-radius: 12px;
+  padding: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-.breakdown-item .bi-label {
-  font-size: 11px; color: #666;
-  font-weight: 700; margin-bottom: 6px;
-  text-transform: uppercase; letter-spacing: 0.5px;
+.bd-label {
+  font-size: 10px; color: #666;
+  font-weight: 700; margin-bottom: 5px;
+  text-transform: uppercase;
 }
-.breakdown-item .bi-value {
-  font-size: 22px; font-weight: 900;
+.bd-value {
+  font-size: 20px; font-weight: 900;
   color: #0f3460; line-height: 1;
 }
-.breakdown-item .bi-value small {
-  font-size: 13px; color: #999;
-  font-weight: 700;
-}
-.breakdown-item .bi-bar {
+.bd-value small { font-size: 12px; color: #999; }
+.bd-bar {
   height: 4px; background: #e0e6ed;
-  border-radius: 2px; margin-top: 8px;
-  overflow: hidden;
+  border-radius: 2px; margin-top: 6px; overflow: hidden;
 }
-.breakdown-item .bi-bar-fill {
+.bd-bar-fill {
   height: 100%; border-radius: 2px;
   transition: width 0.8s ease;
 }
-.bi-bar-fill.green { background: linear-gradient(90deg, #27ae60, #2ecc71); }
-.bi-bar-fill.blue { background: linear-gradient(90deg, #2980b9, #3498db); }
-.bi-bar-fill.orange { background: linear-gradient(90deg, #f39c12, #f1c40f); }
-.bi-bar-fill.red { background: linear-gradient(90deg, #e94560, #c0392b); }
+.fill-green { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+.fill-blue { background: linear-gradient(90deg, #2980b9, #3498db); }
+.fill-orange { background: linear-gradient(90deg, #f39c12, #f1c40f); }
+.fill-red { background: linear-gradient(90deg, #e94560, #c0392b); }
 
-/* Feedback Section */
-.feedback-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+.feedback {
+  background: #fff; border-radius: 14px;
+  padding: 16px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
 }
-.feedback-title {
-  font-size: 15px; font-weight: 800;
-  margin-bottom: 14px;
-  display: flex; align-items: center; gap: 8px;
+.fb-title {
+  font-size: 14px; font-weight: 800;
+  margin-bottom: 10px;
 }
-.feedback-title.good { color: #27ae60; }
-.feedback-title.warn { color: #f39c12; }
-.feedback-title.bad { color: #e94560; }
-.feedback-list {
-  list-style: none;
-}
-.feedback-list li {
-  padding: 10px 0 10px 32px;
+.fb-title.good { color: #27ae60; }
+.fb-title.bad { color: #e94560; }
+.fb-title.warn { color: #f39c12; }
+.fb-list { list-style: none; }
+.fb-list li {
+  font-size: 13px; line-height: 1.6;
+  padding: 8px 0 8px 24px;
+  position: relative; color: #333;
   border-bottom: 1px solid #f0f4f8;
-  position: relative;
+}
+.fb-list li:last-child { border-bottom: none; }
+.fb-list li::before {
+  position: absolute; left: 0; top: 8px;
   font-size: 14px;
-  line-height: 1.6;
-  color: #333;
 }
-.feedback-list li:last-child { border-bottom: none; }
-.feedback-list li::before {
-  content: ''; position: absolute;
-  left: 8px; top: 15px;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-}
-.feedback-list li.good::before { background: #27ae60; }
-.feedback-list li.good::after {
-  content: '✓'; position: absolute;
-  left: 8px; top: 15px; width: 14px; height: 14px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 9px; font-weight: 900;
-}
-.feedback-list li.bad::before { background: #e94560; }
-.feedback-list li.bad::after {
-  content: '✗'; position: absolute;
-  left: 8px; top: 15px; width: 14px; height: 14px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 10px; font-weight: 900;
-}
-.feedback-list li.warn::before { background: #f39c12; }
-.feedback-list li.warn::after {
-  content: '!'; position: absolute;
-  left: 8px; top: 15px; width: 14px; height: 14px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 11px; font-weight: 900;
-}
+.fb-list li.good::before { content: '✓'; color: #27ae60; font-weight: 900; }
+.fb-list li.bad::before { content: '✗'; color: #e94560; font-weight: 900; }
+.fb-list li.warn::before { content: '!'; color: #f39c12; font-weight: 900; }
 
-/* Keywords Chips */
-.keywords-section { margin-top: 14px; }
-.keywords-label {
-  font-size: 12px; font-weight: 700;
-  color: #666; margin-bottom: 8px;
-  text-transform: uppercase; letter-spacing: 0.5px;
-}
-.keywords-chips {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
+.keywords-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .chip {
-  background: #e8f4ff; color: #2980b9;
-  padding: 5px 12px; border-radius: 12px;
-  font-size: 12px; font-weight: 700;
+  padding: 4px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700;
 }
-.chip.missing {
-  background: #ffe8e8; color: #c0392b;
-  text-decoration: line-through;
-  opacity: 0.7;
-}
-.chip.found {
-  background: #e8f8f0; color: #27ae60;
-}
+.chip.found { background: #e8f8f0; color: #27ae60; }
+.chip.missing { background: #ffe8e8; color: #c0392b; }
 
-/* Bottom Navigation (App-like) */
+.action-row { display: flex; gap: 10px; }
+
+/* Bottom nav */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
-  background: #fff;
-  border-top: 1px solid #e0e6ed;
+  background: #fff; border-top: 1px solid #e0e6ed;
   display: flex; justify-content: space-around;
-  padding: 8px 0 10px;
-  z-index: 100;
+  padding: 8px 0 10px; z-index: 100;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
 }
-.nav-item {
+.nav-btn {
   display: flex; flex-direction: column;
   align-items: center; gap: 3px;
-  background: none; border: none;
-  padding: 6px 14px;
+  background: none; border: none; padding: 6px 12px;
   cursor: pointer; font-family: inherit;
-  color: #999; font-size: 10px;
-  font-weight: 700;
-  transition: color 0.2s;
+  color: #999; font-size: 10px; font-weight: 700;
 }
-.nav-item .nav-icon {
-  font-size: 20px; line-height: 1;
-}
-.nav-item.active {
-  color: #e94560;
-}
+.nav-btn .nav-ic { font-size: 20px; line-height: 1; }
+.nav-btn.active { color: #e94560; }
 
-/* Loading Overlay */
-.loading-overlay {
+/* Loading */
+.loading {
   position: fixed; inset: 0;
-  background: rgba(15,52,96,0.9);
-  display: none;
-  align-items: center; justify-content: center;
-  flex-direction: column; gap: 16px;
-  z-index: 9999;
-  color: #fff;
+  background: rgba(15,52,96,0.92);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+  z-index: 9999; color: #fff;
 }
-.loading-overlay.show { display: flex; }
-.loader {
-  width: 60px; height: 60px;
+.loading.show { display: flex; }
+.spinner {
+  width: 55px; height: 55px;
   border: 4px solid rgba(253,186,59,0.2);
-  border-top-color: #FDBA3B;
-  border-radius: 50%;
+  border-top-color: #FDBA3B; border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-text {
-  font-size: 16px; font-weight: 700;
-  color: #FDBA3B;
-  letter-spacing: 1px;
-}
+.loading-text { font-size: 15px; font-weight: 700; color: #FDBA3B; }
 
-/* Install Prompt */
-.install-prompt {
-  position: fixed; bottom: 80px; left: 16px; right: 16px;
-  background: linear-gradient(135deg, #0f3460, #16213e);
-  color: #fff; padding: 16px 18px;
-  border-radius: 16px;
-  display: none;
-  align-items: center; gap: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  z-index: 200;
-  animation: slideUp 0.4s ease;
-}
-.install-prompt.show { display: flex; }
-.install-prompt .ip-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; flex-shrink: 0;
-}
-.install-prompt .ip-text { flex: 1; }
-.install-prompt .ip-title {
-  font-size: 14px; font-weight: 800;
-  margin-bottom: 2px;
-}
-.install-prompt .ip-sub {
-  font-size: 11px; color: rgba(255,255,255,0.7);
-}
-.install-prompt .ip-btn {
-  background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
-  color: #0a1929; border: none;
-  padding: 8px 16px; border-radius: 12px;
-  font-size: 12px; font-weight: 800;
-  cursor: pointer; font-family: inherit;
-  flex-shrink: 0;
-}
-.install-prompt .ip-close {
-  background: transparent; border: none;
-  color: rgba(255,255,255,0.6);
-  font-size: 18px; cursor: pointer;
-  padding: 4px 6px;
-}
-
-
-/* PDF Upload Styles */
-.pdf-tabs {
-  display: flex; gap: 8px; margin-bottom: 14px;
-}
-.ptab {
-  flex: 1;
-  background: #f0f4f8; color: #0f3460;
-  border: none; padding: 12px 14px;
-  border-radius: 12px;
-  font-size: 13px; font-weight: 700;
-  cursor: pointer; font-family: inherit;
-  transition: all 0.2s;
-}
-.ptab.active {
-  background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(233,69,96,0.3);
-}
-
-.pdf-drop-zone {
-  border: 3px dashed #a0aec0;
-  border-radius: 16px;
-  padding: 32px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: #fafbfc;
-}
-.pdf-drop-zone:hover, .pdf-drop-zone.dragover {
-  border-color: #0f3460;
-  background: #e8f4ff;
-}
-.pdf-drop-zone .pdf-icon {
-  font-size: 48px; margin-bottom: 10px;
-}
-.pdf-drop-zone .pdf-title {
-  font-size: 15px; font-weight: 800;
-  color: #0f3460; margin-bottom: 6px;
-}
-.pdf-drop-zone .pdf-sub {
-  font-size: 12px; color: #666;
-  margin-bottom: 8px;
-}
-.pdf-drop-zone .pdf-hint {
-  font-size: 11px; color: #e94560;
-  font-weight: 700;
-  background: #ffe8e8;
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 10px;
-}
-
-.pdf-file-row {
-  display: flex; align-items: center; gap: 12px;
-  background: #f8fafc;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-.pdf-file-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, #e94560, #c0392b);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; flex-shrink: 0;
-}
-.pdf-file-details { flex: 1; min-width: 0; }
-.pdf-file-name {
-  font-size: 13px; font-weight: 700;
-  color: #0f3460;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.pdf-file-meta {
-  font-size: 11px; color: #666;
-  margin-top: 2px;
-}
-.pdf-remove-btn {
-  background: #ffe8e8; color: #c0392b;
-  border: none; width: 32px; height: 32px;
-  border-radius: 50%;
-  font-size: 16px; font-weight: 700;
-  cursor: pointer; flex-shrink: 0;
-}
-
-.pdf-progress {
-  margin: 12px 0;
-}
-.pdf-progress-bar {
-  height: 8px;
-  background: #e0e6ed;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 6px;
-}
-.pdf-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #FDBA3B, #FB5D3B);
-  width: 0%; border-radius: 4px;
-  transition: width 0.3s;
-  box-shadow: 0 0 10px rgba(253,186,59,0.5);
-}
-.pdf-progress-text {
-  font-size: 11px; color: #666;
-  text-align: center; font-weight: 700;
-}
-
-.pdf-pages-preview {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-top: 12px;
-  max-height: 250px;
-  overflow-y: auto;
-  padding: 4px;
-}
-.pdf-page-thumb {
-  aspect-ratio: 3/4;
-  background: #fff;
-  border: 1px solid #e0e6ed;
-  border-radius: 6px;
-  position: relative;
-  overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px;
-  color: #999;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-.pdf-page-thumb.done {
-  border-color: #27ae60;
-  background: #e8f8f0;
-}
-.pdf-page-thumb.processing {
-  border-color: #f39c12;
-  background: #fff8e1;
-  animation: pulse 1s infinite;
-}
-.pdf-page-thumb.error {
-  border-color: #e94560;
-  background: #ffe8e8;
-}
-.pdf-page-thumb .page-num {
-  position: absolute;
-  bottom: 2px; right: 4px;
-  font-size: 9px;
-  color: #666;
-  font-weight: 700;
-}
-.pdf-page-thumb .page-status {
-  font-size: 18px;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-.pdf-info-box {
-  background: #fff8e1;
-  border-left: 3px solid #f39c12;
-  border-radius: 10px;
-  padding: 12px;
-  margin-top: 12px;
-}
-
-/* OCR Result Panel */
-.ocr-result {
-  background: #f8fafc;
-  border: 2px solid #e0e6ed;
-  border-radius: 12px;
-  padding: 14px;
-  margin-top: 14px;
-  max-height: 200px;
-  overflow-y: auto;
-  font-size: 13px;
-  line-height: 1.7;
-  color: #333;
-  white-space: pre-wrap;
-}
-.ocr-result-label {
-  font-size: 11px; color: #666;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-
-/* Hidden sections */
-.view { display: none; }
-.view.active { display: block; }
-
-/* Tips Card */
-.tips-card {
-  background: linear-gradient(135deg, #fff8e1, #fff3cd);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 16px;
-  border-left: 4px solid #f39c12;
-}
-.tips-card h4 {
-  font-size: 14px; font-weight: 800;
-  color: #b8860b; margin-bottom: 10px;
-}
-.tips-card ul {
-  list-style: none;
-  padding-left: 0;
-}
-.tips-card li {
-  font-size: 13px; line-height: 1.7;
-  color: #7a5a00; padding-left: 20px;
-  position: relative; margin-bottom: 6px;
-}
-.tips-card li::before {
-  content: '💡'; position: absolute; left: 0;
-}
-
-/* Utility */
-.mt-16 { margin-top: 16px; }
 .hidden { display: none !important; }
 
-/* Mobile optimizations */
 @media (max-width: 480px) {
-  .app-main { padding: 12px 12px 100px; }
-  .section-card { padding: 16px; border-radius: 14px; }
-  .score-card .big-score { font-size: 56px; }
-  .breakdown-grid { grid-template-columns: repeat(2, 1fr); }
+  .score-value { font-size: 56px; }
+  .breakdown { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
-<!-- App Header -->
 <header class="app-header">
   <div class="logo-area">
     <div class="logo-icon">R</div>
@@ -714,740 +408,572 @@ body {
       <div class="big">Answer Checker</div>
     </div>
   </div>
-  <button class="install-btn" id="installBtn">📲 Install</button>
 </header>
 
-<!-- Main Content -->
 <main class="app-main">
 
-  <!-- VIEW: Check Answer -->
-  <div class="view active" id="view-check">
-
-    <!-- Question Selection -->
-    <div class="section-card">
-      <div class="section-title">
-        📝 प्रश्न चुनें
-        <span class="badge">UPSC / UPPCS</span>
+  <!-- Check Section -->
+  <div id="checkSection">
+    <!-- Question selector -->
+    <div class="card">
+      <div class="card-title">📝 प्रश्न चुनें <span class="badge">UPSC / UPPCS</span></div>
+      <div class="tabs" id="examTabs">
+        <button class="tab active" data-exam="upsc">UPSC Mains</button>
+        <button class="tab" data-exam="uppcs">UPPCS Mains</button>
+        <button class="tab" data-exam="essay">निबंध</button>
+        <button class="tab" data-exam="ethics">Ethics</button>
       </div>
-
-      <div class="question-tabs" id="questionTabs">
-        <button class="qtab active" data-exam="upsc">UPSC Mains</button>
-        <button class="qtab" data-exam="uppcs">UPPCS Mains</button>
-        <button class="qtab" data-exam="essay">निबंध</button>
-        <button class="qtab" data-exam="ethics">Ethics</button>
-      </div>
-
       <div id="questionList"></div>
     </div>
 
-    
-    <!-- PDF Upload Section -->
-    <div class="section-card" id="pdfUploadCard">
-      <div class="section-title">
-        📄 PDF Upload करें
-        <span class="badge">30 pages तक</span>
+    <!-- Input mode -->
+    <div class="card">
+      <div class="card-title">✍️ अपना उत्तर दें</div>
+
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="type">✍️ Type करें</button>
+        <button class="mode-tab" data-mode="pdf">📄 PDF Upload</button>
       </div>
 
-      <div class="pdf-tabs">
-        <button class="ptab active" data-mode="type">✍️ Type करें</button>
-        <button class="ptab" data-mode="pdf">📄 PDF Upload</button>
+      <!-- Type mode -->
+      <div id="typeMode">
+        <textarea id="answerInput" placeholder="यहाँ अपना उत्तर लिखें या paste करें..."></textarea>
+        <div class="word-row">
+          <span>Words: <span class="count" id="wordCount">0</span></span>
+          <span id="wordStatus" style="color:#e94560">पहले प्रश्न चुनें</span>
+        </div>
       </div>
 
-      <!-- PDF Upload UI -->
+      <!-- PDF mode -->
       <div id="pdfMode" class="hidden">
-        <div class="pdf-drop-zone" id="pdfDropZone">
-          <div class="pdf-icon">📄</div>
-          <div class="pdf-title">PDF यहाँ drop करें या tap करें</div>
-          <div class="pdf-sub">Scanned answer sheet, handwritten pages, typed PDF</div>
-          <div class="pdf-hint">Maximum 30 pages • 20 MB तक</div>
-          <input type="file" id="pdfInput" accept="application/pdf,image/*" multiple style="display:none">
+        <div class="pdf-drop" id="pdfDrop">
+          <div class="icon">📄</div>
+          <div class="title">PDF यहाँ drop करें या tap करें</div>
+          <div class="sub">Scanned answer sheet / Handwritten / Typed PDF</div>
+          <div class="hint">Max 30 pages • 20 MB</div>
+          <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
         </div>
 
-        <div id="pdfFileInfo" class="hidden">
+        <div id="pdfFileBox" class="hidden">
           <div class="pdf-file-row">
             <div class="pdf-file-icon">📄</div>
-            <div class="pdf-file-details">
-              <div class="pdf-file-name" id="pdfFileName">-</div>
-              <div class="pdf-file-meta" id="pdfFileMeta">-</div>
+            <div style="flex:1;min-width:0">
+              <div class="pdf-file-info name" id="pdfName">-</div>
+              <div class="pdf-file-info meta" id="pdfMeta">-</div>
             </div>
-            <button class="pdf-remove-btn" id="pdfRemoveBtn">✕</button>
+            <button class="pdf-remove" id="pdfRemove">✕</button>
           </div>
 
-          <div class="pdf-progress" id="pdfProgress">
-            <div class="pdf-progress-bar">
-              <div class="pdf-progress-fill" id="pdfProgressFill"></div>
-            </div>
-            <div class="pdf-progress-text" id="pdfProgressText">तैयार...</div>
-          </div>
+          <div class="progress-bar"><div class="progress-fill" id="pdfFill"></div></div>
+          <div class="progress-text" id="pdfStatus">तैयार...</div>
 
-          <div class="pdf-pages-preview" id="pdfPagesPreview"></div>
+          <div class="page-thumbs" id="pdfThumbs"></div>
+
+          <div class="ocr-preview hidden" id="ocrPreview">
+            <div class="ocr-label">📝 Extracted Text Preview</div>
+            <div id="ocrText"></div>
+          </div>
         </div>
 
-        <div class="pdf-info-box">
-          <div style="font-size:12px;color:#856404;line-height:1.7">
-            <strong>💡 Tips:</strong><br>
-            • PDF में साफ अक्षर हों तो accuracy ज़्यादा<br>
-            • Handwritten के लिए साफ लिखावट चाहिए<br>
-            • Multiple images भी upload कर सकते हैं<br>
-            • Process होने में 30-60 सेकंड लगेंगे
-          </div>
+        <div style="background:#fff8e1;border-left:3px solid #f39c12;border-radius:10px;padding:12px;margin-top:12px;font-size:11px;color:#856404;line-height:1.6">
+          <strong>💡 Tips:</strong><br>
+          • Typed PDF — 100% accurate<br>
+          • Scanned — 80-90% (English), 60-75% (Hindi)<br>
+          • Handwritten — 40-60% accuracy<br>
+          • Processing: 30 sec to 3 min
         </div>
       </div>
-    </div>
 
-    <!-- Answer Input -->
-    <div class="section-card" id="answerInputCard">
-      <div class="section-title">✍️ अपना उत्तर लिखें</div>
-
-      <textarea class="answer-textarea" id="answerInput" placeholder="यहाँ अपना उत्तर लिखें या paste करें...
-
-उदाहरण के लिए:
-- प्रस्तावना से शुरू करें
-- मुख्य बिंदु लिखें
-- उदाहरण और तथ्य जोड़ें
-- निष्कर्ष लिखें"></textarea>
-
-      <div class="word-counter">
-        <span>Words: <span class="count" id="wordCount">0</span></span>
-        <span class="status" id="wordStatus">लिखना शुरू करें</span>
-      </div>
-
-      <div class="action-buttons">
+      <div class="action-row" style="margin-top:14px">
         <button class="btn-secondary" id="clearBtn">🗑️</button>
-        <button class="btn-primary" id="checkBtn" disabled>⚡ Answer Check करें</button>
+        <button class="btn-primary" id="checkBtn" style="margin-top:0;flex:1" disabled>⚡ Answer Check करें</button>
       </div>
     </div>
 
-    <!-- Tips Card -->
-    <div class="tips-card">
-      <h4>📌 अच्छे उत्तर की विशेषताएँ</h4>
-      <ul>
-        <li>प्रस्तावना (Introduction) ज़रूर लिखें</li>
-        <li>मुख्य बिंदु क्रमांकित या bullet form में लिखें</li>
-        <li>तथ्य, आंकड़े, उदाहरण जोड़ें</li>
-        <li>सरकारी योजनाएँ, केस स्टडी का ज़िक्र करें</li>
-        <li>निष्कर्ष (Conclusion) में संतुलित दृष्टिकोण रखें</li>
-        <li>Word limit का पालन करें (150/250 शब्द)</li>
+    <!-- Tips -->
+    <div class="card" style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #f39c12">
+      <div class="card-title" style="color:#b8860b">📌 अच्छे उत्तर की विशेषताएँ</div>
+      <ul style="list-style:none;padding:0">
+        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ प्रस्तावना (Introduction) ज़रूर लिखें</li>
+        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ मुख्य बिंदु numbered/bullet में लिखें</li>
+        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ तथ्य, आंकड़े, उदाहरण जोड़ें</li>
+        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ सरकारी योजनाओं का ज़िक्र करें</li>
+        <li style="font-size:13px;line-height:1.7;color:#7a5a00">✅ निष्कर्ष (Conclusion) ज़रूर लिखें</li>
       </ul>
     </div>
-
   </div>
 
-  <!-- VIEW: Results -->
-  <div class="view" id="view-results">
-    <!-- Results will be injected here -->
-  </div>
+  <!-- Results Section -->
+  <div id="resultsArea"></div>
 
-  <!-- VIEW: History -->
-  <div class="view" id="view-history">
-    <div class="section-card">
-      <div class="section-title">📊 आपकी Progress</div>
-      <div id="historyList">
-        <p style="text-align:center;color:#999;padding:30px 0">अभी कोई attempt नहीं है</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIEW: Guide -->
-  <div class="view" id="view-guide">
-    <div class="section-card">
-      <div class="section-title">📚 Answer Writing Guide</div>
-      <div style="line-height:1.9;font-size:14px;color:#333">
-        <h4 style="color:#0f3460;margin:14px 0 8px">🎯 उत्तर लिखने का Format</h4>
-        <p><strong>1. प्रस्तावना (Introduction):</strong> 2-3 lines — विषय का परिचय या संदर्भ</p>
-        <p><strong>2. मुख्य भाग (Body):</strong> 3-5 points — तथ्य, आंकड़े, उदाहरण</p>
-        <p><strong>3. निष्कर्ष (Conclusion):</strong> 2-3 lines — संतुलित निष्कर्ष या सुझाव</p>
-
-        <h4 style="color:#0f3460;margin:14px 0 8px">📏 Word Limit</h4>
-        <p>• 10 मार्क्स: 150 शब्द</p>
-        <p>• 15 मार्क्स: 250 शब्द</p>
-        <p>• 20 मार्क्स: 300 शब्द</p>
-
-        <h4 style="color:#0f3460;margin:14px 0 8px">✨ अतिरिक्त Tips</h4>
-        <p>• Diagrams, flowcharts का प्रयोग करें</p>
-        <p>• Headings और sub-headings लगाएँ</p>
-        <p>• सरकारी योजनाओं का ज़िक्र करें</p>
-        <p>• समसामयिक घटनाओं से जोड़ें</p>
-        <p>• दोनों पक्ष रखें (तथ्य + विश्लेषण)</p>
-      </div>
+  <!-- History Section -->
+  <div id="historySection" class="hidden">
+    <div class="card">
+      <div class="card-title">📊 आपकी Progress</div>
+      <div id="historyList"></div>
     </div>
   </div>
 
 </main>
 
-<!-- Install Prompt -->
-<div class="install-prompt" id="installPrompt">
-  <div class="ip-icon">📲</div>
-  <div class="ip-text">
-    <div class="ip-title">App Install करें</div>
-    <div class="ip-sub">होम स्क्रीन पर जोड़ें, तेज़ access पाएँ</div>
-  </div>
-  <button class="ip-btn" id="installNow">Install</button>
-  <button class="ip-close" id="installClose">✕</button>
-</div>
-
-<!-- Bottom Navigation -->
+<!-- Bottom Nav -->
 <nav class="bottom-nav">
-  <button class="nav-item active" data-view="check">
-    <span class="nav-icon">✍️</span>
-    <span>Check</span>
+  <button class="nav-btn active" data-view="check">
+    <span class="nav-ic">✍️</span><span>Check</span>
   </button>
-  <button class="nav-item" data-view="results">
-    <span class="nav-icon">📊</span>
-    <span>Results</span>
-  </button>
-  <button class="nav-item" data-view="history">
-    <span class="nav-icon">📈</span>
-    <span>History</span>
-  </button>
-  <button class="nav-item" data-view="guide">
-    <span class="nav-icon">📚</span>
-    <span>Guide</span>
+  <button class="nav-btn" data-view="history">
+    <span class="nav-ic">📈</span><span>History</span>
   </button>
 </nav>
 
-<!-- Loading Overlay -->
-<div class="loading-overlay" id="loading">
-  <div class="loader"></div>
-  <div class="loading-text">Answer Check हो रहा है...</div>
+<!-- Loading -->
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loadingText">Check हो रहा है...</div>
 </div>
 
 <script>
 (function() {
   'use strict';
 
-  // ==================== DATA ====================
-  var QUESTIONS = {
-    upsc: [
-      { id:'upsc1', q:'Discuss the role of civil services in a democracy. (150 words)', words:150, marks:10, keywords:['civil services','democracy','neutrality','impartiality','accountability','transparency','governance','constitution','integrity','welfare','bureaucracy','policy implementation'] },
-      { id:'upsc2', q:'Examine the role of the Governor in the Indian federal setup. (250 words)', words:250, marks:15, keywords:['governor','federal','state','centre','discretion','article 356','appointment','constitutional','rajya','powers','pardon','bill'] },
-      { id:'upsc3', q:'Discuss the impact of climate change on Indian agriculture. (250 words)', words:250, marks:15, keywords:['climate change','agriculture','crop','monsoon','rainfall','temperature','irrigation','drought','flood','farmers','adaptation','mitigation','technology','crop insurance'] },
-      { id:'upsc4', q:'What are the main features of the Indian Constitution? (150 words)', words:150, marks:10, keywords:['constitution','federal','unitary','secular','democratic','republic','fundamental rights','directive principles','parliamentary','sovereignty','amendment','bicameral'] },
-      { id:'upsc5', q:'Discuss the significance of the Right to Information Act in ensuring transparency. (250 words)', words:250, marks:15, keywords:['RTI','right to information','transparency','accountability','corruption','democracy','governance','public authority','information commission','citizen','disclosure'] }
-    ],
-    uppcs: [
-      { id:'uppcs1', q:'उत्तर प्रदेश के औद्योगिक विकास की समस्याओं की चर्चा करें। (150 words)', words:150, marks:10, keywords:['उत्तर प्रदेश','औद्योगिक','उद्योग','विकास','बुनियादी','बिजली','सड़क','निवेश','औद्योगिक नीति','एमएसएमई','क्षेत्रीय','विकेंद्रीकरण'] },
-      { id:'uppcs2', q:'उत्तर प्रदेश में कृषि विविधीकरण की आवश्यकता और चुनौतियों पर चर्चा करें। (250 words)', words:250, marks:15, keywords:['कृषि','विविधीकरण','उत्तर प्रदेश','फसल','बागवानी','दलहन','तिलहन','सिंचाई','बाजार','किसान','आय','चुनौती'] },
-      { id:'uppcs3', q:'उत्तर प्रदेश में मानव संसाधन विकास की वर्तमान स्थिति पर प्रकाश डालें। (250 words)', words:250, marks:15, keywords:['मानव','संसाधन','विकास','शिक्षा','स्वास्थ्य','कौशल','रोजगार','जनसंख्या','साक्षरता','HDI','गरीबी','सामाजिक'] }
-    ],
-    essay: [
-      { id:'essay1', q:'"शिक्षा ही सामाजिक परिवर्तन का सबसे शक्तिशाली साधन है।" विवेचना करें।', words:300, marks:20, keywords:['शिक्षा','सामाजिक','परिवर्तन','जागरूकता','सशक्तिकरण','समानता','विकास','ज्ञान','समाज','नागरिक','नैतिक','मूल्य'] },
-      { id:'essay2', q:'"पर्यावरण संरक्षण और आर्थिक विकास साथ-साथ चल सकते हैं।" विश्लेषण करें।', words:300, marks:20, keywords:['पर्यावरण','संरक्षण','आर्थिक','विकास','सतत','संतुलन','नवीकरणीय','ऊर्जा','प्रदूषण','हरित','तकनीक','नीति'] }
-    ],
-    ethics: [
-      { id:'ethics1', q:'What do you understand by "conflict of interest"? Give examples from public service. (150 words)', words:150, marks:10, keywords:['conflict of interest','public service','ethics','integrity','personal interest','official duty','transparency','disclosure','accountability','governance','impartiality'] }
-    ]
-  };
-
-  var currentExam = 'upsc';
-  var currentQuestion = null;
-  var deferredPrompt = null;
-  var history = JSON.parse(localStorage.getItem('answerCheckerHistory') || '[]');
-
-  // ==================== DOM ====================
-  var $ = function(id) { return document.getElementById(id); };
-  var questionList = $('questionList');
-  var answerInput = $('answerInput');
-  var wordCount = $('wordCount');
-  var wordStatus = $('wordStatus');
-  var checkBtn = $('checkBtn');
-  var clearBtn = $('clearBtn');
-  var loading = $('loading');
-
-  // ==================== QUESTION RENDERING ====================
-  function renderQuestions() {
-    var html = '';
-    QUESTIONS[currentExam].forEach(function(q, i) {
-      html += '<div class="question-box" data-qid="' + q.id + '" style="cursor:pointer">' +
-        '<div class="q-label">प्रश्न ' + (i+1) + ' • ' + q.marks + ' अंक</div>' +
-        '<div class="q-text">' + q.q + '</div>' +
-        '<div class="q-meta"><span>📝 ' + q.words + ' शब्द</span><span>⏱️ ' + (q.words > 200 ? '12' : '8') + ' मिनट</span><span>🎯 ' + q.marks + ' अंक</span></div>' +
-        '</div>';
-    });
-    questionList.innerHTML = html;
-
-    questionList.querySelectorAll('.question-box').forEach(function(box) {
-      box.addEventListener('click', function() {
-        var qid = box.getAttribute('data-qid');
-        currentQuestion = QUESTIONS[currentExam].find(function(q) { return q.id === qid; });
-        // Highlight selected
-        questionList.querySelectorAll('.question-box').forEach(function(b) {
-          b.style.borderLeftColor = '#e94560';
-          b.style.background = 'linear-gradient(135deg, #f8fafc, #e8f4ff)';
-        });
-        box.style.borderLeftColor = '#FDBA3B';
-        box.style.background = 'linear-gradient(135deg, #fff8e1, #fff3cd)';
-        updateWordCount();
-      });
-    });
-
-    // Auto-select first
-    if (QUESTIONS[currentExam].length > 0) {
-      questionList.querySelector('.question-box').click();
-    }
-  }
-
-  // ==================== TABS ====================
-  document.querySelectorAll('.qtab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      document.querySelectorAll('.qtab').forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      currentExam = tab.getAttribute('data-exam');
-      renderQuestions();
-      answerInput.value = '';
-      updateWordCount();
-    });
-  });
-
-  // ==================== WORD COUNT ====================
-  function updateWordCount() {
-    var text;
-    if (pdfMode) {
-      text = extractedText.trim();
-      var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
-      if (wordCount) wordCount.textContent = words;
-      if (words > 0) {
-        checkBtn.disabled = words < 30;
-        if (wordStatus) {
-          wordStatus.textContent = '📄 PDF से ' + words + ' words मिले';
-          wordStatus.classList.remove('good', 'warn', 'bad');
-          wordStatus.classList.add(words >= 30 ? 'good' : 'bad');
-        }
-      } else {
-        checkBtn.disabled = true;
-        if (wordStatus) {
-          wordStatus.textContent = 'PDF upload करें';
-          wordStatus.classList.remove('good', 'warn', 'bad');
-          wordStatus.classList.add('bad');
-        }
-      }
-      return;
-    }
-    
-    text = answerInput.value.trim();
-    var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
-    wordCount.textContent = words;
-
-    var status = wordStatus;
-    status.classList.remove('good', 'warn', 'bad');
-
-    if (!currentQuestion) {
-      status.textContent = 'पहले प्रश्न चुनें';
-      status.classList.add('bad');
-      checkBtn.disabled = true;
-      return;
-    }
-
-    var target = currentQuestion.words;
-    var ratio = words / target;
-
-    if (words === 0) {
-      status.textContent = 'लिखना शुरू करें';
-      checkBtn.disabled = true;
-    } else if (ratio < 0.4) {
-      status.textContent = 'बहुत कम शब्द (' + Math.round(ratio * 100) + '%)';
-      status.classList.add('bad');
-      checkBtn.disabled = true;
-    } else if (ratio < 0.7) {
-      status.textContent = 'और लिखें (' + Math.round(ratio * 100) + '%)';
-      status.classList.add('warn');
-      checkBtn.disabled = false;
-    } else if (ratio > 1.3) {
-      status.textContent = 'शब्द सीमा पार (' + Math.round(ratio * 100) + '%)';
-      status.classList.add('warn');
-      checkBtn.disabled = false;
-    } else {
-      status.textContent = '✓ शब्द सीमा ठीक है';
-      status.classList.add('good');
-      checkBtn.disabled = false;
-    }
-  }
-
-
-  // ==================== PDF UPLOAD ====================
-  var pdfMode = false;
-  var extractedText = '';
-  var currentFile = null;
-
-  // Setup PDF.js worker
+  // ========== CONFIG ==========
   if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   }
 
-  // Tab switching
-  document.querySelectorAll('.ptab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      document.querySelectorAll('.ptab').forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      pdfMode = tab.getAttribute('data-mode') === 'pdf';
-      
-      if (pdfMode) {
+  var QUESTIONS = {
+    upsc: [
+      { id:'upsc1', q:'Discuss the role of civil services in a democracy. (150 words)', words:150, marks:10,
+        keywords:['civil services','democracy','neutrality','impartiality','accountability','transparency','governance','constitution','integrity','welfare','bureaucracy','policy implementation','administration','public service'] },
+      { id:'upsc2', q:'Examine the role of the Governor in the Indian federal setup. (250 words)', words:250, marks:15,
+        keywords:['governor','federal','state','centre','discretion','article 356','appointment','constitutional','rajya','powers','pardon','bill','chief minister','president'] },
+      { id:'upsc3', q:'Discuss the impact of climate change on Indian agriculture. (250 words)', words:250, marks:15,
+        keywords:['climate change','agriculture','crop','monsoon','rainfall','temperature','irrigation','drought','flood','farmers','adaptation','mitigation','technology','crop insurance','food security'] },
+      { id:'upsc4', q:'What are the main features of the Indian Constitution? (150 words)', words:150, marks:10,
+        keywords:['constitution','federal','unitary','secular','democratic','republic','fundamental rights','directive principles','parliamentary','sovereignty','amendment','bicameral','judicial review'] }
+    ],
+    uppcs: [
+      { id:'uppcs1', q:'उत्तर प्रदेश के औद्योगिक विकास की समस्याओं की चर्चा करें। (150 words)', words:150, marks:10,
+        keywords:['उत्तर प्रदेश','औद्योगिक','उद्योग','विकास','बुनियादी','बिजली','सड़क','निवेश','औद्योगिक नीति','एमएसएमई','क्षेत्रीय','विकेंद्रीकरण','रोजगार','निवेश'] },
+      { id:'uppcs2', q:'उत्तर प्रदेश में कृषि विविधीकरण की आवश्यकता और चुनौतियों पर चर्चा करें। (250 words)', words:250, marks:15,
+        keywords:['कृषि','विविधीकरण','उत्तर प्रदेश','फसल','बागवानी','दलहन','तिलहन','सिंचाई','बाजार','किसान','आय','चुनौती','मंडी','लाभ'] }
+    ],
+    essay: [
+      { id:'essay1', q:'"शिक्षा ही सामाजिक परिवर्तन का सबसे शक्तिशाली साधन है।" विवेचना करें।', words:300, marks:20,
+        keywords:['शिक्षा','सामाजिक','परिवर्तन','जागरूकता','सशक्तिकरण','समानता','विकास','ज्ञान','समाज','नागरिक','नैतिक','मूल्य','बदलाव','प्रगति'] }
+    ],
+    ethics: [
+      { id:'ethics1', q:'What do you understand by "conflict of interest"? Give examples from public service. (150 words)', words:150, marks:10,
+        keywords:['conflict of interest','public service','ethics','integrity','personal interest','official duty','transparency','disclosure','accountability','governance','impartiality','example'] }
+    ]
+  };
+
+  // ========== STATE ==========
+  var state = {
+    exam: 'upsc',
+    question: null,
+    mode: 'type',
+    extractedText: '',
+    history: JSON.parse(localStorage.getItem('acHistory') || '[]')
+  };
+
+  var $ = function(id) { return document.getElementById(id); };
+
+  // ========== RENDER QUESTIONS ==========
+  function renderQuestions() {
+    var list = $('questionList');
+    var qs = QUESTIONS[state.exam];
+    var html = '';
+    qs.forEach(function(q, i) {
+      html += '<div class="q-box" data-qid="' + q.id + '">' +
+        '<div class="q-num">प्रश्न ' + (i+1) + ' • ' + q.marks + ' अंक</div>' +
+        '<div class="q-text">' + q.q + '</div>' +
+        '<div class="q-meta">' +
+          '<span>📝 ' + q.words + ' शब्द</span>' +
+          '<span>⏱️ ' + (q.words > 200 ? '12' : '8') + ' मिनट</span>' +
+          '<span>🎯 ' + q.marks + ' अंक</span>' +
+        '</div>' +
+      '</div>';
+    });
+    list.innerHTML = html;
+
+    // Add click handlers
+    var boxes = list.querySelectorAll('.q-box');
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].addEventListener('click', function() {
+        var qid = this.getAttribute('data-qid');
+        var found = null;
+        QUESTIONS[state.exam].forEach(function(q) { if (q.id === qid) found = q; });
+        state.question = found;
+        
+        // Visual select
+        var allBoxes = list.querySelectorAll('.q-box');
+        for (var j = 0; j < allBoxes.length; j++) allBoxes[j].classList.remove('selected');
+        this.classList.add('selected');
+        
+        updateWordCount();
+      });
+    }
+
+    // Auto select first
+    if (boxes.length > 0) boxes[0].click();
+  }
+
+  // ========== WORD COUNT ==========
+  function updateWordCount() {
+    var text = '';
+    if (state.mode === 'pdf') {
+      text = state.extractedText.trim();
+    } else {
+      text = $('answerInput').value.trim();
+    }
+
+    var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
+    $('wordCount').textContent = words;
+
+    var status = $('wordStatus');
+    status.style.color = '#e94560';
+
+    if (!state.question) {
+      status.textContent = 'पहले प्रश्न चुनें';
+      $('checkBtn').disabled = true;
+      return;
+    }
+
+    var target = state.question.words;
+
+    if (words === 0) {
+      status.textContent = state.mode === 'pdf' ? 'PDF upload करें' : 'लिखना शुरू करें';
+      $('checkBtn').disabled = true;
+    } else if (words < 30) {
+      status.textContent = 'बहुत कम (' + words + ' words)';
+      $('checkBtn').disabled = true;
+    } else if (words < target * 0.4) {
+      status.textContent = 'कम है (' + words + '/' + target + ')';
+      status.style.color = '#f39c12';
+      $('checkBtn').disabled = false;
+    } else if (words > target * 1.5) {
+      status.textContent = 'ज़्यादा (' + words + '/' + target + ')';
+      status.style.color = '#f39c12';
+      $('checkBtn').disabled = false;
+    } else {
+      status.textContent = '✓ ' + words + ' words';
+      status.style.color = '#27ae60';
+      $('checkBtn').disabled = false;
+    }
+  }
+
+  // ========== MODE TABS ==========
+  var modeTabs = document.querySelectorAll('.mode-tab');
+  for (var i = 0; i < modeTabs.length; i++) {
+    modeTabs[i].addEventListener('click', function() {
+      for (var j = 0; j < modeTabs.length; j++) modeTabs[j].classList.remove('active');
+      this.classList.add('active');
+      state.mode = this.getAttribute('data-mode');
+
+      if (state.mode === 'pdf') {
+        $('typeMode').classList.add('hidden');
         $('pdfMode').classList.remove('hidden');
-        $('answerInputCard').classList.add('hidden');
       } else {
+        $('typeMode').classList.remove('hidden');
         $('pdfMode').classList.add('hidden');
-        $('answerInputCard').classList.remove('hidden');
       }
       updateWordCount();
     });
+  }
+
+  // ========== EXAM TABS ==========
+  var examTabs = document.querySelectorAll('#examTabs .tab');
+  for (var i = 0; i < examTabs.length; i++) {
+    examTabs[i].addEventListener('click', function() {
+      for (var j = 0; j < examTabs.length; j++) examTabs[j].classList.remove('active');
+      this.classList.add('active');
+      state.exam = this.getAttribute('data-exam');
+      state.question = null;
+      $('answerInput').value = '';
+      state.extractedText = '';
+      renderQuestions();
+      updateWordCount();
+    });
+  }
+
+  // ========== ANSWER INPUT ==========
+  $('answerInput').addEventListener('input', updateWordCount);
+
+  // ========== CLEAR ==========
+  $('clearBtn').addEventListener('click', function() {
+    if (state.mode === 'pdf') {
+      state.extractedText = '';
+      $('pdfFileBox').classList.add('hidden');
+      $('pdfDrop').classList.remove('hidden');
+      $('pdfThumbs').innerHTML = '';
+      $('ocrPreview').classList.add('hidden');
+    } else {
+      $('answerInput').value = '';
+    }
+    updateWordCount();
   });
 
-  // Drop zone
-  var dropZone = $('pdfDropZone');
+  // ========== PDF UPLOAD ==========
+  var drop = $('pdfDrop');
   var pdfInput = $('pdfInput');
 
-  dropZone.addEventListener('click', function() { pdfInput.click(); });
-
-  dropZone.addEventListener('dragover', function(e) {
+  drop.addEventListener('click', function() { pdfInput.click(); });
+  drop.addEventListener('dragover', function(e) { e.preventDefault(); drop.classList.add('dragover'); });
+  drop.addEventListener('dragleave', function() { drop.classList.remove('dragover'); });
+  drop.addEventListener('drop', function(e) {
     e.preventDefault();
-    dropZone.classList.add('dragover');
+    drop.classList.remove('dragover');
+    if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
   });
-  dropZone.addEventListener('dragleave', function() {
-    dropZone.classList.remove('dragover');
-  });
-  dropZone.addEventListener('drop', function(e) {
-    e.preventDefault();
-    dropZone.classList.remove('dragover');
-    if (e.dataTransfer.files.length) {
-      handlePdfFiles(e.dataTransfer.files);
-    }
-  });
-
   pdfInput.addEventListener('change', function(e) {
-    if (e.target.files.length) {
-      handlePdfFiles(e.target.files);
-    }
+    if (e.target.files.length) handleFile(e.target.files[0]);
   });
 
-  $('pdfRemoveBtn').addEventListener('click', function() {
-    currentFile = null;
-    extractedText = '';
-    $('pdfFileInfo').classList.add('hidden');
-    dropZone.style.display = 'block';
+  $('pdfRemove').addEventListener('click', function() {
+    state.extractedText = '';
+    $('pdfFileBox').classList.add('hidden');
+    drop.classList.remove('hidden');
+    $('pdfThumbs').innerHTML = '';
+    $('ocrPreview').classList.add('hidden');
     pdfInput.value = '';
     updateWordCount();
   });
 
-  function handlePdfFiles(files) {
-    if (files.length === 0) return;
-    var file = files[0];
-    
-    // Size check
+  function setProgress(p, text) {
+    $('pdfFill').style.width = p + '%';
+    $('pdfStatus').textContent = text || Math.round(p) + '%';
+  }
+
+  async function handleFile(file) {
     if (file.size > 20 * 1024 * 1024) {
-      alert('PDF 20 MB से बड़ी है। कृपया छोटी file चुनें।');
+      alert('File 20 MB से बड़ी है।');
       return;
     }
 
-    currentFile = file;
-    extractedText = '';
-    
-    dropZone.style.display = 'none';
-    $('pdfFileInfo').classList.remove('hidden');
-    $('pdfFileName').textContent = file.name;
-    $('pdfFileMeta').textContent = (file.size / 1024).toFixed(1) + ' KB';
-    $('pdfPagesPreview').innerHTML = '';
-    updateProgress(0, 'File load हो रही है...');
+    drop.classList.add('hidden');
+    $('pdfFileBox').classList.remove('hidden');
+    $('pdfName').textContent = file.name;
+    $('pdfMeta').textContent = (file.size / 1024).toFixed(1) + ' KB';
+    $('pdfThumbs').innerHTML = '';
+    state.extractedText = '';
+    setProgress(0, 'File load हो रही है...');
 
-    if (file.type === 'application/pdf') {
-      processPdf(file);
+    if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+      await processPdf(file);
     } else if (file.type.startsWith('image/')) {
-      processImage(file);
+      await processImage(file);
     } else {
-      alert('कृपया PDF या image file चुनें।');
+      alert('सिर्फ PDF या image file supported है।');
     }
-  }
-
-  function updateProgress(percent, text) {
-    $('pdfProgressFill').style.width = percent + '%';
-    $('pdfProgressText').textContent = text || (Math.round(percent) + '%');
   }
 
   async function processPdf(file) {
     try {
-      var arrayBuffer = await file.arrayBuffer();
-      var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      var totalPages = pdf.numPages;
-      
-      if (totalPages > 30) {
-        alert('PDF में ' + totalPages + ' pages हैं। Maximum 30 pages allowed हैं।');
-        // Process only first 30
-        totalPages = 30;
-      }
+      var buffer = await file.arrayBuffer();
+      var pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+      var total = Math.min(pdf.numPages, 30);
 
-      updateProgress(5, 'PDF load हो गई — ' + totalPages + ' pages');
+      setProgress(5, 'PDF load हो गई — ' + total + ' pages');
 
-      // Create preview thumbnails
-      var previewHtml = '';
-      for (var i = 1; i <= totalPages; i++) {
-        previewHtml += '<div class="pdf-page-thumb" id="thumb-' + i + '">' +
-          '<div class="page-status">⏳</div>' +
-          '<div class="page-num">' + i + '</div>' +
-        '</div>';
+      // Create thumbnails
+      var thumbHtml = '';
+      for (var i = 1; i <= total; i++) {
+        thumbHtml += '<div class="page-thumb" id="thumb-' + i + '"><span class="num">' + i + '</span></div>';
       }
-      $('pdfPagesPreview').innerHTML = previewHtml;
+      $('pdfThumbs').innerHTML = thumbHtml;
 
       var allText = '';
 
-      for (var i = 1; i <= totalPages; i++) {
+      for (var i = 1; i <= total; i++) {
         var thumb = $('thumb-' + i);
-        if (thumb) {
-          thumb.classList.add('processing');
-          thumb.querySelector('.page-status').textContent = '⏳';
-        }
+        if (thumb) { thumb.classList.add('processing'); thumb.textContent = '⏳'; }
         
-        updateProgress(5 + (i / totalPages) * 90, 'Page ' + i + ' / ' + totalPages + ' process हो रहा है...');
+        setProgress(5 + (i / total) * 90, 'Page ' + i + ' / ' + total + ' process हो रहा है...');
 
         var page = await pdf.getPage(i);
         var textContent = await page.getTextContent();
         var pageText = textContent.items.map(function(item) { return item.str; }).join(' ');
-        
-        // If no text extracted (scanned PDF), use OCR
-        if (pageText.trim().length < 20) {
+
+        // If no text (scanned PDF) — use OCR
+        if (pageText.trim().length < 30) {
           try {
-            var ocrText = await ocrPage(page);
-            pageText = ocrText;
+            setProgress(5 + (i / total) * 90, 'Page ' + i + ' — OCR चल रहा है...');
+            pageText = await ocrPage(page);
           } catch (err) {
-            console.log('OCR failed for page', i, err);
-            pageText = '';
+            console.error('OCR error:', err);
           }
         }
 
-        allText += pageText + '\n\n';
-
-        if (thumb) {
-          thumb.classList.remove('processing');
-          if (pageText.trim().length > 10) {
-            thumb.classList.add('done');
-            thumb.querySelector('.page-status').textContent = '✓';
-          } else {
-            thumb.classList.add('error');
-            thumb.querySelector('.page-status').textContent = '✕';
-          }
+        if (pageText.trim().length > 10) {
+          allText += pageText + '\n\n';
+          if (thumb) { thumb.classList.remove('processing'); thumb.classList.add('done'); thumb.textContent = '✓'; }
+        } else {
+          if (thumb) { thumb.classList.remove('processing'); thumb.classList.add('error'); thumb.textContent = '✕'; }
         }
       }
 
-      extractedText = allText.trim();
-      updateProgress(100, '✓ ' + totalPages + ' pages process हो गए');
-
-      // Show extracted text
-      showOcrResult(extractedText);
+      state.extractedText = allText.trim();
+      setProgress(100, '✓ ' + total + ' pages done');
+      showOcrPreview(state.extractedText);
       updateWordCount();
 
     } catch (err) {
       console.error(err);
-      updateProgress(0, '❌ Error: ' + err.message);
-      alert('PDF process करने में error आया। कृपया दूसरी file try करें।');
+      setProgress(0, '❌ Error: ' + err.message);
     }
   }
 
   async function ocrPage(page) {
     var viewport = page.getViewport({ scale: 1.5 });
     var canvas = document.createElement('canvas');
-    var context = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d');
     canvas.width = viewport.width;
     canvas.height = viewport.height;
-    
-    await page.render({ canvasContext: context, viewport: viewport }).promise;
-    
+    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
     var dataUrl = canvas.toDataURL('image/png');
     
-    try {
-      var result = await Tesseract.recognize(dataUrl, 'hin+eng', {
-        logger: function(m) {
-          if (m.status === 'recognizing text') {
-            // Silent - too many updates
-          }
-        }
-      });
-      return result.data.text;
-    } catch (err) {
-      console.log('Tesseract error:', err);
-      return '';
-    }
+    var result = await Tesseract.recognize(dataUrl, 'hin+eng');
+    return result.data.text;
   }
 
   async function processImage(file) {
     try {
-      updateProgress(20, 'Image load हो रही है...');
-      
+      setProgress(20, 'Image load हो रही है...');
       var dataUrl = await fileToDataUrl(file);
-      
-      updateProgress(40, 'OCR चल रहा है...');
+      setProgress(40, 'OCR चल रहा है...');
       
       var result = await Tesseract.recognize(dataUrl, 'hin+eng', {
         logger: function(m) {
           if (m.status === 'recognizing text') {
-            updateProgress(40 + m.progress * 55, 'OCR: ' + Math.round(m.progress * 100) + '%');
+            setProgress(40 + m.progress * 55, 'OCR: ' + Math.round(m.progress * 100) + '%');
           }
         }
       });
       
-      extractedText = result.data.text.trim();
-      updateProgress(100, '✓ OCR complete');
-      
-      showOcrResult(extractedText);
+      state.extractedText = result.data.text.trim();
+      setProgress(100, '✓ OCR complete');
+      showOcrPreview(state.extractedText);
       updateWordCount();
     } catch (err) {
       console.error(err);
-      updateProgress(0, '❌ OCR failed');
-      alert('Image process करने में error आया।');
+      setProgress(0, '❌ OCR failed');
     }
   }
 
   function fileToDataUrl(file) {
     return new Promise(function(resolve, reject) {
-      var reader = new FileReader();
-      reader.onload = function(e) { resolve(e.target.result); };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+      var r = new FileReader();
+      r.onload = function(e) { resolve(e.target.result); };
+      r.onerror = reject;
+      r.readAsDataURL(file);
     });
   }
 
-  function showOcrResult(text) {
-    var existing = document.querySelector('.ocr-result');
-    if (existing) existing.remove();
-    
+  function showOcrPreview(text) {
     var preview = text.length > 500 ? text.substring(0, 500) + '...' : text;
-    
-    var html = '<div class="ocr-result">' +
-      '<div class="ocr-result-label">📝 Extracted Text Preview (' + text.split(/\s+/).length + ' words)</div>' +
-      escapeHtml(preview) +
-    '</div>';
-    
-    var progressEl = $('pdfProgress');
-    progressEl.insertAdjacentHTML('afterend', html);
+    $('ocrText').textContent = preview;
+    $('ocrPreview').classList.remove('hidden');
   }
 
-  function escapeHtml(text) {
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-
-  answerInput.addEventListener('input', updateWordCount);
-
-  // ==================== CLEAR ====================
-  clearBtn.addEventListener('click', function() {
-    if (answerInput.value && !confirm('अपना उत्तर मिटाना है?')) return;
-    answerInput.value = '';
-    updateWordCount();
-  });
-
-  // ==================== CHECK ANSWER ====================
-  checkBtn.addEventListener('click', function() {
-    if (!currentQuestion) {
-      alert('पहले प्रश्न चुनें।');
+  // ========== CHECK ANSWER ==========
+  $('checkBtn').addEventListener('click', function() {
+    if (!state.question) {
+      alert('पहले प्रश्न चुनें');
       return;
     }
-    
-    var text;
-    if (pdfMode) {
-      text = extractedText.trim();
-      if (text.length < 30) {
-        alert('PDF से text नहीं मिला। कृपया साफ PDF upload करें।');
-        return;
-      }
-    } else {
-      text = answerInput.value.trim();
-      if (text.length < 30) {
-        alert('कृपया कम से कम 30 अक्षर लिखें।');
-        return;
-      }
+
+    var text = state.mode === 'pdf' ? state.extractedText.trim() : $('answerInput').value.trim();
+
+    if (text.length < 30) {
+      alert('कम से कम 30 अक्षर चाहिए');
+      return;
     }
 
-    loading.classList.add('show');
+    $('loadingText').textContent = 'Check हो रहा है...';
+    $('loading').classList.add('show');
 
     setTimeout(function() {
-      var result = analyzeAnswer(text, currentQuestion);
-      loading.classList.remove('show');
-      renderResults(result);
-      saveToHistory(result);
-      switchView('results');
-    }, 1200);
+      try {
+        var result = analyzeAnswer(text, state.question);
+        $('loading').classList.remove('show');
+        showResults(result);
+        saveHistory(result);
+      } catch (err) {
+        console.error('Analysis error:', err);
+        $('loading').classList.remove('show');
+        alert('Analysis में error आया: ' + err.message);
+      }
+    }, 800);
   });
 
-  // ==================== ANALYSIS ENGINE ====================
+  // ========== ANALYSIS ENGINE ==========
   function analyzeAnswer(text, question) {
     var lower = text.toLowerCase();
     var words = text.split(/\s+/).filter(function(w) { return w.length > 0; });
 
-    // 1. Keyword Score (max 30 marks)
-    var found = [];
-    var missing = [];
+    // 1. Keywords (max 30)
+    var found = [], missing = [];
     question.keywords.forEach(function(kw) {
-      if (lower.indexOf(kw.toLowerCase()) !== -1) {
-        found.push(kw);
-      } else {
-        missing.push(kw);
-      }
+      if (lower.indexOf(kw.toLowerCase()) !== -1) found.push(kw);
+      else missing.push(kw);
     });
-    var keywordScore = Math.round((found.length / question.keywords.length) * 30);
+    var kwScore = Math.round((found.length / question.keywords.length) * 30);
 
-    // 2. Structure Score (max 20 marks)
+    // 2. Structure (max 20)
     var hasIntro = /प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ/i.test(text);
     var hasConclusion = /निष्कर्ष|conclusion|अंत में|समापन|सुझाव/i.test(text);
-    var hasPoints = /[1-9][\.\)]\s|\b(पहला|दूसरा|तीसरा|प्रथम|द्वितीय)\b|•|\-|\*/m.test(text);
-    var hasExamples = /उदाहरण|example|जैसे|यथा|जैसे कि|for instance|case study|केस/i.test(text);
+    var hasPoints = /[1-9][\.\)]\s|\b(पहला|दूसरा|तीसरा|प्रथम|द्वितीय)\b|•|\-\s|\*/m.test(text);
+    var hasExamples = /उदाहरण|example|जैसे|यथा|for instance|case study/i.test(text);
+    var structScore = 0;
+    if (hasIntro) structScore += 5;
+    if (hasConclusion) structScore += 5;
+    if (hasPoints) structScore += 5;
+    if (hasExamples) structScore += 5;
 
-    var structurePoints = 0;
-    if (hasIntro) structurePoints += 5;
-    if (hasConclusion) structurePoints += 5;
-    if (hasPoints) structurePoints += 5;
-    if (hasExamples) structurePoints += 5;
+    // 3. Length (max 15)
+    var ratio = words.length / question.words;
+    var lenScore = 3;
+    if (ratio >= 0.9 && ratio <= 1.15) lenScore = 15;
+    else if (ratio >= 0.75 && ratio < 0.9) lenScore = 12;
+    else if (ratio > 1.15 && ratio <= 1.35) lenScore = 10;
+    else if (ratio >= 0.5 && ratio < 0.75) lenScore = 7;
+    else if (ratio > 1.35) lenScore = 5;
 
-    // 3. Length Score (max 15 marks)
-    var target = question.words;
-    var actual = words.length;
-    var ratio = actual / target;
-    var lengthScore = 0;
-    if (ratio >= 0.9 && ratio <= 1.15) lengthScore = 15;
-    else if (ratio >= 0.75 && ratio < 0.9) lengthScore = 12;
-    else if (ratio > 1.15 && ratio <= 1.35) lengthScore = 10;
-    else if (ratio >= 0.5 && ratio < 0.75) lengthScore = 7;
-    else if (ratio > 1.35) lengthScore = 5;
-    else lengthScore = 3;
-
-    // 4. Grammar/Quality Score (max 15 marks)
-    var sentences = text.split(/[।\.!\?]+/).filter(function(s) { return s.trim().length > 0; });
-    var avgWordsPerSentence = sentences.length > 0 ? words.length / sentences.length : 0;
-    var qualityScore = 0;
-    if (avgWordsPerSentence >= 8 && avgWordsPerSentence <= 20) qualityScore = 10;
-    else if (avgWordsPerSentence >= 6 && avgWordsPerSentence <= 25) qualityScore = 7;
-    else qualityScore = 4;
-
-    // Bonus for variety
+    // 4. Quality (max 15)
+    var sentences = text.split(/[।\.!\?]+/).filter(function(s) { return s.trim().length > 5; });
+    var avgLen = sentences.length > 0 ? words.length / sentences.length : 0;
+    var qualScore = 4;
+    if (avgLen >= 8 && avgLen <= 20) qualScore = 10;
+    else if (avgLen >= 6 && avgLen <= 25) qualScore = 7;
     var uniqueWords = new Set(words.map(function(w) { return w.toLowerCase(); }));
-    var variety = uniqueWords.size / words.length;
-    if (variety > 0.6) qualityScore += 5;
-    else if (variety > 0.5) qualityScore += 3;
-    else qualityScore += 1;
+    var variety = uniqueWords.size / Math.max(words.length, 1);
+    if (variety > 0.6) qualScore += 5;
+    else if (variety > 0.5) qualScore += 3;
+    else qualScore += 1;
 
-    // 5. Data/Facts Score (max 20 marks)
-    var hasNumbers = /\d+%|\d+\.\d+|\d{4}|\d+ करोड़|\d+ लाख|₹\d+|\d+ बिलियन/i.test(text);
+    // 5. Data (max 20)
+    var hasNumbers = /\d+%|\d+\.\d+|\d{4}|\d+ करोड़|\d+ लाख|₹\d+/i.test(text);
     var hasSchemes = /योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy|कार्यक्रम|program/i.test(text);
-    var hasQuotes = /[""'"'「」]|कहा|अनुसार|according/i.test(text);
+    var hasQuotes = /[""'']|कहा|अनुसार|according/i.test(text);
     var dataScore = 0;
     if (hasNumbers) dataScore += 8;
     if (hasSchemes) dataScore += 7;
     if (hasQuotes) dataScore += 5;
 
-    var total = keywordScore + structurePoints + lengthScore + qualityScore + dataScore;
-    total = Math.min(total, question.marks * 10);
-
-    // Convert to 10-point scale
-    var maxScore = question.marks * 10;
-    var finalScore = Math.round((total / maxScore) * question.marks);
+    var total = kwScore + structScore + lenScore + qualScore + dataScore;
+    total = Math.min(total, 100);
+    var finalScore = Math.round((total / 100) * question.marks);
 
     return {
       score: finalScore,
       maxScore: question.marks,
-      percentage: Math.round((finalScore / question.marks) * 100),
-      keywordScore: keywordScore,
-      structureScore: structurePoints,
-      lengthScore: lengthScore,
-      qualityScore: qualityScore,
-      dataScore: dataScore,
+      percentage: total,
+      kw: kwScore,
+      struct: structScore,
+      len: lenScore,
+      qual: qualScore,
+      data: dataScore,
       words: words.length,
       targetWords: question.words,
       found: found,
@@ -1458,152 +984,145 @@ body {
       hasExamples: hasExamples,
       hasNumbers: hasNumbers,
       hasSchemes: hasSchemes,
+      hasQuotes: hasQuotes,
       question: question,
       timestamp: Date.now()
     };
   }
 
-  // ==================== RENDER RESULTS ====================
-  function renderResults(r) {
-    var verdict = '';
-    var verdictClass = '';
-    if (r.percentage >= 80) { verdict = '🏆 Excellent! बहुत बढ़िया'; verdictClass = 'excellent'; }
-    else if (r.percentage >= 60) { verdict = '👍 Good! अच्छा प्रयास'; verdictClass = 'good'; }
-    else if (r.percentage >= 40) { verdict = '📈 Average - सुधार की ज़रूरत'; verdictClass = 'average'; }
-    else { verdict = '💪 Need Improvement'; verdictClass = 'poor'; }
+  // ========== SHOW RESULTS ==========
+  function showResults(r) {
+    var verdict, vClass;
+    if (r.percentage >= 80) { verdict = '🏆 Excellent!'; vClass = 'excellent'; }
+    else if (r.percentage >= 60) { verdict = '👍 Good!'; vClass = 'good'; }
+    else if (r.percentage >= 40) { verdict = '📈 Average'; vClass = 'average'; }
+    else { verdict = '💪 सुधार ज़रूरी'; vClass = 'poor'; }
 
-    var kwPercent = Math.round((r.keywordScore / 30) * 100);
-    var stPercent = Math.round((r.structureScore / 20) * 100);
-    var lnPercent = Math.round((r.lengthScore / 15) * 100);
-    var qlPercent = Math.round((r.qualityScore / 15) * 100);
-    var dtPercent = Math.round((r.dataScore / 20) * 100);
+    // Feedback lists
+    var good = [], bad = [], warn = [];
+    
+    if (r.hasIntro) good.push('प्रस्तावना लिखी गई — बढ़िया!');
+    else bad.push('प्रस्तावना नहीं लिखी — Introduction ज़रूर जोड़ें');
+    
+    if (r.hasConclusion) good.push('निष्कर्ष लिखा गया — सही तरीका');
+    else bad.push('निष्कर्ष नहीं लिखा — Conclusion लिखें');
+    
+    if (r.hasPoints) good.push('Points/Bullets का प्रयोग हुआ');
+    else bad.push('Points या Bullets में लिखें — structure साफ रहेगा');
+    
+    if (r.hasExamples) good.push('उदाहरण दिए गए — answer मजबूत');
+    else warn.push('2-3 real examples जोड़ें');
+    
+    if (r.hasNumbers) good.push('आंकड़े/तथ्य का प्रयोग हुआ');
+    else warn.push('Statistics, %, dates जोड़ें');
+    
+    if (r.hasSchemes) good.push('सरकारी योजना/नीति का ज़िक्र है');
+    else warn.push('सरकारी योजनाओं का ज़िक्र करें');
 
-    // Feedback list
-    var feedbackGood = [];
-    var feedbackBad = [];
-    var feedbackWarn = [];
+    var wr = r.words / r.targetWords;
+    if (wr >= 0.9 && wr <= 1.15) good.push('Word limit का सही पालन');
+    else if (wr < 0.9) warn.push('शब्द कम हैं — और लिखें (' + r.words + '/' + r.targetWords + ')');
+    else warn.push('शब्द ज़्यादा हैं (' + r.words + '/' + r.targetWords + ')');
 
-    if (r.hasIntro) feedbackGood.push('प्रस्तावना लिखी गई — बढ़िया!');
-    else feedbackBad.push('प्रस्तावना नहीं लिखी — Introduction ज़रूर जोड़ें।');
+    if (r.found.length >= r.question.keywords.length * 0.6) good.push('मुख्य keywords covered');
+    if (r.missing.length > 0) warn.push(r.missing.length + ' keywords छूटे');
 
-    if (r.hasConclusion) feedbackGood.push('निष्कर्ष लिखा गया — सही तरीका।');
-    else feedbackBad.push('निष्कर्ष नहीं लिखा — Conclusion में संतुलित दृष्टिकोण लिखें।');
-
-    if (r.hasPoints) feedbackGood.push('Points/Bullets का प्रयोग हुआ — answer structured है।');
-    else feedbackBad.push('Points या Bullets में मत लिखें — structure साफ रहेगा।');
-
-    if (r.hasExamples) feedbackGood.push('उदाहरण दिए गए — answer मजबूत हुआ।');
-    else feedbackWarn.push('उदाहरण नहीं दिए — 2-3 real examples जोड़ें।');
-
-    if (r.hasNumbers) feedbackGood.push('आंकड़े/तथ्य का प्रयोग हुआ — excellent!');
-    else feedbackWarn.push('आंकड़े नहीं हैं — statistics, %, dates जोड़ें।');
-
-    if (r.hasSchemes) feedbackGood.push('सरकारी योजना/नीति का ज़िक्र है — अच्छा।');
-    else feedbackWarn.push('सरकारी योजनाओं का ज़िक्र नहीं — जैसे PM-KISAN, MGNREGA आदि जोड़ें।');
-
-    var ratio = r.words / r.targetWords;
-    if (ratio >= 0.9 && ratio <= 1.15) feedbackGood.push('Word limit का सही पालन किया।');
-    else if (ratio < 0.9) feedbackWarn.push('शब्द कम हैं — और लिखें (' + r.words + '/' + r.targetWords + ' words)।');
-    else feedbackWarn.push('शब्द ज़्यादा हैं — concise लिखें (' + r.words + '/' + r.targetWords + ' words)।');
-
-    if (r.found.length >= r.question.keywords.length * 0.6) {
-      feedbackGood.push('मुख्य keywords covered हैं।');
-    }
-    if (r.missing.length > 0) {
-      feedbackWarn.push(r.missing.length + ' keywords छूटे — नीचे देखें।');
-    }
-
+    // Build HTML
     var html = '';
 
-    // Score Card
+    // Score card
     html += '<div class="score-card">' +
-      '<div class="label">आपका Score</div>' +
-      '<div class="score-display">' +
-        '<div class="big-score">' + r.score + '</div>' +
-        '<div class="max-score">/ ' + r.maxScore + '</div>' +
-      '</div>' +
-      '<div class="verdict ' + verdictClass + '">' + verdict + '</div>' +
+      '<div class="score-label">आपका Score</div>' +
+      '<div><span class="score-value">' + r.score + '</span><span class="score-max"> / ' + r.maxScore + '</span></div>' +
+      '<div class="score-percent">' + r.percentage + '%</div>' +
+      '<div class="verdict ' + vClass + '">' + verdict + '</div>' +
     '</div>';
 
     // Breakdown
-    html += '<div class="section-card"><div class="section-title">📊 Score Breakdown</div>' +
-      '<div class="breakdown-grid">' +
-        renderBreakdown('Keyword Coverage', r.keywordScore, 30, 'green') +
-        renderBreakdown('Structure', r.structureScore, 20, 'blue') +
-        renderBreakdown('Length', r.lengthScore, 15, 'orange') +
-        renderBreakdown('Quality', r.qualityScore, 15, 'blue') +
-        renderBreakdown('Data/Facts', r.dataScore, 20, 'green') +
-        renderBreakdown('Total', r.score, r.maxScore, 'red') +
+    html += '<div class="card"><div class="card-title">📊 Score Breakdown</div><div class="breakdown">';
+    html += bdItem('Keywords', r.kw, 30, 'fill-green');
+    html += bdItem('Structure', r.struct, 20, 'fill-blue');
+    html += bdItem('Length', r.len, 15, 'fill-orange');
+    html += bdItem('Quality', r.qual, 15, 'fill-blue');
+    html += bdItem('Data/Facts', r.data, 20, 'fill-green');
+    html += bdItem('Total', r.score, r.maxScore, 'fill-red');
+    html += '</div></div>';
+
+    // Word count
+    html += '<div class="card">' +
+      '<div class="card-title">📝 Word Count</div>' +
+      '<div style="text-align:center;font-size:20px;font-weight:800;color:#0f3460">' +
+        r.words + ' <span style="color:#999;font-size:14px">/ ' + r.targetWords + '</span>' +
+      '</div>' +
+      '<div style="text-align:center;font-size:12px;color:#666;margin-top:4px">' +
+        (wr >= 0.9 && wr <= 1.15 ? '✓ आदर्श लंबाई' : (wr < 0.9 ? '⚠️ और लिखें' : '⚠️ छोटा करें')) +
       '</div>' +
     '</div>';
 
-    // Word Count Info
-    html += '<div class="section-card">' +
-      '<div class="section-title">📝 Word Count</div>' +
-      '<p style="text-align:center;font-size:20px;font-weight:800;color:#0f3460">' +
-        r.words + ' <span style="color:#999;font-size:14px">/ ' + r.targetWords + ' शब्द</span>' +
-      '</p>' +
-      '<p style="text-align:center;font-size:13px;color:#666;margin-top:6px">' +
-        (ratio >= 0.9 && ratio <= 1.15 ? '✓ आदर्श लंबाई' : (ratio < 0.9 ? '⚠️ और लिखें' : '⚠️ छोटा करें')) +
-      '</p>' +
-    '</div>';
-
-    // Feedback
-    if (feedbackGood.length > 0) {
-      html += '<div class="feedback-card"><div class="feedback-title good">✅ अच्छी बातें (' + feedbackGood.length + ')</div><ul class="feedback-list">';
-      feedbackGood.forEach(function(f) { html += '<li class="good">' + f + '</li>'; });
+    // Good feedback
+    if (good.length > 0) {
+      html += '<div class="feedback"><div class="fb-title good">✅ अच्छी बातें (' + good.length + ')</div><ul class="fb-list">';
+      good.forEach(function(f) { html += '<li class="good">' + f + '</li>'; });
       html += '</ul></div>';
     }
 
-    if (feedbackBad.length > 0) {
-      html += '<div class="feedback-card"><div class="feedback-title bad">❌ सुधार ज़रूरी (' + feedbackBad.length + ')</div><ul class="feedback-list">';
-      feedbackBad.forEach(function(f) { html += '<li class="bad">' + f + '</li>'; });
+    // Bad feedback
+    if (bad.length > 0) {
+      html += '<div class="feedback"><div class="fb-title bad">❌ सुधार ज़रूरी (' + bad.length + ')</div><ul class="fb-list">';
+      bad.forEach(function(f) { html += '<li class="bad">' + f + '</li>'; });
       html += '</ul></div>';
     }
 
-    if (feedbackWarn.length > 0) {
-      html += '<div class="feedback-card"><div class="feedback-title warn">⚠️ Suggestions (' + feedbackWarn.length + ')</div><ul class="feedback-list">';
-      feedbackWarn.forEach(function(f) { html += '<li class="warn">' + f + '</li>'; });
+    // Warn feedback
+    if (warn.length > 0) {
+      html += '<div class="feedback"><div class="fb-title warn">⚠️ Suggestions (' + warn.length + ')</div><ul class="fb-list">';
+      warn.forEach(function(f) { html += '<li class="warn">' + f + '</li>'; });
       html += '</ul></div>';
     }
 
     // Keywords
-    html += '<div class="feedback-card"><div class="feedback-title">🔑 Keyword Analysis</div>' +
-      '<div class="keywords-section">' +
-        '<div class="keywords-label">✅ Found (' + r.found.length + ')</div>' +
-        '<div class="keywords-chips">' +
-          (r.found.length > 0 ? r.found.map(function(k) { return '<span class="chip found">✓ ' + k + '</span>'; }).join('') : '<span style="color:#999;font-size:12px">कोई keyword नहीं मिला</span>') +
-        '</div>' +
-      '</div>' +
-      (r.missing.length > 0 ? '<div class="keywords-section" style="margin-top:14px">' +
-        '<div class="keywords-label">❌ Missing (' + r.missing.length + ')</div>' +
-        '<div class="keywords-chips">' +
-          r.missing.map(function(k) { return '<span class="chip missing">' + k + '</span>'; }).join('') +
-        '</div>' +
-      '</div>' : '') +
+    html += '<div class="feedback"><div class="fb-title" style="color:#0f3460">🔑 Keywords</div>';
+    html += '<div style="font-size:11px;color:#666;font-weight:700;margin-bottom:6px">✅ FOUND (' + r.found.length + ')</div>';
+    html += '<div class="keywords-wrap">';
+    if (r.found.length > 0) {
+      r.found.forEach(function(k) { html += '<span class="chip found">✓ ' + k + '</span>'; });
+    } else {
+      html += '<span style="font-size:12px;color:#999">कोई keyword नहीं मिला</span>';
+    }
+    html += '</div>';
+    if (r.missing.length > 0) {
+      html += '<div style="font-size:11px;color:#666;font-weight:700;margin:12px 0 6px">❌ MISSING (' + r.missing.length + ')</div>';
+      html += '<div class="keywords-wrap">';
+      r.missing.forEach(function(k) { html += '<span class="chip missing">' + k + '</span>'; });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    // Actions
+    html += '<div class="action-row" style="margin-bottom:20px">' +
+      '<button class="btn-primary" onclick="window.acRetry()" style="margin-top:0">🔄 दोबारा लिखें</button>' +
+      '<button class="btn-secondary" onclick="window.acHome()">🏠</button>' +
     '</div>';
 
-    // Retry button
-    html += '<div class="action-buttons" style="margin-bottom:20px">' +
-      '<button class="btn-primary" onclick="window.retryAnswer()">🔄 दोबारा लिखें</button>' +
-      '<button class="btn-secondary" onclick="window.goHome()">🏠</button>' +
-    '</div>';
-
-    $('view-results').innerHTML = html;
+    $('resultsArea').innerHTML = html;
+    $('resultsArea').classList.add('show');
+    $('checkSection').classList.add('hidden');
+    $('historySection').classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function renderBreakdown(label, value, max, colorClass) {
-    var pct = Math.round((value / max) * 100);
-    return '<div class="breakdown-item">' +
-      '<div class="bi-label">' + label + '</div>' +
-      '<div class="bi-value">' + value + ' <small>/ ' + max + '</small></div>' +
-      '<div class="bi-bar"><div class="bi-bar-fill ' + colorClass + '" style="width:' + pct + '%"></div></div>' +
+  function bdItem(label, val, max, cls) {
+    var pct = Math.round((val / max) * 100);
+    return '<div class="bd-item">' +
+      '<div class="bd-label">' + label + '</div>' +
+      '<div class="bd-value">' + val + ' <small>/ ' + max + '</small></div>' +
+      '<div class="bd-bar"><div class="bd-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>' +
     '</div>';
   }
 
-  // ==================== HISTORY ====================
-  function saveToHistory(r) {
-    history.unshift({
+  // ========== HISTORY ==========
+  function saveHistory(r) {
+    state.history.unshift({
       score: r.score,
       maxScore: r.maxScore,
       percentage: r.percentage,
@@ -1611,117 +1130,93 @@ body {
       words: r.words,
       timestamp: r.timestamp
     });
-    if (history.length > 20) history = history.slice(0, 20);
-    localStorage.setItem('answerCheckerHistory', JSON.stringify(history));
+    if (state.history.length > 30) state.history = state.history.slice(0, 30);
+    try {
+      localStorage.setItem('acHistory', JSON.stringify(state.history));
+    } catch (e) {}
   }
 
   function renderHistory() {
     var list = $('historyList');
-    if (history.length === 0) {
+    if (state.history.length === 0) {
       list.innerHTML = '<p style="text-align:center;color:#999;padding:30px 0">अभी कोई attempt नहीं है</p>';
       return;
     }
 
+    var total = 0, maxTotal = 0;
     var html = '';
-    var totalScore = 0;
-    var totalMax = 0;
-    history.forEach(function(h) {
-      totalScore += h.score;
-      totalMax += h.maxScore;
-      var date = new Date(h.timestamp);
-      var dateStr = date.getDate() + '/' + (date.getMonth()+1) + ' ' + date.getHours() + ':' + String(date.getMinutes()).padStart(2, '0');
-      var pct = h.percentage;
-      var color = pct >= 60 ? '#27ae60' : (pct >= 40 ? '#f39c12' : '#e94560');
+    state.history.forEach(function(h) {
+      total += h.score;
+      maxTotal += h.maxScore;
+      var d = new Date(h.timestamp);
+      var dateStr = d.getDate() + '/' + (d.getMonth()+1) + ' ' + d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+      var color = h.percentage >= 60 ? '#27ae60' : (h.percentage >= 40 ? '#f39c12' : '#e94560');
+      
       html += '<div style="padding:12px 0;border-bottom:1px solid #f0f4f8">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">' +
-          '<span style="font-size:11px;color:#999">' + dateStr + '</span>' +
-          '<span style="font-size:18px;font-weight:800;color:' + color + '">' + h.score + '/' + h.maxScore + '</span>' +
+        '<div style="display:flex;justify-content:space-between;margin-bottom:4px">' +
+          '<span style="font-size:10px;color:#999">' + dateStr + '</span>' +
+          '<span style="font-size:16px;font-weight:800;color:' + color + '">' + h.score + '/' + h.maxScore + '</span>' +
         '</div>' +
-        '<p style="font-size:12px;color:#333;line-height:1.4;margin-bottom:4px">' + h.question.substring(0, 80) + (h.question.length > 80 ? '...' : '') + '</p>' +
-        '<div style="font-size:11px;color:#666">' + h.words + ' शब्द • ' + pct + '%</div>' +
+        '<div style="font-size:12px;color:#333;line-height:1.4;margin-bottom:4px">' + h.question.substring(0, 80) + (h.question.length > 80 ? '...' : '') + '</div>' +
+        '<div style="font-size:10px;color:#666">' + h.words + ' words • ' + h.percentage + '%</div>' +
       '</div>';
     });
 
-    var avg = totalMax > 0 ? Math.round((totalScore / totalMax) * 100) : 0;
-    html = '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;border-radius:14px;margin-bottom:16px;text-align:center">' +
-      '<div style="font-size:11px;color:#FDBA3B;font-weight:700;letter-spacing:1px;margin-bottom:4px">औसत प्रदर्शन</div>' +
-      '<div style="font-size:36px;font-weight:900">' + avg + '%</div>' +
-      '<div style="font-size:11px;opacity:0.7;margin-top:4px">' + history.length + ' attempts</div>' +
+    var avg = maxTotal > 0 ? Math.round((total / maxTotal) * 100) : 0;
+    html = '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;border-radius:14px;margin-bottom:14px;text-align:center">' +
+      '<div style="font-size:10px;color:#FDBA3B;font-weight:700;letter-spacing:1px;margin-bottom:4px">औसत प्रदर्शन</div>' +
+      '<div style="font-size:32px;font-weight:900">' + avg + '%</div>' +
+      '<div style="font-size:10px;opacity:0.7;margin-top:4px">' + state.history.length + ' attempts</div>' +
     '</div>' + html;
 
     list.innerHTML = html;
   }
 
-  // ==================== VIEWS ====================
-  function switchView(viewName) {
-    document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
-    var v = $('view-' + viewName);
-    if (v) v.classList.add('active');
-
-    document.querySelectorAll('.nav-item').forEach(function(n) {
-      n.classList.toggle('active', n.getAttribute('data-view') === viewName);
+  // ========== NAVIGATION ==========
+  var navBtns = document.querySelectorAll('.nav-btn');
+  for (var i = 0; i < navBtns.length; i++) {
+    navBtns[i].addEventListener('click', function() {
+      var view = this.getAttribute('data-view');
+      for (var j = 0; j < navBtns.length; j++) navBtns[j].classList.remove('active');
+      this.classList.add('active');
+      
+      $('resultsArea').classList.remove('show');
+      $('checkSection').classList.add('hidden');
+      $('historySection').classList.add('hidden');
+      
+      if (view === 'check') {
+        $('checkSection').classList.remove('hidden');
+      } else if (view === 'history') {
+        renderHistory();
+        $('historySection').classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    if (viewName === 'history') renderHistory();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  document.querySelectorAll('.nav-item').forEach(function(n) {
-    n.addEventListener('click', function() {
-      switchView(n.getAttribute('data-view'));
-    });
-  });
-
-  window.retryAnswer = function() {
-    answerInput.value = '';
-    updateWordCount();
-    switchView('check');
-  };
-
-  window.goHome = function() {
-    switchView('check');
-  };
-
-  // ==================== PWA / INSTALL ====================
-  window.addEventListener('beforeinstallprompt', function(e) {
-    e.preventDefault();
-    deferredPrompt = e;
-    $('installBtn').classList.add('show');
-    setTimeout(function() {
-      $('installPrompt').classList.add('show');
-    }, 5000);
-  });
-
-  $('installBtn').addEventListener('click', function() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function(choice) {
-        deferredPrompt = null;
-        $('installBtn').classList.remove('show');
-        $('installPrompt').classList.remove('show');
-      });
-    }
-  });
-
-  $('installNow').addEventListener('click', function() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function() {
-        deferredPrompt = null;
-        $('installPrompt').classList.remove('show');
-      });
+  window.acRetry = function() {
+    if (state.mode === 'pdf') {
+      state.extractedText = '';
+      $('pdfFileBox').classList.add('hidden');
+      $('pdfDrop').classList.remove('hidden');
+      $('pdfThumbs').innerHTML = '';
+      $('ocrPreview').classList.add('hidden');
     } else {
-      alert('Browser menu में जाकर "Add to Home Screen" चुनें।');
+      $('answerInput').value = '';
     }
-  });
+    $('resultsArea').classList.remove('show');
+    $('checkSection').classList.remove('hidden');
+    updateWordCount();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-  $('installClose').addEventListener('click', function() {
-    $('installPrompt').classList.remove('show');
-  });
+  window.acHome = function() {
+    window.acRetry();
+  };
 
-  // ==================== INIT ====================
+  // ========== INIT ==========
   renderQuestions();
-  renderHistory();
+  updateWordCount();
 
 })();
 </script>
