@@ -713,13 +713,13 @@ console.log('✅ Fix JS loaded');
 
     <!-- PDF zone -->
     <div class="pdf-z" id="pdfZone">
-      <div class="pdf-drop" id="pdfDrop">
-        <div class="ic">📄</div>
-        <div class="tt">PDF drop करें या tap करें</div>
-        <div class="st">Scanned / Handwritten / Typed • Any size</div>
-        <div class="ht">♾️ Unlimited pages • Unlimited size</div>
-        <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
-      </div>
+      <label for="pdfInput" class="pdf-drop" id="pdfDrop" style="display:block;cursor:pointer">
+          <div class="ic">📄</div>
+          <div class="tt">PDF drop करें या tap करें</div>
+          <div class="st">Scanned / Handwritten / Typed • Any size</div>
+          <div class="ht">♾️ Unlimited pages • Unlimited size</div>
+          <input type="file" id="pdfInput" accept="application/pdf,image/*" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        </label>
       <div class="pdf-info" id="pdfInfo">
         <div class="fi">📄</div>
         <div class="fn" id="pdfFn">-</div>
@@ -3490,48 +3490,44 @@ console.log('✅ Fix JS loaded');
 
 
 
-<script>
-// ==================== DIRECT PDF PROCESSOR ====================
-(function(){
-  console.log('=== Direct PDF Processor loading ===');
 
-  // Wait for DOM
-  function init(){
+
+
+<script>
+// ==================== PDF LABEL FIX ====================
+(function(){
+  console.log('=== PDF Label Fix loading ===');
+
+  function ready(){
     var drop = document.getElementById('pdfDrop');
     var input = document.getElementById('pdfInput');
-    var pdfZone = document.getElementById('pdfZone');
 
     if(!drop || !input){
-      setTimeout(init, 300);
+      setTimeout(ready, 300);
       return;
     }
 
-    console.log('PDF elements found — attaching');
+    console.log('PDF elements found');
 
-    // ============ FIX INPUT (clone to remove old listeners) ============
+    // Make sure input is clickable
+    input.style.position = 'absolute';
+    input.style.left = '-9999px';
+    input.style.width = '1px';
+    input.style.height = '1px';
+    input.style.opacity = '0';
+
+    // Attach change handler (clone first to remove old)
     var newInput = input.cloneNode(true);
     input.parentNode.replaceChild(newInput, input);
-    newInput.id = 'pdfInput';
 
-    // ============ DROP ZONE CLICK ============
-    drop.style.cursor = 'pointer';
-    drop.onclick = function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('Drop zone clicked — opening file picker');
-      newInput.click();
-      return false;
-    };
-
-    // ============ FILE SELECTED ============
     newInput.onchange = function(e){
       if(e.target.files && e.target.files.length > 0){
         console.log('File selected:', e.target.files[0].name);
-        processPdf(e.target.files[0]);
+        handlePDFFile(e.target.files[0]);
       }
     };
 
-    // ============ DRAG & DROP ============
+    // Also handle drop
     drop.ondragover = function(e){
       e.preventDefault();
       drop.style.borderColor = '#0f3460';
@@ -3547,35 +3543,30 @@ console.log('✅ Fix JS loaded');
       drop.style.borderColor = '#a0aec0';
       drop.style.background = '#fafbfc';
       if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
-        console.log('File dropped:', e.dataTransfer.files[0].name);
-        processPdf(e.dataTransfer.files[0]);
+        handlePDFFile(e.dataTransfer.files[0]);
       }
     };
 
-    console.log('✅ PDF input ready');
+    console.log('✅ PDF handler attached');
   }
 
-  // ============ PROCESS PDF ============
-  async function processPdf(file){
-    console.log('Processing PDF:', file.name, (file.size/1024).toFixed(1) + ' KB');
+  // ============ PROCESS FILE ============
+  async function handlePDFFile(file){
+    console.log('Processing:', file.name, (file.size/1024).toFixed(1) + ' KB');
 
-    // Show UI feedback
-    showFileCard(file.name, file.size);
-
-    // Hide drop zone
+    // Show file card
+    showCard(file.name, file.size);
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'none';
 
     try {
-      // ===== STEP 1: Load PDF =====
-      updateStatus('📄 PDF load हो रही है...', '#f39c12');
+      updateStatus('📄 Load हो रही है...', '#f39c12');
       updateProgress(5, 'File पढ़ रहे हैं...');
 
-      var arrayBuffer = await file.arrayBuffer();
+      var buf = await file.arrayBuffer();
 
-      // ===== STEP 2: Check pdf.js =====
       if(typeof pdfjsLib === 'undefined'){
-        throw new Error('PDF.js load नहीं हुआ — internet check करें');
+        throw new Error('PDF.js load नहीं हुआ');
       }
 
       if(!pdfjsLib.GlobalWorkerOptions.workerSrc){
@@ -3583,115 +3574,90 @@ console.log('✅ Fix JS loaded');
       }
 
       updateProgress(10, 'PDF खोल रहे हैं...');
-      var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      var totalPages = pdf.numPages;
-      console.log('PDF has', totalPages, 'pages');
+      var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+      var total = pdf.numPages;
+      console.log('Total pages:', total);
 
-      updateStatus('📄 ' + totalPages + ' pages मिले', '#f39c12');
-      updateProgress(15, totalPages + ' pages process होंगे');
+      updateStatus('📄 ' + total + ' pages', '#f39c12');
+      updateProgress(15, total + ' pages process होंगे');
 
-      // ===== STEP 3: Extract text =====
       var allText = '';
       var wordCount = 0;
-      var ocrPages = 0;
 
-      for(var i = 1; i <= totalPages; i++){
-        var pct = 15 + Math.round((i / totalPages) * 75);
-        updateProgress(pct, '📄 Page ' + i + ' / ' + totalPages + ' — ' + wordCount + ' words');
-        updateStatus('📄 Page ' + i + ' / ' + totalPages, '#f39c12');
+      for(var i = 1; i <= total; i++){
+        var pct = 15 + Math.round((i / total) * 80);
+        updateProgress(pct, '📄 Page ' + i + '/' + total + ' — ' + wordCount + ' words');
 
         try {
           var page = await pdf.getPage(i);
-          var textContent = await page.getTextContent();
-          var pageText = textContent.items.map(function(item){ return item.str; }).join(' ');
+          var tc = await page.getTextContent();
+          var pageText = tc.items.map(function(it){ return it.str; }).join(' ');
 
-          // अगर text कम है तो OCR try करो
-          if(pageText.trim().length < 30){
-            console.log('Page ' + i + ': text कम है, OCR try कर रहे हैं');
+          // OCR fallback
+          if(pageText.trim().length < 30 && typeof Tesseract !== 'undefined'){
             updateProgress(pct, '🔍 Page ' + i + ' OCR...');
             try {
-              if(typeof Tesseract !== 'undefined'){
-                var ocrText = await ocrPage(page);
-                if(ocrText && ocrText.trim().length > 10){
-                  pageText = ocrText;
-                  ocrPages++;
-                }
+              var vp = page.getViewport({ scale: 1.2 });
+              var cv = document.createElement('canvas');
+              var cx = cv.getContext('2d');
+              cv.width = vp.width;
+              cv.height = vp.height;
+              await page.render({ canvasContext: cx, viewport: vp }).promise;
+              var dataUrl = cv.toDataURL('image/jpeg', 0.85);
+              cv.width = 0; cv.height = 0;
+              var ocr = await Tesseract.recognize(dataUrl, 'hin+eng');
+              if(ocr && ocr.data && ocr.data.text){
+                pageText = ocr.data.text;
               }
             } catch(ocrErr){
-              console.log('OCR error page ' + i + ':', ocrErr);
+              console.log('OCR error:', ocrErr);
             }
           }
 
           if(pageText && pageText.trim().length > 5){
             allText += pageText + '\n\n';
-            var wc = pageText.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
-            wordCount += wc;
+            wordCount += pageText.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
           }
-        } catch(pageErr){
-          console.log('Page ' + i + ' error:', pageErr);
+        } catch(pe){
+          console.log('Page ' + i + ' error:', pe);
         }
 
-        // UI update के लिए yield
-        if(i % 2 === 0){
-          await new Promise(function(r){ setTimeout(r, 10); });
-        }
+        if(i % 2 === 0) await new Promise(function(r){ setTimeout(r, 10); });
       }
 
-      // ===== STEP 4: Save to AppState =====
+      // Save to state
       var finalText = allText.trim();
-      console.log('Extracted:', wordCount, 'words from', totalPages, 'pages', ocrPages, 'OCR pages');
-
-      // Save to global state
-      if(window.AppState){
-        window.AppState.extracted = finalText;
-      }
+      if(window.AppState) window.AppState.extracted = finalText;
       window._pdfExtractedText = finalText;
 
-      // ===== STEP 5: Show result =====
+      console.log('Extracted:', wordCount, 'words from', total, 'pages');
+
+      // Show result
       updateProgress(100, '✅ Complete — ' + wordCount + ' words');
-      updateStatus('✅ Upload हो गई — ' + wordCount + ' शब्द निकले', '#27ae60');
+      updateStatus('✅ ' + wordCount + ' शब्द मिले', '#27ae60');
+      showExtracted(finalText);
 
-      showExtractedText(finalText, wordCount);
-
-      // Update word count if function exists
+      // Update main word count
       if(typeof window.updateCount === 'function'){
         try{ window.updateCount(); }catch(e){}
       }
 
-      // Toast
       showToast('✅ ' + wordCount + ' शब्द मिले');
 
     } catch(err){
-      console.error('PDF processing error:', err);
-      updateStatus('❌ Error: ' + err.message, '#e94560');
+      console.error('PDF error:', err);
+      updateStatus('❌ ' + err.message, '#e94560');
       updateProgress(100, '❌ Failed');
       showToast('❌ ' + err.message);
-
-      // Show drop zone again
       var drop = document.getElementById('pdfDrop');
       if(drop) drop.style.display = 'block';
     }
   }
 
-  // ============ OCR PAGE ============
-  async function ocrPage(page){
-    var viewport = page.getViewport({ scale: 1.2 });
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
-    var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-    canvas.width = 0; canvas.height = 0;
-    var result = await Tesseract.recognize(dataUrl, 'hin+eng');
-    return result.data.text;
-  }
-
   // ============ UI HELPERS ============
-  function showFileCard(name, size){
+  function showCard(name, size){
     var card = document.getElementById('pdfFileCard');
     if(!card){
-      // Create card
       card = document.createElement('div');
       card.id = 'pdfFileCard';
       card.style.cssText = 'background:linear-gradient(135deg,#e8f8f0,#d4f0e0);border:2px solid #27ae60;border-radius:12px;padding:12px;margin-top:12px';
@@ -3703,7 +3669,7 @@ console.log('✅ Fix JS loaded');
             '<div id="pdfCardSize" style="font-size:10.5px;color:#666;margin-top:2px">-</div>' +
             '<div id="pdfCardStatus" style="font-size:11px;font-weight:700;color:#27ae60;margin-top:4px">⏳</div>' +
           '</div>' +
-          '<button id="pdfCardRemove" style="background:#ffe8e8;color:#c0392b;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0">✕</button>' +
+          '<button id="pdfCardRemove" type="button" style="background:#ffe8e8;color:#c0392b;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0">✕</button>' +
         '</div>' +
         '<div id="pdfCardProgress" style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-top:10px">' +
           '<div id="pdfCardFill" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);border-radius:3px;transition:width .3s"></div>' +
@@ -3717,14 +3683,12 @@ console.log('✅ Fix JS loaded');
       var pz = document.getElementById('pdfZone');
       if(pz) pz.appendChild(card);
 
-      // Bind remove
       document.getElementById('pdfCardRemove').onclick = function(e){
         e.preventDefault();
-        resetPdfUI();
+        resetUI();
         return false;
       };
     }
-
     card.style.display = 'block';
     document.getElementById('pdfCardName').textContent = name;
     document.getElementById('pdfCardSize').textContent = (size/1024).toFixed(1) + ' KB';
@@ -3732,10 +3696,7 @@ console.log('✅ Fix JS loaded');
 
   function updateStatus(text, color){
     var el = document.getElementById('pdfCardStatus');
-    if(el){
-      el.textContent = text;
-      el.style.color = color || '#27ae60';
-    }
+    if(el){ el.textContent = text; el.style.color = color || '#27ae60'; }
   }
 
   function updateProgress(pct, text){
@@ -3745,44 +3706,32 @@ console.log('✅ Fix JS loaded');
     if(txt) txt.textContent = text || pct + '%';
   }
 
-  function showExtractedText(text, wordCount){
+  function showExtracted(text){
     var box = document.getElementById('pdfExtractedPreview');
     var el = document.getElementById('pdfExtractedText');
     if(!box || !el) return;
-
     if(!text || !text.trim()){
       box.style.display = 'block';
-      el.textContent = 'कोई text नहीं मिला — साफ PDF try करें';
-      el.style.color = '#e94560';
+      el.textContent = 'कोई text नहीं मिला';
       return;
     }
-
     box.style.display = 'block';
-    var preview = text.length > 500 ? text.substring(0, 500) + '\n\n... (और ' + (text.length - 500) + ' characters)' : text;
+    var preview = text.length > 500 ? text.substring(0, 500) + '...' : text;
     el.textContent = preview;
   }
 
-  function resetPdfUI(){
+  function resetUI(){
     var card = document.getElementById('pdfFileCard');
     if(card) card.style.display = 'none';
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'block';
-
-    if(window.AppState){
-      window.AppState.extracted = '';
-    }
+    if(window.AppState) window.AppState.extracted = '';
     window._pdfExtractedText = '';
-
-    if(typeof window.removePdf === 'function'){
-      try{ window.removePdf(); }catch(e){}
-    }
-
     if(typeof window.updateCount === 'function'){
       try{ window.updateCount(); }catch(e){}
     }
   }
 
-  // ============ TOAST ============
   function showToast(msg){
     var t = document.createElement('div');
     t.textContent = msg;
@@ -3795,37 +3744,17 @@ console.log('✅ Fix JS loaded');
     }, 2200);
   }
 
-  // ============ MODE TOGGLE (make sure PDF zone shows) ============
-  document.addEventListener('click', function(e){
-    var t = e.target;
-    if(t.closest && t.closest('.mode-b')){
-      var btn = t.closest('.mode-b');
-      var mode = btn.getAttribute('data-mode');
-      var tz = document.getElementById('typeZone');
-      var pz = document.getElementById('pdfZone');
-
-      if(mode === 'pdf'){
-        if(tz) tz.style.display = 'none';
-        if(pz){ pz.style.display = 'block'; pz.classList.add('on'); }
-      } else {
-        if(tz) tz.style.display = 'block';
-        if(pz){ pz.style.display = 'none'; pz.classList.remove('on'); }
-      }
-    }
-  }, true);
-
   // ============ INIT ============
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(ready, 200); });
   } else {
-    setTimeout(init, 200);
+    setTimeout(ready, 200);
   }
 
-  // Periodic re-attach
-  setTimeout(init, 1500);
-  setTimeout(init, 3000);
+  setTimeout(ready, 1500);
+  setTimeout(ready, 3000);
 
-  console.log('✅ Direct PDF Processor ready');
+  console.log('✅ PDF Label Fix ready');
 })();
 </script>
 
