@@ -3493,69 +3493,120 @@ console.log('✅ Fix JS loaded');
 
 
 
-<script>
-// ==================== PDF LABEL FIX ====================
-(function(){
-  console.log('=== PDF Label Fix loading ===');
 
-  function ready(){
+
+
+<script>
+// ==================== PDF BULLETPROOF FIX ====================
+(function(){
+  console.log('=== PDF Bulletproof Fix loading ===');
+
+  function init(){
     var drop = document.getElementById('pdfDrop');
     var input = document.getElementById('pdfInput');
+    var pdfZone = document.getElementById('pdfZone');
 
     if(!drop || !input){
-      setTimeout(ready, 300);
+      console.log('Elements missing — retry');
+      setTimeout(init, 400);
       return;
     }
 
-    console.log('PDF elements found');
+    console.log('All PDF elements found');
 
-    // Make sure input is clickable
+    // ⚡ STEP 1: Fix any CSS issues that break label clicking
+    // Make sure label has cursor and pointer events
+    drop.style.cursor = 'pointer';
+    drop.style.pointerEvents = 'auto';
+    drop.style.userSelect = 'none';
+    drop.style.webkitUserSelect = 'none';
+    drop.style.webkitTapHighlightColor = 'rgba(0,0,0,0)';
+
+    // Make input properly accessible but hidden
     input.style.position = 'absolute';
     input.style.left = '-9999px';
+    input.style.top = '0';
     input.style.width = '1px';
     input.style.height = '1px';
     input.style.opacity = '0';
+    input.style.pointerEvents = 'auto';
 
-    // Attach change handler (clone first to remove old)
+    // ⚡ STEP 2: Remove ALL old listeners by cloning
     var newInput = input.cloneNode(true);
-    input.parentNode.replaceChild(newInput, input);
+    newInput.id = 'pdfInput'; // Ensure id preserved
+    if(input.parentNode){
+      input.parentNode.replaceChild(newInput, input);
+    }
+    input = newInput;
 
-    newInput.onchange = function(e){
+    // ⚡ STEP 3: Multiple binding strategies for maximum reliability
+
+    // Strategy A: Direct label click → triggers input
+    drop.onclick = null; // Clear old
+    drop.addEventListener('click', function(e){
+      console.log('Drop zone clicked');
+      // Don't preventDefault — let label work naturally
+      // Just add fallback trigger
+      setTimeout(function(){
+        try{ input.click(); }catch(err){ console.log('fallback click err:', err); }
+      }, 10);
+    }, false);
+
+    // Strategy B: Direct input click binding
+    input.addEventListener('click', function(e){
+      console.log('Input clicked');
+    }, false);
+
+    // Strategy C: Input change handler
+    input.addEventListener('change', function(e){
+      console.log('Input change fired');
       if(e.target.files && e.target.files.length > 0){
         console.log('File selected:', e.target.files[0].name);
-        handlePDFFile(e.target.files[0]);
+        processFile(e.target.files[0]);
       }
-    };
+    }, false);
 
-    // Also handle drop
-    drop.ondragover = function(e){
+    // Strategy D: Parent label click via event
+    var parentLabel = drop.closest ? drop.closest('label') : null;
+    if(parentLabel){
+      parentLabel.style.cursor = 'pointer';
+      parentLabel.addEventListener('click', function(e){
+        console.log('Label wrapper clicked');
+        // Let default behavior work
+      }, false);
+    }
+
+    // ⚡ STEP 4: Drag & drop as backup
+    drop.addEventListener('dragover', function(e){
       e.preventDefault();
       drop.style.borderColor = '#0f3460';
       drop.style.background = '#e8f4ff';
-    };
-    drop.ondragleave = function(e){
+    });
+    drop.addEventListener('dragleave', function(e){
       e.preventDefault();
       drop.style.borderColor = '#a0aec0';
       drop.style.background = '#fafbfc';
-    };
-    drop.ondrop = function(e){
+    });
+    drop.addEventListener('drop', function(e){
       e.preventDefault();
       drop.style.borderColor = '#a0aec0';
       drop.style.background = '#fafbfc';
       if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
-        handlePDFFile(e.dataTransfer.files[0]);
+        console.log('File dropped:', e.dataTransfer.files[0].name);
+        processFile(e.dataTransfer.files[0]);
       }
-    };
+    });
 
-    console.log('✅ PDF handler attached');
+    console.log('✅ All handlers attached');
   }
 
   // ============ PROCESS FILE ============
-  async function handlePDFFile(file){
+  async function processFile(file){
     console.log('Processing:', file.name, (file.size/1024).toFixed(1) + ' KB');
 
-    // Show file card
+    // Show card
     showCard(file.name, file.size);
+
     var drop = document.getElementById('pdfDrop');
     if(drop) drop.style.display = 'none';
 
@@ -3579,7 +3630,6 @@ console.log('✅ Fix JS loaded');
       console.log('Total pages:', total);
 
       updateStatus('📄 ' + total + ' pages', '#f39c12');
-      updateProgress(15, total + ' pages process होंगे');
 
       var allText = '';
       var wordCount = 0;
@@ -3593,7 +3643,7 @@ console.log('✅ Fix JS loaded');
           var tc = await page.getTextContent();
           var pageText = tc.items.map(function(it){ return it.str; }).join(' ');
 
-          // OCR fallback
+          // OCR fallback for scanned pages
           if(pageText.trim().length < 30 && typeof Tesseract !== 'undefined'){
             updateProgress(pct, '🔍 Page ' + i + ' OCR...');
             try {
@@ -3625,19 +3675,16 @@ console.log('✅ Fix JS loaded');
         if(i % 2 === 0) await new Promise(function(r){ setTimeout(r, 10); });
       }
 
-      // Save to state
       var finalText = allText.trim();
       if(window.AppState) window.AppState.extracted = finalText;
       window._pdfExtractedText = finalText;
 
-      console.log('Extracted:', wordCount, 'words from', total, 'pages');
+      console.log('Extracted:', wordCount, 'words');
 
-      // Show result
       updateProgress(100, '✅ Complete — ' + wordCount + ' words');
       updateStatus('✅ ' + wordCount + ' शब्द मिले', '#27ae60');
       showExtracted(finalText);
 
-      // Update main word count
       if(typeof window.updateCount === 'function'){
         try{ window.updateCount(); }catch(e){}
       }
@@ -3654,7 +3701,7 @@ console.log('✅ Fix JS loaded');
     }
   }
 
-  // ============ UI HELPERS ============
+  // ============ UI ============
   function showCard(name, size){
     var card = document.getElementById('pdfFileCard');
     if(!card){
@@ -3744,17 +3791,17 @@ console.log('✅ Fix JS loaded');
     }, 2200);
   }
 
-  // ============ INIT ============
+  // INIT
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(ready, 200); });
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
   } else {
-    setTimeout(ready, 200);
+    setTimeout(init, 200);
   }
 
-  setTimeout(ready, 1500);
-  setTimeout(ready, 3000);
+  setTimeout(init, 1500);
+  setTimeout(init, 3000);
 
-  console.log('✅ PDF Label Fix ready');
+  console.log('✅ PDF Bulletproof Fix ready');
 })();
 </script>
 
