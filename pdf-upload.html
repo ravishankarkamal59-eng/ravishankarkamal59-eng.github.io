@@ -604,5 +604,250 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
 })();
 </script>
 
+
+<script>
+// ==================== AUTH SYSTEM (Trigger only on Check) ====================
+(function(){
+  console.log('=== Auth System loading ===');
+
+  var USERS_KEY = 'pdf_auth_users';
+  var SESSION_KEY = 'pdf_auth_session';
+
+  function getUsers(){
+    try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return{}}
+  }
+  function saveUsers(u){try{localStorage.setItem(USERS_KEY,JSON.stringify(u))}catch(e){}}
+  function getUser(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+  function setUser(u){
+    try{u ? localStorage.setItem(SESSION_KEY,JSON.stringify(u)) : localStorage.removeItem(SESSION_KEY)}catch(e){}
+  }
+  function isLoggedIn(){return !!getUser()}
+
+  window.AC = {
+    isLoggedIn: isLoggedIn,
+    user: getUser,
+
+    showAuth: function(mode){
+      console.log('Showing auth modal:', mode);
+      var a = document.getElementById('authScr');
+      if(!a){ console.log('authScr missing'); return; }
+      window._authMode = mode || 'signup';
+      AC.switchTab(window._authMode);
+      var form = document.getElementById('asForm');
+      if(form) form.reset();
+      var msg = document.getElementById('asMsg');
+      if(msg){ msg.style.display = 'none'; msg.textContent = ''; }
+      document.querySelectorAll('.as-f').forEach(function(f){
+        f.classList.remove('bad');
+        var inp = f.querySelector('input');
+        if(inp){ inp.style.borderColor = '#e0e6ed'; inp.style.background = '#fafbfc'; }
+      });
+      a.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    },
+
+    closeAuth: function(){
+      var a = document.getElementById('authScr');
+      if(a) a.style.display = 'none';
+      document.body.style.overflow = '';
+    },
+
+    switchTab: function(m){
+      window._authMode = m;
+      var isSignup = (m === 'signup');
+      document.querySelectorAll('.as-tab').forEach(function(t){
+        var on = t.getAttribute('data-mode') === m;
+        t.classList.toggle('on', on);
+        t.style.background = on ? '#fff' : 'transparent';
+        t.style.color = on ? '#0f3460' : '#666';
+        t.style.boxShadow = on ? '0 2px 6px rgba(0,0,0,.08)' : 'none';
+      });
+      var el;
+      el = document.getElementById('asTitle'); if(el) el.textContent = isSignup ? 'Create Account' : 'Welcome Back';
+      el = document.getElementById('asSub');   if(el) el.textContent = isSignup ? 'Answer check करने के लिए account बनाएँ' : 'अपने account में login करें';
+      el = document.getElementById('asBtn');   if(el) el.textContent = isSignup ? 'Create Free Account' : 'Login';
+      el = document.getElementById('fldName'); if(el) el.style.display = isSignup ? 'block' : 'none';
+      el = document.getElementById('asFooter');
+      if(el) el.innerHTML = isSignup
+        ? 'Already have account? <a href="#" onclick="AC.switchTab(\'login\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Login</a>'
+        : 'New here? <a href="#" onclick="AC.switchTab(\'signup\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Sign Up</a>';
+    },
+
+    submit: function(e){
+      if(e) e.preventDefault();
+      var msg = document.getElementById('asMsg');
+      var email = ((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
+      var pass = ((document.getElementById('inPass')||{}).value||'');
+      var name = ((document.getElementById('inName')||{}).value||'').trim();
+      var isSignup = (window._authMode === 'signup');
+
+      function showMsg(txt, isErr){
+        msg.style.display = 'block';
+        msg.textContent = txt;
+        msg.style.background = isErr ? '#ffe8e8' : '#e8f8f0';
+        msg.style.color = isErr ? '#c0392b' : '#27ae60';
+      }
+
+      if(isSignup && !name){ showMsg('Name भरें', true); return false; }
+      if(!email || email.indexOf('@') < 1){ showMsg('Sahi email भरें', true); return false; }
+      if(pass.length < 4){ showMsg('Password min 4 characters', true); return false; }
+
+      var users = getUsers();
+
+      if(isSignup){
+        if(users[email]){ showMsg('ये email पहले से registered है — Login करें', true); return false; }
+        var uid = 'U' + Date.now().toString(36).toUpperCase().slice(-6);
+        users[email] = { name: name, email: email, pass: pass, uid: uid, created: Date.now() };
+        saveUsers(users);
+        setUser({ name: name, email: email, uid: uid });
+        showMsg('Account बन गया!', false);
+        setTimeout(function(){
+          AC.closeAuth();
+          updateProfile();
+          // Now trigger the check
+          proceedToCheck();
+        }, 700);
+        return false;
+      }
+
+      if(!users[email]){ showMsg('Account नहीं मिला — Sign Up करें', true); return false; }
+      if(users[email].pass !== pass){ showMsg('Password गलत है', true); return false; }
+      setUser({ name: users[email].name, email: email, uid: users[email].uid });
+      showMsg('Login successful!', false);
+      setTimeout(function(){
+        AC.closeAuth();
+        updateProfile();
+        proceedToCheck();
+      }, 600);
+      return false;
+    },
+
+    openUserMenu: function(){
+      var u = getUser();
+      if(!u) return;
+      document.getElementById('umName').textContent = u.name || 'User';
+      document.getElementById('umEmail').textContent = (u.uid ? u.uid + ' · ' : '') + u.email;
+      document.getElementById('userMenu').style.display = 'flex';
+    },
+
+    closeUserMenu: function(){ document.getElementById('userMenu').style.display = 'none'; },
+
+    logout: function(){
+      if(!confirm('Logout करें?')) return;
+      setUser(null);
+      updateProfile();
+      AC.closeUserMenu();
+      toast('👋 Logout हो गया');
+    },
+
+    openHist: function(){
+      toast('📊 History coming soon');
+      AC.closeUserMenu();
+    }
+  };
+
+  window.openUserMenu = AC.openUserMenu;
+
+  // Profile update
+  function updateProfile(){
+    var u = getUser();
+    var chip = document.getElementById('userChip');
+    if(!chip) return;
+    if(u){
+      chip.style.display = 'flex';
+      document.getElementById('userChipAv').textContent = (u.name||'U')[0].toUpperCase();
+      document.getElementById('userChipName').textContent = (u.name||'User').substring(0, 10);
+    } else {
+      chip.style.display = 'none';
+    }
+  }
+  window.updateProfile = updateProfile;
+
+  // Proceed to check after login
+  function proceedToCheck(){
+    // Save PDF text to session for main page
+    try {
+      var text = sessionStorage.getItem('pdfExtractedText') || '';
+      var wc = sessionStorage.getItem('pdfWordCount') || '0';
+      console.log('Proceeding to check with', wc, 'words');
+      
+      // Redirect to main checker
+      location.href = 'answer-checker.html?from=pdf';
+    } catch(e) {
+      location.href = 'answer-checker.html?from=pdf';
+    }
+  }
+
+  // Toast
+  function toast(msg){
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:12px 22px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:85vw;text-align:center';
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.opacity = '0';
+      t.style.transition = 'opacity .3s';
+      setTimeout(function(){ t.remove(); }, 300);
+    }, 2200);
+  }
+  window.toast = toast;
+
+  // ⚡ Replace the check button's onclick
+  function attachGate(){
+    var btn = document.getElementById('checkBtn');
+    if(!btn){
+      setTimeout(attachGate, 300);
+      return;
+    }
+    if(btn._gateAttached) return;
+    btn._gateAttached = true;
+
+    // Remove existing onclick
+    btn.onclick = null;
+
+    // New handler
+    btn.onclick = function(e){
+      if(e){ e.preventDefault(); }
+
+      // Check if PDF is uploaded
+      var text = sessionStorage.getItem('pdfExtractedText') || '';
+      if(!text || text.length < 30){
+        toast('पहले PDF upload करें');
+        return false;
+      }
+
+      // Check login
+      if(!isLoggedIn()){
+        console.log('Not logged in - showing auth');
+        AC.showAuth('signup');
+        return false;
+      }
+
+      // Logged in - go to checker
+      console.log('Logged in - proceeding');
+      proceedToCheck();
+      return false;
+    };
+    console.log('✅ Check button gated');
+  }
+
+  // Update profile on load
+  function init(){
+    updateProfile();
+    attachGate();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
+  } else {
+    setTimeout(init, 200);
+  }
+  setTimeout(init, 1000);
+  setTimeout(init, 2500);
+
+  console.log('✅ Auth System ready (gate on Check only)');
+})();
+</script>
+
 </body>
 </html>
