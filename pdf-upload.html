@@ -70,7 +70,13 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
     <div class="hdr-logo">R</div>
     <div class="hdr-title">PDF Upload</div>
   </div>
-  <button class="hdr-back" onclick="location.href='answer-checker.html'">← वापस</button>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div id="userChip" onclick="openUserMenu()" style="display:none;align-items:center;gap:6px;background:rgba(255,255,255,0.15);padding:4px 10px 4px 4px;border-radius:18px;cursor:pointer;border:1.5px solid rgba(255,255,255,0.25)">
+      <div id="userChipAv" style="width:24px;height:24px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:#0a1929">U</div>
+      <div id="userChipName" style="color:#fff;font-size:11px;font-weight:700;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">User</div>
+    </div>
+    <button class="hdr-back" onclick="location.href='answer-checker.html'">← वापस</button>
+  </div>
 </div>
 
 <div class="main">
@@ -294,6 +300,276 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
     }, 2200);
   }
 
+})();
+</script>
+
+
+<!-- AUTH MODAL -->
+<div id="authScr" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99998;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
+  <div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
+    <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">
+      <button onclick="AC.closeAuth()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
+      <div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>
+      <div id="asTitle" style="font-size:18px;font-weight:900;margin-bottom:2px">Create Account</div>
+      <div id="asSub" style="font-size:11px;opacity:.85;line-height:1.4">Answer check करने के लिए account बनाएँ</div>
+    </div>
+    <div style="padding:20px">
+      <div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">
+        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
+        <button type="button" class="as-tab" data-mode="login" onclick="AC.switchTab('login');return false" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>
+      </div>
+      <form id="asForm" onsubmit="return AC.submit(event)">
+        <div class="as-f" id="fldName" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">NAME</label>
+          <input type="text" id="inName" placeholder="Your name" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Name भरें</div>
+        </div>
+        <div class="as-f" id="fldEmail" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">EMAIL</label>
+          <input type="email" id="inEmail" placeholder="you@gmail.com" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Sahi email भरें</div>
+        </div>
+        <div class="as-f" id="fldPass" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">PASSWORD</label>
+          <input type="password" id="inPass" placeholder="Min 4 characters" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Password min 4 characters</div>
+        </div>
+        <button type="submit" id="asBtn" style="width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:13px;border-radius:11px;font-family:inherit;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(233,69,96,.3);margin-top:4px">Create Free Account</button>
+        <div id="asMsg" style="padding:10px 13px;border-radius:9px;font-size:11.5px;font-weight:600;margin-top:11px;display:none;line-height:1.4"></div>
+      </form>
+      <div id="asFooter" style="margin-top:14px;text-align:center;font-size:11px;color:#666;line-height:1.5">
+        Already have account? <a href="#" onclick="AC.switchTab('login');return false" style="color:#e94560;font-weight:800;text-decoration:none">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- USER MENU -->
+<div id="userMenu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:99996;padding:70px 14px 14px;align-items:flex-start;justify-content:flex-end" onclick="AC.closeUserMenu(event)">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:220px">
+    <div style="padding:12px 14px;border-bottom:1px solid #f0f4f8">
+      <div id="umName" style="font-size:13px;font-weight:800;color:#0f3460">User</div>
+      <div id="umEmail" style="font-size:11px;color:#666;margin-top:2px">user@email.com</div>
+    </div>
+    <button onclick="AC.openHist()" style="width:100%;background:none;border:none;text-align:left;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;color:#0f3460;cursor:pointer;border-radius:8px">📊 My History</button>
+    <button onclick="AC.logout()" style="width:100%;background:none;border:none;text-align:left;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;color:#e94560;cursor:pointer;border-radius:8px">🚪 Logout</button>
+  </div>
+</div>
+
+
+<script>
+// ==================== AUTH SYSTEM ====================
+(function(){
+  var USERS_KEY = 'pdf_auth_users';
+  var SESSION_KEY = 'pdf_auth_session';
+
+  function getUsers(){
+    try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return{}}
+  }
+  function saveUsers(u){try{localStorage.setItem(USERS_KEY,JSON.stringify(u))}catch(e){}}
+  function getUser(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+  function setUser(u){
+    try{u ? localStorage.setItem(SESSION_KEY,JSON.stringify(u)) : localStorage.removeItem(SESSION_KEY)}catch(e){}
+  }
+  function isLoggedIn(){return !!getUser()}
+
+  window.AC = {
+    isLoggedIn: isLoggedIn,
+    user: getUser,
+
+    showAuth: function(mode){
+      var a = document.getElementById('authScr');
+      if(!a) return;
+      window._authMode = mode || 'signup';
+      AC.switchTab(window._authMode);
+      var form = document.getElementById('asForm');
+      if(form) form.reset();
+      var msg = document.getElementById('asMsg');
+      if(msg){ msg.style.display = 'none'; msg.textContent = ''; }
+      document.querySelectorAll('.as-f').forEach(function(f){
+        f.classList.remove('bad');
+        var inp = f.querySelector('input');
+        if(inp){ inp.style.borderColor = '#e0e6ed'; inp.style.background = '#fafbfc'; }
+      });
+      a.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    },
+
+    closeAuth: function(){
+      var a = document.getElementById('authScr');
+      if(a) a.style.display = 'none';
+      document.body.style.overflow = '';
+    },
+
+    switchTab: function(m){
+      window._authMode = m;
+      var isSignup = (m === 'signup');
+      document.querySelectorAll('.as-tab').forEach(function(t){
+        var on = t.getAttribute('data-mode') === m;
+        t.classList.toggle('on', on);
+        t.style.background = on ? '#fff' : 'transparent';
+        t.style.color = on ? '#0f3460' : '#666';
+        t.style.boxShadow = on ? '0 2px 6px rgba(0,0,0,.08)' : 'none';
+      });
+      var el;
+      el = document.getElementById('asTitle'); if(el) el.textContent = isSignup ? 'Create Account' : 'Welcome Back';
+      el = document.getElementById('asSub');   if(el) el.textContent = isSignup ? 'Answer check के लिए account बनाएँ' : 'अपने account में login करें';
+      el = document.getElementById('asBtn');   if(el) el.textContent = isSignup ? 'Create Free Account' : 'Login';
+      el = document.getElementById('fldName'); if(el) el.style.display = isSignup ? 'block' : 'none';
+      el = document.getElementById('asFooter');
+      if(el) el.innerHTML = isSignup
+        ? 'Already have account? <a href="#" onclick="AC.switchTab(\'login\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Login</a>'
+        : 'New here? <a href="#" onclick="AC.switchTab(\'signup\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Sign Up</a>';
+    },
+
+    submit: function(e){
+      if(e) e.preventDefault();
+      var msg = document.getElementById('asMsg');
+      var email = ((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
+      var pass = ((document.getElementById('inPass')||{}).value||'');
+      var name = ((document.getElementById('inName')||{}).value||'').trim();
+      var isSignup = (window._authMode === 'signup');
+
+      function showMsg(txt, isErr){
+        msg.style.display = 'block';
+        msg.textContent = txt;
+        msg.style.background = isErr ? '#ffe8e8' : '#e8f8f0';
+        msg.style.color = isErr ? '#c0392b' : '#27ae60';
+      }
+
+      if(isSignup && !name){ showMsg('Name भरें', true); return false; }
+      if(!email || email.indexOf('@') < 1){ showMsg('Sahi email भरें', true); return false; }
+      if(pass.length < 4){ showMsg('Password min 4 characters', true); return false; }
+
+      var users = getUsers();
+
+      if(isSignup){
+        if(users[email]){ showMsg('ये email पहले से registered है — Login करें', true); return false; }
+        var uid = 'U' + Date.now().toString(36).toUpperCase().slice(-6);
+        users[email] = { name: name, email: email, pass: pass, uid: uid, created: Date.now() };
+        saveUsers(users);
+        setUser({ name: name, email: email, uid: uid });
+        showMsg('Account बन गया! Welcome ' + name, false);
+        setTimeout(function(){
+          AC.closeAuth();
+          updateProfile();
+          autoResume();
+        }, 700);
+        return false;
+      }
+
+      if(!users[email]){ showMsg('Account नहीं मिला — Sign Up करें', true); return false; }
+      if(users[email].pass !== pass){ showMsg('Password गलत है', true); return false; }
+      setUser({ name: users[email].name, email: email, uid: users[email].uid });
+      showMsg('Login successful!', false);
+      setTimeout(function(){
+        AC.closeAuth();
+        updateProfile();
+        autoResume();
+      }, 600);
+      return false;
+    },
+
+    openUserMenu: function(){
+      var u = getUser();
+      if(!u) return;
+      document.getElementById('umName').textContent = u.name || 'User';
+      document.getElementById('umEmail').textContent = (u.uid ? u.uid + ' · ' : '') + u.email;
+      document.getElementById('userMenu').style.display = 'flex';
+    },
+
+    closeUserMenu: function(){ document.getElementById('userMenu').style.display = 'none'; },
+
+    logout: function(){
+      if(!confirm('Logout करें?')) return;
+      setUser(null);
+      updateProfile();
+      AC.closeUserMenu();
+      toast('👋 Logout हो गया');
+    },
+
+    openHist: function(){
+      toast('📊 History coming soon');
+      AC.closeUserMenu();
+    }
+  };
+
+  window.openUserMenu = AC.openUserMenu;
+
+  function updateProfile(){
+    var u = getUser();
+    var chip = document.getElementById('userChip');
+    if(!chip) return;
+    if(u){
+      chip.style.display = 'flex';
+      document.getElementById('userChipAv').textContent = (u.name||'U')[0].toUpperCase();
+      document.getElementById('userChipName').textContent = (u.name||'User').substring(0, 10);
+    } else {
+      chip.style.display = 'none';
+    }
+  }
+
+  function autoResume(){
+    // Auto-click the check button if pending
+    if(window._pendingCheck){
+      window._pendingCheck = false;
+      setTimeout(function(){
+        var btn = document.getElementById('checkBtn');
+        if(btn && !btn.disabled){
+          btn.click();
+        }
+      }, 300);
+    }
+  }
+
+  function toast(msg){
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:12px 22px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:85vw;text-align:center';
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.opacity = '0';
+      t.style.transition = 'opacity .3s';
+      setTimeout(function(){ t.remove(); }, 300);
+    }, 2200);
+  }
+  window.toast = toast;
+
+  // Auth gate on Check button
+  function attachGate(){
+    var btn = document.getElementById('checkBtn');
+    if(!btn || btn._authBound) return;
+    btn._authBound = true;
+
+    var origOnclick = btn.onclick;
+
+    btn.onclick = function(e){
+      if(!isLoggedIn()){
+        if(e){ e.preventDefault(); e.stopPropagation(); }
+        window._pendingCheck = true;
+        AC.showAuth('signup');
+        toast('🔐 पहले Sign Up करें');
+        return false;
+      }
+      if(origOnclick) return origOnclick.call(this, e);
+    };
+    console.log('✅ Auth gate attached to Check button');
+  }
+
+  // Update profile on load
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      updateProfile();
+      setTimeout(attachGate, 300);
+    });
+  } else {
+    updateProfile();
+    setTimeout(attachGate, 300);
+  }
+  setTimeout(attachGate, 1500);
+  setTimeout(updateProfile, 1000);
+
+  console.log('✅ Auth System ready');
 })();
 </script>
 
