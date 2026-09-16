@@ -197,6 +197,16 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .match-alt{background:#f0f4f8;border-radius:10px;padding:10px;margin-top:8px;font-size:10.5px;color:#666;line-height:1.5}
 .match-alt b{color:#0f3460}
 
+
+.other-info{background:linear-gradient(135deg,#8e44ad,#c0392b);border-radius:12px;padding:14px;margin-bottom:12px;color:#fff}
+.other-info .oi-hdr{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.other-info .oi-ic{width:44px;height:44px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.other-info .oi-tx{flex:1}
+.other-info .oi-t{font-size:14px;font-weight:800;margin-bottom:2px}
+.other-info .oi-s{font-size:10.5px;color:rgba(255,255,255,.85);line-height:1.4}
+.other-info .oi-points{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.other-info .oi-p{background:rgba(255,255,255,.15);padding:6px 10px;border-radius:8px;font-size:10.5px;font-weight:600}
+
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
@@ -284,6 +294,26 @@ textarea:focus{border-color:#0f3460;background:#fff}
       <div class="di-conf" id="diConf">-</div>
     </div>
 
+    
+    <!-- Other Exam Info Panel -->
+    <div class="other-info hidden" id="otherInfo">
+      <div class="oi-hdr">
+        <div class="oi-ic">📄</div>
+        <div class="oi-tx">
+          <div class="oi-t">Other Exam Mode</div>
+          <div class="oi-s">कोई भी PDF upload करें — General Quality Analysis मिलेगा</div>
+        </div>
+      </div>
+      <div class="oi-points">
+        <div class="oi-p">✅ Content Quality Score</div>
+        <div class="oi-p">✅ Structure Analysis</div>
+        <div class="oi-p">✅ Length Check</div>
+        <div class="oi-p">✅ Key Terms Detection</div>
+        <div class="oi-p">✅ Missing Elements</div>
+        <div class="oi-p">✅ Improvement Suggestions</div>
+      </div>
+    </div>
+
     <!-- Mode toggle -->
     <div class="mode-tog">
       <button class="mode-b on" data-mode="type" onclick="setMode('type')">✍️ Type करें</button>
@@ -362,6 +392,11 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <div class="ic">🔍</div>
     <div class="if"><div class="nm">🎯 Har Exam</div><div class="sb">कोई भी PDF — खुद पहचानेगा</div></div>
     <div class="ct">ALL</div>
+  </button>
+  <button class="dr-item" data-exam="other" data-icon="📄" data-name="Other Exam (PDF Analysis)">
+    <div class="ic">📄</div>
+    <div class="if"><div class="nm">📄 Other Exam</div><div class="sb">कोई भी PDF — General Analysis</div></div>
+    <div class="ct">FREE</div>
   </button>
 
   <div class="dr-sec">🎯 Government Exams</div>
@@ -575,12 +610,30 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
       updateCount();
 
-      // Show info for "all" mode
+      // Show info for specific modes
+      // Header label
+      var hdr=document.getElementById('ebN');
+      if(state.exam==='all'){hdr.textContent='Har Exam (Auto-Detect)'}
+      else if(state.exam==='other'){hdr.textContent='Other Exam (PDF Analysis)'}
+
       if(state.exam==='all'){
         showAllExamInfo();
+        document.getElementById('otherInfo').classList.add('hidden');
+      } else if(state.exam==='other'){
+        showOtherExamInfo();
+        document.getElementById('otherInfo').classList.remove('hidden');
+      } else {
+        document.getElementById('otherInfo').classList.add('hidden');
       }
     });
   });
+
+  function showOtherExamInfo(){
+    var ai=document.getElementById('ansInput');
+    if(ai){
+      ai.placeholder='📄 कोई भी PDF upload करें...\n\n✓ General Analysis\n✓ Quality Score\n✓ Structure Check\n✓ Suggestions\n\nकोई limit नहीं — कोई database नहीं';
+    }
+  }
 
   function showAllExamInfo(){
     var ai=document.getElementById('ansInput');
@@ -1213,10 +1266,169 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.head.appendChild(st);
   })();
 
+
+  // ==================== OTHER EXAM RESULT ====================
+  function showOtherResult(text){
+    var rtu=smartRTU(text,null);
+    var words=text.split(/\s+/).filter(function(w){return w.length>0});
+    var wc=words.length;
+
+    // Quality parameters
+    var params={
+      hasIntro:/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ|context/i.test(text),
+      hasConcl:/निष्कर्ष|conclusion|अंत में|समापन|सुझाव|way forward/i.test(text),
+      hasPoints:/[1-9][\.\)]\s|•|\-\s/m.test(text),
+      hasExamples:/उदाहरण|example|जैसे|for instance|case study/i.test(text),
+      hasData:/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख|billion|million/i.test(text),
+      hasSchemes:/योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy|program/i.test(text),
+      hasQuotes:/[""'']|कहा|अनुसार|according/i.test(text),
+      hasHeadings:/^[A-Z\u0900-\u097F][^\n]{2,60}$/m.test(text)
+    };
+
+    // Score (out of 100)
+    var scoreMap={
+      hasIntro:15,
+      hasConcl:15,
+      hasPoints:12,
+      hasExamples:15,
+      hasData:15,
+      hasSchemes:10,
+      hasQuotes:8,
+      hasHeadings:10
+    };
+    var totalScore=0;
+    for(var k in params){if(params[k])totalScore+=scoreMap[k];}
+
+    // Length bonus
+    if(wc>=150 && wc<=500) totalScore=Math.min(totalScore+10,100);
+    else if(wc>500) totalScore=Math.min(totalScore+5,100);
+
+    var pct=totalScore;
+
+    // Verdict
+    var v,vc;
+    if(pct>=80){v='🏆 Excellent Content';vc='ex'}
+    else if(pct>=60){v='👍 Good Quality';vc='go'}
+    else if(pct>=40){v='📈 Average';vc='av'}
+    else{v='💪 सुधार ज़रूरी';vc='po'}
+
+    // Feedback lists
+    var good=[],bad=[],warn=[];
+    if(params.hasIntro)good.push('प्रस्तावना मौजूद');else bad.push('प्रस्तावना नहीं — Introduction जोड़ें');
+    if(params.hasConcl)good.push('निष्कर्ष मौजूद');else bad.push('निष्कर्ष नहीं — Conclusion जोड़ें');
+    if(params.hasPoints)good.push('Points/Bullets में लिखा');else bad.push('Points में लिखें — structure better होगा');
+    if(params.hasHeadings)good.push('Headings/Subheadings');else warn.push('Headings जोड़ें — readability बढ़ेगी');
+    if(params.hasExamples)good.push('उदाहरण मौजूद');else warn.push('2-3 examples जोड़ें');
+    if(params.hasData)good.push('आंकड़े/Data');else warn.push('Statistics, %, dates जोड़ें');
+    if(params.hasSchemes)good.push('Scheme/Policy references');else warn.push('Government schemes का ज़िक्र');
+    if(params.hasQuotes)good.push('Quotes/References');else warn.push('Expert quotes जोड़ें');
+
+    // Length feedback
+    if(wc<100)warn.push('बहुत कम शब्द — कम से कम 150 शब्द लिखें');
+    else if(wc>=150 && wc<=500)good.push('आदर्श लंबाई ('+wc+' शब्द)');
+    else if(wc>500)good.push('विस्तृत content ('+wc+' शब्द)');
+
+    // Build result HTML
+    var h='';
+
+    // Header banner
+    h+='<div style="background:linear-gradient(135deg,#8e44ad,#c0392b);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center">';
+    h+='<div style="font-size:11px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">📄 OTHER EXAM MODE</div>';
+    h+='<div style="font-size:14px;font-weight:800">General PDF Analysis</div>';
+    h+='<div style="font-size:11px;opacity:.85;margin-top:4px">कोई database match नहीं — Quality-based Analysis</div>';
+    h+='</div>';
+
+    // Score card
+    h+='<div class="score-card"><div class="score-lbl">CONTENT QUALITY</div><div><span class="score-v">'+pct+'</span><span class="score-mx"> / 100</span></div><div class="score-pct">'+wc+' शब्द • '+(rtu?rtu.sentences:0)+' वाक्य</div><div class="verdict '+vc+'">'+v+'</div></div>';
+
+    // RTU Analysis
+    if(rtu){
+      h+=renderRTU(rtu);
+    }
+
+    // 8-Parameter breakdown
+    h+='<div class="fb-card"><div class="fb-t" style="color:#0f3460">📊 Quality Breakdown</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">';
+    var paramList=[
+      {k:'hasIntro',l:'Introduction',v:15},
+      {k:'hasConcl',l:'Conclusion',v:15},
+      {k:'hasPoints',l:'Points/Bullets',v:12},
+      {k:'hasExamples',l:'Examples',v:15},
+      {k:'hasData',l:'Data/Stats',v:15},
+      {k:'hasSchemes',l:'Schemes',v:10},
+      {k:'hasQuotes',l:'Quotes',v:8},
+      {k:'hasHeadings',l:'Headings',v:10}
+    ];
+    paramList.forEach(function(p){
+      var has=params[p.k];
+      var color=has?'#27ae60':'#e94560';
+      var icon=has?'✓':'✗';
+      h+='<div style="background:#f8fafc;padding:8px 10px;border-radius:8px;border-left:3px solid '+color+'">';
+      h+='<div style="font-size:10px;color:#666;font-weight:700;margin-bottom:2px">'+p.l+'</div>';
+      h+='<div style="font-size:12px;font-weight:800;color:'+color+'">'+icon+' '+(has?'Present':'Missing')+'</div>';
+      h+='</div>';
+    });
+    h+='</div></div>';
+
+    // Good
+    if(good.length){
+      h+='<div class="fb-card"><div class="fb-t go">✅ अच्छी बातें ('+good.length+')</div><ul class="fb-list">';
+      good.forEach(function(g){h+='<li class="go">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+    // Bad
+    if(bad.length){
+      h+='<div class="fb-card"><div class="fb-t ba">❌ सुधार ज़रूरी ('+bad.length+')</div><ul class="fb-list">';
+      bad.forEach(function(g){h+='<li class="ba">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+    // Warnings
+    if(warn.length){
+      h+='<div class="fb-card"><div class="fb-t wa">⚠️ Suggestions ('+warn.length+')</div><ul class="fb-list">';
+      warn.forEach(function(g){h+='<li class="wa">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+
+    // What a good answer should have
+    h+='<div class="fb-card" style="background:#f0f4ff;border:1.5px solid #2980b9">';
+    h+='<div class="fb-t" style="color:#2980b9">📚 एक अच्छे उत्तर में क्या होना चाहिए</div>';
+    h+='<ul style="list-style:none;padding:0;margin-top:6px">';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">1️⃣ <b>Introduction</b> — 2-3 lines</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">2️⃣ <b>Main Body</b> — Points/Headings</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">3️⃣ <b>Examples</b> — 2-3 real examples</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">4️⃣ <b>Data/Stats</b> — Numbers, %</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">5️⃣ <b>Schemes/Acts</b> — Government refs</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">6️⃣ <b>Conclusion</b> — Way forward</li>';
+    h+='</ul></div>';
+
+    // Retry button
+    h+='<div class="res-actions"><button class="btn-r" onclick="retryAnswer()">🔄 दोबारा</button><button class="btn-s" onclick="closeResult()">बंद करें</button></div>';
+
+    document.getElementById('resBody').innerHTML=h;
+    document.getElementById('resPanel').classList.add('on');
+    document.getElementById('resOverlay').classList.add('on');
+  }
+
   // ==================== CHECK ====================
   window.checkAnswer=function(){
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
+
+    // ⚡ OTHER EXAM MODE — कोई database match नहीं, सिर्फ general analysis
+    if(state.exam==='other'){
+      state.currentText=t;
+      state.question={
+        q:'Other Exam Content (PDF Analysis)',
+        words:Math.max(t.split(/\s+/).length,150),
+        marks:10,
+        subject:'General',
+        keywords:[],
+        expectedPoints:[]
+      };
+      state.detected=null;
+      document.getElementById('load').classList.remove('on');
+      showOtherResult(t);
+      return;
+    }
 
     // Auto-detect
     var best=autoDetect(t);
@@ -1226,7 +1438,8 @@ textarea:focus{border-color:#0f3460;background:#fff}
       if(state.exam!=='all'){
         msg+='आपने "'+state.name+'" चुना है।\n';
         msg+='कृपया उसी exam से मेल खाता content लिखें।\n\n';
-        msg+='या "🔍 Har Exam" mode चुनें — खुद पहचान लेगा।';
+        msg+='या "🔍 Har Exam" mode चुनें — खुद पहचान लेगा।\n';
+        msg+='या "📄 Other Exam" mode — general analysis के लिए।';
       } else {
         msg+='कृपया अधिक विस्तृत answer दें या अन्य PDF try करें।';
       }
