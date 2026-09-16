@@ -3846,7 +3846,7 @@ console.log('✅ Fix JS loaded');
         '<div id="acxPdfPrev" style="display:none;background:#fff;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
       pz.appendChild(status);
 
-      document.getElementById('acxPdfRemove').onclick = function(){
+      var _rm = document.getElementById('acxPdfRemove') || document.getElementById('acxRemove'); if(_rm) _rm.onclick = function(){
         status.style.display = 'none';
         if(label) label.style.display = 'block';
         window.acxPdfText = '';
@@ -3855,12 +3855,12 @@ console.log('✅ Fix JS loaded');
       status.style.display = 'block';
     }
 
-    document.getElementById('acxPdfName').textContent = file.name;
-    document.getElementById('acxPdfSize').textContent = (file.size/1024).toFixed(0) + ' KB';
+    var _n = document.getElementById('acxPdfName') || document.getElementById('acxName'); if(_n) _n.textContent = file.name;
+    var _z = document.getElementById('acxPdfSize') || document.getElementById('acxSize'); if(_z) _z.textContent = (file.size/1024).toFixed(0) + ' KB';
 
     function setStat(t, p){
-      document.getElementById('acxPdfStat').textContent = t;
-      document.getElementById('acxPdfBar').style.width = p + '%';
+      var _s = document.getElementById('acxPdfStat') || document.getElementById('acxStat'); if(_s) _s.textContent = t;
+      var _b = document.getElementById('acxPdfBar') || document.getElementById('acxBar'); if(_b) _b.style.width = p + '%';
     }
 
     try {
@@ -3926,7 +3926,7 @@ console.log('✅ Fix JS loaded');
 
       if(window.updateCount) try{ window.updateCount(); }catch(e){}
 
-      var prev = document.getElementById('acxPdfPrev');
+      var prev = document.getElementById('acxPdfPrev') || document.getElementById('acxPrev');
       prev.style.display = 'block';
       prev.textContent = all.length > 500 ? all.substring(0, 500) + '...' : all;
 
