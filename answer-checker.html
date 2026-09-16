@@ -3576,5 +3576,423 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== SINGLE PAGE SYSTEM ====================
+(function(){
+  'use strict';
+  console.log('=== System loading ===');
+
+  var USERS_KEY = 'acx_users_v3';
+  var SESSION_KEY = 'acx_session_v3';
+
+  function getUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return{}}}
+  function saveUsers(u){try{localStorage.setItem(USERS_KEY,JSON.stringify(u))}catch(e){}}
+  function getUser(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+  function setUser(u){try{u?localStorage.setItem(SESSION_KEY,JSON.stringify(u)):localStorage.removeItem(SESSION_KEY)}catch(e){}}
+  function isLoggedIn(){return !!getUser()}
+
+  // ============ TOAST ============
+  function toast(msg){
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:12px 22px;border-radius:25px;font-size:13px;font-weight:700;z-index:999999;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:85vw;text-align:center';
+    document.body.appendChild(t);
+    setTimeout(function(){
+      t.style.opacity = '0';
+      t.style.transition = 'opacity .3s';
+      setTimeout(function(){t.remove()}, 300);
+    }, 2200);
+  }
+  window.acxToast = toast;
+
+  // ============ PROFILE CHIP ============
+  function updateProfile(){
+    var u = getUser();
+    var chip = document.getElementById('acxChip');
+    if(!chip){
+      var hdr = document.querySelector('.hdr-row') || document.querySelector('.app-header') || document.querySelector('header');
+      if(!hdr){
+        setTimeout(updateProfile, 300);
+        return;
+      }
+      chip = document.createElement('div');
+      chip.id = 'acxChip';
+      chip.style.cssText = 'display:none;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:4px 10px 4px 4px;border-radius:18px;cursor:pointer;border:1.5px solid rgba(255,255,255,.25);margin-right:8px';
+      chip.innerHTML = '<div id="acxAv" style="width:24px;height:24px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:#0a1929">U</div><div id="acxNm" style="color:#fff;font-size:11px;font-weight:700;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">User</div>';
+      chip.onclick = showUserMenu;
+
+      var dotBtn = hdr.querySelector('.hdr-btn, .menu-toggle');
+      if(dotBtn && dotBtn.parentNode){
+        dotBtn.parentNode.insertBefore(chip, dotBtn);
+      } else {
+        hdr.appendChild(chip);
+      }
+      console.log('✅ Profile chip created');
+    }
+    if(u){
+      chip.style.display = 'flex';
+      document.getElementById('acxAv').textContent = (u.name||'U')[0].toUpperCase();
+      document.getElementById('acxNm').textContent = (u.name||'User').substring(0,10);
+    } else {
+      chip.style.display = 'none';
+    }
+  }
+  window.acxUpdateProfile = updateProfile;
+
+  function showUserMenu(){
+    var u = getUser();
+    if(!u) return;
+    if(confirm('Logout करें?\n\n' + u.name + '\n' + u.email)){
+      setUser(null);
+      updateProfile();
+      toast('👋 Logout हो गया');
+    }
+  }
+
+  // ============ AUTH MODAL ============
+  function buildAuthModal(){
+    if(document.getElementById('acxAuth')) return;
+    var m = document.createElement('div');
+    m.id = 'acxAuth';
+    m.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:999998;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
+    m.innerHTML =
+      '<div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">' +
+        '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">' +
+          '<button id="acxClose" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>' +
+          '<div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>' +
+          '<div id="acxTitle" style="font-size:18px;font-weight:900">Create Account</div>' +
+          '<div id="acxSub" style="font-size:11px;opacity:.85;margin-top:2px">Answer check के लिए account बनाएँ</div>' +
+        '</div>' +
+        '<div style="padding:20px">' +
+          '<div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">' +
+            '<button id="acxSignupTab" type="button" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>' +
+            '<button id="acxLoginTab" type="button" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>' +
+          '</div>' +
+          '<div id="acxNameF" style="margin-bottom:13px">' +
+            '<div style="font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">NAME</div>' +
+            '<input id="acxName" type="text" placeholder="Your name" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">' +
+          '</div>' +
+          '<div style="margin-bottom:13px">' +
+            '<div style="font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">EMAIL</div>' +
+            '<input id="acxEmail" type="email" placeholder="you@gmail.com" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">' +
+          '</div>' +
+          '<div style="margin-bottom:13px">' +
+            '<div style="font-size:10.5px;font-weight:800;color:#666;margin-bottom:4px">PASSWORD</div>' +
+            '<input id="acxPass" type="password" placeholder="Min 4 characters" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">' +
+          '</div>' +
+          '<button id="acxSubmit" type="button" style="width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:13px;border-radius:11px;font-family:inherit;font-size:13.5px;font-weight:800;cursor:pointer;margin-top:4px">Create Free Account</button>' +
+          '<div id="acxMsg" style="padding:10px 13px;border-radius:9px;font-size:11.5px;font-weight:600;margin-top:11px;display:none"></div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(m);
+
+    var mode = 'signup';
+
+    function setMode(m){
+      mode = m;
+      var isS = (m === 'signup');
+      document.getElementById('acxTitle').textContent = isS ? 'Create Account' : 'Welcome Back';
+      document.getElementById('acxSub').textContent = isS ? 'Answer check के लिए account बनाएँ' : 'Login करें';
+      document.getElementById('acxSubmit').textContent = isS ? 'Create Free Account' : 'Login';
+      document.getElementById('acxNameF').style.display = isS ? 'block' : 'none';
+      var st = document.getElementById('acxSignupTab'), lt = document.getElementById('acxLoginTab');
+      if(isS){
+        st.style.background='#fff'; st.style.color='#0f3460'; st.style.boxShadow='0 2px 6px rgba(0,0,0,.08)';
+        lt.style.background='transparent'; lt.style.color='#666'; lt.style.boxShadow='none';
+      } else {
+        st.style.background='transparent'; st.style.color='#666'; st.style.boxShadow='none';
+        lt.style.background='#fff'; lt.style.color='#0f3460'; lt.style.boxShadow='0 2px 6px rgba(0,0,0,.08)';
+      }
+    }
+
+    document.getElementById('acxClose').onclick = function(){
+      m.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+    document.getElementById('acxSignupTab').onclick = function(){ setMode('signup'); };
+    document.getElementById('acxLoginTab').onclick = function(){ setMode('login'); };
+
+    document.getElementById('acxSubmit').onclick = function(){
+      var email = (document.getElementById('acxEmail').value||'').trim().toLowerCase();
+      var pass = (document.getElementById('acxPass').value||'');
+      var name = (document.getElementById('acxName').value||'').trim();
+      var msg = document.getElementById('acxMsg');
+
+      function show(t, err){
+        msg.style.display = 'block';
+        msg.textContent = t;
+        msg.style.background = err ? '#ffe8e8' : '#e8f8f0';
+        msg.style.color = err ? '#c0392b' : '#27ae60';
+      }
+
+      if(mode === 'signup' && !name){ show('Name भरें', true); return; }
+      if(!email || email.indexOf('@') < 1){ show('Sahi email भरें', true); return; }
+      if(pass.length < 4){ show('Password min 4 characters', true); return; }
+
+      var accts = getUsers();
+
+      if(mode === 'signup'){
+        if(accts[email]){ show('Email पहले से है — Login करें', true); return; }
+        var uid = 'U' + Date.now().toString(36).toUpperCase().slice(-6);
+        accts[email] = { name: name, email: email, pass: pass, uid: uid, created: Date.now() };
+        saveUsers(accts);
+        setUser({ name: name, email: email, uid: uid });
+        show('Account बन गया!', false);
+        setTimeout(function(){
+          m.style.display = 'none';
+          document.body.style.overflow = '';
+          updateProfile();
+          toast('🎉 Welcome ' + name + '!');
+          if(window._pendingCheck){
+            var fn = window._pendingCheck;
+            window._pendingCheck = null;
+            setTimeout(fn, 400);
+          }
+        }, 700);
+        return;
+      }
+
+      if(!accts[email]){ show('Account नहीं मिला — Sign Up करें', true); return; }
+      if(accts[email].pass !== pass){ show('Password गलत है', true); return; }
+      setUser({ name: accts[email].name, email: email, uid: accts[email].uid });
+      show('Login successful!', false);
+      setTimeout(function(){
+        m.style.display = 'none';
+        document.body.style.overflow = '';
+        updateProfile();
+        toast('👋 Welcome back!');
+        if(window._pendingCheck){
+          var fn = window._pendingCheck;
+          window._pendingCheck = null;
+          setTimeout(fn, 400);
+        }
+      }, 600);
+    };
+  }
+
+  function showAuthModal(mode){
+    buildAuthModal();
+    var m = document.getElementById('acxAuth');
+    m.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if(mode === 'login'){
+      document.getElementById('acxLoginTab').click();
+    } else {
+      document.getElementById('acxSignupTab').click();
+    }
+  }
+  window.acxShowAuth = showAuthModal;
+
+  // ============ PDF ZONE REBUILD ============
+  function rebuildPDFZone(){
+    var pz = document.getElementById('pdfZone');
+    if(!pz) return;
+    if(pz.getAttribute('data-acx-built') === '1') return;
+    pz.setAttribute('data-acx-built', '1');
+
+    while(pz.firstChild) pz.removeChild(pz.firstChild);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'acxPdfInput');
+    label.style.cssText = 'display:block;border:3px dashed #a0aec0;border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;background:#fafbfc;box-sizing:border-box';
+    label.innerHTML =
+      '<div style="font-size:44px;margin-bottom:8px;pointer-events:none">📄</div>' +
+      '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:4px;pointer-events:none">PDF drop करें या tap करें</div>' +
+      '<div style="font-size:11px;color:#666;margin-bottom:8px;pointer-events:none">Scanned / Handwritten / Typed</div>' +
+      '<div style="font-size:10px;color:#e94560;font-weight:700;background:#ffe8e8;padding:3px 10px;border-radius:10px;display:inline-block;pointer-events:none">♾️ Unlimited pages</div>';
+
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.id = 'acxPdfInput';
+    input.accept = 'application/pdf,image/*';
+    input.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0';
+
+    pz.appendChild(label);
+    pz.appendChild(input);
+
+    input.onchange = function(e){
+      if(e.target.files && e.target.files.length > 0){
+        console.log('File:', e.target.files[0].name);
+        processPDF(e.target.files[0]);
+      }
+    };
+
+    console.log('✅ PDF zone rebuilt');
+  }
+
+  async function processPDF(file){
+    console.log('Processing:', file.name);
+    var pz = document.getElementById('pdfZone');
+    var label = pz.querySelector('label');
+    if(label) label.style.display = 'none';
+
+    var status = document.getElementById('acxStatus');
+    if(!status){
+      status = document.createElement('div');
+      status.id = 'acxStatus';
+      status.style.cssText = 'background:linear-gradient(135deg,#e8f8f0,#d4f0e0);border:2px solid #27ae60;border-radius:12px;padding:12px';
+      status.innerHTML =
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">' +
+          '<div style="width:42px;height:42px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📄</div>' +
+          '<div style="flex:1;min-width:0">' +
+            '<div id="acxName" style="font-size:12.5px;font-weight:800;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">-</div>' +
+            '<div id="acxSize" style="font-size:10.5px;color:#666;margin-top:2px">-</div>' +
+          '</div>' +
+          '<button type="button" id="acxRemove" style="background:#ffe8e8;color:#c0392b;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;flex-shrink:0">✕</button>' +
+        '</div>' +
+        '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-bottom:8px"><div id="acxBar" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);transition:width .3s"></div></div>' +
+        '<div id="acxStat" style="font-size:11px;color:#666;text-align:center;font-weight:700;margin-bottom:8px">-</div>' +
+        '<div id="acxPrev" style="display:none;background:#fff;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
+      pz.appendChild(status);
+
+      document.getElementById('acxRemove').onclick = function(){
+        status.style.display = 'none';
+        if(label) label.style.display = 'block';
+        window.acxPdfText = '';
+      };
+    } else {
+      status.style.display = 'block';
+    }
+
+    document.getElementById('acxName').textContent = file.name;
+    document.getElementById('acxSize').textContent = (file.size/1024).toFixed(0) + ' KB';
+
+    function setStat(t, p){
+      document.getElementById('acxStat').textContent = t;
+      document.getElementById('acxBar').style.width = p + '%';
+    }
+
+    try {
+      setStat('⏳ File पढ़ रहे हैं...', 5);
+      var buf = await file.arrayBuffer();
+
+      if(typeof pdfjsLib === 'undefined') throw new Error('PDF.js load नहीं हुआ — Internet check');
+      if(!pdfjsLib.GlobalWorkerOptions.workerSrc){
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+
+      setStat('📖 PDF खोल रहे हैं...', 10);
+      var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+      var total = pdf.numPages;
+      setStat('📄 ' + total + ' pages', 15);
+
+      var all = '';
+      var wc = 0;
+
+      for(var i = 1; i <= total; i++){
+        var pct = 15 + Math.round((i/total) * 80);
+        setStat('📄 Page ' + i + '/' + total + ' — ' + wc + ' words', pct);
+
+        try {
+          var page = await pdf.getPage(i);
+          var tc = await page.getTextContent();
+          var txt = tc.items.map(function(x){ return x.str; }).join(' ');
+
+          if(txt.trim().length < 30 && typeof Tesseract !== 'undefined'){
+            setStat('🔍 Page ' + i + ' OCR...', pct);
+            try {
+              var vp = page.getViewport({ scale: 1.2 });
+              var cv = document.createElement('canvas');
+              var cx = cv.getContext('2d');
+              cv.width = vp.width; cv.height = vp.height;
+              await page.render({ canvasContext: cx, viewport: vp }).promise;
+              var url = cv.toDataURL('image/jpeg', 0.85);
+              cv.width = 0; cv.height = 0;
+              var ocr = await Tesseract.recognize(url, 'hin+eng');
+              if(ocr && ocr.data && ocr.data.text) txt = ocr.data.text;
+            } catch(e){}
+          }
+
+          if(txt && txt.trim().length > 5){
+            all += txt + '\n\n';
+            wc += txt.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+          }
+        } catch(pe){}
+
+        if(i % 2 === 0) await new Promise(function(r){ setTimeout(r, 10); });
+      }
+
+      console.log('Extracted:', wc, 'words');
+      setStat('✅ ' + wc + ' शब्द', 100);
+
+      window.acxPdfText = all.trim();
+
+      var ta = document.getElementById('ansInput');
+      if(ta) ta.value = all.trim();
+
+      var btn = document.getElementById('btnCheck');
+      if(btn) btn.disabled = false;
+
+      if(window.updateCount) try{ window.updateCount(); }catch(e){}
+
+      var prev = document.getElementById('acxPrev');
+      prev.style.display = 'block';
+      prev.textContent = all.length > 500 ? all.substring(0, 500) + '...' : all;
+
+      toast('✅ ' + wc + ' शब्द मिले');
+
+    } catch(err){
+      console.error(err);
+      setStat('❌ ' + err.message, 100);
+      toast('❌ ' + err.message);
+    }
+  }
+
+  // ============ GATE CHECK BUTTON ============
+  function gateCheck(){
+    var btn = document.getElementById('btnCheck');
+    if(!btn || btn._acxGated) return;
+    btn._acxGated = true;
+
+    var orig = btn.onclick;
+    btn._acxOrigClick = orig;
+
+    btn.onclick = function(e){
+      if(!isLoggedIn()){
+        if(e){ e.preventDefault(); e.stopPropagation(); }
+        window._pendingCheck = function(){
+          var o = btn._acxOrigClick;
+          if(o) o.call(btn, e);
+        };
+        showAuthModal('signup');
+        toast('🔐 पहले Sign Up करें');
+        return false;
+      }
+      if(orig) return orig.call(btn, e);
+    };
+    console.log('✅ Check gated');
+  }
+
+  // ============ INIT ============
+  function init(){
+    rebuildPDFZone();
+    gateCheck();
+    updateProfile();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
+  } else {
+    setTimeout(init, 200);
+  }
+  setTimeout(init, 1000);
+  setTimeout(init, 2500);
+  setTimeout(init, 4000);
+
+  // Rebuild on PDF tab click
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(t.closest && t.closest('.mode-b')){
+      setTimeout(function(){
+        rebuildPDFZone();
+      }, 200);
+    }
+  }, true);
+
+  console.log('✅ System ready');
+})();
+</script>
+
 </body>
 </html>
