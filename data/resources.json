@@ -485,7 +485,13 @@
     "name": "UGC NET Paper 1",
     "notes": [],
     "pyq": [],
-    "syllabus": [],
+    "syllabus": [
+      {
+        "title": "UGC NET Paper 1 Complete Syllabus (English) _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/net-paper1/syllabus/1789571925729-ugc-net-paper-1-complete-syllabus-english-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "videos": [],
     "books": []
   },
@@ -1012,13 +1018,7 @@
   },
   "bsc-agronomy": {
     "name": "BSc: Agronomy",
-    "notes": [
-      {
-        "title": "BSc Agriculture - Agronomy Complete Notes (Hindi) _ The Ravishankar Insights.pdf",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/bsc-agronomy/notes/1789571874197-bsc-agriculture-agronomy-complete-notes-hindi-the-ravishankar-insights.pdf",
-        "type": "PDF"
-      }
-    ],
+    "notes": [],
     "pyq": [],
     "syllabus": [],
     "videos": [],
