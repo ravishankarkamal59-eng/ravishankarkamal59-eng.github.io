@@ -713,13 +713,13 @@ console.log('✅ Fix JS loaded');
 
     <!-- PDF zone -->
     <div class="pdf-z" id="pdfZone">
-      <div class="pdf-drop" id="pdfDrop">
+      <label class="pdf-drop" for="pdfInput" id="pdfDrop" style="display:block;cursor:pointer">
         <div class="ic">📄</div>
         <div class="tt">PDF drop करें या tap करें</div>
         <div class="st">Scanned / Handwritten / Typed • Any size</div>
         <div class="ht">♾️ Unlimited pages • Unlimited size</div>
-        <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
-      </div>
+        <input type="file" id="pdfInput" accept="application/pdf,image/*" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      </label>
       <div class="pdf-info" id="pdfInfo">
         <div class="fi">📄</div>
         <div class="fn" id="pdfFn">-</div>
@@ -1143,9 +1143,8 @@ console.log('✅ Fix JS loaded');
     return m+' min '+s+' sec';
   }
 
-  document.getElementById('pdfDrop').addEventListener('click',function(){
-    document.getElementById('pdfInput').click();
-  });
+  /* Removed duplicate handler — label handles it natively */
+  
 
   document.getElementById('pdfInput').addEventListener('change',function(e){
     if(e.target.files.length)handleFile(e.target.files[0]);
