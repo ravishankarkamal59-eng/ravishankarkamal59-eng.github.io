@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Answer Checker - UPSC/UPPCS Mains | The Ravishankar Insights</title>
-<meta name="description" content="UPSC, UPPCS Mains के लिए answer checking tool। अपना answer type करें या PDF upload करें और instant score पाएँ।">
 <meta name="theme-color" content="#0f3460">
 <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=11">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
-<script src="answer-checker-data.js?v=2"></script>
+<script src="answer-checker-data.js?v=3"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -19,137 +18,285 @@ body {
   background: #f0f4f8;
   color: #1a1a2e;
   min-height: 100vh;
-  padding-bottom: 100px;
 }
 
-/* Header */
-.app-header {
-  position: sticky; top: 0; z-index: 100;
-  background: linear-gradient(135deg, #0f3460, #1a5276, #16213e);
-  padding: 14px 18px;
-  display: flex; align-items: center; justify-content: space-between;
+/* ============ TOP HEADER ============ */
+.top-header {
+  position: sticky; top: 0; z-index: 1000;
+  background: linear-gradient(135deg, #0f3460, #1a5276);
   box-shadow: 0 4px 20px rgba(15,52,96,0.3);
+  padding: 12px 16px;
 }
-.app-header .logo-area { display: flex; align-items: center; gap: 10px; }
-.app-header .logo-icon {
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-logo {
   width: 40px; height: 40px;
   background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
   border-radius: 11px;
   display: flex; align-items: center; justify-content: center;
-  font-family: Georgia, serif; font-weight: 900; font-size: 22px; color: #0a1929;
+  font-family: Georgia, serif;
+  font-weight: 900; font-size: 22px;
+  color: #0a1929;
 }
-.app-header .logo-text { color: #fff; line-height: 1.1; }
-.app-header .logo-text .small { font-size: 9px; color: #FDBA3B; letter-spacing: 2px; font-weight: 700; }
-.app-header .logo-text .big { font-size: 14px; font-weight: 800; font-family: Georgia, serif; }
+.brand-text { line-height: 1.1; }
+.brand-text .small { font-size: 9px; color: #FDBA3B; letter-spacing: 2px; font-weight: 700; }
+.brand-text .big { font-size: 14px; font-weight: 800; color: #fff; font-family: Georgia, serif; }
 
-/* Container */
-.app-main { max-width: 720px; margin: 0 auto; padding: 14px; }
+/* 3-Dot Button */
+.dot-menu-btn {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.dot-menu-btn:active { background: rgba(255,255,255,0.25); }
+.dot-menu-btn span {
+  display: block;
+  width: 5px; height: 5px;
+  background: #FDBA3B;
+  border-radius: 50%;
+}
 
-/* Cards */
-.card {
-  background: #fff; border-radius: 16px;
-  padding: 18px; margin-bottom: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+/* ============ EXAM SELECTOR BAR ============ */
+.exam-bar {
+  background: #fff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e6ed;
+  position: sticky;
+  top: 64px;
+  z-index: 999;
 }
-.card-title {
-  font-size: 15px; font-weight: 800;
-  color: #0f3460; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
+.exam-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
-.badge {
+.exam-bar-icon {
+  width: 40px; height: 40px;
   background: linear-gradient(135deg, #e94560, #c0392b);
-  color: #fff; font-size: 9px; padding: 2px 8px;
-  border-radius: 10px; font-weight: 700; letter-spacing: 0.5px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.exam-bar-text { flex: 1; min-width: 0; }
+.exam-bar-label {
+  font-size: 9px; color: #999;
+  font-weight: 700; letter-spacing: 1.5px;
+  margin-bottom: 2px;
+}
+.exam-bar-name {
+  font-size: 15px; font-weight: 800;
+  color: #0f3460;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.exam-bar-change {
+  font-size: 11px; color: #e94560;
+  font-weight: 800;
+  background: #ffe8e8;
+  padding: 5px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
-/* Tabs */
-.tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; }
-.tabs::-webkit-scrollbar { display: none; }
-.tab {
-  background: #f0f4f8; color: #0f3460;
-  border: none; padding: 9px 16px; border-radius: 10px;
-  font-size: 12px; font-weight: 700; white-space: nowrap;
-  cursor: pointer; font-family: inherit; transition: all 0.2s;
-}
-.tab.active {
-  background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff; box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+/* ============ MAIN CONTENT ============ */
+.main-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 14px;
+  padding-bottom: 40px;
 }
 
-/* Question box */
-.q-box {
-  background: linear-gradient(135deg, #f8fafc, #e8f4ff);
-  border-left: 4px solid #e94560;
-  padding: 14px; border-radius: 12px;
-  margin-bottom: 10px; cursor: pointer;
+/* Question list item (compact) */
+.q-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   transition: all 0.2s;
+  border-left: 4px solid #e0e6ed;
+  position: relative;
 }
-.q-box.selected {
-  border-left-color: #FDBA3B;
-  background: linear-gradient(135deg, #fff8e1, #fff3cd);
-  box-shadow: 0 4px 15px rgba(253,186,59,0.2);
+.q-item:active { transform: scale(0.99); }
+.q-item.selected {
+  border-left-color: #e94560;
+  background: linear-gradient(135deg, #fff, #fff8e1);
+  box-shadow: 0 6px 20px rgba(233,69,96,0.15);
 }
-.q-box .q-num {
-  font-size: 10px; color: #e94560;
-  font-weight: 800; letter-spacing: 1px; margin-bottom: 5px;
+.q-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
-.q-box .q-text {
-  font-size: 14px; font-weight: 600;
-  line-height: 1.55; color: #1a1a2e;
+.q-item-num {
+  font-size: 10px;
+  font-weight: 800;
+  color: #e94560;
+  letter-spacing: 1px;
 }
-.q-box .q-meta {
-  display: flex; gap: 8px; margin-top: 8px;
-  font-size: 10px; color: #666; flex-wrap: wrap;
+.q-item-subject {
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  background: #0f3460;
+  padding: 3px 8px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
 }
-.q-box .q-meta span {
-  background: #fff; padding: 3px 9px;
-  border-radius: 10px; border: 1px solid #e0e6ed; font-weight: 600;
+.q-item-text {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #1a1a2e;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.q-item.selected .q-item-text {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+.q-item-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.q-item-meta span {
+  font-size: 10px;
+  color: #666;
+  font-weight: 600;
+  background: #f0f4f8;
+  padding: 3px 9px;
+  border-radius: 10px;
 }
 
-/* Mode Tabs */
-.mode-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
-.mode-tab {
-  flex: 1; background: #f0f4f8; color: #0f3460;
-  border: none; padding: 12px; border-radius: 12px;
-  font-size: 13px; font-weight: 700;
-  cursor: pointer; font-family: inherit;
+/* Answer area (hidden by default) */
+.answer-area {
+  display: none;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 2px solid #FDBA3B;
+  animation: slideDown 0.3s ease;
 }
-.mode-tab.active {
-  background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff; box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+.answer-area.show { display: block; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.answer-title {
+  font-size: 14px; font-weight: 800;
+  color: #0f3460;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  gap: 6px;
+  background: #f0f4f8;
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.mode-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.mode-btn.active {
+  background: #fff;
+  color: #0f3460;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* Textarea */
 textarea {
-  width: 100%; min-height: 200px;
-  padding: 14px; border: 2px solid #e0e6ed;
-  border-radius: 12px; font-family: inherit;
-  font-size: 14px; line-height: 1.7;
-  resize: vertical; outline: none;
-  background: #fafbfc; color: #1a1a2e;
+  width: 100%;
+  min-height: 180px;
+  padding: 14px;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  background: #fafbfc;
+  color: #1a1a2e;
 }
 textarea:focus { border-color: #0f3460; background: #fff; }
 
-/* Word counter */
-.word-row {
-  display: flex; justify-content: space-between;
-  margin-top: 8px; font-size: 12px;
-  font-weight: 600; color: #666;
+.word-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
 }
-.word-row .count { color: #0f3460; font-weight: 800; }
+.word-info .count { color: #0f3460; font-weight: 800; }
 
-/* PDF Upload */
+/* PDF area */
+.pdf-zone {
+  display: none;
+}
+.pdf-zone.show { display: block; }
 .pdf-drop {
   border: 3px dashed #a0aec0;
-  border-radius: 14px; padding: 28px 16px;
-  text-align: center; cursor: pointer;
-  background: #fafbfc; transition: all 0.3s;
+  border-radius: 14px;
+  padding: 28px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafbfc;
+  transition: all 0.3s;
 }
-.pdf-drop:hover, .pdf-drop.dragover {
-  border-color: #0f3460; background: #e8f4ff;
-}
+.pdf-drop:active { border-color: #0f3460; background: #e8f4ff; }
 .pdf-drop .icon { font-size: 44px; margin-bottom: 8px; }
-.pdf-drop .title { font-size: 14px; font-weight: 800; color: #0f3460; margin-bottom: 4px; }
+.pdf-drop .title { font-size: 13px; font-weight: 800; color: #0f3460; margin-bottom: 4px; }
 .pdf-drop .sub { font-size: 11px; color: #666; margin-bottom: 8px; }
 .pdf-drop .hint {
   font-size: 10px; color: #e94560; font-weight: 700;
@@ -157,173 +304,211 @@ textarea:focus { border-color: #0f3460; background: #fff; }
   display: inline-block;
 }
 
-.pdf-file-info { margin-top: 14px; }
+.pdf-progress-bar {
+  height: 6px; background: #e0e6ed;
+  border-radius: 3px; overflow: hidden;
+  margin: 12px 0 6px; display: none;
+}
+.pdf-progress-bar.show { display: block; }
+.pdf-progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #FDBA3B, #FB5D3B);
+  transition: width 0.3s;
+}
+.pdf-progress-text {
+  font-size: 11px; color: #666;
+  text-align: center; font-weight: 600;
+  margin-bottom: 10px; display: none;
+}
+.pdf-progress-text.show { display: block; }
+
 .pdf-file-row {
-  display: flex; align-items: center; gap: 12px;
-  background: #f8fafc; padding: 12px;
-  border-radius: 12px; margin-bottom: 12px;
-}
-.pdf-file-icon {
-  width: 42px; height: 42px;
-  background: linear-gradient(135deg, #e94560, #c0392b);
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 10px;
   border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
+  margin-bottom: 10px;
 }
-.pdf-file-info .name {
+.pdf-file-row.show { display: flex; }
+.pdf-file-row .file-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.pdf-file-row .file-info { flex: 1; min-width: 0; }
+.pdf-file-row .file-name {
   font-size: 12px; font-weight: 700; color: #0f3460;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.pdf-file-info .meta { font-size: 10px; color: #666; margin-top: 2px; }
-.pdf-remove {
+.pdf-file-row .file-meta { font-size: 10px; color: #666; margin-top: 2px; }
+.pdf-file-row .file-remove {
   background: #ffe8e8; color: #c0392b;
-  border: none; width: 30px; height: 30px;
-  border-radius: 50%; font-size: 14px;
+  border: none; width: 28px; height: 28px;
+  border-radius: 50%; font-size: 13px;
   font-weight: 700; cursor: pointer; flex-shrink: 0;
 }
 
-.progress-bar {
-  height: 6px; background: #e0e6ed;
-  border-radius: 3px; overflow: hidden;
-  margin: 10px 0 6px;
-}
-.progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, #FDBA3B, #FB5D3B);
-  border-radius: 3px; transition: width 0.3s;
-}
-.progress-text {
-  font-size: 11px; color: #666;
-  text-align: center; font-weight: 600; margin-bottom: 12px;
-}
-
-.page-thumbs {
-  display: grid; grid-template-columns: repeat(5, 1fr);
-  gap: 6px; margin-top: 10px;
-  max-height: 200px; overflow-y: auto;
-}
-.page-thumb {
-  aspect-ratio: 3/4; background: #fff;
-  border: 1px solid #e0e6ed; border-radius: 5px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 8px; color: #999; position: relative;
-}
-.page-thumb.done { border-color: #27ae60; background: #e8f8f0; color: #27ae60; }
-.page-thumb.processing { border-color: #f39c12; background: #fff8e1; }
-.page-thumb.error { border-color: #e94560; background: #ffe8e8; color: #e94560; }
-.page-thumb .num {
-  position: absolute; bottom: 2px; right: 3px;
-  font-size: 8px; color: #666; font-weight: 700;
-}
-
-.ocr-preview {
-  background: #f8fafc; border: 2px solid #e0e6ed;
-  border-radius: 10px; padding: 12px;
-  margin-top: 12px; max-height: 150px;
-  overflow-y: auto; font-size: 12px;
-  line-height: 1.6; color: #333;
-  white-space: pre-wrap;
-}
-.ocr-label {
-  font-size: 10px; color: #666; font-weight: 700;
-  text-transform: uppercase; margin-bottom: 6px;
-}
-
-/* Buttons */
-.btn-primary {
-  width: 100%; background: linear-gradient(135deg, #0f3460, #e94560);
-  color: #fff; border: none; padding: 16px;
-  border-radius: 12px; font-family: inherit;
-  font-size: 15px; font-weight: 800;
-  cursor: pointer; margin-top: 12px;
+/* Check button */
+.btn-check {
+  width: 100%;
+  background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 12px;
   box-shadow: 0 6px 20px rgba(233,69,96,0.3);
+  letter-spacing: 0.5px;
 }
-.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-secondary {
-  background: #f0f4f8; color: #0f3460;
-  border: none; padding: 12px 20px;
-  border-radius: 12px; font-family: inherit;
-  font-size: 14px; font-weight: 700; cursor: pointer;
+.btn-check:disabled { opacity: 0.5; }
+.btn-check:active { transform: scale(0.98); }
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.btn-clear {
+  background: #f0f4f8;
+  color: #0f3460;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* RESULTS */
-#resultsArea { display: none; }
-#resultsArea.show { display: block; }
+.results-area {
+  display: none;
+}
+.results-area.show { display: block; }
 
 .score-card {
   background: linear-gradient(135deg, #0f3460, #1a5276);
-  border-radius: 18px; padding: 24px;
-  color: #fff; text-align: center;
-  margin-bottom: 14px; position: relative; overflow: hidden;
+  border-radius: 18px;
+  padding: 26px 20px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
 }
 .score-card::before {
-  content: ''; position: absolute;
-  top: -50%; right: -50%; width: 200%; height: 200%;
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(253,186,59,0.15), transparent 60%);
 }
 .score-label {
-  font-size: 12px; color: #FDBA3B;
-  font-weight: 700; letter-spacing: 2px;
-  margin-bottom: 10px; text-transform: uppercase;
+  font-size: 11px;
+  color: #FDBA3B;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  position: relative;
 }
 .score-value {
-  font-size: 68px; font-weight: 900;
-  line-height: 1; color: #FDBA3B;
-  text-shadow: 0 0 30px rgba(253,186,59,0.5);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  color: #FDBA3B;
+  position: relative;
 }
-.score-max { font-size: 22px; color: rgba(255,255,255,0.5); font-weight: 700; }
+.score-max {
+  font-size: 22px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 700;
+  position: relative;
+}
 .score-percent {
-  font-size: 14px; color: rgba(255,255,255,0.8);
-  margin-top: 8px; font-weight: 700;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-top: 6px;
+  font-weight: 700;
+  position: relative;
 }
 .verdict {
-  font-size: 16px; font-weight: 800;
-  margin-top: 12px; padding: 8px 20px;
-  border-radius: 30px; display: inline-block;
+  font-size: 15px;
+  font-weight: 800;
+  margin-top: 12px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  position: relative;
 }
 .verdict.excellent { background: rgba(39,174,96,0.3); color: #6ee7a3; }
 .verdict.good { background: rgba(52,152,219,0.3); color: #7dd3fc; }
 .verdict.average { background: rgba(243,156,18,0.3); color: #fcd34d; }
 .verdict.poor { background: rgba(233,69,96,0.3); color: #fca5a5; }
 
+/* Breakdown */
 .breakdown {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 10px; margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
 }
 .bd-item {
-  background: #fff; border-radius: 12px;
-  padding: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 .bd-label {
-  font-size: 10px; color: #666;
-  font-weight: 700; margin-bottom: 5px;
+  font-size: 10px;
+  color: #666;
+  font-weight: 700;
+  margin-bottom: 4px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .bd-value {
-  font-size: 20px; font-weight: 900;
-  color: #0f3460; line-height: 1;
+  font-size: 20px;
+  font-weight: 900;
+  color: #0f3460;
+  line-height: 1;
 }
 .bd-value small { font-size: 12px; color: #999; }
 .bd-bar {
-  height: 4px; background: #e0e6ed;
-  border-radius: 2px; margin-top: 6px; overflow: hidden;
+  height: 4px;
+  background: #e0e6ed;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
 }
 .bd-bar-fill {
-  height: 100%; border-radius: 2px;
-  transition: width 0.8s ease;
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.8s;
 }
 .fill-green { background: linear-gradient(90deg, #27ae60, #2ecc71); }
 .fill-blue { background: linear-gradient(90deg, #2980b9, #3498db); }
 .fill-orange { background: linear-gradient(90deg, #f39c12, #f1c40f); }
 .fill-red { background: linear-gradient(90deg, #e94560, #c0392b); }
 
-.feedback {
-  background: #fff; border-radius: 14px;
-  padding: 16px; margin-bottom: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+/* Feedback */
+.feedback-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 .fb-title {
-  font-size: 14px; font-weight: 800;
+  font-size: 13px;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 .fb-title.good { color: #27ae60; }
@@ -331,338 +516,420 @@ textarea:focus { border-color: #0f3460; background: #fff; }
 .fb-title.warn { color: #f39c12; }
 .fb-list { list-style: none; }
 .fb-list li {
-  font-size: 13px; line-height: 1.6;
-  padding: 8px 0 8px 24px;
-  position: relative; color: #333;
-  border-bottom: 1px solid #f0f4f8;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 7px 0 7px 22px;
+  position: relative;
+  color: #333;
+  border-bottom: 1px solid #f5f7fa;
 }
 .fb-list li:last-child { border-bottom: none; }
 .fb-list li::before {
-  position: absolute; left: 0; top: 8px;
-  font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 7px;
+  font-weight: 900;
+  font-size: 13px;
 }
-.fb-list li.good::before { content: '✓'; color: #27ae60; font-weight: 900; }
-.fb-list li.bad::before { content: '✗'; color: #e94560; font-weight: 900; }
-.fb-list li.warn::before { content: '!'; color: #f39c12; font-weight: 900; }
+.fb-list li.good::before { content: '✓'; color: #27ae60; }
+.fb-list li.bad::before { content: '✗'; color: #e94560; }
+.fb-list li.warn::before { content: '!'; color: #f39c12; }
 
-.keywords-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.keywords-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
 .chip {
-  padding: 4px 10px; border-radius: 10px;
-  font-size: 11px; font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
 }
 .chip.found { background: #e8f8f0; color: #27ae60; }
 .chip.missing { background: #ffe8e8; color: #c0392b; }
 
-.action-row { display: flex; gap: 10px; }
+.results-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.btn-primary {
+  flex: 1;
+  background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn-secondary {
+  background: #f0f4f8;
+  color: #0f3460;
+  border: none;
+  padding: 15px 22px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-/* Bottom nav */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: #fff; border-top: 1px solid #e0e6ed;
-  display: flex; justify-content: space-around;
-  padding: 8px 0 10px; z-index: 100;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+/* ============ DRAWER MENU ============ */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
-.nav-btn {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 3px;
-  background: none; border: none; padding: 6px 12px;
-  cursor: pointer; font-family: inherit;
-  color: #999; font-size: 10px; font-weight: 700;
+.drawer-overlay.show { display: block; opacity: 1; }
+
+.drawer {
+  position: fixed;
+  top: 0; right: -320px;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 2001;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.2);
 }
-.nav-btn .nav-ic { font-size: 20px; line-height: 1; }
-.nav-btn.active { color: #e94560; }
+.drawer.show { right: 0; }
+
+.drawer-header {
+  background: linear-gradient(135deg, #0f3460, #1a5276);
+  color: #fff;
+  padding: 20px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.drawer-title {
+  display: flex;
+  flex-direction: column;
+}
+.drawer-title .small { font-size: 9px; color: #FDBA3B; letter-spacing: 2px; font-weight: 700; }
+.drawer-title .big { font-size: 15px; font-weight: 800; margin-top: 2px; }
+.drawer-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.drawer-section {
+  padding: 14px 16px 6px;
+  font-size: 10px;
+  color: #999;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+}
+.drawer-item:active { background: #f0f4f8; }
+.drawer-item.active {
+  background: linear-gradient(90deg, #fff8e1, #fff3cd);
+  border-left: 4px solid #FDBA3B;
+}
+.drawer-item .d-icon {
+  width: 40px; height: 40px;
+  background: #f0f4f8;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.drawer-item.active .d-icon {
+  background: linear-gradient(135deg, #FDBA3B, #FB5D3B);
+}
+.drawer-item .d-info { flex: 1; min-width: 0; }
+.drawer-item .d-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 2px;
+}
+.drawer-item.active .d-name { color: #0f3460; font-weight: 800; }
+.drawer-item .d-sub {
+  font-size: 10px;
+  color: #999;
+  font-weight: 600;
+}
+.drawer-item .d-count {
+  background: linear-gradient(135deg, #0f3460, #1a5276);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Drawer ad */
+.drawer-ad {
+  margin: 16px;
+  padding: 14px;
+  background: linear-gradient(135deg, #fff8e1, #fff3cd);
+  border-radius: 12px;
+  border-left: 3px solid #f39c12;
+}
+.drawer-ad-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #b8860b;
+  margin-bottom: 6px;
+}
+.drawer-ad-text {
+  font-size: 11px;
+  color: #7a5a00;
+  line-height: 1.6;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+.empty-state .icon { font-size: 60px; margin-bottom: 16px; opacity: 0.5; }
+.empty-state .title { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: #666; }
+.empty-state .sub { font-size: 13px; }
 
 /* Loading */
-.loading {
-  position: fixed; inset: 0;
+.loading-overlay {
+  position: fixed;
+  inset: 0;
   background: rgba(15,52,96,0.92);
-  display: none; align-items: center; justify-content: center;
-  flex-direction: column; gap: 14px;
-  z-index: 9999; color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+  color: #fff;
 }
-.loading.show { display: flex; }
+.loading-overlay.show { display: flex; }
 .spinner {
   width: 55px; height: 55px;
   border: 4px solid rgba(253,186,59,0.2);
-  border-top-color: #FDBA3B; border-radius: 50%;
+  border-top-color: #FDBA3B;
+  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { font-size: 15px; font-weight: 700; color: #FDBA3B; }
+.loading-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FDBA3B;
+  letter-spacing: 1px;
+}
 
+/* Hide utility */
 .hidden { display: none !important; }
 
+/* Mobile */
 @media (max-width: 480px) {
-  .score-value { font-size: 56px; }
-  .breakdown { grid-template-columns: repeat(2, 1fr); }
+  .score-value { font-size: 60px; }
 }
 </style>
 </head>
 <body>
 
-<header class="app-header">
-  <div class="logo-area">
-    <div class="logo-icon">R</div>
-    <div class="logo-text">
-      <div class="small">THE</div>
-      <div class="big">Answer Checker</div>
+<!-- ============ TOP HEADER ============ -->
+<div class="top-header">
+  <div class="header-row">
+    <div class="brand">
+      <div class="brand-logo">R</div>
+      <div class="brand-text">
+        <div class="small">THE</div>
+        <div class="big">Answer Checker</div>
+      </div>
+    </div>
+    <button class="dot-menu-btn" onclick="openDrawer()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ EXAM SELECTOR BAR ============ -->
+<div class="exam-bar" onclick="openDrawer()">
+  <div class="exam-bar-left">
+    <div class="exam-bar-icon" id="examBarIcon">🎯</div>
+    <div class="exam-bar-text">
+      <div class="exam-bar-label">CURRENT EXAM</div>
+      <div class="exam-bar-name" id="examBarName">UPSC Mains</div>
     </div>
   </div>
-</header>
+  <div class="exam-bar-change">बदलें ▾</div>
+</div>
 
-<main class="app-main">
+<!-- ============ MAIN ============ -->
+<div class="main-wrap" id="mainWrap">
+  <!-- Question list injected here -->
+</div>
 
-  <!-- Check Section -->
-  <div id="checkSection">
-    <!-- Question selector -->
-    <div class="card">
-      <div class="card-title">📝 प्रश्न चुनें <span class="badge">UPSC / UPPCS</span></div>
-      <div style="position:relative;margin-bottom:16px">
-        <button id="examMenuBtn" onclick="window.toggleExamMenu()" style="width:100%;background:linear-gradient(135deg,#0f3460,#1a5276,#0f3460);color:#fff;border:none;padding:18px 20px;border-radius:16px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 25px rgba(15,52,96,0.35);position:relative;overflow:hidden">
-          <div style="position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(253,186,59,0.15),transparent 60%);pointer-events:none"></div>
-          <span style="display:flex;align-items:center;gap:12px;position:relative;z-index:1">
-            <span id="currentExamIcon" style="font-size:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))">🎯</span>
-            <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.2">
-              <span style="font-size:10px;color:#FDBA3B;letter-spacing:2px;font-weight:800">CURRENT EXAM</span>
-              <span id="currentExamName" style="font-size:17px;font-weight:800">UPSC Mains</span>
-            </span>
-          </span>
-          <span style="display:flex;flex-direction:column;gap:3px;padding:6px;background:rgba(255,255,255,0.12);border-radius:8px;position:relative;z-index:1" id="menuArrow">
-            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
-            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
-            <span style="width:6px;height:6px;background:#FDBA3B;border-radius:50%;display:block"></span>
-          </span>
-        </button>
+<!-- Results section -->
+<div class="results-area" id="resultsArea"></div>
 
-        <div id="examDropdown" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.25);z-index:50;margin-top:8px;max-height:450px;overflow-y:auto;border:2px solid #e0e6ed">
-          <div style="padding:8px">
-            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent)">🎯 GOVERNMENT EXAMS</div>
-            <button class="exam-opt" data-exam="upsc" data-icon="🎯" data-name="UPSC Mains">
-              <span class="opt-icon">🎯</span>
-              <span class="opt-name">UPSC Mains</span>
-              <span class="q-count">18 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="uppcs" data-icon="🏛️" data-name="UPPCS Mains">
-              <span class="opt-icon">🏛️</span>
-              <span class="opt-name">UPPCS Mains</span>
-              <span class="q-count">12 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="bpsc" data-icon="🏢" data-name="BPSC Mains">
-              <span class="opt-icon">🏢</span>
-              <span class="opt-name">BPSC Mains</span>
-              <span class="q-count">5 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="essay" data-icon="📝" data-name="निबंध">
-              <span class="opt-icon">📝</span>
-              <span class="opt-name">निबंध (Essay)</span>
-              <span class="q-count">3 Q</span>
-            </button>
-
-            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent);border-top:2px solid #e0e6ed;margin-top:6px">🌾 AGRICULTURE</div>
-            <button class="exam-opt" data-exam="agri_agronomy" data-icon="🌾" data-name="Agronomy">
-              <span class="opt-icon">🌾</span>
-              <span class="opt-name">Agronomy (शस्य विज्ञान)</span>
-              <span class="q-count">8 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_soil" data-icon="🌱" data-name="Soil Science">
-              <span class="opt-icon">🌱</span>
-              <span class="opt-name">Soil Science (मृदा विज्ञान)</span>
-              <span class="q-count">5 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_horticulture" data-icon="🍎" data-name="Horticulture">
-              <span class="opt-icon">🍎</span>
-              <span class="opt-name">Horticulture (बागवानी)</span>
-              <span class="q-count">4 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_pathology" data-icon="🦠" data-name="Plant Pathology">
-              <span class="opt-icon">🦠</span>
-              <span class="opt-name">Plant Pathology</span>
-              <span class="q-count">3 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_entomology" data-icon="🐛" data-name="Entomology">
-              <span class="opt-icon">🐛</span>
-              <span class="opt-name">Entomology (कीट विज्ञान)</span>
-              <span class="q-count">3 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_extension" data-icon="📢" data-name="Extension Education">
-              <span class="opt-icon">📢</span>
-              <span class="opt-name">Extension Education</span>
-              <span class="q-count">2 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_economics" data-icon="💰" data-name="Agri Economics">
-              <span class="opt-icon">💰</span>
-              <span class="opt-name">Agri Economics</span>
-              <span class="q-count">2 Q</span>
-            </button>
-            <button class="exam-opt" data-exam="agri_animal" data-icon="🐄" data-name="Animal Husbandry">
-              <span class="opt-icon">🐄</span>
-              <span class="opt-name">Animal Husbandry</span>
-              <span class="q-count">2 Q</span>
-            </button>
-
-            <div class="menu-section-label" style="font-size:12px;color:#0f3460;font-weight:800;letter-spacing:1.5px;padding:14px 16px 8px;background:linear-gradient(90deg,#f0f4f8,transparent);border-top:2px solid #e0e6ed;margin-top:6px">📚 OTHER SUBJECTS</div>
-            <button class="exam-opt" data-exam="sociology" data-icon="👥" data-name="Sociology">
-              <span class="opt-icon">👥</span>
-              <span class="opt-name">Sociology (समाजशास्त्र)</span>
-              <span class="q-count">3 Q</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <style>
-        .exam-opt {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          width: 100%;
-          padding: 14px 16px;
-          border: none;
-          background: transparent;
-          border-radius: 12px;
-          cursor: pointer;
-          font-family: inherit;
-          font-size: 15px;
-          font-weight: 600;
-          color: #1a1a2e;
-          transition: all 0.15s;
-          text-align: left;
-        }
-        .exam-opt:hover, .exam-opt.active {
-          background: #f0f4f8;
-        }
-        .exam-opt.active {
-          background: linear-gradient(135deg, #e8f4ff, #d4e9ff);
-          color: #0f3460;
-          border-left: 4px solid #e94560;
-        }
-        .exam-opt .q-count {
-          background: linear-gradient(135deg, #0f3460, #1a5276);
-          color: #fff;
-          font-size: 11px;
-          font-weight: 800;
-          padding: 4px 10px;
-          border-radius: 12px;
-          letter-spacing: 0.3px;
-        }
-        .exam-opt .opt-icon {
-          font-size: 22px;
-          flex-shrink: 0;
-        }
-        .exam-opt .opt-name {
-          flex: 1;
-          font-size: 14px;
-        }
-        .exam-opt.active .opt-name {
-          font-weight: 800;
-        }
-      </style>
-      <div id="questionList"></div>
+<!-- ============ DRAWER MENU ============ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-title">
+      <div class="small">EXAM SELECT</div>
+      <div class="big">अपनी परीक्षा चुनें</div>
     </div>
-
-    <!-- Input mode -->
-    <div class="card">
-      <div class="card-title">✍️ अपना उत्तर दें</div>
-
-      <div class="mode-tabs">
-        <button class="mode-tab active" data-mode="type">✍️ Type करें</button>
-        <button class="mode-tab" data-mode="pdf">📄 PDF Upload</button>
-      </div>
-
-      <!-- Type mode -->
-      <div id="typeMode">
-        <textarea id="answerInput" placeholder="यहाँ अपना उत्तर लिखें या paste करें..."></textarea>
-        <div class="word-row">
-          <span>Words: <span class="count" id="wordCount">0</span></span>
-          <span id="wordStatus" style="color:#e94560">पहले प्रश्न चुनें</span>
-        </div>
-      </div>
-
-      <!-- PDF mode -->
-      <div id="pdfMode" class="hidden">
-        <div class="pdf-drop" id="pdfDrop">
-          <div class="icon">📄</div>
-          <div class="title">PDF यहाँ drop करें या tap करें</div>
-          <div class="sub">Scanned answer sheet / Handwritten / Typed PDF</div>
-          <div class="hint">Max 30 pages • 20 MB</div>
-          <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
-        </div>
-
-        <div id="pdfFileBox" class="hidden">
-          <div class="pdf-file-row">
-            <div class="pdf-file-icon">📄</div>
-            <div style="flex:1;min-width:0">
-              <div class="pdf-file-info name" id="pdfName">-</div>
-              <div class="pdf-file-info meta" id="pdfMeta">-</div>
-            </div>
-            <button class="pdf-remove" id="pdfRemove">✕</button>
-          </div>
-
-          <div class="progress-bar"><div class="progress-fill" id="pdfFill"></div></div>
-          <div class="progress-text" id="pdfStatus">तैयार...</div>
-
-          <div class="page-thumbs" id="pdfThumbs"></div>
-
-          <div class="ocr-preview hidden" id="ocrPreview">
-            <div class="ocr-label">📝 Extracted Text Preview</div>
-            <div id="ocrText"></div>
-          </div>
-        </div>
-
-        <div style="background:#fff8e1;border-left:3px solid #f39c12;border-radius:10px;padding:12px;margin-top:12px;font-size:11px;color:#856404;line-height:1.6">
-          <strong>💡 Tips:</strong><br>
-          • Typed PDF — 100% accurate<br>
-          • Scanned — 80-90% (English), 60-75% (Hindi)<br>
-          • Handwritten — 40-60% accuracy<br>
-          • Processing: 30 sec to 3 min
-        </div>
-      </div>
-
-      <div class="action-row" style="margin-top:14px">
-        <button class="btn-secondary" id="clearBtn">🗑️</button>
-        <button class="btn-primary" id="checkBtn" style="margin-top:0;flex:1" disabled>⚡ Answer Check करें</button>
-      </div>
-    </div>
-
-    <!-- Tips -->
-    <div class="card" style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #f39c12">
-      <div class="card-title" style="color:#b8860b">📌 अच्छे उत्तर की विशेषताएँ</div>
-      <ul style="list-style:none;padding:0">
-        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ प्रस्तावना (Introduction) ज़रूर लिखें</li>
-        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ मुख्य बिंदु numbered/bullet में लिखें</li>
-        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ तथ्य, आंकड़े, उदाहरण जोड़ें</li>
-        <li style="font-size:13px;line-height:1.7;color:#7a5a00;margin-bottom:6px">✅ सरकारी योजनाओं का ज़िक्र करें</li>
-        <li style="font-size:13px;line-height:1.7;color:#7a5a00">✅ निष्कर्ष (Conclusion) ज़रूर लिखें</li>
-      </ul>
-    </div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
   </div>
 
-  <!-- Results Section -->
-  <div id="resultsArea"></div>
-
-  <!-- History Section -->
-  <div id="historySection" class="hidden">
-    <div class="card">
-      <div class="card-title">📊 आपकी Progress</div>
-      <div id="historyList"></div>
+  <div class="drawer-section">🎯 Government Exams</div>
+  <button class="drawer-item active" data-exam="upsc" data-icon="🎯" data-name="UPSC Mains">
+    <div class="d-icon">🎯</div>
+    <div class="d-info">
+      <div class="d-name">UPSC Mains</div>
+      <div class="d-sub">Civil Services</div>
     </div>
-  </div>
-
-</main>
-
-<!-- Bottom Nav -->
-<nav class="bottom-nav">
-  <button class="nav-btn active" data-view="check">
-    <span class="nav-ic">✍️</span><span>Check</span>
+    <div class="d-count">18</div>
   </button>
-  <button class="nav-btn" data-view="history">
-    <span class="nav-ic">📈</span><span>History</span>
+  <button class="drawer-item" data-exam="uppcs" data-icon="🏛️" data-name="UPPCS Mains">
+    <div class="d-icon">🏛️</div>
+    <div class="d-info">
+      <div class="d-name">UPPCS Mains</div>
+      <div class="d-sub">Uttar Pradesh PCS</div>
+    </div>
+    <div class="d-count">12</div>
   </button>
-</nav>
+  <button class="drawer-item" data-exam="bpsc" data-icon="🏢" data-name="BPSC Mains">
+    <div class="d-icon">🏢</div>
+    <div class="d-info">
+      <div class="d-name">BPSC Mains</div>
+      <div class="d-sub">Bihar PCS</div>
+    </div>
+    <div class="d-count">5</div>
+  </button>
+  <button class="drawer-item" data-exam="essay" data-icon="📝" data-name="निबंध">
+    <div class="d-icon">📝</div>
+    <div class="d-info">
+      <div class="d-name">निबंध (Essay)</div>
+      <div class="d-sub">Descriptive</div>
+    </div>
+    <div class="d-count">3</div>
+  </button>
+
+  <div class="drawer-section">🌾 Agriculture</div>
+  <button class="drawer-item" data-exam="agri_agronomy" data-icon="🌾" data-name="Agronomy">
+    <div class="d-icon">🌾</div>
+    <div class="d-info">
+      <div class="d-name">Agronomy</div>
+      <div class="d-sub">शस्य विज्ञान</div>
+    </div>
+    <div class="d-count">8</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_soil" data-icon="🌱" data-name="Soil Science">
+    <div class="d-icon">🌱</div>
+    <div class="d-info">
+      <div class="d-name">Soil Science</div>
+      <div class="d-sub">मृदा विज्ञान</div>
+    </div>
+    <div class="d-count">5</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_horticulture" data-icon="🍎" data-name="Horticulture">
+    <div class="d-icon">🍎</div>
+    <div class="d-info">
+      <div class="d-name">Horticulture</div>
+      <div class="d-sub">बागवानी</div>
+    </div>
+    <div class="d-count">4</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_pathology" data-icon="🦠" data-name="Plant Pathology">
+    <div class="d-icon">🦠</div>
+    <div class="d-info">
+      <div class="d-name">Plant Pathology</div>
+      <div class="d-sub">पादप रोग</div>
+    </div>
+    <div class="d-count">3</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_entomology" data-icon="🐛" data-name="Entomology">
+    <div class="d-icon">🐛</div>
+    <div class="d-info">
+      <div class="d-name">Entomology</div>
+      <div class="d-sub">कीट विज्ञान</div>
+    </div>
+    <div class="d-count">3</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_extension" data-icon="📢" data-name="Extension Education">
+    <div class="d-icon">📢</div>
+    <div class="d-info">
+      <div class="d-name">Extension Education</div>
+      <div class="d-sub">प्रसार शिक्षा</div>
+    </div>
+    <div class="d-count">2</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_economics" data-icon="💰" data-name="Agri Economics">
+    <div class="d-icon">💰</div>
+    <div class="d-info">
+      <div class="d-name">Agri Economics</div>
+      <div class="d-sub">कृषि अर्थशास्त्र</div>
+    </div>
+    <div class="d-count">2</div>
+  </button>
+  <button class="drawer-item" data-exam="agri_animal" data-icon="🐄" data-name="Animal Husbandry">
+    <div class="d-icon">🐄</div>
+    <div class="d-info">
+      <div class="d-name">Animal Husbandry</div>
+      <div class="d-sub">पशुपालन</div>
+    </div>
+    <div class="d-count">2</div>
+  </button>
+
+  <div class="drawer-section">📚 Other Subjects</div>
+  <button class="drawer-item" data-exam="sociology" data-icon="👥" data-name="Sociology">
+    <div class="d-icon">👥</div>
+    <div class="d-info">
+      <div class="d-name">Sociology</div>
+      <div class="d-sub">समाजशास्त्र</div>
+    </div>
+    <div class="d-count">3</div>
+  </button>
+
+  <div class="drawer-ad">
+    <div class="drawer-ad-title">💡 Tip</div>
+    <div class="drawer-ad-text">पहले question select करें, फिर answer type करें या PDF upload करें। Instant score मिलेगा।</div>
+  </div>
+</div>
 
 <!-- Loading -->
-<div class="loading" id="loading">
+<div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
   <div class="loading-text" id="loadingText">Check हो रहा है...</div>
 </div>
@@ -671,401 +938,410 @@ textarea:focus { border-color: #0f3460; background: #fff; }
 (function() {
   'use strict';
 
-  // ========== CONFIG ==========
+  // PDF.js worker
   if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   }
 
-  var QUESTIONS = {
-    upsc: (window.AC_DATA && window.AC_DATA.upsc_gs1) ? window.AC_DATA.upsc_gs1.concat(window.AC_DATA.upsc_gs2 || []).concat(window.AC_DATA.upsc_gs3 || []).concat(window.AC_DATA.upsc_gs4 || []) : [],
-    uppcs: (window.AC_DATA && window.AC_DATA.uppcs_gs1) ? window.AC_DATA.uppcs_gs1.concat(window.AC_DATA.uppcs_gs2 || []).concat(window.AC_DATA.uppcs_gs3 || []).concat(window.AC_DATA.uppcs_gs4 || []) : [],
-    bpsc: (window.AC_DATA && window.AC_DATA.bpsc_gs) ? window.AC_DATA.bpsc_gs : [],
-    essay: (window.AC_DATA && window.AC_DATA.essay) ? window.AC_DATA.essay : [],
-    ethics: (window.AC_DATA && window.AC_DATA.upsc_gs4) ? window.AC_DATA.upsc_gs4 : [],
-    agri_agronomy: (window.AC_DATA && window.AC_DATA.agri_agronomy) ? window.AC_DATA.agri_agronomy : [],
-    agri_soil: (window.AC_DATA && window.AC_DATA.agri_soil) ? window.AC_DATA.agri_soil : [],
-    agri_horticulture: (window.AC_DATA && window.AC_DATA.agri_horticulture) ? window.AC_DATA.agri_horticulture : [],
-    agri_pathology: (window.AC_DATA && window.AC_DATA.agri_pathology) ? window.AC_DATA.agri_pathology : [],
-    agri_entomology: (window.AC_DATA && window.AC_DATA.agri_entomology) ? window.AC_DATA.agri_entomology : [],
-    agri_extension: (window.AC_DATA && window.AC_DATA.agri_extension) ? window.AC_DATA.agri_extension : [],
-    agri_economics: (window.AC_DATA && window.AC_DATA.agri_economics) ? window.AC_DATA.agri_economics : [],
-    agri_animal: (window.AC_DATA && window.AC_DATA.agri_animal) ? window.AC_DATA.agri_animal : [],
-    sociology: (window.AC_DATA && window.AC_DATA.sociology) ? window.AC_DATA.sociology : []
-  };
-
-  // ========== STATE ==========
+  // ============ STATE ============
   var state = {
     exam: 'upsc',
+    examIcon: '🎯',
+    examName: 'UPSC Mains',
     question: null,
     mode: 'type',
     extractedText: '',
-    history: JSON.parse(localStorage.getItem('acHistory') || '[]')
+    history: JSON.parse(localStorage.getItem('acHistory2') || '[]')
   };
 
-  var $ = function(id) { return document.getElementById(id); };
+  // ============ DATA MAPPING ============
+  var QUESTIONS = {};
+  function loadQuestions() {
+    var D = window.AC_DATA || {};
+    QUESTIONS = {
+      upsc: (D.upsc_gs1 || []).concat(D.upsc_gs2 || []).concat(D.upsc_gs3 || []).concat(D.upsc_gs4 || []),
+      uppcs: (D.uppcs_gs1 || []).concat(D.uppcs_gs2 || []).concat(D.uppcs_gs3 || []).concat(D.uppcs_gs4 || []),
+      bpsc: D.bpsc_gs || [],
+      essay: D.essay || [],
+      agri_agronomy: D.agri_agronomy || [],
+      agri_soil: D.agri_soil || [],
+      agri_horticulture: D.agri_horticulture || [],
+      agri_pathology: D.agri_pathology || [],
+      agri_entomology: D.agri_entomology || [],
+      agri_extension: D.agri_extension || [],
+      agri_economics: D.agri_economics || [],
+      agri_animal: D.agri_animal || [],
+      sociology: D.sociology || []
+    };
+  }
 
-  // ========== RENDER QUESTIONS ==========
+  // ============ DRAWER ============
+  window.openDrawer = function() {
+    document.getElementById('drawer').classList.add('show');
+    document.getElementById('drawerOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeDrawer = function() {
+    document.getElementById('drawer').classList.remove('show');
+    document.getElementById('drawerOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
+  // Drawer item click
+  document.querySelectorAll('.drawer-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var exam = this.getAttribute('data-exam');
+      var icon = this.getAttribute('data-icon');
+      var name = this.getAttribute('data-name');
+
+      state.exam = exam;
+      state.examIcon = icon;
+      state.examName = name;
+      state.question = null;
+      state.extractedText = '';
+
+      // Update bar
+      document.getElementById('examBarIcon').textContent = icon;
+      document.getElementById('examBarName').textContent = name;
+
+      // Update active
+      document.querySelectorAll('.drawer-item').forEach(function(i) { i.classList.remove('active'); });
+      this.classList.add('active');
+
+      closeDrawer();
+      renderQuestions();
+    });
+  });
+
+  // ============ RENDER QUESTIONS ============
   function renderQuestions() {
-    var list = $('questionList');
-    var qs = QUESTIONS[state.exam];
+    var wrap = document.getElementById('mainWrap');
+    var qs = QUESTIONS[state.exam] || [];
+
+    if (qs.length === 0) {
+      wrap.innerHTML = '<div class="empty-state">' +
+        '<div class="icon">📭</div>' +
+        '<div class="title">कोई प्रश्न नहीं मिला</div>' +
+        '<div class="sub">कृपया दूसरी category चुनें</div>' +
+      '</div>';
+      return;
+    }
+
     var html = '';
     qs.forEach(function(q, i) {
-      html += '<div class="q-box" data-qid="' + q.id + '">' +
-        '<div class="q-num">प्रश्न ' + (i+1) + ' • ' + q.marks + ' अंक' + (q.subject ? ' • ' + q.subject : '') + '</div>' +
-        '<div class="q-text">' + q.q + '</div>' +
-        '<div class="q-meta">' +
+      html += '<div class="q-item" data-qid="' + q.id + '">' +
+        '<div class="q-item-top">' +
+          '<div class="q-item-num">प्रश्न ' + (i+1) + '</div>' +
+          '<div class="q-item-subject">' + (q.subject || 'General') + '</div>' +
+        '</div>' +
+        '<div class="q-item-text">' + q.q + '</div>' +
+        '<div class="q-item-meta">' +
           '<span>📝 ' + q.words + ' शब्द</span>' +
-          '<span>⏱️ ' + (q.words > 200 ? '12' : '8') + ' मिनट</span>' +
           '<span>🎯 ' + q.marks + ' अंक</span>' +
+          '<span>⏱️ ' + (q.words > 200 ? '12' : '8') + ' मिनट</span>' +
         '</div>' +
       '</div>';
     });
-    list.innerHTML = html;
+
+    wrap.innerHTML = html;
 
     // Add click handlers
-    var boxes = list.querySelectorAll('.q-box');
-    for (var i = 0; i < boxes.length; i++) {
-      boxes[i].addEventListener('click', function() {
+    wrap.querySelectorAll('.q-item').forEach(function(item) {
+      item.addEventListener('click', function() {
         var qid = this.getAttribute('data-qid');
-        var found = null;
-        QUESTIONS[state.exam].forEach(function(q) { if (q.id === qid) found = q; });
-        state.question = found;
-        
-        // Visual select
-        var allBoxes = list.querySelectorAll('.q-box');
-        for (var j = 0; j < allBoxes.length; j++) allBoxes[j].classList.remove('selected');
+        state.question = qs.find(function(q) { return q.id === qid; });
+        state.extractedText = '';
+
+        // Remove other selected
+        wrap.querySelectorAll('.q-item').forEach(function(i) { i.classList.remove('selected'); });
         this.classList.add('selected');
-        
-        updateWordCount();
+
+        // Remove old answer area
+        var oldArea = document.querySelector('.answer-area');
+        if (oldArea) oldArea.remove();
+
+        // Insert answer area after this item
+        var area = document.createElement('div');
+        area.className = 'answer-area show';
+        area.innerHTML = getAnswerAreaHTML();
+        this.parentNode.insertBefore(area, this.nextSibling);
+
+        // Scroll into view
+        setTimeout(function() {
+          area.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+
+        // Setup handlers
+        setupAnswerArea();
       });
-    }
-
-    // Auto select first
-    if (boxes.length > 0) boxes[0].click();
-  }
-
-  // ========== WORD COUNT ==========
-  function updateWordCount() {
-    var text = '';
-    if (state.mode === 'pdf') {
-      text = state.extractedText.trim();
-    } else {
-      text = $('answerInput').value.trim();
-    }
-
-    var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
-    $('wordCount').textContent = words;
-
-    var status = $('wordStatus');
-    status.style.color = '#e94560';
-
-    if (!state.question) {
-      status.textContent = 'पहले प्रश्न चुनें';
-      $('checkBtn').disabled = true;
-      return;
-    }
-
-    var target = state.question.words;
-
-    if (words === 0) {
-      status.textContent = state.mode === 'pdf' ? 'PDF upload करें' : 'लिखना शुरू करें';
-      $('checkBtn').disabled = true;
-    } else if (words < 30) {
-      status.textContent = 'बहुत कम (' + words + ' words)';
-      $('checkBtn').disabled = true;
-    } else if (words < target * 0.4) {
-      status.textContent = 'कम है (' + words + '/' + target + ')';
-      status.style.color = '#f39c12';
-      $('checkBtn').disabled = false;
-    } else if (words > target * 1.5) {
-      status.textContent = 'ज़्यादा (' + words + '/' + target + ')';
-      status.style.color = '#f39c12';
-      $('checkBtn').disabled = false;
-    } else {
-      status.textContent = '✓ ' + words + ' words';
-      status.style.color = '#27ae60';
-      $('checkBtn').disabled = false;
-    }
-  }
-
-  // ========== MODE TABS ==========
-  var modeTabs = document.querySelectorAll('.mode-tab');
-  for (var i = 0; i < modeTabs.length; i++) {
-    modeTabs[i].addEventListener('click', function() {
-      for (var j = 0; j < modeTabs.length; j++) modeTabs[j].classList.remove('active');
-      this.classList.add('active');
-      state.mode = this.getAttribute('data-mode');
-
-      if (state.mode === 'pdf') {
-        $('typeMode').classList.add('hidden');
-        $('pdfMode').classList.remove('hidden');
-      } else {
-        $('typeMode').classList.remove('hidden');
-        $('pdfMode').classList.add('hidden');
-      }
-      updateWordCount();
     });
   }
 
-  // ========== EXAM TABS ==========
-  var examTabs = document.querySelectorAll('#examTabs .tab');
-  for (var i = 0; i < examTabs.length; i++) {
-    examTabs[i].addEventListener('click', function() {
-      for (var j = 0; j < examTabs.length; j++) examTabs[j].classList.remove('active');
-      this.classList.add('active');
-      state.exam = this.getAttribute('data-exam');
-      state.question = null;
-      $('answerInput').value = '';
-      state.extractedText = '';
-      renderQuestions();
-      updateWordCount();
-    });
+  function getAnswerAreaHTML() {
+    return '<div class="answer-title">✍️ अपना उत्तर दें</div>' +
+      '<div class="mode-toggle">' +
+        '<button class="mode-btn active" data-mode="type">✍️ Type करें</button>' +
+        '<button class="mode-btn" data-mode="pdf">📄 PDF Upload</button>' +
+      '</div>' +
+      '<div id="typeZone">' +
+        '<textarea id="answerInput" placeholder="यहाँ अपना उत्तर लिखें या paste करें..."></textarea>' +
+        '<div class="word-info">' +
+          '<span>Words: <span class="count" id="wordCount">0</span></span>' +
+          '<span id="wordStatus">लिखना शुरू करें</span>' +
+        '</div>' +
+      '</div>' +
+      '<div id="pdfZone" class="pdf-zone">' +
+        '<div class="pdf-drop" id="pdfDrop">' +
+          '<div class="icon">📄</div>' +
+          '<div class="title">PDF यहाँ drop करें या tap करें</div>' +
+          '<div class="sub">Scanned / Handwritten / Typed</div>' +
+          '<div class="hint">Max 30 pages • 20 MB</div>' +
+          '<input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">' +
+        '</div>' +
+        '<div class="pdf-file-row" id="pdfFileRow">' +
+          '<div class="file-icon">📄</div>' +
+          '<div class="file-info">' +
+            '<div class="file-name" id="pdfFileName">-</div>' +
+            '<div class="file-meta" id="pdfFileMeta">-</div>' +
+          '</div>' +
+          '<button class="file-remove" id="pdfRemove">✕</button>' +
+        '</div>' +
+        '<div class="pdf-progress-bar" id="pdfProgressBar"><div class="pdf-progress-fill" id="pdfProgressFill"></div></div>' +
+        '<div class="pdf-progress-text" id="pdfProgressText">तैयार...</div>' +
+      '</div>' +
+      '<div class="btn-row">' +
+        '<button class="btn-clear" id="clearBtn">🗑️</button>' +
+        '<button class="btn-check" id="checkBtn" style="margin-top:0;flex:1" disabled>⚡ Check करें</button>' +
+      '</div>';
   }
 
-  // ========== ANSWER INPUT ==========
-  $('answerInput').addEventListener('input', updateWordCount);
+  function setupAnswerArea() {
+    var answerInput = document.getElementById('answerInput');
+    var wordCount = document.getElementById('wordCount');
+    var wordStatus = document.getElementById('wordStatus');
+    var checkBtn = document.getElementById('checkBtn');
+    var clearBtn = document.getElementById('clearBtn');
 
-  // ========== CLEAR ==========
-  $('clearBtn').addEventListener('click', function() {
-    if (state.mode === 'pdf') {
-      state.extractedText = '';
-      $('pdfFileBox').classList.add('hidden');
-      $('pdfDrop').classList.remove('hidden');
-      $('pdfThumbs').innerHTML = '';
-      $('ocrPreview').classList.add('hidden');
-    } else {
-      $('answerInput').value = '';
-    }
-    updateWordCount();
-  });
-
-  // ========== PDF UPLOAD ==========
-  var drop = $('pdfDrop');
-  var pdfInput = $('pdfInput');
-
-  drop.addEventListener('click', function() { pdfInput.click(); });
-  drop.addEventListener('dragover', function(e) { e.preventDefault(); drop.classList.add('dragover'); });
-  drop.addEventListener('dragleave', function() { drop.classList.remove('dragover'); });
-  drop.addEventListener('drop', function(e) {
-    e.preventDefault();
-    drop.classList.remove('dragover');
-    if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-  });
-  pdfInput.addEventListener('change', function(e) {
-    if (e.target.files.length) handleFile(e.target.files[0]);
-  });
-
-  $('pdfRemove').addEventListener('click', function() {
-    state.extractedText = '';
-    $('pdfFileBox').classList.add('hidden');
-    drop.classList.remove('hidden');
-    $('pdfThumbs').innerHTML = '';
-    $('ocrPreview').classList.add('hidden');
-    pdfInput.value = '';
-    updateWordCount();
-  });
-
-  function setProgress(p, text) {
-    $('pdfFill').style.width = p + '%';
-    $('pdfStatus').textContent = text || Math.round(p) + '%';
-  }
-
-  async function handleFile(file) {
-    if (file.size > 20 * 1024 * 1024) {
-      alert('File 20 MB से बड़ी है।');
-      return;
-    }
-
-    drop.classList.add('hidden');
-    $('pdfFileBox').classList.remove('hidden');
-    $('pdfName').textContent = file.name;
-    $('pdfMeta').textContent = (file.size / 1024).toFixed(1) + ' KB';
-    $('pdfThumbs').innerHTML = '';
-    state.extractedText = '';
-    setProgress(0, 'File load हो रही है...');
-
-    if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
-      await processPdf(file);
-    } else if (file.type.startsWith('image/')) {
-      await processImage(file);
-    } else {
-      alert('सिर्फ PDF या image file supported है।');
-    }
-  }
-
-  async function processPdf(file) {
-    try {
-      var buffer = await file.arrayBuffer();
-      var pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
-      var total = Math.min(pdf.numPages, 30);
-
-      setProgress(5, 'PDF load हो गई — ' + total + ' pages');
-
-      // Create thumbnails
-      var thumbHtml = '';
-      for (var i = 1; i <= total; i++) {
-        thumbHtml += '<div class="page-thumb" id="thumb-' + i + '"><span class="num">' + i + '</span></div>';
-      }
-      $('pdfThumbs').innerHTML = thumbHtml;
-
-      var allText = '';
-
-      for (var i = 1; i <= total; i++) {
-        var thumb = $('thumb-' + i);
-        if (thumb) { thumb.classList.add('processing'); thumb.textContent = '⏳'; }
-        
-        setProgress(5 + (i / total) * 90, 'Page ' + i + ' / ' + total + ' process हो रहा है...');
-
-        var page = await pdf.getPage(i);
-        var textContent = await page.getTextContent();
-        var pageText = textContent.items.map(function(item) { return item.str; }).join(' ');
-
-        // If no text (scanned PDF) — use OCR
-        if (pageText.trim().length < 30) {
-          try {
-            setProgress(5 + (i / total) * 90, 'Page ' + i + ' — OCR चल रहा है...');
-            pageText = await ocrPage(page);
-          } catch (err) {
-            console.error('OCR error:', err);
-          }
-        }
-
-        if (pageText.trim().length > 10) {
-          allText += pageText + '\n\n';
-          if (thumb) { thumb.classList.remove('processing'); thumb.classList.add('done'); thumb.textContent = '✓'; }
+    // Mode toggle
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var mode = this.getAttribute('data-mode');
+        state.mode = mode;
+        document.querySelectorAll('.mode-btn').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        if (mode === 'pdf') {
+          document.getElementById('typeZone').classList.add('hidden');
+          document.getElementById('pdfZone').classList.add('show');
         } else {
-          if (thumb) { thumb.classList.remove('processing'); thumb.classList.add('error'); thumb.textContent = '✕'; }
+          document.getElementById('typeZone').classList.remove('hidden');
+          document.getElementById('pdfZone').classList.remove('show');
         }
-      }
-
-      state.extractedText = allText.trim();
-      setProgress(100, '✓ ' + total + ' pages done');
-      showOcrPreview(state.extractedText);
-      updateWordCount();
-
-    } catch (err) {
-      console.error(err);
-      setProgress(0, '❌ Error: ' + err.message);
-    }
-  }
-
-  async function ocrPage(page) {
-    var viewport = page.getViewport({ scale: 1.5 });
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
-    var dataUrl = canvas.toDataURL('image/png');
-    
-    var result = await Tesseract.recognize(dataUrl, 'hin+eng');
-    return result.data.text;
-  }
-
-  async function processImage(file) {
-    try {
-      setProgress(20, 'Image load हो रही है...');
-      var dataUrl = await fileToDataUrl(file);
-      setProgress(40, 'OCR चल रहा है...');
-      
-      var result = await Tesseract.recognize(dataUrl, 'hin+eng', {
-        logger: function(m) {
-          if (m.status === 'recognizing text') {
-            setProgress(40 + m.progress * 55, 'OCR: ' + Math.round(m.progress * 100) + '%');
-          }
-        }
+        updateCount();
       });
-      
-      state.extractedText = result.data.text.trim();
-      setProgress(100, '✓ OCR complete');
-      showOcrPreview(state.extractedText);
-      updateWordCount();
-    } catch (err) {
-      console.error(err);
-      setProgress(0, '❌ OCR failed');
-    }
-  }
-
-  function fileToDataUrl(file) {
-    return new Promise(function(resolve, reject) {
-      var r = new FileReader();
-      r.onload = function(e) { resolve(e.target.result); };
-      r.onerror = reject;
-      r.readAsDataURL(file);
     });
-  }
 
-  function showOcrPreview(text) {
-    var preview = text.length > 500 ? text.substring(0, 500) + '...' : text;
-    $('ocrText').textContent = preview;
-    $('ocrPreview').classList.remove('hidden');
-  }
+    function updateCount() {
+      var text = state.mode === 'pdf' ? state.extractedText.trim() : answerInput.value.trim();
+      var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
+      wordCount.textContent = words;
 
-  // ========== CHECK ANSWER ==========
-  $('checkBtn').addEventListener('click', function() {
-    if (!state.question) {
-      alert('पहले प्रश्न चुनें');
-      return;
-    }
+      if (!state.question) { checkBtn.disabled = true; return; }
+      var target = state.question.words;
 
-    var text = state.mode === 'pdf' ? state.extractedText.trim() : $('answerInput').value.trim();
-
-    if (text.length < 30) {
-      alert('कम से कम 30 अक्षर चाहिए');
-      return;
-    }
-
-    $('loadingText').textContent = 'Check हो रहा है...';
-    $('loading').classList.add('show');
-
-    setTimeout(function() {
-      try {
-        var result = analyzeAnswer(text, state.question);
-        $('loading').classList.remove('show');
-        showResults(result);
-        saveHistory(result);
-      } catch (err) {
-        console.error('Analysis error:', err);
-        $('loading').classList.remove('show');
-        alert('Analysis में error आया: ' + err.message);
+      if (words === 0) {
+        wordStatus.textContent = state.mode === 'pdf' ? 'PDF upload करें' : 'लिखना शुरू करें';
+        wordStatus.style.color = '#e94560';
+        checkBtn.disabled = true;
+      } else if (words < 30) {
+        wordStatus.textContent = 'बहुत कम (' + words + ')';
+        wordStatus.style.color = '#e94560';
+        checkBtn.disabled = true;
+      } else if (words < target * 0.5) {
+        wordStatus.textContent = 'कम है (' + words + '/' + target + ')';
+        wordStatus.style.color = '#f39c12';
+        checkBtn.disabled = false;
+      } else if (words > target * 1.5) {
+        wordStatus.textContent = 'ज़्यादा (' + words + '/' + target + ')';
+        wordStatus.style.color = '#f39c12';
+        checkBtn.disabled = false;
+      } else {
+        wordStatus.textContent = '✓ ' + words + '/' + target + ' words';
+        wordStatus.style.color = '#27ae60';
+        checkBtn.disabled = false;
       }
-    }, 800);
-  });
+    }
 
-  // ========== ANALYSIS ENGINE ==========
-  function analyzeAnswer(text, question) {
+    answerInput.addEventListener('input', updateCount);
+    updateCount();
+
+    // Clear
+    clearBtn.addEventListener('click', function() {
+      if (state.mode === 'pdf') {
+        state.extractedText = '';
+        document.getElementById('pdfFileRow').classList.remove('show');
+        document.getElementById('pdfDrop').style.display = 'block';
+        document.getElementById('pdfProgressBar').classList.remove('show');
+        document.getElementById('pdfProgressText').classList.remove('show');
+      } else {
+        answerInput.value = '';
+      }
+      updateCount();
+    });
+
+    // Check
+    checkBtn.addEventListener('click', function() {
+      if (!state.question) return;
+      var text = state.mode === 'pdf' ? state.extractedText.trim() : answerInput.value.trim();
+      if (text.length < 30) { alert('कम से कम 30 अक्षर चाहिए'); return; }
+      document.getElementById('loadingText').textContent = 'Check हो रहा है...';
+      document.getElementById('loadingOverlay').classList.add('show');
+      setTimeout(function() {
+        try {
+          var result = analyze(text, state.question);
+          document.getElementById('loadingOverlay').classList.remove('show');
+          showResults(result);
+          saveHistory(result);
+        } catch (e) {
+          document.getElementById('loadingOverlay').classList.remove('show');
+          alert('Error: ' + e.message);
+        }
+      }, 700);
+    });
+
+    // PDF upload
+    setupPdf();
+  }
+
+  // ============ PDF ============
+  function setupPdf() {
+    var drop = document.getElementById('pdfDrop');
+    var pdfInput = document.getElementById('pdfInput');
+    if (!drop) return;
+
+    drop.addEventListener('click', function() { pdfInput.click(); });
+    pdfInput.addEventListener('change', function(e) {
+      if (e.target.files.length) handleFile(e.target.files[0]);
+    });
+
+    document.getElementById('pdfRemove').addEventListener('click', function() {
+      state.extractedText = '';
+      document.getElementById('pdfFileRow').classList.remove('show');
+      document.getElementById('pdfDrop').style.display = 'block';
+      document.getElementById('pdfProgressBar').classList.remove('show');
+      document.getElementById('pdfProgressText').classList.remove('show');
+      pdfInput.value = '';
+      var answerInput = document.getElementById('answerInput');
+      if (answerInput) answerInput.dispatchEvent(new Event('input'));
+    });
+
+    async function handleFile(file) {
+      if (file.size > 20 * 1024 * 1024) { alert('File 20 MB से बड़ी है।'); return; }
+      document.getElementById('pdfDrop').style.display = 'none';
+      document.getElementById('pdfFileRow').classList.add('show');
+      document.getElementById('pdfFileName').textContent = file.name;
+      document.getElementById('pdfFileMeta').textContent = (file.size / 1024).toFixed(1) + ' KB';
+      document.getElementById('pdfProgressBar').classList.add('show');
+      document.getElementById('pdfProgressText').classList.add('show');
+      setPdfProgress(5, 'Loading...');
+
+      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+        await processPdf(file);
+      } else if (file.type.startsWith('image/')) {
+        await processImage(file);
+      } else { alert('सिर्फ PDF या image supported है।'); }
+    }
+
+    function setPdfProgress(p, t) {
+      document.getElementById('pdfProgressFill').style.width = p + '%';
+      document.getElementById('pdfProgressText').textContent = t || Math.round(p) + '%';
+    }
+
+    async function processPdf(file) {
+      try {
+        var buf = await file.arrayBuffer();
+        var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+        var total = Math.min(pdf.numPages, 30);
+        setPdfProgress(10, total + ' pages मिले');
+        var allText = '';
+        for (var i = 1; i <= total; i++) {
+          setPdfProgress(10 + (i/total)*85, 'Page ' + i + '/' + total);
+          var page = await pdf.getPage(i);
+          var tc = await page.getTextContent();
+          var pageText = tc.items.map(function(it) { return it.str; }).join(' ');
+          if (pageText.trim().length < 30) {
+            try { pageText = await ocrPage(page); } catch(e) {}
+          }
+          if (pageText.trim().length > 10) allText += pageText + '\n\n';
+        }
+        state.extractedText = allText.trim();
+        setPdfProgress(100, '✓ Done');
+        var inp = document.getElementById('answerInput');
+        if (inp) inp.dispatchEvent(new Event('input'));
+      } catch(e) { setPdfProgress(0, '❌ ' + e.message); }
+    }
+
+    async function ocrPage(page) {
+      var viewport = page.getViewport({ scale: 1.5 });
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+      var result = await Tesseract.recognize(canvas.toDataURL('image/png'), 'hin+eng');
+      return result.data.text;
+    }
+
+    async function processImage(file) {
+      try {
+        setPdfProgress(30, 'OCR चल रहा है...');
+        var url = await new Promise(function(res, rej) {
+          var r = new FileReader();
+          r.onload = function(e) { res(e.target.result); };
+          r.onerror = rej;
+          r.readAsDataURL(file);
+        });
+        var result = await Tesseract.recognize(url, 'hin+eng', {
+          logger: function(m) {
+            if (m.status === 'recognizing text') setPdfProgress(30 + m.progress*65, 'OCR: ' + Math.round(m.progress*100) + '%');
+          }
+        });
+        state.extractedText = result.data.text.trim();
+        setPdfProgress(100, '✓ Done');
+        var inp = document.getElementById('answerInput');
+        if (inp) inp.dispatchEvent(new Event('input'));
+      } catch(e) { setPdfProgress(0, '❌ ' + e.message); }
+    }
+  }
+
+  // ============ ANALYSIS ============
+  function analyze(text, question) {
     var lower = text.toLowerCase();
     var words = text.split(/\s+/).filter(function(w) { return w.length > 0; });
 
-    // 1. Keywords (max 30) with synonyms
+    // Keywords
     var found = [], missing = [];
-    var synonyms = window.AC_SYNONYMS || {};
+    var syn = window.AC_SYNONYMS || {};
     question.keywords.forEach(function(kw) {
-      var kwLower = kw.toLowerCase();
-      var isFound = lower.indexOf(kwLower) !== -1;
-      if (!isFound && synonyms[kwLower]) {
-        var syns = synonyms[kwLower];
-        for (var si = 0; si < syns.length; si++) {
-          if (lower.indexOf(syns[si].toLowerCase()) !== -1) { isFound = true; break; }
+      var kwL = kw.toLowerCase();
+      var isFound = lower.indexOf(kwL) !== -1;
+      if (!isFound && syn[kwL]) {
+        for (var i = 0; i < syn[kwL].length; i++) {
+          if (lower.indexOf(syn[kwL][i].toLowerCase()) !== -1) { isFound = true; break; }
         }
       }
-      if (isFound) found.push(kw);
-      else missing.push(kw);
+      if (isFound) found.push(kw); else missing.push(kw);
     });
     var kwScore = Math.round((found.length / question.keywords.length) * 30);
 
-    // 2. Structure (max 20)
+    // Structure
     var hasIntro = /प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ/i.test(text);
-    var hasConclusion = /निष्कर्ष|conclusion|अंत में|समापन|सुझाव/i.test(text);
-    var hasPoints = /[1-9][\.\)]\s|\b(पहला|दूसरा|तीसरा|प्रथम|द्वितीय)\b|•|\-\s|\*/m.test(text);
-    var hasExamples = /उदाहरण|example|जैसे|यथा|for instance|case study/i.test(text);
-    var structScore = 0;
-    if (hasIntro) structScore += 5;
-    if (hasConclusion) structScore += 5;
-    if (hasPoints) structScore += 5;
-    if (hasExamples) structScore += 5;
+    var hasConcl = /निष्कर्ष|conclusion|अंत में|समापन|सुझाव/i.test(text);
+    var hasPoints = /[1-9][\.\)]\s|\b(पहला|दूसरा|तृतीय|प्रथम|द्वितीय)\b|•|\-\s/m.test(text);
+    var hasExamples = /उदाहरण|example|जैसे|for instance/i.test(text);
+    var structScore = (hasIntro?5:0) + (hasConcl?5:0) + (hasPoints?5:0) + (hasExamples?5:0);
 
-    // 3. Length (max 15)
+    // Length
     var ratio = words.length / question.words;
     var lenScore = 3;
     if (ratio >= 0.9 && ratio <= 1.15) lenScore = 15;
@@ -1074,284 +1350,162 @@ textarea:focus { border-color: #0f3460; background: #fff; }
     else if (ratio >= 0.5 && ratio < 0.75) lenScore = 7;
     else if (ratio > 1.35) lenScore = 5;
 
-    // 4. Quality (max 15)
+    // Quality
     var sentences = text.split(/[।\.!\?]+/).filter(function(s) { return s.trim().length > 5; });
-    var avgLen = sentences.length > 0 ? words.length / sentences.length : 0;
+    var avg = sentences.length > 0 ? words.length / sentences.length : 0;
     var qualScore = 4;
-    if (avgLen >= 8 && avgLen <= 20) qualScore = 10;
-    else if (avgLen >= 6 && avgLen <= 25) qualScore = 7;
-    var uniqueWords = new Set(words.map(function(w) { return w.toLowerCase(); }));
-    var variety = uniqueWords.size / Math.max(words.length, 1);
+    if (avg >= 8 && avg <= 20) qualScore = 10;
+    else if (avg >= 6 && avg <= 25) qualScore = 7;
+    var unique = new Set(words.map(function(w) { return w.toLowerCase(); }));
+    var variety = unique.size / Math.max(words.length, 1);
     if (variety > 0.6) qualScore += 5;
     else if (variety > 0.5) qualScore += 3;
     else qualScore += 1;
 
-    // 5. Data (max 20)
-    var hasNumbers = /\d+%|\d+\.\d+|\d{4}|\d+ करोड़|\d+ लाख|₹\d+/i.test(text);
-    var hasSchemes = /योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy|कार्यक्रम|program/i.test(text);
-    var hasQuotes = /[""'']|कहा|अनुसार|according/i.test(text);
-    var dataScore = 0;
-    if (hasNumbers) dataScore += 8;
-    if (hasSchemes) dataScore += 7;
-    if (hasQuotes) dataScore += 5;
+    // Data
+    var hasNum = /\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख/i.test(text);
+    var hasSch = /योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy/i.test(text);
+    var hasQ = /[""'']|कहा|अनुसार|according/i.test(text);
+    var dataScore = (hasNum?8:0) + (hasSch?7:0) + (hasQ?5:0);
 
-    var total = kwScore + structScore + lenScore + qualScore + dataScore;
-    total = Math.min(total, 100);
+    var total = Math.min(kwScore + structScore + lenScore + qualScore + dataScore, 100);
     var finalScore = Math.round((total / 100) * question.marks);
 
     return {
-      score: finalScore,
-      maxScore: question.marks,
-      percentage: total,
-      kw: kwScore,
-      struct: structScore,
-      len: lenScore,
-      qual: qualScore,
-      data: dataScore,
-      words: words.length,
-      targetWords: question.words,
-      found: found,
-      missing: missing,
-      hasIntro: hasIntro,
-      hasConclusion: hasConclusion,
-      hasPoints: hasPoints,
-      hasExamples: hasExamples,
-      hasNumbers: hasNumbers,
-      hasSchemes: hasSchemes,
-      hasQuotes: hasQuotes,
-      question: question,
-      timestamp: Date.now()
+      score: finalScore, maxScore: question.marks, percentage: total,
+      kw: kwScore, struct: structScore, len: lenScore, qual: qualScore, data: dataScore,
+      words: words.length, targetWords: question.words,
+      found: found, missing: missing,
+      hasIntro: hasIntro, hasConcl: hasConcl, hasPoints: hasPoints,
+      hasExamples: hasExamples, hasNum: hasNum, hasSch: hasSch, hasQ: hasQ,
+      question: question, timestamp: Date.now()
     };
   }
 
-  // ========== SHOW RESULTS ==========
+  // ============ SHOW RESULTS ============
   function showResults(r) {
-    var verdict, vClass;
-    if (r.percentage >= 80) { verdict = '🏆 Excellent!'; vClass = 'excellent'; }
-    else if (r.percentage >= 60) { verdict = '👍 Good!'; vClass = 'good'; }
-    else if (r.percentage >= 40) { verdict = '📈 Average'; vClass = 'average'; }
-    else { verdict = '💪 सुधार ज़रूरी'; vClass = 'poor'; }
+    var v, vc;
+    if (r.percentage >= 80) { v = '🏆 Excellent!'; vc = 'excellent'; }
+    else if (r.percentage >= 60) { v = '👍 Good!'; vc = 'good'; }
+    else if (r.percentage >= 40) { v = '📈 Average'; vc = 'average'; }
+    else { v = '💪 सुधार ज़रूरी'; vc = 'poor'; }
 
-    // Feedback lists
     var good = [], bad = [], warn = [];
-    
-    if (r.hasIntro) good.push('प्रस्तावना लिखी गई — बढ़िया!');
+    if (r.hasIntro) good.push('प्रस्तावना लिखी गई');
     else bad.push('प्रस्तावना नहीं लिखी — Introduction ज़रूर जोड़ें');
-    
-    if (r.hasConclusion) good.push('निष्कर्ष लिखा गया — सही तरीका');
-    else bad.push('निष्कर्ष नहीं लिखा — Conclusion लिखें');
-    
-    if (r.hasPoints) good.push('Points/Bullets का प्रयोग हुआ');
-    else bad.push('Points या Bullets में लिखें — structure साफ रहेगा');
-    
-    if (r.hasExamples) good.push('उदाहरण दिए गए — answer मजबूत');
+    if (r.hasConcl) good.push('निष्कर्ष लिखा गया');
+    else bad.push('निष्कर्ष नहीं लिखा — Conclusion जोड़ें');
+    if (r.hasPoints) good.push('Points/Bullets का प्रयोग');
+    else bad.push('Points या Bullets में लिखें');
+    if (r.hasExamples) good.push('उदाहरण दिए गए');
     else warn.push('2-3 real examples जोड़ें');
-    
-    if (r.hasNumbers) good.push('आंकड़े/तथ्य का प्रयोग हुआ');
+    if (r.hasNum) good.push('आंकड़े/तथ्य का प्रयोग');
     else warn.push('Statistics, %, dates जोड़ें');
-    
-    if (r.hasSchemes) good.push('सरकारी योजना/नीति का ज़िक्र है');
+    if (r.hasSch) good.push('सरकारी योजना/नीति का ज़िक्र');
     else warn.push('सरकारी योजनाओं का ज़िक्र करें');
 
     var wr = r.words / r.targetWords;
     if (wr >= 0.9 && wr <= 1.15) good.push('Word limit का सही पालन');
-    else if (wr < 0.9) warn.push('शब्द कम हैं — और लिखें (' + r.words + '/' + r.targetWords + ')');
+    else if (wr < 0.9) warn.push('शब्द कम हैं (' + r.words + '/' + r.targetWords + ')');
     else warn.push('शब्द ज़्यादा हैं (' + r.words + '/' + r.targetWords + ')');
 
-    if (r.found.length >= r.question.keywords.length * 0.6) good.push('मुख्य keywords covered');
     if (r.missing.length > 0) warn.push(r.missing.length + ' keywords छूटे');
 
-    // Build HTML
-    var html = '';
-
-    // Score card
-    html += '<div class="score-card">' +
-      '<div class="score-label">आपका Score</div>' +
+    var h = '';
+    h += '<div class="score-card">' +
+      '<div class="score-label">आपका SCORE</div>' +
       '<div><span class="score-value">' + r.score + '</span><span class="score-max"> / ' + r.maxScore + '</span></div>' +
       '<div class="score-percent">' + r.percentage + '%</div>' +
-      '<div class="verdict ' + vClass + '">' + verdict + '</div>' +
+      '<div class="verdict ' + vc + '">' + v + '</div>' +
     '</div>';
 
-    // Breakdown
-    html += '<div class="card"><div class="card-title">📊 Score Breakdown</div><div class="breakdown">';
-    html += bdItem('Keywords', r.kw, 30, 'fill-green');
-    html += bdItem('Structure', r.struct, 20, 'fill-blue');
-    html += bdItem('Length', r.len, 15, 'fill-orange');
-    html += bdItem('Quality', r.qual, 15, 'fill-blue');
-    html += bdItem('Data/Facts', r.data, 20, 'fill-green');
-    html += bdItem('Total', r.score, r.maxScore, 'fill-red');
-    html += '</div></div>';
+    h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px">';
+    h += bd('Keywords', r.kw, 30, 'fill-green');
+    h += bd('Structure', r.struct, 20, 'fill-blue');
+    h += bd('Length', r.len, 15, 'fill-orange');
+    h += bd('Quality', r.qual, 15, 'fill-blue');
+    h += bd('Data/Facts', r.data, 20, 'fill-green');
+    h += bd('Total', r.score, r.maxScore, 'fill-red');
+    h += '</div>';
 
-    // Word count
-    html += '<div class="card">' +
-      '<div class="card-title">📝 Word Count</div>' +
-      '<div style="text-align:center;font-size:20px;font-weight:800;color:#0f3460">' +
-        r.words + ' <span style="color:#999;font-size:14px">/ ' + r.targetWords + '</span>' +
-      '</div>' +
-      '<div style="text-align:center;font-size:12px;color:#666;margin-top:4px">' +
-        (wr >= 0.9 && wr <= 1.15 ? '✓ आदर्श लंबाई' : (wr < 0.9 ? '⚠️ और लिखें' : '⚠️ छोटा करें')) +
-      '</div>' +
+    h += '<div class="feedback-card"><div style="text-align:center;font-size:15px;font-weight:800;color:#0f3460">📝 Word Count</div><div style="text-align:center;font-size:24px;font-weight:900;color:#0f3460;margin-top:6px">' + r.words + ' <span style="color:#999;font-size:14px">/ ' + r.targetWords + '</span></div></div>';
+
+    if (good.length) {
+      h += '<div class="feedback-card"><div class="fb-title good">✅ अच्छी बातें (' + good.length + ')</div><ul class="fb-list">';
+      good.forEach(function(g) { h += '<li class="good">' + g + '</li>'; });
+      h += '</ul></div>';
+    }
+    if (bad.length) {
+      h += '<div class="feedback-card"><div class="fb-title bad">❌ सुधार ज़रूरी (' + bad.length + ')</div><ul class="fb-list">';
+      bad.forEach(function(g) { h += '<li class="bad">' + g + '</li>'; });
+      h += '</ul></div>';
+    }
+    if (warn.length) {
+      h += '<div class="feedback-card"><div class="fb-title warn">⚠️ Suggestions (' + warn.length + ')</div><ul class="fb-list">';
+      warn.forEach(function(g) { h += '<li class="warn">' + g + '</li>'; });
+      h += '</ul></div>';
+    }
+
+    h += '<div class="feedback-card"><div class="fb-title" style="color:#0f3460">🔑 Keywords</div>';
+    h += '<div style="font-size:11px;color:#666;font-weight:700;margin:8px 0 4px">✅ FOUND (' + r.found.length + ')</div>';
+    h += '<div class="keywords-wrap">';
+    r.found.forEach(function(k) { h += '<span class="chip found">✓ ' + k + '</span>'; });
+    h += '</div>';
+    if (r.missing.length) {
+      h += '<div style="font-size:11px;color:#666;font-weight:700;margin:12px 0 4px">❌ MISSING (' + r.missing.length + ')</div>';
+      h += '<div class="keywords-wrap">';
+      r.missing.forEach(function(k) { h += '<span class="chip missing">' + k + '</span>'; });
+      h += '</div>';
+    }
+    h += '</div>';
+
+    h += '<div class="results-actions">' +
+      '<button class="btn-primary" onclick="window.acRetry()">🔄 दोबारा</button>' +
+      '<button class="btn-secondary" onclick="window.acBack()">← वापस</button>' +
     '</div>';
 
-    // Good feedback
-    if (good.length > 0) {
-      html += '<div class="feedback"><div class="fb-title good">✅ अच्छी बातें (' + good.length + ')</div><ul class="fb-list">';
-      good.forEach(function(f) { html += '<li class="good">' + f + '</li>'; });
-      html += '</ul></div>';
-    }
-
-    // Bad feedback
-    if (bad.length > 0) {
-      html += '<div class="feedback"><div class="fb-title bad">❌ सुधार ज़रूरी (' + bad.length + ')</div><ul class="fb-list">';
-      bad.forEach(function(f) { html += '<li class="bad">' + f + '</li>'; });
-      html += '</ul></div>';
-    }
-
-    // Warn feedback
-    if (warn.length > 0) {
-      html += '<div class="feedback"><div class="fb-title warn">⚠️ Suggestions (' + warn.length + ')</div><ul class="fb-list">';
-      warn.forEach(function(f) { html += '<li class="warn">' + f + '</li>'; });
-      html += '</ul></div>';
-    }
-
-    // Keywords
-    html += '<div class="feedback"><div class="fb-title" style="color:#0f3460">🔑 Keywords</div>';
-    html += '<div style="font-size:11px;color:#666;font-weight:700;margin-bottom:6px">✅ FOUND (' + r.found.length + ')</div>';
-    html += '<div class="keywords-wrap">';
-    if (r.found.length > 0) {
-      r.found.forEach(function(k) { html += '<span class="chip found">✓ ' + k + '</span>'; });
-    } else {
-      html += '<span style="font-size:12px;color:#999">कोई keyword नहीं मिला</span>';
-    }
-    html += '</div>';
-    if (r.missing.length > 0) {
-      html += '<div style="font-size:11px;color:#666;font-weight:700;margin:12px 0 6px">❌ MISSING (' + r.missing.length + ')</div>';
-      html += '<div class="keywords-wrap">';
-      r.missing.forEach(function(k) { html += '<span class="chip missing">' + k + '</span>'; });
-      html += '</div>';
-    }
-    html += '</div>';
-
-    // Actions
-    html += '<div class="action-row" style="margin-bottom:20px">' +
-      '<button class="btn-primary" onclick="window.acRetry()" style="margin-top:0">🔄 दोबारा लिखें</button>' +
-      '<button class="btn-secondary" onclick="window.acHome()">🏠</button>' +
-    '</div>';
-
-    $('resultsArea').innerHTML = html;
-    $('resultsArea').classList.add('show');
-    $('checkSection').classList.add('hidden');
-    $('historySection').classList.add('hidden');
+    var ra = document.getElementById('resultsArea');
+    ra.innerHTML = h;
+    ra.classList.add('show');
+    document.getElementById('mainWrap').classList.add('hidden');
+    document.querySelector('.exam-bar').style.display = 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function bdItem(label, val, max, cls) {
-    var pct = Math.round((val / max) * 100);
+  function bd(l, v, m, c) {
     return '<div class="bd-item">' +
-      '<div class="bd-label">' + label + '</div>' +
-      '<div class="bd-value">' + val + ' <small>/ ' + max + '</small></div>' +
-      '<div class="bd-bar"><div class="bd-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>' +
+      '<div class="bd-label">' + l + '</div>' +
+      '<div class="bd-value">' + v + ' <small>/ ' + m + '</small></div>' +
+      '<div class="bd-bar"><div class="bd-bar-fill ' + c + '" style="width:' + Math.round((v/m)*100) + '%"></div></div>' +
     '</div>';
   }
 
-  // ========== HISTORY ==========
   function saveHistory(r) {
     state.history.unshift({
-      score: r.score,
-      maxScore: r.maxScore,
-      percentage: r.percentage,
-      question: r.question.q,
-      words: r.words,
-      timestamp: r.timestamp
+      score: r.score, maxScore: r.maxScore, percentage: r.percentage,
+      question: r.question.q, words: r.words, timestamp: r.timestamp
     });
-    if (state.history.length > 30) state.history = state.history.slice(0, 30);
-    try {
-      localStorage.setItem('acHistory', JSON.stringify(state.history));
-    } catch (e) {}
-  }
-
-  function renderHistory() {
-    var list = $('historyList');
-    if (state.history.length === 0) {
-      list.innerHTML = '<p style="text-align:center;color:#999;padding:30px 0">अभी कोई attempt नहीं है</p>';
-      return;
-    }
-
-    var total = 0, maxTotal = 0;
-    var html = '';
-    state.history.forEach(function(h) {
-      total += h.score;
-      maxTotal += h.maxScore;
-      var d = new Date(h.timestamp);
-      var dateStr = d.getDate() + '/' + (d.getMonth()+1) + ' ' + d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
-      var color = h.percentage >= 60 ? '#27ae60' : (h.percentage >= 40 ? '#f39c12' : '#e94560');
-      
-      html += '<div style="padding:12px 0;border-bottom:1px solid #f0f4f8">' +
-        '<div style="display:flex;justify-content:space-between;margin-bottom:4px">' +
-          '<span style="font-size:10px;color:#999">' + dateStr + '</span>' +
-          '<span style="font-size:16px;font-weight:800;color:' + color + '">' + h.score + '/' + h.maxScore + '</span>' +
-        '</div>' +
-        '<div style="font-size:12px;color:#333;line-height:1.4;margin-bottom:4px">' + h.question.substring(0, 80) + (h.question.length > 80 ? '...' : '') + '</div>' +
-        '<div style="font-size:10px;color:#666">' + h.words + ' words • ' + h.percentage + '%</div>' +
-      '</div>';
-    });
-
-    var avg = maxTotal > 0 ? Math.round((total / maxTotal) * 100) : 0;
-    html = '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;border-radius:14px;margin-bottom:14px;text-align:center">' +
-      '<div style="font-size:10px;color:#FDBA3B;font-weight:700;letter-spacing:1px;margin-bottom:4px">औसत प्रदर्शन</div>' +
-      '<div style="font-size:32px;font-weight:900">' + avg + '%</div>' +
-      '<div style="font-size:10px;opacity:0.7;margin-top:4px">' + state.history.length + ' attempts</div>' +
-    '</div>' + html;
-
-    list.innerHTML = html;
-  }
-
-  // ========== NAVIGATION ==========
-  var navBtns = document.querySelectorAll('.nav-btn');
-  for (var i = 0; i < navBtns.length; i++) {
-    navBtns[i].addEventListener('click', function() {
-      var view = this.getAttribute('data-view');
-      for (var j = 0; j < navBtns.length; j++) navBtns[j].classList.remove('active');
-      this.classList.add('active');
-      
-      $('resultsArea').classList.remove('show');
-      $('checkSection').classList.add('hidden');
-      $('historySection').classList.add('hidden');
-      
-      if (view === 'check') {
-        $('checkSection').classList.remove('hidden');
-      } else if (view === 'history') {
-        renderHistory();
-        $('historySection').classList.remove('hidden');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (state.history.length > 20) state.history = state.history.slice(0, 20);
+    try { localStorage.setItem('acHistory2', JSON.stringify(state.history)); } catch(e) {}
   }
 
   window.acRetry = function() {
-    if (state.mode === 'pdf') {
-      state.extractedText = '';
-      $('pdfFileBox').classList.add('hidden');
-      $('pdfDrop').classList.remove('hidden');
-      $('pdfThumbs').innerHTML = '';
-      $('ocrPreview').classList.add('hidden');
-    } else {
-      $('answerInput').value = '';
-    }
-    $('resultsArea').classList.remove('show');
-    $('checkSection').classList.remove('hidden');
-    updateWordCount();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('resultsArea').classList.remove('show');
+    document.getElementById('resultsArea').innerHTML = '';
+    document.getElementById('mainWrap').classList.remove('hidden');
+    document.querySelector('.exam-bar').style.display = 'flex';
+    var old = document.querySelector('.answer-area');
+    if (old) old.remove();
+    renderQuestions();
   };
 
-  window.acHome = function() {
+  window.acBack = function() {
     window.acRetry();
   };
 
-  // ========== INIT ==========
+  // ============ INIT ============
+  loadQuestions();
   renderQuestions();
-  updateWordCount();
-
 })();
 </script>
 
