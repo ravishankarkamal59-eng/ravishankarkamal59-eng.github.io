@@ -433,4 +433,106 @@ window.AC_PHRASES = {
   data: ['प्रतिशत','percent','%','करोड़','crore','लाख','lakh','billion','2020','2021','2022','2023','2024','2025'],
   schemes: ['योजना','scheme','मिशन','mission','अधिनियम','act','नीति','policy','कार्यक्रम','program'],
   quotes: ['कहा','अनुसार','according','said','कथन','statement']
+,
+
+  // ========== JEE MAINS ==========
+  jee_mains: [
+    { id:'jee-m-1', q:'State and explain Newton\'s Laws of Motion with examples. (150 words)', words:150, marks:10, subject:'Physics',
+      keywords:['newton','law','motion','inertia','force','mass','acceleration','action','reaction','momentum','frame','reference','equation'],
+      expectedPoints:['First law - inertia','Second law - F=ma','Third law - action reaction','Examples','Applications'] },
+    { id:'jee-m-2', q:'Discuss the periodic trends in properties of elements. (150 words)', words:150, marks:10, subject:'Chemistry',
+      keywords:['periodic','trend','element','atomic','radius','ionization','electronegativity','electron','affinity','group','period','increase','decrease'],
+      expectedPoints:['Atomic radius','Ionization energy','Electronegativity','Electron affinity','Metallic character'] },
+    { id:'jee-m-3', q:'Explain the concept of limits and continuity in calculus. (200 words)', words:200, marks:12, subject:'Mathematics',
+      keywords:['limit','continuity','calculus','function','left','right','approach','exist','differentiable','discontinuity','lhopital','infinity'],
+      expectedPoints:['Definition of limit','Left-right limits','Continuity conditions','Types of discontinuity','L\'Hopital rule'] },
+    { id:'jee-m-4', q:'Discuss the working principle of a transformer. (150 words)', words:150, marks:10, subject:'Physics',
+      keywords:['transformer','mutual','induction','coil','primary','secondary','voltage','current','step','up','down','turns','ratio','efficiency','core','flux'],
+      expectedPoints:['Mutual induction','Primary-secondary coils','Step up/down','Turns ratio','Applications'] },
+    { id:'jee-m-5', q:'Discuss the structure and function of DNA. (200 words)', words:200, marks:12, subject:'Biology',
+      keywords:['dna','structure','function','nucleotide','base','pair','adenine','thymine','guanine','cytosine','helix','double','strand','replication','gene','protein'],
+      expectedPoints:['Double helix','Nucleotide composition','Base pairing','Replication','Protein synthesis'] }
+  ],
+
+  // ========== JEE ADVANCED ==========
+  jee_adv: [
+    { id:'jee-a-1', q:'Derive electric field due to uniformly charged infinite plane sheet. (250 words)', words:250, marks:15, subject:'Physics',
+      keywords:['electric','field','charge','plane','sheet','infinite','gauss','law','flux','surface','density','sigma','perpendicular','uniform','epsilon','derivation'],
+      expectedPoints:['Gaussian surface','Flux calculation','Gauss law','E = σ/2ε₀','Direction','Field independence'] },
+    { id:'jee-a-2', q:'Discuss the mechanism of SN1 and SN2 reactions with examples. (250 words)', words:250, marks:15, subject:'Chemistry',
+      keywords:['sn1','sn2','mechanism','nucleophilic','substitution','carbocation','transition','state','stereochemistry','inversion','retention','solvent','primary','tertiary','rate'],
+      expectedPoints:['SN1 carbocation','SN2 concerted','Stereochemistry','Rate law','Solvent effect','Substrate effect'] },
+    { id:'jee-a-3', q:'Prove that √2 is irrational using method of contradiction. (200 words)', words:200, marks:12, subject:'Mathematics',
+      keywords:['irrational','proof','contradiction','root','square','prime','factor','rational','fraction','coprime','even','odd','assumption'],
+      expectedPoints:['Assumption of rationality','Coprime form','Squaring','2 divides both','Contradiction','Conclusion'] }
+  ],
+
+  // ========== BA ENGLISH ==========
+  ba_english: [
+    { id:'ba-eng-1', q:'Discuss theme of colonialism in Achebe\'s "Things Fall Apart". (250 words)', words:250, marks:15, subject:'BA English',
+      keywords:['things','fall','apart','achebe','colonialism','africa','igbo','okonkwo','british','missionary','culture','tradition','clash','identity','resistance','postcolonial'],
+      expectedPoints:['Igbo society','British arrival','Missionary impact','Okonkwo','Cultural clash','Postcolonial themes'] },
+    { id:'ba-eng-2', q:'Analyze the character of Hamlet as a tragic hero. (250 words)', words:250, marks:15, subject:'BA English',
+      keywords:['hamlet','tragic','hero','shakespeare','revenge','procrastination','soliloquy','ghost','claudius','ophelia','denmark','flaw','hamartia','delay'],
+      expectedPoints:['Noble birth','Hamartia','Revenge plot','Soliloquies','Tragic downfall'] },
+    { id:'ba-eng-3', q:'Critical appreciation of Wordsworth\'s "The Solitary Reaper". (250 words)', words:250, marks:15, subject:'BA English',
+      keywords:['solitary','reaper','wordsworth','romantic','nature','girl','song','highland','melancholy','recollection','emotion','spontaneity','hebrides','nightingale','cuckoo'],
+      expectedPoints:['Romantic elements','Nature imagery','Emotion','Similes','Music and melancholy','Subjective experience'] }
+  ],
+
+  // ========== BA HISTORY ==========
+  ba_history: [
+    { id:'ba-hist-1', q:'Discuss the main features of Harappan civilization. (250 words)', words:250, marks:15, subject:'BA History',
+      keywords:['harappa','indus','civilization','urban','planning','drainage','seals','script','bronze','trade','mohenjodaro','lothal','kalibanga','dholavira','great bath'],
+      expectedPoints:['Urban planning','Drainage','Trade','Seals','Bronze age','Great Bath','Decline'] },
+    { id:'ba-hist-2', q:'Analyze the causes of French Revolution of 1789. (250 words)', words:250, marks:15, subject:'BA History',
+      keywords:['french','revolution','1789','bastille','louis','xvi','estates','general','bourgeoisie','enlightenment','liberty','equality','fraternity','absolute','monarchy','taxation'],
+      expectedPoints:['Absolute monarchy','Social inequality','Economic crisis','Enlightenment','Estates General','Bastille'] },
+    { id:'ba-hist-3', q:'Discuss impact of Industrial Revolution on Indian economy. (250 words)', words:250, marks:15, subject:'BA History',
+      keywords:['industrial','revolution','india','economy','britain','deindustrialization','handicraft','textile','railway','trade','raw','material','drain','poverty','famine','colonial'],
+      expectedPoints:['Deindustrialization','Handicrafts collapse','Raw material export','Railways','Drain of wealth','Famines'] }
+  ],
+
+  // ========== BA POLITICAL SCIENCE ==========
+  ba_polity: [
+    { id:'ba-pol-1', q:'Discuss the main features of the Indian Constitution. (250 words)', words:250, marks:15, subject:'BA Political Science',
+      keywords:['constitution','feature','federal','unitary','secular','democratic','republic','fundamental','rights','directive','principles','parliamentary','amendment','bicameral','sovereign'],
+      expectedPoints:['Longest written','Federal with unitary bias','Parliamentary','Fundamental Rights','DPSP','Secular','Amendment'] },
+    { id:'ba-pol-2', q:'Discuss role of political parties in Indian democracy. (250 words)', words:250, marks:15, subject:'BA Political Science',
+      keywords:['political','party','india','democracy','congress','bjp','coalition','election','representation','interest','aggregation','government','opposition','regional','national'],
+      expectedPoints:['Functions','National vs regional','Coalition','Electoral role','Government formation','Opposition'] }
+  ],
+
+  // ========== MA ENGLISH ==========
+  ma_english: [
+    { id:'ma-eng-1', q:'Discuss stream of consciousness in Virginia Woolf\'s "Mrs Dalloway". (300 words)', words:300, marks:20, subject:'MA English',
+      keywords:['stream','consciousness','woolf','mrs','dalloway','modernism','interior','monologue','time','memory','septimus','clarissa','big','ben','psychological','narrative','fragmented'],
+      expectedPoints:['Stream of consciousness','Modernist technique','Interior monologue','Time and memory','Parallel characters','Fragmented narrative'] },
+    { id:'ma-eng-2', q:'Analyze T.S. Eliot\'s "The Waste Land" as modernist epic. (300 words)', words:300, marks:20, subject:'MA English',
+      keywords:['eliot','waste','land','modernist','epic','fragmentation','myth','allusion','april','cruelest','fisher','king','tiresias','unreal','city','spiritual','decay'],
+      expectedPoints:['Modernist features','Mythical method','Fragmentation','Allusions','Multiple voices','Tiresias','Regeneration'] },
+    { id:'ma-eng-3', q:'Discuss postcolonial theory in Edward Said\'s "Orientalism". (300 words)', words:300, marks:20, subject:'MA English',
+      keywords:['postcolonial','theory','said','orientalism','east','west','discourse','representation','power','knowledge','foucault','colonial','other','imperialism','culture','hegemony'],
+      expectedPoints:['Orientalism definition','East-West binary','Knowledge-power','Foucault influence','Other representation','Colonial discourse'] }
+  ],
+
+  // ========== MA HISTORY ==========
+  ma_history: [
+    { id:'ma-hist-1', q:'Discuss main features of Mughal administration. (300 words)', words:300, marks:20, subject:'MA History',
+      keywords:['mughal','administration','akbar','mansabdari','jagirdari','central','provincial','subah','diwan','bakshi','sadr','qazi','wazir','revenue','zamindar','todar','mal'],
+      expectedPoints:['Central admin','Mansabdari','Jagirdari','Provincial admin','Revenue - Todar Mal','Judicial','Military'] },
+    { id:'ma-hist-2', q:'Analyze causes and consequences of Partition of India 1947. (300 words)', words:300, marks:20, subject:'MA History',
+      keywords:['partition','1947','india','pakistan','muslim','league','congress','jinnah','nehru','mountbatten','radcliffe','communal','violence','migration','refugee','kashmir','independence'],
+      expectedPoints:['Two-nation theory','Communal politics','Jinnah','Congress-League','Mountbatten Plan','Radcliffe Line','Migration','Violence'] }
+  ],
+
+  // ========== MA POLITICAL SCIENCE ==========
+  ma_polity: [
+    { id:'ma-pol-1', q:'Discuss the concept of sovereignty in modern political theory. (300 words)', words:300, marks:20, subject:'MA Political Science',
+      keywords:['sovereignty','modern','political','theory','state','power','austin','bodino','legal','popular','external','internal','absolute','limited','globalization','pluralist'],
+      expectedPoints:['Definition','Bodin Austin','Types','Internal vs external','Pluralist critique','Globalization impact'] },
+    { id:'ma-pol-2', q:'Explain John Rawls\' theory of justice. (300 words)', words:300, marks:20, subject:'MA Political Science',
+      keywords:['rawls','justice','theory','fairness','veil','ignorance','original','position','liberty','equality','difference','principle','social','primary','goods','distributive','liberal'],
+      expectedPoints:['Justice as fairness','Veil of ignorance','Original position','Two principles','Difference principle','Primary goods'] }
+  ]
 };

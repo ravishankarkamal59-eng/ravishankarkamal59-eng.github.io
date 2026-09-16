@@ -417,6 +417,52 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <div class="ct">2</div>
   </button>
 
+  <div class="dr-sec">🎓 JEE</div>
+  <button class="dr-item" data-exam="jee_mains" data-icon="⚙️" data-name="JEE Mains">
+    <div class="ic">⚙️</div>
+    <div class="if"><div class="nm">JEE Mains</div><div class="sb">Engineering Entrance</div></div>
+    <div class="ct">5</div>
+  </button>
+  <button class="dr-item" data-exam="jee_adv" data-icon="🔬" data-name="JEE Advanced">
+    <div class="ic">🔬</div>
+    <div class="if"><div class="nm">JEE Advanced</div><div class="sb">IIT Entrance</div></div>
+    <div class="ct">3</div>
+  </button>
+
+  <div class="dr-sec">🎓 BA</div>
+  <button class="dr-item" data-exam="ba_english" data-icon="📖" data-name="BA English">
+    <div class="ic">📖</div>
+    <div class="if"><div class="nm">BA English</div><div class="sb">Literature</div></div>
+    <div class="ct">3</div>
+  </button>
+  <button class="dr-item" data-exam="ba_history" data-icon="📜" data-name="BA History">
+    <div class="ic">📜</div>
+    <div class="if"><div class="nm">BA History</div><div class="sb">इतिहास</div></div>
+    <div class="ct">3</div>
+  </button>
+  <button class="dr-item" data-exam="ba_polity" data-icon="🏛️" data-name="BA Political Science">
+    <div class="ic">🏛️</div>
+    <div class="if"><div class="nm">BA Political Science</div><div class="sb">राजनीति विज्ञान</div></div>
+    <div class="ct">2</div>
+  </button>
+
+  <div class="dr-sec">🎓 MA</div>
+  <button class="dr-item" data-exam="ma_english" data-icon="📚" data-name="MA English">
+    <div class="ic">📚</div>
+    <div class="if"><div class="nm">MA English</div><div class="sb">Literature</div></div>
+    <div class="ct">3</div>
+  </button>
+  <button class="dr-item" data-exam="ma_history" data-icon="🏺" data-name="MA History">
+    <div class="ic">🏺</div>
+    <div class="if"><div class="nm">MA History</div><div class="sb">इतिहास</div></div>
+    <div class="ct">2</div>
+  </button>
+  <button class="dr-item" data-exam="ma_polity" data-icon="⚖️" data-name="MA Political Science">
+    <div class="ic">⚖️</div>
+    <div class="if"><div class="nm">MA Political Science</div><div class="sb">राजनीति</div></div>
+    <div class="ct">2</div>
+  </button>
+
   <div class="dr-sec">📚 Other Subjects</div>
   <button class="dr-item" data-exam="sociology" data-icon="👥" data-name="Sociology">
     <div class="ic">👥</div>
@@ -455,7 +501,15 @@ textarea:focus{border-color:#0f3460;background:#fff}
       agri_extension:D.agri_extension||[],
       agri_economics:D.agri_economics||[],
       agri_animal:D.agri_animal||[],
-      sociology:D.sociology||[]
+      sociology:D.sociology||[],
+      jee_mains:D.jee_mains||[],
+      jee_adv:D.jee_adv||[],
+      ba_english:D.ba_english||[],
+      ba_history:D.ba_history||[],
+      ba_polity:D.ba_polity||[],
+      ma_english:D.ma_english||[],
+      ma_history:D.ma_history||[],
+      ma_polity:D.ma_polity||[]
     };
   }
 
@@ -686,6 +740,152 @@ textarea:focus{border-color:#0f3460;background:#fff}
   }
 
 
+
+  // ==================== SMART RTU ANALYSIS ====================
+  function smartRTU(text, detected){
+    if(!text || text.trim().length<30)return null;
+
+    var words=text.split(/\s+/).filter(function(w){return w.length>0});
+    var wc=words.length;
+    var sents=text.split(/[।\.!\?]+/).filter(function(s){return s.trim().length>3});
+    var paras=text.split(/\n\s*\n/).filter(function(p){return p.trim().length>20});
+
+    // 1. Level detection
+    var level='';
+    if(wc<100)level='Short Note (10-15 line)';
+    else if(wc<200)level='Short Answer (10 marks)';
+    else if(wc<300)level='Medium Answer (15 marks)';
+    else if(wc<500)level='Long Answer / Essay';
+    else if(wc<1000)level='Very Long / Descriptive';
+    else level='Extensive Content / Book-level';
+
+    // 2. Purpose detection
+    var purpose=[];
+    if(/प्रस्तावना|introduction|भूमिका/i.test(text))purpose.push('Introduction है');
+    if(/निष्कर्ष|conclusion|अंत में|समापन/i.test(text))purpose.push('Conclusion है');
+    if(/उदाहरण|example|जैसे|for instance/i.test(text))purpose.push('उदाहरण दिए हैं');
+    if(/\d+%|\d{4}|करोड़|लाख|₹/i.test(text))purpose.push('Data/Statistics');
+    if(/योजना|scheme|मिशन|mission|act|अधिनियम/i.test(text))purpose.push('Government schemes');
+    if(/[1-9][\.\)]\s|•/m.test(text))purpose.push('Bullet/Points');
+    if(/कहा|अनुसार|according|quote/i.test(text))purpose.push('Quotes/References');
+
+    // 3. Topic / subject keywords detect
+    var topics=[];
+    var topicMap={
+      'History':['इतिहास','history','मुगल','mughal','british','अंग्रेज','revolution','क्रांति','प्राचीन','प्राचीन','मध्यकालीन'],
+      'Geography':['भूगोल','geography','नदी','river','पर्वत','mountain','जलवायु','climate','मानसून','monsoon'],
+      'Polity':['राजनीति','polity','संविधान','constitution','संसद','parliament','न्यायपालिका','judiciary'],
+      'Economy':['अर्थ','economy','जीडीपी','gdp','बजट','budget','कर','tax','उद्योग','industry'],
+      'Science':['विज्ञान','science','भौतिक','physics','रसायन','chemistry','जीव','biology'],
+      'Math':['गणित','math','समीकरण','equation','सूत्र','formula','संख्या','number'],
+      'Agriculture':['कृषि','agriculture','फसल','crop','मृदा','soil','खाद','fertilizer','सिंचाई','irrigation'],
+      'English Lit':['shakespeare','wordsworth','eliot','woolf','poem','novel','literature','character','theme'],
+      'Ethics':['नैतिक','ethics','moral','integrity','सत्यनिष्ठा','मूल्य','values']
+    };
+    for(var subj in topicMap){
+      var hits=0;
+      topicMap[subj].forEach(function(k){
+        if(text.toLowerCase().indexOf(k.toLowerCase())!==-1)hits++;
+      });
+      if(hits>=2)topics.push(subj+' ('+hits+')');
+    }
+
+    // 4. Quality checks
+    var quality={
+      hasIntro:/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ/i.test(text),
+      hasConcl:/निष्कर्ष|conclusion|अंत में|समापन|सुझाव/i.test(text),
+      hasPoints:/[1-9][\.\)]\s|•|\-\s/m.test(text),
+      hasExamples:/उदाहरण|example|जैसे|for instance/i.test(text),
+      hasData:/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख/i.test(text),
+      hasSchemes:/योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy/i.test(text),
+      hasQuotes:/[""'']|कहा|अनुसार|according/i.test(text),
+      hasHeadings:/^[A-Zऀ-ॿ][^\n]{2,50}$/m.test(text)
+    };
+
+    var qualityScore=0;
+    for(var k in quality){if(quality[k])qualityScore++;}
+    var qualityPct=Math.round((qualityScore/8)*100);
+
+    // 5. Word limit suggestion
+    var suggested='';
+    if(wc<100)suggested='कम से कम 150 शब्द लिखें (10 अंक के लिए)';
+    else if(wc<200)suggested='250 शब्द तक लिख सकते हैं (15 अंक के लिए)';
+    else if(wc<300)suggested='आदर्श लंबाई — पर्याप्त है';
+    else if(wc<500)suggested='विस्तृत है — Essay level';
+    else suggested='बहुत विस्तृत — Book/Notes level';
+
+    // 6. Missing items
+    var missing=[];
+    if(!quality.hasIntro)missing.push('प्रस्तावना (Introduction)');
+    if(!quality.hasConcl)missing.push('निष्कर्ष (Conclusion)');
+    if(!quality.hasPoints)missing.push('Points/Bullets');
+    if(!quality.hasExamples)missing.push('उदाहरण (Examples)');
+    if(!quality.hasData)missing.push('आंकड़े/तथ्य (Data)');
+    if(!quality.hasSchemes)missing.push('सरकारी योजनाएँ');
+    if(!quality.hasQuotes)missing.push('Quotes/References');
+
+    return {
+      level:level,
+      wordCount:wc,
+      sentences:sents.length,
+      paragraphs:paras.length,
+      purpose:purpose,
+      topics:topics,
+      quality:quality,
+      qualityPct:qualityPct,
+      suggested:suggested,
+      missing:missing,
+      avgWordsPerSentence:Math.round(wc/Math.max(sents.length,1)),
+      readingTime:Math.ceil(wc/200)
+    };
+  }
+
+  function renderRTU(rtu){
+    if(!rtu)return '';
+    var h='<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
+    h+='<div style="font-size:10px;font-weight:800;color:#2980b9;letter-spacing:1.5px;margin-bottom:10px">🔍 CONTENT ANALYSIS</div>';
+
+    // Level + Word count
+    h+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px">';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">LEVEL</div><div style="font-size:12px;font-weight:800;color:#0f3460;line-height:1.3">'+rtu.level+'</div></div>';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">WORDS</div><div style="font-size:12px;font-weight:800;color:#0f3460">'+rtu.wordCount+'</div></div>';
+    h+='</div>';
+
+    // Purpose
+    if(rtu.purpose.length){
+      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">📌 किसलिए लिखा गया</div>';
+      rtu.purpose.forEach(function(p){h+='<div style="font-size:11px;color:#333;padding:2px 0">• '+p+'</div>'});
+      h+='</div>';
+    }
+
+    // Topics
+    if(rtu.topics.length){
+      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">🎯 विषय पहचान</div>';
+      h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';
+      rtu.topics.forEach(function(t){h+='<span style="background:#e8f4ff;color:#2980b9;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:700">'+t+'</span>'});
+      h+='</div></div>';
+    }
+
+    // Quality score
+    var qc=rtu.qualityPct>=70?'#27ae60':(rtu.qualityPct>=45?'#f39c12':'#e94560');
+    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px">📊 QUALITY SCORE</div><div style="font-size:14px;font-weight:900;color:'+qc+'">'+rtu.qualityPct+'%</div></div><div style="height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+rtu.qualityPct+'%;background:'+qc+';border-radius:3px"></div></div></div>';
+
+    // Suggested length
+    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:4px">📏 लंबाई सुझाव</div><div style="font-size:11px;color:#333;font-weight:600">'+rtu.suggested+'</div><div style="font-size:10px;color:#666;margin-top:4px">Avg '+rtu.avgWordsPerSentence+' शब्द/वाक्य • '+rtu.paragraphs+' paragraphs • ~'+rtu.readingTime+' मिनट पढ़ने में</div></div>';
+
+    // Missing items
+    if(rtu.missing.length){
+      h+='<div style="background:#fff8e1;padding:10px;border-radius:9px;border:1.5px solid #f39c12"><div style="font-size:9px;color:#b8860b;font-weight:700;letter-spacing:.5px;margin-bottom:6px">⚠️ ये चीज़ें कम हैं</div>';
+      rtu.missing.forEach(function(m){h+='<div style="font-size:11px;color:#7a5a00;padding:2px 0">• '+m+'</div>'});
+      h+='</div>';
+    } else {
+      h+='<div style="background:#e8f8f0;padding:10px;border-radius:9px;border:1.5px solid #27ae60;text-align:center;font-size:12px;font-weight:700;color:#27ae60">✅ सभी ज़रूरी elements मौजूद हैं</div>';
+    }
+
+    h+='</div>';
+    return h;
+  }
+
   // ==================== AUTO DETECT ====================
   function autoDetect(text){
     if(!text || text.trim().length<20)return null;
@@ -761,7 +961,10 @@ textarea:focus{border-color:#0f3460;background:#fff}
       agri_agronomy:'Agronomy',agri_soil:'Soil Science',agri_horticulture:'Horticulture',
       agri_pathology:'Plant Pathology',agri_entomology:'Entomology',
       agri_extension:'Extension Education',agri_economics:'Agri Economics',
-      agri_animal:'Animal Husbandry',sociology:'Sociology'
+      agri_animal:'Animal Husbandry',sociology:'Sociology',
+      jee_mains:'JEE Mains',jee_adv:'JEE Advanced',
+      ba_english:'BA English',ba_history:'BA History',ba_polity:'BA Political Science',
+      ma_english:'MA English',ma_history:'MA History',ma_polity:'MA Political Science'
     };
     return names[exam]||exam;
   }
@@ -807,6 +1010,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
     state.question=best.q;
     state.detected=best;
+    state.currentText=t;
     updateDetectPanel(best);
 
     document.getElementById('loadT').textContent='Check हो रहा है...';
@@ -901,6 +1105,12 @@ textarea:focus{border-color:#0f3460;background:#fff}
     if(r.missing.length>0)warn.push(r.missing.length+' keywords छूटे');
 
     var h='';
+
+    // Smart RTU analysis
+    if(state.currentText){
+      var rtu=smartRTU(state.currentText,state.detected);
+      h+=renderRTU(rtu);
+    }
 
     // Detected info section
     if(state.detected){
