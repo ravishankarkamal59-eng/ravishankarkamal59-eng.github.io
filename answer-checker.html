@@ -10,6 +10,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
+<script src="answer-checker-data.js?v=2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -420,8 +421,17 @@ textarea:focus { border-color: #0f3460; background: #fff; }
       <div class="tabs" id="examTabs">
         <button class="tab active" data-exam="upsc">UPSC Mains</button>
         <button class="tab" data-exam="uppcs">UPPCS Mains</button>
+        <button class="tab" data-exam="bpsc">BPSC Mains</button>
         <button class="tab" data-exam="essay">निबंध</button>
-        <button class="tab" data-exam="ethics">Ethics</button>
+        <button class="tab" data-exam="agri_agronomy">🌾 Agronomy</button>
+        <button class="tab" data-exam="agri_soil">🌱 Soil Science</button>
+        <button class="tab" data-exam="agri_horticulture">🍎 Horticulture</button>
+        <button class="tab" data-exam="agri_pathology">🦠 Plant Pathology</button>
+        <button class="tab" data-exam="agri_entomology">🐛 Entomology</button>
+        <button class="tab" data-exam="agri_extension">📢 Extension</button>
+        <button class="tab" data-exam="agri_economics">💰 Agri Economics</button>
+        <button class="tab" data-exam="agri_animal">🐄 Animal Husbandry</button>
+        <button class="tab" data-exam="sociology">👥 Sociology</button>
       </div>
       <div id="questionList"></div>
     </div>
@@ -542,30 +552,20 @@ textarea:focus { border-color: #0f3460; background: #fff; }
   }
 
   var QUESTIONS = {
-    upsc: [
-      { id:'upsc1', q:'Discuss the role of civil services in a democracy. (150 words)', words:150, marks:10,
-        keywords:['civil services','democracy','neutrality','impartiality','accountability','transparency','governance','constitution','integrity','welfare','bureaucracy','policy implementation','administration','public service'] },
-      { id:'upsc2', q:'Examine the role of the Governor in the Indian federal setup. (250 words)', words:250, marks:15,
-        keywords:['governor','federal','state','centre','discretion','article 356','appointment','constitutional','rajya','powers','pardon','bill','chief minister','president'] },
-      { id:'upsc3', q:'Discuss the impact of climate change on Indian agriculture. (250 words)', words:250, marks:15,
-        keywords:['climate change','agriculture','crop','monsoon','rainfall','temperature','irrigation','drought','flood','farmers','adaptation','mitigation','technology','crop insurance','food security'] },
-      { id:'upsc4', q:'What are the main features of the Indian Constitution? (150 words)', words:150, marks:10,
-        keywords:['constitution','federal','unitary','secular','democratic','republic','fundamental rights','directive principles','parliamentary','sovereignty','amendment','bicameral','judicial review'] }
-    ],
-    uppcs: [
-      { id:'uppcs1', q:'उत्तर प्रदेश के औद्योगिक विकास की समस्याओं की चर्चा करें। (150 words)', words:150, marks:10,
-        keywords:['उत्तर प्रदेश','औद्योगिक','उद्योग','विकास','बुनियादी','बिजली','सड़क','निवेश','औद्योगिक नीति','एमएसएमई','क्षेत्रीय','विकेंद्रीकरण','रोजगार','निवेश'] },
-      { id:'uppcs2', q:'उत्तर प्रदेश में कृषि विविधीकरण की आवश्यकता और चुनौतियों पर चर्चा करें। (250 words)', words:250, marks:15,
-        keywords:['कृषि','विविधीकरण','उत्तर प्रदेश','फसल','बागवानी','दलहन','तिलहन','सिंचाई','बाजार','किसान','आय','चुनौती','मंडी','लाभ'] }
-    ],
-    essay: [
-      { id:'essay1', q:'"शिक्षा ही सामाजिक परिवर्तन का सबसे शक्तिशाली साधन है।" विवेचना करें।', words:300, marks:20,
-        keywords:['शिक्षा','सामाजिक','परिवर्तन','जागरूकता','सशक्तिकरण','समानता','विकास','ज्ञान','समाज','नागरिक','नैतिक','मूल्य','बदलाव','प्रगति'] }
-    ],
-    ethics: [
-      { id:'ethics1', q:'What do you understand by "conflict of interest"? Give examples from public service. (150 words)', words:150, marks:10,
-        keywords:['conflict of interest','public service','ethics','integrity','personal interest','official duty','transparency','disclosure','accountability','governance','impartiality','example'] }
-    ]
+    upsc: (window.AC_DATA && window.AC_DATA.upsc_gs1) ? window.AC_DATA.upsc_gs1.concat(window.AC_DATA.upsc_gs2 || []).concat(window.AC_DATA.upsc_gs3 || []).concat(window.AC_DATA.upsc_gs4 || []) : [],
+    uppcs: (window.AC_DATA && window.AC_DATA.uppcs_gs1) ? window.AC_DATA.uppcs_gs1.concat(window.AC_DATA.uppcs_gs2 || []).concat(window.AC_DATA.uppcs_gs3 || []).concat(window.AC_DATA.uppcs_gs4 || []) : [],
+    bpsc: (window.AC_DATA && window.AC_DATA.bpsc_gs) ? window.AC_DATA.bpsc_gs : [],
+    essay: (window.AC_DATA && window.AC_DATA.essay) ? window.AC_DATA.essay : [],
+    ethics: (window.AC_DATA && window.AC_DATA.upsc_gs4) ? window.AC_DATA.upsc_gs4 : [],
+    agri_agronomy: (window.AC_DATA && window.AC_DATA.agri_agronomy) ? window.AC_DATA.agri_agronomy : [],
+    agri_soil: (window.AC_DATA && window.AC_DATA.agri_soil) ? window.AC_DATA.agri_soil : [],
+    agri_horticulture: (window.AC_DATA && window.AC_DATA.agri_horticulture) ? window.AC_DATA.agri_horticulture : [],
+    agri_pathology: (window.AC_DATA && window.AC_DATA.agri_pathology) ? window.AC_DATA.agri_pathology : [],
+    agri_entomology: (window.AC_DATA && window.AC_DATA.agri_entomology) ? window.AC_DATA.agri_entomology : [],
+    agri_extension: (window.AC_DATA && window.AC_DATA.agri_extension) ? window.AC_DATA.agri_extension : [],
+    agri_economics: (window.AC_DATA && window.AC_DATA.agri_economics) ? window.AC_DATA.agri_economics : [],
+    agri_animal: (window.AC_DATA && window.AC_DATA.agri_animal) ? window.AC_DATA.agri_animal : [],
+    sociology: (window.AC_DATA && window.AC_DATA.sociology) ? window.AC_DATA.sociology : []
   };
 
   // ========== STATE ==========
@@ -586,7 +586,7 @@ textarea:focus { border-color: #0f3460; background: #fff; }
     var html = '';
     qs.forEach(function(q, i) {
       html += '<div class="q-box" data-qid="' + q.id + '">' +
-        '<div class="q-num">प्रश्न ' + (i+1) + ' • ' + q.marks + ' अंक</div>' +
+        '<div class="q-num">प्रश्न ' + (i+1) + ' • ' + q.marks + ' अंक' + (q.subject ? ' • ' + q.subject : '') + '</div>' +
         '<div class="q-text">' + q.q + '</div>' +
         '<div class="q-meta">' +
           '<span>📝 ' + q.words + ' शब्द</span>' +
@@ -912,10 +912,19 @@ textarea:focus { border-color: #0f3460; background: #fff; }
     var lower = text.toLowerCase();
     var words = text.split(/\s+/).filter(function(w) { return w.length > 0; });
 
-    // 1. Keywords (max 30)
+    // 1. Keywords (max 30) with synonyms
     var found = [], missing = [];
+    var synonyms = window.AC_SYNONYMS || {};
     question.keywords.forEach(function(kw) {
-      if (lower.indexOf(kw.toLowerCase()) !== -1) found.push(kw);
+      var kwLower = kw.toLowerCase();
+      var isFound = lower.indexOf(kwLower) !== -1;
+      if (!isFound && synonyms[kwLower]) {
+        var syns = synonyms[kwLower];
+        for (var si = 0; si < syns.length; si++) {
+          if (lower.indexOf(syns[si].toLowerCase()) !== -1) { isFound = true; break; }
+        }
+      }
+      if (isFound) found.push(kw);
       else missing.push(kw);
     });
     var kwScore = Math.round((found.length / question.keywords.length) * 30);
