@@ -12,6 +12,10 @@
 <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=11">
 <link rel="apple-touch-icon" href="assets/images/logo.svg?v=11">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<!-- PDF.js for PDF text extraction -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<!-- Tesseract.js for OCR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -471,6 +475,192 @@ body {
   padding: 4px 6px;
 }
 
+
+/* PDF Upload Styles */
+.pdf-tabs {
+  display: flex; gap: 8px; margin-bottom: 14px;
+}
+.ptab {
+  flex: 1;
+  background: #f0f4f8; color: #0f3460;
+  border: none; padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: all 0.2s;
+}
+.ptab.active {
+  background: linear-gradient(135deg, #0f3460, #e94560);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+}
+
+.pdf-drop-zone {
+  border: 3px dashed #a0aec0;
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #fafbfc;
+}
+.pdf-drop-zone:hover, .pdf-drop-zone.dragover {
+  border-color: #0f3460;
+  background: #e8f4ff;
+}
+.pdf-drop-zone .pdf-icon {
+  font-size: 48px; margin-bottom: 10px;
+}
+.pdf-drop-zone .pdf-title {
+  font-size: 15px; font-weight: 800;
+  color: #0f3460; margin-bottom: 6px;
+}
+.pdf-drop-zone .pdf-sub {
+  font-size: 12px; color: #666;
+  margin-bottom: 8px;
+}
+.pdf-drop-zone .pdf-hint {
+  font-size: 11px; color: #e94560;
+  font-weight: 700;
+  background: #ffe8e8;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.pdf-file-row {
+  display: flex; align-items: center; gap: 12px;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.pdf-file-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.pdf-file-details { flex: 1; min-width: 0; }
+.pdf-file-name {
+  font-size: 13px; font-weight: 700;
+  color: #0f3460;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.pdf-file-meta {
+  font-size: 11px; color: #666;
+  margin-top: 2px;
+}
+.pdf-remove-btn {
+  background: #ffe8e8; color: #c0392b;
+  border: none; width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer; flex-shrink: 0;
+}
+
+.pdf-progress {
+  margin: 12px 0;
+}
+.pdf-progress-bar {
+  height: 8px;
+  background: #e0e6ed;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.pdf-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FDBA3B, #FB5D3B);
+  width: 0%; border-radius: 4px;
+  transition: width 0.3s;
+  box-shadow: 0 0 10px rgba(253,186,59,0.5);
+}
+.pdf-progress-text {
+  font-size: 11px; color: #666;
+  text-align: center; font-weight: 700;
+}
+
+.pdf-pages-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 4px;
+}
+.pdf-page-thumb {
+  aspect-ratio: 3/4;
+  background: #fff;
+  border: 1px solid #e0e6ed;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: #999;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.pdf-page-thumb.done {
+  border-color: #27ae60;
+  background: #e8f8f0;
+}
+.pdf-page-thumb.processing {
+  border-color: #f39c12;
+  background: #fff8e1;
+  animation: pulse 1s infinite;
+}
+.pdf-page-thumb.error {
+  border-color: #e94560;
+  background: #ffe8e8;
+}
+.pdf-page-thumb .page-num {
+  position: absolute;
+  bottom: 2px; right: 4px;
+  font-size: 9px;
+  color: #666;
+  font-weight: 700;
+}
+.pdf-page-thumb .page-status {
+  font-size: 18px;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.pdf-info-box {
+  background: #fff8e1;
+  border-left: 3px solid #f39c12;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+/* OCR Result Panel */
+.ocr-result {
+  background: #f8fafc;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 14px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+  white-space: pre-wrap;
+}
+.ocr-result-label {
+  font-size: 11px; color: #666;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
 /* Hidden sections */
 .view { display: none; }
 .view.active { display: block; }
@@ -550,8 +740,63 @@ body {
       <div id="questionList"></div>
     </div>
 
+    
+    <!-- PDF Upload Section -->
+    <div class="section-card" id="pdfUploadCard">
+      <div class="section-title">
+        📄 PDF Upload करें
+        <span class="badge">30 pages तक</span>
+      </div>
+
+      <div class="pdf-tabs">
+        <button class="ptab active" data-mode="type">✍️ Type करें</button>
+        <button class="ptab" data-mode="pdf">📄 PDF Upload</button>
+      </div>
+
+      <!-- PDF Upload UI -->
+      <div id="pdfMode" class="hidden">
+        <div class="pdf-drop-zone" id="pdfDropZone">
+          <div class="pdf-icon">📄</div>
+          <div class="pdf-title">PDF यहाँ drop करें या tap करें</div>
+          <div class="pdf-sub">Scanned answer sheet, handwritten pages, typed PDF</div>
+          <div class="pdf-hint">Maximum 30 pages • 20 MB तक</div>
+          <input type="file" id="pdfInput" accept="application/pdf,image/*" multiple style="display:none">
+        </div>
+
+        <div id="pdfFileInfo" class="hidden">
+          <div class="pdf-file-row">
+            <div class="pdf-file-icon">📄</div>
+            <div class="pdf-file-details">
+              <div class="pdf-file-name" id="pdfFileName">-</div>
+              <div class="pdf-file-meta" id="pdfFileMeta">-</div>
+            </div>
+            <button class="pdf-remove-btn" id="pdfRemoveBtn">✕</button>
+          </div>
+
+          <div class="pdf-progress" id="pdfProgress">
+            <div class="pdf-progress-bar">
+              <div class="pdf-progress-fill" id="pdfProgressFill"></div>
+            </div>
+            <div class="pdf-progress-text" id="pdfProgressText">तैयार...</div>
+          </div>
+
+          <div class="pdf-pages-preview" id="pdfPagesPreview"></div>
+        </div>
+
+        <div class="pdf-info-box">
+          <div style="font-size:12px;color:#856404;line-height:1.7">
+            <strong>💡 Tips:</strong><br>
+            • PDF में साफ अक्षर हों तो accuracy ज़्यादा<br>
+            • Handwritten के लिए साफ लिखावट चाहिए<br>
+            • Multiple images भी upload कर सकते हैं<br>
+            • Process होने में 30-60 सेकंड लगेंगे
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Answer Input -->
-    <div class="section-card">
+    <div class="section-card" id="answerInputCard">
       <div class="section-title">✍️ अपना उत्तर लिखें</div>
 
       <textarea class="answer-textarea" id="answerInput" placeholder="यहाँ अपना उत्तर लिखें या paste करें...
@@ -756,7 +1001,30 @@ body {
 
   // ==================== WORD COUNT ====================
   function updateWordCount() {
-    var text = answerInput.value.trim();
+    var text;
+    if (pdfMode) {
+      text = extractedText.trim();
+      var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
+      if (wordCount) wordCount.textContent = words;
+      if (words > 0) {
+        checkBtn.disabled = words < 30;
+        if (wordStatus) {
+          wordStatus.textContent = '📄 PDF से ' + words + ' words मिले';
+          wordStatus.classList.remove('good', 'warn', 'bad');
+          wordStatus.classList.add(words >= 30 ? 'good' : 'bad');
+        }
+      } else {
+        checkBtn.disabled = true;
+        if (wordStatus) {
+          wordStatus.textContent = 'PDF upload करें';
+          wordStatus.classList.remove('good', 'warn', 'bad');
+          wordStatus.classList.add('bad');
+        }
+      }
+      return;
+    }
+    
+    text = answerInput.value.trim();
     var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
     wordCount.textContent = words;
 
@@ -795,6 +1063,268 @@ body {
     }
   }
 
+
+  // ==================== PDF UPLOAD ====================
+  var pdfMode = false;
+  var extractedText = '';
+  var currentFile = null;
+
+  // Setup PDF.js worker
+  if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  // Tab switching
+  document.querySelectorAll('.ptab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.ptab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      pdfMode = tab.getAttribute('data-mode') === 'pdf';
+      
+      if (pdfMode) {
+        $('pdfMode').classList.remove('hidden');
+        $('answerInputCard').classList.add('hidden');
+      } else {
+        $('pdfMode').classList.add('hidden');
+        $('answerInputCard').classList.remove('hidden');
+      }
+      updateWordCount();
+    });
+  });
+
+  // Drop zone
+  var dropZone = $('pdfDropZone');
+  var pdfInput = $('pdfInput');
+
+  dropZone.addEventListener('click', function() { pdfInput.click(); });
+
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+  });
+  dropZone.addEventListener('dragleave', function() {
+    dropZone.classList.remove('dragover');
+  });
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+      handlePdfFiles(e.dataTransfer.files);
+    }
+  });
+
+  pdfInput.addEventListener('change', function(e) {
+    if (e.target.files.length) {
+      handlePdfFiles(e.target.files);
+    }
+  });
+
+  $('pdfRemoveBtn').addEventListener('click', function() {
+    currentFile = null;
+    extractedText = '';
+    $('pdfFileInfo').classList.add('hidden');
+    dropZone.style.display = 'block';
+    pdfInput.value = '';
+    updateWordCount();
+  });
+
+  function handlePdfFiles(files) {
+    if (files.length === 0) return;
+    var file = files[0];
+    
+    // Size check
+    if (file.size > 20 * 1024 * 1024) {
+      alert('PDF 20 MB से बड़ी है। कृपया छोटी file चुनें।');
+      return;
+    }
+
+    currentFile = file;
+    extractedText = '';
+    
+    dropZone.style.display = 'none';
+    $('pdfFileInfo').classList.remove('hidden');
+    $('pdfFileName').textContent = file.name;
+    $('pdfFileMeta').textContent = (file.size / 1024).toFixed(1) + ' KB';
+    $('pdfPagesPreview').innerHTML = '';
+    updateProgress(0, 'File load हो रही है...');
+
+    if (file.type === 'application/pdf') {
+      processPdf(file);
+    } else if (file.type.startsWith('image/')) {
+      processImage(file);
+    } else {
+      alert('कृपया PDF या image file चुनें।');
+    }
+  }
+
+  function updateProgress(percent, text) {
+    $('pdfProgressFill').style.width = percent + '%';
+    $('pdfProgressText').textContent = text || (Math.round(percent) + '%');
+  }
+
+  async function processPdf(file) {
+    try {
+      var arrayBuffer = await file.arrayBuffer();
+      var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      var totalPages = pdf.numPages;
+      
+      if (totalPages > 30) {
+        alert('PDF में ' + totalPages + ' pages हैं। Maximum 30 pages allowed हैं।');
+        // Process only first 30
+        totalPages = 30;
+      }
+
+      updateProgress(5, 'PDF load हो गई — ' + totalPages + ' pages');
+
+      // Create preview thumbnails
+      var previewHtml = '';
+      for (var i = 1; i <= totalPages; i++) {
+        previewHtml += '<div class="pdf-page-thumb" id="thumb-' + i + '">' +
+          '<div class="page-status">⏳</div>' +
+          '<div class="page-num">' + i + '</div>' +
+        '</div>';
+      }
+      $('pdfPagesPreview').innerHTML = previewHtml;
+
+      var allText = '';
+
+      for (var i = 1; i <= totalPages; i++) {
+        var thumb = $('thumb-' + i);
+        if (thumb) {
+          thumb.classList.add('processing');
+          thumb.querySelector('.page-status').textContent = '⏳';
+        }
+        
+        updateProgress(5 + (i / totalPages) * 90, 'Page ' + i + ' / ' + totalPages + ' process हो रहा है...');
+
+        var page = await pdf.getPage(i);
+        var textContent = await page.getTextContent();
+        var pageText = textContent.items.map(function(item) { return item.str; }).join(' ');
+        
+        // If no text extracted (scanned PDF), use OCR
+        if (pageText.trim().length < 20) {
+          try {
+            var ocrText = await ocrPage(page);
+            pageText = ocrText;
+          } catch (err) {
+            console.log('OCR failed for page', i, err);
+            pageText = '';
+          }
+        }
+
+        allText += pageText + '\n\n';
+
+        if (thumb) {
+          thumb.classList.remove('processing');
+          if (pageText.trim().length > 10) {
+            thumb.classList.add('done');
+            thumb.querySelector('.page-status').textContent = '✓';
+          } else {
+            thumb.classList.add('error');
+            thumb.querySelector('.page-status').textContent = '✕';
+          }
+        }
+      }
+
+      extractedText = allText.trim();
+      updateProgress(100, '✓ ' + totalPages + ' pages process हो गए');
+
+      // Show extracted text
+      showOcrResult(extractedText);
+      updateWordCount();
+
+    } catch (err) {
+      console.error(err);
+      updateProgress(0, '❌ Error: ' + err.message);
+      alert('PDF process करने में error आया। कृपया दूसरी file try करें।');
+    }
+  }
+
+  async function ocrPage(page) {
+    var viewport = page.getViewport({ scale: 1.5 });
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    
+    await page.render({ canvasContext: context, viewport: viewport }).promise;
+    
+    var dataUrl = canvas.toDataURL('image/png');
+    
+    try {
+      var result = await Tesseract.recognize(dataUrl, 'hin+eng', {
+        logger: function(m) {
+          if (m.status === 'recognizing text') {
+            // Silent - too many updates
+          }
+        }
+      });
+      return result.data.text;
+    } catch (err) {
+      console.log('Tesseract error:', err);
+      return '';
+    }
+  }
+
+  async function processImage(file) {
+    try {
+      updateProgress(20, 'Image load हो रही है...');
+      
+      var dataUrl = await fileToDataUrl(file);
+      
+      updateProgress(40, 'OCR चल रहा है...');
+      
+      var result = await Tesseract.recognize(dataUrl, 'hin+eng', {
+        logger: function(m) {
+          if (m.status === 'recognizing text') {
+            updateProgress(40 + m.progress * 55, 'OCR: ' + Math.round(m.progress * 100) + '%');
+          }
+        }
+      });
+      
+      extractedText = result.data.text.trim();
+      updateProgress(100, '✓ OCR complete');
+      
+      showOcrResult(extractedText);
+      updateWordCount();
+    } catch (err) {
+      console.error(err);
+      updateProgress(0, '❌ OCR failed');
+      alert('Image process करने में error आया।');
+    }
+  }
+
+  function fileToDataUrl(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function(e) { resolve(e.target.result); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function showOcrResult(text) {
+    var existing = document.querySelector('.ocr-result');
+    if (existing) existing.remove();
+    
+    var preview = text.length > 500 ? text.substring(0, 500) + '...' : text;
+    
+    var html = '<div class="ocr-result">' +
+      '<div class="ocr-result-label">📝 Extracted Text Preview (' + text.split(/\s+/).length + ' words)</div>' +
+      escapeHtml(preview) +
+    '</div>';
+    
+    var progressEl = $('pdfProgress');
+    progressEl.insertAdjacentHTML('afterend', html);
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+
   answerInput.addEventListener('input', updateWordCount);
 
   // ==================== CLEAR ====================
@@ -806,11 +1336,24 @@ body {
 
   // ==================== CHECK ANSWER ====================
   checkBtn.addEventListener('click', function() {
-    if (!currentQuestion) return;
-    var text = answerInput.value.trim();
-    if (text.length < 30) {
-      alert('कृपया कम से कम 30 अक्षर लिखें।');
+    if (!currentQuestion) {
+      alert('पहले प्रश्न चुनें।');
       return;
+    }
+    
+    var text;
+    if (pdfMode) {
+      text = extractedText.trim();
+      if (text.length < 30) {
+        alert('PDF से text नहीं मिला। कृपया साफ PDF upload करें।');
+        return;
+      }
+    } else {
+      text = answerInput.value.trim();
+      if (text.length < 30) {
+        alert('कृपया कम से कम 30 अक्षर लिखें।');
+        return;
+      }
     }
 
     loading.classList.add('show');
