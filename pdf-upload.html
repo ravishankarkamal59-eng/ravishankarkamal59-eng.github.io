@@ -357,9 +357,14 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
 </div>
 
 
+
+
+
 <script>
-// ==================== AUTH SYSTEM ====================
+// ==================== AUTH SYSTEM (Trigger only on Check) ====================
 (function(){
+  console.log('=== Auth System loading ===');
+
   var USERS_KEY = 'pdf_auth_users';
   var SESSION_KEY = 'pdf_auth_session';
 
@@ -378,8 +383,9 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
     user: getUser,
 
     showAuth: function(mode){
+      console.log('Showing auth modal:', mode);
       var a = document.getElementById('authScr');
-      if(!a) return;
+      if(!a){ console.log('authScr missing'); return; }
       window._authMode = mode || 'signup';
       AC.switchTab(window._authMode);
       var form = document.getElementById('asForm');
@@ -413,7 +419,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
       });
       var el;
       el = document.getElementById('asTitle'); if(el) el.textContent = isSignup ? 'Create Account' : 'Welcome Back';
-      el = document.getElementById('asSub');   if(el) el.textContent = isSignup ? 'Answer check के लिए account बनाएँ' : 'अपने account में login करें';
+      el = document.getElementById('asSub');   if(el) el.textContent = isSignup ? 'Answer check करने के लिए account बनाएँ' : 'अपने account में login करें';
       el = document.getElementById('asBtn');   if(el) el.textContent = isSignup ? 'Create Free Account' : 'Login';
       el = document.getElementById('fldName'); if(el) el.style.display = isSignup ? 'block' : 'none';
       el = document.getElementById('asFooter');
@@ -449,11 +455,12 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
         users[email] = { name: name, email: email, pass: pass, uid: uid, created: Date.now() };
         saveUsers(users);
         setUser({ name: name, email: email, uid: uid });
-        showMsg('Account बन गया! Welcome ' + name, false);
+        showMsg('Account बन गया!', false);
         setTimeout(function(){
           AC.closeAuth();
           updateProfile();
-          autoResume();
+          // Now trigger the check
+          proceedToCheck();
         }, 700);
         return false;
       }
@@ -465,7 +472,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
       setTimeout(function(){
         AC.closeAuth();
         updateProfile();
-        autoResume();
+        proceedToCheck();
       }, 600);
       return false;
     },
@@ -496,6 +503,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
 
   window.openUserMenu = AC.openUserMenu;
 
+  // Profile update
   function updateProfile(){
     var u = getUser();
     var chip = document.getElementById('userChip');
@@ -508,20 +516,24 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
       chip.style.display = 'none';
     }
   }
+  window.updateProfile = updateProfile;
 
-  function autoResume(){
-    // Auto-click the check button if pending
-    if(window._pendingCheck){
-      window._pendingCheck = false;
-      setTimeout(function(){
-        var btn = document.getElementById('checkBtn');
-        if(btn && !btn.disabled){
-          btn.click();
-        }
-      }, 300);
+  // Proceed to check after login
+  function proceedToCheck(){
+    // Save PDF text to session for main page
+    try {
+      var text = sessionStorage.getItem('pdfExtractedText') || '';
+      var wc = sessionStorage.getItem('pdfWordCount') || '0';
+      console.log('Proceeding to check with', wc, 'words');
+      
+      // Redirect to main checker
+      location.href = 'answer-checker.html?from=pdf';
+    } catch(e) {
+      location.href = 'answer-checker.html?from=pdf';
     }
   }
 
+  // Toast
   function toast(msg){
     var t = document.createElement('div');
     t.textContent = msg;
@@ -535,41 +547,60 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
   }
   window.toast = toast;
 
-  // Auth gate on Check button
+  // ⚡ Replace the check button's onclick
   function attachGate(){
     var btn = document.getElementById('checkBtn');
-    if(!btn || btn._authBound) return;
-    btn._authBound = true;
+    if(!btn){
+      setTimeout(attachGate, 300);
+      return;
+    }
+    if(btn._gateAttached) return;
+    btn._gateAttached = true;
 
-    var origOnclick = btn.onclick;
+    // Remove existing onclick
+    btn.onclick = null;
 
+    // New handler
     btn.onclick = function(e){
-      if(!isLoggedIn()){
-        if(e){ e.preventDefault(); e.stopPropagation(); }
-        window._pendingCheck = true;
-        AC.showAuth('signup');
-        toast('🔐 पहले Sign Up करें');
+      if(e){ e.preventDefault(); }
+
+      // Check if PDF is uploaded
+      var text = sessionStorage.getItem('pdfExtractedText') || '';
+      if(!text || text.length < 30){
+        toast('पहले PDF upload करें');
         return false;
       }
-      if(origOnclick) return origOnclick.call(this, e);
+
+      // Check login
+      if(!isLoggedIn()){
+        console.log('Not logged in - showing auth');
+        AC.showAuth('signup');
+        return false;
+      }
+
+      // Logged in - go to checker
+      console.log('Logged in - proceeding');
+      proceedToCheck();
+      return false;
     };
-    console.log('✅ Auth gate attached to Check button');
+    console.log('✅ Check button gated');
   }
 
   // Update profile on load
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      updateProfile();
-      setTimeout(attachGate, 300);
-    });
-  } else {
+  function init(){
     updateProfile();
-    setTimeout(attachGate, 300);
+    attachGate();
   }
-  setTimeout(attachGate, 1500);
-  setTimeout(updateProfile, 1000);
 
-  console.log('✅ Auth System ready');
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 200); });
+  } else {
+    setTimeout(init, 200);
+  }
+  setTimeout(init, 1000);
+  setTimeout(init, 2500);
+
+  console.log('✅ Auth System ready (gate on Check only)');
 })();
 </script>
 
