@@ -4726,5 +4726,300 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== JEE ADVANCED DETECTION ====================
+(function(){
+  'use strict';
+  console.log('=== JEE Detection loading ===');
+
+  // ============ JEE DATABASE ============
+  var JEE_DATA = {
+    jee_mains: {
+      name: 'JEE Mains',
+      icon: '⚙️',
+      subjects: ['Physics', 'Chemistry', 'Mathematics', 'Biology'],
+      requiredPoints: [
+        { name: 'Formula/Equation', regex: /[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|λ|μ|Δ|∂|\bF\s*=|E\s*=|V\s*=|P\s*=|pV\s*=|mv|ma|1\/2|½/i, weight: 15, suggestion: 'Relevant formula ज़रूर लिखें — जैसे F=ma, E=mc², V=IR' },
+        { name: 'Units/Dimensions', regex: /newton|joule|watt|volt|ampere|m\/s|m\/s²|kg|mol|meter|metre|second|kelvin|coulomb|ohm|hertz|nm|km|cm|mm/i, weight: 10, suggestion: 'Units और dimensions ज़रूर mention करें' },
+        { name: 'Numerical Values', regex: /\d+\.?\d*\s*[×xX*]?\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|kg|N|J|V|A|W|Hz|Ω|°C|K)/i, weight: 12, suggestion: 'Numerical values scientific notation में लिखें' },
+        { name: 'Step-by-step Solution', regex: /step\s*\d|चरण\s*\d|firstly|secondly|then|next|finally|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s/i, weight: 12, suggestion: 'Solution को steps में लिखें — (i), (ii), (iii) या Step 1, Step 2' },
+        { name: 'Given/To Find', regex: /given|दिया गया|to\s*find|ज्ञात करना|find\s*out|calculate|determine|compute|निकालें/i, weight: 10, suggestion: 'पहले "Given" और "To Find" लिखें' },
+        { name: 'Concept/Principle', regex: /law of|नियम|principle|सिद्धांत|theorem|conservation|संरक्षण|equation|समीकरण/i, weight: 12, suggestion: 'कौन-सा law/principle use हुआ, वो mention करें' },
+        { name: 'Final Answer', regex: /answer|उत्तर|result|परिणाम|∴|hence|therefore|इसलिए|final|अंतिम/i, weight: 10, suggestion: 'Final answer को clearly box/mark करें' },
+        { name: 'SI Units Check', regex: /SI\s*unit|SI\s*मात्रक|dimensionally\s*correct|dimensional\s*analysis|विमीय\s*विश्लेषण/i, weight: 8, suggestion: 'Dimensional analysis से answer verify करें' }
+      ],
+      forbidden: [
+        { name: 'No Formula', test: function(t){ return !/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ/i.test(t); }, msg: '❌ कोई formula नहीं — JEE में formula के बिना answer incomplete है' },
+        { name: 'No Numerical Value', test: function(t){ return !/\d+/i.test(t); }, msg: '❌ कोई numerical value नहीं — JEE में calculation ज़रूरी है' },
+        { name: 'Only Theory', test: function(t){ return !/step|चरण|solution|हल/i.test(t); }, msg: '⚠️ सिर्फ theory लिखी है — step-by-step solution जोड़ें' },
+        { name: 'No Units', test: function(t){ return !/newton|joule|volt|ampere|kg|m\/s|meter|metre|km|cm/i.test(t); }, msg: '❌ कोई units नहीं — physics/chemistry में units अनिवार्य हैं' }
+      ]
+    },
+    jee_adv: {
+      name: 'JEE Advanced',
+      icon: '🔬',
+      subjects: ['Advanced Physics', 'Advanced Chemistry', 'Advanced Mathematics'],
+      requiredPoints: [
+        { name: 'Multi-step Solution', regex: /step\s*\d|चरण\s*\d|first|second|third|next|then|finally|\(i\)|\(ii\)|\(iii\)|\(iv\)|[1-9][\.\)]\s.*[1-9][\.\)]\s/i, weight: 15, suggestion: 'JEE Advanced में कम से कम 3-4 steps चाहिए — हर step clearly explain करें' },
+        { name: 'Concept/Theory Basis', regex: /law|नियम|principle|सिद्धांत|theorem|concept|अवधारणा|postulate|axiom|formula/i, weight: 12, suggestion: 'कौन-सा concept/principle use हुआ वो पहले लिखें' },
+        { name: 'Mathematical Derivation', regex: /deriv|व्युत्पन्न|integrat|समाकलन|differenti|अवकलन|d\/d|∂\/∂|∫|Σ/i, weight: 15, suggestion: 'Derivation ज़रूर लिखें — JEE Advanced में derivation के बिना marks नहीं मिलते' },
+        { name: 'Numerical Calculation', regex: /\d+\.?\d*\s*[×xX*]\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|N|J|V|A|W|Ω|Hz)/i, weight: 12, suggestion: 'Numerical calculation scientific notation में लिखें' },
+        { name: 'Boundary Conditions', regex: /boundary|limit|सीमा|condition|प्रतिबंध|range|constraint|when\s|x\s*→|t\s*→|at\s*t\s*=|at\s*x\s*=/i, weight: 10, suggestion: 'Boundary conditions और limits ज़रूर mention करें' },
+        { name: 'Special Cases Analysis', regex: /special case|विशेष स्थिति|if\s|when\s|case\s*\d|for\s*example|assume|मान लें/i, weight: 10, suggestion: 'Special cases analyze करें — JEE Advanced की खासियत है' },
+        { name: 'Multiple Methods/Approaches', regex: /method|विधि|approach|तरीका|alternate|वैकल्पिक|or\s|another\s*way/i, weight: 10, suggestion: 'एक से ज़्यादा methods से solve करें' },
+        { name: 'Final Answer with Reasoning', regex: /answer|उत्तर|result|∴|hence|therefore|इसलिए|conclusion|निष्कर्ष|justif|सिद्ध/i, weight: 12, suggestion: 'Final answer को reasoning के साथ justify करें' }
+      ],
+      forbidden: [
+        { name: 'Too Short Answer', test: function(t){ return t.split(/\s+/).length < 50; }, msg: '❌ Answer बहुत छोटा है — JEE Advanced में detailed solution चाहिए' },
+        { name: 'No Derivation', test: function(t){ return !/deriv|व्युत्पन्न|integrat|d\/d|∫|differenti/i.test(t); }, msg: '❌ कोई derivation नहीं — JEE Advanced में derivation अनिवार्य है' },
+        { name: 'Only Final Answer', test: function(t){ return t.split(/\s+/).length < 80 && !/step|चरण|solution|हल/i.test(t); }, msg: '⚠️ सिर्फ final answer लिखा है — पूरा solution लिखें' },
+        { name: 'No Concept Mention', test: function(t){ return !/concept|law|principle|theorem|सिद्धांत|नियम/i.test(t); }, msg: '⚠️ कौन-सा concept use हुआ, वो mention करें' },
+        { name: 'No Special Case', test: function(t){ return !/special case|विशेष स्थिति|if\s|assume|case\s/i.test(t); }, msg: '⚠️ Special cases analyze करें — Advanced level की requirement' }
+      ]
+    }
+  };
+
+  // ============ GET CURRENT EXAM ============
+  function getCurrentExam(){
+    if(window.state && window.state.exam) return window.state.exam;
+    if(window.AppState && window.AppState.exam) return window.AppState.exam;
+    var active = document.querySelector('.dr-item.on');
+    if(active){
+      var ex = active.getAttribute('data-exam');
+      if(ex === 'jee_mains' || ex === 'jee_adv') return ex;
+    }
+    var eb = document.getElementById('ebN');
+    if(eb){
+      var t = eb.textContent || '';
+      if(t.indexOf('JEE Mains') > -1) return 'jee_mains';
+      if(t.indexOf('JEE Advanced') > -1) return 'jee_adv';
+    }
+    return null;
+  }
+
+  // ============ ANALYZE ============
+  function analyzeJEE(text, examKey){
+    var data = JEE_DATA[examKey];
+    if(!data) return null;
+
+    var results = {
+      exam: data.name,
+      icon: data.icon,
+      examKey: examKey,
+      subjects: data.subjects,
+      found: [],
+      missing: [],
+      warnings: [],
+      totalScore: 0,
+      maxScore: 0,
+      subjectDetected: null
+    };
+
+    // Subject detection
+    var lower = text.toLowerCase();
+    if(/physics|भौतिक|newton|velocity|acceleration|force|energy|momentum|wave|optics|electr/i.test(text)) results.subjectDetected = 'Physics';
+    else if(/chemistry|रसायन|reaction|molecule|atom|bond|acid|base|organic|inorganic|periodic/i.test(text)) results.subjectDetected = 'Chemistry';
+    else if(/math|गणित|equation|integral|derivative|matrix|probability|vector|calculus|algebra/i.test(text)) results.subjectDetected = 'Mathematics';
+    else if(/biology|जीव|dna|rna|cell|gene|protein/i.test(text)) results.subjectDetected = 'Biology';
+
+    // Check required points
+    data.requiredPoints.forEach(function(p){
+      var has = p.regex.test(text);
+      results.maxScore += p.weight;
+      if(has){
+        results.found.push({ name: p.name, weight: p.weight });
+        results.totalScore += p.weight;
+      } else {
+        results.missing.push({ name: p.name, weight: p.weight, suggestion: p.suggestion });
+      }
+    });
+
+    // Check forbidden
+    data.forbidden.forEach(function(f){
+      try {
+        if(f.test(text)){
+          results.warnings.push(f.msg);
+        }
+      } catch(e){}
+    });
+
+    // Word count
+    results.words = text.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+    results.pct = results.maxScore > 0 ? Math.round((results.totalScore / results.maxScore) * 100) : 0;
+
+    // Count formulas and steps
+    results.formulaCount = (text.match(/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ/gi) || []).length;
+    results.stepCount = (text.match(/step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s/gi) || []).length;
+
+    return results;
+  }
+
+  // ============ RENDER RESULT ============
+  function renderJEEDetection(text){
+    var examKey = getCurrentExam();
+    if(!examKey) return null;
+    if(examKey !== 'jee_mains' && examKey !== 'jee_adv') return null;
+
+    var r = analyzeJEE(text, examKey);
+    if(!r) return null;
+
+    var h = '';
+
+    // Header
+    h += '<div style="background:linear-gradient(135deg,#8e44ad,#c0392b);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center">';
+    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">' + r.icon + ' ' + r.exam + ' - ADVANCED ANALYSIS</div>';
+    h += '<div style="font-size:13px;font-weight:700">JEE Deductive Detection System</div>';
+    if(r.subjectDetected){
+      h += '<div style="font-size:11px;margin-top:6px;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:10px;display:inline-block">Subject: ' + r.subjectDetected + '</div>';
+    }
+    h += '</div>';
+
+    // Score card
+    var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
+    var scoreStatus = r.pct >= 70 ? '✅ JEE-Ready' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
+    h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
+    h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
+    h += '</div>';
+    h += '<div style="height:8px;background:#e0e6ed;border-radius:4px;overflow:hidden"><div style="height:100%;width:' + r.pct + '%;background:' + scoreColor + '"></div></div>';
+    h += '<div style="font-size:11px;color:#666;margin-top:8px">Points: <b>' + r.totalScore + '/' + r.maxScore + '</b> • Words: <b>' + r.words + '</b></div>';
+    // Stats
+    h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px">';
+    h += '<div style="background:#f0f4ff;padding:8px 10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">FORMULAS</div><div style="font-size:16px;font-weight:900;color:#2980b9">' + r.formulaCount + '</div></div>';
+    h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">STEPS</div><div style="font-size:16px;font-weight:900;color:#27ae60">' + r.stepCount + '</div></div>';
+    h += '</div>';
+    h += '</div>';
+
+    // ✓ Found
+    if(r.found.length > 0){
+      h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
+      r.found.forEach(function(f){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
+        h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // ❌ Missing - ये जोड़ना ज़रूरी है
+    if(r.missing.length > 0){
+      h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
+      r.missing.forEach(function(m){
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+        h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
+        h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
+        h += '</div>';
+        h += '<div style="font-size:11px;color:#666;line-height:1.4">💡 ' + m.suggestion + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // ⚠️ Warnings - ये नहीं करना चाहिए
+    if(r.warnings.length > 0){
+      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
+      r.warnings.forEach(function(w){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Summary
+    var summary = '';
+    if(r.pct >= 70){
+      summary = '🎉 बहुत बढ़िया! आपका ' + r.exam + ' solution तैयार है।';
+    } else if(r.pct >= 45){
+      summary = '📈 अच्छा प्रयास! ' + r.missing.length + ' चीज़ें जोड़ें।';
+    } else {
+      summary = '💪 मेहनत ज़रूरी! ' + r.missing.length + ' important points छूटे हैं।';
+    }
+    h += '<div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border-left:4px solid #f39c12;padding:14px;border-radius:10px;margin-bottom:14px;font-size:13px;color:#7a5a00;font-weight:600;line-height:1.6">';
+    h += summary;
+    h += '</div>';
+
+    return h;
+  }
+
+  // ============ HOOK ============
+  function hook(){
+    if(typeof window.showResult === 'function' && !window.showResult._jeeHooked){
+      var orig = window.showResult;
+      window.showResult = function(r){
+        var res = orig.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+            if(!text || text.length < 30){
+              var ta = document.getElementById('ansInput');
+              if(ta) text = ta.value;
+            }
+            if(text && text.length >= 30){
+              var detection = renderJEEDetection(text);
+              if(detection){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var wrapper = document.createElement('div');
+                  wrapper.innerHTML = detection;
+                  resBody.insertBefore(wrapper, resBody.firstChild);
+                  console.log('✅ JEE detection added');
+                }
+              }
+            }
+          } catch(e){ console.log('JEE err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showResult._jeeHooked = true;
+      console.log('✅ showResult hooked for JEE');
+    }
+
+    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._jeeHooked){
+      var orig2 = window.showDirectResult;
+      window.showDirectResult = function(text, rtu){
+        var res = orig2.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            if(text && text.length >= 30){
+              var detection = renderJEEDetection(text);
+              if(detection){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var wrapper = document.createElement('div');
+                  wrapper.innerHTML = detection;
+                  resBody.insertBefore(wrapper, resBody.firstChild);
+                  console.log('✅ JEE detection added (direct)');
+                }
+              }
+            }
+          } catch(e){ console.log('JEE err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showDirectResult._jeeHooked = true;
+      console.log('✅ showDirectResult hooked for JEE');
+    }
+  }
+
+  // Init
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
+  } else {
+    setTimeout(hook, 500);
+  }
+  setTimeout(hook, 1500);
+  setTimeout(hook, 3000);
+  setTimeout(hook, 5000);
+
+  console.log('✅ JEE Detection ready');
+})();
+</script>
+
 </body>
 </html>
