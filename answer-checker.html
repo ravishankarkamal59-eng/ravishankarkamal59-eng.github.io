@@ -10,193 +10,204 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
 <script src="answer-checker-data.js?v=3"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow-x:hidden}
-body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;color:#1a1a2e;line-height:1.5}
+html,body{height:100%;overflow:hidden;position:fixed;width:100%}
+body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;color:#1a1a2e}
 
-/* ============ APP HEADER ============ */
-.hdr{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#0f3460,#1a5276);padding:12px 14px;box-shadow:0 2px 12px rgba(15,52,96,.2)}
-.hdr-row{display:flex;align-items:center;justify-content:space-between;max-width:640px;margin:0 auto}
-.hdr-brand{display:flex;align-items:center;gap:10px}
-.hdr-logo{width:38px;height:38px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:20px;color:#0a1929}
+/* ============ APP CONTAINER ============ */
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:640px;margin:0 auto;background:#f0f4f8}
+
+/* ============ HEADER ============ */
+.hdr{background:linear-gradient(135deg,#0f3460,#1a5276);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;box-shadow:0 2px 12px rgba(15,52,96,.2);z-index:10}
+.hdr-brand{display:flex;align-items:center;gap:9px}
+.hdr-logo{width:34px;height:34px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:18px;color:#0a1929}
 .hdr-title{color:#fff;line-height:1.1}
-.hdr-title .s{font-size:8px;color:#FDBA3B;letter-spacing:2px;font-weight:700}
-.hdr-title .b{font-size:14px;font-weight:800;font-family:Georgia,serif}
-.hdr-btn{width:42px;height:42px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
-.hdr-btn span{display:block;width:5px;height:5px;background:#FDBA3B;border-radius:50%}
+.hdr-title .s{font-size:7px;color:#FDBA3B;letter-spacing:1.5px;font-weight:700}
+.hdr-title .b{font-size:13px;font-weight:800;font-family:Georgia,serif}
+.hdr-btn{width:38px;height:38px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:0}
+.hdr-btn span{display:block;width:4px;height:4px;background:#FDBA3B;border-radius:50%}
 .hdr-btn:active{background:rgba(255,255,255,.3)}
 
-/* ============ SCREENS ============ */
-.screen{display:none;max-width:640px;margin:0 auto;padding:14px;padding-bottom:90px}
-.screen.on{display:block}
-
-/* Exam bar */
-.exam-bar{background:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.05);margin-bottom:14px;border:1.5px solid #e8eef5}
+/* ============ EXAM BAR ============ */
+.exam-bar{background:#fff;padding:8px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid #e8eef5;flex-shrink:0}
 .exam-bar:active{background:#f8fafc}
-.exam-bar .eb-icon{width:42px;height:42px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
-.exam-bar .eb-txt{flex:1;min-width:0}
-.exam-bar .eb-lbl{font-size:9px;color:#999;font-weight:700;letter-spacing:1.5px}
-.exam-bar .eb-nm{font-size:15px;font-weight:800;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.exam-bar .eb-ch{font-size:10px;color:#e94560;font-weight:800;background:#ffe8e8;padding:5px 11px;border-radius:12px;letter-spacing:.5px}
+.exam-bar .eb-i{width:32px;height:32px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.exam-bar .eb-t{flex:1;min-width:0}
+.exam-bar .eb-l{font-size:8px;color:#999;font-weight:700;letter-spacing:1.2px}
+.exam-bar .eb-n{font-size:13px;font-weight:800;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exam-bar .eb-c{font-size:9px;color:#e94560;font-weight:800;background:#ffe8e8;padding:4px 9px;border-radius:10px}
 
-/* Question list */
-.q-item{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.04);border-left:4px solid #e0e6ed;transition:all .15s}
-.q-item:active{transform:scale(.99);background:#fafbfc}
-.q-item-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
-.q-num{font-size:10px;font-weight:800;color:#e94560;letter-spacing:1px;flex-shrink:0}
-.q-subj{font-size:9px;font-weight:700;color:#fff;background:#0f3460;padding:3px 8px;border-radius:8px;letter-spacing:.3px;white-space:nowrap}
-.q-txt{font-size:13.5px;font-weight:600;color:#1a1a2e;line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.q-meta{display:flex;gap:6px;flex-wrap:wrap}
-.q-meta span{font-size:10px;color:#666;font-weight:600;background:#f0f4f8;padding:3px 9px;border-radius:9px}
+/* ============ SCROLLABLE MIDDLE ============ */
+.mid{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px;-webkit-overflow-scrolling:touch}
 
-/* ============ WRITE SCREEN ============ */
-.w-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.w-back{width:40px;height:40px;background:#fff;border-radius:11px;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;color:#0f3460;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.05);font-weight:900}
-.w-title{flex:1;font-size:14px;font-weight:800;color:#0f3460}
-.w-qcard{background:linear-gradient(135deg,#f8fafc,#e8f4ff);border-left:4px solid #e94560;padding:14px;border-radius:12px;margin-bottom:14px}
-.w-qcard .ql{font-size:9px;color:#e94560;font-weight:800;letter-spacing:1px;margin-bottom:5px}
-.w-qcard .qt{font-size:14px;font-weight:700;color:#1a1a2e;line-height:1.5;margin-bottom:8px}
-.w-qcard .qm{display:flex;gap:6px;flex-wrap:wrap}
-.w-qcard .qm span{font-size:10px;color:#666;font-weight:600;background:#fff;padding:3px 9px;border-radius:9px;border:1px solid #e0e6ed}
+/* Question picker */
+.qpick{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
+.qpick-btn{width:100%;background:transparent;border:none;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;text-align:left}
+.qpick-btn:active{background:#f8fafc}
+.qpick-btn .qp-i{width:32px;height:32px;background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#FDBA3B;font-weight:900;flex-shrink:0}
+.qpick-btn .qp-t{flex:1;min-width:0}
+.qpick-btn .qp-l{font-size:8px;color:#999;font-weight:700;letter-spacing:1.2px}
+.qpick-btn .qp-n{font-size:12.5px;font-weight:700;color:#0f3460;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qpick-btn .qp-a{font-size:14px;color:#e94560;font-weight:900;transition:transform .2s;flex-shrink:0}
+.qpick-btn.open .qp-a{transform:rotate(180deg)}
+
+/* Question list dropdown */
+.qlist{display:none;max-height:280px;overflow-y:auto;border-top:1px solid #f0f4f8;background:#fafbfc}
+.qlist.open{display:block}
+.qli{padding:10px 12px;border-bottom:1px solid #f0f4f8;cursor:pointer;display:flex;align-items:flex-start;gap:8px;background:#fff}
+.qli:active{background:#f0f4f8}
+.qli.on{background:#fff8e1;border-left:3px solid #FDBA3B}
+.qli .n{font-size:9px;font-weight:800;color:#e94560;background:#ffe8e8;padding:2px 6px;border-radius:6px;flex-shrink:0;letter-spacing:.5px;height:fit-content}
+.qli .t{flex:1;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qli.on .t{color:#0f3460;font-weight:800}
+
+/* Question card (shown after pick) */
+.qcard{background:linear-gradient(135deg,#f8fafc,#e8f4ff);border-left:3px solid #e94560;padding:11px 12px;border-radius:10px;margin-bottom:8px}
+.qcard .qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px}
+.qcard .qh .s{font-size:8px;color:#e94560;font-weight:800;letter-spacing:1.2px}
+.qcard .qh .sub{font-size:9px;font-weight:800;color:#fff;background:#0f3460;padding:2px 7px;border-radius:8px}
+.qcard .qt{font-size:12.5px;font-weight:700;color:#1a1a2e;line-height:1.45;margin-bottom:6px}
+.qcard .qm{display:flex;gap:5px;flex-wrap:wrap}
+.qcard .qm span{font-size:9px;color:#666;font-weight:600;background:#fff;padding:2px 7px;border-radius:8px;border:1px solid #e0e6ed}
 
 /* Mode toggle */
-.mode-tog{display:flex;gap:6px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:14px}
-.mode-b{flex:1;background:transparent;border:none;padding:11px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;color:#666;cursor:pointer;transition:.15s}
-.mode-b.on{background:#fff;color:#0f3460;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.mode-tog{display:flex;gap:5px;background:#e8eef5;padding:3px;border-radius:10px;margin-bottom:8px}
+.mode-b{flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:11.5px;font-weight:700;color:#666;cursor:pointer;transition:.15s}
+.mode-b.on{background:#fff;color:#0f3460;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 
-/* Textarea */
-textarea{width:100%;min-height:200px;padding:14px;border:2px solid #e0e6ed;border-radius:12px;font-family:inherit;font-size:14px;line-height:1.7;resize:vertical;outline:none;background:#fafbfc;color:#1a1a2e}
+/* Answer textarea */
+.ans-box{background:#fff;border-radius:12px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:8px}
+textarea{width:100%;min-height:200px;padding:10px;border:1.5px solid #e0e6ed;border-radius:10px;font-family:inherit;font-size:13px;line-height:1.6;resize:none;outline:none;background:#fafbfc;color:#1a1a2e;height:calc(100% - 30px)}
 textarea:focus{border-color:#0f3460;background:#fff}
-.wcnt{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;font-weight:600;color:#666}
+.wcnt{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;font-weight:600;color:#666}
 .wcnt .c{color:#0f3460;font-weight:800}
 
-/* PDF */
-.pdf-zone{display:none}
-.pdf-zone.on{display:block}
-.pdf-drop{border:3px dashed #a0aec0;border-radius:14px;padding:26px 16px;text-align:center;cursor:pointer;background:#fafbfc}
+/* PDF zone */
+.pdf-z{display:none}
+.pdf-z.on{display:block}
+.pdf-drop{border:2.5px dashed #a0aec0;border-radius:12px;padding:20px 14px;text-align:center;cursor:pointer;background:#fafbfc}
 .pdf-drop:active{border-color:#0f3460;background:#e8f4ff}
-.pdf-drop .ic{font-size:42px;margin-bottom:8px}
-.pdf-drop .tt{font-size:13px;font-weight:800;color:#0f3460;margin-bottom:4px}
-.pdf-drop .st{font-size:11px;color:#666;margin-bottom:8px}
-.pdf-drop .ht{font-size:10px;color:#e94560;font-weight:700;background:#ffe8e8;padding:3px 10px;border-radius:10px;display:inline-block}
-.pdf-info{display:none;background:#f8fafc;padding:11px;border-radius:11px;margin-top:12px;align-items:center;gap:10px}
+.pdf-drop .ic{font-size:36px;margin-bottom:6px}
+.pdf-drop .tt{font-size:12px;font-weight:800;color:#0f3460;margin-bottom:3px}
+.pdf-drop .st{font-size:10px;color:#666;margin-bottom:6px}
+.pdf-drop .ht{font-size:9px;color:#e94560;font-weight:700;background:#ffe8e8;padding:2px 9px;border-radius:9px;display:inline-block}
+.pdf-info{display:none;background:#f8fafc;padding:10px;border-radius:10px;margin-top:10px;align-items:center;gap:9px;border:1.5px solid #e0e6ed}
 .pdf-info.on{display:flex}
-.pdf-info .fi{width:38px;height:38px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.pdf-info .fn{flex:1;min-width:0;font-size:12px;font-weight:700;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pdf-info .fx{background:#ffe8e8;color:#c0392b;border:none;width:28px;height:28px;border-radius:50%;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0}
-.pdf-prog{height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin:10px 0 6px;display:none}
+.pdf-info .fi{width:34px;height:34px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.pdf-info .fn{flex:1;min-width:0;font-size:11px;font-weight:700;color:#0f3460;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdf-info .fx{background:#ffe8e8;color:#c0392b;border:none;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+.pdf-prog{height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin:8px 0 5px;display:none}
 .pdf-prog.on{display:block}
 .pdf-prog-f{height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);transition:.3s}
-.pdf-prog-t{font-size:11px;color:#666;text-align:center;font-weight:600;margin-bottom:10px;display:none}
+.pdf-prog-t{font-size:10px;color:#666;text-align:center;font-weight:600;margin-bottom:8px;display:none}
 .pdf-prog-t.on{display:block}
 
-/* Buttons */
-.btn-check{width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:16px;border-radius:12px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;margin-top:14px;box-shadow:0 6px 20px rgba(233,69,96,.3);letter-spacing:.5px}
+/* ============ BOTTOM ACTION ============ */
+.bottom{background:#fff;padding:10px 12px;border-top:1px solid #e8eef5;flex-shrink:0;box-shadow:0 -2px 12px rgba(0,0,0,.04)}
+.btn-check{width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,.3);letter-spacing:.5px}
 .btn-check:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 .btn-check:active{transform:scale(.98)}
 
-/* ============ RESULT ============ */
-.r-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.r-back{width:40px;height:40px;background:#fff;border-radius:11px;border:none;display:flex;align-items:center;justify-content:center;font-size:18px;color:#0f3460;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.05);font-weight:900}
-.r-retry{background:#fff;border:none;padding:10px 16px;border-radius:11px;font-family:inherit;font-size:12px;font-weight:800;color:#0f3460;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.score-card{background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:18px;padding:26px 20px;color:#fff;text-align:center;margin-bottom:14px;position:relative;overflow:hidden}
+/* ============ RESULT OVERLAY ============ */
+.res-overlay{position:fixed;inset:0;background:rgba(15,52,96,.6);z-index:3000;display:none;opacity:0;transition:.25s}
+.res-overlay.on{display:block;opacity:1}
+.res-panel{position:fixed;inset:0;background:#f0f4f8;z-index:3001;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform .3s ease}
+.res-panel.on{display:block;transform:translateY(0)}
+
+.res-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.res-hdr .t{color:#fff;font-size:14px;font-weight:800}
+.res-hdr .x{background:rgba(255,255,255,.15);border:none;color:#fff;width:34px;height:34px;border-radius:10px;font-size:16px;cursor:pointer;font-weight:700}
+.res-body{padding:14px;max-width:640px;margin:0 auto;padding-bottom:30px}
+
+.score-card{background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:16px;padding:22px 18px;color:#fff;text-align:center;margin-bottom:12px;position:relative;overflow:hidden}
 .score-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(253,186,59,.15),transparent 60%)}
-.score-lbl{font-size:11px;color:#FDBA3B;font-weight:800;letter-spacing:3px;margin-bottom:10px;position:relative}
-.score-v{font-size:70px;font-weight:900;line-height:1;color:#FDBA3B;position:relative}
-.score-mx{font-size:22px;color:rgba(255,255,255,.5);font-weight:700;position:relative}
-.score-pct{font-size:13px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:700;position:relative}
-.verdict{font-size:15px;font-weight:800;margin-top:12px;padding:8px 22px;border-radius:30px;display:inline-block;position:relative}
+.score-lbl{font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2.5px;margin-bottom:8px;position:relative}
+.score-v{font-size:60px;font-weight:900;line-height:1;color:#FDBA3B;position:relative}
+.score-mx{font-size:20px;color:rgba(255,255,255,.5);font-weight:700;position:relative}
+.score-pct{font-size:12px;color:rgba(255,255,255,.85);margin-top:5px;font-weight:700;position:relative}
+.verdict{font-size:14px;font-weight:800;margin-top:10px;padding:7px 18px;border-radius:30px;display:inline-block;position:relative}
 .verdict.ex{background:rgba(39,174,96,.3);color:#6ee7a3}
 .verdict.go{background:rgba(52,152,219,.3);color:#7dd3fc}
 .verdict.av{background:rgba(243,156,18,.3);color:#fcd34d}
 .verdict.po{background:rgba(233,69,96,.3);color:#fca5a5}
 
-.bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.bd-i{background:#fff;border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.bd-l{font-size:10px;color:#666;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
-.bd-v{font-size:20px;font-weight:900;color:#0f3460;line-height:1}
-.bd-v small{font-size:12px;color:#999}
-.bd-bar{height:4px;background:#e0e6ed;border-radius:2px;margin-top:6px;overflow:hidden}
+.bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.bd-i{background:#fff;border-radius:10px;padding:10px}
+.bd-l{font-size:9px;color:#666;font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.bd-v{font-size:18px;font-weight:900;color:#0f3460;line-height:1}
+.bd-v small{font-size:11px;color:#999}
+.bd-bar{height:3px;background:#e0e6ed;border-radius:2px;margin-top:5px;overflow:hidden}
 .bd-bar-f{height:100%;border-radius:2px;transition:width .8s}
 .fg{background:linear-gradient(90deg,#27ae60,#2ecc71)}
 .fb{background:linear-gradient(90deg,#2980b9,#3498db)}
 .fo{background:linear-gradient(90deg,#f39c12,#f1c40f)}
 .fr{background:linear-gradient(90deg,#e94560,#c0392b)}
 
-.fb-card{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
-.fb-t{font-size:13px;font-weight:800;margin-bottom:10px}
+.fb-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px}
+.fb-t{font-size:12px;font-weight:800;margin-bottom:8px}
 .fb-t.go{color:#27ae60}
 .fb-t.ba{color:#e94560}
 .fb-t.wa{color:#f39c12}
 .fb-list{list-style:none}
-.fb-list li{font-size:13px;line-height:1.6;padding:7px 0 7px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa}
+.fb-list li{font-size:12px;line-height:1.5;padding:6px 0 6px 20px;position:relative;color:#333;border-bottom:1px solid #f5f7fa}
 .fb-list li:last-child{border-bottom:none}
-.fb-list li::before{position:absolute;left:0;top:7px;font-weight:900;font-size:13px}
+.fb-list li::before{position:absolute;left:0;top:6px;font-weight:900;font-size:12px}
 .fb-list li.go::before{content:'✓';color:#27ae60}
 .fb-list li.ba::before{content:'✗';color:#e94560}
 .fb-list li.wa::before{content:'!';color:#f39c12}
 
-.kw-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.chip{padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.kw-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{padding:3px 9px;border-radius:9px;font-size:10px;font-weight:700}
 .chip.fd{background:#e8f8f0;color:#27ae60}
 .chip.ms{background:#ffe8e8;color:#c0392b}
+
+.res-actions{display:flex;gap:8px;margin-bottom:16px}
+.btn-r{flex:1;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.btn-s{background:#f0f4f8;color:#0f3460;border:none;padding:14px 20px;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}
 
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
-.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;background:#fff;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
+.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;height:100dvh;background:#fff;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
 .dr.on{right:0}
-.dr-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:18px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.dr-hdr .t .s{font-size:9px;color:#FDBA3B;letter-spacing:2px;font-weight:700}
-.dr-hdr .t .b{font-size:15px;font-weight:800;margin-top:2px}
-.dr-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer;font-weight:700}
-.dr-sec{padding:14px 16px 6px;font-size:10px;color:#999;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
-.dr-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;transition:.15s}
+.dr-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.dr-hdr .t .s{font-size:8px;color:#FDBA3B;letter-spacing:2px;font-weight:700}
+.dr-hdr .t .b{font-size:14px;font-weight:800;margin-top:2px}
+.dr-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:9px;font-size:16px;cursor:pointer;font-weight:700}
+.dr-sec{padding:12px 16px 4px;font-size:9px;color:#999;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.dr-item{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;transition:.15s}
 .dr-item:active{background:#f0f4f8}
-.dr-item.on{background:linear-gradient(90deg,#fff8e1,#fff3cd);border-left:4px solid #FDBA3B}
-.dr-item .ic{width:40px;height:40px;background:#f0f4f8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dr-item.on{background:linear-gradient(90deg,#fff8e1,#fff3cd);border-left:3px solid #FDBA3B}
+.dr-item .ic{width:36px;height:36px;background:#f0f4f8;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .dr-item.on .ic{background:linear-gradient(135deg,#FDBA3B,#FB5D3B)}
 .dr-item .if{flex:1;min-width:0}
-.dr-item .nm{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:2px}
+.dr-item .nm{font-size:12.5px;font-weight:700;color:#1a1a2e}
 .dr-item.on .nm{color:#0f3460;font-weight:800}
-.dr-item .sb{font-size:10px;color:#999;font-weight:600}
-.dr-item .ct{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:10px;flex-shrink:0}
+.dr-item .sb{font-size:9px;color:#999;font-weight:600;margin-top:1px}
+.dr-item .ct{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:9px;flex-shrink:0}
 
-/* ============ BOTTOM NAV ============ */
-.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e6ed;display:flex;justify-content:space-around;padding:8px 0 10px;z-index:100;box-shadow:0 -2px 15px rgba(0,0,0,.05)}
-.bn{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;padding:6px 16px;cursor:pointer;font-family:inherit;color:#999;font-size:10px;font-weight:700}
-.bn .nic{font-size:20px;line-height:1}
-.bn.on{color:#e94560}
-
-/* Loading */
-.load{position:fixed;inset:0;background:rgba(15,52,96,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;z-index:9999;color:#fff}
+/* ============ LOADING ============ */
+.load{position:fixed;inset:0;background:rgba(15,52,96,.9);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;z-index:9999;color:#fff}
 .load.on{display:flex}
-.spin{width:55px;height:55px;border:4px solid rgba(253,186,59,.2);border-top-color:#FDBA3B;border-radius:50%;animation:sp 1s linear infinite}
+.spin{width:50px;height:50px;border:4px solid rgba(253,186,59,.2);border-top-color:#FDBA3B;border-radius:50%;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
-.load-t{font-size:15px;font-weight:700;color:#FDBA3B}
+.load-t{font-size:14px;font-weight:700;color:#FDBA3B}
 
-/* Empty */
-.empty{text-align:center;padding:60px 20px;color:#999}
-.empty .ei{font-size:60px;margin-bottom:16px;opacity:.5}
-.empty .et{font-size:16px;font-weight:700;margin-bottom:6px;color:#666}
-.empty .es{font-size:13px}
-
-/* History item */
-.hist-item{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.hist-item .ht{display:flex;justify-content:space-between;margin-bottom:6px;font-size:11px;color:#999;font-weight:700}
-.hist-item .hq{font-size:12px;color:#333;line-height:1.5;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.hist-item .hm{font-size:10px;color:#666;font-weight:600}
+.empty{text-align:center;padding:50px 20px;color:#999}
+.empty .ei{font-size:50px;margin-bottom:14px;opacity:.5}
+.empty .et{font-size:14px;font-weight:700;margin-bottom:5px;color:#666}
 
 .hidden{display:none!important}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="hdr">
-  <div class="hdr-row">
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="hdr">
     <div class="hdr-brand">
       <div class="hdr-logo">R</div>
       <div class="hdr-title">
@@ -207,80 +218,101 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <button class="hdr-btn" onclick="openDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-  </div>
-</header>
+  </header>
 
-<!-- ============ SCREEN 1: HOME ============ -->
-<div class="screen on" id="scr-home">
+  <!-- EXAM BAR -->
   <div class="exam-bar" onclick="openDrawer()">
-    <div class="eb-icon" id="ebIcon">🎯</div>
-    <div class="eb-txt">
-      <div class="eb-lbl">CURRENT EXAM</div>
-      <div class="eb-nm" id="ebName">UPSC Mains</div>
+    <div class="eb-i" id="ebI">🎯</div>
+    <div class="eb-t">
+      <div class="eb-l">CURRENT EXAM</div>
+      <div class="eb-n" id="ebN">UPSC Mains</div>
     </div>
-    <div class="eb-ch">बदलें ▾</div>
+    <div class="eb-c">बदलें ▾</div>
   </div>
-  <div id="qList"></div>
+
+  <!-- MIDDLE CONTENT -->
+  <div class="mid">
+
+    <!-- Question picker -->
+    <div class="qpick">
+      <button class="qpick-btn" id="qpBtn" onclick="toggleQList()">
+        <div class="qp-i">?</div>
+        <div class="qp-t">
+          <div class="qp-l">SELECT QUESTION</div>
+          <div class="qp-n" id="qpName">प्रश्न चुनें</div>
+        </div>
+        <div class="qp-a" id="qpArrow">▼</div>
+      </button>
+      <div class="qlist" id="qlist"></div>
+    </div>
+
+    <!-- Question card -->
+    <div class="qcard hidden" id="qcard">
+      <div class="qh">
+        <div class="s">प्रश्न</div>
+        <div class="sub" id="qSub">History</div>
+      </div>
+      <div class="qt" id="qText"></div>
+      <div class="qm">
+        <span id="qWords">150 शब्द</span>
+        <span id="qMarks">10 अंक</span>
+      </div>
+    </div>
+
+    <!-- Mode toggle -->
+    <div class="mode-tog">
+      <button class="mode-b on" data-mode="type" onclick="setMode('type')">✍️ Type करें</button>
+      <button class="mode-b" data-mode="pdf" onclick="setMode('pdf')">📄 PDF Upload</button>
+    </div>
+
+    <!-- Type zone -->
+    <div class="ans-box" id="typeZone">
+      <textarea id="ansInput" placeholder="यहाँ अपना उत्तर लिखें..."></textarea>
+      <div class="wcnt">
+        <span>Words: <span class="c" id="wCnt">0</span></span>
+        <span id="wStatus">पहले प्रश्न चुनें</span>
+      </div>
+    </div>
+
+    <!-- PDF zone -->
+    <div class="pdf-z" id="pdfZone">
+      <div class="pdf-drop" id="pdfDrop">
+        <div class="ic">📄</div>
+        <div class="tt">PDF drop करें या tap करें</div>
+        <div class="st">Scanned / Handwritten / Typed</div>
+        <div class="ht">Max 30 pages • 20 MB</div>
+        <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
+      </div>
+      <div class="pdf-info" id="pdfInfo">
+        <div class="fi">📄</div>
+        <div class="fn" id="pdfFn">-</div>
+        <button class="fx" onclick="removePdf()">✕</button>
+      </div>
+      <div class="pdf-prog" id="pdfProg"><div class="pdf-prog-f" id="pdfProgF"></div></div>
+      <div class="pdf-prog-t" id="pdfProgT">तैयार...</div>
+      <div class="wcnt" style="margin-top:6px">
+        <span>Words: <span class="c" id="wCntPdf">0</span></span>
+        <span id="wStatusPdf">PDF upload करें</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM ACTION -->
+  <div class="bottom">
+    <button class="btn-check" id="btnCheck" disabled onclick="checkAnswer()">⚡ Answer Check करें</button>
+  </div>
+
 </div>
 
-<!-- ============ SCREEN 2: WRITE ============ -->
-<div class="screen" id="scr-write">
-  <div class="w-header">
-    <button class="w-back" onclick="goHome()">←</button>
-    <div class="w-title">अपना उत्तर लिखें</div>
+<!-- RESULT OVERLAY -->
+<div class="res-overlay" id="resOverlay"></div>
+<div class="res-panel" id="resPanel">
+  <div class="res-hdr">
+    <div class="t">📊 आपका Result</div>
+    <button class="x" onclick="closeResult()">✕</button>
   </div>
-
-  <div class="w-qcard" id="wQCard"></div>
-
-  <div class="mode-tog">
-    <button class="mode-b on" data-mode="type" onclick="setMode('type')">✍️ Type करें</button>
-    <button class="mode-b" data-mode="pdf" onclick="setMode('pdf')">📄 PDF Upload</button>
-  </div>
-
-  <div id="typeZone">
-    <textarea id="ansInput" placeholder="यहाँ अपना उत्तर लिखें..."></textarea>
-    <div class="wcnt">
-      <span>Words: <span class="c" id="wCnt">0</span></span>
-      <span id="wStatus">लिखना शुरू करें</span>
-    </div>
-  </div>
-
-  <div class="pdf-zone" id="pdfZone">
-    <div class="pdf-drop" id="pdfDrop">
-      <div class="ic">📄</div>
-      <div class="tt">PDF यहाँ drop करें या tap करें</div>
-      <div class="st">Scanned / Handwritten / Typed PDF</div>
-      <div class="ht">Max 30 pages • 20 MB</div>
-      <input type="file" id="pdfInput" accept="application/pdf,image/*" style="display:none">
-    </div>
-    <div class="pdf-info" id="pdfInfo">
-      <div class="fi">📄</div>
-      <div class="fn" id="pdfFn">-</div>
-      <button class="fx" onclick="removePdf()">✕</button>
-    </div>
-    <div class="pdf-prog" id="pdfProg"><div class="pdf-prog-f" id="pdfProgF"></div></div>
-    <div class="pdf-prog-t" id="pdfProgT">तैयार...</div>
-  </div>
-
-  <button class="btn-check" id="btnCheck" disabled onclick="checkAnswer()">⚡ Answer Check करें</button>
-</div>
-
-<!-- ============ SCREEN 3: RESULT ============ -->
-<div class="screen" id="scr-result">
-  <div class="r-header">
-    <button class="r-back" onclick="goHome()">←</button>
-    <button class="r-retry" onclick="retry()">🔄 दोबारा</button>
-  </div>
-  <div id="resBody"></div>
-</div>
-
-<!-- ============ SCREEN 4: HISTORY ============ -->
-<div class="screen" id="scr-history">
-  <div class="w-header">
-    <button class="w-back" onclick="goHome()">←</button>
-    <div class="w-title">📊 आपकी Progress</div>
-  </div>
-  <div id="histBody"></div>
+  <div class="res-body" id="resBody"></div>
 </div>
 
 <!-- DRAWER -->
@@ -289,7 +321,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
   <div class="dr-hdr">
     <div class="t">
       <div class="s">EXAM SELECT</div>
-      <div class="b">अपनी परीक्षा चुनें</div>
+      <div class="b">परीक्षा चुनें</div>
     </div>
     <button class="dr-x" onclick="closeDrawer()">✕</button>
   </div>
@@ -366,16 +398,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
   </button>
 </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bnav" id="bnav">
-  <button class="bn on" data-view="home" onclick="navTo('home')">
-    <span class="nic">🏠</span><span>Home</span>
-  </button>
-  <button class="bn" data-view="history" onclick="navTo('history')">
-    <span class="nic">📊</span><span>History</span>
-  </button>
-</nav>
-
 <!-- LOADING -->
 <div class="load" id="load">
   <div class="spin"></div>
@@ -388,8 +410,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   if(typeof pdfjsLib!=='undefined'){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
 
-  // ==================== STATE ====================
-  var state={exam:'upsc',icon:'🎯',name:'UPSC Mains',question:null,mode:'type',extracted:'',history:JSON.parse(localStorage.getItem('acHistory3')||'[]')};
+  var state={exam:'upsc',icon:'🎯',name:'UPSC Mains',question:null,mode:'type',extracted:''};
 
   var QUESTIONS={};
   function loadQs(){
@@ -411,112 +432,95 @@ textarea:focus{border-color:#0f3460;background:#fff}
     };
   }
 
-  // ==================== NAVIGATION ====================
-  window.navTo=function(v){
-    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
-    document.querySelectorAll('.bn').forEach(function(b){b.classList.remove('on')});
-    if(v==='home'){document.getElementById('scr-home').classList.add('on');document.getElementById('bnav').style.display='flex'}
-    else if(v==='history'){document.getElementById('scr-history').classList.add('on');document.getElementById('bnav').style.display='flex';renderHistory()}
-    document.querySelectorAll('.bn').forEach(function(b){if(b.dataset.view===v)b.classList.add('on')});
-    window.scrollTo({top:0,behavior:'smooth'});
-  };
-
-  window.goHome=function(){
-    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
-    document.getElementById('scr-home').classList.add('on');
-    document.getElementById('bnav').style.display='flex';
-    document.querySelectorAll('.bn').forEach(function(b){b.classList.toggle('on',b.dataset.view==='home')});
-    window.scrollTo({top:0,behavior:'smooth'});
-  };
-
-  function goWrite(){
-    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
-    document.getElementById('scr-write').classList.add('on');
-    document.getElementById('bnav').style.display='none';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-
-  function goResult(){
-    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
-    document.getElementById('scr-result').classList.add('on');
-    document.getElementById('bnav').style.display='none';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-
   // ==================== DRAWER ====================
   window.openDrawer=function(){
     document.getElementById('dr').classList.add('on');
     document.getElementById('drOverlay').classList.add('on');
-    document.body.style.overflow='hidden';
   };
   window.closeDrawer=function(){
     document.getElementById('dr').classList.remove('on');
     document.getElementById('drOverlay').classList.remove('on');
-    document.body.style.overflow='';
   };
 
-  // Drawer item click
   document.querySelectorAll('.dr-item').forEach(function(it){
     it.addEventListener('click',function(){
       state.exam=this.dataset.exam;
       state.icon=this.dataset.icon;
       state.name=this.dataset.name;
       state.question=null;
-      state.extracted='';
 
-      document.getElementById('ebIcon').textContent=state.icon;
-      document.getElementById('ebName').textContent=state.name;
+      document.getElementById('ebI').textContent=state.icon;
+      document.getElementById('ebN').textContent=state.name;
 
       document.querySelectorAll('.dr-item').forEach(function(d){d.classList.remove('on')});
       this.classList.add('on');
       closeDrawer();
       renderQList();
+      resetQuestion();
     });
   });
 
-  // ==================== RENDER QUESTION LIST ====================
+  // ==================== QUESTION LIST ====================
   function renderQList(){
-    var list=document.getElementById('qList');
+    var list=document.getElementById('qlist');
     var qs=QUESTIONS[state.exam]||[];
     if(qs.length===0){
-      list.innerHTML='<div class="empty"><div class="ei">📭</div><div class="et">कोई प्रश्न नहीं</div><div class="es">दूसरी category चुनें</div></div>';
+      list.innerHTML='<div class="empty"><div class="ei">📭</div><div class="et">कोई प्रश्न नहीं</div></div>';
       return;
     }
     var h='';
     qs.forEach(function(q,i){
-      h+='<div class="q-item" data-qid="'+q.id+'">'+
-        '<div class="q-item-top"><div class="q-num">प्रश्न '+(i+1)+'</div><div class="q-subj">'+(q.subject||'General')+'</div></div>'+
-        '<div class="q-txt">'+q.q+'</div>'+
-        '<div class="q-meta"><span>📝 '+q.words+' शब्द</span><span>🎯 '+q.marks+' अंक</span><span>⏱️ '+(q.words>200?'12':'8')+' मिनट</span></div>'+
+      h+='<div class="qli" data-qid="'+q.id+'">'+
+        '<div class="n">Q'+(i+1)+'</div>'+
+        '<div class="t">'+q.q+'</div>'+
       '</div>';
     });
     list.innerHTML=h;
 
-    list.querySelectorAll('.q-item').forEach(function(it){
+    list.querySelectorAll('.qli').forEach(function(it){
       it.addEventListener('click',function(){
         var qid=this.dataset.qid;
         state.question=qs.find(function(q){return q.id===qid});
         state.extracted='';
-        openWriteScreen();
+
+        document.querySelectorAll('.qli').forEach(function(x){x.classList.remove('on')});
+        this.classList.add('on');
+
+        updateQuestionCard();
+        document.getElementById('qlist').classList.remove('open');
+        document.getElementById('qpBtn').classList.remove('open');
+        document.getElementById('qpName').textContent='प्रश्न '+(qs.indexOf(state.question)+1)+' • '+(state.question.subject||'General');
+        updateCount();
       });
     });
   }
 
-  // ==================== WRITE SCREEN ====================
-  function openWriteScreen(){
-    var q=state.question;
-    if(!q)return;
+  window.toggleQList=function(){
+    var l=document.getElementById('qlist');
+    var b=document.getElementById('qpBtn');
+    var o=l.classList.toggle('open');
+    b.classList.toggle('open',o);
+  };
 
-    document.getElementById('wQCard').innerHTML=
-      '<div class="ql">प्रश्न</div>'+
-      '<div class="qt">'+q.q+'</div>'+
-      '<div class="qm"><span>📝 '+q.words+' शब्द</span><span>🎯 '+q.marks+' अंक</span><span>📚 '+(q.subject||'General')+'</span></div>';
-
+  function resetQuestion(){
+    state.question=null;
+    document.getElementById('qcard').classList.add('hidden');
+    document.getElementById('qpName').textContent='प्रश्न चुनें';
+    document.getElementById('qlist').classList.remove('open');
+    document.getElementById('qpBtn').classList.remove('open');
     document.getElementById('ansInput').value='';
     resetPdf();
-    setMode('type');
-    updateWordCount();
-    goWrite();
+    updateCount();
+  }
+
+  function updateQuestionCard(){
+    var q=state.question;
+    if(!q)return;
+    document.getElementById('qcard').classList.remove('hidden');
+    document.getElementById('qText').textContent=q.q;
+    document.getElementById('qSub').textContent=q.subject||'General';
+    document.getElementById('qWords').textContent='📝 '+q.words+' शब्द';
+    document.getElementById('qMarks').textContent='🎯 '+q.marks+' अंक';
   }
 
   // ==================== MODE ====================
@@ -525,31 +529,34 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.querySelectorAll('.mode-b').forEach(function(b){b.classList.toggle('on',b.dataset.mode===m)});
     document.getElementById('typeZone').classList.toggle('hidden',m!=='type');
     document.getElementById('pdfZone').classList.toggle('on',m==='pdf');
-    updateWordCount();
+    updateCount();
   };
 
-  // ==================== WORD COUNT ====================
-  function updateWordCount(){
+  // ==================== COUNT ====================
+  function updateCount(){
     var t=state.mode==='pdf'?state.extracted:(document.getElementById('ansInput').value||'');
     t=t.trim();
     var w=t?t.split(/\s+/).filter(function(x){return x.length>0}).length:0;
-    document.getElementById('wCnt').textContent=w;
 
-    var st=document.getElementById('wStatus');
+    var cntId=state.mode==='pdf'?'wCntPdf':'wCnt';
+    var stId=state.mode==='pdf'?'wStatusPdf':'wStatus';
+    document.getElementById(cntId).textContent=w;
+
+    var st=document.getElementById(stId);
     var btn=document.getElementById('btnCheck');
     st.style.color='#e94560';
 
-    if(!state.question){st.textContent='';btn.disabled=true;return}
+    if(!state.question){st.textContent='पहले प्रश्न चुनें';btn.disabled=true;return}
     var tgt=state.question.words;
 
     if(w===0){st.textContent=state.mode==='pdf'?'PDF upload करें':'लिखना शुरू करें';btn.disabled=true}
     else if(w<30){st.textContent='बहुत कम ('+w+')';btn.disabled=true}
     else if(w<tgt*0.4){st.textContent='कम है ('+w+'/'+tgt+')';st.style.color='#f39c12';btn.disabled=false}
     else if(w>tgt*1.5){st.textContent='ज़्यादा ('+w+'/'+tgt+')';st.style.color='#f39c12';btn.disabled=false}
-    else{st.textContent='✓ '+w+'/'+tgt+' words';st.style.color='#27ae60';btn.disabled=false}
+    else{st.textContent='✓ '+w+'/'+tgt;st.style.color='#27ae60';btn.disabled=false}
   }
 
-  document.getElementById('ansInput').addEventListener('input',updateWordCount);
+  document.getElementById('ansInput').addEventListener('input',updateCount);
 
   // ==================== PDF ====================
   function resetPdf(){
@@ -561,12 +568,9 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.getElementById('pdfInput').value='';
   }
 
-  window.removePdf=function(){
-    resetPdf();
-    updateWordCount();
-  };
+  window.removePdf=function(){resetPdf();updateCount()};
 
-  function setPdfProg(p,t){
+  function setProg(p,t){
     document.getElementById('pdfProgF').style.width=p+'%';
     document.getElementById('pdfProgT').textContent=t||Math.round(p)+'%';
   }
@@ -586,11 +590,11 @@ textarea:focus{border-color:#0f3460;background:#fff}
     document.getElementById('pdfFn').textContent=f.name+' ('+(f.size/1024).toFixed(0)+' KB)';
     document.getElementById('pdfProg').classList.add('on');
     document.getElementById('pdfProgT').classList.add('on');
-    setPdfProg(5,'Loading...');
+    setProg(5,'Loading...');
 
     if(f.type==='application/pdf'||f.name.toLowerCase().endsWith('.pdf'))await procPdf(f);
     else if(f.type.startsWith('image/'))await procImg(f);
-    else alert('सिर्फ PDF/image supported है');
+    else alert('सिर्फ PDF/image supported');
   }
 
   async function procPdf(f){
@@ -598,10 +602,10 @@ textarea:focus{border-color:#0f3460;background:#fff}
       var buf=await f.arrayBuffer();
       var pdf=await pdfjsLib.getDocument({data:buf}).promise;
       var total=Math.min(pdf.numPages,30);
-      setPdfProg(10,total+' pages');
+      setProg(10,total+' pages');
       var all='';
       for(var i=1;i<=total;i++){
-        setPdfProg(10+(i/total)*85,'Page '+i+'/'+total);
+        setProg(10+(i/total)*85,'Page '+i+'/'+total);
         var pg=await pdf.getPage(i);
         var tc=await pg.getTextContent();
         var txt=tc.items.map(function(x){return x.str}).join(' ');
@@ -609,9 +613,9 @@ textarea:focus{border-color:#0f3460;background:#fff}
         if(txt.trim().length>10)all+=txt+'\n\n';
       }
       state.extracted=all.trim();
-      setPdfProg(100,'✓ Done');
-      updateWordCount();
-    }catch(e){setPdfProg(0,'❌ '+e.message)}
+      setProg(100,'✓ Done');
+      updateCount();
+    }catch(e){setProg(0,'❌ '+e.message)}
   }
 
   async function ocrPage(pg){
@@ -626,7 +630,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   async function procImg(f){
     try{
-      setPdfProg(30,'OCR चल रहा है...');
+      setProg(30,'OCR चल रहा है...');
       var url=await new Promise(function(res,rej){
         var r=new FileReader();
         r.onload=function(e){res(e.target.result)};
@@ -634,17 +638,17 @@ textarea:focus{border-color:#0f3460;background:#fff}
         r.readAsDataURL(f);
       });
       var r=await Tesseract.recognize(url,'hin+eng',{
-        logger:function(m){if(m.status==='recognizing text')setPdfProg(30+m.progress*65,'OCR: '+Math.round(m.progress*100)+'%')}
+        logger:function(m){if(m.status==='recognizing text')setProg(30+m.progress*65,'OCR: '+Math.round(m.progress*100)+'%')}
       });
       state.extracted=r.data.text.trim();
-      setPdfProg(100,'✓ Done');
-      updateWordCount();
-    }catch(e){setPdfProg(0,'❌ '+e.message)}
+      setProg(100,'✓ Done');
+      updateCount();
+    }catch(e){setProg(0,'❌ '+e.message)}
   }
 
-  // ==================== CHECK ANSWER ====================
+  // ==================== CHECK ====================
   window.checkAnswer=function(){
-    if(!state.question)return;
+    if(!state.question){alert('पहले प्रश्न चुनें');return}
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
 
@@ -656,8 +660,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
         var r=analyze(t,state.question);
         document.getElementById('load').classList.remove('on');
         showResult(r);
-        saveHist(r);
-        goResult();
       }catch(e){
         document.getElementById('load').classList.remove('on');
         alert('Error: '+e.message);
@@ -665,12 +667,10 @@ textarea:focus{border-color:#0f3460;background:#fff}
     },600);
   };
 
-  // ==================== ANALYSIS ====================
   function analyze(text,q){
     var lower=text.toLowerCase();
     var words=text.split(/\s+/).filter(function(w){return w.length>0});
 
-    // 1. Keywords (30)
     var found=[],missing=[];
     var syn=window.AC_SYNONYMS||{};
     q.keywords.forEach(function(kw){
@@ -681,14 +681,12 @@ textarea:focus{border-color:#0f3460;background:#fff}
     });
     var kwS=Math.round((found.length/q.keywords.length)*30);
 
-    // 2. Structure (20)
     var hasI=/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ/i.test(text);
     var hasC=/निष्कर्ष|conclusion|अंत में|समापन|सुझाव/i.test(text);
     var hasP=/[1-9][\.\)]\s|•|\-\s/m.test(text);
     var hasE=/उदाहरण|example|जैसे|for instance/i.test(text);
     var strS=(hasI?5:0)+(hasC?5:0)+(hasP?5:0)+(hasE?5:0);
 
-    // 3. Length (15)
     var ratio=words.length/q.words;
     var lenS=3;
     if(ratio>=0.9&&ratio<=1.15)lenS=15;
@@ -697,7 +695,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
     else if(ratio>=0.5&&ratio<0.75)lenS=7;
     else if(ratio>1.35)lenS=5;
 
-    // 4. Quality (15)
     var sens=text.split(/[।\.!\?]+/).filter(function(s){return s.trim().length>5});
     var avg=sens.length>0?words.length/sens.length:0;
     var qS=4;
@@ -706,7 +703,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var v=uniq.size/Math.max(words.length,1);
     if(v>0.6)qS+=5;else if(v>0.5)qS+=3;else qS+=1;
 
-    // 5. Data (20)
     var hasN=/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख/i.test(text);
     var hasSc=/योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy/i.test(text);
     var hasQt=/[""'']|कहा|अनुसार|according/i.test(text);
@@ -725,7 +721,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
     };
   }
 
-  // ==================== SHOW RESULT ====================
   function showResult(r){
     var v,vc;
     if(r.pct>=80){v='🏆 Excellent!';vc='ex'}
@@ -734,116 +729,67 @@ textarea:focus{border-color:#0f3460;background:#fff}
     else{v='💪 सुधार ज़रूरी';vc='po'}
 
     var good=[],bad=[],warn=[];
-    if(r.hasI)good.push('प्रस्तावना लिखी गई');else bad.push('प्रस्तावना नहीं लिखी — ज़रूर जोड़ें');
-    if(r.hasC)good.push('निष्कर्ष लिखा गया');else bad.push('निष्कर्ष नहीं लिखा');
-    if(r.hasP)good.push('Points/Bullets का प्रयोग');else bad.push('Points या Bullets में लिखें');
-    if(r.hasE)good.push('उदाहरण दिए गए');else warn.push('2-3 real examples जोड़ें');
-    if(r.hasN)good.push('आंकड़े/तथ्य का प्रयोग');else warn.push('Statistics, %, dates जोड़ें');
-    if(r.hasSc)good.push('सरकारी योजना का ज़िक्र');else warn.push('सरकारी योजनाओं का ज़िक्र करें');
+    if(r.hasI)good.push('प्रस्तावना लिखी');else bad.push('प्रस्तावना नहीं लिखी');
+    if(r.hasC)good.push('निष्कर्ष लिखा');else bad.push('निष्कर्ष नहीं लिखा');
+    if(r.hasP)good.push('Points/Bullets');else bad.push('Points या Bullets में लिखें');
+    if(r.hasE)good.push('उदाहरण दिए');else warn.push('2-3 examples जोड़ें');
+    if(r.hasN)good.push('आंकड़े/तथ्य');else warn.push('Statistics जोड़ें');
+    if(r.hasSc)good.push('सरकारी योजनाएँ');else warn.push('सरकारी योजनाओं का ज़िक्र करें');
 
     var wr=r.words/r.tgt;
     if(wr>=0.9&&wr<=1.15)good.push('Word limit सही');
-    else if(wr<0.9)warn.push('शब्द कम हैं ('+r.words+'/'+r.tgt+')');
-    else warn.push('शब्द ज़्यादा हैं ('+r.words+'/'+r.tgt+')');
+    else if(wr<0.9)warn.push('शब्द कम ('+r.words+'/'+r.tgt+')');
+    else warn.push('शब्द ज़्यादा ('+r.words+'/'+r.tgt+')');
 
     if(r.missing.length>0)warn.push(r.missing.length+' keywords छूटे');
 
     var h='';
-    h+='<div class="score-card">'+
-      '<div class="score-lbl">आपका SCORE</div>'+
-      '<div><span class="score-v">'+r.score+'</span><span class="score-mx"> / '+r.maxScore+'</span></div>'+
-      '<div class="score-pct">'+r.pct+'%</div>'+
-      '<div class="verdict '+vc+'">'+v+'</div>'+
-    '</div>';
+    h+='<div class="score-card"><div class="score-lbl">आपका SCORE</div><div><span class="score-v">'+r.score+'</span><span class="score-mx"> / '+r.maxScore+'</span></div><div class="score-pct">'+r.pct+'%</div><div class="verdict '+vc+'">'+v+'</div></div>';
 
-    h+='<div class="bd-grid">';
-    h+=bd('Keywords',r.kw,30,'fg');
-    h+=bd('Structure',r.str,20,'fb');
-    h+=bd('Length',r.len,15,'fo');
-    h+=bd('Quality',r.ql,15,'fb');
-    h+=bd('Data/Facts',r.dt,20,'fg');
-    h+=bd('Total',r.score,r.maxScore,'fr');
-    h+='</div>';
+    h+='<div class="bd-grid">'+bd('Keywords',r.kw,30,'fg')+bd('Structure',r.str,20,'fb')+bd('Length',r.len,15,'fo')+bd('Quality',r.ql,15,'fb')+bd('Data/Facts',r.dt,20,'fg')+bd('Total',r.score,r.maxScore,'fr')+'</div>';
 
-    h+='<div class="fb-card"><div style="text-align:center;font-size:15px;font-weight:800;color:#0f3460">📝 Word Count</div><div style="text-align:center;font-size:24px;font-weight:900;color:#0f3460;margin-top:6px">'+r.words+' <span style="color:#999;font-size:14px">/ '+r.tgt+'</span></div></div>';
+    h+='<div class="fb-card"><div style="text-align:center;font-size:13px;font-weight:800;color:#0f3460">📝 Word Count</div><div style="text-align:center;font-size:22px;font-weight:900;color:#0f3460;margin-top:4px">'+r.words+' <span style="color:#999;font-size:13px">/ '+r.tgt+'</span></div></div>';
 
-    if(good.length){
-      h+='<div class="fb-card"><div class="fb-t go">✅ अच्छी बातें ('+good.length+')</div><ul class="fb-list">';
-      good.forEach(function(g){h+='<li class="go">'+g+'</li>'});
-      h+='</ul></div>';
-    }
-    if(bad.length){
-      h+='<div class="fb-card"><div class="fb-t ba">❌ सुधार ज़रूरी ('+bad.length+')</div><ul class="fb-list">';
-      bad.forEach(function(g){h+='<li class="ba">'+g+'</li>'});
-      h+='</ul></div>';
-    }
-    if(warn.length){
-      h+='<div class="fb-card"><div class="fb-t wa">⚠️ Suggestions ('+warn.length+')</div><ul class="fb-list">';
-      warn.forEach(function(g){h+='<li class="wa">'+g+'</li>'});
-      h+='</ul></div>';
-    }
+    if(good.length){h+='<div class="fb-card"><div class="fb-t go">✅ अच्छी बातें ('+good.length+')</div><ul class="fb-list">';good.forEach(function(g){h+='<li class="go">'+g+'</li>'});h+='</ul></div>'}
+    if(bad.length){h+='<div class="fb-card"><div class="fb-t ba">❌ सुधार ज़रूरी ('+bad.length+')</div><ul class="fb-list">';bad.forEach(function(g){h+='<li class="ba">'+g+'</li>'});h+='</ul></div>'}
+    if(warn.length){h+='<div class="fb-card"><div class="fb-t wa">⚠️ Suggestions ('+warn.length+')</div><ul class="fb-list">';warn.forEach(function(g){h+='<li class="wa">'+g+'</li>'});h+='</ul></div>'}
 
     h+='<div class="fb-card"><div class="fb-t" style="color:#0f3460">🔑 Keywords</div>';
-    h+='<div style="font-size:11px;color:#666;font-weight:700;margin:8px 0 4px">✅ FOUND ('+r.found.length+')</div>';
-    h+='<div class="kw-wrap">';
-    r.found.forEach(function(k){h+='<span class="chip fd">✓ '+k+'</span>'});
-    h+='</div>';
+    h+='<div style="font-size:10px;color:#666;font-weight:700;margin:6px 0 3px">✅ FOUND ('+r.found.length+')</div>';
+    h+='<div class="kw-wrap">'+r.found.map(function(k){return '<span class="chip fd">✓ '+k+'</span>'}).join('')+'</div>';
     if(r.missing.length){
-      h+='<div style="font-size:11px;color:#666;font-weight:700;margin:12px 0 4px">❌ MISSING ('+r.missing.length+')</div>';
-      h+='<div class="kw-wrap">';
-      r.missing.forEach(function(k){h+='<span class="chip ms">'+k+'</span>'});
-      h+='</div>';
+      h+='<div style="font-size:10px;color:#666;font-weight:700;margin:10px 0 3px">❌ MISSING ('+r.missing.length+')</div>';
+      h+='<div class="kw-wrap">'+r.missing.map(function(k){return '<span class="chip ms">'+k+'</span>'}).join('')+'</div>';
     }
     h+='</div>';
 
-    h+='<div style="display:flex;gap:10px;margin-bottom:20px">'+
-      '<button style="flex:1;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:15px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer" onclick="retry()">🔄 दोबारा लिखें</button>'+
-      '<button style="background:#f0f4f8;color:#0f3460;border:none;padding:15px 22px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer" onclick="goHome()">🏠</button>'+
-    '</div>';
+    h+='<div class="res-actions"><button class="btn-r" onclick="retryAnswer()">🔄 दोबारा</button><button class="btn-s" onclick="closeResult()">बंद करें</button></div>';
 
     document.getElementById('resBody').innerHTML=h;
+    document.getElementById('resPanel').classList.add('on');
+    document.getElementById('resOverlay').classList.add('on');
   }
 
   function bd(l,v,m,c){
     return '<div class="bd-i"><div class="bd-l">'+l+'</div><div class="bd-v">'+v+' <small>/ '+m+'</small></div><div class="bd-bar"><div class="bd-bar-f '+c+'" style="width:'+Math.round((v/m)*100)+'%"></div></div></div>';
   }
 
-  window.retry=function(){
-    if(state.question){openWriteScreen();goWrite()}
-    else goHome();
+  window.closeResult=function(){
+    document.getElementById('resPanel').classList.remove('on');
+    document.getElementById('resOverlay').classList.remove('on');
   };
 
-  // ==================== HISTORY ====================
-  function saveHist(r){
-    state.history.unshift({score:r.score,maxScore:r.maxScore,pct:r.pct,q:r.question.q,words:r.words,ts:r.ts});
-    if(state.history.length>30)state.history=state.history.slice(0,30);
-    try{localStorage.setItem('acHistory3',JSON.stringify(state.history))}catch(e){}
-  }
-
-  function renderHistory(){
-    var box=document.getElementById('histBody');
-    if(state.history.length===0){
-      box.innerHTML='<div class="empty"><div class="ei">📊</div><div class="et">अभी कोई attempt नहीं</div><div class="es">पहला answer check करें</div></div>';
-      return;
-    }
-    var tot=0,mx=0;
-    var h='';
-    state.history.forEach(function(x){
-      tot+=x.score;mx+=x.maxScore;
-      var d=new Date(x.ts);
-      var ds=d.getDate()+'/'+(d.getMonth()+1)+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
-      var col=x.pct>=60?'#27ae60':(x.pct>=40?'#f39c12':'#e94560');
-      h+='<div class="hist-item"><div class="ht"><span>'+ds+'</span><span style="color:'+col+';font-size:15px">'+x.score+'/'+x.maxScore+'</span></div><div class="hq">'+x.q.substring(0,90)+'</div><div class="hm">'+x.words+' words • '+x.pct+'%</div></div>';
-    });
-    var avg=mx>0?Math.round((tot/mx)*100):0;
-    var header='<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:18px;border-radius:16px;margin-bottom:14px;text-align:center"><div style="font-size:10px;color:#FDBA3B;font-weight:700;letter-spacing:2px;margin-bottom:6px">औसत प्रदर्शन</div><div style="font-size:36px;font-weight:900">'+avg+'%</div><div style="font-size:11px;opacity:.7;margin-top:4px">'+state.history.length+' attempts</div></div>';
-    box.innerHTML=header+h;
-  }
+  window.retryAnswer=function(){
+    closeResult();
+    document.getElementById('ansInput').value='';
+    resetPdf();
+    updateCount();
+  };
 
   // ==================== INIT ====================
   loadQs();
   renderQList();
-  updateWordCount();
+  updateCount();
 
 })();
 </script>
