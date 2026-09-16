@@ -293,7 +293,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
     <div class="eb-i" id="ebI">🔍</div>
     <div class="eb-t">
       <div class="eb-l">CURRENT MODE</div>
-      <div class="eb-n" id="ebN">Har Exam (Auto-Detect)</div>
+      <div class="eb-n" id="ebN">PDF Analysis Mode</div>
     </div>
     <div class="eb-c">बदलें ▾</div>
   </div>
@@ -416,9 +416,9 @@ textarea:focus{border-color:#0f3460;background:#fff}
   </div>
 
   <div class="dr-sec">🌟 All Exams (Auto-Detect)</div>
-  <button class="dr-item on" data-exam="all" data-icon="🔍" data-name="Har Exam (Auto-Detect)">
+  <button class="dr-item on" data-exam="all" data-icon="🔍" data-name="PDF Analysis Mode">
     <div class="ic">🔍</div>
-    <div class="if"><div class="nm">🎯 Har Exam</div><div class="sb">कोई भी PDF — खुद पहचानेगा</div></div>
+    <div class="if"><div class="nm">🎯 PDF Analysis</div><div class="sb">PDF upload → Analysis</div></div>
     <div class="ct">ALL</div>
   </button>
   <button class="dr-item" data-exam="other" data-icon="📄" data-name="Other Exam (PDF Analysis)">
@@ -557,7 +557,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 
   if(typeof pdfjsLib!=='undefined'){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}
 
-  var state={exam:'all',icon:'🔍',name:'Har Exam (Auto-Detect)',question:null,mode:'type',extracted:'',detected:null,currentText:'',detectedExam:null};
+  var state={exam:'all',icon:'🔍',name:'PDF Analysis Mode',question:null,mode:'type',extracted:'',detected:null,currentText:'',detectedExam:null};
 
   var QUESTIONS={};
   function loadQs(){
@@ -641,7 +641,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
       // Show info for specific modes
       // Header label
       var hdr=document.getElementById('ebN');
-      if(state.exam==='all'){hdr.textContent='Har Exam (Auto-Detect)'}
+      if(state.exam==='all'){hdr.textContent='PDF Analysis Mode'}
       else if(state.exam==='other'){hdr.textContent='Other Exam (PDF Analysis)'}
 
       if(state.exam==='all'){
@@ -666,7 +666,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
   function showAllExamInfo(){
     var ai=document.getElementById('ansInput');
     if(ai){
-      ai.placeholder='🔍 किसी भी exam का answer लिखें या PDF upload करें —\nसिस्टम खुद पहचान लेगा:\n• UPSC / UPPCS / BPSC\n• JEE / NEET\n• BA / MA\n• Agriculture (Agronomy, Soil, etc.)\n\nकोई limit नहीं • कोई selection नहीं';
+      ai.placeholder='📄 कोई भी PDF upload करें या answer लिखें\n\nContent Analysis मिलेगा:\n• Quality Score\n• Structure Check\n• Missing Elements\n• Improvement Tips\n\nकोई limit नहीं — कितने भी शब्द';
     }
   }
 
@@ -675,7 +675,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var list=document.getElementById('qlist');
     if(!list) return;
     if(state.exam==='all'){
-      list.innerHTML='<div style="padding:12px;font-size:11px;color:#666;text-align:center;line-height:1.6"><b style="color:#0f3460">🔍 Har Exam Mode</b><br>कोई भी PDF upload करें या answer लिखें<br>सिस्टम खुद पहचान लेगा</div>';
+      list.innerHTML='<div style="padding:12px;font-size:11px;color:#666;text-align:center;line-height:1.6"><b style="color:#0f3460">🔍 PDF Analysis Mode</b><br>कोई भी PDF upload करें या answer लिखें<br>सिस्टम खुद पहचान लेगा</div>';
       return;
     }
     var qs=QUESTIONS[state.exam]||[];
@@ -766,21 +766,6 @@ textarea:focus{border-color:#0f3460;background:#fff}
     else if(w<10){st.textContent='कम से कम 10 शब्द लिखें';st.style.color='#e94560';btn.disabled=true}
     else{st.textContent='✓ '+w+' शब्द (कोई limit नहीं)';st.style.color='#27ae60';btn.disabled=false}
 
-    // Auto detect from text (if typing)
-    if(state.mode==='type' && w>=15){
-      debounceDetect(t);
-    }
-  }
-
-  var detectTimer=null;
-  function debounceDetect(text){
-    if(detectTimer)clearTimeout(detectTimer);
-    detectTimer=setTimeout(function(){
-      var best=autoDetect(text);
-      if(best && best.score>0){
-        updateDetectPanel(best);
-      }
-    },800);
   }
 
   document.getElementById('ansInput').addEventListener('input',updateCount);
@@ -1196,7 +1181,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
       // अगर selected exam से match नहीं करता
       var panel=document.getElementById('detectInfo');
       panel.classList.add('warn');
-      document.getElementById('diConf').innerHTML='⚠️ ये content "'+getExamName(best.exam)+'" का है — आपने "'+state.name+'" चुना है।<br><b>कृपया सही exam चुनें या "🔍 Har Exam" mode use करें।</b>';
+      document.getElementById('diConf').innerHTML='⚠️ ये content "'+getExamName(best.exam)+'" का है — आपने "'+state.name+'" चुना है।<br><b>कृपया सही exam चुनें या "🔍 PDF Analysis" mode use करें।</b>';
       return;
     }
     document.getElementById('diQuestion').innerHTML='<b>प्रश्न:</b> '+best.q.q.substring(0,120)+(best.q.q.length>120?'...':'');
@@ -1571,58 +1556,125 @@ textarea:focus{border-color:#0f3460;background:#fff}
     var t=state.mode==='pdf'?state.extracted.trim():document.getElementById('ansInput').value.trim();
     if(t.length<30){alert('कम से कम 30 अक्षर चाहिए');return}
 
-    // ⚡ OTHER EXAM MODE — कोई database match नहीं, सिर्फ general analysis
-    if(state.exam==='other'){
-      state.currentText=t;
-      state.question={
-        q:'Other Exam Content (PDF Analysis)',
-        words:Math.max(t.split(/\s+/).length,150),
-        marks:10,
-        subject:'General',
-        keywords:[],
-        expectedPoints:[]
-      };
-      state.detected=null;
-      document.getElementById('load').classList.remove('on');
-      showOtherResult(t);
-      return;
-    }
-
-    // Auto-detect
-    var best=autoDetect(t);
-
-    if(!best || best.score<15){
-      var msg='❌ Content पहचान नहीं पाया।\n\n';
-      if(state.exam!=='all'){
-        msg+='आपने "'+state.name+'" चुना है।\n';
-        msg+='कृपया उसी exam से मेल खाता content लिखें।\n\n';
-        msg+='या "🔍 Har Exam" mode चुनें — खुद पहचान लेगा।\n';
-        msg+='या "📄 Other Exam" mode — general analysis के लिए।';
-      } else {
-        msg+='कृपया अधिक विस्तृत answer दें या अन्य PDF try करें।';
-      }
-      alert(msg);
-      return;
-    }
-
-    state.question=best.q;
-    state.detected=best;
-    state.currentText=t;
-    updateDetectPanel(best);
-
-    document.getElementById('loadT').textContent='Check हो रहा है...';
+    document.getElementById('loadT').textContent='Analysis हो रहा है...';
     document.getElementById('load').classList.add('on');
 
     setTimeout(function(){
       try{
-        var r=analyze(t,state.question);
+        // सीधे general analysis — कोई auto-detect नहीं
+        var rtu=smartRTU(t,null);
         document.getElementById('load').classList.remove('on');
-        showResult(r);
+        showDirectResult(t, rtu);
       }catch(e){
         document.getElementById('load').classList.remove('on');
         alert('Error: '+e.message);
       }
-    },600);
+    },500);
+  };
+
+  // ==================== DIRECT ANALYSIS ====================
+  function showDirectResult(text, rtu){
+    var words=text.split(/\s+/).filter(function(w){return w.length>0});
+    var wc=words.length;
+
+    // Quality parameters
+    var params={
+      hasIntro:/प्रस्तावना|introduction|भूमिका|परिचय|संदर्भ|context/i.test(text),
+      hasConcl:/निष्कर्ष|conclusion|अंत में|समापन|सुझाव|way forward/i.test(text),
+      hasPoints:/[1-9][\.\)]\s|•|\-\s/m.test(text),
+      hasExamples:/उदाहरण|example|जैसे|for instance|case study/i.test(text),
+      hasData:/\d+%|\d+\.\d+|\d{4}|₹\d+|करोड़|लाख|billion|million/i.test(text),
+      hasSchemes:/योजना|scheme|मिशन|mission|अधिनियम|act|नीति|policy|program/i.test(text),
+      hasQuotes:/[""'']|कहा|अनुसार|according/i.test(text),
+      hasHeadings:/^[A-Z\u0900-\u097F][^\n]{2,60}$/m.test(text)
+    };
+
+    var scoreMap={hasIntro:15,hasConcl:15,hasPoints:12,hasExamples:15,hasData:15,hasSchemes:10,hasQuotes:8,hasHeadings:10};
+    var totalScore=0;
+    for(var k in params){if(params[k])totalScore+=scoreMap[k];}
+    if(wc>=150 && wc<=500) totalScore=Math.min(totalScore+10,100);
+    else if(wc>500) totalScore=Math.min(totalScore+5,100);
+
+    var pct=totalScore;
+
+    var v,vc;
+    if(pct>=80){v='🏆 Excellent Content';vc='ex'}
+    else if(pct>=60){v='👍 Good Quality';vc='go'}
+    else if(pct>=40){v='📈 Average';vc='av'}
+    else{v='💪 सुधार ज़रूरी';vc='po'}
+
+    var good=[],bad=[],warn=[];
+    if(params.hasIntro)good.push('प्रस्तावना मौजूद');else bad.push('प्रस्तावना नहीं — Introduction जोड़ें');
+    if(params.hasConcl)good.push('निष्कर्ष मौजूद');else bad.push('निष्कर्ष नहीं — Conclusion जोड़ें');
+    if(params.hasPoints)good.push('Points/Bullets में लिखा');else bad.push('Points में लिखें — structure better होगा');
+    if(params.hasHeadings)good.push('Headings/Subheadings');else warn.push('Headings जोड़ें — readability बढ़ेगी');
+    if(params.hasExamples)good.push('उदाहरण मौजूद');else warn.push('2-3 examples जोड़ें');
+    if(params.hasData)good.push('आंकड़े/Data');else warn.push('Statistics, %, dates जोड़ें');
+    if(params.hasSchemes)good.push('Scheme/Policy references');else warn.push('Government schemes का ज़िक्र');
+    if(params.hasQuotes)good.push('Quotes/References');else warn.push('Expert quotes जोड़ें');
+
+    if(wc<100)warn.push('बहुत कम शब्द — कम से कम 150 शब्द लिखें');
+    else if(wc>=150 && wc<=500)good.push('आदर्श लंबाई ('+wc+' शब्द)');
+    else if(wc>500)good.push('विस्तृत content ('+wc+' शब्द)');
+
+    var h='';
+
+    // Header
+    h+='<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center">';
+    h+='<div style="font-size:11px;color:#FDBA3B;font-weight:800;letter-spacing:2px;margin-bottom:6px">📊 ANALYSIS</div>';
+    h+='<div style="font-size:14px;font-weight:800">PDF Content Quality Report</div>';
+    h+='</div>';
+
+    // Score
+    h+='<div class="score-card"><div class="score-lbl">CONTENT QUALITY</div><div><span class="score-v">'+pct+'</span><span class="score-mx"> / 100</span></div><div class="score-pct">'+wc+' शब्द • '+(rtu?rtu.sentences:0)+' वाक्य</div><div class="verdict '+vc+'">'+v+'</div></div>';
+
+    // RTU
+    if(rtu){h+=renderRTU(rtu);}
+
+    // 8-param grid
+    h+='<div class="fb-card"><div class="fb-t" style="color:#0f3460">📊 Quality Breakdown</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">';
+    var pList=[{k:'hasIntro',l:'Introduction',v:15},{k:'hasConcl',l:'Conclusion',v:15},{k:'hasPoints',l:'Points/Bullets',v:12},{k:'hasExamples',l:'Examples',v:15},{k:'hasData',l:'Data/Stats',v:15},{k:'hasSchemes',l:'Schemes',v:10},{k:'hasQuotes',l:'Quotes',v:8},{k:'hasHeadings',l:'Headings',v:10}];
+    pList.forEach(function(p){
+      var has=params[p.k];
+      var color=has?'#27ae60':'#e94560';
+      h+='<div style="background:#f8fafc;padding:8px 10px;border-radius:8px;border-left:3px solid '+color+'"><div style="font-size:10px;color:#666;font-weight:700;margin-bottom:2px">'+p.l+'</div><div style="font-size:12px;font-weight:800;color:'+color+'">'+(has?'✓ Present':'✗ Missing')+'</div></div>';
+    });
+    h+='</div></div>';
+
+    // Good
+    if(good.length){
+      h+='<div class="fb-card"><div class="fb-t go">✅ अच्छी बातें ('+good.length+')</div><ul class="fb-list">';
+      good.forEach(function(g){h+='<li class="go">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+    if(bad.length){
+      h+='<div class="fb-card"><div class="fb-t ba">❌ सुधार ज़रूरी ('+bad.length+')</div><ul class="fb-list">';
+      bad.forEach(function(g){h+='<li class="ba">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+    if(warn.length){
+      h+='<div class="fb-card"><div class="fb-t wa">⚠️ Suggestions ('+warn.length+')</div><ul class="fb-list">';
+      warn.forEach(function(g){h+='<li class="wa">'+g+'</li>'});
+      h+='</ul></div>';
+    }
+
+    // Guide
+    h+='<div class="fb-card" style="background:#f0f4ff;border:1.5px solid #2980b9">';
+    h+='<div class="fb-t" style="color:#2980b9">📚 एक अच्छे उत्तर में क्या होना चाहिए</div>';
+    h+='<ul style="list-style:none;padding:0;margin-top:6px">';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">1️⃣ <b>Introduction</b> — 2-3 lines</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">2️⃣ <b>Main Body</b> — Points/Headings</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">3️⃣ <b>Examples</b> — 2-3 real examples</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">4️⃣ <b>Data/Stats</b> — Numbers, %</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">5️⃣ <b>Schemes/Acts</b> — Government refs</li>';
+    h+='<li style="font-size:11.5px;color:#333;padding:4px 0">6️⃣ <b>Conclusion</b> — Way forward</li>';
+    h+='</ul></div>';
+
+    h+='<div class="res-actions"><button class="btn-r" onclick="retryAnswer()">🔄 दोबारा</button><button class="btn-s" onclick="closeResult()">बंद करें</button></div>';
+
+    document.getElementById('resBody').innerHTML=h;
+    document.getElementById('resPanel').classList.add('on');
+    document.getElementById('resOverlay').classList.add('on');
   };
 
   function analyze(text,q){
