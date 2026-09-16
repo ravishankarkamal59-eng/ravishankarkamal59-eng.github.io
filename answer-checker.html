@@ -525,9 +525,7 @@ function _doAuth(e){
   },700);
   return false;
 }
-function _isUserLoggedIn(){
-  try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
-}
+
 window.addEventListener('beforeinstallprompt',function(e){
   e.preventDefault();
   window._deferredPrompt=e;
@@ -566,52 +564,59 @@ console.log('✅ Fix JS loaded');
 </div>
 
 <!-- AUTH SCREEN -->
-<div id="authScr">
-  <div class="as-cd">
-    <div class="as-hd">
-      <button class="as-x" onclick="_closeAuthScr(); return false;">✕</button>
-      <div class="as-l">R</div>
-      <div class="as-t" id="asTitle">Create Account</div>
-      <div class="as-s" id="asSub">Free account बनाएँ — answer check शुरू करें</div>
+
+
+<!-- AUTH SCREEN -->
+<div id="authScr" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99998;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
+  <div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
+    <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">
+      <button onclick="AC.closeAuth()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
+      <div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>
+      <div id="asTitle" style="font-size:18px;font-weight:900;margin-bottom:2px">Create Account</div>
+      <div id="asSub" style="font-size:11px;opacity:.85;line-height:1.4">Email se free account banaayein</div>
     </div>
-    <div class="as-bd">
-      <div class="as-tabs">
-        <button type="button" class="as-tab on" data-mode="signup" onclick="_switchAuthMode('signup'); return false;">📝 Sign Up</button>
-        <button type="button" class="as-tab" data-mode="login" onclick="_switchAuthMode('login'); return false;">🔐 Login</button>
+    <div style="padding:20px">
+      <div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">
+        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
+        <button type="button" class="as-tab" data-mode="login" onclick="AC.switchTab('login');return false" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>
       </div>
-      <form id="asForm" onsubmit="return _doAuth(event)">
-        <div class="as-f" id="fldName">
-          <label>पूरा नाम / Full Name</label>
-          <input type="text" id="inName" placeholder="जैसे: रविशंकर">
-          <div class="err">कृपया नाम भरें</div>
+      <form id="asForm" onsubmit="return AC.submit(event)">
+        <div class="as-f" id="fldName" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;letter-spacing:.4px;margin-bottom:4px">NAME</label>
+          <input type="text" id="inName" placeholder="Your name" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Name bharein</div>
         </div>
-        <div class="as-f" id="fldEmail">
-          <label>ईमेल / Email</label>
-          <input type="email" id="inEmail" placeholder="you@example.com">
-          <div class="err">सही ईमेल भरें</div>
+        <div class="as-f" id="fldEmail" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;letter-spacing:.4px;margin-bottom:4px">EMAIL</label>
+          <input type="email" id="inEmail" placeholder="you@gmail.com" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Sahi email bharein</div>
         </div>
-        <div class="as-f" id="fldPhone">
-          <label>मोबाइल (Optional)</label>
-          <input type="tel" id="inPhone" placeholder="9876543210" maxlength="10">
-          <div class="err">सही 10-अंकीय नंबर</div>
+        <div class="as-f" id="fldPass" style="margin-bottom:13px">
+          <label style="display:block;font-size:10.5px;font-weight:800;color:#666;letter-spacing:.4px;margin-bottom:4px">PASSWORD</label>
+          <input type="password" id="inPass" placeholder="Min 4 characters" style="width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;box-sizing:border-box">
+          <div class="err" style="font-size:10px;color:#e94560;margin-top:3px;font-weight:600;display:none">Password min 4 characters</div>
         </div>
-        <div class="as-f" id="fldPass">
-          <label>पासवर्ड / Password</label>
-          <input type="password" id="inPass" placeholder="कम से कम 6 अक्षर">
-          <div class="err">पासवर्ड कम से कम 6 अक्षर</div>
-        </div>
-        <div class="as-f" id="fldPass2">
-          <label>पासवर्ड दोबारा / Confirm</label>
-          <input type="password" id="inPass2" placeholder="दोबारा लिखें">
-          <div class="err">पासवर्ड मेल नहीं खाते</div>
-        </div>
-        <button type="submit" class="as-btn" id="asBtn">✅ Create Free Account</button>
-        <div class="as-msg" id="asMsg"></div>
+        <button type="submit" id="asBtn" style="width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:13px;border-radius:11px;font-family:inherit;font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(233,69,96,.3);margin-top:4px">Create Free Account</button>
+        <div id="asMsg" style="padding:10px 13px;border-radius:9px;font-size:11.5px;font-weight:600;margin-top:11px;display:none;line-height:1.4"></div>
       </form>
-      <div class="as-ft" id="asFooter">
-        पहले से account है? <a onclick="_switchAuthMode('login'); return false;">Login करें</a>
+      <div id="asFooter" style="margin-top:14px;text-align:center;font-size:11px;color:#666;line-height:1.5">
+        Already have account? <a href="#" onclick="AC.switchTab('login');return false" style="color:#e94560;font-weight:800;text-decoration:none">Login</a>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- HISTORY MODAL -->
+<div id="histModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99997;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
+  <div style="max-width:450px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto;max-height:85vh;display:flex;flex-direction:column">
+    <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:16px;font-weight:900">📊 My History</div>
+        <div id="histUser" style="font-size:11px;opacity:.85;margin-top:2px">-</div>
+      </div>
+      <button onclick="AC.closeHist()" style="background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
+    </div>
+    <div id="histBody" style="padding:16px;overflow-y:auto;flex:1"></div>
   </div>
 </div>
 
@@ -2304,6 +2309,7 @@ console.log('✅ Fix JS loaded');
 
   // ==================== DIRECT ANALYSIS ====================
   function showDirectResult(text, rtu){
+    try{ if(window.AC) AC.saveHistory(Math.round((pct||0)), "Other Exam", "General", (wc||0)); }catch(e){}
     var words=text.split(/\s+/).filter(function(w){return w.length>0});
     var wc=words.length;
 
@@ -2581,6 +2587,7 @@ console.log('✅ Fix JS loaded');
   }
 
   function showResult(r){
+    try{ if(window.AC) AC.saveHistory(Math.round((r.pct||0)), (r.question&&r.question.subject)||"General", (r.question&&r.question.subject)||"", r.words||0); }catch(e){}
     var v,vc;
     if(r.pct>=80){v='🏆 Excellent!';vc='ex'}
     else if(r.pct>=60){v='👍 Good!';vc='go'}
@@ -2728,14 +2735,11 @@ console.log('✅ Fix JS loaded');
 })();
 
   // ==================== SIMPLE ONBOARD + AUTH ====================
-  var _keys={acc:'acv3_accounts',usr:'acv3_user',onb:'acv3_onboard'};
-
-  function _accs(){
-    try{return JSON.parse(localStorage.getItem(_keys.acc)||'{}')}catch(e){return{}}
+  
   }
-  function _saveAccs(a){try{localStorage.setItem(_keys.acc,JSON.stringify(a))}catch(e){}}
-  function _usr(){try{return JSON.parse(localStorage.getItem(_keys.usr)||'null')}catch(e){return null}}
-  function _setUsr(u){try{u?localStorage.setItem(_keys.usr,JSON.stringify(u)):localStorage.removeItem(_keys.usr)}catch(e){}}
+  
+  }
+  
   function isLoggedIn(){return !!_usr()}
 
   // Onboard
@@ -2917,378 +2921,317 @@ console.log('✅ Fix JS loaded');
 
 
 
+
+
+
+
+
+
+<!-- USER MENU -->
+<div id="userMenu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:99996;padding:70px 14px 14px;align-items:flex-start;justify-content:flex-end" onclick="AC.closeUserMenu(event)">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:230px">
+    <div style="padding:12px 14px;border-bottom:1px solid #f0f4f8">
+      <div id="umName" style="font-size:13px;font-weight:800;color:#0f3460">User</div>
+      <div id="umEmail" style="font-size:11px;color:#666;margin-top:2px">user@email.com</div>
+    </div>
+    <button onclick="AC.openHist()" style="width:100%;background:none;border:none;text-align:left;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;color:#0f3460;cursor:pointer;border-radius:8px;display:flex;align-items:center;gap:8px">📊 My History</button>
+    <button onclick="AC.logout()" style="width:100%;background:none;border:none;text-align:left;padding:12px 14px;font-family:inherit;font-size:13px;font-weight:700;color:#e94560;cursor:pointer;border-radius:8px;display:flex;align-items:center;gap:8px">🚪 Logout</button>
+  </div>
+</div>
+
+
 <script>
-// ==================== AUTH GATE ON CHECK BUTTON ====================
+// ==================== SIMPLE AUTH SYSTEM ====================
 (function(){
-  console.log('=== Auth Gate loaded ===');
+  var USERS_KEY = 'ac4_users';
+  var SESSION_KEY = 'ac4_session';
 
-  // Auth check
-  function isLoggedIn(){
-    try{return !!localStorage.getItem('acv3_user')}catch(e){return false}
+  function getUsers(){
+    try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return{}}
+  }
+  function saveUsers(u){try{localStorage.setItem(USERS_KEY,JSON.stringify(u))}catch(e){}}
+  function getUser(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+  function setUser(u){
+    try{
+      if(u) localStorage.setItem(SESSION_KEY,JSON.stringify(u));
+      else localStorage.removeItem(SESSION_KEY);
+    }catch(e){}
   }
 
-  // Show auth modal
-  function showAuth(mode){
-    var a=document.getElementById('authScr');
-    if(!a){console.log('authScr missing');return;}
-    var m=mode||'signup';
-    window._acMode=m;
+  // ===== AC API =====
+  window.AC = {
+    isLoggedIn: function(){ return !!getUser(); },
+    user: getUser,
 
-    var isSignup=(m==='signup');
-    var el;
+    showAuth: function(mode){
+      var a=document.getElementById('authScr');
+      if(!a) return;
+      window._acMode = mode || 'signup';
+      AC.switchTab(window._acMode);
 
-    // Update titles
-    el=document.getElementById('asTitle');if(el)el.textContent=isSignup?'Create Account':'Welcome Back';
-    el=document.getElementById('asSub');if(el)el.textContent=isSignup?'Free account banayein - answer check shuru karein':'Apne account mein login karein';
-    el=document.getElementById('asBtn');if(el)el.textContent=isSignup?'Create Free Account':'Login';
+      // Clear
+      var form=document.getElementById('asForm');
+      if(form) form.reset();
+      var msg=document.getElementById('asMsg');
+      if(msg){ msg.style.display='none'; msg.textContent=''; }
+      document.querySelectorAll('.as-f').forEach(function(f){ f.querySelector('input').style.borderColor='#e0e6ed'; f.querySelector('input').style.background='#fafbfc'; });
 
-    // Show/hide fields
-    el=document.getElementById('fldName');if(el)el.style.display=isSignup?'block':'none';
-    el=document.getElementById('fldPhone');if(el)el.style.display=isSignup?'block':'none';
-    el=document.getElementById('fldPass2');if(el)el.style.display=isSignup?'block':'none';
+      a.style.display='flex';
+      document.body.style.overflow='hidden';
+    },
 
-    // Tabs
-    var tabs=document.querySelectorAll('.as-tab');
-    for(var i=0;i<tabs.length;i++){
-      tabs[i].classList.toggle('on',tabs[i].getAttribute('data-mode')===m);
-    }
+    closeAuth: function(){
+      var a=document.getElementById('authScr');
+      if(a) a.style.display='none';
+      document.body.style.overflow='';
+    },
 
-    // Clear errors
-    var fs=document.querySelectorAll('.as-f');
-    for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
-    el=document.getElementById('asMsg');if(el){el.className='as-msg';el.textContent=''}
+    switchTab: function(m){
+      window._acMode = m;
+      var isSignup = (m === 'signup');
+      document.querySelectorAll('.as-tab').forEach(function(t){
+        var on = t.getAttribute('data-mode') === m;
+        t.classList.toggle('on', on);
+        t.style.background = on ? '#fff' : 'transparent';
+        t.style.color = on ? '#0f3460' : '#666';
+        t.style.boxShadow = on ? '0 2px 6px rgba(0,0,0,.08)' : 'none';
+      });
+      var el;
+      el = document.getElementById('asTitle'); if(el) el.textContent = isSignup ? 'Create Account' : 'Welcome Back';
+      el = document.getElementById('asSub');   if(el) el.textContent = isSignup ? 'Email se free account banaayein' : 'Login karein apne account mein';
+      el = document.getElementById('asBtn');   if(el) el.textContent = isSignup ? 'Create Free Account' : 'Login';
+      el = document.getElementById('fldName'); if(el) el.style.display = isSignup ? 'block' : 'none';
+      el = document.getElementById('asFooter');
+      if(el) el.innerHTML = isSignup
+        ? 'Already have account? <a href="#" onclick="AC.switchTab(\'login\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Login</a>'
+        : 'New here? <a href="#" onclick="AC.switchTab(\'signup\');return false" style="color:#e94560;font-weight:800;text-decoration:none">Sign Up</a>';
+    },
 
-    // Show
-    a.style.display='flex';
-    a.classList.add('on');
-    document.body.style.overflow='hidden';
+    submit: function(e){
+      if(e) e.preventDefault();
+      var msg = document.getElementById('asMsg');
+      var email = ((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
+      var pass = ((document.getElementById('inPass')||{}).value||'');
+      var name = ((document.getElementById('inName')||{}).value||'').trim();
 
-    console.log('Auth modal shown');
-  }
+      function showMsg(txt, isErr){
+        msg.style.display='block';
+        msg.textContent = txt;
+        msg.style.background = isErr ? '#ffe8e8' : '#e8f8f0';
+        msg.style.color = isErr ? '#c0392b' : '#27ae60';
+      }
 
-  // Close auth
-  function closeAuth(){
-    var a=document.getElementById('authScr');
-    if(a){a.style.display='none';a.classList.remove('on')}
-    document.body.style.overflow='';
-  }
+      function markErr(id){
+        var f=document.getElementById(id);
+        if(f){ var inp=f.querySelector('input'); if(inp){ inp.style.borderColor='#e94560'; inp.style.background='#fff5f5'; } }
+      }
 
-  // Submit auth
-  function submitAuth(e){
-    if(e)e.preventDefault();
-    var msg=document.getElementById('asMsg');
-    if(!msg) return false;
-    msg.className='as-msg';
-    msg.textContent='';
+      // Validate
+      var isSignup = (window._acMode === 'signup');
+      if(isSignup && !name){
+        markErr('fldName'); showMsg('Name bharein', true); return false;
+      }
+      if(!email || email.indexOf('@')<1){
+        markErr('fldEmail'); showMsg('Sahi email bharein', true); return false;
+      }
+      if(pass.length < 4){
+        markErr('fldPass'); showMsg('Password min 4 characters', true); return false;
+      }
 
-    var fs=document.querySelectorAll('.as-f');
-    for(var j=0;j<fs.length;j++){fs[j].classList.remove('bad')}
+      var users = getUsers();
 
-    var email=((document.getElementById('inEmail')||{}).value||'').trim().toLowerCase();
-    var pass=((document.getElementById('inPass')||{}).value||'');
-
-    if(!email||email.indexOf('@')<1){
-      var fe=document.getElementById('fldEmail');if(fe)fe.classList.add('bad');
-      msg.className='as-msg err';msg.textContent='Sahi email bharein';
-      return false;
-    }
-    if(pass.length<6){
-      var fp=document.getElementById('fldPass');if(fp)fp.classList.add('bad');
-      msg.className='as-msg err';msg.textContent='Password kam se kam 6 characters';
-      return false;
-    }
-
-    var accounts={};
-    try{accounts=JSON.parse(localStorage.getItem('acv3_accounts')||'{}')}catch(err){}
-
-    // LOGIN mode
-    if(window._acMode==='login'){
-      if(!accounts[email]){
-        msg.className='as-msg err';
-        msg.textContent='Account nahi mila - Sign Up karein';
+      if(isSignup){
+        if(users[email]){ showMsg('Ye email registered hai — Login karein', true); return false; }
+        var userId = 'U' + Date.now().toString(36).toUpperCase().substring(4);
+        users[email] = { name: name, email: email, pass: pass, userId: userId, created: Date.now(), history: [] };
+        saveUsers(users);
+        setUser({ name: name, email: email, userId: userId });
+        showMsg('Account ban gaya! Welcome ' + name, false);
+        setTimeout(function(){
+          AC.closeAuth();
+          AC.updateHeader();
+          AC.resume();
+        }, 700);
         return false;
       }
-      if(accounts[email].pass!==pass){
-        msg.className='as-msg err';
-        msg.textContent='Password galat hai';
-        return false;
-      }
-      try{localStorage.setItem('acv3_user',JSON.stringify({name:accounts[email].name,email:email}))}catch(err){}
-      msg.className='as-msg ok';
-      msg.textContent='Login successful!';
+
+      // Login
+      if(!users[email]){ showMsg('Account nahi mila — Sign Up karein', true); return false; }
+      if(users[email].pass !== pass){ markErr('fldPass'); showMsg('Password galat hai', true); return false; }
+      setUser({ name: users[email].name, email: email, userId: users[email].userId });
+      showMsg('Login successful!', false);
       setTimeout(function(){
-        closeAuth();
-        console.log('User logged in:', accounts[email].name);
-        // Auto-resume check
-        var origBtn = document.getElementById('btnCheck');
-        if(origBtn && !origBtn.disabled){
-          // Re-trigger check by directly calling original function
-          var orig = window._originalCheck;
-          if(orig){ orig.call(window); }
-        }
-      },600);
+        AC.closeAuth();
+        AC.updateHeader();
+        AC.resume();
+      }, 600);
       return false;
-    }
+    },
 
-    // SIGNUP mode
-    var name=((document.getElementById('inName')||{}).value||'').trim();
-    var phone=((document.getElementById('inPhone')||{}).value||'').trim();
-    var pass2=((document.getElementById('inPass2')||{}).value||'');
-
-    if(!name){
-      var fn=document.getElementById('fldName');if(fn)fn.classList.add('bad');
-      msg.className='as-msg err';msg.textContent='Naam bharein';
-      return false;
-    }
-    if(phone && !/^[6-9][0-9]{9}$/.test(phone)){
-      var fph=document.getElementById('fldPhone');if(fph)fph.classList.add('bad');
-      msg.className='as-msg err';msg.textContent='Sahi mobile number (10 digits)';
-      return false;
-    }
-    if(pass!==pass2){
-      var fp2=document.getElementById('fldPass2');if(fp2)fp2.classList.add('bad');
-      msg.className='as-msg err';msg.textContent='Passwords match nahi karte';
-      return false;
-    }
-    if(accounts[email]){
-      msg.className='as-msg err';
-      msg.textContent='Ye email pehle se registered hai - Login karein';
-      return false;
-    }
-
-    accounts[email]={name:name,email:email,phone:phone,pass:pass,created:Date.now()};
-    try{localStorage.setItem('acv3_accounts',JSON.stringify(accounts))}catch(err){}
-    try{localStorage.setItem('acv3_user',JSON.stringify({name:name,email:email}))}catch(err){}
-
-    msg.className='as-msg ok';
-    msg.textContent='Account ban gaya!';
-    setTimeout(function(){
-      closeAuth();
-      console.log('Account created:', name);
-      // Auto-resume check
-      var origBtn = document.getElementById('btnCheck');
-      if(origBtn && !origBtn.disabled){
-        var orig = window._originalCheck;
-        if(orig){ orig.call(window); }
+    updateHeader: function(){
+      var u = getUser();
+      var chip = document.getElementById('userChip');
+      if(!chip) return;
+      if(u){
+        chip.style.display = 'flex';
+        document.getElementById('userChipAv').textContent = (u.name||'U')[0].toUpperCase();
+        document.getElementById('userChipName').textContent = u.name || 'User';
+      } else {
+        chip.style.display = 'none';
       }
-    },600);
-    return false;
+    },
+
+    openUserMenu: function(){
+      var u = getUser();
+      if(!u) return;
+      document.getElementById('umName').textContent = u.name || 'User';
+      document.getElementById('umEmail').textContent = (u.userId ? u.userId + ' · ' : '') + u.email;
+      document.getElementById('userMenu').style.display = 'flex';
+    },
+
+    closeUserMenu: function(e){
+      document.getElementById('userMenu').style.display = 'none';
+    },
+
+    logout: function(){
+      if(!confirm('Logout karein?')) return;
+      setUser(null);
+      AC.updateHeader();
+      AC.closeUserMenu();
+      AC.closeHist();
+      // Toast
+      var t=document.createElement('div');
+      t.textContent='👋 Logout ho gaya';
+      t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:10px 20px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(39,174,96,.4)';
+      document.body.appendChild(t);
+      setTimeout(function(){t.remove()}, 1500);
+    },
+
+    openHist: function(){
+      var u = getUser();
+      if(!u) return;
+      AC.closeUserMenu();
+      var users = getUsers();
+      var hist = (users[u.email] && users[u.email].history) || [];
+      document.getElementById('histUser').textContent = (u.userId||'') + ' · ' + (u.name||'') + ' · ' + hist.length + ' checks';
+      var box = document.getElementById('histBody');
+      if(!hist.length){
+        box.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#999"><div style="font-size:50px;opacity:.4;margin-bottom:12px">📭</div><div style="font-size:14px;font-weight:700;color:#666">Abhi tak koi check nahi</div><div style="font-size:12px;margin-top:6px">Apna pehla answer check karein</div></div>';
+      } else {
+        var html='';
+        // Stats
+        var tot=0, cnt=hist.length;
+        hist.forEach(function(h){ tot += h.score||0; });
+        var avg = cnt ? Math.round(tot/cnt) : 0;
+        html += '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;border-radius:12px;margin-bottom:12px;text-align:center">';
+        html += '<div style="font-size:10px;color:#FDBA3B;font-weight:700;letter-spacing:1.5px;margin-bottom:4px">TOTAL ATTEMPTS</div>';
+        html += '<div style="font-size:32px;font-weight:900">'+cnt+'</div>';
+        html += '<div style="font-size:11px;opacity:.85;margin-top:4px">Avg Score: '+avg+'/100</div>';
+        html += '</div>';
+        // List
+        hist.forEach(function(h){
+          var d = new Date(h.ts);
+          var ds = d.getDate()+'/'+(d.getMonth()+1)+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+          var col = h.score>=70?'#27ae60':(h.score>=40?'#f39c12':'#e94560');
+          html += '<div style="background:#f8fafc;border-radius:10px;padding:12px;margin-bottom:8px;border-left:3px solid '+col+'">';
+          html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">';
+          html += '<span style="font-size:10px;color:#999;font-weight:700">'+ds+'</span>';
+          html += '<span style="font-size:15px;font-weight:900;color:'+col+'">'+h.score+'/100</span>';
+          html += '</div>';
+          html += '<div style="font-size:11.5px;color:#333;line-height:1.4;margin-bottom:4px">'+(h.exam||'General')+' · '+(h.subject||'')+'</div>';
+          html += '<div style="font-size:10px;color:#666">'+h.words+' words</div>';
+          html += '</div>';
+        });
+        box.innerHTML = html;
+      }
+      document.getElementById('histModal').style.display = 'flex';
+      document.body.style.overflow='hidden';
+    },
+
+    closeHist: function(){
+      document.getElementById('histModal').style.display = 'none';
+      document.body.style.overflow='';
+    },
+
+    resume: function(){
+      // Auto-resume check if pending
+      if(window._pendingCheckFn){
+        var fn = window._pendingCheckFn;
+        window._pendingCheckFn = null;
+        setTimeout(function(){ try{ fn(); }catch(e){} }, 300);
+      }
+    },
+
+    saveHistory: function(score, exam, subject, words){
+      var u = getUser();
+      if(!u) return;
+      var users = getUsers();
+      if(!users[u.email]) return;
+      if(!users[u.email].history) users[u.email].history = [];
+      users[u.email].history.unshift({ score:score, exam:exam, subject:subject, words:words, ts:Date.now() });
+      if(users[u.email].history.length > 50) users[u.email].history = users[u.email].history.slice(0, 50);
+      saveUsers(users);
+    }
+  };
+
+  // ===== Save original checkAnswer =====
+  var origCheck = null;
+  function captureOriginal(){
+    if(typeof window.checkAnswer === 'function' && !origCheck){
+      origCheck = window.checkAnswer;
+      console.log('Original checkAnswer captured');
+    }
   }
 
-  // Expose globally
-  window._acShowAuth = showAuth;
-  window._acCloseAuth = closeAuth;
-  window._acSubmit = submitAuth;
-
-  // Wait for page load, then attach to Check button
-  function attach() {
+  function attachCheckGate(){
     var btn = document.getElementById('btnCheck');
-    if(!btn){
-      setTimeout(attach, 200);
-      return;
-    }
+    if(!btn){ setTimeout(attachCheckGate, 200); return; }
+    if(btn._gateAttached) return;
+    btn._gateAttached = true;
 
-    console.log('Check button found, attaching auth gate');
+    captureOriginal();
 
-    // Save original checkAnswer once
-    if(!window._originalCheck && typeof window.checkAnswer === 'function'){
-      window._originalCheck = window.checkAnswer;
-      console.log('Original checkAnswer saved');
-    }
-
-    // Attach click listener (capture phase to run BEFORE onclick)
     btn.addEventListener('click', function(e){
-      if(!isLoggedIn()){
+      if(!AC.isLoggedIn()){
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
-        console.log('Not logged in - showing auth');
-        showAuth('signup');
+        window._pendingCheckFn = function(){
+          if(origCheck) origCheck.apply(window, arguments);
+        };
+        AC.showAuth('signup');
         return false;
       }
-      console.log('Logged in - proceeding');
-    }, true); // true = capture phase
+    }, true);
 
-    // Bind auth form
-    var form=document.getElementById('asForm');
-    if(form){
-      form.onsubmit = function(e){
-        e.preventDefault();
-        return submitAuth(e);
-      };
-      console.log('Auth form bound');
-    }
-
-    // Bind tabs
-    var tabs=document.querySelectorAll('.as-tab');
-    for(var i=0;i<tabs.length;i++){
-      (function(tab){
-        tab.onclick = function(e){
-          e.preventDefault();
-          showAuth(tab.getAttribute('data-mode'));
-          return false;
-        };
-      })(tabs[i]);
-    }
-
-    // Bind close
-    var closeBtn=document.querySelector('#authScr .as-x');
-    if(closeBtn){
-      closeBtn.onclick = function(e){
-        e.preventDefault();
-        closeAuth();
-        return false;
-      };
-    }
-
-    // Bind footer links
-    var footer=document.getElementById('asFooter');
-    if(footer){
-      footer.addEventListener('click', function(e){
-        if(e.target.tagName==='A'){
-          e.preventDefault();
-          var txt = e.target.textContent.toLowerCase();
-          if(txt.indexOf('login')>-1){ showAuth('login'); }
-          else { showAuth('signup'); }
-        }
-      });
-    }
-
-    console.log('✅ Auth gate fully attached to Check button');
+    console.log('✅ Auth gate attached to Check button');
   }
 
+  // Wait for load
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(attach, 100); });
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(attachCheckGate, 200);
+      AC.updateHeader();
+    });
   } else {
-    setTimeout(attach, 100);
+    setTimeout(attachCheckGate, 200);
+    AC.updateHeader();
   }
 
-  // Also bind after any DOM changes
-  setTimeout(attach, 1000);
-  setTimeout(attach, 3000);
+  // Re-attach periodically (in case button is recreated)
+  setTimeout(function(){ attachCheckGate(); AC.updateHeader(); }, 1500);
+  setTimeout(function(){ attachCheckGate(); AC.updateHeader(); }, 3000);
 
-})();
-</script>
-
-
-<script>
-// ==================== MANUAL PULL TO REFRESH (only) ====================
-(function(){
-  var startY = 0;
-  var currentY = 0;
-  var pulling = false;
-  var threshold = 100;
-  var maxPull = 130;
-
-  function getMid(){
-    return document.querySelector('.mid') || document.querySelector('.app-main') || document.body;
-  }
-
-  function getIndicator(){
-    var ind = document.getElementById('ptrIndicator');
-    if(ind) return ind;
-
-    // Create if missing
-    var d = document.createElement('div');
-    d.id = 'ptrIndicator';
-    d.style.cssText = 'position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(135deg,#0f3460,#1a5276);display:flex;align-items:center;justify-content:center;z-index:9998;transform:translateY(-100%);transition:transform .25s;pointer-events:none;box-shadow:0 4px 20px rgba(15,52,96,.3)';
-    d.innerHTML = '<div style="display:flex;align-items:center;gap:10px;color:#fff"><span id="ptrIcon" style="font-size:24px;color:#FDBA3B;transition:transform .3s">↓</span><span id="ptrTxt" style="font-size:13px;font-weight:800;letter-spacing:.5px">Neeche kheenchen</span></div>';
-    document.body.appendChild(d);
-    return d;
-  }
-
-  function onStart(e){
-    var mid = getMid();
-    if(mid.scrollTop > 0) return;
-    if(document.getElementById('dr') && document.getElementById('dr').classList.contains('on')) return;
-    if(document.getElementById('resPanel') && document.getElementById('resPanel').classList.contains('on')) return;
-    if(document.getElementById('authScr') && document.getElementById('authScr').classList.contains('on')) return;
-    startY = e.touches[0].clientY;
-    pulling = true;
-  }
-
-  function onMove(e){
-    if(!pulling) return;
-    var mid = getMid();
-    if(mid.scrollTop > 0){ pulling = false; return; }
-
-    currentY = e.touches[0].clientY;
-    var diff = currentY - startY;
-    if(diff <= 0){
-      var ind = getIndicator();
-      ind.style.transform = 'translateY(-100%)';
-      return;
+  // Global close handlers
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      AC.closeAuth();
+      AC.closeHist();
+      AC.closeUserMenu();
     }
+  });
 
-    e.preventDefault();
-
-    var pull = Math.min(diff * 0.55, maxPull);
-    var ind = getIndicator();
-    var icon = document.getElementById('ptrIcon');
-    var txt = document.getElementById('ptrTxt');
-
-    ind.style.transform = 'translateY(' + (pull - 70) + 'px)';
-
-    if(pull >= threshold){
-      icon.style.transform = 'rotate(180deg)';
-      if(txt) txt.textContent = 'Chhodein — refresh hoga';
-    } else {
-      icon.style.transform = 'rotate(0deg)';
-      if(txt) txt.textContent = 'Neeche kheenchen';
-    }
-  }
-
-  function onEnd(e){
-    if(!pulling) return;
-    pulling = false;
-
-    var pull = Math.min((currentY - startY) * 0.55, maxPull);
-    var ind = getIndicator();
-    var txt = document.getElementById('ptrTxt');
-
-    if(pull >= threshold){
-      if(txt) txt.textContent = 'Refresh ho raha hai...';
-      ind.style.transform = 'translateY(0)';
-      setTimeout(function(){
-        // Manual refresh only — clean everything
-        try{
-          var ai = document.getElementById('ansInput');
-          if(ai) ai.value = '';
-          if(typeof resetPdf === 'function') resetPdf();
-          var rp = document.getElementById('resPanel');
-          if(rp) rp.classList.remove('on');
-          var ro = document.getElementById('resOverlay');
-          if(ro) ro.classList.remove('on');
-          var rb = document.getElementById('resBody');
-          if(rb) rb.innerHTML = '';
-          var di = document.getElementById('detectInfo');
-          if(di) di.classList.remove('on');
-          if(typeof updateCount === 'function') updateCount();
-        }catch(err){}
-
-        setTimeout(function(){
-          ind.style.transform = 'translateY(-100%)';
-          if(txt) txt.textContent = 'Neeche kheenchen';
-          // Toast
-          var t = document.createElement('div');
-          t.textContent = '🔄 Refreshed';
-          t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:10px 20px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(39,174,96,.4)';
-          document.body.appendChild(t);
-          setTimeout(function(){ t.remove(); }, 1500);
-        }, 400);
-      }, 300);
-    } else {
-      ind.style.transform = 'translateY(-100%)';
-    }
-  }
-
-  // Attach to document (works on any scrollable area)
-  document.addEventListener('touchstart', onStart, {passive:true});
-  document.addEventListener('touchmove', onMove, {passive:false});
-  document.addEventListener('touchend', onEnd, {passive:true});
-  document.addEventListener('touchcancel', onEnd, {passive:true});
-
-  console.log('✅ Manual pull-to-refresh attached (no auto-refresh)');
+  console.log('✅ Simple auth system loaded');
 })();
 </script>
 
