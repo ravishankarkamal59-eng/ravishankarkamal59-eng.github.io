@@ -1012,7 +1012,13 @@
   },
   "bsc-agronomy": {
     "name": "BSc: Agronomy",
-    "notes": [],
+    "notes": [
+      {
+        "title": "BSc Agriculture - Agronomy Complete Notes (Hindi) _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/bsc-agronomy/notes/1789571874197-bsc-agriculture-agronomy-complete-notes-hindi-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
