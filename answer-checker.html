@@ -3170,5 +3170,127 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+
+<script>
+// ==================== MANUAL PULL TO REFRESH (only) ====================
+(function(){
+  var startY = 0;
+  var currentY = 0;
+  var pulling = false;
+  var threshold = 100;
+  var maxPull = 130;
+
+  function getMid(){
+    return document.querySelector('.mid') || document.querySelector('.app-main') || document.body;
+  }
+
+  function getIndicator(){
+    var ind = document.getElementById('ptrIndicator');
+    if(ind) return ind;
+
+    // Create if missing
+    var d = document.createElement('div');
+    d.id = 'ptrIndicator';
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(135deg,#0f3460,#1a5276);display:flex;align-items:center;justify-content:center;z-index:9998;transform:translateY(-100%);transition:transform .25s;pointer-events:none;box-shadow:0 4px 20px rgba(15,52,96,.3)';
+    d.innerHTML = '<div style="display:flex;align-items:center;gap:10px;color:#fff"><span id="ptrIcon" style="font-size:24px;color:#FDBA3B;transition:transform .3s">↓</span><span id="ptrTxt" style="font-size:13px;font-weight:800;letter-spacing:.5px">Neeche kheenchen</span></div>';
+    document.body.appendChild(d);
+    return d;
+  }
+
+  function onStart(e){
+    var mid = getMid();
+    if(mid.scrollTop > 0) return;
+    if(document.getElementById('dr') && document.getElementById('dr').classList.contains('on')) return;
+    if(document.getElementById('resPanel') && document.getElementById('resPanel').classList.contains('on')) return;
+    if(document.getElementById('authScr') && document.getElementById('authScr').classList.contains('on')) return;
+    startY = e.touches[0].clientY;
+    pulling = true;
+  }
+
+  function onMove(e){
+    if(!pulling) return;
+    var mid = getMid();
+    if(mid.scrollTop > 0){ pulling = false; return; }
+
+    currentY = e.touches[0].clientY;
+    var diff = currentY - startY;
+    if(diff <= 0){
+      var ind = getIndicator();
+      ind.style.transform = 'translateY(-100%)';
+      return;
+    }
+
+    e.preventDefault();
+
+    var pull = Math.min(diff * 0.55, maxPull);
+    var ind = getIndicator();
+    var icon = document.getElementById('ptrIcon');
+    var txt = document.getElementById('ptrTxt');
+
+    ind.style.transform = 'translateY(' + (pull - 70) + 'px)';
+
+    if(pull >= threshold){
+      icon.style.transform = 'rotate(180deg)';
+      if(txt) txt.textContent = 'Chhodein — refresh hoga';
+    } else {
+      icon.style.transform = 'rotate(0deg)';
+      if(txt) txt.textContent = 'Neeche kheenchen';
+    }
+  }
+
+  function onEnd(e){
+    if(!pulling) return;
+    pulling = false;
+
+    var pull = Math.min((currentY - startY) * 0.55, maxPull);
+    var ind = getIndicator();
+    var txt = document.getElementById('ptrTxt');
+
+    if(pull >= threshold){
+      if(txt) txt.textContent = 'Refresh ho raha hai...';
+      ind.style.transform = 'translateY(0)';
+      setTimeout(function(){
+        // Manual refresh only — clean everything
+        try{
+          var ai = document.getElementById('ansInput');
+          if(ai) ai.value = '';
+          if(typeof resetPdf === 'function') resetPdf();
+          var rp = document.getElementById('resPanel');
+          if(rp) rp.classList.remove('on');
+          var ro = document.getElementById('resOverlay');
+          if(ro) ro.classList.remove('on');
+          var rb = document.getElementById('resBody');
+          if(rb) rb.innerHTML = '';
+          var di = document.getElementById('detectInfo');
+          if(di) di.classList.remove('on');
+          if(typeof updateCount === 'function') updateCount();
+        }catch(err){}
+
+        setTimeout(function(){
+          ind.style.transform = 'translateY(-100%)';
+          if(txt) txt.textContent = 'Neeche kheenchen';
+          // Toast
+          var t = document.createElement('div');
+          t.textContent = '🔄 Refreshed';
+          t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:10px 20px;border-radius:25px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 8px 25px rgba(39,174,96,.4)';
+          document.body.appendChild(t);
+          setTimeout(function(){ t.remove(); }, 1500);
+        }, 400);
+      }, 300);
+    } else {
+      ind.style.transform = 'translateY(-100%)';
+    }
+  }
+
+  // Attach to document (works on any scrollable area)
+  document.addEventListener('touchstart', onStart, {passive:true});
+  document.addEventListener('touchmove', onMove, {passive:false});
+  document.addEventListener('touchend', onEnd, {passive:true});
+  document.addEventListener('touchcancel', onEnd, {passive:true});
+
+  console.log('✅ Manual pull-to-refresh attached (no auto-refresh)');
+})();
+</script>
+
 </body>
 </html>
