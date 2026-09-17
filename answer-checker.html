@@ -8905,5 +8905,51 @@ console.log('✅ Fix JS loaded');
 })();
 </script>
 
+<script>
+console.log('🧪 JEE Ultra Diagnostic loading...');
+(function(){
+  'use strict';
+  var _check = setInterval(function(){
+    if(typeof window.renderJEEUltra === 'function'){
+      clearInterval(_check);
+      console.log('✅ renderJEEUltra MIL GAYA');
+      if(!window.renderJEEUltra._diagWrapped){
+        var _orig = window.renderJEEUltra;
+        window.renderJEEUltra = function(text){
+          console.log('🎯 renderJEEUltra CALLED len:', text ? text.length : 0);
+          try { var r = _orig.apply(this, arguments); console.log('🎯 RESULT len:', r ? r.length : 0); return r; }
+          catch(e){ console.error('❌ ERROR:', e); return ''; }
+        };
+        window.renderJEEUltra._diagWrapped = true;
+        console.log('✅ wrapped');
+      }
+    }
+  }, 300);
+  setTimeout(function(){
+    var btn = document.createElement('button');
+    btn.textContent = '🧪 Test JEE';
+    btn.style.cssText = 'position:fixed;bottom:100px;right:10px;z-index:99999;background:#e94560;color:white;border:none;padding:10px 16px;border-radius:20px;font-weight:bold;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.3)';
+    btn.onclick = function(){
+      var t = "Given: A body of mass m=2kg moving with velocity v=10 m/s. To find: Kinetic energy. Solution: Step 1: Formula KE = 1/2 mv². Step 2: KE = 1/2 × 2 × 10² = 100 J. Answer: KE = 100 J";
+      if(typeof window.renderJEEUltra !== 'function'){ alert('❌ renderJEEUltra NAHI hai!'); return; }
+      var d = window.renderJEEUltra(t);
+      console.log('Test result len:', d ? d.length : 0);
+      if(d && d.length > 100){
+        var w = document.createElement('div');
+        w.innerHTML = '<div style="background:#fff3cd;padding:10px;border-radius:8px;font-weight:bold;margin-bottom:10px">🧪 JEE Ultra TEST:</div>' + d;
+        w.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:white;overflow:auto;z-index:999999;padding:20px';
+        document.body.appendChild(w);
+        var c = document.createElement('button');
+        c.textContent = '✖ Close';
+        c.style.cssText = 'position:fixed;top:20px;right:20px;z-index:1000000;background:#e94560;color:white;border:none;padding:10px 20px;border-radius:20px;font-weight:bold';
+        c.onclick = function(){ w.remove(); c.remove(); };
+        document.body.appendChild(c);
+      } else { alert('❌ renderJEEUltra empty return kiya'); }
+    };
+    document.body.appendChild(btn);
+    console.log('✅ Test button added');
+  }, 3000);
+})();
+</script>
 </body>
 </html>
