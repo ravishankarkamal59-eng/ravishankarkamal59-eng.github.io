@@ -8951,5 +8951,172 @@ console.log('🧪 JEE Ultra Diagnostic loading...');
   }, 3000);
 })();
 </script>
+<script>
+// ==================== UNIVERSAL SECTION-WISE ULTRA ====================
+(function(){
+  'use strict';
+  console.log('🎯 Universal Ultra loading...');
+  
+  // Section → Ultra function mapping
+  var SECTION_MAP = {
+    // JEE
+    'jee_mains': { render: 'renderJEEUltra', label: 'JEE Mains' },
+    'jee_adv':   { render: 'renderJEEUltra', label: 'JEE Advanced' },
+    // BA
+    'ba_english': { render: 'renderUltra', label: 'BA English' },
+    'ba_history': { render: 'renderUltra', label: 'BA History' },
+    'ba_polity':  { render: 'renderUltra', label: 'BA Political Science' },
+    // MA
+    'ma_english': { render: 'renderUltra', label: 'MA English' },
+    'ma_history': { render: 'renderUltra', label: 'MA History' },
+    'ma_polity':  { render: 'renderUltra', label: 'MA Political Science' },
+    // Agriculture
+    'agri_agronomy':     { render: 'renderUltra', label: 'Agronomy' },
+    'agri_soil':         { render: 'renderUltra', label: 'Soil Science' },
+    'agri_horticulture': { render: 'renderUltra', label: 'Horticulture' },
+    'agri_pathology':    { render: 'renderUltra', label: 'Plant Pathology' },
+    'agri_entomology':   { render: 'renderUltra', label: 'Entomology' },
+    'agri_extension':    { render: 'renderUltra', label: 'Extension Education' },
+    'agri_economics':    { render: 'renderUltra', label: 'Agri Economics' },
+    'agri_animal':       { render: 'renderUltra', label: 'Animal Husbandry' },
+    // Government
+    'upsc':   { render: 'renderUltra', label: 'UPSC Mains' },
+    'uppcs':  { render: 'renderUltra', label: 'UPPCS Mains' },
+    'bpsc':   { render: 'renderUltra', label: 'BPSC Mains' },
+    'essay':  { render: 'renderUltra', label: 'Essay' },
+    'sociology': { render: 'renderUltra', label: 'Sociology' }
+  };
+  
+  // Current selected exam nikalo
+  function getSelectedExam(){
+    var active = document.querySelector('.dr-item.on');
+    if(!active) return 'all';
+    return active.getAttribute('data-exam') || 'all';
+  }
+  
+  // Text nikalo
+  function getCurrentText(){
+    return (window.state && window.state.currentText) 
+        || (window.acxPdfText) 
+        || (document.getElementById('ansInput') && document.getElementById('ansInput').value)
+        || '';
+  }
+  
+  // Ultra panel render karo section ke hisaab se
+  function renderSectionUltra(examKey, text){
+    var section = SECTION_MAP[examKey];
+    if(!section){
+      console.log('⚠️ No section mapping for:', examKey);
+      return null;
+    }
+    
+    var renderFn = window[section.render];
+    if(typeof renderFn !== 'function'){
+      console.log('⚠️ Render function not found:', section.render);
+      return null;
+    }
+    
+    try {
+      var html = renderFn(text, examKey);
+      if(html && html.length > 50){
+        console.log('✅ Ultra rendered for:', section.label, '| len:', html.length);
+        return { html: html, label: section.label };
+      }
+    } catch(e){
+      console.error('❌ Render error for', section.label, ':', e);
+    }
+    return null;
+  }
+  
+  // ResBody mein panel add karo
+  function injectPanel(result){
+    var resBody = document.getElementById('resBody');
+    if(!resBody){
+      console.log('⚠️ resBody not found');
+      return;
+    }
+    
+    // Pehle se panel hai toh hatao
+    var old = document.getElementById('sectionUltraPanel');
+    if(old) old.remove();
+    
+    var wrapper = document.createElement('div');
+    wrapper.id = 'sectionUltraPanel';
+    wrapper.innerHTML = '<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:12px 16px;border-radius:12px 12px 0 0;font-weight:800;font-size:13px;margin-bottom:0">🎯 ' + result.label + ' — Section Analysis</div>' + result.html;
+    resBody.insertBefore(wrapper, resBody.firstChild);
+    console.log('✅ Panel injected for:', result.label);
+  }
+  
+  // Hook: window.showResult override
+  function hookShowResult(){
+    if(typeof window.showResult !== 'function') return false;
+    if(window.showResult._universalHooked) return true;
+    
+    var orig = window.showResult;
+    window.showResult = function(r){
+      var res = orig.apply(this, arguments);
+      setTimeout(function(){
+        try {
+          var examKey = getSelectedExam();
+          var text = getCurrentText();
+          if(!text || text.length < 20){
+            console.log('⚠️ Text too short, skipping ultra');
+            return;
+          }
+          var result = renderSectionUltra(examKey, text);
+          if(result) injectPanel(result);
+        } catch(e){ console.error('Universal hook err:', e); }
+      }, 300);
+      return res;
+    };
+    window.showResult._universalHooked = true;
+    console.log('✅ showResult hooked');
+    return true;
+  }
+  
+  // Hook: window.showDirectResult override
+  function hookShowDirect(){
+    if(typeof window.showDirectResult !== 'function') return false;
+    if(window.showDirectResult._universalHooked) return true;
+    
+    var orig = window.showDirectResult;
+    window.showDirectResult = function(text, rtu){
+      var res = orig.apply(this, arguments);
+      setTimeout(function(){
+        try {
+          var examKey = getSelectedExam();
+          var t = text || getCurrentText();
+          if(!t || t.length < 20) return;
+          var result = renderSectionUltra(examKey, t);
+          if(result) injectPanel(result);
+        } catch(e){ console.error('Universal direct hook err:', e); }
+      }, 300);
+      return res;
+    };
+    window.showDirectResult._universalHooked = true;
+    console.log('✅ showDirectResult hooked');
+    return true;
+  }
+  
+  // Drawer item click par bhi trigger
+  document.addEventListener('click', function(e){
+    var item = e.target.closest('.dr-item');
+    if(item){
+      var examKey = item.getAttribute('data-exam');
+      console.log('📋 Exam selected:', examKey);
+    }
+  });
+  
+  // Repeat try to hook
+  [500, 1000, 2000, 3000, 5000].forEach(function(t){
+    setTimeout(function(){
+      hookShowResult();
+      hookShowDirect();
+    }, t);
+  });
+  
+  console.log('✅ Universal Ultra ready');
+})();
+</script>
 </body>
 </html>
