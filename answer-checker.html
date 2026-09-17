@@ -7252,479 +7252,7 @@ console.log('✅ Fix JS loaded');
 </script>
 
 
-<script>
-// ==================== JEE ULTRA EXAMINER DETECTION ====================
-(function(){
-  'use strict';
-  console.log('=== JEE Ultra loading ===');
 
-  // ============ JEE STRICT RULES ============
-  var JEE_ULTRA = {
-    jee_mains: {
-      name: 'JEE Mains',
-      maxMarks: 100,
-      type: 'Objective + Numerical',
-      requiredElements: [
-        { name: 'Given Data / दिया गया', test: function(t){ return /given|दिया गया|दिया है|provided|data/i.test(t); }, weight: 8, critical: true },
-        { name: 'To Find / ज्ञात करना', test: function(t){ return /to find|ज्ञात करना|find out|calculate|determine|निकालें/i.test(t); }, weight: 7, critical: true },
-        { name: 'Formula Used / सूत्र', test: function(t){ return /[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|F\s*=|E\s*=|V\s*=|P\s*=|mv|ma|½|1\/2/i.test(t); }, weight: 15, critical: true },
-        { name: 'Step-by-Step Solution', test: function(t){ return /step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s.*[1-9][\.\)]\s/i.test(t); }, weight: 12, critical: true },
-        { name: 'Numerical Calculation', test: function(t){ return /\d+\.?\d*\s*[×xX*]\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|kg|N|J|V|A|W|Hz|Ω|°C|K)/i.test(t); }, weight: 12, critical: true },
-        { name: 'Units Mentioned', test: function(t){ return /newton|joule|watt|volt|ampere|meter|metre|second|kelvin|coulomb|ohm|hertz|km|cm|mm|kg|mol/i.test(t); }, weight: 10, critical: true },
-        { name: 'Concept/Law Used', test: function(t){ return /law|नियम|principle|सिद्धांत|theorem|conservation|संरक्षण|equation|समीकरण/i.test(t); }, weight: 12, critical: false },
-        { name: 'Final Answer', test: function(t){ return /answer|उत्तर|result|परिणाम|∴|hence|therefore|इसलिए|final|अंतिम/i.test(t); }, weight: 12, critical: true },
-        { name: 'Dimensional Check', test: function(t){ return /dimension|विमीय|SI\s*unit|SI\s*मात्रक|unit.*check/i.test(t); }, weight: 6, critical: false }
-      ]
-    },
-    jee_adv: {
-      name: 'JEE Advanced',
-      maxMarks: 100,
-      type: 'Advanced Multi-step',
-      requiredElements: [
-        { name: 'Given + Assumptions', test: function(t){ return /given|दिया गया|assume|मान लें|let|suppose/i.test(t); }, weight: 8, critical: true },
-        { name: 'To Find / Prove', test: function(t){ return /to find|ज्ञात करना|prove|सिद्ध|derive|determine|calculate/i.test(t); }, weight: 7, critical: true },
-        { name: 'Concept/Theory Used', test: function(t){ return /law|नियम|principle|सिद्धांत|theorem|concept|अवधारणा|postulate|formula/i.test(t); }, weight: 12, critical: true },
-        { name: 'Mathematical Derivation', test: function(t){ return /deriv|व्युत्पन्न|integrat|समाकलन|differenti|अवकलन|d\/d|∂\/∂|∫|Σ/i.test(t); }, weight: 15, critical: true },
-        { name: 'Multi-Step Solution', test: function(t){ return /step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|\(iv\)|first|second|third|[1-9][\.\)]\s.*[1-9][\.\)]\s.*[1-9][\.\)]/i.test(t); }, weight: 15, critical: true },
-        { name: 'Boundary Conditions', test: function(t){ return /boundary|limit|सीमा|condition|प्रतिबंध|range|constraint|when\s|x\s*→|t\s*→|at\s*t\s*=|at\s*x\s*=/i.test(t); }, weight: 10, critical: false },
-        { name: 'Special Cases Analysis', test: function(t){ return /special case|विशेष स्थिति|if\s|when\s|case\s*\d|assume|मान लें/i.test(t); }, weight: 10, critical: false },
-        { name: 'Numerical Calculation', test: function(t){ return /\d+\.?\d*\s*[×xX*]\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|N|J|V|A|W|Ω|Hz)/i.test(t); }, weight: 10, critical: true },
-        { name: 'Multiple Methods', test: function(t){ return /method|विधि|approach|तरीका|alternate|वैकल्पिक|or\s|another\s*way/i.test(t); }, weight: 8, critical: false },
-        { name: 'Final Answer + Reasoning', test: function(t){ return /answer|उत्तर|result|∴|hence|therefore|इसलिए|conclusion|निष्कर्ष|justif|सिद्ध/i.test(t); }, weight: 10, critical: true }
-      ]
-    }
-  };
-
-  // ============ SUBJECT DETECTION ============
-  function detectSubject(text){
-    var lower = text.toLowerCase();
-    var scores = { Physics: 0, Chemistry: 0, Mathematics: 0, Biology: 0 };
-    var keywords = {
-      Physics: ['newton','force','velocity','acceleration','momentum','energy','wave','optics','electric','magnetic','current','voltage','resistance','capacitor','inductor','gravity','friction','pressure','thermodynamic','quantum','photon','electron','proton','neutron'],
-      Chemistry: ['reaction','molecule','atom','bond','acid','base','organic','inorganic','periodic','mole','molar','oxidation','reduction','electro','polymer','hydrocarbon','aldehyde','ketone','alcohol','ester','benzene','alkane','alkene','alkyne'],
-      Mathematics: ['integral','derivative','matrix','vector','probability','calculus','algebra','trigonometry','function','limit','continuity','differentiation','integration','permutation','combination','binomial','complex number','logarithm'],
-      Biology: ['dna','rna','cell','gene','protein','enzyme','photosynthesis','respiration','chromosome','mitosis','meiosis','ecosystem','biodiversity','nervous','digestive']
-    };
-    for(var sub in keywords){
-      keywords[sub].forEach(function(k){
-        if(lower.indexOf(k) !== -1) scores[sub]++;
-      });
-    }
-    var best = null, max = 0;
-    for(var s in scores){
-      if(scores[s] > max){ max = scores[s]; best = s; }
-    }
-    return { subject: best, scores: scores };
-  }
-
-  // ============ GRAMMAR/COMMON ERRORS ============
-  var COMMON_ERRORS = [
-    { pattern: /(\w+)\s+\1/gi, msg: 'दोहराव — same word दो बार' },
-    { pattern: /=\s*=/g, msg: 'double equals sign' },
-    { pattern: /\+\s*\+/g, msg: 'double plus sign' },
-    { pattern: /\s{3,}/g, msg: 'multiple spaces' }
-  ];
-
-  // ============ GET CURRENT EXAM ============
-  function getCurrentExam(){
-    var ex = (window.state && window.state.exam) || (window.AppState && window.AppState.exam);
-    if(ex === 'jee_mains' || ex === 'jee_adv') return ex;
-    var active = document.querySelector('.dr-item.on');
-    if(active){
-      var a = active.getAttribute('data-exam');
-      if(a === 'jee_mains' || a === 'jee_adv') return a;
-    }
-    return null;
-  }
-
-  // ============ ANALYZE ============
-  function ultraAnalyze(text, examKey){
-    var rules = JEE_ULTRA[examKey];
-    if(!rules) return null;
-
-    var lower = text.toLowerCase();
-    var words = text.split(/\s+/).filter(function(w){ return w.length > 0; });
-    var wc = words.length;
-    var lines = text.split('\n').filter(function(l){ return l.trim().length > 0; });
-
-    var r = {
-      exam: rules.name,
-      examKey: examKey,
-      maxMarks: rules.maxMarks,
-      type: rules.type,
-      words: wc,
-      lines: lines.length,
-
-      elementsFound: [],
-      elementsMissing: [],
-      criticalMissing: [],
-
-      formulaCount: 0,
-      stepCount: 0,
-      numericalCount: 0,
-      unitsCount: 0,
-      derivationCount: 0,
-
-      subjectDetection: null,
-      grammarErrors: [],
-      weakPoints: [],
-
-      predictedMarks: 0,
-      qualityScore: 0,
-      grade: '',
-
-      marksBreakdown: {
-        approach: 0,
-        solution: 0,
-        accuracy: 0,
-        presentation: 0
-      }
-    };
-
-    // ========== 1. SUBJECT DETECTION ==========
-    r.subjectDetection = detectSubject(text);
-
-    // ========== 2. REQUIRED ELEMENTS CHECK ==========
-    rules.requiredElements.forEach(function(el){
-      var found = false;
-      try { found = el.test(text); } catch(e){}
-      if(found){
-        r.elementsFound.push({ name: el.name, weight: el.weight, critical: el.critical });
-      } else {
-        r.elementsMissing.push({ name: el.name, weight: el.weight, critical: el.critical });
-        if(el.critical) r.criticalMissing.push(el.name);
-      }
-    });
-
-    // ========== 3. COUNT KEY ITEMS ==========
-    r.formulaCount = (text.match(/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|F\s*=|E\s*=|V\s*=|P\s*=|mv|ma|½|1\/2/gi) || []).length;
-    r.stepCount = (text.match(/step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s/gi) || []).length;
-    r.numericalCount = (text.match(/\d+\.?\d*\s*[×xX*]?\s*10\^?-?\d*|\d+\.?\d*/g) || []).length;
-    r.unitsCount = (text.match(/newton|joule|watt|volt|ampere|kg|m\/s|meter|metre|second|kelvin|coulomb|ohm|hertz|km|cm|mm|mol/gi) || []).length;
-    r.derivationCount = (text.match(/deriv|व्युत्पन्न|integrat|d\/d|∂\/∂|∫|differenti/gi) || []).length;
-
-    // ========== 4. GRAMMAR ERRORS ==========
-    COMMON_ERRORS.forEach(function(err){
-      if(err.pattern.test(text)){
-        r.grammarErrors.push(err.msg);
-      }
-    });
-
-    // ========== 5. WEAK POINTS DETECTION ==========
-    if(r.formulaCount === 0) r.weakPoints.push('कोई formula नहीं मिला');
-    if(r.stepCount < 2) r.weakPoints.push('Solution कम steps में — step-by-step लिखें');
-    if(r.unitsCount === 0) r.weakPoints.push('Units नहीं लिखे — physics/chem में अनिवार्य');
-    if(wc < 30) r.weakPoints.push('Answer बहुत छोटा है');
-    if(!/\d+\.?\d*/i.test(text)) r.weakPoints.push('कोई numerical value नहीं');
-
-    if(examKey === 'jee_adv'){
-      if(r.derivationCount === 0) r.weakPoints.push('Derivation नहीं — Advanced में अनिवार्य');
-      if(r.stepCount < 3) r.weakPoints.push('Advanced के लिए 3+ steps चाहिए');
-    }
-
-    // ========== 6. MARKS CALCULATION ==========
-    // Approach Marks (30%)
-    var approachScore = 0;
-    if(r.elementsFound.find(e => e.name.indexOf('Given') > -1)) approachScore += 8;
-    if(r.elementsFound.find(e => e.name.indexOf('To Find') > -1)) approachScore += 6;
-    if(r.elementsFound.find(e => e.name.indexOf('Concept') > -1 || e.name.indexOf('Law') > -1)) approachScore += 8;
-    if(r.formulaCount >= 2) approachScore += 8;
-    else if(r.formulaCount >= 1) approachScore += 4;
-    var approachMarks = Math.round((approachScore / 30) * (rules.maxMarks * 0.3));
-
-    // Solution Marks (35%)
-    var solutionScore = 0;
-    if(r.stepCount >= 5) solutionScore += 15;
-    else if(r.stepCount >= 3) solutionScore += 10;
-    else if(r.stepCount >= 1) solutionScore += 5;
-    if(r.derivationCount >= 2) solutionScore += 12;
-    else if(r.derivationCount >= 1) solutionScore += 6;
-    if(examKey === 'jee_adv' && r.stepCount >= 4) solutionScore += 8;
-    var solutionMarks = Math.round((solutionScore / 35) * (rules.maxMarks * 0.35));
-
-    // Accuracy Marks (25%)
-    var accuracyScore = 0;
-    if(r.numericalCount >= 5) accuracyScore += 10;
-    else if(r.numericalCount >= 2) accuracyScore += 6;
-    if(r.unitsCount >= 3) accuracyScore += 8;
-    else if(r.unitsCount >= 1) accuracyScore += 4;
-    if(r.elementsFound.find(e => e.name.indexOf('Final') > -1)) accuracyScore += 7;
-    var accuracyMarks = Math.round((accuracyScore / 25) * (rules.maxMarks * 0.25));
-
-    // Presentation Marks (10%)
-    var presentationScore = 10;
-    presentationScore -= r.grammarErrors.length * 2;
-    presentationScore = Math.max(0, presentationScore);
-    var presentationMarks = Math.round((presentationScore / 10) * (rules.maxMarks * 0.1));
-
-    var totalMarks = approachMarks + solutionMarks + accuracyMarks + presentationMarks;
-    totalMarks = Math.min(totalMarks, rules.maxMarks);
-    r.predictedMarks = totalMarks;
-    r.qualityScore = Math.round((totalMarks / rules.maxMarks) * 100);
-
-    // Grade
-    if(r.qualityScore >= 85) r.grade = 'A+';
-    else if(r.qualityScore >= 70) r.grade = 'A';
-    else if(r.qualityScore >= 60) r.grade = 'B';
-    else if(r.qualityScore >= 50) r.grade = 'C';
-    else if(r.qualityScore >= 40) r.grade = 'D';
-    else r.grade = 'F';
-
-    r.marksBreakdown = {
-      approach: approachMarks,
-      solution: solutionMarks,
-      accuracy: accuracyMarks,
-      presentation: presentationMarks,
-      maxApproach: Math.round(rules.maxMarks * 0.3),
-      maxSolution: Math.round(rules.maxMarks * 0.35),
-      maxAccuracy: Math.round(rules.maxMarks * 0.25),
-      maxPresentation: Math.round(rules.maxMarks * 0.1)
-    };
-
-    return r;
-  }
-
-  // ============ RENDER ============
-  function renderJEEUltra(text){
-    var examKey = getCurrentExam();
-    if(!examKey) return null;
-
-    var r = ultraAnalyze(text, examKey);
-    if(!r) return null;
-
-    var qs = r.qualityScore;
-    var scoreColor = qs >= 70 ? '#27ae60' : (qs >= 50 ? '#f39c12' : '#e94560');
-
-    var h = '';
-
-    // Header
-    h += '<div style="background:linear-gradient(135deg,#0a1929,#8e44ad,#e94560);color:#fff;border-radius:14px;padding:18px;margin-bottom:14px;text-align:center">';
-    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2.5px;margin-bottom:6px">🔬 JEE ULTRA ANALYSIS</div>';
-    h += '<div style="font-size:15px;font-weight:900">' + r.exam + '</div>';
-    h += '<div style="font-size:11px;opacity:.85;margin-top:4px">' + r.type + ' | JEE Pattern Check</div>';
-    if(r.subjectDetection && r.subjectDetection.subject){
-      h += '<div style="display:inline-block;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;font-size:12px;font-weight:800;margin-top:8px">📚 Subject: ' + r.subjectDetection.subject + '</div>';
-    }
-    h += '</div>';
-
-    // Main Score
-    h += '<div style="background:linear-gradient(135deg,#fff8e1,#ffe8a3);border:3px solid ' + scoreColor + ';border-radius:16px;padding:20px;margin-bottom:14px;text-align:center">';
-    h += '<div style="font-size:10px;color:#b8860b;font-weight:800;letter-spacing:2px;margin-bottom:8px">📊 MARKS PREDICTION</div>';
-    h += '<div style="display:flex;justify-content:center;align-items:baseline;gap:6px;margin-bottom:8px">';
-    h += '<div style="font-size:64px;font-weight:900;color:' + scoreColor + ';line-height:1">' + r.predictedMarks + '</div>';
-    h += '<div style="font-size:24px;color:#999;font-weight:700">/ ' + r.maxMarks + '</div>';
-    h += '</div>';
-    h += '<div style="display:inline-block;background:' + scoreColor + ';color:#fff;padding:6px 20px;border-radius:20px;font-size:15px;font-weight:900;margin-bottom:10px">GRADE: ' + r.grade + '</div>';
-    h += '<div style="font-size:12px;color:#666;font-weight:700">Quality Score: ' + qs + '%</div>';
-    h += '<div style="height:10px;background:rgba(0,0,0,.1);border-radius:5px;overflow:hidden;margin-top:10px">';
-    h += '<div style="height:100%;width:' + qs + '%;background:linear-gradient(90deg,' + scoreColor + ',' + scoreColor + 'dd);border-radius:5px"></div>';
-    h += '</div>';
-    h += '</div>';
-
-    // Marks Breakdown
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
-    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
-    var breakdown = [
-      { name: '🎯 Approach (30%)', got: r.marksBreakdown.approach, max: r.marksBreakdown.maxApproach },
-      { name: '📝 Solution (35%)', got: r.marksBreakdown.solution, max: r.marksBreakdown.maxSolution },
-      { name: '✅ Accuracy (25%)', got: r.marksBreakdown.accuracy, max: r.marksBreakdown.maxAccuracy },
-      { name: '🎨 Presentation (10%)', got: r.marksBreakdown.presentation, max: r.marksBreakdown.maxPresentation }
-    ];
-    breakdown.forEach(function(b){
-      var bPct = Math.round((b.got / b.max) * 100);
-      var bColor = bPct >= 70 ? '#27ae60' : (bPct >= 40 ? '#f39c12' : '#e94560');
-      h += '<div style="margin-bottom:10px">';
-      h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
-      h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">' + b.name + '</span>';
-      h += '<span style="font-size:12px;font-weight:900;color:' + bColor + '">' + b.got + '/' + b.max + '</span>';
-      h += '</div>';
-      h += '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:' + bPct + '%;background:' + bColor + '"></div></div>';
-      h += '</div>';
-    });
-    h += '</div>';
-
-    // Critical Missing
-    if(r.criticalMissing.length > 0){
-      h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
-      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - JEE में ये अनिवार्य हैं</div>';
-      r.criticalMissing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
-        h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
-        h += '</div>';
-      });
-      h += '</div>';
-    }
-
-    // Element Check
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
-    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
-    r.elementsFound.forEach(function(el){
-      h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
-      h += '<span style="font-size:11.5px;font-weight:700;color:#1a1a2e">✓ ' + el.name + '</span>';
-      h += '<span style="font-size:10px;color:#27ae60;font-weight:800">+' + el.weight + '</span>';
-      h += '</div>';
-    });
-    r.elementsMissing.forEach(function(el){
-      h += '<div style="background:#ffe8e8;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
-      h += '<span style="font-size:11.5px;font-weight:700;color:#c0392b">✗ ' + el.name + '</span>';
-      h += '<span style="font-size:10px;color:#e94560;font-weight:800">-' + el.weight + '</span>';
-      h += '</div>';
-    });
-    h += '</div>';
-
-    // JEE Specific Stats
-    h += '<div style="background:#f0f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
-    h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📊 JEE Solution Stats</div>';
-    h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
-    var stats = [
-      { label: 'Formulas', value: r.formulaCount, color: r.formulaCount >= 2 ? '#27ae60' : '#e94560', ideal: '2+' },
-      { label: 'Steps', value: r.stepCount, color: r.stepCount >= 3 ? '#27ae60' : '#f39c12', ideal: '3+' },
-      { label: 'Numericals', value: r.numericalCount, color: r.numericalCount >= 3 ? '#27ae60' : '#f39c12', ideal: '3+' },
-      { label: 'Units', value: r.unitsCount, color: r.unitsCount >= 2 ? '#27ae60' : '#e94560', ideal: '2+' },
-      { label: 'Derivations', value: r.derivationCount, color: r.derivationCount >= 1 ? '#27ae60' : '#f39c12', ideal: '1+' },
-      { label: 'Words', value: r.words, color: '#2980b9', ideal: '50+' }
-    ];
-    stats.forEach(function(s){
-      h += '<div style="background:#fff;padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
-      h += '<div style="font-size:9px;color:#666;font-weight:700;margin-bottom:2px">' + s.label.toUpperCase() + '</div>';
-      h += '<div style="font-size:16px;font-weight:900;color:' + s.color + '">' + s.value + '</div>';
-      h += '<div style="font-size:9px;color:#999">Ideal: ' + s.ideal + '</div>';
-      h += '</div>';
-    });
-    h += '</div></div>';
-
-    // Grammar Errors
-    if(r.grammarErrors.length > 0){
-      h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
-      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Errors Found (' + r.grammarErrors.length + ')</div>';
-      r.grammarErrors.forEach(function(e){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
-      });
-      h += '</div>';
-    }
-
-    // Weak Points
-    if(r.weakPoints.length > 0){
-      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
-      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Points</div>';
-      r.weakPoints.forEach(function(p){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
-      });
-      h += '</div>';
-    }
-
-    // Action Plan
-    h += '<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:14px">';
-    h += '<div style="font-size:13px;font-weight:800;color:#2980b9;margin-bottom:10px">🎯 Action Plan</div>';
-
-    var actions = [];
-    r.criticalMissing.slice(0, 3).forEach(function(m){
-      actions.push({ priority: 'HIGH', text: m + ' ज़रूर जोड़ें' });
-    });
-    if(r.formulaCount === 0){
-      actions.push({ priority: 'HIGH', text: 'Relevant formula ज़रूर लिखें' });
-    }
-    if(r.unitsCount === 0){
-      actions.push({ priority: 'HIGH', text: 'SI units ज़रूर mention करें' });
-    }
-    if(r.stepCount < 3){
-      actions.push({ priority: 'MED', text: 'Solution को 3+ steps में लिखें' });
-    }
-    if(r.numericalCount < 3){
-      actions.push({ priority: 'MED', text: 'Numerical calculation ज़ोड़ें' });
-    }
-    if(examKey === 'jee_adv' && r.derivationCount === 0){
-      actions.push({ priority: 'HIGH', text: 'Derivation ज़रूर लिखें — JEE Advanced में अनिवार्य' });
-    }
-    if(r.grammarErrors.length > 0){
-      actions.push({ priority: 'MED', text: r.grammarErrors.length + ' errors ठीक करें' });
-    }
-
-    if(actions.length === 0){
-      h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:14px">🎉 Excellent! कोई major issue नहीं</div>';
-    } else {
-      actions.forEach(function(a){
-        var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
-        h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
-        h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
-        h += '</div>';
-      });
-    }
-    h += '</div>';
-
-    return h;
-  }
-
-  // ============ HOOK ============
-  function hook(){
-    if(typeof window.showResult === 'function' && !window.showResult._jeeUltraHooked){
-      var orig = window.showResult;
-      window.showResult = function(r){
-        var res = orig.apply(this, arguments);
-        setTimeout(function(){
-          try{
-            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
-            if(!text || text.length < 30){
-              var ta = document.getElementById('ansInput');
-              if(ta) text = ta.value;
-            }
-            if(text && text.length >= 20){
-              var det = renderJEEUltra(text);
-              if(det){
-                var resBody = document.getElementById('resBody');
-                if(resBody){
-                  var w = document.createElement('div');
-                  w.innerHTML = det;
-                  resBody.insertBefore(w, resBody.firstChild);
-                  console.log('✅ JEE Ultra detection added');
-                }
-              }
-            }
-          } catch(e){ console.log('JEE Ultra err:', e); }
-        }, 200);
-        return res;
-      };
-      window.showResult._jeeUltraHooked = true;
-    }
-
-    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._jeeUltraHooked){
-      var orig2 = window.showDirectResult;
-      window.showDirectResult = function(text, rtu){
-        var res = orig2.apply(this, arguments);
-        setTimeout(function(){
-          try{
-            if(text && text.length >= 20){
-              var det = renderJEEUltra(text);
-              if(det){
-                var resBody = document.getElementById('resBody');
-                if(resBody){
-                  var w = document.createElement('div');
-                  w.innerHTML = det;
-                  resBody.insertBefore(w, resBody.firstChild);
-                }
-              }
-            }
-          } catch(e){}
-        }, 200);
-        return res;
-      };
-      window.showDirectResult._jeeUltraHooked = true;
-    }
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
-  } else {
-    setTimeout(hook, 500);
-  }
-  setTimeout(hook, 1500);
-  setTimeout(hook, 3000);
-  setTimeout(hook, 5000);
-
-  console.log('✅ JEE Ultra Examiner ready');
-})();
-</script>
 
 
 
@@ -8883,6 +8411,481 @@ console.log('✅ Fix JS loaded');
   setTimeout(hook, 5000);
 
   console.log('✅ BA/MA Ultra ready');
+})();
+</script>
+
+
+<script>
+// ==================== JEE ULTRA EXAMINER DETECTION ====================
+(function(){
+  'use strict';
+  console.log('=== JEE Ultra loading ===');
+
+  // ============ JEE STRICT RULES ============
+  var JEE_ULTRA = {
+    jee_mains: {
+      name: 'JEE Mains',
+      maxMarks: 100,
+      type: 'Objective + Numerical',
+      requiredElements: [
+        { name: 'Given Data / दिया गया', test: function(t){ return /given|दिया गया|दिया है|provided|data/i.test(t); }, weight: 8, critical: true },
+        { name: 'To Find / ज्ञात करना', test: function(t){ return /to find|ज्ञात करना|find out|calculate|determine|निकालें/i.test(t); }, weight: 7, critical: true },
+        { name: 'Formula Used / सूत्र', test: function(t){ return /[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|F\s*=|E\s*=|V\s*=|P\s*=|mv|ma|½|1\/2/i.test(t); }, weight: 15, critical: true },
+        { name: 'Step-by-Step Solution', test: function(t){ return /step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s.*[1-9][\.\)]\s/i.test(t); }, weight: 12, critical: true },
+        { name: 'Numerical Calculation', test: function(t){ return /\d+\.?\d*\s*[×xX*]\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|kg|N|J|V|A|W|Hz|Ω|°C|K)/i.test(t); }, weight: 12, critical: true },
+        { name: 'Units Mentioned', test: function(t){ return /newton|joule|watt|volt|ampere|meter|metre|second|kelvin|coulomb|ohm|hertz|km|cm|mm|kg|mol/i.test(t); }, weight: 10, critical: true },
+        { name: 'Concept/Law Used', test: function(t){ return /law|नियम|principle|सिद्धांत|theorem|conservation|संरक्षण|equation|समीकरण/i.test(t); }, weight: 12, critical: false },
+        { name: 'Final Answer', test: function(t){ return /answer|उत्तर|result|परिणाम|∴|hence|therefore|इसलिए|final|अंतिम/i.test(t); }, weight: 12, critical: true },
+        { name: 'Dimensional Check', test: function(t){ return /dimension|विमीय|SI\s*unit|SI\s*मात्रक|unit.*check/i.test(t); }, weight: 6, critical: false }
+      ]
+    },
+    jee_adv: {
+      name: 'JEE Advanced',
+      maxMarks: 100,
+      type: 'Advanced Multi-step',
+      requiredElements: [
+        { name: 'Given + Assumptions', test: function(t){ return /given|दिया गया|assume|मान लें|let|suppose/i.test(t); }, weight: 8, critical: true },
+        { name: 'To Find / Prove', test: function(t){ return /to find|ज्ञात करना|prove|सिद्ध|derive|determine|calculate/i.test(t); }, weight: 7, critical: true },
+        { name: 'Concept/Theory Used', test: function(t){ return /law|नियम|principle|सिद्धांत|theorem|concept|अवधारणा|postulate|formula/i.test(t); }, weight: 12, critical: true },
+        { name: 'Mathematical Derivation', test: function(t){ return /deriv|व्युत्पन्न|integrat|समाकलन|differenti|अवकलन|d\/d|∂\/∂|∫|Σ/i.test(t); }, weight: 15, critical: true },
+        { name: 'Multi-Step Solution', test: function(t){ return /step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|\(iv\)|first|second|third|[1-9][\.\)]\s.*[1-9][\.\)]\s.*[1-9][\.\)]/i.test(t); }, weight: 15, critical: true },
+        { name: 'Boundary Conditions', test: function(t){ return /boundary|limit|सीमा|condition|प्रतिबंध|range|constraint|when\s|x\s*→|t\s*→|at\s*t\s*=|at\s*x\s*=/i.test(t); }, weight: 10, critical: false },
+        { name: 'Special Cases Analysis', test: function(t){ return /special case|विशेष स्थिति|if\s|when\s|case\s*\d|assume|मान लें/i.test(t); }, weight: 10, critical: false },
+        { name: 'Numerical Calculation', test: function(t){ return /\d+\.?\d*\s*[×xX*]\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|N|J|V|A|W|Ω|Hz)/i.test(t); }, weight: 10, critical: true },
+        { name: 'Multiple Methods', test: function(t){ return /method|विधि|approach|तरीका|alternate|वैकल्पिक|or\s|another\s*way/i.test(t); }, weight: 8, critical: false },
+        { name: 'Final Answer + Reasoning', test: function(t){ return /answer|उत्तर|result|∴|hence|therefore|इसलिए|conclusion|निष्कर्ष|justif|सिद्ध/i.test(t); }, weight: 10, critical: true }
+      ]
+    }
+  };
+
+  // ============ SUBJECT DETECTION ============
+  function detectSubject(text){
+    var lower = text.toLowerCase();
+    var scores = { Physics: 0, Chemistry: 0, Mathematics: 0, Biology: 0 };
+    var keywords = {
+      Physics: ['newton','force','velocity','acceleration','momentum','energy','wave','optics','electric','magnetic','current','voltage','resistance','capacitor','inductor','gravity','friction','pressure','thermodynamic','quantum','photon','electron','proton','neutron'],
+      Chemistry: ['reaction','molecule','atom','bond','acid','base','organic','inorganic','periodic','mole','molar','oxidation','reduction','electro','polymer','hydrocarbon','aldehyde','ketone','alcohol','ester','benzene','alkane','alkene','alkyne'],
+      Mathematics: ['integral','derivative','matrix','vector','probability','calculus','algebra','trigonometry','function','limit','continuity','differentiation','integration','permutation','combination','binomial','complex number','logarithm'],
+      Biology: ['dna','rna','cell','gene','protein','enzyme','photosynthesis','respiration','chromosome','mitosis','meiosis','ecosystem','biodiversity','nervous','digestive']
+    };
+    for(var sub in keywords){
+      keywords[sub].forEach(function(k){
+        if(lower.indexOf(k) !== -1) scores[sub]++;
+      });
+    }
+    var best = null, max = 0;
+    for(var s in scores){
+      if(scores[s] > max){ max = scores[s]; best = s; }
+    }
+    return { subject: best, scores: scores };
+  }
+
+  // ============ GRAMMAR/COMMON ERRORS ============
+  var COMMON_ERRORS = [
+    { pattern: /(\w+)\s+\1/gi, msg: 'दोहराव — same word दो बार' },
+    { pattern: /=\s*=/g, msg: 'double equals sign' },
+    { pattern: /\+\s*\+/g, msg: 'double plus sign' },
+    { pattern: /\s{3,}/g, msg: 'multiple spaces' }
+  ];
+
+  // ============ GET CURRENT EXAM ============
+  function getCurrentExam(){
+    var ex = (window.state && window.state.exam) || (window.AppState && window.AppState.exam);
+    if(ex === 'jee_mains' || ex === 'jee_adv') return ex;
+    var active = document.querySelector('.dr-item.on');
+    if(active){
+      var a = active.getAttribute('data-exam');
+      if(a === 'jee_mains' || a === 'jee_adv') return a;
+    }
+    return null;
+  }
+
+  // ============ ANALYZE ============
+  function ultraAnalyze(text, examKey){
+    var rules = JEE_ULTRA[examKey];
+    if(!rules) return null;
+
+    var lower = text.toLowerCase();
+    var words = text.split(/\s+/).filter(function(w){ return w.length > 0; });
+    var wc = words.length;
+    var lines = text.split('\n').filter(function(l){ return l.trim().length > 0; });
+
+    var r = {
+      exam: rules.name,
+      examKey: examKey,
+      maxMarks: rules.maxMarks,
+      type: rules.type,
+      words: wc,
+      lines: lines.length,
+
+      elementsFound: [],
+      elementsMissing: [],
+      criticalMissing: [],
+
+      formulaCount: 0,
+      stepCount: 0,
+      numericalCount: 0,
+      unitsCount: 0,
+      derivationCount: 0,
+
+      subjectDetection: null,
+      grammarErrors: [],
+      weakPoints: [],
+
+      predictedMarks: 0,
+      qualityScore: 0,
+      grade: '',
+
+      marksBreakdown: {
+        approach: 0,
+        solution: 0,
+        accuracy: 0,
+        presentation: 0
+      }
+    };
+
+    // ========== 1. SUBJECT DETECTION ==========
+    r.subjectDetection = detectSubject(text);
+
+    // ========== 2. REQUIRED ELEMENTS CHECK ==========
+    rules.requiredElements.forEach(function(el){
+      var found = false;
+      try { found = el.test(text); } catch(e){}
+      if(found){
+        r.elementsFound.push({ name: el.name, weight: el.weight, critical: el.critical });
+      } else {
+        r.elementsMissing.push({ name: el.name, weight: el.weight, critical: el.critical });
+        if(el.critical) r.criticalMissing.push(el.name);
+      }
+    });
+
+    // ========== 3. COUNT KEY ITEMS ==========
+    r.formulaCount = (text.match(/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|F\s*=|E\s*=|V\s*=|P\s*=|mv|ma|½|1\/2/gi) || []).length;
+    r.stepCount = (text.match(/step\s*\d|चरण\s*\d|\(i\)|\(ii\)|\(iii\)|[1-9][\.\)]\s/gi) || []).length;
+    r.numericalCount = (text.match(/\d+\.?\d*\s*[×xX*]?\s*10\^?-?\d*|\d+\.?\d*/g) || []).length;
+    r.unitsCount = (text.match(/newton|joule|watt|volt|ampere|kg|m\/s|meter|metre|second|kelvin|coulomb|ohm|hertz|km|cm|mm|mol/gi) || []).length;
+    r.derivationCount = (text.match(/deriv|व्युत्पन्न|integrat|d\/d|∂\/∂|∫|differenti/gi) || []).length;
+
+    // ========== 4. GRAMMAR ERRORS ==========
+    COMMON_ERRORS.forEach(function(err){
+      if(err.pattern.test(text)){
+        r.grammarErrors.push(err.msg);
+      }
+    });
+
+    // ========== 5. WEAK POINTS DETECTION ==========
+    if(r.formulaCount === 0) r.weakPoints.push('कोई formula नहीं मिला');
+    if(r.stepCount < 2) r.weakPoints.push('Solution कम steps में — step-by-step लिखें');
+    if(r.unitsCount === 0) r.weakPoints.push('Units नहीं लिखे — physics/chem में अनिवार्य');
+    if(wc < 30) r.weakPoints.push('Answer बहुत छोटा है');
+    if(!/\d+\.?\d*/i.test(text)) r.weakPoints.push('कोई numerical value नहीं');
+
+    if(examKey === 'jee_adv'){
+      if(r.derivationCount === 0) r.weakPoints.push('Derivation नहीं — Advanced में अनिवार्य');
+      if(r.stepCount < 3) r.weakPoints.push('Advanced के लिए 3+ steps चाहिए');
+    }
+
+    // ========== 6. MARKS CALCULATION ==========
+    // Approach Marks (30%)
+    var approachScore = 0;
+    if(r.elementsFound.find(e => e.name.indexOf('Given') > -1)) approachScore += 8;
+    if(r.elementsFound.find(e => e.name.indexOf('To Find') > -1)) approachScore += 6;
+    if(r.elementsFound.find(e => e.name.indexOf('Concept') > -1 || e.name.indexOf('Law') > -1)) approachScore += 8;
+    if(r.formulaCount >= 2) approachScore += 8;
+    else if(r.formulaCount >= 1) approachScore += 4;
+    var approachMarks = Math.round((approachScore / 30) * (rules.maxMarks * 0.3));
+
+    // Solution Marks (35%)
+    var solutionScore = 0;
+    if(r.stepCount >= 5) solutionScore += 15;
+    else if(r.stepCount >= 3) solutionScore += 10;
+    else if(r.stepCount >= 1) solutionScore += 5;
+    if(r.derivationCount >= 2) solutionScore += 12;
+    else if(r.derivationCount >= 1) solutionScore += 6;
+    if(examKey === 'jee_adv' && r.stepCount >= 4) solutionScore += 8;
+    var solutionMarks = Math.round((solutionScore / 35) * (rules.maxMarks * 0.35));
+
+    // Accuracy Marks (25%)
+    var accuracyScore = 0;
+    if(r.numericalCount >= 5) accuracyScore += 10;
+    else if(r.numericalCount >= 2) accuracyScore += 6;
+    if(r.unitsCount >= 3) accuracyScore += 8;
+    else if(r.unitsCount >= 1) accuracyScore += 4;
+    if(r.elementsFound.find(e => e.name.indexOf('Final') > -1)) accuracyScore += 7;
+    var accuracyMarks = Math.round((accuracyScore / 25) * (rules.maxMarks * 0.25));
+
+    // Presentation Marks (10%)
+    var presentationScore = 10;
+    presentationScore -= r.grammarErrors.length * 2;
+    presentationScore = Math.max(0, presentationScore);
+    var presentationMarks = Math.round((presentationScore / 10) * (rules.maxMarks * 0.1));
+
+    var totalMarks = approachMarks + solutionMarks + accuracyMarks + presentationMarks;
+    totalMarks = Math.min(totalMarks, rules.maxMarks);
+    r.predictedMarks = totalMarks;
+    r.qualityScore = Math.round((totalMarks / rules.maxMarks) * 100);
+
+    // Grade
+    if(r.qualityScore >= 85) r.grade = 'A+';
+    else if(r.qualityScore >= 70) r.grade = 'A';
+    else if(r.qualityScore >= 60) r.grade = 'B';
+    else if(r.qualityScore >= 50) r.grade = 'C';
+    else if(r.qualityScore >= 40) r.grade = 'D';
+    else r.grade = 'F';
+
+    r.marksBreakdown = {
+      approach: approachMarks,
+      solution: solutionMarks,
+      accuracy: accuracyMarks,
+      presentation: presentationMarks,
+      maxApproach: Math.round(rules.maxMarks * 0.3),
+      maxSolution: Math.round(rules.maxMarks * 0.35),
+      maxAccuracy: Math.round(rules.maxMarks * 0.25),
+      maxPresentation: Math.round(rules.maxMarks * 0.1)
+    };
+
+    return r;
+  }
+
+  // ============ RENDER ============
+  function renderJEEUltra(text){
+    var examKey = getCurrentExam();
+    if(!examKey) return null;
+
+    var r = ultraAnalyze(text, examKey);
+    if(!r) return null;
+
+    var qs = r.qualityScore;
+    var scoreColor = qs >= 70 ? '#27ae60' : (qs >= 50 ? '#f39c12' : '#e94560');
+
+    var h = '';
+
+    // Header
+    h += '<div style="background:linear-gradient(135deg,#0a1929,#8e44ad,#e94560);color:#fff;border-radius:14px;padding:18px;margin-bottom:14px;text-align:center">';
+    h += '<div style="font-size:10px;color:#FDBA3B;font-weight:800;letter-spacing:2.5px;margin-bottom:6px">🔬 JEE ULTRA ANALYSIS</div>';
+    h += '<div style="font-size:15px;font-weight:900">' + r.exam + '</div>';
+    h += '<div style="font-size:11px;opacity:.85;margin-top:4px">' + r.type + ' | JEE Pattern Check</div>';
+    if(r.subjectDetection && r.subjectDetection.subject){
+      h += '<div style="display:inline-block;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:12px;font-size:12px;font-weight:800;margin-top:8px">📚 Subject: ' + r.subjectDetection.subject + '</div>';
+    }
+    h += '</div>';
+
+    // Main Score
+    h += '<div style="background:linear-gradient(135deg,#fff8e1,#ffe8a3);border:3px solid ' + scoreColor + ';border-radius:16px;padding:20px;margin-bottom:14px;text-align:center">';
+    h += '<div style="font-size:10px;color:#b8860b;font-weight:800;letter-spacing:2px;margin-bottom:8px">📊 MARKS PREDICTION</div>';
+    h += '<div style="display:flex;justify-content:center;align-items:baseline;gap:6px;margin-bottom:8px">';
+    h += '<div style="font-size:64px;font-weight:900;color:' + scoreColor + ';line-height:1">' + r.predictedMarks + '</div>';
+    h += '<div style="font-size:24px;color:#999;font-weight:700">/ ' + r.maxMarks + '</div>';
+    h += '</div>';
+    h += '<div style="display:inline-block;background:' + scoreColor + ';color:#fff;padding:6px 20px;border-radius:20px;font-size:15px;font-weight:900;margin-bottom:10px">GRADE: ' + r.grade + '</div>';
+    h += '<div style="font-size:12px;color:#666;font-weight:700">Quality Score: ' + qs + '%</div>';
+    h += '<div style="height:10px;background:rgba(0,0,0,.1);border-radius:5px;overflow:hidden;margin-top:10px">';
+    h += '<div style="height:100%;width:' + qs + '%;background:linear-gradient(90deg,' + scoreColor + ',' + scoreColor + 'dd);border-radius:5px"></div>';
+    h += '</div>';
+    h += '</div>';
+
+    // Marks Breakdown
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
+    var breakdown = [
+      { name: '🎯 Approach (30%)', got: r.marksBreakdown.approach, max: r.marksBreakdown.maxApproach },
+      { name: '📝 Solution (35%)', got: r.marksBreakdown.solution, max: r.marksBreakdown.maxSolution },
+      { name: '✅ Accuracy (25%)', got: r.marksBreakdown.accuracy, max: r.marksBreakdown.maxAccuracy },
+      { name: '🎨 Presentation (10%)', got: r.marksBreakdown.presentation, max: r.marksBreakdown.maxPresentation }
+    ];
+    breakdown.forEach(function(b){
+      var bPct = Math.round((b.got / b.max) * 100);
+      var bColor = bPct >= 70 ? '#27ae60' : (bPct >= 40 ? '#f39c12' : '#e94560');
+      h += '<div style="margin-bottom:10px">';
+      h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
+      h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">' + b.name + '</span>';
+      h += '<span style="font-size:12px;font-weight:900;color:' + bColor + '">' + b.got + '/' + b.max + '</span>';
+      h += '</div>';
+      h += '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:' + bPct + '%;background:' + bColor + '"></div></div>';
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // Critical Missing
+    if(r.criticalMissing.length > 0){
+      h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - JEE में ये अनिवार्य हैं</div>';
+      r.criticalMissing.forEach(function(m){
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Element Check
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
+    r.elementsFound.forEach(function(el){
+      h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<span style="font-size:11.5px;font-weight:700;color:#1a1a2e">✓ ' + el.name + '</span>';
+      h += '<span style="font-size:10px;color:#27ae60;font-weight:800">+' + el.weight + '</span>';
+      h += '</div>';
+    });
+    r.elementsMissing.forEach(function(el){
+      h += '<div style="background:#ffe8e8;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<span style="font-size:11.5px;font-weight:700;color:#c0392b">✗ ' + el.name + '</span>';
+      h += '<span style="font-size:10px;color:#e94560;font-weight:800">-' + el.weight + '</span>';
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // JEE Specific Stats
+    h += '<div style="background:#f0f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
+    h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📊 JEE Solution Stats</div>';
+    h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
+    var stats = [
+      { label: 'Formulas', value: r.formulaCount, color: r.formulaCount >= 2 ? '#27ae60' : '#e94560', ideal: '2+' },
+      { label: 'Steps', value: r.stepCount, color: r.stepCount >= 3 ? '#27ae60' : '#f39c12', ideal: '3+' },
+      { label: 'Numericals', value: r.numericalCount, color: r.numericalCount >= 3 ? '#27ae60' : '#f39c12', ideal: '3+' },
+      { label: 'Units', value: r.unitsCount, color: r.unitsCount >= 2 ? '#27ae60' : '#e94560', ideal: '2+' },
+      { label: 'Derivations', value: r.derivationCount, color: r.derivationCount >= 1 ? '#27ae60' : '#f39c12', ideal: '1+' },
+      { label: 'Words', value: r.words, color: '#2980b9', ideal: '50+' }
+    ];
+    stats.forEach(function(s){
+      h += '<div style="background:#fff;padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
+      h += '<div style="font-size:9px;color:#666;font-weight:700;margin-bottom:2px">' + s.label.toUpperCase() + '</div>';
+      h += '<div style="font-size:16px;font-weight:900;color:' + s.color + '">' + s.value + '</div>';
+      h += '<div style="font-size:9px;color:#999">Ideal: ' + s.ideal + '</div>';
+      h += '</div>';
+    });
+    h += '</div></div>';
+
+    // Grammar Errors
+    if(r.grammarErrors.length > 0){
+      h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Errors Found (' + r.grammarErrors.length + ')</div>';
+      r.grammarErrors.forEach(function(e){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Weak Points
+    if(r.weakPoints.length > 0){
+      h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
+      h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Points</div>';
+      r.weakPoints.forEach(function(p){
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // Action Plan
+    h += '<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:14px">';
+    h += '<div style="font-size:13px;font-weight:800;color:#2980b9;margin-bottom:10px">🎯 Action Plan</div>';
+
+    var actions = [];
+    r.criticalMissing.slice(0, 3).forEach(function(m){
+      actions.push({ priority: 'HIGH', text: m + ' ज़रूर जोड़ें' });
+    });
+    if(r.formulaCount === 0){
+      actions.push({ priority: 'HIGH', text: 'Relevant formula ज़रूर लिखें' });
+    }
+    if(r.unitsCount === 0){
+      actions.push({ priority: 'HIGH', text: 'SI units ज़रूर mention करें' });
+    }
+    if(r.stepCount < 3){
+      actions.push({ priority: 'MED', text: 'Solution को 3+ steps में लिखें' });
+    }
+    if(r.numericalCount < 3){
+      actions.push({ priority: 'MED', text: 'Numerical calculation ज़ोड़ें' });
+    }
+    if(examKey === 'jee_adv' && r.derivationCount === 0){
+      actions.push({ priority: 'HIGH', text: 'Derivation ज़रूर लिखें — JEE Advanced में अनिवार्य' });
+    }
+    if(r.grammarErrors.length > 0){
+      actions.push({ priority: 'MED', text: r.grammarErrors.length + ' errors ठीक करें' });
+    }
+
+    if(actions.length === 0){
+      h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:14px">🎉 Excellent! कोई major issue नहीं</div>';
+    } else {
+      actions.forEach(function(a){
+        var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
+        h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
+        h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
+        h += '</div>';
+      });
+    }
+    h += '</div>';
+
+    return h;
+  }
+
+  // ============ HOOK ============
+  function hook(){
+    if(typeof window.showResult === 'function' && !window.showResult._jeeUltraHooked){
+      var orig = window.showResult;
+      window.showResult = function(r){
+        var res = orig.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            var text = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+            if(!text || text.length < 30){
+              var ta = document.getElementById('ansInput');
+              if(ta) text = ta.value;
+            }
+            if(text && text.length >= 20){
+              var det = renderJEEUltra(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                  console.log('✅ JEE Ultra detection added');
+                }
+              }
+            }
+          } catch(e){ console.log('JEE Ultra err:', e); }
+        }, 200);
+        return res;
+      };
+      window.showResult._jeeUltraHooked = true;
+    }
+
+    if(typeof window.showDirectResult === 'function' && !window.showDirectResult._jeeUltraHooked){
+      var orig2 = window.showDirectResult;
+      window.showDirectResult = function(text, rtu){
+        var res = orig2.apply(this, arguments);
+        setTimeout(function(){
+          try{
+            if(text && text.length >= 20){
+              var det = renderJEEUltra(text);
+              if(det){
+                var resBody = document.getElementById('resBody');
+                if(resBody){
+                  var w = document.createElement('div');
+                  w.innerHTML = det;
+                  resBody.insertBefore(w, resBody.firstChild);
+                }
+              }
+            }
+          } catch(e){}
+        }, 200);
+        return res;
+      };
+      window.showDirectResult._jeeUltraHooked = true;
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(hook, 500); });
+  } else {
+    setTimeout(hook, 500);
+  }
+  setTimeout(hook, 1500);
+  setTimeout(hook, 3000);
+  setTimeout(hook, 5000);
+
+  console.log('✅ JEE Ultra Examiner ready');
 })();
 </script>
 
