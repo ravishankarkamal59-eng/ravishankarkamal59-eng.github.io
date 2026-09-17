@@ -4795,6 +4795,22 @@ console.log('✅ Fix JS loaded');
       if(t.indexOf('JEE Mains') > -1) return 'jee_mains';
       if(t.indexOf('JEE Advanced') > -1) return 'jee_adv';
     }
+    
+    // ============ AUTO-DETECT JEE FROM TEXT ============
+    var _txt = (window.state && window.state.currentText) || (window.acxPdfText) || '';
+    if(!_txt){
+      var _ta = document.getElementById('ansInput');
+      if(_ta) _txt = _ta.value || '';
+    }
+    if(_txt && _txt.length > 30){
+      var _t = _txt.toLowerCase();
+      var _isJEE = /formula|equation|derive|integral|derivative|velocity|acceleration|force|energy|momentum|newton|joule|volt|ampere|molecule|reaction|matrix|vector|calculus|chemistry|physics/i.test(_txt);
+      var _advSig = /derivation|व्युत्पन्न|multi.?step|boundary condition|special case|JEE Advanced/i.test(_txt);
+      if(_isJEE){
+        console.log('🎯 Auto-detected JEE from text');
+        return _advSig ? 'jee_adv' : 'jee_mains';
+      }
+    }
     return null;
   }
 
