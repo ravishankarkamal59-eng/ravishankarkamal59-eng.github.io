@@ -259,8 +259,8 @@
     "name": "UPPCS",
     "notes": [
       {
-        "title": "UPPCS GS5 - उत्तर प्रदेश विशेष Complete Notes _ The Ravishankar Insights.p",
-        "link": "https://ravishankarkamal59-eng.github.io/resources/uppcs/notes/1789721206886-uppcs-gs5-complete-notes-the-ravishankar-insights.pdf",
+        "title": "The Ravishankar Insights — Notes.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/uppcs/notes/1789721182979-the-ravishankar-insights-notes.pdf",
         "type": "PDF"
       }
     ],
@@ -790,7 +790,13 @@
   },
   "uppcs-mains-gs5": {
     "name": "UPPCS Mains GS Paper 5",
-    "notes": [],
+    "notes": [
+      {
+        "title": "UPPCS GS5 - उत्तर प्रदेश विशेष Complete Notes _ The Ravishankar Insights",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/uppcs-mains-gs5/notes/1789721246337-uppcs-gs5-complete-notes-the-ravishankar-insights-1-.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
