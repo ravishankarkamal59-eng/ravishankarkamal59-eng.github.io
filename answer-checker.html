@@ -9326,254 +9326,284 @@ console.log('✅ Fix JS loaded');
 
 
 
+
 <script>
 (function(){
   'use strict';
-  console.log('🎯 Multi-Exam Panels v14 loading...');
+  console.log('🎯 v15: UPSC Full Examiner loading...');
 
-  // ===== Reuse DBs from before (shortened) =====
-  var UPPCS={gs1:{name:'UPPCS GS Paper 1',icon:'📜',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact|विश्लेषण/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i}},pts:[{w:8,n:'UP History',r:/उत्तर प्रदेश|अवध|1857|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश/i,s:'UP history'},{w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|तुलसीदास|कबीर/i,s:'UP culture'},{w:7,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|बुंदेलखंड|रोहिलखंड|मानसून/i,s:'UP geography'},{w:7,n:'UP Society',r:/समाज|जाति|वर्ग|महिला|किसान|ग्रामीण|शहरीकरण|दलित/i,s:'UP society'},{w:6,n:'UP Data',r:/\d+%|\d{4}|Census|जनसंख्या|\d+\s*(करोड़|lakh|लाख)/i,s:'UP data'},{w:6,n:'UP Example',r:/उदाहरण|example|जैसे|UP में/i,s:'UP example'},{w:6,n:'UP Scheme',r:/योजना|scheme|policy|मिशन|मुख्यमंत्री|CM/i,s:'UP scheme'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर/i.test(x);},m:'⚠️ UP-specific reference नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/\d+%|\d{4}|report|census/i.test(x);},m:'❌ कोई data नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs2:{name:'UPPCS GS Paper 2',icon:'🏛️',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'Constitutional Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|amendment|73rd|74th|पंचायत/i,s:'अनुच्छेद'},{w:8,n:'UP Governance',r:/उत्तर प्रदेश|UP|राज्यपाल|मुख्यमंत्री|CM|विधानसभा|पंचायत|नगर निगम|जिला|मंडल/i,s:'UP governance'},{w:7,n:'UP Polity',r:/विधानसभा|विधान परिषद|MLC|MLA|मुख्यमंत्री|स्पीकर|DM|SP/i,s:'UP polity'},{w:6,n:'Committee',r:/committee|समिति|commission|आयोग|report|NITI|ARC/i,s:'Committee'},{w:7,n:'Governance',r:/शासन|governance|प्रशासन|accountability|transparency|e-gov|reform|सुधार/i,s:'Governance'},{w:6,n:'Federal',r:/federal|संघीय|राज्य|state|center|केंद्र|समवर्ती/i,s:'Federal'},{w:6,n:'Example',r:/उदाहरण|example|जैसे|UP में/i,s:'UP example'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|विधानसभा|पंचायत|मंडल/i.test(x);},m:'⚠️ UP-specific reference नहीं'},{t:function(x){return !/अनुच्छेद|article|संविधान|constitution/i.test(x);},m:'❌ संविधान/अनुच्छेद नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs3:{name:'UPPCS GS Paper 3',icon:'💰',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'UP Economy',r:/GSDP|GDP|UP|उत्तर प्रदेश|अर्थव्यवस्था|economy|निवेश|बजट|budget|\d+%/i,s:'UP economy'},{w:8,n:'UP Agriculture',r:/कृषि|agriculture|किसान|फसल|गेहूं|गन्ना|चीनी|धान|सिंचाई|उर्वरक/i,s:'UP कृषि'},{w:7,n:'UP Industry',r:/उद्योग|industry|MSME|व्यापार|निवेश|रोजगार|ODOP|एक जनपद/i,s:'UP उद्योग'},{w:7,n:'UP Environment',r:/पर्यावरण|environment|गंगा|नमामि गंगे|प्रदूषण|pollution|वन|forest/i,s:'UP env'},{w:6,n:'UP Sci/Tech',r:/technology|तकनीक|IT|digital|नवाचार|innovation|defence corridor|रक्षा|DRDO/i,s:'UP IT'},{w:6,n:'UP Scheme',r:/मुख्यमंत्री|CM|योजना|scheme|mission|मिशन/i,s:'UP scheme'},{w:6,n:'UP Example',r:/उदाहरण|example|जैसे|UP में|\d+%/i,s:'UP example'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|गन्ना|गेहूं/i.test(x);},m:'⚠️ UP-specific reference नहीं'},{t:function(x){return !/\d+%|GSDP|GDP|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},{t:function(x){return !/योजना|scheme|mission|मिशन/i.test(x);},m:'❌ Scheme नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs4:{name:'UPPCS GS Paper 4 (Ethics)',icon:'⚖️',max:15,st:{intro:{w:15,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma|दुविधा/i},concl:{w:20,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward/i}},pts:[{w:9,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant|अहिंसा/i,s:'Ethical concept'},{w:8,n:'Case Study',r:/case|केस|situation|दुविधा|dilemma|stakeholder|option|विकल्प/i,s:'Case study'},{w:7,n:'Values',r:/मूल्य|value|honesty|सत्य|empathy|justice|न्याय|equality/i,s:'Values'},{w:7,n:'UP Public Service',r:/उत्तर प्रदेश|UP|लोक सेवक|civil servant|जवाबदेही|पारदर्शिता/i,s:'UP public service'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Const. morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real example'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected/i,s:'Stakeholders'},{w:10,n:'Solution/Decision',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई/i,s:'Final decision'}],bad:[{t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य/i.test(x);},m:'❌ Ethical concept नहीं'},{t:function(x){return !/case|केस|situation|dilemma|दुविधा|stakeholder/i.test(x);},m:'❌ Case analysis नहीं'},{t:function(x){return !/solution|समाधान|decision|निर्णय/i.test(x);},m:'❌ Solution नहीं'},{t:function(x){return !/intro|परिचय|परिभाषा|definition/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs5:{name:'UPPCS GS Paper 5 (UP Special)',icon:'🌟',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:9,n:'UP History',r:/उत्तर प्रदेश|UP|अवध|1857|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश/i,s:'UP history'},{w:8,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|बुंदेलखंड|रोहिलखंड|अवध|पूर्वांचल/i,s:'UP geography'},{w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|तुलसीदास|कबीर/i,s:'UP culture'},{w:7,n:'UP Admin',r:/प्रशासन|administrative|जिला|मंडल|तहसील|पंचायत|नगर निगम|DM|SP/i,s:'UP admin'},{w:7,n:'UP Economy',r:/कृषि|agriculture|उद्योग|industry|व्यापार|GDP|GSDP|गन्ना|गेहूं/i,s:'UP economy'},{w:6,n:'UP Current',r:/20\d{2}|recent|हाल|current|अभी|नया|new|2023|2024|2025/i,s:'UP current'},{w:6,n:'UP Example',r:/उदाहरण|example|जैसे|UP में/i,s:'UP example'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|वाराणसी|प्रयागराज|अयोध्या|काशी/i.test(x);},m:'❌ UP-specific reference नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]}};
+  // ==================== UPSC FULL DATABASE ====================
+  var UPSC = {
+    gs1:{name:'UPSC GS Paper 1 — History/Culture/Geography/Society',icon:'📜',max:15,
+      st:{intro:{w:12,n:'Introduction (Context/Definition)',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि|context|संदर्भ|definition|परिभाषा|overview/i},
+          body:{w:42,n:'Main Body (Multi-dimensional Analysis)',r:/main|body|मुख्य|विवेचन|analysis|विश्लेषण|कारण|reason|impact|प्रभाव|कारक|factor|discuss|explain/i},
+          concl:{w:18,n:'Conclusion (Way Forward)',r:/conclusion|निष्कर्ष|way forward|आगे की राह|suggestion|सुझाव|summary|सारांश|निष्कर्षतः/i}},
+      pts:[
+        {w:8,n:'Historical Facts/Dates',r:/\b(1[0-9]{3}|20[0-2][0-9])\b|सन्|ईस्वी|AD|BC|1857|1947|मौर्य|गुप्त|मुगल|ब्रिटिश|वैदिक|हड़प्पा|सिंधु|स्वतंत्रता|आंदोलन|क्रांति|राजवंश|साम्राज्य/i,s:'ऐतिहासिक तिथि/कालखंड ज़रूर लिखें — 1857, 1947, मौर्य काल, हड़प्पा'},
+        {w:7,n:'Cultural Heritage/Art',r:/कला|संस्कृति|नृत्य|संगीत|मंदिर|शिलालेख|मूर्ति|heritage|विरासत|festival|त्योहार|भाषा|साहित्य|चित्रकला|architecture|मूर्तिकला/i,s:'Culture/Art का reference ज़रूर — नृत्य, संगीत, साहित्य, विरासत'},
+        {w:7,n:'Geographical Features',r:/नदी|पर्वत|मैदान|पठार|मानसून|जलवायु|मिट्टी|वनस्पति|खनिज|समुद्र|तट|river|mountain|plateau|monsoon|climate|हिमालय|विंध्य|अरावली|तटीय/i,s:'भौगोलिक feature ज़रूर mention करें'},
+        {w:8,n:'Social Dimensions',r:/समाज|सामाजिक|जाति|वर्ग|लिंग|महिला|दलित|आदिवासी|शहरीकरण|ग्रामीण|urbanization|gender|caste|tribe|women|धार्मिक|समुदाय|परिवार|शिक्षा|स्वास्थ्य/i,s:'सामाजिक पहलू — जाति, वर्ग, लिंग, शहरीकरण, महिला'},
+        {w:6,n:'Data/Statistics',r:/\d+%|\d+\s*(करोड़|crore|lakh|लाख|million|billion)|\d{4}|Census|सेंसस|NFHS|Report|रिपोर्ट|Index|सूचकांक|GDP|HDI|Ranks/i,s:'ताज़ा data जोड़ें — Census, NFHS, Economic Survey'},
+        {w:6,n:'Real Examples/Cases',r:/उदाहरण|example|जैसे|such as|for instance|case|केस|instance|जैसे कि|उदा/i,s:'Specific example/case study ज़रूर दें'},
+        {w:6,n:'Scheme/Policy',r:/योजना|scheme|policy|नीति|mission|अभियान|programme|कार्यक्रम|act|कानून|bill|विधेयक|initiative/i,s:'सरकारी योजना/नीति का नाम लिखें'},
+        {w:6,n:'Quotes/Thinkers',r:/[""][^""]{8,}[""]|quote|उद्धरण|Gandhi|Nehru|Ambedkar|Tagore|Vivekananda|Patel|कहा था|अनुसार|According to|Constitution|संविधान/i,s:'Constitution, thinker या quote जोड़ें'},
+        {w:7,n:'Multiple Perspectives',r:/however|but|हालांकि|लेकिन|on the other hand|दूसरी ओर|criticism|आलोचना|limitation|सीमा|challenge|चुनौती|advantage|लाभ|दोष|merit|demerit/i,s:'दूसरा पक्ष/आलोचना भी लिखें — balanced answer'},
+        {w:7,n:'Way Forward/Solutions',r:/way forward|आगे की राह|suggestion|सुझाव|recommend|solution|समाधान|measure|उपाय|reform|सुधार|future|भविष्य|initiative|पहल/i,s:'Way forward/suggestions ज़रूर दें'},
+        {w:5,n:'Current Relevance',r:/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान|आधुनिक|modern|नया|नई/i,s:'वर्तमान से link करें'},
+        {w:4,n:'Diagram/Map/Flowchart',r:/diagram|चित्र|map|नक्शा|flowchart|chart|graph|आकृति|figure/i,s:'Diagram/map/flowchart से marks बढ़ते हैं'}
+      ],
+      bad:[
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि/i.test(x);},m:'❌ Introduction नहीं — topic का context/background ज़रूर लिखें'},
+        {t:function(x){return !/conclusion|निष्कर्ष|way forward|आगे की राह|suggestion|सुझाव/i.test(x);},m:'❌ Conclusion/Way forward नहीं — अंत में निष्कर्ष अनिवार्य है'},
+        {t:function(x){return !/\b(1[0-9]{3}|20[0-2][0-9])\b|इतिहास|history|काल|युग|era|1857|1947/i.test(x);},m:'❌ ऐतिहासिक context नहीं — GS1 में historical background ज़रूरी है'},
+        {t:function(x){return !/\d+%|\d{4}|report|रिपोर्ट|census|index|सूचकांक|GDP|HDI/i.test(x);},m:'❌ कोई data/fact नहीं — UPSC में facts और figures से marks मिलते हैं'},
+        {t:function(x){return !/योजना|scheme|policy|नीति|mission|act|कानून/i.test(x);},m:'❌ कोई scheme/policy mention नहीं — government initiatives ज़रूर लिखें'},
+        {t:function(x){return !/उदाहरण|example|जैसे|such as|for instance|case/i.test(x);},m:'❌ कोई example/case study नहीं — हर मुद्दे के साथ उदाहरण दें'},
+        {t:function(x){return !/समाज|सामाजिक|जाति|वर्ग|महिला|शहरीकरण|ग्रामीण|social/i.test(x);},m:'❌ Social dimension नहीं — GS1 में social analysis ज़रूरी है'},
+        {t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ Answer बहुत छोटा — UPSC में 150-250 शब्द चाहिए'},
+        {t:function(x){return !/however|हालांकि|लेकिन|on the other hand|दूसरी ओर|criticism|आलोचना|limitation|सीमा/i.test(x);},m:'⚠️ सिर्फ एक पक्ष — दूसरा पक्ष/आलोचना भी लिखें'},
+        {t:function(x){return !/way forward|आगे की राह|suggestion|सुझाव|solution|समाधान|reform|सुधार/i.test(x);},m:'⚠️ Way forward/suggestions नहीं — अंत में उपाय ज़रूर दें'},
+        {t:function(x){return !/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान/i.test(x);},m:'⚠️ Current relevance नहीं — topic को आज से जोड़ें'},
+        {t:function(x){return !/[""][^""]{8,}[""]|कहा था|अनुसार|quote/i.test(x);},m:'⚠️ कोई quote/thinker नहीं — जहाँ संभव हो जोड़ें'}
+      ]},
 
-  var BPSC={gs1:{name:'BPSC GS Paper 1',icon:'📜',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact|विश्लेषण/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i}},pts:[{w:9,n:'Bihar History',r:/बिहार|Bihar|मगध|मौर्य|गुप्त|नालंदा|विक्रमशिला|पाटलिपुत्र|अशोक|शेरशाह|1857|चंपारण/i,s:'Bihar history'},{w:8,n:'Bihar Culture',r:/कला|संस्कृति|मधुबनी|छठ|मिथिला|मैथिली|भोजपुरी|मगही|बौद्ध|जैन|बोधगया/i,s:'Bihar culture'},{w:7,n:'Bihar Geography',r:/गंगा|गंडक|कोसी|सोन|बागमती|हिमालय|तराई|मैदान|बाढ़/i,s:'Bihar geo'},{w:7,n:'Bihar Society',r:/समाज|जाति|वर्ग|महिला|किसान|ग्रामीण|दलित|महादलित|EBC|OBC/i,s:'Bihar society'},{w:6,n:'Bihar Data',r:/\d+%|\d{4}|Census|जनसंख्या|\d+\s*(करोड़|lakh|लाख)|HDI/i,s:'Bihar data'},{w:6,n:'Bihar Example',r:/उदाहरण|example|जैसे|Bihar में|बिहार में/i,s:'Bihar ex'},{w:6,n:'Bihar Scheme',r:/योजना|scheme|policy|मिशन|मुख्यमंत्री|CM|सात निश्चय|जल जीवन/i,s:'Bihar scheme'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/बिहार|Bihar|पटना|मगध|मिथिला|चंपारण|नालंदा/i.test(x);},m:'⚠️ Bihar-specific reference नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/\d+%|\d{4}|report|census/i.test(x);},m:'❌ कोई data नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs2:{name:'BPSC GS Paper 2',icon:'🏛️',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'Const. Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|amendment|73rd|74th|पंचायत/i,s:'अनुच्छेद'},{w:9,n:'Bihar Governance',r:/बिहार|Bihar|राज्यपाल|मुख्यमंत्री|CM|विधानसभा|विधान परिषद|पंचायत|नगर निगम|जिला|प्रमंडल|DM|SP/i,s:'Bihar gov'},{w:7,n:'Bihar Polity',r:/विधानसभा|विधान परिषद|MLC|MLA|मुख्यमंत्री|स्पीकर|DM|SP/i,s:'Bihar polity'},{w:6,n:'Committee',r:/committee|समिति|commission|आयोग|report|NITI|ARC/i,s:'Committee'},{w:7,n:'Governance',r:/शासन|governance|प्रशासन|accountability|transparency|e-gov|reform|सुधार/i,s:'Governance'},{w:6,n:'Federal',r:/federal|संघीय|राज्य|state|center|केंद्र|समवर्ती/i,s:'Federal'},{w:6,n:'Bihar Example',r:/उदाहरण|example|जैसे|Bihar में/i,s:'Bihar ex'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/बिहार|Bihar|पटना|विधानसभा|पंचायत|प्रमंडल/i.test(x);},m:'⚠️ Bihar-specific नहीं'},{t:function(x){return !/अनुच्छेद|article|संविधान|constitution/i.test(x);},m:'❌ संविधान नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs3:{name:'BPSC GS Paper 3',icon:'💰',max:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'Bihar Economy',r:/GSDP|GDP|Bihar|बिहार|अर्थव्यवस्था|economy|निवेश|बजट|budget|\d+%/i,s:'Bihar economy'},{w:8,n:'Bihar Agriculture',r:/कृषि|agriculture|किसान|फसल|धान|गेहूं|मक्का|लीची|आम|सिंचाई|उर्वरक/i,s:'Bihar agri'},{w:7,n:'Bihar Industry',r:/उद्योग|industry|MSME|व्यापार|निवेश|रोजगार|खादी|हस्तशिल्प|silk|रेशम/i,s:'Bihar industry'},{w:7,n:'Bihar Environment',r:/पर्यावरण|environment|गंगा|नमामि गंगे|प्रदूषण|pollution|वन|forest|बाढ़/i,s:'Bihar env'},{w:6,n:'Bihar Sci/Tech',r:/technology|तकनीक|IT|digital|सूचना|नवाचार|innovation|AI/i,s:'Bihar IT'},{w:6,n:'Bihar Scheme',r:/मुख्यमंत्री|CM|योजना|scheme|mission|मिशन|सात निश्चय|जल जीवन/i,s:'Bihar scheme'},{w:6,n:'Bihar Example',r:/उदाहरण|example|जैसे|Bihar में|\d+%/i,s:'Bihar ex'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward'}],bad:[{t:function(x){return !/बिहार|Bihar|पटना|धान|मक्का|लीची|कोसी|गंगा/i.test(x);},m:'⚠️ Bihar-specific नहीं'},{t:function(x){return !/\d+%|GSDP|GDP|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},{t:function(x){return !/योजना|scheme|mission|मिशन/i.test(x);},m:'❌ Scheme नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs4:{name:'BPSC GS Paper 4 (Ethics)',icon:'⚖️',max:15,st:{intro:{w:15,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma|दुविधा/i},concl:{w:20,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward/i}},pts:[{w:9,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant|अहिंसा/i,s:'Ethical'},{w:8,n:'Case Study',r:/case|केस|situation|दुविधा|dilemma|stakeholder|option|विकल्प/i,s:'Case'},{w:7,n:'Values',r:/मूल्य|value|honesty|सत्य|empathy|justice|न्याय|equality/i,s:'Values'},{w:7,n:'Bihar Public Service',r:/बिहार|Bihar|लोक सेवक|civil servant|जवाबदेही|पारदर्शिता/i,s:'Bihar P.S.'},{w:6,n:'Const. Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Const. morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real ex'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected/i,s:'Stakeholder'},{w:10,n:'Solution',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई/i,s:'Solution'}],bad:[{t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य/i.test(x);},m:'❌ Ethical concept नहीं'},{t:function(x){return !/case|केस|situation|dilemma|दुविधा|stakeholder/i.test(x);},m:'❌ Case analysis नहीं'},{t:function(x){return !/solution|समाधान|decision|निर्णय/i.test(x);},m:'❌ Solution नहीं'},{t:function(x){return !/intro|परिचय|परिभाषा|definition/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]}};
+    gs2:{name:'UPSC GS Paper 2 — Polity/Governance/Constitution/IR',icon:'🏛️',max:15,
+      st:{intro:{w:12,n:'Introduction (Constitutional Context)',r:/intro|परिचय|प्रस्तावना|background|संवैधानिक|constitutional|context|संदर्भ|overview/i},
+          body:{w:42,n:'Main Body (Analysis)',r:/main|body|मुख्य|विवेचन|analysis|विश्लेषण|कारण|impact|discuss|explain/i},
+          concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|आगे की राह|suggestion|सुझाव|reform|सुधार/i}},
+      pts:[
+        {w:9,n:'Constitutional Articles',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|schedule|amendment|संशोधन|DPSP|मौलिक अधिकार|fundamental right|directive principle|42nd|44th|73rd|74th|101st|103rd/i,s:'अनुच्छेद/अनुसूची ज़रूर लिखें — Article 21, 44, 356, 73rd/74th'},
+        {w:8,n:'SC/HC Judgments',r:/Supreme Court|सुप्रीम कोर्ट|High Court|उच्च न्यायालय|judgment|निर्णय|verdict|फैसला|केस|case law|judicial review|Kesavananda|Maneka|Puttaswamy|Shankari|Basic Structure|मूल ढांचा/i,s:'SC/HC का landmark judgment ज़रूर mention करें'},
+        {w:6,n:'Committee/Commission',r:/committee|समिति|commission|आयोग|report|रिपोर्ट|panel|NITI|Punchhi|Sarkaria|2nd ARC|Law Commission|Rajya Sabha|Finance Commission|Second Administrative/i,s:'Committee/Commission की report का हवाला दें'},
+        {w:8,n:'Governance Aspects',r:/शासन|governance|प्रशासन|administration|accountability|जवाबदेही|transparency|पारदर्शिता|e-gov|digital|reform|सुधार|citizen|नागरिक|participat|भागीदारी|decentraliz/i,s:'Governance aspects ज़रूर discuss करें'},
+        {w:7,n:'Federal Structure',r:/federal|संघीय|राज्य|state|center|केंद्र|concurrent|समवर्ती|7th schedule|राज्यपाल|governor|CM|मुख्यमंत्री|centre-state|केंद्र-राज्य|Article 356|370/i,s:'Federal/state angle ज़रूर discuss करें'},
+        {w:6,n:'International Relations',r:/international|अंतर्राष्ट्रीय|UN|संयुक्त राष्ट्र|bilateral|द्विपक्षीय|foreign policy|विदेश नीति|treaty|संधि|SAARC|BRICS|G20|WHO|WTO|diplomacy|कूटनीति|neighbour|पड़ोसी/i,s:'International dimension जोड़ें — UN, bilateral, treaties'},
+        {w:6,n:'Schemes/Policies',r:/योजना|scheme|policy|नीति|mission|अभियान|act|कानून|programme|कार्यक्रम|bill|विधेयक/i,s:'Relevant scheme/policy का नाम लिखें'},
+        {w:6,n:'Statutory Bodies',r:/ECI|चुनाव आयोग|UPSC|CAG|CIC|NHRC|NCW|NCPCR|Lokpal|लोकपाल|Finance Commission|GST Council|NITI Aayog|statutory|constitutional body/i,s:'Constitutional/statutory body का reference दें'},
+        {w:6,n:'Real Examples',r:/उदाहरण|example|जैसे|such as|for instance|case/i,s:'Real example/case study दें'},
+        {w:6,n:'Counter-view/Balance',r:/however|हालांकि|लेकिन|on the other hand|दूसरी ओर|criticism|आलोचना|limitation|सीमा|challenge|चुनौती|merit|demerit/i,s:'दूसरा पक्ष ज़रूर लिखें'},
+        {w:7,n:'Way Forward',r:/way forward|आगे की राह|suggestion|सुझाव|reform|सुधार|solution|समाधान|recommend/i,s:'Reform/Way forward ज़रूर दें'},
+        {w:5,n:'Current Events',r:/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान/i,s:'Current events link करें'}
+      ],
+      bad:[
+        {t:function(x){return !/अनुच्छेद|article|संविधान|constitution|schedule|अनुसूची/i.test(x);},m:'❌ संविधान/अनुच्छेद का reference नहीं — GS2 में अनिवार्य है'},
+        {t:function(x){return !/Supreme Court|सुप्रीम कोर्ट|judgment|निर्णय|verdict|High Court|उच्च न्यायालय/i.test(x);},m:'❌ Court judgment का हवाला नहीं — landmark cases ज़रूर लिखें'},
+        {t:function(x){return !/committee|समिति|commission|आयोग|report|रिपोर्ट|NITI|ARC/i.test(x);},m:'❌ Committee/Commission का reference नहीं'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background|संवैधानिक/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion|reform|सुधार/i.test(x);},m:'❌ Conclusion/Way forward नहीं'},
+        {t:function(x){return !/शासन|governance|प्रशासन|accountability|transparency|reform/i.test(x);},m:'❌ Governance aspect नहीं — GS2 का core है'},
+        {t:function(x){return !/उदाहरण|example|जैसे|such as|case/i.test(x);},m:'❌ कोई example नहीं'},
+        {t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ Answer बहुत छोटा — 150-250 शब्द चाहिए'},
+        {t:function(x){return !/federal|संघीय|राज्य|state|center|केंद्र|समवर्ती/i.test(x);},m:'⚠️ Federal/state angle नहीं — जहाँ relevant हो जोड़ें'},
+        {t:function(x){return !/however|हालांकि|लेकिन|criticism|आलोचना|limitation|सीमा/i.test(x);},m:'⚠️ सिर्फ एक पक्ष — दूसरा पक्ष भी लिखें'},
+        {t:function(x){return !/international|अंतर्राष्ट्रीय|UN|bilateral|treaty|foreign policy/i.test(x);},m:'⚠️ International angle नहीं — जहाँ relevant हो जोड़ें'}
+      ]},
 
-  var ESSAY={name:'निबंध (Essay)',icon:'📝',max:125,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|quote|उद्धरण|definition|परिभाषा|anecdote|किस्सा|प्रसंग|आरंभ/i},body:{w:50,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|विश्लेषण|example|उदाहरण|case|paragraph/i},concl:{w:25,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|आगे की राह|summary|सारांश|hope|आशा|अंत में|समापन/i}},pts:[{w:10,n:'Philosophical Depth',r:/philosoph|दर्शन|thinker|विचारक|Gandhi|Nehru|Ambedkar|Tagore|Vivekananda|Kant|Aristotle|सुकरात|कबीर|तुलसीदास/i,s:'दार्शनिक गहराई'},{w:12,n:'Multi-dimensional',r:/social|economic|political|environment|cultural|technological|ethical|सामाजिक|आर्थिक|राजनीतिक|पर्यावरण|सांस्कृतिक|तकनीकी|नैतिक/i,s:'हर dimension'},{w:8,n:'Real Examples',r:/example|उदाहरण|जैसे|such as|for instance|case|केस|घटना|प्रसंग/i,s:'Real examples'},{w:8,n:'Current Affairs',r:/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान|आधुनिक/i,s:'Current affairs'},{w:8,n:'Quotes',r:/[""][^""]{10,}[""]|कहा|quote|अनुसार|according to|उक्ति|कथन/i,s:'Quotes'},{w:6,n:'Personal Touch',r:/\bI\s|मेरे|मैं|my\s|\bwe\s|हम|our|हमारा|मुझे|अनुभव|experience/i,s:'Personal'},{w:8,n:'Coherence',r:/therefore|इसलिए|thus|hence|consequently|इस प्रकार|as a result|इसके परिणामस्वरूप|furthermore|moreover/i,s:'Linking words'},{w:10,n:'Way Forward',r:/way forward|आगे की राह|solution|समाधान|future|भविष्य|hope|आशा|change|बदलाव|उम्मीद/i,s:'Way forward'},{w:6,n:'Literary Touch',r:/साहित्य|literature|कवि|poet|कविता|poem|शेर|कहानी|story|उपन्यास|novel|रचना|लेखक/i,s:'Literary'},{w:5,n:'Statistics',r:/\d+%|\d+\s*(करोड़|crore|lakh|लाख|million)|\d{4}|report|रिपोर्ट|survey/i,s:'Statistics'}],bad:[{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<500;},m:'❌ निबंध बहुत छोटा — 1000-1200 शब्द'},{t:function(x){return !/[""][^""]{10,}[""]|कहा|quote/i.test(x);},m:'❌ कोई quote नहीं'},{t:function(x){return !/philosoph|दर्शन|thinker|विचारक|Gandhi|Nehru|Ambedkar|Tagore|Kabir/i.test(x);},m:'❌ दार्शनिक गहराई नहीं'},{t:function(x){return !/social|economic|political|environment|सामाजिक|आर्थिक|राजनीतिक|पर्यावरण/i.test(x);},m:'❌ Multi-dimensional नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|quote/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|आगे की राह|hope|आशा/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/example|उदाहरण|जैसे|case|instance/i.test(x);},m:'❌ कोई उदाहरण नहीं'}]};
+    gs3:{name:'UPSC GS Paper 3 — Economy/Environment/Science/Security',icon:'💰',max:15,
+      st:{intro:{w:12,n:'Introduction (Context/Data)',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि|context|overview/i},
+          body:{w:42,n:'Main Body (Analysis)',r:/main|body|मुख्य|विवेचन|analysis|विश्लेषण|कारण|impact|discuss|explain/i},
+          concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform|सुधार|recommend/i}},
+      pts:[
+        {w:9,n:'Economic Data (GDP/Fiscal)',r:/GDP|GNP|GSDP|HDI|inflation|महंगाई|CPI|WPI|fiscal deficit|राजकोषीय घाटा|monetary|मौद्रिक|budget|बजट|growth|वृद्धि|%\s*\d|Repo|RBI|RBI|GDP\s*growth/i,s:'Economic data ज़रूर लिखें — GDP, inflation, fiscal deficit, RBI rates'},
+        {w:7,n:'NITI/Economic Survey',r:/NITI|Economic Survey|आर्थिक सर्वेक्षण|Finance Commission|वित्त आयोग|Budget|बजट|National|national\s+statistic|MoSPI|NSO/i,s:'NITI Aayog/Economic Survey का reference ज़रूर दें'},
+        {w:6,n:'Schemes/Reforms',r:/योजना|scheme|policy|नीति|mission|अभियान|PLI|MSME|MUDRA|Startup|Make in India|Atmanirbhar|आत्मनिर्भर|GST|Demonetisation|reform|सुधार/i,s:'Relevant scheme/policy का नाम लिखें'},
+        {w:7,n:'Environmental Concerns',r:/पर्यावरण|environment|climate|जलवायु|carbon|कार्बन|pollution|प्रदूषण|renewable|नवीकरणीय|biodiversity|जैव विविधता|COP|Paris|पेरिस|sustainab|सतत|वन|forest|emission|उत्सर्जन/i,s:'Environmental/climate angle ज़रूर जोड़ें'},
+        {w:6,n:'Science & Technology',r:/technology|तकनीक|science|विज्ञान|AI|artificial intelligence|digital|डिजिटल|space|अंतरिक्ष|ISRO|DRDO|biotech|nano|quantum|innovation|नवाचार|5G|semiconductor|chip/i,s:'Science/Tech angle जोड़ें — AI, space, biotech, quantum'},
+        {w:7,n:'Security Aspects',r:/सुरक्षा|security|defense|रक्षा|terrorism|आतंकवाद|cyber|साइबर|border|सीमा|internal security|आंतरिक सुरक्षा|Naxal|नक्सल|LWE|militancy|insurgency|armed force|सशस्त्र/i,s:'Security angle ज़रूर discuss करें'},
+        {w:6,n:'Agriculture/Rural',r:/कृषि|agriculture|किसान|farmer|MSP|फसल|crop|irrigation|सिंचाई|fertilizer|उर्वरक|rural|ग्रामीण|food security|खाद्य सुरक्षा|PDS/i,s:'Agriculture/rural angle — किसान, MSP, irrigation'},
+        {w:6,n:'Committee/Report',r:/committee|समिति|commission|आयोग|report|रिपोर्ट|panel|Swaminathan|Rangarajan|Kelkar|Economic Survey/i,s:'Committee/Report का हवाला दें'},
+        {w:6,n:'Real Examples/Data',r:/उदाहरण|example|जैसे|such as|\d+%|\d{4}|case/i,s:'Example या data जोड़ें'},
+        {w:6,n:'Global/Comparative',r:/global|वैश्विक|world|विश्व|comparison|तुलना|UN|WHO|WTO|World Bank|IMF|other\s*countries|developed|developing/i,s:'Global/comparative perspective जोड़ें'},
+        {w:7,n:'Way Forward',r:/way forward|आगे की राह|suggestion|सुझाव|reform|सुधार|solution|समाधान|recommend|policy|नीति/i,s:'Way forward ज़रूर दें'},
+        {w:5,n:'Current Events',r:/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान/i,s:'Current events link करें'}
+      ],
+      bad:[
+        {t:function(x){return !/\d+%|GDP|HDI|inflation|महंगाई|fiscal|budget|बजट|\d{4}/i.test(x);},m:'❌ Economic data नहीं — GS3 में facts और figures ज़रूरी हैं'},
+        {t:function(x){return !/योजना|scheme|policy|नीति|mission|reform|सुधार/i.test(x);},m:'❌ कोई scheme/policy/reform mention नहीं'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion|reform/i.test(x);},m:'❌ Conclusion/Way forward नहीं'},
+        {t:function(x){return !/उदाहरण|example|जैसे|such as|case/i.test(x);},m:'❌ कोई example नहीं'},
+        {t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ Answer बहुत छोटा — 150-250 शब्द चाहिए'},
+        {t:function(x){return !/पर्यावरण|environment|climate|जलवायु|carbon|pollution/i.test(x);},m:'⚠️ Environmental angle नहीं — जहाँ relevant हो जोड़ें'},
+        {t:function(x){return !/technology|तकनीक|digital|AI|innovation/i.test(x);},m:'⚠️ Science/Tech angle नहीं'},
+        {t:function(x){return !/सुरक्षा|security|defense|cyber|border/i.test(x);},m:'⚠️ Security angle नहीं'},
+        {t:function(x){return !/committee|समिति|commission|report|NITI|Economic Survey/i.test(x);},m:'⚠️ Committee/Report का हवाला नहीं'},
+        {t:function(x){return !/global|वैश्विक|world|विश्व|UN|WTO|World Bank/i.test(x);},m:'⚠️ Global/comparative perspective नहीं'}
+      ]},
 
-  // ===== JEE MAINS =====
-  var JEE_MAINS={name:'JEE Mains',icon:'⚙️',max:100,
-    st:{given:{w:8,n:'Given/To Find (दिया/ज्ञात)',r:/given|दिया गया|to\s*find|ज्ञात करना|find\s*out|calculate|determine|compute|निकालें|find\s*the/i},solution:{w:20,n:'Step-by-step Solution',r:/step\s*\d|चरण\s*\d|first|second|third|then|next|finally|\(i\)|\(ii\)|\(iii\)|1\)|2\)|3\)/i},final:{w:8,n:'Final Answer (उत्तर)',r:/answer|उत्तर|result|परिणाम|∴|hence|therefore|इसलिए|final|अंतिम/i}},
-    pts:[{w:12,n:'Formula/Equation',r:/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|λ|μ|Δ|∂|F\s*=|E\s*=|V\s*=|pV\s*=|mv|ma|1\/2|½|sin|cos|tan|log|ln|nCr|nPr/i,s:'Formula लिखें — F=ma, E=mc², V=IR, sin/cos, integration'},{w:8,n:'Units/Dimensions',r:/newton|joule|watt|volt|ampere|m\/s|m\/s²|kg|mol|meter|metre|second|kelvin|coulomb|ohm|hertz|nm|km|cm|mm|N\b|J\b|V\b|A\b|W\b|Hz|Ω/i,s:'Units और dimensions mention करें'},{w:10,n:'Numerical Values',r:/\d+\.?\d*\s*[×xX*]?\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|kg|N|J|V|A|W|Hz|Ω|°C|K)|=\s*\d+/i,s:'Numerical values scientific notation में'},{w:10,n:'Concept/Principle',r:/law of|नियम|principle|सिद्धांत|theorem|conservation|संरक्षण|equation|समीकरण|reaction|mechanism|molecule|bond/i,s:'Law/principle mention करें'},{w:7,n:'Diagram/Graph',r:/diagram|चित्र|graph|ग्राफ|figure|आकृति|axis|plot|curve|vector|force\s*diagram|FBD/i,s:'Diagram/graph बनाएं'},{w:6,n:'SI Units Check',r:/SI\s*unit|SI\s*मात्रक|dimensionally\s*correct|dimensional\s*analysis|विमीय\s*विश्लेषण/i,s:'Dimensional analysis'},{w:6,n:'Significant Figures',r:/significant|सार्थक|decimal|दशमलव|round|approx|≈/i,s:'Significant figures check'},{w:6,n:'Alternative Method',r:/alternative|वैकल्पिक|or\s|another\s*way|method\s*\d|trick|shortcut|short\s*cut/i,s:'Alternative method'}],
-    bad:[{t:function(x){return !/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ/i.test(x);},m:'❌ कोई formula नहीं — JEE में formula अनिवार्य'},{t:function(x){return !/\d+/i.test(x);},m:'❌ कोई numerical value नहीं — calculation ज़रूरी'},{t:function(x){return !/newton|joule|volt|ampere|kg|m\/s|meter|metre|km|cm/i.test(x);},m:'❌ कोई units नहीं — physics/chemistry में अनिवार्य'},{t:function(x){return !/step|चरण|solution|हल|then|next/i.test(x);},m:'⚠️ सिर्फ theory — step-by-step solution जोड़ें'},{t:function(x){return !/answer|उत्तर|result|∴|hence|therefore|final/i.test(x);},m:'❌ Final answer clearly mark नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<40;},m:'⚠️ Answer बहुत छोटा'},{t:function(x){return !/concept|law|principle|theorem|नियम|सिद्धांत/i.test(x);},m:'⚠️ कौन-सा concept use हुआ mention करें'},{t:function(x){return !/diagram|graph|figure|चित्र|आकृति/i.test(x);},m:'⚠️ Diagram/graph बनाएं'}]};
+    gs4:{name:'UPSC GS Paper 4 — Ethics/Integrity/Aptitude',icon:'⚖️',max:15,
+      st:{intro:{w:12,n:'Introduction/Definition',r:/intro|परिचय|परिभाषा|definition|meaning|अर्थ|concept|अवधारणा|context/i},
+          body:{w:42,n:'Main Body (Analysis/Case)',r:/main|body|मुख्य|विवेचन|analysis|विश्लेषण|case|केस|dilemma|दुविधा|discuss|explain/i},
+          concl:{w:18,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward|suggestion|decision|निर्णय/i}},
+      pts:[
+        {w:9,n:'Ethical Concepts/Thinkers',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|probity|ईमानदारी|Gandhi|Kant|Aristotle|Ambedkar|Nehru|Vivekananda|Tagore|दर्शन|philosophy|अहिंसा|सत्य|धर्म|कर्म|सुकरात|प्लेटो/i,s:'Ethical concept/thinker ज़रूर — Gandhi, Kant, Aristotle, Ambedkar'},
+        {w:8,n:'Case Study Analysis',r:/case|केस|situation|स्थिति|dilemma|दुविधा|stakeholder|हितधारक|option|विकल्प|decision|निर्णय|action|कार्रवाई|choice|चुनाव|ethical\s*dilemma/i,s:'Case study में stakeholders, options, decision ज़रूर analyze करें'},
+        {w:7,n:'Values Mentioned',r:/मूल्य|value|honesty|सत्य|compassion|करुणा|empathy|सहानुभूति|justice|न्याय|equality|समानता|responsibility|जिम्मेदारी|respect|सम्मान|integrity|सत्यनिष्ठा|trust|विश्वास|sympathy/i,s:'Values (honesty, empathy, justice, integrity) ज़रूर लिखें'},
+        {w:7,n:'Administrative Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|public service|लोक सेवा|accountability|जवाबदेही|transparency|पारदर्शिता|neutrality|निष्पक्षता|impartiality|objectivity|discipline|अनुशासन|commitment/i,s:'Administrative ethics angle ज़रूर जोड़ें'},
+        {w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|नैतिकता|article|अनुच्छेद|secular|धर्मनिरपेक्ष|democratic|लोकतांत्रिक|sovereign|संप्रभु|socialist|republic|republic|Preamble|प्रस्तावना/i,s:'Constitutional morality/value जोड़ें'},
+        {w:6,n:'Real-Life Examples',r:/उदाहरण|example|जैसे|such as|for instance|instance|केस|case|सत्य घटना|real\s*life/i,s:'Real-life example/case study दें'},
+        {w:6,n:'Stakeholder Analysis',r:/stakeholder|हितधारक|पक्षकार|party|involved|शामिल|affected|प्रभावित|family|परिवार|society|community/i,s:'Stakeholders को list करें'},
+        {w:8,n:'Multiple Options/Decision',r:/option|विकल्प|decision|निर्णय|choice|चुनाव|course of action|कार्रवाई|approach|दृष्टिकोण|way out|समाधान/i,s:'Multiple options और final decision ज़रूर दें'},
+        {w:6,n:'Ethical Theories',r:/utilitarian|उपयोगितावाद|deontolog|कर्तव्यवाद|virtue|सद्गुण|Kantian|categorical imperative|consequential|सिद्धांत|theory|theories|framework/i,s:'Ethical theory का reference — utilitarianism, deontology, virtue ethics'},
+        {w:6,n:'Alternative Perspective',r:/however|हालांकि|लेकिन|on the other hand|दूसरी ओर|alternate|वैकल्पिक|criticism|आलोचना|different view|भिन्न दृष्टि/i,s:'Alternative perspective ज़रूर लिखें'},
+        {w:7,n:'Final Solution/Justification',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई|recommend|सुझाव|justif|सिद्ध|conclusion|निष्कर्ष|final|अंतिम/i,s:'Final solution/decision को justify करें'},
+        {w:5,n:'Current/Contemporary Link',r:/20\d{2}|recent|हाल|current|आज|today|present|वर्तमान|modern/i,s:'Contemporary example link करें'}
+      ],
+      bad:[
+        {t:function(x){return !/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|philosophy|दर्शन/i.test(x);},m:'❌ कोई ethical concept नहीं — GS4 में अनिवार्य है'},
+        {t:function(x){return !/case|केस|situation|स्थिति|dilemma|दुविधा|stakeholder/i.test(x);},m:'❌ Case study analysis नहीं — stakeholders और dilemma analyze करें'},
+        {t:function(x){return !/solution|समाधान|decision|निर्णय|action|कार्रवाई|recommend/i.test(x);},m:'❌ Final solution/decision नहीं — GS4 में अनिवार्य'},
+        {t:function(x){return !/intro|परिचय|परिभाषा|definition|concept/i.test(x);},m:'❌ Introduction/Definition नहीं'},
+        {t:function(x){return !/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय/i.test(x);},m:'❌ Values mention नहीं — honesty, empathy, justice ज़रूर लिखें'},
+        {t:function(x){return !/उदाहरण|example|जैसे|case|केस/i.test(x);},m:'❌ कोई real-life example नहीं'},
+        {t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ Answer बहुत छोटा — 150-250 शब्द चाहिए'},
+        {t:function(x){return !/Gandhi|Kant|Aristotle|Ambedkar|Nehru|Vivekananda|Tagore|दर्शन|philosophy/i.test(x);},m:'⚠️ कोई ethical thinker/philosophy नहीं — जोड़ें'},
+        {t:function(x){return !/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability|जवाबदेही/i.test(x);},m:'⚠️ Administrative ethics angle नहीं'},
+        {t:function(x){return !/stakeholder|हितधारक|involved|affected|प्रभावित/i.test(x);},m:'⚠️ Stakeholder analysis नहीं'},
+        {t:function(x){return !/however|हालांकि|लेकिन|on the other hand|दूसरी ओर/i.test(x);},m:'⚠️ Alternative perspective नहीं — दूसरा पक्ष लिखें'}
+      ]}
+  };
 
-  // ===== JEE ADVANCED =====
-  var JEE_ADV={name:'JEE Advanced',icon:'🔬',max:100,
-    st:{given:{w:6,n:'Given/To Find',r:/given|दिया गया|to\s*find|ज्ञात करना|find\s*out|calculate|determine|compute|निकालें|find\s*the/i},
-        solution:{w:25,n:'Multi-step Solution (3+ steps)',r:/step\s*\d|चरण\s*\d|first|second|third|fourth|next|then|finally|\(i\)|\(ii\)|\(iii\)|\(iv\)|1\)|2\)|3\)|4\)/i},
-        final:{w:9,n:'Final Answer with Reasoning',r:/answer|उत्तर|result|परिणाम|∴|hence|therefore|इसलिए|final|अंतिम|conclusion|निष्कर्ष|justif|सिद्ध/i}},
-    pts:[
-      {w:15,n:'Mathematical Derivation',r:/deriv|व्युत्पन्न|integrat|समाकलन|differenti|अवकलन|d\/d|∂\/∂|∫|Σ|lim\s|lim\s*→|dx|dy|dt/i,s:'Derivation ज़रूर लिखें — JEE Advanced में derivation के बिना marks नहीं'},
-      {w:12,n:'Advanced Formula/Equation',r:/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ|π|θ|λ|μ|Δ|∂|F\s*=|E\s*=|V\s*=|pV\s*=|mv|ma|1\/2|½|sin|cos|tan|log|ln|nCr|nPr|differential/i,s:'Advanced formula/equation लिखें'},
-      {w:10,n:'Boundary Conditions',r:/boundary|limit|सीमा|condition|प्रतिबंध|range|constraint|when\s|x\s*→|t\s*→|at\s*t\s*=|at\s*x\s*=|at\s*∞|at\s*0/i,s:'Boundary conditions और limits ज़रूर mention करें'},
-      {w:10,n:'Special Cases Analysis',r:/special case|विशेष स्थिति|if\s|when\s|case\s*\d|for\s*example|assume|मान लें|consider\s*the\s*case/i,s:'Special cases analyze करें — JEE Advanced की खासियत'},
-      {w:9,n:'Multiple Methods/Approaches',r:/method|विधि|approach|तरीका|alternate|वैकल्पिक|or\s|another\s*way|shortcut|short\s*cut/i,s:'एक से ज़्यादा methods से solve करें'},
-      {w:8,n:'Units/Dimensions',r:/newton|joule|watt|volt|ampere|m\/s|m\/s²|kg|mol|meter|metre|second|kelvin|coulomb|ohm|hertz|nm|km|cm|mm|N\b|J\b|V\b|A\b|W\b|Hz|Ω/i,s:'Units और dimensions mention करें'},
-      {w:8,n:'Numerical Precision',r:/\d+\.?\d*\s*[×xX*]?\s*10\^?-?\d*|\d+\.?\d*\s*(m\/s|kg|N|J|V|A|W|Hz|Ω|°C|K)|=\s*\d+\.\d+/i,s:'Numerical values scientific notation में (precision matter करती है)'},
-      {w:7,n:'Diagram/Graph',r:/diagram|चित्र|graph|ग्राफ|figure|आकृति|axis|plot|curve|vector|force\s*diagram|FBD|circuit|ray\s*diagram/i,s:'Diagram/graph बनाएं'},
-      {w:6,n:'Alternate Solution Check',r:/verify|सत्यापन|check|जाँच|confirm|validate|cross-check/i,s:'Answer को verify ज़रूर करें'},
-      {w:6,n:'Concept/Theory Basis',r:/law|नियम|principle|सिद्धांत|theorem|concept|अवधारणा|postulate|axiom|formula/i,s:'कौन-सा concept/principle use हुआ लिखें'}
-    ],
-    bad:[
-      {t:function(x){return !/[A-Za-z]\s*=\s*[A-Za-z0-9]|√|∫|Σ/i.test(x);},m:'❌ कोई formula/equation नहीं — JEE Advanced में अनिवार्य'},
-      {t:function(x){return !/deriv|व्युत्पन्न|integrat|d\/d|∫|differenti/i.test(x);},m:'❌ कोई derivation नहीं — JEE Advanced में derivation अनिवार्य है'},
-      {t:function(x){return !/\d+/i.test(x);},m:'❌ कोई numerical value नहीं — calculation ज़रूरी'},
-      {t:function(x){return !/newton|joule|volt|ampere|kg|m\/s|meter|metre|km|cm/i.test(x);},m:'❌ कोई units नहीं — physics/chemistry में अनिवार्य'},
-      {t:function(x){return !/step\s*\d|चरण\s*\d|first|second|third|\(i\)|\(ii\)|\(iii\)/i.test(x);},m:'❌ Multi-step solution नहीं — कम से कम 3-4 steps चाहिए'},
-      {t:function(x){return !/boundary|limit|सीमा|condition|when\s|at\s*t\s*=|at\s*x\s*=/i.test(x);},m:'⚠️ Boundary conditions/limits analyze करें'},
-      {t:function(x){return !/special case|विशेष स्थिति|if\s|assume|case\s/i.test(x);},m:'⚠️ Special cases analyze करें — Advanced की requirement'},
-      {t:function(x){return !/method|विधि|approach|तरीका|alternate|वैकल्पिक/i.test(x);},m:'⚠️ Multiple methods/approaches try करें'},
-      {t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<80;},m:'❌ Answer बहुत छोटा — JEE Advanced में detailed solution चाहिए'},
-      {t:function(x){return !/concept|law|principle|theorem|सिद्धांत|नियम/i.test(x);},m:'⚠️ कौन-सा concept use हुआ mention करें'},
-      {t:function(x){return !/verify|सत्यापन|check|जाँच|cross-check/i.test(x);},m:'⚠️ Answer को verify ज़रूर करें'}
-    ]};
+  // Paper detection
+  function detectPaper(t){
+    var s={gs1:0,gs2:0,gs3:0,gs4:0};
+    if(/इतिहास|history|संस्कृति|culture|भूगोल|geography|समाज|society|स्वतंत्रता|freedom|मुगल|मौर्य|गुप्त|सिंधु|हड़प्पा|वैदिक/i.test(t)) s.gs1+=3;
+    if(/राजव्यवस्था|polity|संविधान|constitution|अनुच्छेद|article|शासन|governance|न्यायपालिका|judiciary|संसद|parliament|राज्यपाल|चुनाव|electoral/i.test(t)) s.gs2+=3;
+    if(/अर्थव्यवस्था|economy|GDP|बजट|budget|महंगाई|inflation|पर्यावरण|environment|तकनीक|technology|सुरक्षा|security|कृषि|agriculture/i.test(t)) s.gs3+=3;
+    if(/नैतिकता|ethics|integrity|सत्यनिष्ठा|दुविधा|dilemma|केस|case study|मूल्य|value|probity|ईमानदारी|करुणा/i.test(t)) s.gs4+=4;
+    var mx='gs1',v=0;
+    for(var k in s){if(s[k]>v){v=s[k];mx=k;}}
+    return mx;
+  }
 
   function getText(){var t=(window.state&&window.state.currentText)||window.acxPdfText||'';if(!t||t.length<30){var ta=document.getElementById('ansInput');if(ta)t=ta.value||'';}return t;}
   function getExam(){var a=document.querySelector('.dr-item.on');return a?a.getAttribute('data-exam'):null;}
-  function detUPPCS(t){if(/उत्तर प्रदेश|UP|यूपी|अवध|बुंदेलखंड|रोहिलखंड|काशी|अयोध्या|लखनऊ|कानपुर/i.test(t)){if(!/राजव्यवस्था|polity|संविधान|अनुच्छेद|राजनीति/i.test(t))return 'gs5';}if(/नैतिकता|ethics|integrity|दुविधा|dilemma|केस/i.test(t))return 'gs4';if(/अर्थव्यवस्था|economy|GSDP|कृषि|किसान|उद्योग|गन्ना|गेहूं/i.test(t))return 'gs3';if(/राजव्यवस्था|polity|संविधान|शासन|पंचायत|विधानसभा/i.test(t))return 'gs2';return 'gs1';}
-  function detBPSC(t){if(/बिहार|Bihar|पटना|मगध|मिथिला|चंपारण|नालंदा|कोसी|मधुबनी/i.test(t)){if(!/राजव्यवस्था|polity|संविधान|अनुच्छेद|राजनीति/i.test(t))return 'gs3';}if(/नैतिकता|ethics|integrity|दुविधा|dilemma|केस/i.test(t))return 'gs4';if(/अर्थव्यवस्था|economy|GSDP|कृषि|किसान|उद्योग|धान|मक्का/i.test(t))return 'gs3';if(/राजव्यवस्था|polity|संविधान|शासन|पंचायत|विधानसभा/i.test(t))return 'gs2';return 'gs1';}
-  function detJEE(t){if(/chemistry|रसायन|reaction|molecule|atom|bond|acid|base|organic|inorganic|periodic|thermodynamics|equilibrium|electrochem/i.test(t))return 'Chemistry';if(/math|गणित|equation|integral|derivative|matrix|probability|vector|calculus|algebra|trigonometry|complex|permutation/i.test(t))return 'Mathematics';if(/physics|भौतिक|newton|velocity|acceleration|force|energy|momentum|wave|optics|electric|magnetic|thermodynamics|kinematics/i.test(t))return 'Physics';return 'Physics';}
 
-  function buildGS(text,DB,paper,cat){
-    var d=DB[paper];if(!d)return null;var words=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
-    var sF=[],sM=[],pF=[],pM=[],warn=[],sc=0,mx=0;
-    for(var k in d.st){var s=d.st[k];mx+=s.w;if(s.r.test(text)){sF.push({n:s.n,w:s.w});sc+=s.w;}else sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){mx+=p.w;if(p.r.test(text)){pF.push({n:p.n,w:p.w});sc+=p.w;}else pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))warn.push(b.m);}catch(e){}});
-    var pc=Math.round((sc/mx)*100);var marks=Math.round((sc/mx)*d.max*10)/10;var grade=pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
-    var theme=cat==='UPPCS'?'#7c2d12,#c2410c':'#1e3a8a,#1e40af';
-    var accent=cat==='UPPCS'?'#c2410c':'#1e40af';
-    var lightBg=cat==='UPPCS'?'#fff7ed':'#eff6ff';
-    var darkText=cat==='UPPCS'?'#7c2d12':'#1e3a8a';
-    var h='';
-    h+='<div style="background:linear-gradient(135deg,'+theme+');border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:rgba(255,255,255,0.7);font-weight:800;letter-spacing:2px">'+cat+' EXAMINER SCORECARD</div>';
-    h+='<div style="font-size:22px;font-weight:900;margin-top:4px">'+d.icon+' '+d.name+'</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,0.7)">SCORE</div>';
-    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#86efac':pc>=50?'#fde047':'#fca5a5')+';line-height:1">'+marks+'</div>';
-    h+='<div style="font-size:14px;color:rgba(255,255,255,0.7)">/ '+d.max+'</div></div></div>';
-    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#fde047,#86efac)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">PERCENT</div><div style="font-size:18px;font-weight:900">'+pc+'%</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">MISSING</div><div style="font-size:18px;font-weight:900;color:#fca5a5">'+(sM.length+pM.length)+'</div></div></div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid '+accent+'">';
-    h+='<div style="font-size:14px;font-weight:900;color:'+darkText+';margin-bottom:12px">📐 STRUCTURE</div>';
-    sF.forEach(function(s){h+='<div style="background:'+lightBg+';padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:'+darkText+';font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:'+accent+';color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #f59e0b">';
-    h+='<div style="font-size:14px;font-weight:900;color:#b45309;margin-bottom:12px">📚 '+cat+'-SPECIFIC CONTENT ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
-    pF.forEach(function(p){h+='<div style="background:'+lightBg+';padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:'+darkText+';font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#f59e0b;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 '+cat+' EXAMINER WARNINGS ('+warn.length+')</div>';warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});h+='</div>';}
-    h+='<div style="background:linear-gradient(135deg,'+lightBg+',#fed7aa);border:2px solid '+accent+';border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:15px;font-weight:900;color:'+darkText+';margin-bottom:12px">🎯 '+cat+' ACTION PLAN</div>';
-    var acts=[];sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
-    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!acts.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:'+darkText+';padding:16px">🏆 शानदार! '+cat+' हिसाब से perfect</div>';}
-    else{acts.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#dc2626':accent;h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
-    h+='</div>';
-    h+='<div style="background:linear-gradient(135deg,#1a202c,'+accent+');border-radius:12px;padding:18px;color:#fff">';
-    h+='<div style="font-size:14px;font-weight:900;color:#fde047;margin-bottom:12px">👨‍🏫 '+cat+' EXAMINER का FINAL VERDICT</div>';
-    var v;if(pc>=75)v='🏆 Excellent! '+cat+' top 1% answer।';else if(pc>=60)v='👍 Good! '+cat+'-specific content अच्छा।';else if(pc>=45)v='📊 Average. '+cat+'-specific points जोड़ें।';else if(pc>=30)v='⚠️ Weak. '+cat+'-specific content कम।';else v='❌ Very Poor. '+cat+' हिसाब से fail।';
-    h+='<div style="font-size:13px;line-height:1.7;color:rgba(255,255,255,0.85)">'+v+'</div></div>';
-    return h;
-  }
+  function buildUPSCPanel(text){
+    var paper = detectPaper(text);
+    var d = UPSC[paper];
+    if(!d) return null;
 
-  function buildEssay(text){
-    var d=ESSAY;var words=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
-    var sF=[],sM=[],pF=[],pM=[],warn=[],sc=0,mx=0;
-    for(var k in d.st){var s=d.st[k];mx+=s.w;if(s.r.test(text)){sF.push({n:s.n,w:s.w});sc+=s.w;}else sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){mx+=p.w;if(p.r.test(text)){pF.push({n:p.n,w:p.w});sc+=p.w;}else pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))warn.push(b.m);}catch(e){}});
-    var pc=Math.round((sc/mx)*100);var marks=Math.round((sc/mx)*d.max*10)/10;var grade=pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
-    var h='';
-    h+='<div style="background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:#ddd6fe;font-weight:800;letter-spacing:2px">ESSAY EXAMINER SCORECARD</div>';
-    h+='<div style="font-size:22px;font-weight:900;margin-top:4px">📝 निबंध विश्लेषण</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:#ddd6fe">SCORE</div>';
-    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#86efac':pc>=50?'#fde047':'#fca5a5')+';line-height:1">'+marks+'</div>';
-    h+='<div style="font-size:14px;color:#ddd6fe">/ '+d.max+'</div></div></div>';
-    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#fde047,#86efac)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#ddd6fe">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#ddd6fe">PERCENT</div><div style="font-size:18px;font-weight:900">'+pc+'%</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#ddd6fe">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#ddd6fe">MISSING</div><div style="font-size:18px;font-weight:900;color:#fca5a5">'+(sM.length+pM.length)+'</div></div></div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #7c3aed">';
-    h+='<div style="font-size:14px;font-weight:900;color:#5b21b6;margin-bottom:12px">📐 निबंध STRUCTURE</div>';
-    sF.forEach(function(s){h+='<div style="background:#f5f3ff;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#4c1d95;font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:#7c3aed;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #a78bfa">';
-    h+='<div style="font-size:14px;font-weight:900;color:#5b21b6;margin-bottom:12px">📚 निबंध QUALITY ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
-    pF.forEach(function(p){h+='<div style="background:#f5f3ff;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#4c1d95;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#a78bfa;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    pM.forEach(function(p){h+='<div style="background:#faf5ff;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #a78bfa"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#5b21b6;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#a78bfa;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#4c1d95;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 निबंध की कमियां ('+warn.length+')</div>';warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});h+='</div>';}
-    h+='<div style="background:linear-gradient(135deg,#f5f3ff,#ddd6fe);border:2px solid #7c3aed;border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:15px;font-weight:900;color:#4c1d95;margin-bottom:12px">🎯 निबंध सुधार योजना</div>';
-    var acts=[];sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर होना चाहिए'});});
-    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!acts.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#4c1d95;padding:16px">🏆 शानदार!</div>';}
-    else{acts.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#dc2626':'#7c3aed';h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
-    h+='</div>';
-    h+='<div style="background:linear-gradient(135deg,#1a202c,#4c1d95);border-radius:12px;padding:18px;color:#fff">';
-    h+='<div style="font-size:14px;font-weight:900;color:#fde047;margin-bottom:12px">👨‍🏫 निबंध EXAMINER का VERDICT</div>';
-    var v;if(pc>=75)v='🏆 बहुत शानदार!';else if(pc>=60)v='👍 अच्छा! Philosophical depth बढ़ाएं।';else if(pc>=45)v='📊 औसत। दार्शनिक गहराई, उद्धरण जोड़ें।';else if(pc>=30)v='⚠️ कमज़ोर। Structure, quotes कम।';else v='❌ बहुत कमज़ोर। Toppers के निबंध पढ़ें।';
-    h+='<div style="font-size:13px;line-height:1.7;color:#ddd6fe">'+v+'</div></div>';
-    return h;
-  }
+    var words = text.split(/\s+/).filter(function(w){return w.length>0;}).length;
+    var sentences = text.split(/[.!?।]+/).filter(function(s){return s.trim().length>5;}).length;
+    var paragraphs = text.split(/\n\s*\n/).filter(function(p){return p.trim().length>30;}).length;
 
-  function buildJEE(text, mode){
-    var d = mode==='adv' ? JEE_ADV : JEE_MAINS;
-    var words=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
-    var subj=detJEE(text);
-    var sF=[],sM=[],pF=[],pM=[],warn=[],sc=0,mx=0;
-    for(var k in d.st){var s=d.st[k];mx+=s.w;if(s.r.test(text)){sF.push({n:s.n,w:s.w});sc+=s.w;}else sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){mx+=p.w;if(p.r.test(text)){pF.push({n:p.n,w:p.w});sc+=p.w;}else pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))warn.push(b.m);}catch(e){}});
-    var pc=Math.round((sc/mx)*100);var marks=Math.round((sc/mx)*d.max*10)/10;var grade=pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
-    var subjIcon = subj==='Physics'?'⚛️':subj==='Chemistry'?'🧪':'📐';
-    var theme = mode==='adv' ? '#4c1d95,#6d28d9' : '#1e3a8a,#3730a3';
-    var accent = mode==='adv' ? '#6d28d9' : '#3b82f6';
-    var lightBg = mode==='adv' ? '#f5f3ff' : '#eff6ff';
-    var darkText = mode==='adv' ? '#4c1d95' : '#1e3a8a';
-    var label = mode==='adv' ? 'JEE ADVANCED' : 'JEE MAINS';
-    var icon = mode==='adv' ? '🔬' : '⚙️';
-    var h='';
-    h+='<div style="background:linear-gradient(135deg,'+theme+');border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:rgba(255,255,255,0.7);font-weight:800;letter-spacing:2px">'+label+' SCORECARD</div>';
-    h+='<div style="font-size:22px;font-weight:900;margin-top:4px">'+icon+' '+d.name+' — '+subjIcon+' '+subj+'</div>';
-    h+='<div style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:3px">'+(mode==='adv'?'IIT Entrance — Advanced Level':'Engineering Entrance')+'</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,0.7)">SCORE</div>';
-    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#86efac':pc>=50?'#fde047':'#fca5a5')+';line-height:1">'+marks+'</div>';
-    h+='<div style="font-size:14px;color:rgba(255,255,255,0.7)">/ '+d.max+'</div></div></div>';
-    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#fde047,#86efac)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">PERCENT</div><div style="font-size:18px;font-weight:900">'+pc+'%</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">MISSING</div><div style="font-size:18px;font-weight:900;color:#fca5a5">'+(sM.length+pM.length)+'</div></div></div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid '+accent+'">';
-    h+='<div style="font-size:14px;font-weight:900;color:'+darkText+';margin-bottom:12px">📐 SOLUTION STRUCTURE</div>';
-    sF.forEach(function(s){h+='<div style="background:'+lightBg+';padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:'+darkText+';font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:'+accent+';color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #10b981">';
-    h+='<div style="font-size:14px;font-weight:900;color:#065f46;margin-bottom:12px">📚 '+label+'-SPECIFIC CONTENT ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
-    pF.forEach(function(p){h+='<div style="background:#ecfdf5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#065f46;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#10b981;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 '+label+' ERRORS ('+warn.length+')</div>';warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});h+='</div>';}
-    h+='<div style="background:linear-gradient(135deg,'+lightBg+',#bfdbfe);border:2px solid '+accent+';border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:15px;font-weight:900;color:'+darkText+';margin-bottom:12px">🎯 '+label+' ACTION PLAN</div>';
-    var acts=[];sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
-    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!acts.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#065f46;padding:16px">🏆 शानदार! perfect solution</div>';}
-    else{acts.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#dc2626':accent;h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
-    h+='</div>';
-    h+='<div style="background:linear-gradient(135deg,#1a202c,'+accent+');border-radius:12px;padding:18px;color:#fff">';
-    h+='<div style="font-size:14px;font-weight:900;color:#fde047;margin-bottom:12px">👨‍🏫 '+label+' EXAMINER का VERDICT</div>';
-    var v;
-    if(mode==='adv'){
-      if(pc>=75)v='🏆 Excellent! JEE Advanced top 1% solution। Derivation, boundary conditions, special cases — सब perfect।';
-      else if(pc>=60)v='👍 Good! Derivation और multi-step अच्छा। Boundary conditions और special cases बढ़ाएं।';
-      else if(pc>=45)v='📊 Average. Derivation और advanced formula ज़रूर लिखें। Step-by-step detailed solution दें।';
-      else if(pc>=30)v='⚠️ Weak. JEE Advanced के लिए derivation, boundary conditions, और alternate methods ज़रूरी हैं।';
-      else v='❌ Very Poor. JEE Advanced में derivation और advanced concept के बिना marks नहीं मिलते।';
-    } else {
-      if(pc>=75)v='🏆 Excellent! JEE Mains top 1% solution। Formula, numerical, steps, units — सब perfect।';
-      else if(pc>=60)v='👍 Good! Formula और calculation अच्छा। Diagram और concept mention बढ़ाएं।';
-      else if(pc>=45)v='📊 Average. Step-by-step solution, units, और final answer clearly लिखें।';
-      else if(pc>=30)v='⚠️ Weak. Formula, numerical, steps कम है। JEE pattern समझें।';
-      else v='❌ Very Poor. Basic formula और calculation practice करें।';
+    var sF=[], sM=[], pF=[], pM=[], warn=[], sc=0, mx=0;
+    for(var k in d.st){
+      var s=d.st[k]; mx+=s.w;
+      if(s.r.test(text)){ sF.push({n:s.n,w:s.w}); sc+=s.w; }
+      else sM.push({n:s.n,w:s.w});
     }
-    h+='<div style="font-size:13px;line-height:1.7;color:rgba(255,255,255,0.85)">'+v+'</div></div>';
+    d.pts.forEach(function(p){
+      mx+=p.w;
+      if(p.r.test(text)){ pF.push({n:p.n,w:p.w}); sc+=p.w; }
+      else pM.push({n:p.n,w:p.w,s:p.s});
+    });
+    d.bad.forEach(function(b){ try{ if(b.t(text)) warn.push(b.m); }catch(e){} });
+
+    var pc = Math.round((sc/mx)*100);
+    var marks = Math.round((sc/mx)*d.max*10)/10;
+    var grade = pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
+    var paperLabel = paper.toUpperCase().replace('GS','GS Paper ');
+
+    var h='';
+    // ===== SCORECARD =====
+    h+='<div style="background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
+    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
+    h+='<div style="font-size:9px;color:#a0aec0;font-weight:800;letter-spacing:2px">UPSC MAINS EXAMINER SCORECARD</div>';
+    h+='<div style="font-size:20px;font-weight:900;margin-top:4px">'+d.icon+' '+d.name+'</div>';
+    h+='<div style="font-size:10px;color:#a0aec0;margin-top:3px">Detected: '+paperLabel+' • UPSC Civil Services Mains</div></div>';
+    h+='<div style="text-align:right"><div style="font-size:11px;color:#a0aec0;font-weight:700">SCORE</div>';
+    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#48bb78':pc>=50?'#f6ad55':'#fc8181')+';line-height:1">'+marks+'</div>';
+    h+='<div style="font-size:14px;color:#a0aec0">/ '+d.max+'</div></div></div>';
+    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#f6ad55,#48bb78)"></div></div>';
+    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
+    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">SENTENCES</div><div style="font-size:18px;font-weight:900">'+sentences+'</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">PARAGRAPHS</div><div style="font-size:18px;font-weight:900">'+paragraphs+'</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
+    h+='</div></div>';
+
+    // ===== STRUCTURE =====
+    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
+    h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS (72 marks)</div>';
+    sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
+    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' — MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
+    h+='</div>';
+
+    // ===== CONTENT =====
+    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
+    h+='<div style="font-size:14px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH — Examiner Check ('+pF.length+'/'+(pF.length+pM.length)+' elements मिले)</div>';
+    pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
+    pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
+    h+='</div>';
+
+    // ===== WARNINGS =====
+    if(warn.length){
+      h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
+      h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 EXAMINER WARNINGS ('+warn.length+' गंभीर गलतियाँ)</div>';
+      warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
+      h+='</div>';
+    }
+
+    // ===== ACTION PLAN =====
+    h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
+    h+='<div style="font-size:15px;font-weight:900;color:#2b6cb0;margin-bottom:12px">🎯 ACTION PLAN — अगली बार ये सुधारें</div>';
+    var acts=[];
+    sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — structure के '+s.w+' marks मिलेंगे'});});
+    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});
+    warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
+    if(!acts.length){
+      h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#22543d;padding:16px">🏆 Outstanding! UPSC examiner के हिसाब से perfect answer</div>';
+    } else {
+      acts.slice(0,18).forEach(function(x){
+        var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';
+        h+='<div style="background:#fff;padding:11px 14px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;align-items:flex-start;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0;margin-top:1px">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';
+      });
+    }
+    h+='</div>';
+
+    // ===== VERDICT =====
+    h+='<div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:18px;color:#fff">';
+    h+='<div style="font-size:14px;font-weight:900;color:#f6ad55;margin-bottom:12px">👨‍🏫 EXAMINER का FINAL VERDICT</div>';
+    var v;
+    if(pc>=80) v='🏆 OUTSTANDING! यह उत्तर UPSC के top 1% में आएगा। Structure, content, examples, multi-dimensional analysis — सब perfect। इसे याद रखें।';
+    else if(pc>=65) v='👍 EXCELLENT! Content और structure अच्छा है। थोड़ी depth और data जोड़कर इसे top-level बना सकते हैं।';
+    else if(pc>=50) v='📊 GOOD. Average से ऊपर। Intro/Conclusion और data/facts बढ़ाएं, multi-dimensional approach अपनाएं।';
+    else if(pc>=35) v='⚠️ AVERAGE. Basic structure ठीक है, लेकिन content depth बहुत कम। ज़्यादा examples, schemes, data जोड़ें।';
+    else if(pc>=20) v='⚠️ WEAK. Basic structure (Intro-Body-Conclusion) गायब है। Content depth कम है। Toppers की copies देखें।';
+    else v='❌ VERY POOR. UPSC हिसाब से यह answer fail है। पहले structure सीखें, फिर content भरें।';
+    h+='<div style="font-size:13px;line-height:1.7;color:#e2e8f0">'+v+'</div></div>';
+
     return h;
   }
 
   function inject(){
-    var exam=getExam();var modal=document.getElementById('acxResultModal');if(!modal)return;
-    ['uppcsOnlyPanel','bpscOnlyPanel','essayPanel','jeePanel','jeeAdvPanel'].forEach(function(id){var el=document.getElementById(id);if(el)el.remove();});
-    if(exam!=='uppcs'&&exam!=='bpsc'&&exam!=='essay'&&exam!=='jee_mains'&&exam!=='jee_adv')return;
-    var text=getText();if(!text||text.length<30)return;
-    var panel=null,panelId=null;
-    if(exam==='uppcs'){panel=buildGS(text,UPPCS,detUPPCS(text),'UPPCS');panelId='uppcsOnlyPanel';}
-    else if(exam==='bpsc'){panel=buildGS(text,BPSC,detBPSC(text),'BPSC');panelId='bpscOnlyPanel';}
-    else if(exam==='essay'){panel=buildEssay(text);panelId='essayPanel';}
-    else if(exam==='jee_mains'){panel=buildJEE(text,'mains');panelId='jeePanel';}
-    else if(exam==='jee_adv'){panel=buildJEE(text,'adv');panelId='jeeAdvPanel';}
-    if(!panel)return;
-    var inner=modal.querySelector('div[style*="max-width:640px"]')||modal.firstElementChild;if(!inner)return;
-    var wrap=document.createElement('div');wrap.id=panelId;wrap.innerHTML=panel;wrap.style.cssText='margin-bottom:14px';
-    var fc=inner.firstElementChild;if(fc)inner.insertBefore(wrap,fc.nextSibling);else inner.appendChild(wrap);
-    console.log('✅ '+exam.toUpperCase()+' panel injected');
+    var exam=getExam();
+    if(exam!=='upsc') return;
+    var modal=document.getElementById('acxResultModal');
+    if(!modal) return;
+    var old=document.getElementById('upscFullPanel');
+    if(old) old.remove();
+    var text=getText();
+    if(!text||text.length<30) return;
+    var panel=buildUPSCPanel(text);
+    if(!panel) return;
+    var inner=modal.querySelector('div[style*="max-width:640px"]')||modal.firstElementChild;
+    if(!inner) return;
+    var wrap=document.createElement('div');
+    wrap.id='upscFullPanel';
+    wrap.innerHTML=panel;
+    wrap.style.cssText='margin-bottom:14px';
+    var fc=inner.firstElementChild;
+    if(fc) inner.insertBefore(wrap,fc.nextSibling);
+    else inner.appendChild(wrap);
+    console.log('✅ UPSC Full Examiner panel injected');
   }
 
   new MutationObserver(function(){setTimeout(inject,100);setTimeout(inject,400);}).observe(document.body,{childList:true,subtree:true});
   setInterval(inject,400);
-  console.log('✅ Multi-Exam Panels v14 ready (UPSC/UPPCS/BPSC/Essay/JEE Mains/JEE Advanced)');
+  console.log('✅ UPSC Full Examiner ready');
 })();
 </script>
 </body>
