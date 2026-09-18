@@ -9322,5 +9322,301 @@ console.log('✅ Fix JS loaded');
   console.log('✅ UPSC v9 ready');
 })();
 </script>
+<script>
+(function(){
+  'use strict';
+  console.log('🎯 UPPCS Exam Panel loading...');
+
+  // ===== UPPCS DATABASE (UP-specific) =====
+  var UPPCS = {
+    gs1: {name:'UPPCS GS Paper 1', icon:'📜', max:15,
+      st:{ intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि/i},
+           body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact|विश्लेषण/i},
+           concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i} },
+      pts:[
+        {w:8,n:'UP History',r:/उत्तर प्रदेश|अवध|1857|स्वतंत्रता|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश|रानी लक्ष्मीबाई/i,s:'UP history ज़रूर लिखें — अवध, 1857, कानपुर, लखनऊ'},
+        {w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|संगीत|मंदिर|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|साहित्य|तुलसीदास|कबीर/i,s:'UP culture — काशी, अयोध्या, ब्रज, अवधी, भोजपुरी'},
+        {w:7,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|हिमालय|मैदान|बुंदेलखंड|रोहिलखंड|मानसून|जलवायु/i,s:'UP geography — गंगा, यमुना, बुंदेलखंड, रोहिलखंड'},
+        {w:7,n:'UP Society',r:/समाज|जाति|वर्ग|महिला|किसान|ग्रामीण|शहरीकरण|SC|ST|OBC|अल्पसंख्यक|दलित/i,s:'UP society — जाति, किसान, ग्रामीण, दलित'},
+        {w:6,n:'UP Data',r:/\d+%|\d{4}|Census|जनसंख्या|\d+\s*(करोड़|lakh|लाख)/i,s:'UP data — जनसंख्या, साक्षरता, HDI'},
+        {w:6,n:'UP Example',r:/उदाहरण|example|जैसे|such as|UP में|उत्तर प्रदेश में/i,s:'UP-specific example दें'},
+        {w:6,n:'UP Scheme',r:/योजना|scheme|policy|नीति|मिशन|मुख्यमंत्री|CM|सरकार/i,s:'UP सरकार की योजना — मुख्यमंत्री योजना'},
+        {w:8,n:'Way Forward',r:/way forward|आगे की राह|suggestion|सुझाव|reform|सुधार/i,s:'Way forward ज़रूर दें'}
+      ],
+      bad:[
+        {t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|वाराणसी|प्रयागराज/i.test(x);},m:'⚠️ UP-specific reference नहीं — UPPCS GS1 में यह अनिवार्य है'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},
+        {t:function(x){return !/\d+%|\d{4}|report|census/i.test(x);},m:'❌ कोई data नहीं'},
+        {t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा — 150-250 शब्द चाहिए'}
+      ]},
+    gs2: {name:'UPPCS GS Paper 2', icon:'🏛️', max:15,
+      st:{ intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},
+           body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},
+           concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i} },
+      pts:[
+        {w:8,n:'Constitutional Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|amendment|73rd|74th|पंचायत/i,s:'अनुच्छेद लिखें — 73rd/74th संशोधन, पंचायत'},
+        {w:8,n:'UP Governance',r:/उत्तर प्रदेश|UP|राज्यपाल|मुख्यमंत्री|CM|विधानसभा|पंचायत|नगर निगम|जिला|मंडल/i,s:'UP governance — पंचायत, नगर निगम, जिला प्रशासन'},
+        {w:7,n:'UP Polity',r:/विधानसभा|विधान परिषद|MLC|MLA|मुख्यमंत्री|स्पीकर|राज्यपाल|मंडलायुक्त|DM|SP/i,s:'UP polity — विधानसभा, विधान परिषद, DM, SP'},
+        {w:6,n:'Committee/Report',r:/committee|समिति|commission|आयोग|report|NITI|ARC/i,s:'Committee/Commission report'},
+        {w:7,n:'Governance Aspect',r:/शासन|governance|प्रशासन|accountability|transparency|e-gov|reform|सुधार/i,s:'Governance aspect'},
+        {w:6,n:'Federal/State',r:/federal|संघीय|राज्य|state|center|केंद्र|राज्य सूची|समवर्ती/i,s:'Federal/state angle'},
+        {w:6,n:'Example',r:/उदाहरण|example|जैसे|UP में/i,s:'UP example दें'},
+        {w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward ज़रूर दें'}
+      ],
+      bad:[
+        {t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|विधानसभा|पंचायत|मंडल/i.test(x);},m:'⚠️ UP-specific reference नहीं — UPPCS GS2 में अनिवार्य'},
+        {t:function(x){return !/अनुच्छेद|article|संविधान|constitution/i.test(x);},m:'❌ संविधान/अनुच्छेद reference नहीं'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},
+        {t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}
+      ]},
+    gs3: {name:'UPPCS GS Paper 3', icon:'💰', max:15,
+      st:{ intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},
+           body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},
+           concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i} },
+      pts:[
+        {w:8,n:'UP Economy/GSDP',r:/GSDP|GDP|UP|उत्तर प्रदेश|अर्थव्यवस्था|economy|निवेश|बजट|budget|\d+%/i,s:'UP economy — GSDP, बजट, निवेश'},
+        {w:8,n:'UP Agriculture',r:/कृषि|agriculture|किसान|फसल|गेहूं|गन्ना|चीनी|धान|सिंचाई|उर्वरक|खाद/i,s:'UP कृषि — गन्ना, गेहूं, किसान, सिंचाई'},
+        {w:7,n:'UP Industry/MSME',r:/उद्योग|industry|MSME|व्यापार|व्यवसाय|निवेश|रोजगार|ODOP|एक जनपद एक उत्पाद/i,s:'UP उद्योग — MSME, ODOP, निवेश'},
+        {w:7,n:'UP Environment',r:/पर्यावरण|environment|गंगा|नमामि गंगे|प्रदूषण|pollution|वन|forest|वन्यजीव|जलवायु/i,s:'UP environment — गंगा, नमामि गंगे, वन'},
+        {w:6,n:'UP Science/Tech',r:/technology|तकनीक|IT|digital|सूचना|नवाचार|innovation|defence corridor|रक्षा|DRDO/i,s:'UP में IT/defence corridor'},
+        {w:6,n:'UP Scheme',r:/मुख्यमंत्री|CM|योजना|scheme|mission|मिशन|UP सरकार/i,s:'UP scheme — मुख्यमंत्री योजना'},
+        {w:6,n:'UP Example/Data',r:/उदाहरण|example|जैसे|UP में|\d+%/i,s:'UP example/data'},
+        {w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward ज़रूर दें'}
+      ],
+      bad:[
+        {t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|गन्ना|गेहूं/i.test(x);},m:'⚠️ UP-specific reference नहीं'},
+        {t:function(x){return !/\d+%|GSDP|GDP|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},
+        {t:function(x){return !/योजना|scheme|mission|मिशन/i.test(x);},m:'❌ Scheme नहीं'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},
+        {t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}
+      ]},
+    gs4: {name:'UPPCS GS Paper 4 (Ethics)', icon:'⚖️', max:15,
+      st:{ intro:{w:15,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},
+           body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma|दुविधा/i},
+           concl:{w:20,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward/i} },
+      pts:[
+        {w:9,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant|अहिंसा|सत्य/i,s:'Ethical concept/thinker ज़रूर लिखें'},
+        {w:8,n:'Case Study Analysis',r:/case|केस|situation|दुविधा|dilemma|stakeholder|हितधारक|option|विकल्प/i,s:'Case study में stakeholders, options analyze करें'},
+        {w:7,n:'Values Mentioned',r:/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय|equality|समानता/i,s:'Values लिखें — honesty, empathy, justice'},
+        {w:7,n:'UP Public Service',r:/उत्तर प्रदेश|UP|लोक सेवक|civil servant|जवाबदेही|पारदर्शिता|प्रशासनिक/i,s:'UP public service values — जवाबदेही, पारदर्शिता'},
+        {w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Constitutional morality जोड़ें'},
+        {w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real-life example दें'},
+        {w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected|प्रभावित/i,s:'Stakeholders list करें'},
+        {w:10,n:'Solution/Decision',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई|recommend/i,s:'Final decision/course of action दें'}
+      ],
+      bad:[
+        {t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य/i.test(x);},m:'❌ Ethical concept नहीं'},
+        {t:function(x){return !/case|केस|situation|dilemma|दुविधा|stakeholder/i.test(x);},m:'❌ Case analysis नहीं'},
+        {t:function(x){return !/solution|समाधान|decision|निर्णय|action/i.test(x);},m:'❌ Solution नहीं'},
+        {t:function(x){return !/intro|परिचय|परिभाषा|definition/i.test(x);},m:'❌ Introduction/Definition नहीं'},
+        {t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}
+      ]},
+    gs5: {name:'UPPCS GS Paper 5 (UP Special)', icon:'🌟', max:15,
+      st:{ intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},
+           body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},
+           concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i} },
+      pts:[
+        {w:9,n:'UP History',r:/उत्तर प्रदेश|UP|अवध|1857|स्वतंत्रता|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश|रानी लक्ष्मीबाई|रोहिल्ला/i,s:'UP history — अवध, 1857, कानपुर, लखनऊ, प्रयागराज'},
+        {w:8,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|बुंदेलखंड|रोहिलखंड|अवध|पूर्वांचल|हिमालय|मैदान/i,s:'UP geography — नदी, बुंदेलखंड, रोहिलखंड, पूर्वांचल'},
+        {w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|संगीत|मंदिर|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|साहित्य|तुलसीदास|कबीर|सूरदास/i,s:'UP culture — काशी, अयोध्या, ब्रज, तुलसीदास, कबीर'},
+        {w:7,n:'UP Administration',r:/प्रशासन|administrative|जिला|मंडल|तहसील|पंचायत|नगर निगम|DM|SP|विकास|मंडलायुक्त/i,s:'UP administration — DM, SP, मंडल, तहसील'},
+        {w:7,n:'UP Economy',r:/कृषि|agriculture|उद्योग|industry|व्यापार|GDP|GSDP|गन्ना|गेहूं/i,s:'UP economy — कृषि, उद्योग, GSDP'},
+        {w:6,n:'UP Current Affairs',r:/20\d{2}|recent|हाल|current|अभी|नया|new|2023|2024|2025/i,s:'UP current affairs ज़रूर जोड़ें'},
+        {w:6,n:'UP Example',r:/उदाहरण|example|जैसे|UP में/i,s:'UP example दें'},
+        {w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way Forward ज़रूर दें'}
+      ],
+      bad:[
+        {t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|वाराणसी|प्रयागराज|अयोध्या|काशी/i.test(x);},m:'❌ UP-specific reference नहीं — GS5 में अनिवार्य'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},
+        {t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}
+      ]},
+    essay: {name:'UPPCS Essay', icon:'📝', max:20,
+      st:{ intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|quote|उद्धरण/i},
+           body:{w:50,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|example|उदाहरण/i},
+           concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|summary/i} },
+      pts:[
+        {w:10,n:'Philosophical Depth',r:/philosoph|दर्शन|thinker|विचारक|Gandhi|Nehru|Ambedkar|Tagore|Vivekananda/i,s:'Thinkers जोड़ें'},
+        {w:12,n:'UP Multi-dimension',r:/social|economic|political|environment|सामाजिक|आर्थिक|राजनीतिक|पर्यावरण|UP|उत्तर प्रदेश/i,s:'UP के हर dimension — society, economy, polity'},
+        {w:8,n:'UP Examples',r:/example|उदाहरण|जैसे|case|UP में/i,s:'UP-specific examples दें'},
+        {w:8,n:'UP Current Affairs',r:/20\d{2}|recent|हाल|current|UP|उत्तर प्रदेश/i,s:'UP current affairs'},
+        {w:6,n:'Quotes',r:/[""][^""]{10,}[""]|कहा|quote|अनुसार/i,s:'Quotes जोड़ें'},
+        {w:6,n:'Personal Touch',r:/\bI\s|मेरे|मैं|my\s|we\s|हम|हमारा/i,s:'Personal touch दें'},
+        {w:8,n:'Coherence',r:/therefore|इसलिए|thus|hence|इस प्रकार|consequently/i,s:'Linking words use करें'},
+        {w:10,n:'Way Forward',r:/way forward|solution|समाधान|future|भविष्य|hope|आशा/i,s:'Positive conclusion दें'}
+      ],
+      bad:[
+        {t:function(x){return x.split(/\s+/).length<500;},m:'❌ Essay बहुत छोटा — 1000-1200 शब्द'},
+        {t:function(x){return !/उत्तर प्रदेश|UP|यूपी/i.test(x);},m:'⚠️ UP-specific content नहीं'},
+        {t:function(x){return !/[""][^""]{10,}[""]|कहा|quote/i.test(x);},m:'❌ कोई quote नहीं'},
+        {t:function(x){return !/philosoph|दर्शन|thinker|विचारक/i.test(x);},m:'❌ Philosophical depth नहीं'},
+        {t:function(x){return !/social|economic|political|सामाजिक|आर्थिक/i.test(x);},m:'❌ Multi-dimensional नहीं'},
+        {t:function(x){return !/intro|परिचय|प्रस्तावना/i.test(x);},m:'❌ Introduction नहीं'},
+        {t:function(x){return !/conclusion|निष्कर्ष|way forward/i.test(x);},m:'❌ Conclusion नहीं'}
+      ]}
+  };
+
+  // UPPCS paper detection
+  function detectUPPCSPaper(t){
+    if(/उत्तर प्रदेश|UP|यूपी|अवध|बुंदेलखंड|रोहिलखंड|काशी|अयोध्या|लखनऊ|कानपुर|प्रयागराज/i.test(t)){
+      if(!/राजव्यवस्था|polity|संविधान|अनुच्छेद|राजनीति/i.test(t)) return 'gs5';
+    }
+    if(/नैतिकता|ethics|integrity|दुविधा|dilemma|केस/i.test(t)) return 'gs4';
+    if(/अर्थव्यवस्था|economy|GSDP|कृषि|किसान|उद्योग|गन्ना|गेहूं/i.test(t)) return 'gs3';
+    if(/राजव्यवस्था|polity|संविधान|शासन|पंचायत|विधानसभा|73rd|74th/i.test(t)) return 'gs2';
+    return 'gs1';
+  }
+
+  function getText(){
+    var t=(window.state&&window.state.currentText)||window.acxPdfText||'';
+    if(!t||t.length<30){var ta=document.getElementById('ansInput');if(ta)t=ta.value||'';}
+    return t;
+  }
+
+  function getExam(){
+    var a=document.querySelector('.dr-item.on');
+    return a ? a.getAttribute('data-exam') : null;
+  }
+
+  function buildPanel(text){
+    var paper = detectUPPCSPaper(text);
+    var d = UPPCS[paper];
+    if(!d) return null;
+
+    var words = text.split(/\s+/).filter(function(w){return w.length>0;}).length;
+    var sF=[], sM=[], pF=[], pM=[], warn=[], sc=0, mx=0;
+
+    // Structure
+    for(var k in d.st){
+      var s = d.st[k];
+      mx += s.w;
+      if(s.r.test(text)){ sF.push({n:s.n,w:s.w}); sc += s.w; }
+      else sM.push({n:s.n,w:s.w});
+    }
+    // Content
+    d.pts.forEach(function(p){
+      mx += p.w;
+      if(p.r.test(text)){ pF.push({n:p.n,w:p.w}); sc += p.w; }
+      else pM.push({n:p.n,w:p.w,s:p.s});
+    });
+    // Warnings
+    d.bad.forEach(function(b){
+      try{ if(b.t(text)) warn.push(b.m); }catch(e){}
+    });
+
+    var pc = Math.round((sc/mx)*100);
+    var marks = Math.round((sc/mx)*d.max*10)/10;
+    var grade = pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
+
+    var h='';
+    // Scorecard header — UPPCS orange theme
+    h+='<div style="background:linear-gradient(135deg,#7c2d12,#c2410c);border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
+    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
+    h+='<div style="font-size:9px;color:#fed7aa;font-weight:800;letter-spacing:2px">UPPCS EXAMINER SCORECARD</div>';
+    h+='<div style="font-size:22px;font-weight:900;margin-top:4px">🌟 '+d.name+'</div>';
+    h+='<div style="font-size:10px;color:#fed7aa;margin-top:3px">Uttar Pradesh Public Service Commission</div></div>';
+    h+='<div style="text-align:right"><div style="font-size:11px;color:#fed7aa">SCORE</div>';
+    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#86efac':pc>=50?'#fde047':'#fca5a5')+';line-height:1">'+marks+'</div>';
+    h+='<div style="font-size:14px;color:#fed7aa">/ '+d.max+'</div></div></div>';
+    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#fde047,#86efac)"></div></div>';
+    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
+    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#fed7aa">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#fed7aa">PERCENT</div><div style="font-size:18px;font-weight:900">'+pc+'%</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#fed7aa">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
+    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#fed7aa">MISSING</div><div style="font-size:18px;font-weight:900;color:#fca5a5">'+(sM.length+pM.length)+'</div></div>';
+    h+='</div></div>';
+
+    // Structure
+    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #c2410c">';
+    h+='<div style="font-size:14px;font-weight:900;color:#7c2d12;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
+    sF.forEach(function(s){h+='<div style="background:#fff7ed;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#7c2d12;font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:#c2410c;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
+    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
+    h+='</div>';
+
+    // Content — UPPCS specific
+    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #f59e0b">';
+    h+='<div style="font-size:14px;font-weight:900;color:#b45309;margin-bottom:12px">📚 UP-SPECIFIC CONTENT ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
+    pF.forEach(function(p){h+='<div style="background:#fff7ed;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#7c2d12;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#f59e0b;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
+    pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
+    h+='</div>';
+
+    // Warnings
+    if(warn.length){
+      h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
+      h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 UPPCS EXAMINER WARNINGS ('+warn.length+')</div>';
+      warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
+      h+='</div>';
+    }
+
+    // Action Plan
+    h+='<div style="background:linear-gradient(135deg,#fff7ed,#fed7aa);border:2px solid #c2410c;border-radius:12px;padding:16px;margin-bottom:12px">';
+    h+='<div style="font-size:15px;font-weight:900;color:#7c2d12;margin-bottom:12px">🎯 UPPCS ACTION PLAN</div>';
+    var acts=[];
+    sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
+    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});
+    warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
+    if(!acts.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#7c2d12;padding:16px">🏆 शानदार! UPPCS हिसाब से perfect answer</div>';}
+    else{acts.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#dc2626':'#ea580c';h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
+    h+='</div>';
+
+    // Verdict
+    h+='<div style="background:linear-gradient(135deg,#1a202c,#7c2d12);border-radius:12px;padding:18px;color:#fff">';
+    h+='<div style="font-size:14px;font-weight:900;color:#fde047;margin-bottom:12px">👨‍🏫 UPPCS EXAMINER का FINAL VERDICT</div>';
+    var v;
+    if(pc>=75) v='🏆 Excellent! UPPCS top 1% answer। UP-specific content, structure, examples — सब perfect।';
+    else if(pc>=60) v='👍 Good! Content अच्छा। UP-specific points और structure में थोड़ा सुधार करें।';
+    else if(pc>=45) v='📊 Average. UP history/culture/schemes जोड़ें। Intro/Conclusion ठीक करें।';
+    else if(pc>=30) v='⚠️ Weak. UP-specific content बहुत कम है। अवध, काशी, अयोध्या, UP schemes ज़रूर पढ़ें।';
+    else v='❌ Very Poor. UPPCS हिसाब से fail। पहले UP GK, history, geography, culture पढ़ें।';
+    h+='<div style="font-size:13px;line-height:1.7;color:#fed7aa">'+v+'</div></div>';
+    return h;
+  }
+
+  function inject(){
+    // SIRF UPPCS ke liye
+    var exam = getExam();
+    if(exam !== 'uppcs') {
+      // Agar UPPCS panel hai lekin exam UPPCS nahi, toh hatao
+      var oldPanel = document.getElementById('uppcsOnlyPanel');
+      if(oldPanel) oldPanel.remove();
+      return;
+    }
+
+    var modal = document.getElementById('acxResultModal');
+    if(!modal) return;
+
+    var old = document.getElementById('uppcsOnlyPanel');
+    if(old) old.remove();
+
+    var text = getText();
+    if(!text || text.length < 30) return;
+
+    var panel = buildPanel(text);
+    if(!panel) return;
+
+    var inner = modal.querySelector('div[style*="max-width:640px"]') || modal.firstElementChild;
+    if(!inner) return;
+
+    var wrap = document.createElement('div');
+    wrap.id = 'uppcsOnlyPanel';
+    wrap.innerHTML = panel;
+    wrap.style.cssText = 'margin-bottom:14px';
+
+    var firstChild = inner.firstElementChild;
+    if(firstChild) inner.insertBefore(wrap, firstChild.nextSibling);
+    else inner.appendChild(wrap);
+
+    console.log('✅ UPPCS panel injected — paper:', detectUPPCSPaper(text));
+  }
+
+  new MutationObserver(function(){setTimeout(inject,100);setTimeout(inject,400);}).observe(document.body,{childList:true,subtree:true});
+  setInterval(inject, 400);
+
+  console.log('✅ UPPCS Exam Panel ready (UPPCS only)');
+})();
+</script>
 </body>
 </html>
