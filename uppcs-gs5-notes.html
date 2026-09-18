@@ -5,132 +5,554 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UPPCS GS5 - उत्तर प्रदेश विशेष Complete Notes | The Ravishankar Insights</title>
 <style>
-@page { size: A4; margin: 2cm 1.5cm; }
+@page {
+  size: A4;
+  margin: 20mm 15mm 20mm 15mm;
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans Devanagari','Mangal',Arial,sans-serif;font-size:12pt;line-height:1.7;color:#1a1a2e;background:#fff;padding:20px;max-width:900px;margin:0 auto}
-h1{font-size:24pt;color:#0f3460;text-align:center;margin:20px 0;border-bottom:3px solid #c2410c;padding-bottom:14px}
-h2{font-size:18pt;color:#c2410c;margin:30px 0 12px;border-left:5px solid #c2410c;padding-left:12px;page-break-before:auto}
-h3{font-size:14pt;color:#1e3a8a;margin:20px 0 10px}
-h4{font-size:13pt;color:#7c2d12;margin:14px 0 8px}
-p{margin:8px 0;text-align:justify}
-ul,ol{margin:10px 0 10px 30px}
-li{margin:5px 0}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:11pt;page-break-inside:avoid}
-th,td{border:1px solid #cbd5e0;padding:8px 10px;text-align:left;vertical-align:top}
-th{background:#c2410c;color:#fff;font-weight:700}
+
+body{
+  font-family:'Noto Sans Devanagari','Mangal','Nirmala UI',Arial,sans-serif;
+  font-size:11.5pt;
+  line-height:1.65;
+  color:#1a1a2e;
+  background:#fff;
+  padding:20px;
+  max-width:800px;
+  margin:0 auto;
+}
+
+/* ============ WATERMARK (screen + print) ============ */
+.watermark-fixed{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-30deg);
+  font-size:80pt;
+  font-weight:900;
+  color:rgba(194,65,12,0.06);
+  z-index:-1;
+  pointer-events:none;
+  white-space:nowrap;
+  font-family:Georgia,serif;
+  letter-spacing:8px;
+}
+
+.page-watermark{
+  position:absolute;
+  top:45%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:60pt;
+  font-weight:900;
+  color:rgba(194,65,12,0.05);
+  z-index:0;
+  pointer-events:none;
+  white-space:nowrap;
+  font-family:Georgia,serif;
+}
+
+/* ============ HEADER BAR (every page via fixed) ============ */
+.page-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:10mm;
+  background:linear-gradient(90deg,#0f3460,#c2410c);
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15mm;
+  font-size:9pt;
+  color:#fff;
+  font-weight:700;
+}
+.page-header .brand{display:flex;align-items:center;gap:8px}
+.page-header .logo-box{
+  background:#fff;
+  color:#0f3460;
+  width:22px;height:22px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.page-header .right{font-size:8pt;opacity:0.9}
+
+/* ============ FOOTER BAR ============ */
+.page-footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:8mm;
+  background:linear-gradient(90deg,#0f3460,#c2410c);
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:8pt;
+  color:#fff;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+/* ============ BODY CONTENT ============ */
+.content-wrapper{
+  position:relative;
+  z-index:1;
+  padding-top:8mm;
+  padding-bottom:10mm;
+}
+
+/* ============ COVER PAGE ============ */
+.cover{
+  text-align:center;
+  padding:60px 30px 40px;
+  page-break-after:always;
+  position:relative;
+  min-height:250mm;
+  background:linear-gradient(180deg,#fff 0%,#fff7ed 100%);
+  border:3px solid #c2410c;
+  border-radius:12px;
+  overflow:hidden;
+}
+.cover::before{
+  content:"The Ravishankar Insights";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:56pt;
+  color:rgba(194,65,12,0.06);
+  font-weight:900;
+  font-family:Georgia,serif;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.cover-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:linear-gradient(135deg,#0f3460,#c2410c);
+  padding:12px 28px;
+  border-radius:50px;
+  margin-bottom:30px;
+  box-shadow:0 8px 24px rgba(15,52,96,0.25);
+}
+.cover-brand .logo-badge{
+  background:#fff;
+  color:#0f3460;
+  width:36px;height:36px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:20px;
+}
+.cover-brand .brand-text{
+  color:#fff;font-size:16pt;font-weight:900;letter-spacing:1px;
+}
+.cover h1{
+  font-size:30pt;
+  color:#0f3460;
+  margin:20px 0 14px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.cover .title-line{
+  width:120px;height:5px;background:#c2410c;
+  margin:14px auto;border-radius:3px;
+}
+.cover .sub{
+  font-size:15pt;
+  color:#c2410c;
+  margin:20px 0;
+  font-weight:700;
+}
+.cover .tagline{
+  font-size:13pt;
+  color:#1e3a8a;
+  margin:24px 0;
+  font-weight:600;
+}
+.cover .topics-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:30px auto;
+  max-width:520px;
+  text-align:left;
+}
+.cover .topic-item{
+  background:rgba(255,255,255,0.8);
+  padding:10px 14px;
+  border-left:4px solid #c2410c;
+  border-radius:6px;
+  font-size:11pt;
+  font-weight:600;
+  color:#1a1a2e;
+}
+.cover .footer-info{
+  margin-top:50px;
+  font-size:11pt;
+  color:#718096;
+  line-height:1.8;
+}
+.cover .footer-info strong{color:#c2410c}
+
+/* ============ HEADINGS ============ */
+h1{
+  font-size:20pt;
+  color:#0f3460;
+  text-align:center;
+  margin:24px 0 18px;
+  padding:14px 20px;
+  border-top:4px double #c2410c;
+  border-bottom:4px double #c2410c;
+  background:linear-gradient(90deg,#fff7ed,#fff);
+  page-break-after:avoid;
+  font-weight:900;
+  letter-spacing:0.5px;
+}
+h2{
+  font-size:15pt;
+  color:#c2410c;
+  margin:22px 0 10px;
+  padding-left:14px;
+  border-left:6px solid #c2410c;
+  page-break-after:avoid;
+  font-weight:800;
+}
+h3{
+  font-size:13pt;
+  color:#1e3a8a;
+  margin:16px 0 8px;
+  page-break-after:avoid;
+  font-weight:800;
+}
+h4{
+  font-size:12pt;
+  color:#7c2d12;
+  margin:12px 0 6px;
+  page-break-after:avoid;
+  font-weight:800;
+}
+p{margin:8px 0;text-align:justify;color:#2d3748}
+ul,ol{margin:10px 0 10px 26px}
+li{margin:5px 0;color:#2d3748}
+strong{color:#0f3460}
+
+/* ============ TABLES ============ */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  font-size:10.5pt;
+  page-break-inside:avoid;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-radius:8px;
+  overflow:hidden;
+}
+th{
+  background:linear-gradient(135deg,#c2410c,#7c2d12);
+  color:#fff;
+  padding:10px 12px;
+  text-align:left;
+  font-weight:800;
+  font-size:10.5pt;
+  letter-spacing:0.3px;
+}
+td{
+  border:1px solid #e2e8f0;
+  padding:9px 12px;
+  vertical-align:top;
+  color:#2d3748;
+}
 tr:nth-child(even){background:#fff7ed}
-.cover{text-align:center;padding:60px 20px;page-break-after:always;border:3px solid #c2410c;border-radius:12px;background:linear-gradient(135deg,#fff7ed,#ffe4d6)}
-.cover h1{font-size:32pt;border:none;color:#7c2d12;margin-bottom:20px}
-.cover .sub{font-size:16pt;color:#c2410c;margin:20px 0;font-weight:600}
-.cover .brand{font-size:18pt;color:#1e3a8a;font-weight:900;margin-top:40px}
-.cover .footer{font-size:11pt;color:#718096;margin-top:30px}
-.toc{background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:20px;margin:20px 0}
-.toc h2{border:none;padding:0;text-align:center;margin-bottom:16px}
-.toc ol{columns:2;column-gap:30px;list-style-position:inside}
-.toc li{padding:4px 0;font-weight:500}
-.box{background:#eff6ff;border-left:5px solid #1e40af;padding:12px 16px;margin:14px 0;border-radius:0 8px 8px 0}
-.box.warn{background:#fff7ed;border-left-color:#c2410c}
-.box.green{background:#f0fff4;border-left-color:#27ae60}
-.box.red{background:#fff5f5;border-left-color:#e94560}
-.box h4{margin-top:0}
-.important{background:#fef3c7;padding:10px 14px;border-radius:8px;margin:10px 0;border-left:4px solid #f59e0b;font-weight:600}
-.footer-note{text-align:center;color:#718096;font-size:10pt;margin-top:40px;border-top:1px solid #e2e8f0;padding-top:20px}
-@media print {
-  body{padding:0}
-  .cover{page-break-after:always}
-  h2{page-break-after:avoid}
-  table{page-break-inside:avoid}
+tr:hover{background:#ffe4d6}
+
+/* ============ INFO BOXES ============ */
+.box{
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border-left:6px solid #1e40af;
+  padding:14px 18px;
+  margin:14px 0;
+  border-radius:0 10px 10px 0;
+  page-break-inside:avoid;
+}
+.box h4{
+  margin-top:0;
+  color:#1e3a8a;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.box.warn{
+  background:linear-gradient(135deg,#fff7ed,#fed7aa);
+  border-left-color:#c2410c;
+}
+.box.warn h4{color:#7c2d12}
+.box.green{
+  background:linear-gradient(135deg,#f0fff4,#c6f6d5);
+  border-left-color:#27ae60;
+}
+.box.green h4{color:#22543d}
+.box.red{
+  background:linear-gradient(135deg,#fff5f5,#fed7d7);
+  border-left-color:#e94560;
+}
+.box.red h4{color:#c53030}
+.box.purple{
+  background:linear-gradient(135deg,#f5f3ff,#ddd6fe);
+  border-left-color:#7c3aed;
+}
+.box.purple h4{color:#4c1d95}
+
+.important{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  padding:12px 16px;
+  border-radius:10px;
+  margin:14px 0;
+  border-left:6px solid #f59e0b;
+  font-weight:600;
+  color:#78350f;
+  page-break-inside:avoid;
+}
+
+.quote{
+  background:linear-gradient(135deg,#f8fafc,#f1f5f9);
+  padding:16px 22px;
+  margin:16px 0;
+  border-left:6px solid #0f3460;
+  border-radius:0 10px 10px 0;
+  font-style:italic;
+  color:#1e293b;
+  font-size:11.5pt;
+  page-break-inside:avoid;
+}
+.quote::before{
+  content:"❝";
+  font-size:28pt;
+  color:#c2410c;
+  line-height:0;
+  vertical-align:-12px;
+  margin-right:6px;
+}
+
+/* ============ CHAPTER BADGE ============ */
+.chapter-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#c2410c,#7c2d12);
+  color:#fff;
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:9pt;
+  font-weight:800;
+  letter-spacing:1.5px;
+  margin-bottom:8px;
+}
+
+/* ============ TOC ============ */
+.toc{
+  background:linear-gradient(135deg,#fff7ed,#ffe4d6);
+  border:2px solid #c2410c;
+  border-radius:14px;
+  padding:22px 26px;
+  margin:20px 0;
+  page-break-after:always;
+}
+.toc h2{
+  border:none;
+  padding:0;
+  text-align:center;
+  margin-bottom:18px;
+  color:#7c2d12;
+  font-size:18pt;
+}
+.toc ol{
+  columns:2;
+  column-gap:30px;
+  list-style-position:inside;
+  padding-left:0;
+}
+.toc li{
+  padding:6px 0;
+  font-weight:600;
+  color:#1a1a2e;
+  border-bottom:1px dashed #fed7aa;
+  font-size:11pt;
+}
+
+/* ============ SECTION WRAPPER ============ */
+.section{
+  position:relative;
+  page-break-inside:auto;
+  padding:10px 0;
+}
+.section::before{
+  content:"The Ravishankar Insights";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:44pt;
+  color:rgba(194,65,12,0.04);
+  font-weight:900;
+  font-family:Georgia,serif;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ============ PRINT STYLES ============ */
+@media print{
+  @page{
+    size:A4;
+    margin:18mm 14mm 18mm 14mm;
+    @top-center{
+      content:"The Ravishankar Insights | UPPCS GS5 Notes";
+      font-size:9pt;
+      color:#c2410c;
+    }
+    @bottom-center{
+      content:"© The Ravishankar Insights | ravishankarkamal59-eng.github.io | Page " counter(page);
+      font-size:8pt;
+      color:#718096;
+    }
+  }
+  body{padding:0;font-size:11pt}
+  .no-print{display:none !important}
+  .cover{border:3px solid #c2410c;min-height:260mm}
+  h1,h2,h3,h4{page-break-after:avoid}
+  table,.box,.important,.quote{page-break-inside:avoid}
+  .section::before{color:rgba(194,65,12,0.05)}
+  .cover::before{color:rgba(194,65,12,0.07)}
 }
 </style>
 </head>
 <body>
 
-<!-- ==================== COVER PAGE ==================== -->
+<!-- ============ FIXED HEADER ============ -->
+<div class="page-header">
+  <div class="brand">
+    <div class="logo-box">R</div>
+    <span>THE RAVISHANKAR INSIGHTS</span>
+  </div>
+  <div class="right">UPPCS GS5 — उत्तर प्रदेश विशेष</div>
+</div>
+
+<!-- ============ FIXED FOOTER ============ -->
+<div class="page-footer">
+  © The Ravishankar Insights | ravishankarkamal59-eng.github.io
+</div>
+
+<!-- ============ FIXED WATERMARK (behind content) ============ -->
+<div class="watermark-fixed">The Ravishankar Insights</div>
+
+<div class="content-wrapper">
+
+<!-- ============ COVER PAGE ============ -->
 <div class="cover">
-<h1>UPPCS GS Paper 5</h1>
-<div class="sub">उत्तर प्रदेश विशेष — Complete Study Material</div>
-<div style="font-size:14pt;color:#1e3a8a;margin:20px 0">UPPCS Mains General Studies Paper 5</div>
-<div style="font-size:13pt;color:#7c2d12;margin:30px 0">UP History • Geography • Culture • Administration<br>Economy • Education • Tourism • Sports • Current Affairs</div>
-<div class="brand">📚 The Ravishankar Insights</div>
-<div class="footer">
-Complete Notes in Hindi • Based on NCERT & Standard Syllabus<br>
-Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
-</div>
+  <div class="cover-brand">
+    <div class="logo-badge">R</div>
+    <div class="brand-text">The Ravishankar Insights</div>
+  </div>
+
+  <h1>UPPCS GS Paper 5</h1>
+  <div class="title-line"></div>
+  <div class="sub">उत्तर प्रदेश विशेष — Complete Study Material</div>
+  <div class="tagline">UPPCS Mains General Studies Paper 5</div>
+  <div class="title-line"></div>
+
+  <div class="topics-grid">
+    <div class="topic-item">📜 UP का इतिहास</div>
+    <div class="topic-item">🗺️ UP का भूगोल</div>
+    <div class="topic-item">🎭 कला एवं संस्कृति</div>
+    <div class="topic-item">🏛️ प्रशासनिक व्यवस्था</div>
+    <div class="topic-item">💰 अर्थव्यवस्था</div>
+    <div class="topic-item">📚 शिक्षा एवं स्वास्थ्य</div>
+    <div class="topic-item">✈️ परिवहन एवं पर्यटन</div>
+    <div class="topic-item">🏆 खेल एवं योजनाएँ</div>
+    <div class="topic-item">📰 समसामयिकी</div>
+    <div class="topic-item">❓ महत्वपूर्ण प्रश्न</div>
+  </div>
+
+  <div class="footer-info">
+    <strong>Complete Notes in Hindi</strong> • Based on NCERT & Standard Syllabus<br>
+    Useful for <strong>UPPCS, UPSC, UGC NET, BA, MA, CUET PG</strong><br><br>
+    <strong>© The Ravishankar Insights</strong>
+  </div>
 </div>
 
-<!-- ==================== TABLE OF CONTENTS ==================== -->
+<!-- ============ TOC ============ -->
 <div class="toc">
-<h2>📋 विषय-सूची</h2>
-<ol>
-<li>उत्तर प्रदेश - परिचय एवं सामान्य जानकारी</li>
-<li>उत्तर प्रदेश का इतिहास (प्राचीन काल)</li>
-<li>उत्तर प्रदेश का इतिहास (मध्यकाल)</li>
-<li>उत्तर प्रदेश का इतिहास (आधुनिक काल एवं स्वतंत्रता संग्राम)</li>
-<li>उत्तर प्रदेश का भूगोल - भौतिक विभाजन</li>
-<li>उत्तर प्रदेश की नदियाँ एवं अपवाह तंत्र</li>
-<li>उत्तर प्रदेश की जलवायु</li>
-<li>उत्तर प्रदेश की मृदा</li>
-<li>उत्तर प्रदेश की प्राकृतिक वनस्पति एवं वन्यजीव</li>
-<li>उत्तर प्रदेश की कृषि</li>
-<li>उत्तर प्रदेश के खनिज संसाधन</li>
-<li>उत्तर प्रदेश के उद्योग</li>
-<li>उत्तर प्रदेश में परिवहन</li>
-<li>उत्तर प्रदेश की जनसंख्या</li>
-<li>उत्तर प्रदेश की संस्कृति, कला एवं साहित्य</li>
-<li>उत्तर प्रदेश का प्रशासनिक ढाँचा</li>
-<li>उत्तर प्रदेश की राजनीति एवं पंचायती राज</li>
-<li>उत्तर प्रदेश की अर्थव्यवस्था</li>
-<li>उत्तर प्रदेश में शिक्षा</li>
-<li>उत्तर प्रदेश में पर्यटन</li>
-<li>उत्तर प्रदेश में खेल</li>
-<li>उत्तर प्रदेश की सरकारी योजनाएँ</li>
-<li>उत्तर प्रदेश की समसामयिकी</li>
-<li>महत्वपूर्ण तथ्य एवं आँकड़े</li>
-<li>परीक्षा के लिए महत्वपूर्ण प्रश्न</li>
-<li>निष्कर्ष</li>
-</ol>
+  <h2>📋 विषय-सूची</h2>
+  <ol>
+    <li>उत्तर प्रदेश - परिचय</li>
+    <li>उत्तर प्रदेश का इतिहास (प्राचीन)</li>
+    <li>उत्तर प्रदेश का इतिहास (मध्यकाल)</li>
+    <li>उत्तर प्रदेश का इतिहास (आधुनिक)</li>
+    <li>1857 का स्वतंत्रता संग्राम</li>
+    <li>स्वतंत्रता आंदोलन में UP</li>
+    <li>कला एवं संस्कृति</li>
+    <li>लोक नृत्य एवं संगीत</li>
+    <li>मेले एवं त्योहार</li>
+    <li>स्थापत्य एवं विरासत</li>
+    <li>भाषा एवं साहित्य</li>
+    <li>भू-आकृतिक विभाजन</li>
+    <li>जलवायु</li>
+    <li>नदियाँ</li>
+    <li>मृदा</li>
+    <li>प्राकृतिक वनस्पति</li>
+    <li>कृषि</li>
+    <li>सिंचाई</li>
+    <li>खनिज संसाधन</li>
+    <li>उद्योग</li>
+    <li>जनसंख्या</li>
+    <li>नगरीकरण</li>
+    <li>प्रशासनिक व्यवस्था</li>
+    <li>राजनीति</li>
+    <li>अर्थव्यवस्था</li>
+    <li>सरकारी योजनाएँ</li>
+    <li>शिक्षा</li>
+    <li>स्वास्थ्य</li>
+    <li>परिवहन</li>
+    <li>पर्यटन</li>
+    <li>खेल</li>
+    <li>प्रमुख व्यक्तित्व</li>
+    <li>समस्याएँ एवं विकास</li>
+    <li>महत्वपूर्ण प्रश्न</li>
+    <li>निष्कर्ष</li>
+  </ol>
 </div>
 
-<!-- ==================== SECTION 1 ==================== -->
-<h1>1. उत्तर प्रदेश - परिचय एवं सामान्य जानकारी</h1>
+<!-- ============ SECTION 1 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 1</span>
+<h1>उत्तर प्रदेश - परिचय</h1>
 
-<h2>1.1 उत्तर प्रदेश का परिचय</h2>
-<p>उत्तर प्रदेश भारत का सबसे अधिक जनसंख्या वाला राज्य है, जो अपनी समृद्ध ऐतिहासिक, सांस्कृतिक, आर्थिक और भौगोलिक विविधता के लिए विश्वभर में प्रसिद्ध है। यह राज्य भारत के उत्तर में स्थित है और इसे "भारत का हृदय" कहा जाता है। उत्तर प्रदेश की सीमाएँ उत्तर में उत्तराखंड एवं हिमाचल प्रदेश, पश्चिम में हरियाणा, राजस्थान एवं दिल्ली, दक्षिण में मध्य प्रदेश एवं छत्तीसगढ़, और पूर्व में बिहार एवं झारखंड से लगती हैं। इसके अतिरिक्त उत्तर में नेपाल से भी अंतर्राष्ट्रीय सीमा है।</p>
+<p>उत्तर प्रदेश भारत का सबसे अधिक जनसंख्या वाला राज्य है, जिसकी सांस्कृतिक, ऐतिहासिक, और भौगोलिक विशेषताएँ विश्व के किसी भी क्षेत्र से कम नहीं हैं। उत्तर प्रदेश का इतिहास अत्यंत गौरवशाली है — यहाँ से रामायण और महाभारत की कथाएँ जुड़ी हैं, यहाँ से बौद्ध और जैन धर्म का उदय हुआ, और यहाँ से भारतीय स्वतंत्रता संग्राम की चिंगारी भी उठी।</p>
 
-<p>उत्तर प्रदेश का गठन 1 अप्रैल 1937 को "संयुक्त प्रांत" के रूप में हुआ था, जिसका नाम 24 जनवरी 1950 को बदलकर "उत्तर प्रदेश" रखा गया। राज्य का क्षेत्रफल 2,40,928 वर्ग किलोमीटर है, जो भारत के कुल क्षेत्रफल का लगभग 7.33% है। क्षेत्रफल की दृष्टि से यह भारत का चौथा सबसे बड़ा राज्य है। उत्तर प्रदेश की राजधानी लखनऊ है, जिसे "नवाबों का शहर" भी कहा जाता है।</p>
+<p>उत्तर प्रदेश को <strong>"भारत का हृदय"</strong> या <strong>"Heartland of India"</strong> कहा जाता है, क्योंकि यह भारत के उत्तर-मध्य भाग में स्थित है और भारत के विकास में इसका विशेष योगदान रहा है। उत्तर प्रदेश की सीमा 8 राज्यों और 1 केंद्रशासित प्रदेश (दिल्ली) से लगती है — जो भारत में सर्वाधिक है।</p>
 
 <div class="box">
 <h4>📌 महत्वपूर्ण तथ्य</h4>
 <ul>
 <li><strong>राजधानी:</strong> लखनऊ</li>
 <li><strong>क्षेत्रफल:</strong> 2,40,928 वर्ग किमी (भारत का 7.33%)</li>
-<li><strong>जनसंख्या (2011):</strong> 19.98 करोड़ (भारत में पहला स्थान)</li>
-<li><strong>जनसंख्या घनत्व:</strong> 829 व्यक्ति/वर्ग किमी (2011)</li>
-<li><strong>लिंगानुपात:</strong> 912 महिलाएँ प्रति 1000 पुरुष</li>
-<li><strong>साक्षरता दर:</strong> 67.68% (2011)</li>
-<li><strong>जिले:</strong> 75</li>
-<li><strong>मंडल:</strong> 18</li>
-<li><strong>विधानसभा सीटें:</strong> 403</li>
-<li><strong>विधान परिषद सीटें:</strong> 100</li>
-<li><strong>लोकसभा सीटें:</strong> 80 (सबसे अधिक)</li>
-<li><strong>राज्यसभा सीटें:</strong> 31</li>
-<li><strong>राज्य पशु:</strong> बारहसिंगा (Swamp Deer)</li>
-<li><strong>राज्य पक्षी:</strong> सारस क्रेन</li>
-<li><strong>राज्य पुष्प:</strong> पलाश</li>
-<li><strong>राज्य वृक्ष:</strong> अशोक</li>
-<li><strong>राज्य खेल:</strong> हॉकी</li>
+<li><strong>जनसंख्या (2011):</strong> 19.98 करोड़ (भारत में प्रथम)</li>
+<li><strong>जिले:</strong> 75 | <strong>मंडल:</strong> 18</li>
+<li><strong>विधानसभा सीटें:</strong> 403 | <strong>लोकसभा सीटें:</strong> 80</li>
+<li><strong>राज्य पशु:</strong> बारहसिंगा | <strong>राज्य पक्षी:</strong> सारस क्रेन</li>
+<li><strong>राज्य वृक्ष:</strong> अशोक | <strong>राज्य पुष्प:</strong> पलाश</li>
 </ul>
 </div>
 
-<h2>1.2 भौगोलिक स्थिति</h2>
-<p>उत्तर प्रदेश 23°52' उत्तरी अक्षांश से 30°24' उत्तरी अक्षांश तक और 77°05' पूर्वी देशांतर से 84°38' पूर्वी देशांतर तक विस्तृत है। राज्य की उत्तर-दक्षिण लंबाई लगभग 605 किमी और पूर्व-पश्चिम चौड़ाई लगभग 770 किमी है। राज्य की स्थल सीमा की कुल लंबाई 5,795 किमी है, जिसमें अंतर्राष्ट्रीय सीमा (नेपाल के साथ) 579 किमी है।</p>
+<h2>1.1 भौगोलिक स्थिति</h2>
+<p>उत्तर प्रदेश 23°52' उत्तरी अक्षांश से 30°24' उत्तरी अक्षांश तक और 77°05' पूर्वी देशांतर से 84°38' पूर्वी देशांतर तक विस्तृत है। राज्य की उत्तर-दक्षिण लंबाई लगभग 605 किमी और पूर्व-पश्चिम चौड़ाई लगभग 770 किमी है।</p>
 
-<h2>1.3 उत्तर प्रदेश के नामकरण का इतिहास</h2>
-<p>उत्तर प्रदेश का नामकरण कई चरणों से गुजरा है। मुगल काल में इस क्षेत्र को "सूबा इलाहाबाद" और "सूबा अवध" के नाम से जाना जाता था। ब्रिटिश काल में 1834 में इसे "उत्तर-पश्चिमी प्रांत" (North Western Provinces) कहा गया। 1877 में इसे "उत्तर-पश्चिमी प्रांत और अवध" (North Western Provinces and Oudh) नाम दिया गया। 1902 में इसका नाम "संयुक्त प्रांत" (United Provinces) रखा गया। स्वतंत्रता के बाद 24 जनवरी 1950 को इसका वर्तमान नाम "उत्तर प्रदेश" रखा गया।</p>
-
-<h2>1.4 उत्तर प्रदेश के 18 मंडल एवं 75 जिले</h2>
+<h2>1.2 उत्तर प्रदेश के 18 मंडल एवं 75 जिले</h2>
 <table>
-<tr><th>क्र.</th><th>मंडल</th><th>जिले</th></tr>
+<tr><th>क्र.</th><th>मंडल</th><th>प्रमुख जिले</th></tr>
 <tr><td>1</td><td>सहारनपुर</td><td>सहारनपुर, मुजफ्फरनगर, शामली</td></tr>
 <tr><td>2</td><td>मेरठ</td><td>मेरठ, बागपत, गाजियाबाद, गौतमबुद्धनगर, बुलंदशहर, हापुड़</td></tr>
 <tr><td>3</td><td>मुरादाबाद</td><td>मुरादाबाद, बिजनौर, अमरोहा, संभल, रामपुर</td></tr>
@@ -151,75 +573,30 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <tr><td>18</td><td>आगरा</td><td>आगरा, मथुरा, फिरोजाबाद, मैनपुरी</td></tr>
 </table>
 
-<h2>1.5 उत्तर प्रदेश के प्रमुख शहर</h2>
-<ul>
-<li><strong>लखनऊ:</strong> राजधानी, नवाबों का शहर, "सिटी ऑफ नवाब"</li>
-<li><strong>कानपुर:</strong> "उत्तर भारत का मैनचेस्टर", औद्योगिक नगरी</li>
-<li><strong>वाराणसी:</strong> "काशी", विश्व की सबसे प्राचीन जीवित नगरी</li>
-<li><strong>प्रयागराज:</strong> "इलाहाबाद", संगम नगरी, न्यायपीठ का केंद्र</li>
-<li><strong>आगरा:</strong> ताजमहल का शहर, UNESCO वर्ल्ड हेरिटेज</li>
-<li><strong>नोएडा:</strong> IT हब, गौतमबुद्धनगर जिला</li>
-<li><strong>गाजियाबाद:</strong> औद्योगिक नगरी, NCR का हिस्सा</li>
-<li><strong>अयोध्या:</strong> राम जन्मभूमि, धार्मिक नगरी</li>
-<li><strong>मथुरा:</strong> कृष्ण जन्मभूमि, ब्रज क्षेत्र</li>
-<li><strong>मेरठ:</strong> 1857 क्रांति का प्रारंभिक केंद्र</li>
-<li><strong>झाँसी:</strong> रानी लक्ष्मीबाई की नगरी</li>
-<li><strong>अलीगढ़:</strong> AMU, ताला उद्योग</li>
-<li><strong>मुरादाबाद:</strong> पीतल नगरी</li>
-<li><strong>बरेली:</strong> बाँस एवं जरी उद्योग</li>
-<li><strong>गोरखपुर:</strong> पूर्वांचल का प्रवेश द्वार</li>
-</ul>
-
-<h2>1.6 उत्तर प्रदेश के "प्रथम" और "सर्वाधिक"</h2>
-<table>
-<tr><th>विषय</th><th>विवरण</th></tr>
-<tr><td>सबसे बड़ा जिला (क्षेत्रफल)</td><td>लखीमपुर खीरी</td></tr>
-<tr><td>सबसे छोटा जिला</td><td>हापुड़</td></tr>
-<tr><td>सबसे अधिक जनसंख्या वाला जिला</td><td>प्रयागराज</td></tr>
-<tr><td>सबसे कम जनसंख्या वाला जिला</td><td>महोबा</td></tr>
-<tr><td>सबसे अधिक साक्षरता</td><td>गौतमबुद्धनगर (लगभग 80%)</td></tr>
-<tr><td>सबसे कम साक्षरता</td><td>श्रावस्ती</td></tr>
-<tr><td>सबसे लंबी नदी</td><td>गंगा</td></tr>
-<tr><td>सबसे बड़ी झील</td><td>बेलासागर (लखनऊ) — कृत्रिम</td></tr>
-<tr><td>सबसे ऊँचा स्थान</td><td>सोनभद्र (लगभग 340 मीटर)</td></tr>
-<tr><td>सबसे नीचा स्थान</td><td>पूर्वी उत्तर प्रदेश</td></tr>
-<tr><td>पहला IIT</td><td>IIT कानपुर (1959)</td></tr>
-<tr><td>पहला विश्वविद्यालय</td><td>बनारस हिंदू विश्वविद्यालय (1916)</td></tr>
-<tr><td>सबसे बड़ा औद्योगिक शहर</td><td>कानपुर</td></tr>
-<tr><td>सबसे बड़ा IT हब</td><td>नोएडा</td></tr>
-</table>
-
 <div class="important">
-💡 <strong>परीक्षा दृष्टि से महत्वपूर्ण:</strong> उत्तर प्रदेश भारत का सबसे अधिक जनसंख्या वाला राज्य है। यहाँ 80 लोकसभा सीटें हैं, जो किसी भी राज्य में सबसे अधिक हैं। विधान परिषद (100 सीटें) वाले भारत के 6 राज्यों में से एक है।
+💡 <strong>परीक्षा दृष्टि से महत्वपूर्ण:</strong> उत्तर प्रदेश भारत का सबसे अधिक जनसंख्या वाला राज्य है। यहाँ 80 लोकसभा सीटें हैं, जो किसी भी राज्य में सबसे अधिक हैं।
+</div>
 </div>
 
-<!-- ==================== SECTION 2 ==================== -->
-<h1>2. उत्तर प्रदेश का इतिहास (प्राचीन काल)</h1>
+<!-- ============ SECTION 2 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 2</span>
+<h1>उत्तर प्रदेश का इतिहास (प्राचीन काल)</h1>
 
-<h2>2.1 प्रागैतिहासिक काल</h2>
-<p>उत्तर प्रदेश का इतिहास अत्यंत प्राचीन है। पुरातात्विक साक्ष्यों के अनुसार यहाँ की सभ्यता का इतिहास हजारों वर्ष पुराना है। सोनभद्र जिले के बेलन घाटी, मिर्जापुर के चुनार क्षेत्र तथा प्रयागराज के पास से प्रागैतिहासिक काल के अवशेष प्राप्त हुए हैं।</p>
+<h2>2.1 वैदिक काल</h2>
+<p>उत्तर प्रदेश का इतिहास वैदिक काल से ही अत्यंत गौरवशाली रहा है। ऋग्वेद में वर्णित <strong>सरस्वती और गंगा-यमुना</strong> के क्षेत्र इसी भूभाग में स्थित थे। उत्तर प्रदेश के क्षेत्र को <strong>"आर्यावर्त"</strong> या <strong>"मध्य देश"</strong> कहा जाता था।</p>
 
-<h3>महत्वपूर्ण पुरातात्विक स्थल:</h3>
+<h3>प्रमुख वैदिक जनपद:</h3>
 <ul>
-<li><strong>सोनभद्र (बेलन घाटी):</strong> पुरापाषाण कालीन औजार</li>
-<li><strong>चुनार (मिर्जापुर):</strong> नवपाषाण कालीन अवशेष</li>
-<li><strong>लहुरादेव (प्रयागराज):</strong> मध्यपाषाण काल</li>
-<li><strong>सरायनाहर राय (प्रतापगढ़):</strong> ताम्रपाषाण काल</li>
+<li><strong>कोशल</strong> — अयोध्या केंद्र</li>
+<li><strong>काशी</strong> — वाराणसी केंद्र</li>
+<li><strong>पांचाल</strong> — बरेली-बदायूँ क्षेत्र</li>
+<li><strong>वत्स</strong> — प्रयागराज केंद्र</li>
+<li><strong>चेदि</strong> — बुंदेलखंड क्षेत्र</li>
+<li><strong>शूरसेन</strong> — मथुरा केंद्र</li>
 </ul>
 
-<h2>2.2 वैदिक काल (लगभग 1500-600 ई.पू.)</h2>
-<p>उत्तर प्रदेश वैदिक सभ्यता का प्रमुख केंद्र रहा है। ऋग्वेद काल में यहाँ के कई क्षेत्रों का उल्लेख मिलता है। ब्रह्मर्षि देश (वर्तमान उत्तर प्रदेश एवं उत्तराखंड) वैदिक संस्कृति का केंद्र था।</p>
-
-<h3>वैदिक कालीन प्रमुख स्थल:</h3>
-<ul>
-<li><strong>कुरुक्षेत्र:</strong> (आधुनिक हरियाणा सीमा के पास) — कुरु वंश का केंद्र</li>
-<li><strong>पांचाल:</strong> बरेली, बदायूँ, शाहजहाँपुर क्षेत्र</li>
-<li><strong>कोसल:</strong> अयोध्या केंद्रित राज्य</li>
-<li><strong>काशी:</strong> वाराणसी केंद्रित राज्य</li>
-<li><strong>वत्स:</strong> प्रयागराज केंद्रित राज्य</li>
-</ul>
-
-<h2>2.3 महाजनपद काल (लगभग 600-321 ई.पू.)</h2>
+<h2>2.2 महाजनपद काल (600-321 ई.पू.)</h2>
 <p>6वीं सदी ईसा पूर्व में भारत में 16 महाजनपदों का उदय हुआ। इनमें से 8 महाजनपद वर्तमान उत्तर प्रदेश क्षेत्र में स्थित थे।</p>
 
 <table>
@@ -229,17 +606,16 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <tr><td>वत्स</td><td>कौशाम्बी</td><td>प्रयागराज, कौशाम्बी</td></tr>
 <tr><td>पांचाल</td><td>अहिच्छत्र / कांपिल्य</td><td>बरेली, बदायूँ, फर्रुखाबाद</td></tr>
 <tr><td>चेदि</td><td>शुक्तिमती</td><td>बुंदेलखंड</td></tr>
-<tr><td>कुरु</td><td>हस्तिनापुर / इंद्रप्रस्थ</td><td>मेरठ, मुजफ्फरनगर</td></tr>
+<tr><td>कुरु</td><td>हस्तिनापुर</td><td>मेरठ, मुजफ्फरनगर</td></tr>
 <tr><td>शूरसेन</td><td>मथुरा</td><td>मथुरा, आगरा</td></tr>
 <tr><td>मल्ल</td><td>कुशीनगर / पावा</td><td>कुशीनगर, गोरखपुर</td></tr>
 </table>
 
-<h2>2.4 बौद्ध एवं जैन धर्म का उदय</h2>
-<p>उत्तर प्रदेश बौद्ध और जैन धर्म दोनों की जन्मभूमि एवं कर्मभूमि रहा है।</p>
+<h2>2.3 बौद्ध एवं जैन धर्म का उदय</h2>
 
 <h3>बौद्ध धर्म से जुड़े स्थल:</h3>
 <ul>
-<li><strong>सारनाथ (वाराणसी):</strong> बुद्ध का प्रथम उपदेश (धर्मचक्र प्रवर्तन)</li>
+<li><strong>सारनाथ (वाराणसी):</strong> बुद्ध का प्रथम उपदेश</li>
 <li><strong>कुशीनगर:</strong> बुद्ध का महापरिनिर्वाण</li>
 <li><strong>श्रावस्ती:</strong> बुद्ध ने 24 वर्षा-काल यहाँ बिताए</li>
 <li><strong>कौशाम्बी:</strong> बुद्ध का प्रमुख विहार</li>
@@ -251,44 +627,18 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li><strong>कौशाम्बी:</strong> जैन धर्म का प्रमुख केंद्र</li>
 <li><strong>मथुरा:</strong> जैन मंदिर एवं कला केंद्र</li>
 <li><strong>चंद्रप्रभा (चंदौली):</strong> जैन तीर्थंकरों की जन्मस्थली</li>
-<li><strong>अहिच्छत्र:</strong> जैन धर्म का प्राचीन केंद्र</li>
 </ul>
 
-<h2>2.5 मौर्य साम्राज्य (321-185 ई.पू.)</h2>
+<h2>2.4 मौर्य साम्राज्य (321-185 ई.पू.)</h2>
 <p>मौर्य साम्राज्य का उदय मगध में हुआ, लेकिन उत्तर प्रदेश इसका महत्वपूर्ण अंग था। चंद्रगुप्त मौर्य, बिंदुसार और अशोक के शासनकाल में उत्तर प्रदेश के कई क्षेत्र मौर्य साम्राज्य के अंतर्गत आते थे।</p>
-
-<ul>
-<li><strong>कौशाम्बी:</strong> मौर्य कालीन महत्वपूर्ण नगर</li>
-<li><strong>श्रावस्ती:</strong> मौर्यकालीन प्रशासनिक केंद्र</li>
-<li><strong>सारनाथ:</strong> अशोक का स्तंभ एवं धम्मचक्र</li>
-<li><strong>अशोक का अभिलेख:</strong> कौशाम्बी, सारनाथ, प्रयागराज</li>
-</ul>
 
 <div class="box">
 <h4>📌 अशोक स्तंभ (सारनाथ)</h4>
 <p>सारनाथ का अशोक स्तंभ भारत का राष्ट्रीय प्रतीक है। इसका शीर्ष (चार सिंह) भारत के राजचिह्न में शामिल है। यह स्तंभ अशोक द्वारा 250 ई.पू. में बनवाया गया था।</p>
 </div>
 
-<h2>2.6 शुंग, कुषाण एवं शक काल</h2>
-<p>मौर्य साम्राज्य के पतन के बाद उत्तर प्रदेश में शुंग, कुषाण, शक और अन्य राजवंशों का शासन रहा।</p>
-
-<h3>शुंग वंश (185-73 ई.पू.)</h3>
-<ul>
-<li>पुष्यमित्र शुंग ने मौर्यों को अपदस्थ किया</li>
-<li>विदिशा, कौशाम्बी, अयोध्या में शुंग शासन के प्रमाण</li>
-<li>बौद्ध धर्म का पतन और हिंदू धर्म का पुनरुत्थान</li>
-</ul>
-
-<h3>कुषाण वंश (78-220 ई.)</h3>
-<ul>
-<li>कनिष्क का शासन — मथुरा कला का स्वर्णकाल</li>
-<li>मथुरा कुषाण साम्राज्य की दूसरी राजधानी थी</li>
-<li>बौद्ध धर्म का प्रसार — मथुरा, कौशाम्बी</li>
-<li>गांधार एवं मथुरा कला शैलियों का विकास</li>
-</ul>
-
-<h2>2.7 गुप्त साम्राज्य (320-550 ई.)</h2>
-<p>गुप्त साम्राज्य को "भारत का स्वर्णयुग" कहा जाता है। उत्तर प्रदेश गुप्त साम्राज्य का महत्वपूर्ण केंद्र था।</p>
+<h2>2.5 गुप्त साम्राज्य (320-550 ई.)</h2>
+<p>गुप्त साम्राज्य को <strong>"भारत का स्वर्णयुग"</strong> कहा जाता है। उत्तर प्रदेश गुप्त साम्राज्य का महत्वपूर्ण केंद्र था।</p>
 
 <ul>
 <li><strong>चंद्रगुप्त प्रथम:</strong> 320 ई. में गुप्त साम्राज्य की स्थापना</li>
@@ -297,83 +647,33 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li><strong>स्कंदगुप्त:</strong> हूण आक्रमणों का प्रतिरोध</li>
 </ul>
 
-<h3>गुप्त कालीन प्रमुख स्थल:</h3>
-<table>
-<tr><th>स्थल</th><th>महत्व</th></tr>
-<tr><td>प्रयागराज</td><td>समुद्रगुप्त की प्रशस्ति (इलाहाबाद स्तंभ लेख)</td></tr>
-<tr><td>कौशाम्बी</td><td>गुप्त कालीन मंदिर एवं मूर्तियाँ</td></tr>
-<tr><td>सारनाथ</td><td>बुद्ध मूर्तियाँ (धमेक स्तूप)</td></tr>
-<tr><td>देवगढ़ (झाँसी)</td><td>गुप्त कालीन विष्णु मंदिर</td></tr>
-<tr><td>भीतरगाँव (कानपुर)</td><td>गुप्तकालीन ईंट मंदिर</td></tr>
-</table>
-
-<div class="important">
-💡 <strong>महत्वपूर्ण:</strong> प्रयागराज स्तंभ लेख (इलाहाबाद प्रशस्ति) हरिषेण द्वारा रचित है, जो समुद्रगुप्त की विजयों का वर्णन करता है। इसे "भारत का सबसे महत्वपूर्ण अभिलेख" माना जाता है।
+<div class="quote">
+प्रयागराज स्तंभ लेख (इलाहाबाद प्रशस्ति) हरिषेण द्वारा रचित है, जो समुद्रगुप्त की विजयों का वर्णन करता है। इसे "भारत का सबसे महत्वपूर्ण अभिलेख" माना जाता है।
 </div>
 
-<h2>2.8 हर्षवर्धन काल (606-647 ई.)</h2>
-<p>हर्षवर्धन उत्तर भारत के अंतिम महान हिंदू सम्राट थे। उनकी राजधानी कन्नौज (वर्तमान उत्तर प्रदेश) थी।</p>
+<h2>2.6 हर्षवर्धन काल (606-647 ई.)</h2>
+<p>हर्षवर्धन उत्तर भारत के अंतिम महान हिंदू सम्राट थे। उनकी राजधानी <strong>कन्नौज</strong> (वर्तमान उत्तर प्रदेश) थी। चीनी यात्री <strong>ह्वेनसांग</strong> ने हर्षवर्धन के काल में उत्तर प्रदेश का भ्रमण किया।</p>
+</div>
 
-<ul>
-<li><strong>हर्षवर्धन:</strong> 606 ई. में थानेसर से शासन आरंभ</li>
-<li><strong>कन्नौज:</strong> हर्ष की राजधानी, भारत का प्रमुख नगर</li>
-<li><strong>ह्वेनसांग:</strong> चीनी यात्री — हर्ष के दरबार में 636-644 ई.</li>
-<li><strong>प्रयागराज:</strong> हर्ष द्वारा प्रत्येक 5 वर्ष में धर्म महोत्सव</li>
-<li><strong>हर्ष की मृत्यु के बाद:</strong> कन्नौज त्रिपक्षीय संघर्ष का केंद्र</li>
-</ul>
+<!-- ============ SECTION 3 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 3</span>
+<h1>उत्तर प्रदेश का इतिहास (मध्यकाल)</h1>
 
-<h2>2.9 राजपूत काल (8वीं-12वीं सदी)</h2>
-<p>हर्षवर्धन के बाद उत्तर भारत में कई राजपूत राजवंशों का उदय हुआ, जिन्होंने उत्तर प्रदेश के विभिन्न क्षेत्रों पर शासन किया।</p>
+<h2>3.1 दिल्ली सल्तनत काल</h2>
+<p>12वीं शताब्दी में मुहम्मद गोरी ने पृथ्वीराज चौहान को पराजित किया और दिल्ली सल्तनत की स्थापना हुई। उत्तर प्रदेश इस काल में दिल्ली सल्तनत का महत्वपूर्ण हिस्सा बना।</p>
 
 <h3>प्रमुख राजवंश:</h3>
-<ul>
-<li><strong>प्रतिहार:</strong> कन्नौज केंद्रित — 8वीं-10वीं सदी</li>
-<li><strong>गहड़वाल (राठौर):</strong> कन्नौज — 11वीं-12वीं सदी, गोविंदचंद्र अंतिम शासक</li>
-<li><strong>चंदेल:</strong> बुंदेलखंड — महोबा, खजुराहो</li>
-<li><strong>राठौर:</strong> कन्नौज</li>
-<li><strong>तोमर:</strong> दिल्ली एवं हरियाणा</li>
-</ul>
-
-<div class="important">
-💡 <strong>महत्वपूर्ण:</strong> 1194 ई. में मुहम्मद गोरी ने चंदावर के युद्ध में जयचंद्र (कन्नौज के गहड़वाल शासक) को पराजित किया। इसके साथ ही उत्तर भारत में मुस्लिम शासन की नींव पड़ी।
-</div>
-
-<!-- ==================== SECTION 3 ==================== -->
-<h1>3. उत्तर प्रदेश का इतिहास (मध्यकाल)</h1>
-
-<h2>3.1 दिल्ली सल्तनत काल (1206-1526 ई.)</h2>
-<p>मुहम्मद गोरी की मृत्यु के बाद 1206 में कुतुबुद्दीन ऐबक ने दिल्ली सल्तनत की स्थापना की। उत्तर प्रदेश इस सल्तनत का महत्वपूर्ण अंग रहा।</p>
-
-<h3>गुलाम वंश (1206-1290)</h3>
-<ul>
-<li><strong>कुतुबुद्दीन ऐबक:</strong> दिल्ली सल्तनत का संस्थापक</li>
-<li><strong>इल्तुतमिश:</strong> उत्तर प्रदेश में शासन का विस्तार</li>
-<li><strong>रजिया सुल्तान:</strong> प्रथम मुस्लिम महिला शासक</li>
-<li><strong>बलबन:</strong> कठोर अनुशासन, अमीर खुसरो का संरक्षण</li>
-</ul>
-
-<h3>खिलजी वंश (1290-1320)</h3>
-<ul>
-<li><strong>अलाउद्दीन खिलजी:</strong> मंगोल आक्रमणों का प्रतिरोध</li>
-<li><strong>मलिक काफूर:</strong> दक्षिण विजय अभियान</li>
-<li>उत्तर प्रदेश में प्रशासनिक सुधार</li>
-</ul>
-
-<h3>तुगलक वंश (1320-1414)</h3>
-<ul>
-<li><strong>मुहम्मद बिन तुगलक:</strong> राजधानी दौलताबाद स्थानांतरण (असफल)</li>
-<li><strong>फिरोजशाह तुगलक:</strong> नहरों का निर्माण — यमुना नहर</li>
-<li>उत्तर प्रदेश में कृषि एवं सिंचाई का विकास</li>
-</ul>
-
-<h3>सैयद एवं लोदी वंश (1414-1526)</h3>
-<ul>
-<li><strong>सैयद वंश:</strong> कमजोर शासन</li>
-<li><strong>लोदी वंश:</strong> इब्राहिम लोदी का पानीपत का प्रथम युद्ध (1526)</li>
-</ul>
+<table>
+<tr><th>राजवंश</th><th>काल</th><th>प्रमुख शासक</th></tr>
+<tr><td>गुलाम वंश</td><td>1206-1290</td><td>कुतुबुद्दीन ऐबक, इल्तुतमिश, बलबन</td></tr>
+<tr><td>खिलजी वंश</td><td>1290-1320</td><td>अलाउद्दीन खिलजी</td></tr>
+<tr><td>तुगलक वंश</td><td>1320-1414</td><td>मुहम्मद बिन तुगलक, फिरोजशाह तुगलक</td></tr>
+<tr><td>सैयद वंश</td><td>1414-1451</td><td>खिज्र खान</td></tr>
+<tr><td>लोदी वंश</td><td>1451-1526</td><td>इब्राहिम लोदी</td></tr>
+</table>
 
 <h2>3.2 मुगल साम्राज्य (1526-1857 ई.)</h2>
-<p>मुगल साम्राज्य का उत्तर प्रदेश से गहरा संबंध रहा है। आगरा, फतेहपुर सीकरी, इलाहाबाद, लखनऊ, अवध — ये सभी क्षेत्र मुगल शासन के प्रमुख केंद्र थे।</p>
 
 <h3>बाबर (1526-1530)</h3>
 <ul>
@@ -382,690 +682,340 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li>राम बाग (आगरा) का निर्माण</li>
 </ul>
 
-<h3>हुमायूँ (1530-1556)</h3>
-<ul>
-<li>चौसा का युद्ध (1539) — शेरशाह सूरी से पराजय</li>
-<li>कन्नौज का युद्ध (1540) — मुगल साम्राज्य का पतन</li>
-<li>1555: शेरशाह की मृत्यु के बाद दिल्ली पुनः प्राप्त</li>
-</ul>
-
-<h3>शेरशाह सूरी (1540-1545)</h3>
-<ul>
-<li>सासाराम (बिहार) में जन्म, कन्नौज को राजधानी बनाया</li>
-<li>"सड़कों का बादशाह" — ग्रैंड ट्रंक रोड का निर्माण</li>
-<li>रुपये का प्रचलन (चाँदी का सिक्का)</li>
-<li>डाक व्यवस्था का विकास</li>
-<li>कन्नौज, आगरा, दिल्ली में निर्माण कार्य</li>
-</ul>
-
 <h3>अकबर (1556-1605)</h3>
 <ul>
-<li><strong>1556: पानीपत का द्वितीय युद्ध</strong> — हेमू की पराजय</li>
-<li><strong>1565: आगरा किले का निर्माण</strong></li>
-<li><strong>1571: फतेहपुर सीकरी की स्थापना</strong></li>
-<li><strong>1576: हल्दीघाटी युद्ध</strong> — महाराणा प्रताप</li>
-<li><strong>दीन-ए-इलाही (1582):</strong> नया धर्म</li>
-<li><strong>इबादत खाना:</strong> फतेहपुर सीकरी</li>
-<li><strong>बुलंद दरवाजा (1576):</strong> गुजरात विजय की स्मृति</li>
-<li><strong>पंचमहल, जामा मस्जिद, दीवान-ए-खास:</strong> फतेहपुर सीकरी</li>
-<li><strong>बीरबल, टोडरमल, अबुल फजल:</strong> नवरत्न</li>
+<li><strong>1556:</strong> पानीपत का द्वितीय युद्ध — हेमू की पराजय</li>
+<li><strong>1565:</strong> आगरा किले का निर्माण</li>
+<li><strong>1571:</strong> फतेहपुर सीकरी की स्थापना</li>
+<li><strong>1576:</strong> बुलंद दरवाजा — गुजरात विजय की स्मृति</li>
+<li><strong>1582:</strong> दीन-ए-इलाही — नया धर्म</li>
 </ul>
 
-<div class="box">
+<div class="box green">
 <h4>📌 अकबर के प्रमुख निर्माण (उत्तर प्रदेश में)</h4>
 <ul>
 <li>आगरा का किला (1565-1573)</li>
 <li>फतेहपुर सीकरी (1571)</li>
 <li>बुलंद दरवाजा (1576)</li>
 <li>जामा मस्जिद (फतेहपुर सीकरी)</li>
-<li>पंचमहल (फतेहपुर सीकरी)</li>
 <li>इलाहाबाद का किला (1583)</li>
 </ul>
 </div>
-
-<h3>जहाँगीर (1605-1627)</h3>
-<ul>
-<li>आगरा में कला एवं संस्कृति का विकास</li>
-<li>इतमाद-उद-दौला का मकबरा (आगरा)</li>
-<li>अंग्रेजों को सूरत में व्यापार की अनुमति</li>
-<li>नूरजहाँ का प्रभाव</li>
-</ul>
 
 <h3>शाहजहाँ (1628-1658)</h3>
 <ul>
 <li><strong>ताजमहल (1632-1653):</strong> मुमताज महल की याद में</li>
 <li><strong>आगरा किला:</strong> दीवान-ए-आम, दीवान-ए-खास</li>
-<li><strong>जामा मस्जिद (आगरा):</strong> बेगम का मकबरा</li>
-<li><strong>मोती मस्जिद (आगरा किला):</strong> संगमरमर</li>
-<li><strong>चीनी का रोजा (आगरा):</strong> कब्र</li>
-</ul>
-
-<h3>औरंगजेब (1658-1707)</h3>
-<ul>
-<li>आगरा में कैद (शाहजहाँ)</li>
-<li>बीबी का मकबरा (औरंगाबाद) — औरंगजेब की पत्नी</li>
-<li>हिंदू मंदिरों का विध्वंस — काशी, मथुरा</li>
-<li>जजिया कर का पुनः प्रचलन</li>
-</ul>
-
-<h3>मुगल साम्राज्य का पतन</h3>
-<ul>
-<li>1707: औरंगजेब की मृत्यु</li>
-<li>उत्तराधिकार के युद्ध</li>
-<li>मराठा, सिख, जाट, राजपूत विद्रोह</li>
-<li>नादिरशाह (1739) एवं अहमद शाह अब्दाली (1761) के आक्रमण</li>
-<li>1857 के बाद मुगल साम्राज्य का पूर्ण अंत</li>
+<li><strong>जामा मस्जिद (आगरा)</strong></li>
+<li><strong>चीनी का रोजा (आगरा)</strong></li>
 </ul>
 
 <h2>3.3 अवध के नवाब (1722-1856)</h2>
-<p>अवध (Oudh) उत्तर प्रदेश का एक महत्वपूर्ण क्षेत्र रहा है। अवध के नवाबों ने 14वीं सदी से 19वीं सदी तक शासन किया।</p>
+<p>अवध (Oudh) उत्तर प्रदेश का एक महत्वपूर्ण क्षेत्र रहा है। अवध के नवाबों ने 18वीं-19वीं सदी तक शासन किया।</p>
 
-<h3>प्रमुख नवाब:</h3>
 <table>
 <tr><th>नवाब</th><th>शासनकाल</th><th>महत्व</th></tr>
 <tr><td>सआदत अली खाँ</td><td>1722-1739</td><td>अवध राजवंश के संस्थापक</td></tr>
 <tr><td>सफदरजंग</td><td>1739-1754</td><td>फैजाबाद को राजधानी बनाया</td></tr>
 <tr><td>शुजाउद्दौला</td><td>1754-1775</td><td>बक्सर युद्ध (1764)</td></tr>
 <tr><td>आसफुद्दौला</td><td>1775-1797</td><td>लखनऊ को राजधानी बनाया</td></tr>
-<tr><td>सआदत अली खाँ II</td><td>1798-1814</td><td>अंग्रेजों से संधि</td></tr>
-<tr><td>गाजीउद्दीन हैदर</td><td>1814-1827</td><td>अंग्रेजों के साथ मित्रता</td></tr>
-<tr><td>नसीरुद्दीन हैदर</td><td>1827-1837</td><td>कला का संरक्षण</td></tr>
 <tr><td>वाजिद अली शाह</td><td>1847-1856</td><td>अंतिम नवाब, कला प्रेमी</td></tr>
 </table>
 
-<div class="box">
+<div class="box warn">
 <h4>📌 लखनऊ - नवाबों का शहर</h4>
-<p>लखनऊ को नवाबों ने "बाब-ए-अवध" (अवध का द्वार) कहा। आसफुद्दौला ने 1775 में लखनऊ को राजधानी बनाया। लखनऊ की संस्कृति, कला, संगीत, कथक नृत्य, चिकनकारी (Chikankari) — सभी नवाबी शासन की देन हैं।</p>
+<p>लखनऊ को नवाबों ने "बाब-ए-अवध" कहा। आसफुद्दौला ने 1775 में लखनऊ को राजधानी बनाया। लखनऊ की संस्कृति, कला, संगीत, कथक नृत्य, चिकनकारी — सभी नवाबी शासन की देन हैं।</p>
+</div>
 </div>
 
-<h2>3.4 1857 का प्रथम स्वतंत्रता संग्राम</h2>
+<!-- ============ SECTION 4 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 4</span>
+<h1>1857 का स्वतंत्रता संग्राम</h1>
+
+<h2>4.1 पृष्ठभूमि</h2>
 <p>1857 का विद्रोह उत्तर प्रदेश से प्रारंभ हुआ और इसने भारत के स्वतंत्रता संग्राम की नींव रखी।</p>
 
-<h3>मेरठ से प्रारंभ:</h3>
+<h3>1857 की क्रांति के कारण:</h3>
+<ul>
+<li><strong>राजनीतिक:</strong> डॉक्ट्रिन ऑफ लैप्स, अवध का विलय (1856)</li>
+<li><strong>आर्थिक:</strong> भूमि कर, किसानों का शोषण</li>
+<li><strong>सामाजिक-धार्मिक:</strong> ईसाई मिशनरियों की गतिविधियाँ</li>
+<li><strong>सैनिक:</strong> सैनिकों के साथ भेदभाव, एनफील्ड राइफल की गोली</li>
+</ul>
+
+<h2>4.2 मेरठ से शुरुआत</h2>
 <ul>
 <li><strong>29 मार्च 1857:</strong> बैरकपुर में मंगल पांडे का विद्रोह</li>
 <li><strong>10 मई 1857:</strong> मेरठ में सैनिक विद्रोह का प्रारंभ</li>
-<li><strong>11 मई 1857:</strong> विद्रोहियों ने दिल्ली पर कब्जा, बहादुरशाह जफर को नेता बनाया</li>
+<li><strong>11 मई 1857:</strong> विद्रोहियों ने दिल्ली पर कब्जा</li>
 </ul>
 
-<h3>उत्तर प्रदेश में प्रमुख केंद्र:</h3>
+<h2>4.3 उत्तर प्रदेश में प्रमुख केंद्र</h2>
 <table>
 <tr><th>स्थान</th><th>नेता</th></tr>
+<tr><td>मेरठ</td><td>प्रारंभिक विद्रोह</td></tr>
 <tr><td>कानपुर</td><td>नाना साहेब, तात्या टोपे</td></tr>
 <tr><td>झाँसी</td><td>रानी लक्ष्मीबाई</td></tr>
-<tr><td>लखनऊ</td><td>बेगम हजरत महल, बिरजिस कादिर</td></tr>
-<tr><td>आगरा</td><td>विद्रोह का प्रसार</td></tr>
+<tr><td>लखनऊ</td><td>बेगम हजरत महल</td></tr>
+<tr><td>बरेली</td><td>खान बहादुर खान</td></tr>
 <tr><td>प्रयागराज</td><td>लियाकत अली</td></tr>
-<tr><td>बनारस</td><td>विद्रोह का प्रसार</td></tr>
 </table>
 
 <div class="important">
-💡 <strong>महत्वपूर्ण तिथियाँ:</strong> 8 अप्रैल 1857 — मेरठ में विद्रोह की शुरुआत; 20 जून 1858 — ग्वालियर में रानी लक्ष्मीबाई की वीरगति; 8 जुलाई 1858 — शांति की घोषणा; 2 अगस्त 1858 — भारत सरकार अधिनियम (1858) पारित।
+💡 <strong>महत्वपूर्ण तिथियाँ:</strong> 8 अप्रैल 1857 — मेरठ में विद्रोह की शुरुआत; 20 जून 1858 — ग्वालियर में रानी लक्ष्मीबाई की वीरगति; 2 अगस्त 1858 — भारत सरकार अधिनियम पारित।
 </div>
 
-<h3>1857 के बाद:</h3>
-<ul>
-<li>1858: ईस्ट इंडिया कंपनी का शासन समाप्त</li>
-<li>1858: भारत सरकार अधिनियम — भारत का शासन ब्रिटिश ताज के अधीन</li>
-<li>1876: "कैसर-ए-हिंद" की उपाधि</li>
-<li>1877: विक्टोरिया को भारत की साम्राज्ञी घोषित किया गया</li>
-</ul>
-
-<!-- ==================== SECTION 4 ==================== -->
-<h1>4. उत्तर प्रदेश का इतिहास (आधुनिक काल एवं स्वतंत्रता संग्राम)</h1>
-
-<h2>4.1 ब्रिटिश काल में उत्तर प्रदेश</h2>
-<p>1857 के विद्रोह के बाद ब्रिटिश शासन ने उत्तर प्रदेश में अपनी पकड़ मजबूत की। यह क्षेत्र ब्रिटिश भारत का महत्वपूर्ण हिस्सा बना।</p>
-
-<h3>प्रमुख प्रशासनिक परिवर्तन:</h3>
-<ul>
-<li>1834: "उत्तर-पश्चिमी प्रांत" की स्थापना</li>
-<li>1856: अवध का ब्रिटिश साम्राज्य में विलय</li>
-<li>1877: "उत्तर-पश्चिमी प्रांत और अवध"</li>
-<li>1902: "संयुक्त प्रांत" (United Provinces)</li>
-<li>1920: लखनऊ को राजधानी बनाया गया</li>
-<li>1937: "संयुक्त प्रांत" का गठन</li>
-</ul>
-
-<h2>4.2 राष्ट्रीय आंदोलन में उत्तर प्रदेश की भूमिका</h2>
-
-<h3>भारतीय राष्ट्रीय कांग्रेस की स्थापना</h3>
-<ul>
-<li>1885: A.O. ह्यूम द्वारा कांग्रेस की स्थापना</li>
-<li>उत्तर प्रदेश के कई नेता कांग्रेस से जुड़े</li>
-<li>1888: प्रयागराज में कांग्रेस का चौथा अधिवेशन</li>
-<li>1910: प्रयागराज में कांग्रेस अधिवेशन</li>
-</ul>
-
-<h3>महात्मा गांधी एवं उत्तर प्रदेश</h3>
-<ul>
-<li><strong>1917: चंपारण सत्याग्रह</strong> — बिहार, लेकिन उत्तर प्रदेश से जुड़ा</li>
-<li><strong>1918: अहमदाबाद मिल हड़ताल</strong></li>
-<li><strong>1919: रॉलेट एक्ट</strong> — विरोध में सत्याग्रह</li>
-<li><strong>1920: असहयोग आंदोलन</strong> — उत्तर प्रदेश में व्यापक प्रभाव</li>
-<li><strong>1922: चौरी-चौरा कांड</strong> (गोरखपुर) — असहयोग आंदोलन स्थगित</li>
-<li><strong>1930: नमक सत्याग्रह</strong> — दांडी यात्रा</li>
-<li><strong>1942: भारत छोड़ो आंदोलन</strong> — "करो या मरो"</li>
-</ul>
-
-<div class="important">
-💡 <strong>चौरी-चौरा कांड (5 फरवरी 1922):</strong> गोरखपुर जिले के चौरी-चौरा में किसानों ने पुलिस थाने को आग लगा दी, जिसमें 22 पुलिसकर्मी मारे गए। महात्मा गांधी ने असहयोग आंदोलन स्थगित कर दिया। यह स्वतंत्रता संग्राम का महत्वपूर्ण मोड़ था।
-</div>
-
-<h3>प्रमुख स्वतंत्रता सेनानी (उत्तर प्रदेश से)</h3>
-<table>
-<tr><th>नाम</th><th>जन्म स्थान</th><th>योगदान</th></tr>
-<tr><td>महात्मा गांधी</td><td>पोरबंदर (गुजरात)</td><td>सत्याग्रह, असहयोग, भारत छोड़ो</td></tr>
-<tr><td>जवाहरलाल नेहरू</td><td>प्रयागराज</td><td>कांग्रेस के नेता, प्रथम प्रधानमंत्री</td></tr>
-<tr><td>मोतीलाल नेहरू</td><td>प्रयागराज</td><td>स्वराज पार्टी के संस्थापक</td></tr>
-<tr><td>पुरुषोत्तमदास टंडन</td><td>प्रयागराज</td><td>"राष्ट्रपिता" की उपाधि दी</td></tr>
-<tr><td>गोविंद बल्लभ पंत</td><td>अल्मोड़ा (उत्तराखंड)</td><td>स्वतंत्रता संग्राम, प्रथम मुख्यमंत्री</td></tr>
-<tr><td>चंद्रशेखर आजाद</td><td>मध्य प्रदेश</td><td>HSRA के नेता, प्रयागराज में शहीद</td></tr>
-<tr><td>भगत सिंह</td><td>पंजाब</td><td>HSRA, लाहौर षडयंत्र केस</td></tr>
-<tr><td>रामप्रसाद बिस्मिल</td><td>शाहजहाँपुर</td><td>काकोरी कांड (1925)</td></tr>
-<tr><td>अशफाक उल्ला खाँ</td><td>शाहजहाँपुर</td><td>काकोरी कांड</td></tr>
-<tr><td>राजेंद्र प्रसाद</td><td>बिहार</td><td>भारत के प्रथम राष्ट्रपति</td></tr>
-<tr><td>लाल बहादुर शास्त्री</td><td>मुगलसराय (UP)</td><td>द्वितीय प्रधानमंत्री</td></tr>
-<tr><td>जगजीवन राम</td><td>बिहार</td><td>उपप्रधानमंत्री</td></tr>
-<tr><td>चौधरी चरण सिंह</td><td>मेरठ (UP)</td><td>प्रधानमंत्री, किसान नेता</td></tr>
-<tr><td>विश्वनाथ प्रताप सिंह</td><td>प्रयागराज</td><td>प्रधानमंत्री</td></tr>
-<tr><td>अटल बिहारी वाजपेयी</td><td>ग्वालियर (MP)</td><td>प्रधानमंत्री, कवि</td></tr>
-</table>
-
-<h3>काकोरी कांड (9 अगस्त 1925)</h3>
+<h2>4.4 काकोरी कांड (9 अगस्त 1925)</h2>
 <ul>
 <li>उत्तर प्रदेश के शाहजहाँपुर में जन्मे क्रांतिकारियों द्वारा</li>
 <li>प्रमुख क्रांतिकारी: रामप्रसाद बिस्मिल, अशफाक उल्ला खाँ, राजेंद्र लाहिड़ी, ठाकुर रोशन सिंह</li>
 <li>काकोरी (लखनऊ) के पास ट्रेन लूटी गई</li>
-<li>इस कांड ने स्वतंत्रता संग्राम को नई ऊर्जा दी</li>
 </ul>
 
-<h2>4.3 स्वतंत्रता के बाद उत्तर प्रदेश</h2>
-<ul>
-<li><strong>1 अप्रैल 1937:</strong> "संयुक्त प्रांत" का गठन (UP के रूप में)</li>
-<li><strong>24 जनवरी 1950:</strong> नाम परिवर्तन — "उत्तर प्रदेश"</li>
-<li><strong>1950:</strong> गोविंद बल्लभ पंत प्रथम मुख्यमंत्री</li>
-<li><strong>1952:</strong> प्रथम विधानसभा चुनाव</li>
-<li><strong>1956:</strong> राज्य पुनर्गठन अधिनियम</li>
-<li><strong>2000:</strong> उत्तराखंड का उत्तर प्रदेश से अलग होना</li>
-<li><strong>2020:</strong> कई नए जिलों का गठन</li>
-</ul>
-
-<div class="box green">
-<h4>📌 उत्तर प्रदेश के प्रथम</h4>
-<ul>
-<li><strong>प्रथम मुख्यमंत्री:</strong> गोविंद बल्लभ पंत (1950)</li>
-<li><strong>प्रथम राज्यपाल:</strong> सरोजिनी नायडू (1947) — भारत की प्रथम महिला राज्यपाल</li>
-<li><strong>प्रथम महिला मुख्यमंत्री:</strong> सुचेता कृपलानी (1963)</li>
-<li><strong>प्रथम विश्वविद्यालय:</strong> बनारस हिंदू विश्वविद्यालय (1916)</li>
-<li><strong>प्रथम IIT:</strong> IIT कानपुर (1959)</li>
-</ul>
+<h2>4.5 चौरी-चौरा कांड (5 फरवरी 1922)</h2>
+<p>गोरखपुर जिले के चौरी-चौरा में किसानों ने पुलिस थाने को आग लगा दी, जिसमें 22 पुलिसकर्मी मारे गए। महात्मा गांधी ने असहयोग आंदोलन स्थगित कर दिया।</p>
 </div>
 
-<!-- ==================== SECTION 5 ==================== -->
-<h1>5. उत्तर प्रदेश का भूगोल - भौतिक विभाजन</h1>
+<!-- ============ SECTION 5 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 5</span>
+<h1>उत्तर प्रदेश की कला एवं संस्कृति</h1>
 
-<h2>5.1 उत्तर प्रदेश का सामान्य भूगोल</h2>
-<p>उत्तर प्रदेश भारत के उत्तर में स्थित है। इसका अधिकांश भाग गंगा-यमुना के मैदानों में फैला है। राज्य की उत्तर-दक्षिण लंबाई 605 किमी और पूर्व-पश्चिम चौड़ाई 770 किमी है।</p>
+<h2>5.1 कला और शिल्प</h2>
+<p>उत्तर प्रदेश भारत की सांस्कृतिक राजधानी कहा जा सकता है। यहाँ की कलाएँ विश्वभर में प्रसिद्ध हैं।</p>
 
-<h2>5.2 भौतिक विभाजन</h2>
-<p>उत्तर प्रदेश को भौगोलिक दृष्टि से मुख्यतः तीन भागों में बाँटा जा सकता है:</p>
-
-<h3>1. उत्तर का पर्वतीय क्षेत्र (हिमालयी क्षेत्र)</h3>
-<ul>
-<li>राज्य का उत्तरी भाग — उत्तराखंड की सीमा से लगा हुआ</li>
-<li>शिवालिक श्रेणियाँ, दून घाटियाँ</li>
-<li>जिले: सहारनपुर, मुजफ्फरनगर, बिजनौर (आंशिक)</li>
-<li>ऊँचाई: 300-1000 मीटर</li>
-<li>प्रमुख नदियाँ: गंगा, यमुना, रामगंगा, गोमती</li>
-</ul>
-
-<h3>2. मध्य का मैदानी क्षेत्र (गंगा-यमुना मैदान)</h3>
-<ul>
-<li>राज्य का सबसे बड़ा भाग (लगभग 60%)</li>
-<li>अत्यंत उपजाऊ जलोढ़ मृदा</li>
-<li>जिले: लखनऊ, कानपुर, प्रयागराज, वाराणसी, मेरठ, बरेली, आगरा</li>
-<li>ऊँचाई: 100-300 मीटर</li>
-<li>प्रमुख फसलें: गेहूँ, धान, गन्ना, जौ</li>
-</ul>
-
-<h3>3. दक्षिण का पठारी क्षेत्र (बुंदेलखंड एवं विंध्य)</h3>
-<ul>
-<li>राज्य का दक्षिणी भाग — मध्य प्रदेश की सीमा से लगा</li>
-<li>विंध्य पर्वत श्रेणी, बुंदेलखंड का पठार</li>
-<li>जिले: झाँसी, चित्रकूट, बांदा, हमीरपुर, महोबा, ललितपुर, जालौन</li>
-<li>ऊँचाई: 200-400 मीटर</li>
-<li>प्रमुख समस्याएँ: सूखा, कम वर्षा, कम उपजाऊ मृदा</li>
-</ul>
-
-<h2>5.3 उत्तर प्रदेश के प्रमुख भौगोलिक क्षेत्र</h2>
 <table>
-<tr><th>क्षेत्र</th><th>विशेषताएँ</th><th>जिले</th></tr>
-<tr><td>रोहिलखंड</td><td>उत्तर-पश्चिम, मैदानी</td><td>बरेली, मुरादाबाद, बिजनौर, अमरोहा, संभल, रामपुर, पीलीभीत, शाहजहाँपुर</td></tr>
-<tr><td>ब्रज क्षेत्र</td><td>पश्चिम, कृष्ण से जुड़ा</td><td>मथुरा, आगरा, फिरोजाबाद, मैनपुरी, हाथरस, एटा, कासगंज</td></tr>
-<tr><td>अवध क्षेत्र</td><td>मध्य, नवाबों का क्षेत्र</td><td>लखनऊ, अयोध्या, बाराबंकी, सुल्तानपुर, अमेठी, फैजाबाद</td></tr>
-<tr><td>पूर्वांचल</td><td>पूर्वी, गंगा मैदान</td><td>वाराणसी, गोरखपुर, गाजीपुर, आजमगढ़, बलिया, मऊ, देवरिया, कुशीनगर</td></tr>
-<tr><td>बुंदेलखंड</td><td>दक्षिणी, पठारी</td><td>झाँसी, चित्रकूट, बांदा, हमीरपुर, महोबा, ललितपुर, जालौन</td></tr>
-<tr><td>दोआब</td><td>गंगा-यमुना के बीच</td><td>प्रयागराज, कानपुर, फतेहपुर, इटावा</td></tr>
+<tr><th>कला</th><th>स्थान</th><th>विशेष</th></tr>
+<tr><td>चिकनकारी</td><td>लखनऊ</td><td>हाथ की महीन कढ़ाई, विश्व प्रसिद्ध</td></tr>
+<tr><td>जरी-जरदोजी</td><td>लखनऊ, वाराणसी</td><td>सोने-चाँदी के धागों से कढ़ाई</td></tr>
+<tr><td>कालीन बुनाई</td><td>भदोही, मिर्जापुर</td><td>"कालीन नगरी", विश्व प्रसिद्ध</td></tr>
+<tr><td>बनारसी साड़ी</td><td>वाराणसी</td><td>रेशम और सोने-चाँदी के धागों से</td></tr>
+<tr><td>पीतल उद्योग</td><td>मुरादाबाद</td><td>"पीतल नगरी"</td></tr>
+<tr><td>काँच उद्योग</td><td>फिरोजाबाद</td><td>काँच की चूड़ियाँ</td></tr>
+<tr><td>ताला उद्योग</td><td>अलीगढ़</td><td>"ताला नगरी"</td></tr>
 </table>
 
-<h2>5.4 उत्तर प्रदेश की प्रमुख झीलें</h2>
+<h2>5.2 संगीत</h2>
 <ul>
-<li><strong>बेलासागर (लखनऊ):</strong> कृत्रिम झील</li>
-<li><strong>मानसरोवर (प्रयागराज):</strong> पवित्र झील</li>
-<li><strong>रामगढ़ ताल (गोरखपुर):</strong> प्राकृतिक झील</li>
-<li><strong>सूरहा ताल (बलरामपुर):</strong> पक्षी विहार</li>
-<li><strong>समसपुर (रायबरेली):</strong> पक्षी विहार</li>
-<li><strong>नवाबगंज (उन्नाव):</strong> पक्षी विहार</li>
-<li><strong>पार्वती अरगा (गोंडा):</strong> पक्षी विहार</li>
-<li><strong>हजारीबाग (बलिया):</strong> प्राकृतिक झील</li>
+<li><strong>हिंदुस्तानी शास्त्रीय संगीत</strong> — लखनऊ, वाराणसी, आगरा</li>
+<li><strong>बनारस घराना</strong> — पंडित रविशंकर, उस्ताद बिस्मिल्लाह खाँ</li>
+<li><strong>लखनऊ घराना</strong> — कथक नृत्य</li>
+<li><strong>आगरा घराना</strong> — ख्याल गायन</li>
 </ul>
 
-<!-- ==================== SECTION 6 ==================== -->
-<h1>6. उत्तर प्रदेश की नदियाँ एवं अपवाह तंत्र</h1>
+<h2>5.3 नृत्य</h2>
+<ul>
+<li><strong>कथक</strong> — लखनऊ, वाराणसी, विश्व प्रसिद्ध</li>
+<li><strong>चरकुला</strong> — ब्रज क्षेत्र</li>
+<li><strong>नौटंकी</strong> — पूर्वी UP</li>
+<li><strong>रासलीला</strong> — मथुरा, वृंदावन</li>
+<li><strong>रामलीला</strong> — अयोध्या, वाराणसी</li>
+<li><strong>कजरी</strong> — मिर्जापुर, वाराणसी</li>
+</ul>
 
-<h2>6.1 नदियों का वर्गीकरण</h2>
-<p>उत्तर प्रदेश की नदियों को मुख्यतः दो वर्गों में बाँटा जा सकता है:</p>
+<h2>5.4 प्रमुख त्योहार</h2>
+<ul>
+<li><strong>दीपावली</strong> — पूरे राज्य में, अयोध्या में विशेष</li>
+<li><strong>होली</strong> — ब्रज क्षेत्र (लठमार होली)</li>
+<li><strong>कुंभ मेला</strong> — प्रयागराज (प्रत्येक 12 वर्ष)</li>
+<li><strong>महाशिवरात्रि</strong> — वाराणसी</li>
+<li><strong>रामनवमी</strong> — अयोध्या</li>
+<li><strong>कृष्ण जन्माष्टमी</strong> — मथुरा, वृंदावन</li>
+<li><strong>छठ पूजा</strong> — पूर्वी UP</li>
+</ul>
+
+<h2>5.5 स्थापत्य एवं विरासत</h2>
+<h3>UNESCO विश्व धरोहर स्थल (उत्तर प्रदेश में):</h3>
 <ol>
-<li><strong>हिमालयी नदियाँ:</strong> गंगा, यमुना, घाघरा, गंडक, रामगंगा, शारदा, गोमती</li>
-<li><strong>प्रायद्वीपीय नदियाँ:</strong> बेतवा, चंबल, सिंध, यमुना की सहायक</li>
+<li><strong>ताजमहल (आगरा)</strong> — 1983 में शामिल</li>
+<li><strong>आगरा किला</strong> — 1983 में शामिल</li>
+<li><strong>फतेहपुर सीकरी</strong> — 1986 में शामिल</li>
 </ol>
 
-<h2>6.2 गंगा नदी</h2>
-<ul>
-<li><strong>उद्गम:</strong> गंगोत्री (उत्तराखंड) — भागीरथी एवं अलकनंदा का संगम</li>
-<li><strong>लंबाई (UP में):</strong> लगभग 1,140 किमी</li>
-<li><strong>प्रमुख शहर:</strong> हरिद्वार, कानपुर, प्रयागराज, वाराणसी, गाजीपुर, बलिया</li>
-<li><strong>प्रमुख सहायक नदियाँ:</strong> यमुना, रामगंगा, गोमती, घाघरा, गंडक, सोन</li>
-<li><strong>प्रयागराज:</strong> गंगा-यमुना का संगम (त्रिवेणी)</li>
-</ul>
-
-<h2>6.3 यमुना नदी</h2>
-<ul>
-<li><strong>उद्गम:</strong> यमुनोत्री (उत्तराखंड)</li>
-<li><strong>लंबाई (UP में):</strong> लगभग 950 किमी</li>
-<li><strong>प्रमुख शहर:</strong> सहारनपुर, मुजफ्फरनगर, मथुरा, आगरा, फिरोजाबाद, इटावा, प्रयागराज</li>
-<li><strong>सहायक नदियाँ:</strong> चंबल, बेतवा, केन, सिंध</li>
-<li><strong>प्रयागराज:</strong> गंगा में मिलती है</li>
-</ul>
-
-<h2>6.4 अन्य प्रमुख नदियाँ</h2>
-<table>
-<tr><th>नदी</th><th>उद्गम</th><th>प्रमुख क्षेत्र</th></tr>
-<tr><td>घाघरा</td><td>मापचाचुंगो (नेपाल)</td><td>बहराइच, गोंडा, बलरामपुर, देवरिया</td></tr>
-<tr><td>गंडक</td><td>नेपाल हिमालय</td><td>महराजगंज, गोरखपुर, बलिया</td></tr>
-<tr><td>रामगंगा</td><td>उत्तराखंड</td><td>पीलीभीत, बरेली, शाहजहाँपुर, कानपुर</td></tr>
-<tr><td>शारदा</td><td>नेपाल</td><td>पीलीभीत, लखीमपुर खीरी</td></tr>
-<tr><td>गोमती</td><td>पीलीभीत</td><td>लखनऊ, बाराबंकी, सुल्तानपुर, जौनपुर</td></tr>
-<tr><td>बेतवा</td><td>मध्य प्रदेश</td><td>झाँसी, हमीरपुर, जालौन</td></tr>
-<tr><td>चंबल</td><td>मध्य प्रदेश</td><td>आगरा, इटावा, जालौन</td></tr>
-<tr><td>सोन</td><td>मध्य प्रदेश</td><td>सोनभद्र, मिर्जापुर</td></tr>
-</table>
-
-<h2>6.5 नदियों का महत्व</h2>
-<ul>
-<li>सिंचाई का मुख्य स्रोत</li>
-<li>पेयजल आपूर्ति</li>
-<li>जल विद्युत उत्पादन</li>
-<li>परिवहन</li>
-<li>मछली पालन</li>
-<li>धार्मिक एवं सांस्कृतिक महत्व</li>
-<li>उद्योगों के लिए जल</li>
-</ul>
-
-<div class="box warn">
-<h4>⚠️ नदी प्रदूषण की समस्या</h4>
-<p>उत्तर प्रदेश की नदियाँ प्रदूषण की गंभीर समस्या से जूझ रही हैं। गंगा, यमुना, गोमती, रामगंगा में औद्योगिक कचरा, सीवेज, और कृषि रसायनों का प्रवाह बढ़ रहा है। "नमामि गंगे" परियोजना इस दिशा में महत्वपूर्ण पहल है।</p>
+<div class="quote">
+"ताजमहल विश्व के सात अजूबों में से एक है — यह प्रेम का प्रतीक है और मुगल वास्तुकला का अद्भुत नमूना।"
+</div>
 </div>
 
-<!-- ==================== SECTION 7 ==================== -->
-<h1>7. उत्तर प्रदेश की जलवायु</h1>
+<!-- ============ SECTION 6 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 6</span>
+<h1>उत्तर प्रदेश का भूगोल</h1>
 
-<h2>7.1 जलवायु का स्वरूप</h2>
-<p>उत्तर प्रदेश की जलवायु मुख्यतः उष्णकटिबंधीय मानसूनी है। राज्य में जलवायु की विविधता देखने को मिलती है — पश्चिम में अर्ध-शुष्क, पूर्व में आर्द्र, उत्तर में पर्वतीय, दक्षिण में अर्ध-शुष्क।</p>
+<h2>6.1 भू-आकृतिक विभाजन</h2>
+<p>उत्तर प्रदेश को भौगोलिक दृष्टि से मुख्यतः तीन भागों में बाँटा जा सकता है:</p>
 
-<h2>7.2 मानसून</h2>
+<h3>1. हिमालयी क्षेत्र (उत्तर का पर्वतीय क्षेत्र)</h3>
 <ul>
-<li><strong>दक्षिण-पश्चिम मानसून:</strong> जून-सितंबर, मुख्य वर्षा ऋतु</li>
-<li><strong>लौटता मानसून:</strong> अक्टूबर-नवंबर</li>
-<li><strong>पूर्वोत्तर मानसून:</strong> दिसंबर-फरवरी (कम प्रभाव)</li>
+<li>विस्तार — उत्तराखंड की सीमा से लगा क्षेत्र</li>
+<li>ऊँचाई — 300-1000 मीटर</li>
+<li>जिले — सहारनपुर, मुजफ्फरनगर, बिजनौर, पीलीभीत</li>
+</ul>
+
+<h3>2. गंगा-यमुना का मैदान (मध्य मैदानी क्षेत्र)</h3>
+<ul>
+<li>विस्तार — राज्य का सबसे बड़ा भाग (~60%)</li>
+<li>ऊँचाई — 100-300 मीटर</li>
+<li>विशेषताएँ — उपजाऊ जलोढ़ मिट्टी, घनी जनसंख्या</li>
+</ul>
+
+<h3>3. प्रायद्वीपीय पठार (दक्षिणी पठारी क्षेत्र)</h3>
+<ul>
+<li>विस्तार — बुंदेलखंड, विंध्य क्षेत्र</li>
+<li>ऊँचाई — 200-400 मीटर</li>
+<li>जिले — झाँसी, बांदा, हमीरपुर, महोबा, जालौन, चित्रकूट</li>
+</ul>
+
+<h2>6.2 मैदान के चार प्रकार</h2>
+<table>
+<tr><th>प्रकार</th><th>विशेषताएँ</th></tr>
+<tr><td>भाबर</td><td>शिवालिक के नीचे, कंकड़-पत्थर</td></tr>
+<tr><td>तराई</td><td>दलदली क्षेत्र, घनी वनस्पति</td></tr>
+<tr><td>बांगर</td><td>पुराना जलोढ़, रेह/कंकड़</td></tr>
+<tr><td>खादर</td><td>नया जलोढ़, अत्यंत उपजाऊ</td></tr>
+</table>
+
+<h2>6.3 उत्तर प्रदेश की जलवायु</h2>
+<ul>
+<li><strong>प्रकार:</strong> उष्णकटिबंधीय मानसूनी</li>
 <li><strong>औसत वर्षा:</strong> 100-120 सेमी</li>
-<li><strong>सर्वाधिक वर्षा:</strong> पूर्वी उत्तर प्रदेश (गोरखपुर, देवरिया, बलिया)</li>
-<li><strong>न्यूनतम वर्षा:</strong> बुंदेलखंड एवं पश्चिमी उत्तर प्रदेश</li>
+<li><strong>सर्वाधिक वर्षा:</strong> पूर्वी UP (गोरखपुर, देवरिया)</li>
+<li><strong>न्यूनतम वर्षा:</strong> बुंदेलखंड, पश्चिमी UP</li>
 </ul>
 
-<h2>7.3 ऋतुएँ</h2>
+<h2>6.4 उत्तर प्रदेश की नदियाँ</h2>
 <table>
-<tr><th>ऋतु</th><th>महीने</th><th>विशेषताएँ</th></tr>
-<tr><td>शीत ऋतु</td><td>दिसंबर-फरवरी</td><td>ठंडा, शुष्क, कोहरा, पछुआ हवाएँ</td></tr>
-<tr><td>ग्रीष्म ऋतु</td><td>मार्च-मई</td><td>गर्म, शुष्क, लू, धूल भरी आँधियाँ</td></tr>
-<tr><td>वर्षा ऋतु</td><td>जून-सितंबर</td><td>मानसूनी वर्षा, आर्द्रता</td></tr>
-<tr><td>शरद ऋतु</td><td>अक्टूबर-नवंबर</td><td>हल्की ठंड, साफ आसमान, त्योहार</td></tr>
+<tr><th>नदी</th><th>उद्गम</th><th>प्रमुख क्षेत्र</th></tr>
+<tr><td>गंगा</td><td>गंगोत्री</td><td>कानपुर, प्रयागराज, वाराणसी</td></tr>
+<tr><td>यमुना</td><td>यमुनोत्री</td><td>मथुरा, आगरा, प्रयागराज</td></tr>
+<tr><td>घाघरा</td><td>नेपाल हिमालय</td><td>बहराइच, गोंडा, देवरिया</td></tr>
+<tr><td>गोमती</td><td>पीलीभीत</td><td>लखनऊ, सुल्तानपुर, जौनपुर</td></tr>
+<tr><td>रामगंगा</td><td>उत्तराखंड</td><td>बरेली, शाहजहाँपुर, कानपुर</td></tr>
+<tr><td>बेतवा</td><td>मध्य प्रदेश</td><td>झाँसी, हमीरपुर, जालौन</td></tr>
+<tr><td>चंबल</td><td>मध्य प्रदेश</td><td>आगरा, इटावा, जालौन</td></tr>
 </table>
+</div>
 
-<h2>7.4 जलवायु को प्रभावित करने वाले कारक</h2>
+<!-- ============ SECTION 7 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 7</span>
+<h1>उत्तर प्रदेश की कृषि</h1>
+
+<h2>7.1 कृषि का महत्व</h2>
 <ul>
-<li>अक्षांश (उत्तर-दक्षिण विस्तार)</li>
-<li>समुद्र तट से दूरी</li>
-<li>हिमालय की स्थिति</li>
-<li>मानसूनी हवाएँ</li>
-<li>समुद्री धाराएँ (बंगाल की खाड़ी)</li>
-<li>ऊँचाई (पर्वतीय क्षेत्र)</li>
-<li>वनस्पति</li>
-<li>मरुस्थल (थार) की निकटता</li>
-</ul>
-
-<!-- ==================== SECTION 8 ==================== -->
-<h1>8. उत्तर प्रदेश की मृदा</h1>
-
-<h2>8.1 मृदा के प्रकार</h2>
-<p>उत्तर प्रदेश की मृदा विविधतापूर्ण है। यहाँ जलोढ़, काली, लाल, लैटेराइट, मरुस्थलीय, पर्वतीय, और दलदली मृदा पाई जाती है।</p>
-
-<table>
-<tr><th>मृदा</th><th>क्षेत्र</th><th>विशेषताएँ</th></tr>
-<tr><td>जलोढ़ मृदा</td><td>उत्तर का मैदान (गंगा-यमुना)</td><td>सबसे उपजाऊ, पोटाश एवं चूना अधिक</td></tr>
-<tr><td>काली मृदा (रेगुर)</td><td>बुंदेलखंड, दक्षिण-पश्चिम</td><td>कपास के लिए उत्तम, नमी धारण</td></tr>
-<tr><td>लाल मृदा</td><td>बुंदेलखंड, मिर्जापुर</td><td>लोहे का ऑक्साइड, कम उपजाऊ</td></tr>
-<tr><td>लैटेराइट मृदा</td><td>दक्षिणी पठार</td><td>अम्लीय, चाय-कॉफी के लिए</td></tr>
-<tr><td>मरुस्थलीय मृदा</td><td>राजस्थान सीमा</td><td>रेतीली, कम उपजाऊ</td></tr>
-<tr><td>पर्वतीय मृदा</td><td>हिमालयी क्षेत्र</td><td>ढालू, कम गहरी</td></tr>
-<tr><td>दलदली मृदा</td><td>तटीय क्षेत्र, तराई</td><td>अम्लीय, खारी</td></tr>
-</table>
-
-<h2>8.2 मृदा संरक्षण</h2>
-<ul>
-<li>समोच्चरेखीय जुताई</li>
-<li>सीढ़ीदार खेती</li>
-<li>पवन रोधक वृक्ष</li>
-<li>फसल चक्र</li>
-<li>हरी खाद</li>
-<li>मल्चिंग</li>
-<li>रासायनिक उर्वरक का संतुलित उपयोग</li>
-<li>जैविक खेती को बढ़ावा</li>
-</ul>
-
-<!-- ==================== SECTION 9 ==================== -->
-<h1>9. उत्तर प्रदेश की प्राकृतिक वनस्पति एवं वन्यजीव</h1>
-
-<h2>9.1 वन क्षेत्र</h2>
-<ul>
-<li><strong>कुल वन क्षेत्र:</strong> लगभग 16,600 वर्ग किमी (राज्य के क्षेत्रफल का ~6.9%)</li>
-<li><strong>राष्ट्रीय औसत:</strong> 21.67% (भारत)</li>
-<li><strong>लक्ष्य:</strong> 33% (राष्ट्रीय वन नीति)</li>
-<li><strong>सर्वाधिक वन:</strong> उत्तराखंड सीमा क्षेत्र</li>
-<li><strong>न्यूनतम वन:</strong> पश्चिमी उत्तर प्रदेश</li>
-</ul>
-
-<h2>9.2 वनस्पति के प्रकार</h2>
-<ul>
-<li><strong>उष्णकटिबंधीय सदाबहार वन:</strong> पूर्वी उत्तर प्रदेश (देवरिया, गोरखपुर)</li>
-<li><strong>उष्णकटिबंधीय पर्णपाती वन:</strong> मध्य उत्तर प्रदेश (लखनऊ, कानपुर)</li>
-<li><strong>उष्णकटिबंधीय काँटेदार वन:</strong> बुंदेलखंड, दक्षिण-पश्चिम</li>
-<li><strong>पर्वतीय वन:</strong> हिमालयी क्षेत्र</li>
-<li><strong>मैंग्रोव वन:</strong> (UP में सीमित)</li>
-<li><strong>अल्पाइन वन:</strong> उच्च हिमालयी क्षेत्र</li>
-</ul>
-
-<h2>9.3 राष्ट्रीय उद्यान एवं वन्यजीव अभयारण्य</h2>
-<table>
-<tr><th>नाम</th><th>स्थान</th><th>विशेष</th></tr>
-<tr><td>दुधवा राष्ट्रीय उद्यान</td><td>लखीमपुर खीरी</td><td>बाघ, हाथी, बारहसिंगा</td></tr>
-<tr><td>किशनपुर वन्यजीव अभयारण्य</td><td>लखीमपुर खीरी</td><td>दुधवा का हिस्सा</td></tr>
-<tr><td>कतर्नियाघाट वन्यजीव अभयारण्य</td><td>बहराइच</td><td>बाघ, घड़ियाल</td></tr>
-<tr><td>चंद्रप्रभा वन्यजीव अभयारण्य</td><td>चंदौली</td><td>बाघ, तेंदुआ</td></tr>
-<tr><td>हस्तिनापुर वन्यजीव अभयारण्य</td><td>मेरठ</td><td>हिरण, पक्षी</td></tr>
-<tr><td>रानीपुर वन्यजीव अभयारण्य</td><td>झाँसी</td><td>चिंकारा</td></tr>
-<tr><td>महावीर स्वामी वन्यजीव अभयारण्य</td><td>ललितपुर</td><td>बाघ, तेंदुआ</td></tr>
-<tr><td>नवाबगंज पक्षी विहार</td><td>उन्नाव</td><td>प्रवासी पक्षी</td></tr>
-<tr><td>समसपुर पक्षी विहार</td><td>रायबरेली</td><td>प्रवासी पक्षी</td></tr>
-<tr><td>पार्वती अरगा पक्षी विहार</td><td>गोंडा</td><td>प्रवासी पक्षी</td></tr>
-</table>
-
-<h2>9.4 वन्यजीव संरक्षण</h2>
-<ul>
-<li>प्रोजेक्ट टाइगर (1973) — दुधवा</li>
-<li>प्रोजेक्ट एलिफेंट (1992) — दुधवा, कतर्नियाघाट</li>
-<li>वन्यजीव संरक्षण अधिनियम 1972</li>
-<li>जैव विविधता संरक्षण</li>
-<li>वृक्षारोपण अभियान</li>
-</ul>
-
-<!-- ==================== SECTION 10 ==================== -->
-<h1>10. उत्तर प्रदेश की कृषि</h1>
-
-<h2>10.1 कृषि का महत्व</h2>
-<ul>
-<li>उत्तर प्रदेश भारत का प्रमुख कृषि राज्य है</li>
+<li>UP भारत का प्रमुख कृषि राज्य है</li>
 <li>कुल जनसंख्या का लगभग 65% कृषि पर निर्भर</li>
 <li>राज्य की GDP में कृषि का योगदान लगभग 18%</li>
 <li>भारत के कुल खाद्यान्न उत्पादन में UP का योगदान लगभग 20%</li>
 </ul>
 
-<h2>10.2 फसल ऋतुएँ</h2>
+<h2>7.2 फसल ऋतुएँ</h2>
 <table>
 <tr><th>फसल</th><th>बुवाई</th><th>कटाई</th><th>उदाहरण</th></tr>
-<tr><td>खरीफ</td><td>जून-जुलाई</td><td>अक्टूबर-नवंबर</td><td>धान, मक्का, कपास, मूंग, ज्वार</td></tr>
-<tr><td>रबी</td><td>अक्टूबर-नवंबर</td><td>मार्च-अप्रैल</td><td>गेहूँ, चना, सरसों, जौ, मटर</td></tr>
-<tr><td>जायद</td><td>मार्च-अप्रैल</td><td>जून-जुलाई</td><td>तरबूज, खरबूजा, ककड़ी, खीरा</td></tr>
+<tr><td>खरीफ</td><td>जून-जुलाई</td><td>अक्टूबर-नवंबर</td><td>धान, मक्का, कपास, ज्वार</td></tr>
+<tr><td>रबी</td><td>अक्टूबर-नवंबर</td><td>मार्च-अप्रैल</td><td>गेहूँ, चना, सरसों, जौ</td></tr>
+<tr><td>जायद</td><td>मार्च-अप्रैल</td><td>जून-जुलाई</td><td>तरबूज, खरबूजा, ककड़ी</td></tr>
 </table>
 
-<h2>10.3 प्रमुख फसलें एवं उत्पादन</h2>
+<h2>7.3 प्रमुख फसलें (UP का स्थान)</h2>
 <table>
 <tr><th>फसल</th><th>UP का स्थान (भारत में)</th><th>प्रमुख क्षेत्र</th></tr>
-<tr><td>गन्ना</td><td>प्रथम (लगभग 45%)</td><td>मेरठ, मुजफ्फरनगर, बिजनौर, लखीमपुर खीरी</td></tr>
-<tr><td>गेहूँ</td><td>प्रथम</td><td>पश्चिमी UP (मेरठ, मुजफ्फरनगर)</td></tr>
-<tr><td>धान</td><td>द्वितीय (पश्चिम बंगाल के बाद)</td><td>पूर्वी UP (गोरखपुर, देवरिया)</td></tr>
+<tr><td>गन्ना</td><td>प्रथम (लगभग 45%)</td><td>मेरठ, मुजफ्फरनगर, बिजनौर</td></tr>
+<tr><td>गेहूँ</td><td>प्रथम</td><td>पश्चिमी UP</td></tr>
+<tr><td>धान</td><td>द्वितीय (बंगाल के बाद)</td><td>पूर्वी UP</td></tr>
 <tr><td>आलू</td><td>प्रथम</td><td>आगरा, फिरोजाबाद, बरेली</td></tr>
 <tr><td>जौ</td><td>प्रथम</td><td>मध्य UP</td></tr>
-<tr><td>दलहन</td><td>प्रथम</td><td>बुंदेलखंड, मध्य UP</td></tr>
-<tr><td>तिलहन</td><td>प्रथम</td><td>मध्य एवं पूर्वी UP</td></tr>
-<tr><td>मक्का</td><td>द्वितीय (कर्नाटक के बाद)</td><td>मध्य UP</td></tr>
+<tr><td>दलहन</td><td>प्रथम</td><td>बुंदेलखंड</td></tr>
 </table>
 
-<h2>10.4 हरित क्रांति</h2>
+<h2>7.4 हरित क्रांति</h2>
 <ul>
 <li><strong>प्रारंभ:</strong> 1960 के दशक में</li>
 <li><strong>जनक:</strong> एम.एस. स्वामीनाथन</li>
 <li><strong>प्रभाव:</strong> गेहूँ एवं धान के उत्पादन में वृद्धि</li>
-<li><strong>तकनीक:</strong> उच्च उपज किस्म के बीज, रासायनिक उर्वरक, कीटनाशक, सिंचाई</li>
-<li><strong>UP में प्रभाव:</strong> पश्चिमी UP में अधिक, पूर्वी UP में कम</li>
 </ul>
 
-<h2>10.5 कृषि की समस्याएँ</h2>
+<h2>7.5 कृषि की समस्याएँ</h2>
 <ul>
 <li>भूमि विभाजन एवं छोटी जोत</li>
 <li>सिंचाई की कमी</li>
 <li>मानसून पर निर्भरता</li>
 <li>कम उत्पादकता</li>
-<li>तकनीकी ज्ञान की कमी</li>
 <li>बाजार की समस्या</li>
 <li>ऋणग्रस्तता</li>
 <li>किसानों का पलायन</li>
-<li>मृदा क्षरण</li>
-<li>जलवायु परिवर्तन</li>
 </ul>
 
-<h2>10.6 कृषि सुधार के उपाय</h2>
-<ul>
-<li>सिंचाई सुविधाओं का विस्तार</li>
-<li>जैविक खेती को बढ़ावा</li>
-<li>कृषि शिक्षा एवं प्रशिक्षण</li>
-<li>फसल बीमा योजना</li>
-<li>MSP की गारंटी</li>
-<li>कृषि उपज मंडियों का विकास</li>
-<li>कोल्ड स्टोरेज की सुविधा</li>
-<li>कृषि आधारित उद्योग</li>
-<li>डिजिटल कृषि</li>
-</ul>
+<div class="important">
+💡 <strong>महत्वपूर्ण:</strong> उत्तर प्रदेश भारत का सबसे बड़ा गन्ना, गेहूँ, आलू, जौ, दलहन उत्पादक राज्य है।
+</div>
+</div>
 
-<!-- ==================== SECTION 11 ==================== -->
-<h1>11. उत्तर प्रदेश के खनिज संसाधन</h1>
+<!-- ============ SECTION 8 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 8</span>
+<h1>उत्तर प्रदेश के उद्योग</h1>
 
-<h2>11.1 खनिज संपदा</h2>
-<p>उत्तर प्रदेश खनिज संसाधनों में सीमित है, लेकिन कुछ महत्वपूर्ण खनिज यहाँ पाए जाते हैं।</p>
-
-<table>
-<tr><th>खनिज</th><th>प्रमुख स्थान</th><th>उपयोग</th></tr>
-<tr><td>चूना पत्थर</td><td>मिर्जापुर, सोनभद्र, देहरादून</td><td>सीमेंट, इस्पात</td></tr>
-<tr><td>डोलोमाइट</td><td>मिर्जापुर, सोनभद्र</td><td>सीमेंट, उर्वरक</td></tr>
-<tr><td>बॉक्साइट</td><td>ललितपुर, झाँसी</td><td>एल्यूमिनियम</td></tr>
-<tr><td>ताँबा</td><td>सोनभद्र</td><td>विद्युत उपकरण</td></tr>
-<tr><td>अभ्रक</td><td>सोनभद्र, हमीरपुर</td><td>विद्युत उपकरण</td></tr>
-<tr><td>संगमरमर</td><td>आगरा, मथुरा</td><td>भवन निर्माण</td></tr>
-<tr><td>सिलिका सैंड</td><td>प्रयागराज, चित्रकूट</td><td>काँच उद्योग</td></tr>
-<tr><td>कोयला</td><td>सोनभद्र</td><td>ऊर्जा</td></tr>
-<tr><td>चीनी मिट्टी</td><td>आगरा, झाँसी</td><td>सिरेमिक उद्योग</td></tr>
-<tr><td>जिप्सम</td><td>सहारनपुर, बिजनौर</td><td>सीमेंट, उर्वरक</td></tr>
-</table>
-
-<h2>11.2 खनिज वितरण</h2>
-<ul>
-<li><strong>सोनभद्र:</strong> चूना पत्थर, ताँबा, अभ्रक, कोयला, बॉक्साइट</li>
-<li><strong>मिर्जापुर:</strong> चूना पत्थर, डोलोमाइट</li>
-<li><strong>ललितपुर:</strong> बॉक्साइट, चूना पत्थर</li>
-<li><strong>आगरा:</strong> संगमरमर, चीनी मिट्टी</li>
-<li><strong>प्रयागराज:</strong> सिलिका सैंड</li>
-<li><strong>झाँसी:</strong> चीनी मिट्टी, बॉक्साइट</li>
-</ul>
-
-<!-- ==================== SECTION 12 ==================== -->
-<h1>12. उत्तर प्रदेश के उद्योग</h1>
-
-<h2>12.1 औद्योगिक विकास</h2>
-<p>उत्तर प्रदेश भारत का प्रमुख औद्योगिक राज्य है। यहाँ कई प्रकार के उद्योग विकसित हुए हैं।</p>
-
-<h2>12.2 प्रमुख उद्योग</h2>
+<h2>8.1 प्रमुख उद्योग</h2>
 <table>
 <tr><th>उद्योग</th><th>प्रमुख केंद्र</th><th>विशेष</th></tr>
-<tr><td>चीनी उद्योग</td><td>मेरठ, मुजफ्फरनगर, बिजनौर, लखीमपुर खीरी</td><td>UP भारत का सबसे बड़ा चीनी उत्पादक</td></tr>
-<tr><td>सूती वस्त्र</td><td>कानपुर, मुंबई (MH), अहमदाबाद (GJ)</td><td>कानपुर "उत्तर भारत का मैनचेस्टर"</td></tr>
-<tr><td>ऊनी वस्त्र</td><td>कानपुर, मेरठ, बरेली</td><td>—</td></tr>
+<tr><td>चीनी उद्योग</td><td>मेरठ, मुजफ्फरनगर, बिजनौर</td><td>UP भारत का सबसे बड़ा चीनी उत्पादक</td></tr>
+<tr><td>सूती वस्त्र</td><td>कानपुर</td><td>"उत्तर भारत का मैनचेस्टर"</td></tr>
 <tr><td>रेशम उद्योग</td><td>वाराणसी, मिर्जापुर</td><td>बनारसी साड़ी प्रसिद्ध</td></tr>
 <tr><td>कालीन उद्योग</td><td>भदोही (मिर्जापुर)</td><td>"कालीन नगरी", विश्व प्रसिद्ध</td></tr>
 <tr><td>चमड़ा उद्योग</td><td>कानपुर, आगरा, नोएडा</td><td>आगरा जूते विश्व प्रसिद्ध</td></tr>
 <tr><td>ताला उद्योग</td><td>अलीगढ़</td><td>"ताला नगरी"</td></tr>
 <tr><td>पीतल उद्योग</td><td>मुरादाबाद</td><td>"पीतल नगरी"</td></tr>
-<tr><td>खेल उपकरण</td><td>मेरठ</td><td>खेल सामग्री का केंद्र</td></tr>
-<tr><td>इलेक्ट्रॉनिक्स</td><td>नोएडा, गाजियाबाद</td><td>IT हब</td></tr>
-<tr><td>सीमेंट</td><td>चुर्क (सोनभद्र), डाला</td><td>UP में सीमेंट उद्योग</td></tr>
-<tr><td>इंजीनियरिंग</td><td>कानपुर, नोएडा, गाजियाबाद</td><td>भारी उद्योग</td></tr>
-<tr><td>सॉफ्टवेयर</td><td>नोएडा, ग्रेटर नोएडा</td><td>IT पार्क</td></tr>
-<tr><td>ऑटोमोबाइल</td><td>नोएडा, गाजियाबाद, लखनऊ</td><td>वाहन निर्माण</td></tr>
+<tr><td>IT</td><td>नोएडा, ग्रेटर नोएडा</td><td>IT हब</td></tr>
 </table>
 
-<h2>12.3 औद्योगिक क्षेत्र</h2>
-<ul>
-<li><strong>कानपुर:</strong> सूती वस्त्र, चमड़ा, इंजीनियरिंग</li>
-<li><strong>नोएडा-गाजियाबाद:</strong> IT, इलेक्ट्रॉनिक्स, ऑटोमोबाइल</li>
-<li><strong>मेरठ:</strong> चीनी, खेल सामग्री, ऊनी वस्त्र</li>
-<li><strong>आगरा:</strong> चमड़ा, संगमरमर, हस्तशिल्प</li>
-<li><strong>अलीगढ़:</strong> ताला, हार्डवेयर</li>
-<li><strong>मुरादाबाद:</strong> पीतल, हस्तशिल्प</li>
-<li><strong>भदोही:</strong> कालीन, दरी</li>
-<li><strong>वाराणसी:</strong> रेशम, बनारसी साड़ी</li>
-<li><strong>लखनऊ:</strong> चिकनकारी, हस्तशिल्प</li>
-</ul>
+<h2>8.2 ओडीओपी योजना</h2>
+<p>उत्तर प्रदेश सरकार ने <strong>"एक जनपद एक उत्पाद"</strong> (One District One Product) योजना शुरू की है। इसके तहत प्रत्येक जिले के पारंपरिक उत्पाद को बढ़ावा दिया जाता है।</p>
 
-<h2>12.4 ओडीओपी (ODOP) योजना</h2>
-<p>उत्तर प्रदेश सरकार ने "एक जनपद एक उत्पाद" (One District One Product) योजना शुरू की है। इसके तहत प्रत्येक जिले के पारंपरिक उत्पाद को बढ़ावा दिया जाता है।</p>
-
-<h3>ODOP के कुछ उदाहरण:</h3>
+<h3>ODOP के उदाहरण:</h3>
 <ul>
 <li>आगरा — चमड़े के जूते</li>
 <li>अलीगढ़ — ताले एवं हार्डवेयर</li>
 <li>भदोही — कालीन</li>
 <li>मुरादाबाद — पीतल</li>
 <li>वाराणसी — बनारसी साड़ी</li>
-<li>कानपुर — चमड़ा उत्पाद</li>
 <li>मेरठ — खेल सामग्री</li>
 <li>लखनऊ — चिकनकारी</li>
 <li>प्रयागराज — अमरूद</li>
-<li>सहारनपुर — लकड़ी की नक्काशी</li>
 </ul>
+</div>
 
-<!-- ==================== SECTION 13 ==================== -->
-<h1>13. उत्तर प्रदेश में परिवहन</h1>
+<!-- ============ SECTION 9 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 9</span>
+<h1>उत्तर प्रदेश की जनसंख्या</h1>
 
-<h2>13.1 सड़क परिवहन</h2>
-<ul>
-<li><strong>कुल सड़क लंबाई:</strong> लगभग 3 लाख किमी</li>
-<li><strong>राष्ट्रीय राजमार्ग:</strong> लगभग 11,800 किमी</li>
-<li><strong>प्रमुख राजमार्ग:</strong> NH-19 (दिल्ली-कोलकाता), NH-27, NH-30, NH-44</li>
-<li><strong>स्वर्णिम चतुर्भुज:</strong> दिल्ली-मुंबई-चेन्नई-कोलकाता (UP से होकर)</li>
-<li><strong>उत्तर-दक्षिण कॉरिडोर:</strong> श्रीनगर-कन्याकुमारी</li>
-<li><strong>पूर्व-पश्चिम कॉरिडोर:</strong> सिलचर-पोरबंदर</li>
-<li><strong>एक्सप्रेसवे:</strong> यमुना एक्सप्रेसवे (165 किमी), आगरा-लखनऊ एक्सप्रेसवे (302 किमी), पूर्वांचल एक्सप्रेसवे (341 किमी), गंगा एक्सप्रेसवे (निर्माणाधीन), बुंदेलखंड एक्सप्रेसवे (निर्माणाधीन)</li>
-</ul>
-
-<h2>13.2 रेल परिवहन</h2>
-<ul>
-<li><strong>कुल रेल लंबाई:</strong> लगभग 9,000 किमी</li>
-<li><strong>रेल जोन:</strong> उत्तर रेलवे (लखनऊ), उत्तर-मध्य रेलवे (प्रयागराज), पूर्वोत्तर रेलवे (गोरखपुर)</li>
-<li><strong>प्रमुख जंक्शन:</strong> लखनऊ, कानपुर, प्रयागराज, वाराणसी, गोरखपुर, आगरा, झाँसी, मेरठ</li>
-<li><strong>प्रसिद्ध ट्रेनें:</strong> राजधानी एक्सप्रेस, शताब्दी एक्सप्रेस, दून एक्सप्रेस</li>
-<li><strong>मेट्रो:</strong> लखनऊ मेट्रो, कानपुर मेट्रो, नोएडा मेट्रो</li>
-</ul>
-
-<h2>13.3 वायु परिवहन</h2>
-<ul>
-<li><strong>अंतर्राष्ट्रीय हवाई अड्डे:</strong> लखनऊ (चौधरी चरण सिंह), वाराणसी (लाल बहादुर शास्त्री), कुशीनगर (नवनिर्मित)</li>
-<li><strong>घरेलू हवाई अड्डे:</strong> कानपुर, प्रयागराज, गोरखपुर, आगरा, बरेली, झाँसी</li>
-<li><strong>नोएडा:</strong> जेवर एयरपोर्ट (निर्माणाधीन — NCR का दूसरा अंतर्राष्ट्रीय हवाई अड्डा)</li>
-<li><strong>प्रमुख एयरलाइंस:</strong> एयर इंडिया, इंडिगो, स्पाइसजेट</li>
-</ul>
-
-<h2>13.4 जल परिवहन</h2>
-<ul>
-<li><strong>राष्ट्रीय जलमार्ग:</strong> गंगा (NH-1: हल्दिया-प्रयागराज), ब्रह्मपुत्र</li>
-<li><strong>प्रमुख बंदरगाह:</strong> (UP स्थलरुद्ध राज्य है, कोई बंदरगाह नहीं)</li>
-<li><strong>अंतर्देशीय जलमार्ग:</strong> गंगा, यमुना, घाघरा</li>
-<li><strong>वाराणसी:</strong> गंगा पर क्रूज सेवा</li>
-</ul>
-
-<!-- ==================== SECTION 14 ==================== -->
-<h1>14. उत्तर प्रदेश की जनसंख्या</h1>
-
-<h2>14.1 जनसंख्या (2011 जनगणना)</h2>
-<ul>
-<li><strong>कुल जनसंख्या:</strong> 19.98 करोड़ (भारत में पहला स्थान)</li>
-<li><strong>पुरुष:</strong> 10.45 करोड़</li>
-<li><strong>महिला:</strong> 9.53 करोड़</li>
-<li><strong>लिंगानुपात:</strong> 912 महिलाएँ प्रति 1000 पुरुष</li>
-<li><strong>जनसंख्या घनत्व:</strong> 829 व्यक्ति/वर्ग किमी</li>
-<li><strong>दशकीय वृद्धि दर:</strong> 20.23% (2001-2011)</li>
-<li><strong>साक्षरता:</strong> 67.68%</li>
-<li><strong>नगरीय जनसंख्या:</strong> 22.28%</li>
-<li><strong>ग्रामीण जनसंख्या:</strong> 77.72%</li>
-</ul>
-
-<h2>14.2 जनसंख्या वितरण</h2>
+<h2>9.1 जनसंख्या (2011 जनगणना)</h2>
 <table>
-<tr><th>विषय</th><th>विवरण</th></tr>
-<tr><td>सर्वाधिक जनसंख्या वाला जिला</td><td>प्रयागराज (लगभग 59 लाख)</td></tr>
-<tr><td>न्यूनतम जनसंख्या वाला जिला</td><td>महोबा (लगभग 8.75 लाख)</td></tr>
-<tr><td>सर्वाधिक जनसंख्या घनत्व</td><td>गाजियाबाद (लगभग 4,000/वर्ग किमी)</td></tr>
-<tr><td>न्यूनतम जनसंख्या घनत्व</td><td>ललितपुर</td></tr>
-<tr><td>सर्वाधिक लिंगानुपात</td><td>जौनपुर (लगभग 1018)</td></tr>
-<tr><td>न्यूनतम लिंगानुपात</td><td>गौतमबुद्धनगर (लगभग 851)</td></tr>
-<tr><td>सर्वाधिक साक्षरता</td><td>गौतमबुद्धनगर (लगभग 80%)</td></tr>
-<tr><td>न्यूनतम साक्षरता</td><td>श्रावस्ती (लगभग 46%)</td></tr>
-<tr><td>सर्वाधिक नगरीय जनसंख्या</td><td>गाजियाबाद, गौतमबुद्धनगर</td></tr>
+<tr><th>विषय</th><th>आँकड़ा</th></tr>
+<tr><td>कुल जनसंख्या</td><td>19.98 करोड़ (भारत में प्रथम)</td></tr>
+<tr><td>पुरुष</td><td>10.45 करोड़</td></tr>
+<tr><td>महिला</td><td>9.53 करोड़</td></tr>
+<tr><td>लिंगानुपात</td><td>912 महिलाएँ प्रति 1000 पुरुष</td></tr>
+<tr><td>जनसंख्या घनत्व</td><td>829 व्यक्ति/वर्ग किमी</td></tr>
+<tr><td>साक्षरता</td><td>67.68%</td></tr>
+<tr><td>नगरीय जनसंख्या</td><td>22.28%</td></tr>
 </table>
 
-<h2>14.3 जनसांख्यिकीय संक्रमण</h2>
-<p>उत्तर प्रदेश जनसांख्यिकीय संक्रमण के तीसरे चरण में है — जहाँ जन्म दर और मृत्यु दर दोनों कम हो रही हैं, पर जनसंख्या अभी भी बढ़ रही है।</p>
+<h2>9.2 जनसंख्या वितरण</h2>
+<table>
+<tr><th>विषय</th><th>विवरण</th></tr>
+<tr><td>सर्वाधिक जनसंख्या वाला जिला</td><td>प्रयागराज</td></tr>
+<tr><td>न्यूनतम जनसंख्या वाला जिला</td><td>महोबा</td></tr>
+<tr><td>सर्वाधिक जनसंख्या घनत्व</td><td>गाजियाबाद</td></tr>
+<tr><td>सर्वाधिक लिंगानुपात</td><td>जौनपुर</td></tr>
+<tr><td>न्यूनतम लिंगानुपात</td><td>गौतमबुद्धनगर</td></tr>
+<tr><td>सर्वाधिक साक्षरता</td><td>गौतमबुद्धनगर</td></tr>
+<tr><td>न्यूनतम साक्षरता</td><td>श्रावस्ती</td></tr>
+</table>
 
-<h3>प्रमुख जनसांख्यिकीय विशेषताएँ:</h3>
-<ul>
-<li>जनसंख्या वृद्धि दर: 1.2% (2021)</li>
-<li>शिशु मृत्यु दर: 41 प्रति 1000 (2019)</li>
-<li>मातृ मृत्यु दर: 197 प्रति लाख (2016-18)</li>
-<li>जन्म दर: 25.9 प्रति 1000 (2019)</li>
-<li>मृत्यु दर: 7.3 प्रति 1000 (2019)</li>
-<li>औसत आयु: 65.8 वर्ष</li>
-</ul>
-
-<h2>14.4 जनसंख्या की समस्याएँ</h2>
+<h2>9.3 जनसंख्या की समस्याएँ</h2>
 <ul>
 <li>अत्यधिक जनसंख्या वृद्धि</li>
 <li>बेरोजगारी</li>
@@ -1073,474 +1023,29 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li>अशिक्षा</li>
 <li>स्वास्थ्य सेवाओं पर दबाव</li>
 <li>आवास की समस्या</li>
-<li>यातायात की समस्या</li>
 <li>पर्यावरण प्रदूषण</li>
-<li>अपराध में वृद्धि</li>
-<li>संसाधनों पर दबाव</li>
 </ul>
+</div>
 
-<!-- ==================== SECTION 15 ==================== -->
-<h1>15. उत्तर प्रदेश की संस्कृति, कला एवं साहित्य</h1>
+<!-- ============ SECTION 10 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 10</span>
+<h1>उत्तर प्रदेश की सरकारी योजनाएँ</h1>
 
-<h2>15.1 उत्तर प्रदेश की संस्कृति</h2>
-<p>उत्तर प्रदेश भारत की सांस्कृतिक राजधानी कहा जा सकता है। यहाँ की संस्कृति अत्यंत समृद्ध और विविधतापूर्ण है। गंगा-यमुना की भूमि, काशी, अयोध्या, मथुरा, वृंदावन, प्रयागराज — ये सभी धार्मिक एवं सांस्कृतिक केंद्र हैं।</p>
-
-<h2>15.2 उत्तर प्रदेश की कला</h2>
-
-<h3>लोक कला:</h3>
-<ul>
-<li><strong>चिकनकारी (लखनऊ):</strong> हाथ की कढ़ाई, विश्व प्रसिद्ध</li>
-<li><strong>जरी-जरदोजी (लखनऊ):</strong> सोने-चाँदी के धागों से कढ़ाई</li>
-<li><strong>कालीन (भदोही):</strong> "कालीन नगरी", विश्व प्रसिद्ध</li>
-<li><strong>बनारसी साड़ी (वाराणसी):</strong> रेशम की साड़ियाँ</li>
-<li><strong>पीतल उद्योग (मुरादाबाद):</strong> पीतल के बर्तन एवं कलाकृतियाँ</li>
-<li><strong>ताला उद्योग (अलीगढ़):</strong> तालों का केंद्र</li>
-<li><strong>मेरठ:</strong> खेल सामग्री</li>
-<li><strong>सहारनपुर:</strong> लकड़ी की नक्काशी</li>
-<li><strong>आगरा:</strong> संगमरमर की नक्काशी</li>
-<li><strong>फिरोजाबाद:</strong> काँच की चूड़ियाँ</li>
-</ul>
-
-<h3>चित्रकला:</h3>
-<ul>
-<li><strong>मुगल चित्रकला:</strong> आगरा, लखनऊ</li>
-<li><strong>कंपनी चित्रकला:</strong> ब्रिटिश काल</li>
-<li><strong>मधुबनी चित्रकला:</strong> (बिहार की सीमा से लगा क्षेत्र)</li>
-<li><strong>पट चित्र:</strong> मथुरा, वृंदावन</li>
-</ul>
-
-<h2>15.3 उत्तर प्रदेश का संगीत एवं नृत्य</h2>
-
-<h3>संगीत:</h3>
-<ul>
-<li><strong>हिंदुस्तानी शास्त्रीय संगीत:</strong> लखनऊ, वाराणसी, आगरा</li>
-<li><strong>बनारस घराना:</strong> पंडित रविशंकर, उस्ताद बिस्मिल्लाह खाँ</li>
-<li><strong>लखनऊ घराना:</strong> कथक नृत्य</li>
-<li><strong>आगरा घराना:</strong> ख्याल गायन</li>
-<li><strong>किराना घराना:</strong> (UP में प्रभाव)</li>
-</ul>
-
-<h3>नृत्य:</h3>
-<ul>
-<li><strong>कथक:</strong> लखनऊ, वाराणसी — विश्व प्रसिद्ध</li>
-<li><strong>चरकुला:</strong> ब्रज क्षेत्र</li>
-<li><strong>नौटंकी:</strong> पूर्वी UP</li>
-<li><strong>रासलीला:</strong> ब्रज क्षेत्र (मथुरा, वृंदावन)</li>
-<li><strong>रामलीला:</strong> अयोध्या, वाराणसी</li>
-<li><strong>कजरी:</strong> मिर्जापुर, वाराणसी</li>
-<li><strong>झूला:</strong> बुंदेलखंड</li>
-<li><strong>राई:</strong> बुंदेलखंड</li>
-<li><strong>स्वांग:</strong> पूर्वी UP</li>
-</ul>
-
-<h2>15.4 उत्तर प्रदेश के प्रमुख त्योहार</h2>
-<ul>
-<li><strong>दीपावली:</strong> पूरे राज्य में</li>
-<li><strong>होली:</strong> ब्रज क्षेत्र (मथुरा, वृंदावन)</li>
-<li><strong>नवरात्रि:</strong> वाराणसी, प्रयागराज</li>
-<li><strong>महाशिवरात्रि:</strong> वाराणसी</li>
-<li><strong>कुंभ मेला:</strong> प्रयागराज (प्रत्येक 12 वर्ष), हरिद्वार, नासिक, उज्जैन</li>
-<li><strong>अर्ध कुंभ:</strong> प्रयागराज (प्रत्येक 6 वर्ष)</li>
-<li><strong>माघ मेला:</strong> प्रयागराज (वार्षिक)</li>
-<li><strong>रामनवमी:</strong> अयोध्या</li>
-<li><strong>कृष्ण जन्माष्टमी:</strong> मथुरा, वृंदावन</li>
-<li><strong>छठ पूजा:</strong> पूर्वी UP (बिहार सीमा)</li>
-<li><strong>देव दीपावली:</strong> वाराणसी</li>
-<li><strong>गंगा दशहरा:</strong> पूरे राज्य में</li>
-<li><strong>बुद्ध पूर्णिमा:</strong> सारनाथ, कुशीनगर</li>
-<li><strong>महावीर जयंती:</strong> जैन समुदाय</li>
-</ul>
-
-<h2>15.5 उत्तर प्रदेश की भाषाएँ एवं साहित्य</h2>
-
-<h3>भाषाएँ:</h3>
-<ul>
-<li><strong>हिंदी:</strong> राज्य की मुख्य एवं राजभाषा</li>
-<li><strong>उर्दू:</strong> द्वितीय राजभाषा</li>
-<li><strong>अवधी:</strong> अवध क्षेत्र</li>
-<li><strong>भोजपुरी:</strong> पूर्वी UP</li>
-<li><strong>ब्रजभाषा:</strong> ब्रज क्षेत्र</li>
-<li><strong>मैथिली:</strong> सीमावर्ती क्षेत्र</li>
-<li><strong>मगही:</strong> सीमावर्ती क्षेत्र</li>
-<li><strong>बुंदेली:</strong> बुंदेलखंड</li>
-<li><strong>कन्नौजी:</strong> कन्नौज क्षेत्र</li>
-<li><strong>हरियाणवी:</strong> सीमावर्ती क्षेत्र</li>
-</ul>
-
-<h3>साहित्य:</h3>
-<ul>
-<li><strong>तुलसीदास:</strong> रामचरितमानस, विनय पत्रिका</li>
-<li><strong>कबीर:</strong> कबीर वाणी, दोहे</li>
-<li><strong>सूरदास:</strong> सूरसागर</li>
-<li><strong>जायसी:</strong> पद्मावत</li>
-<li><strong>प्रेमचंद:</strong> गोदान, गबन (लमही, वाराणसी)</li>
-<li><strong>हरिवंश राय बच्चन:</strong> मधुशाला (प्रयागराज)</li>
-<li><strong>महादेवी वर्मा:</strong> छायावादी कवयित्री (प्रयागराज)</li>
-<li><strong>सूर्यकांत त्रिपाठी निराला:</strong> महाकवि (प्रयागराज)</li>
-<li><strong>जयशंकर प्रसाद:</strong> कामायनी (वाराणसी)</li>
-<li><strong>मैथिलीशरण गुप्त:</strong> भारत-भारती (चिरगाँव, झाँसी)</li>
-<li><strong>निराला, पंत, महादेवी:</strong> छायावाद के स्तंभ</li>
-<li><strong>भारतेंदु हरिश्चंद्र:</strong> आधुनिक हिंदी साहित्य के जनक (वाराणसी)</li>
-<li><strong>निराला:</strong> सरोज स्मृति</li>
-</ul>
-
-<h2>15.6 उत्तर प्रदेश के प्रमुख पुरस्कार एवं सम्मान</h2>
-<ul>
-<li>भारत रत्न से सम्मानित UP के व्यक्ति</li>
-<li>ज्ञानपीठ पुरस्कार विजेता</li>
-<li>साहित्य अकादमी पुरस्कार</li>
-<li>संगीत नाटक अकादमी पुरस्कार</li>
-<li>उत्तर प्रदेश संगीत नाटक अकादमी पुरस्कार</li>
-</ul>
-
-<!-- ==================== SECTION 16 ==================== -->
-<h1>16. उत्तर प्रदेश का प्रशासनिक ढाँचा</h1>
-
-<h2>16.1 प्रशासनिक संरचना</h2>
-<ul>
-<li><strong>राजधानी:</strong> लखनऊ</li>
-<li><strong>मंडल:</strong> 18</li>
-<li><strong>जिले:</strong> 75</li>
-<li><strong>तहसील:</strong> 350+</li>
-<li><strong>विकास खंड:</strong> 820+</li>
-<li><strong>ग्राम पंचायत:</strong> 58,000+</li>
-<li><strong>नगर निगम:</strong> 17</li>
-<li><strong>नगर पालिका:</strong> 200+</li>
-<li><strong>नगर पंचायत:</strong> 400+</li>
-</ul>
-
-<h2>16.2 प्रशासनिक पदाधिकारी</h2>
-<table>
-<tr><th>पद</th><th>भूमिका</th></tr>
-<tr><td>राज्यपाल</td><td>संवैधानिक प्रमुख</td></tr>
-<tr><td>मुख्यमंत्री</td><td>सरकार का प्रमुख</td></tr>
-<tr><td>मुख्य सचिव</td><td>प्रशासनिक प्रमुख</td></tr>
-<tr><td>मंडलायुक्त</td><td>मंडल का प्रमुख</td></tr>
-<tr><td>जिलाधिकारी (DM)</td><td>जिले का प्रमुख</td></tr>
-<tr><td>पुलिस अधीक्षक (SP)</td><td>जिले का पुलिस प्रमुख</td></tr>
-<tr><td>मुख्य विकास अधिकारी (CDO)</td><td>विकास कार्य</td></tr>
-<tr><td>उपजिलाधिकारी (SDM)</td><td>तहसील का प्रमुख</td></tr>
-<tr><td>खंड विकास अधिकारी (BDO)</td><td>विकास खंड का प्रमुख</td></tr>
-<tr><td>ग्राम प्रधान</td><td>ग्राम पंचायत का प्रमुख</td></tr>
-</table>
-
-<h2>16.3 विधानमंडल</h2>
-<ul>
-<li><strong>विधानसभा:</strong> 403 सदस्य (निर्वाचित)</li>
-<li><strong>विधान परिषद:</strong> 100 सदस्य (अप्रत्यक्ष निर्वाचन)</li>
-<li><strong>विधानसभा का कार्यकाल:</strong> 5 वर्ष</li>
-<li><strong>विधान परिषद:</strong> स्थायी सदन (एक-तिहाई सदस्य प्रत्येक 2 वर्ष में सेवानिवृत्त)</li>
-</ul>
-
-<h2>16.4 न्यायपालिका</h2>
-<ul>
-<li><strong>उच्च न्यायालय:</strong> इलाहाबाद उच्च न्यायालय (प्रयागराज)</li>
-<li><strong>खंडपीठ:</strong> लखनऊ</li>
-<li><strong>जिला न्यायालय:</strong> प्रत्येक जिले में</li>
-<li><strong>तहसील न्यायालय:</strong> तहसील स्तर पर</li>
-<li><strong>लोक अदालत:</strong> विवादों का त्वरित निपटारा</li>
-</ul>
-
-<!-- ==================== SECTION 17 ==================== -->
-<h1>17. उत्तर प्रदेश की राजनीति एवं पंचायती राज</h1>
-
-<h2>17.1 राजनीतिक इतिहास</h2>
-<ul>
-<li>1950: गोविंद बल्लभ पंत प्रथम मुख्यमंत्री</li>
-<li>1952: प्रथम विधानसभा चुनाव</li>
-<li>1963: सुचेता कृपलानी — प्रथम महिला मुख्यमंत्री</li>
-<li>1967: पहली गैर-कांग्रेसी सरकार</li>
-<li>1989: कांग्रेस का पतन</li>
-<li>1990 के बाद: गठबंधन राजनीति</li>
-<li>2017: भाजपा की पूर्ण बहुमत सरकार</li>
-<li>2022: भाजपा पुनः सत्ता में</li>
-</ul>
-
-<h2>17.2 प्रमुख मुख्यमंत्री</h2>
-<table>
-<tr><th>क्र.</th><th>नाम</th><th>कार्यकाल</th></tr>
-<tr><td>1</td><td>गोविंद बल्लभ पंत</td><td>1950-1954</td></tr>
-<tr><td>2</td><td>संपूर्णानंद</td><td>1954-1960, 1962-1963</td></tr>
-<tr><td>3</td><td>चंद्रभानु गुप्ता</td><td>1960-1962</td></tr>
-<tr><td>4</td><td>सुचेता कृपलानी</td><td>1963-1967</td></tr>
-<tr><td>5</td><td>चंद्रभानु गुप्ता</td><td>1967, 1969-1970</td></tr>
-<tr><td>6</td><td>चरण सिंह</td><td>1967-1968, 1970</td></tr>
-<tr><td>7</td><td>हेमवती नंदन बहुगुणा</td><td>1973-1975, 1976-1977, 1980-1982</td></tr>
-<tr><td>8</td><td>वी.पी. सिंह</td><td>1980-1982</td></tr>
-<tr><td>9</td><td>नारायण दत्त तिवारी</td><td>1988-1989</td></tr>
-<tr><td>10</td><td>कल्याण सिंह</td><td>1991-1992, 1997-1999</td></tr>
-<tr><td>11</td><td>मायावती</td><td>1995, 1997, 2002-2003, 2007-2012</td></tr>
-<tr><td>12</td><td>मुलायम सिंह यादव</td><td>1989-1991, 1993-1995, 2003-2007</td></tr>
-<tr><td>13</td><td>राजनाथ सिंह</td><td>2000-2002</td></tr>
-<tr><td>14</td><td>अखिलेश यादव</td><td>2012-2017</td></tr>
-<tr><td>15</td><td>योगी आदित्यनाथ</td><td>2017-2022, 2022-वर्तमान</td></tr>
-</table>
-
-<h2>17.3 पंचायती राज</h2>
-<ul>
-<li>73वें संविधान संशोधन (1992) के तहत पंचायती राज</li>
-<li>उत्तर प्रदेश में त्रिस्तरीय पंचायती राज व्यवस्था:
-<ul>
-<li>ग्राम पंचायत (गाँव स्तर)</li>
-<li>क्षेत्र पंचायत (ब्लॉक स्तर)</li>
-<li>जिला पंचायत (जिला स्तर)</li>
-</ul>
-</li>
-<li>ग्राम पंचायत के प्रमुख: ग्राम प्रधान</li>
-<li>क्षेत्र पंचायत के प्रमुख: ब्लॉक प्रमुख</li>
-<li>जिला पंचायत के प्रमुख: जिला पंचायत अध्यक्ष</li>
-<li>आरक्षण: SC/ST/OBC एवं महिलाओं के लिए</li>
-</ul>
-
-<h2>17.4 उत्तर प्रदेश की राजनीतिक विशेषताएँ</h2>
-<ul>
-<li>भारत की सबसे बड़ी विधानसभा (403 सीटें)</li>
-<li>सर्वाधिक लोकसभा सीटें (80)</li>
-<li>विधान परिषद वाले 6 राज्यों में से एक</li>
-<li>गठबंधन राजनीति का केंद्र</li>
-<li>जाति एवं धर्म आधारित राजनीति</li>
-<li>राष्ट्रीय राजनीति में महत्वपूर्ण भूमिका</li>
-</ul>
-
-<!-- ==================== SECTION 18 ==================== -->
-<h1>18. उत्तर प्रदेश की अर्थव्यवस्था</h1>
-
-<h2>18.1 आर्थिक स्थिति</h2>
-<ul>
-<li><strong>GSDP (2023-24):</strong> लगभग ₹24 लाख करोड़</li>
-<li><strong>भारत की GDP में योगदान:</strong> लगभग 8-9%</li>
-<li><strong>प्रति व्यक्ति आय:</strong> लगभग ₹70,000</li>
-<li><strong>आर्थिक वृद्धि दर:</strong> लगभग 7%</li>
-<li><strong>क्षेत्रीय योगदान:</strong> कृषि (18%), उद्योग (27%), सेवा (55%)</li>
-</ul>
-
-<h2>18.2 प्रमुख आर्थिक क्षेत्र</h2>
-
-<h3>कृषि:</h3>
-<ul>
-<li>राज्य की GDP में 18% योगदान</li>
-<li>कुल जनसंख्या का 65% कृषि पर निर्भर</li>
-<li>भारत का सबसे बड़ा खाद्यान्न उत्पादक राज्य</li>
-<li>गन्ना, गेहूँ, आलू, जौ, दलहन में प्रथम</li>
-</ul>
-
-<h3>उद्योग:</h3>
-<ul>
-<li>राज्य की GDP में 27% योगदान</li>
-<li>चीनी, वस्त्र, चमड़ा, खेल सामग्री, ताला, कालीन, रेशम</li>
-<li>IT, इलेक्ट्रॉनिक्स, ऑटोमोबाइल</li>
-<li>नोएडा, गाजियाबाद, कानपुर, मेरठ प्रमुख केंद्र</li>
-</ul>
-
-<h3>सेवा क्षेत्र:</h3>
-<ul>
-<li>राज्य की GDP में 55% योगदान</li>
-<li>IT, बैंकिंग, पर्यटन, शिक्षा, स्वास्थ्य</li>
-<li>नोएडा IT हब</li>
-<li>पर्यटन: आगरा, वाराणसी, अयोध्या</li>
-</ul>
-
-<h2>18.3 आर्थिक समस्याएँ</h2>
-<ul>
-<li>गरीबी (लगभग 30% जनसंख्या)</li>
-<li>बेरोजगारी</li>
-<li>क्षेत्रीय असंतुलन (पश्चिमी UP विकसित, पूर्वी UP पिछड़ा)</li>
-<li>कृषि पर अत्यधिक निर्भरता</li>
-<li>औद्योगिक विकास की असमानता</li>
-<li>बुनियादी ढाँचे की कमी</li>
-<li>निवेश की कमी</li>
-<li>पलायन की समस्या</li>
-</ul>
-
-<h2>18.4 आर्थिक विकास के उपाय</h2>
-<ul>
-<li>औद्योगिक विकेंद्रीकरण</li>
-<li>कृषि आधारित उद्योगों को बढ़ावा</li>
-<li>बुनियादी ढाँचे का विकास</li>
-<li>शिक्षा एवं कौशल विकास</li>
-<li>निवेश को प्रोत्साहन</li>
-<li>पर्यटन का विकास</li>
-<li>सूक्ष्म, लघु एवं मध्यम उद्यमों (MSME) को समर्थन</li>
-<li>डिजिटल अर्थव्यवस्था</li>
-</ul>
-
-<!-- ==================== SECTION 19 ==================== -->
-<h1>19. उत्तर प्रदेश में शिक्षा</h1>
-
-<h2>19.1 शिक्षा का स्वरूप</h2>
-<ul>
-<li>साक्षरता दर: 67.68% (2011)</li>
-<li>पुरुष साक्षरता: 77.28%</li>
-<li>महिला साक्षरता: 57.18%</li>
-<li>शहरी साक्षरता: 75%</li>
-<li>ग्रामीण साक्षरता: 65%</li>
-<li>लिंग अंतराल: 20%</li>
-</ul>
-
-<h2>19.2 प्रमुख शिक्षण संस्थान</h2>
-<table>
-<tr><th>संस्थान</th><th>स्थान</th><th>स्थापना</th></tr>
-<tr><td>बनारस हिंदू विश्वविद्यालय (BHU)</td><td>वाराणसी</td><td>1916</td></tr>
-<tr><td>अलीगढ़ मुस्लिम विश्वविद्यालय (AMU)</td><td>अलीगढ़</td><td>1920</td></tr>
-<tr><td>इलाहाबाद विश्वविद्यालय</td><td>प्रयागराज</td><td>1887</td></tr>
-<tr><td>लखनऊ विश्वविद्यालय</td><td>लखनऊ</td><td>1920</td></tr>
-<tr><td>कानपुर विश्वविद्यालय</td><td>कानपुर</td><td>1966</td></tr>
-<tr><td>गोरखपुर विश्वविद्यालय</td><td>गोरखपुर</td><td>1956</td></tr>
-<tr><td>मेरठ विश्वविद्यालय</td><td>मेरठ</td><td>1965</td></tr>
-<tr><td>बुंदेलखंड विश्वविद्यालय</td><td>झाँसी</td><td>1975</td></tr>
-<tr><td>रोहिलखंड विश्वविद्यालय</td><td>बरेली</td><td>1975</td></tr>
-<tr><td>डॉ. भीमराव अंबेडकर विश्वविद्यालय</td><td>आगरा</td><td>1927</td></tr>
-<tr><td>चौधरी चरण सिंह विश्वविद्यालय</td><td>मेरठ</td><td>1965</td></tr>
-<tr><td>महात्मा गांधी काशी विद्यापीठ</td><td>वाराणसी</td><td>1921</td></tr>
-<tr><td>संपूर्णानंद संस्कृत विश्वविद्यालय</td><td>वाराणसी</td><td>1958</td></tr>
-<tr><td>IIT कानपुर</td><td>कानपुर</td><td>1959</td></tr>
-<tr><td>IIT (BHU)</td><td>वाराणसी</td><td>1919</td></tr>
-<tr><td>IIM लखनऊ</td><td>लखनऊ</td><td>1984</td></tr>
-<tr><td>NIT प्रयागराज</td><td>प्रयागराज</td><td>1961</td></tr>
-<tr><td>IIIT प्रयागराज</td><td>प्रयागराज</td><td>1999</td></tr>
-<tr><td>IIM काशीपुर</td><td>काशीपुर</td><td>2011</td></tr>
-</table>
-
-<h2>19.3 शिक्षा की समस्याएँ</h2>
-<ul>
-<li>कम साक्षरता दर (राष्ट्रीय औसत से कम)</li>
-<li>लिंग असमानता</li>
-<li>ग्रामीण-शहरी अंतर</li>
-<li>स्कूल छोड़ने की दर अधिक</li>
-<li>शिक्षकों की कमी</li>
-<li>बुनियादी ढाँचे की कमी</li>
-<li>गुणवत्ता की समस्या</li>
-<li>रोजगारोन्मुख शिक्षा की कमी</li>
-</ul>
-
-<h2>19.4 शिक्षा सुधार के उपाय</h2>
-<ul>
-<li>सर्व शिक्षा अभियान</li>
-<li>मध्याह्न भोजन योजना</li>
-<li>बेटी बचाओ बेटी पढ़ाओ</li>
-<li>कौशल विकास</li>
-<li>डिजिटल शिक्षा</li>
-<li>शिक्षक प्रशिक्षण</li>
-<li>स्मार्ट क्लास</li>
-<li>NEP 2020 का क्रियान्वयन</li>
-</ul>
-
-<!-- ==================== SECTION 20 ==================== -->
-<h1>20. उत्तर प्रदेश में पर्यटन</h1>
-
-<h2>20.1 पर्यटन का महत्व</h2>
-<ul>
-<li>UP भारत का प्रमुख पर्यटन राज्य है</li>
-<li>देश के कुल पर्यटकों का लगभग 15% UP आता है</li>
-<li>ताजमहल विश्व के सात अजूबों में से एक</li>
-<li>धार्मिक पर्यटन का प्रमुख केंद्र</li>
-</ul>
-
-<h2>20.2 प्रमुख पर्यटन स्थल</h2>
-<table>
-<tr><th>स्थल</th><th>स्थान</th><th>विशेष</th></tr>
-<tr><td>ताजमहल</td><td>आगरा</td><td>UNESCO विश्व धरोहर, विश्व के 7 अजूबों में</td></tr>
-<tr><td>आगरा किला</td><td>आगरा</td><td>UNESCO विश्व धरोहर</td></tr>
-<tr><td>फतेहपुर सीकरी</td><td>आगरा</td><td>UNESCO विश्व धरोहर</td></tr>
-<tr><td>काशी विश्वनाथ मंदिर</td><td>वाराणसी</td><td>12 ज्योतिर्लिंगों में से एक</td></tr>
-<tr><td>संगम</td><td>प्रयागराज</td><td>गंगा-यमुना का संगम</td></tr>
-<tr><td>राम जन्मभूमि</td><td>अयोध्या</td><td>राम मंदिर</td></tr>
-<tr><td>कृष्ण जन्मभूमि</td><td>मथुरा</td><td>भगवान कृष्ण का जन्मस्थान</td></tr>
-<tr><td>बांके बिहारी मंदिर</td><td>वृंदावन</td><td>कृष्ण भक्ति</td></tr>
-<tr><td>सारनाथ</td><td>वाराणसी</td><td>बुद्ध का प्रथम उपदेश</td></tr>
-<tr><td>कुशीनगर</td><td>कुशीनगर</td><td>बुद्ध का महापरिनिर्वाण</td></tr>
-<tr><td>दुधवा राष्ट्रीय उद्यान</td><td>लखीमपुर खीरी</td><td>वन्यजीव पर्यटन</td></tr>
-<tr><td>विंध्यवासिनी मंदिर</td><td>मिर्जापुर</td><td>धार्मिक स्थल</td></tr>
-<tr><td>झाँसी किला</td><td>झाँसी</td><td>रानी लक्ष्मीबाई</td></tr>
-<tr><td>चित्रकूट</td><td>चित्रकूट</td><td>राम वनवास स्थल</td></tr>
-<tr><td>बड़ा इमामबाड़ा</td><td>लखनऊ</td><td>नवाबी वास्तुकला</td></tr>
-<tr><td>रूमी दरवाजा</td><td>लखनऊ</td><td>नवाबी वास्तुकला</td></tr>
-</table>
-
-<h2>20.3 पर्यटन के प्रकार</h2>
-<ul>
-<li><strong>धार्मिक पर्यटन:</strong> वाराणसी, प्रयागराज, अयोध्या, मथुरा, वृंदावन, कुशीनगर</li>
-<li><strong>ऐतिहासिक पर्यटन:</strong> आगरा, झाँसी, लखनऊ, फतेहपुर सीकरी</li>
-<li><strong>वन्यजीव पर्यटन:</strong> दुधवा, कतर्नियाघाट, चंद्रप्रभा</li>
-<li><strong>सांस्कृतिक पर्यटन:</strong> लखनऊ, वाराणसी</li>
-<li><strong>चिकित्सा पर्यटन:</strong> वाराणसी (आयुर्वेद), लखनऊ</li>
-<li><strong>ग्रामीण पर्यटन:</strong> विभिन्न गाँव</li>
-</ul>
-
-<!-- ==================== SECTION 21 ==================== -->
-<h1>21. उत्तर प्रदेश में खेल</h1>
-
-<h2>21.1 खेल का महत्व</h2>
-<ul>
-<li>खेल राज्य की संस्कृति का अभिन्न अंग</li>
-<li>युवाओं के विकास में सहायक</li>
-<li>रोजगार के अवसर</li>
-<li>राष्ट्रीय एवं अंतर्राष्ट्रीय स्तर पर प्रतिनिधित्व</li>
-</ul>
-
-<h2>21.2 प्रमुख खेल</h2>
-<table>
-<tr><th>खेल</th><th>प्रमुख केंद्र</th><th>खिलाड़ी</th></tr>
-<tr><td>हॉकी</td><td>लखनऊ, मेरठ</td><td>धनराज पिल्लै (मेरठ)</td></tr>
-<tr><td>क्रिकेट</td><td>कानपुर, लखनऊ</td><td>मोहम्मद कैफ, सुरेश रैना (कानपुर)</td></tr>
-<tr><td>कुश्ती</td><td>मेरठ, बागपत</td><td>—</td></tr>
-<tr><td>कबड्डी</td><td>ग्रामीण क्षेत्र</td><td>—</td></tr>
-<tr><td>बैडमिंटन</td><td>लखनऊ</td><td>साइना नेहवाल (हैदराबाद, लेकिन UP से जुड़ाव)</td></tr>
-<tr><td>शतरंज</td><td>लखनऊ</td><td>—</td></tr>
-<tr><td>एथलेटिक्स</td><td>प्रयागराज</td><td>—</td></tr>
-</table>
-
-<h2>21.3 खेल सुविधाएँ</h2>
-<ul>
-<li><strong>इंदिरा गांधी मेजबानी स्टेडियम:</strong> लखनऊ</li>
-<li><strong>के.डी. सिंह बाबू स्टेडियम:</strong> लखनऊ</li>
-<li><strong>ग्रीन पार्क स्टेडियम:</strong> कानपुर</li>
-<li><strong>इकाना क्रिकेट स्टेडियम:</strong> लखनऊ (IPL)</li>
-<li><strong>खेलो इंडिया:</strong> युवा खेल विकास</li>
-<li><strong>उत्तर प्रदेश खेल विश्वविद्यालय:</strong> लखनऊ</li>
-</ul>
-
-<h2>21.4 प्रमुख पुरस्कार</h2>
-<ul>
-<li>खेल रत्न</li>
-<li>अर्जुन पुरस्कार</li>
-<li>द्रोणाचार्य पुरस्कार</li>
-<li>मेजर ध्यानचंद खेल रत्न</li>
-<li>उत्तर प्रदेश खेल रत्न</li>
-</ul>
-
-<!-- ==================== SECTION 22 ==================== -->
-<h1>22. उत्तर प्रदेश की सरकारी योजनाएँ</h1>
-
-<h2>22.1 प्रमुख योजनाएँ</h2>
+<h2>10.1 प्रमुख योजनाएँ</h2>
 <table>
 <tr><th>योजना</th><th>वर्ष</th><th>उद्देश्य</th></tr>
 <tr><td>मुख्यमंत्री कन्या सुमंगला योजना</td><td>2019</td><td>बालिका शिक्षा एवं सशक्तिकरण</td></tr>
 <tr><td>मुख्यमंत्री युवा स्वरोजगार योजना</td><td>2018</td><td>युवाओं को स्वरोजगार</td></tr>
 <tr><td>मुख्यमंत्री कृषक दुर्घटना कल्याण योजना</td><td>2019</td><td>किसानों के परिवार को सहायता</td></tr>
-<tr><td>मुख्यमंत्री आवास योजना (ग्रामीण)</td><td>2016</td><td>ग्रामीण आवास</td></tr>
-<tr><td>मुख्यमंत्री आवास योजना (शहरी)</td><td>2015</td><td>शहरी आवास</td></tr>
-<tr><td>मुख्यमंत्री समग्र आवास योजना</td><td>2018</td><td>सभी के लिए आवास</td></tr>
-<tr><td>उत्तर प्रदेश किसान उन्नति योजना</td><td>—</td><td>किसानों की आय में वृद्धि</td></tr>
-<tr><td>मुख्यमंत्री कृषि सिंचाई योजना</td><td>—</td><td>सिंचाई सुविधाएँ</td></tr>
-<tr><td>मुख्यमंत्री विद्युत कृषि योजना</td><td>—</td><td>किसानों को मुफ्त बिजली</td></tr>
+<tr><td>मुख्यमंत्री आवास योजना</td><td>2016</td><td>ग्रामीण आवास</td></tr>
 <tr><td>उत्तर प्रदेश स्टार्टअप नीति</td><td>2020</td><td>स्टार्टअप को प्रोत्साहन</td></tr>
-<tr><td>उत्तर प्रदेश इलेक्ट्रॉनिक्स नीति</td><td>2020</td><td>इलेक्ट्रॉनिक्स उद्योग</td></tr>
-<tr><td>उत्तर प्रदेश औद्योगिक निवेश नीति</td><td>2017</td><td>निवेश को प्रोत्साहन</td></tr>
-<tr><td>मुख्यमंत्री अभ्युदय योजना</td><td>2021</td><td>निःशुल्क प्रतियोगी परीक्षा कोचिंग</td></tr>
-<tr><td>मुख्यमंत्री युवा उद्यमी विकास अभियान</td><td>—</td><td>युवा उद्यमी</td></tr>
-<tr><td>मुख्यमंत्री बाल सेवा योजना</td><td>—</td><td>बच्चों का कल्याण</td></tr>
-<tr><td>मुख्यमंत्री महिला सशक्तिकरण योजना</td><td>—</td><td>महिलाओं का सशक्तिकरण</td></tr>
-<tr><td>उत्तर प्रदेश मिशन इंद्रधनुष</td><td>—</td><td>टीकाकरण</td></tr>
-<tr><td>उत्तर प्रदेश आयुष्मान भारत योजना</td><td>2018</td><td>स्वास्थ्य बीमा</td></tr>
-<tr><td>मुख्यमंत्री जन आरोग्य योजना</td><td>—</td><td>स्वास्थ्य सेवाएँ</td></tr>
 <tr><td>एक जनपद एक उत्पाद (ODOP)</td><td>2018</td><td>पारंपरिक उत्पादों को बढ़ावा</td></tr>
+<tr><td>मुख्यमंत्री अभ्युदय योजना</td><td>2021</td><td>निःशुल्क प्रतियोगी परीक्षा कोचिंग</td></tr>
 <tr><td>मुख्यमंत्री सामूहिक विवाह योजना</td><td>2017</td><td>गरीब कन्याओं का विवाह</td></tr>
-<tr><td>उत्तर प्रदेश कौशल विकास मिशन</td><td>—</td><td>कौशल विकास</td></tr>
-<tr><td>मुख्यमंत्री अपराध पीड़ित सहायता योजना</td><td>—</td><td>पीड़ितों को सहायता</td></tr>
 </table>
 
-<h2>22.2 केंद्रीय योजनाएँ (UP में लागू)</h2>
+<h2>10.2 केंद्रीय योजनाएँ (UP में लागू)</h2>
 <ul>
 <li>प्रधानमंत्री आवास योजना</li>
 <li>प्रधानमंत्री जन धन योजना</li>
@@ -1551,44 +1056,36 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li>बेटी बचाओ बेटी पढ़ाओ</li>
 <li>आयुष्मान भारत</li>
 <li>पीएम किसान सम्मान निधि</li>
-<li>उज्ज्वला योजना</li>
-<li>सौभाग्य योजना</li>
-<li>जल जीवन मिशन</li>
 </ul>
+</div>
 
-<!-- ==================== SECTION 23 ==================== -->
-<h1>23. उत्तर प्रदेश की समसामयिकी</h1>
+<!-- ============ SECTION 11 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 11</span>
+<h1>उत्तर प्रदेश की समसामयिकी</h1>
 
-<h2>23.1 महत्वपूर्ण घटनाक्रम (2020-2025)</h2>
+<h2>11.1 महत्वपूर्ण घटनाक्रम (2020-2025)</h2>
 <ul>
 <li><strong>2020:</strong> कोविड-19 महामारी का प्रभाव</li>
 <li><strong>2020:</strong> राम मंदिर निर्माण का शुभारंभ (अयोध्या)</li>
-<li><strong>2021:</strong> किसान आंदोलन</li>
 <li><strong>2022:</strong> विधानसभा चुनाव — भाजपा की वापसी</li>
 <li><strong>2024:</strong> राम मंदिर प्राण प्रतिष्ठा (जनवरी 2024)</li>
-<li><strong>2024:</strong> लोकसभा चुनाव</li>
 <li><strong>2025:</strong> महाकुंभ (प्रयागराज)</li>
 </ul>
 
-<h2>23.2 समसामयिक मुद्दे</h2>
+<h2>11.2 प्रमुख परियोजनाएँ</h2>
 <ul>
-<li>राम मंदिर निर्माण (अयोध्या)</li>
-<li>महाकुंभ 2025 (प्रयागराज)</li>
-<li>यमुना एक्सप्रेसवे, आगरा-लखनऊ एक्सप्रेसवे</li>
-<li>गंगा एक्सप्रेसवे</li>
-<li>बुंदेलखंड एक्सप्रेसवे</li>
+<li>यमुना एक्सप्रेसवे (165 किमी)</li>
+<li>आगरा-लखनऊ एक्सप्रेसवे (302 किमी)</li>
+<li>पूर्वांचल एक्सप्रेसवे (341 किमी)</li>
+<li>गंगा एक्सप्रेसवे (निर्माणाधीन)</li>
+<li>बुंदेलखंड एक्सप्रेसवे (निर्माणाधीन)</li>
 <li>जेवर एयरपोर्ट (नोएडा अंतर्राष्ट्रीय हवाई अड्डा)</li>
 <li>डिफेंस कॉरिडोर (लखनऊ, झाँसी, अलीगढ़, कानपुर, चित्रकूट, आगरा)</li>
 <li>मेट्रो परियोजनाएँ (लखनऊ, कानपुर, नोएडा)</li>
-<li>स्मार्ट सिटी परियोजना</li>
-<li>ODOP योजना</li>
-<li>निवेश को प्रोत्साहन</li>
-<li>किसानों की समस्याएँ</li>
-<li>बेरोजगारी</li>
-<li>प्रदूषण</li>
 </ul>
 
-<h2>23.3 उत्तर प्रदेश के प्रमुख आँकड़े (2024)</h2>
+<h2>11.3 उत्तर प्रदेश के प्रमुख आँकड़े (2024)</h2>
 <table>
 <tr><th>विषय</th><th>आँकड़ा</th></tr>
 <tr><td>क्षेत्रफल</td><td>2,40,928 वर्ग किमी</td></tr>
@@ -1598,102 +1095,67 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <tr><td>विधानसभा सीटें</td><td>403</td></tr>
 <tr><td>लोकसभा सीटें</td><td>80</td></tr>
 <tr><td>GSDP (2023-24)</td><td>₹24 लाख करोड़</td></tr>
-<tr><td>साक्षरता</td><td>67.68% (2011)</td></tr>
-<tr><td>लिंगानुपात</td><td>912 (2011)</td></tr>
 </table>
+</div>
 
-<!-- ==================== SECTION 24 ==================== -->
-<h1>24. महत्वपूर्ण तथ्य एवं आँकड़े</h1>
+<!-- ============ SECTION 12 ============ -->
+<div class="section">
+<span class="chapter-badge">अध्याय 12</span>
+<h1>महत्वपूर्ण तथ्य एवं प्रश्न</h1>
 
-<h2>24.1 उत्तर प्रदेश के प्रथम</h2>
+<h2>12.1 उत्तर प्रदेश के प्रथम</h2>
 <ul>
-<li>प्रथम मुख्यमंत्री: गोविंद बल्लभ पंत</li>
-<li>प्रथम राज्यपाल: सरोजिनी नायडू</li>
-<li>प्रथम महिला मुख्यमंत्री: सुचेता कृपलानी</li>
-<li>प्रथम विश्वविद्यालय: BHU (1916)</li>
-<li>प्रथम IIT: IIT कानपुर (1959)</li>
-<li>प्रथम IIM: IIM लखनऊ (1984)</li>
-<li>प्रथम मेट्रो: लखनऊ मेट्रो</li>
-<li>प्रथम एक्सप्रेसवे: यमुना एक्सप्रेसवे</li>
+<li><strong>प्रथम मुख्यमंत्री:</strong> गोविंद बल्लभ पंत (1950)</li>
+<li><strong>प्रथम राज्यपाल:</strong> सरोजिनी नायडू (1947)</li>
+<li><strong>प्रथम महिला मुख्यमंत्री:</strong> सुचेता कृपलानी (1963)</li>
+<li><strong>प्रथम विश्वविद्यालय:</strong> BHU (1916)</li>
+<li><strong>प्रथम IIT:</strong> IIT कानपुर (1959)</li>
+<li><strong>प्रथम IIM:</strong> IIM लखनऊ (1984)</li>
 </ul>
 
-<h2>24.2 उत्तर प्रदेश के सर्वाधिक</h2>
-<ul>
-<li>सबसे अधिक जनसंख्या</li>
-<li>सबसे अधिक लोकसभा सीटें (80)</li>
-<li>सबसे अधिक विधानसभा सीटें (403)</li>
-<li>सबसे अधिक जिले (75)</li>
-<li>सबसे अधिक गन्ना उत्पादन</li>
-<li>सबसे अधिक आलू उत्पादन</li>
-<li>सबसे अधिक गेहूँ उत्पादन</li>
-<li>सबसे अधिक दलहन उत्पादन</li>
-</ul>
-
-<h2>24.3 महत्वपूर्ण तिथियाँ</h2>
-<table>
-<tr><th>तिथि</th><th>घटना</th></tr>
-<tr><td>1 अप्रैल 1937</td><td>संयुक्त प्रांत का गठन</td></tr>
-<tr><td>24 जनवरी 1950</td><td>उत्तर प्रदेश का नामकरण</td></tr>
-<tr><td>26 जनवरी 1950</td><td>प्रथम मुख्यमंत्री की नियुक्ति</td></tr>
-<tr><td>1952</td><td>प्रथम विधानसभा चुनाव</td></tr>
-<tr><td>9 नवंबर 2000</td><td>उत्तराखंड का अलग होना</td></tr>
-</table>
-
-<!-- ==================== SECTION 25 ==================== -->
-<h1>25. परीक्षा के लिए महत्वपूर्ण प्रश्न</h1>
-
-<h2>25.1 वस्तुनिष्ठ प्रश्न (MCQ)</h2>
+<h2>12.2 वस्तुनिष्ठ प्रश्न (MCQ)</h2>
 <ol>
-<li>उत्तर प्रदेश का क्षेत्रफल कितना है? — 2,40,928 वर्ग किमी</li>
-<li>उत्तर प्रदेश की राजधानी कौन-सी है? — लखनऊ</li>
-<li>उत्तर प्रदेश में कुल कितने जिले हैं? — 75</li>
-<li>उत्तर प्रदेश में कुल कितने मंडल हैं? — 18</li>
-<li>उत्तर प्रदेश की सबसे लंबी नदी कौन-सी है? — गंगा</li>
-<li>उत्तर प्रदेश में सबसे अधिक जनसंख्या किस जिले की है? — प्रयागराज</li>
-<li>उत्तर प्रदेश का राज्य पशु कौन-सा है? — बारहसिंगा</li>
-<li>उत्तर प्रदेश का राज्य पक्षी कौन-सा है? — सारस क्रेन</li>
-<li>उत्तर प्रदेश का राज्य वृक्ष कौन-सा है? — अशोक</li>
-<li>उत्तर प्रदेश का राज्य पुष्प कौन-सा है? — पलाश</li>
-<li>ताजमहल किस शहर में स्थित है? — आगरा</li>
-<li>उत्तर प्रदेश का प्रथम मुख्यमंत्री कौन था? — गोविंद बल्लभ पंत</li>
-<li>उत्तर प्रदेश की प्रथम महिला मुख्यमंत्री कौन थीं? — सुचेता कृपलानी</li>
-<li>1857 का विद्रोह कहाँ से शुरू हुआ? — मेरठ</li>
-<li>काकोरी कांड कब हुआ? — 1925</li>
-<li>चौरी-चौरा कांड कब हुआ? — 1922</li>
-<li>बनारस हिंदू विश्वविद्यालय की स्थापना कब हुई? — 1916</li>
-<li>उत्तर प्रदेश का सबसे बड़ा जिला (क्षेत्रफल) कौन-सा है? — लखीमपुर खीरी</li>
-<li>उत्तर प्रदेश का सबसे छोटा जिला कौन-सा है? — हापुड़</li>
-<li>कुंभ मेला कहाँ लगता है? — प्रयागराज, हरिद्वार, नासिक, उज्जैन</li>
-<li>उत्तर प्रदेश में कुल कितनी लोकसभा सीटें हैं? — 80</li>
-<li>उत्तर प्रदेश में कुल कितनी विधानसभा सीटें हैं? — 403</li>
-<li>उत्तर प्रदेश में कुल कितनी विधान परिषद सीटें हैं? — 100</li>
-<li>एक जनपद एक उत्पाद योजना कब शुरू हुई? — 2018</li>
-<li>उत्तर प्रदेश का राज्य खेल कौन-सा है? — हॉकी</li>
+<li>उत्तर प्रदेश का क्षेत्रफल कितना है? — <strong>2,40,928 वर्ग किमी</strong></li>
+<li>उत्तर प्रदेश की राजधानी कौन-सी है? — <strong>लखनऊ</strong></li>
+<li>उत्तर प्रदेश में कुल कितने जिले हैं? — <strong>75</strong></li>
+<li>उत्तर प्रदेश में कुल कितने मंडल हैं? — <strong>18</strong></li>
+<li>उत्तर प्रदेश की सबसे लंबी नदी कौन-सी है? — <strong>गंगा</strong></li>
+<li>उत्तर प्रदेश का राज्य पशु कौन-सा है? — <strong>बारहसिंगा</strong></li>
+<li>उत्तर प्रदेश का राज्य पक्षी कौन-सा है? — <strong>सारस क्रेन</strong></li>
+<li>ताजमहल किस शहर में स्थित है? — <strong>आगरा</strong></li>
+<li>उत्तर प्रदेश का प्रथम मुख्यमंत्री कौन था? — <strong>गोविंद बल्लभ पंत</strong></li>
+<li>1857 का विद्रोह कहाँ से शुरू हुआ? — <strong>मेरठ</strong></li>
+<li>काकोरी कांड कब हुआ? — <strong>1925</strong></li>
+<li>चौरी-चौरा कांड कब हुआ? — <strong>1922</strong></li>
+<li>बनारस हिंदू विश्वविद्यालय की स्थापना कब हुई? — <strong>1916</strong></li>
+<li>उत्तर प्रदेश का सबसे बड़ा जिला (क्षेत्रफल) कौन-सा है? — <strong>लखीमपुर खीरी</strong></li>
+<li>उत्तर प्रदेश का सबसे छोटा जिला कौन-सा है? — <strong>हापुड़</strong></li>
+<li>कुंभ मेला कहाँ लगता है? — <strong>प्रयागराज</strong></li>
+<li>उत्तर प्रदेश में कुल कितनी लोकसभा सीटें हैं? — <strong>80</strong></li>
+<li>उत्तर प्रदेश में कुल कितनी विधानसभा सीटें हैं? — <strong>403</strong></li>
+<li>उत्तर प्रदेश का राज्य खेल कौन-सा है? — <strong>हॉकी</strong></li>
+<li>ODOP योजना कब शुरू हुई? — <strong>2018</strong></li>
 </ol>
 
-<h2>25.2 विषयनिष्ठ प्रश्न (Subjective)</h2>
+<h2>12.3 विषयनिष्ठ प्रश्न</h2>
 <ol>
 <li>उत्तर प्रदेश के भौगोलिक विभाजन का वर्णन करें।</li>
 <li>उत्तर प्रदेश की प्रमुख नदियों का वर्णन करें।</li>
-<li>उत्तर प्रदेश की जलवायु की विशेषताएँ लिखें।</li>
-<li>उत्तर प्रदेश की मृदा के प्रकार बताएं।</li>
 <li>उत्तर प्रदेश की कृषि की समस्याओं का वर्णन करें।</li>
 <li>उत्तर प्रदेश के प्रमुख उद्योगों का वर्णन करें।</li>
-<li>उत्तर प्रदेश की जनसंख्या की विशेषताएँ लिखें।</li>
 <li>उत्तर प्रदेश की संस्कृति पर प्रकाश डालें।</li>
-<li>उत्तर प्रदेश के प्रशासनिक ढाँचे का वर्णन करें।</li>
-<li>उत्तर प्रदेश की अर्थव्यवस्था की समस्याओं का वर्णन करें।</li>
-<li>उत्तर प्रदेश में शिक्षा की स्थिति का वर्णन करें।</li>
-<li>उत्तर प्रदेश में पर्यटन के विकास पर प्रकाश डालें।</li>
+<li>1857 के स्वतंत्रता संग्राम में उत्तर प्रदेश की भूमिका का वर्णन करें।</li>
 <li>उत्तर प्रदेश की सरकारी योजनाओं का वर्णन करें।</li>
 <li>उत्तर प्रदेश की समसामयिकी पर प्रकाश डालें।</li>
-<li>1857 के स्वतंत्रता संग्राम में उत्तर प्रदेश की भूमिका का वर्णन करें।</li>
 </ol>
+</div>
 
-<!-- ==================== SECTION 26 ==================== -->
-<h1>26. निष्कर्ष</h1>
+<!-- ============ CONCLUSION ============ -->
+<div class="section">
+<span class="chapter-badge">निष्कर्ष</span>
+<h1>निष्कर्ष</h1>
 
-<p>उत्तर प्रदेश भारत का सबसे महत्वपूर्ण राज्य है — जनसंख्या, क्षेत्रफल, संस्कृति, इतिहास, और विकास की दृष्टि से। यह राज्य "भारत का हृदय" है, जहाँ की संस्कृति, भाषा, कला, और परंपराएँ पूरे देश को प्रभावित करती हैं।</p>
+<p>उत्तर प्रदेश भारत का सबसे महत्वपूर्ण राज्य है — जनसंख्या, क्षेत्रफल, संस्कृति, इतिहास, और विकास की दृष्टि से। यह राज्य <strong>"भारत का हृदय"</strong> है, जहाँ की संस्कृति, भाषा, कला, और परंपराएँ पूरे देश को प्रभावित करती हैं।</p>
 
 <p>उत्तर प्रदेश का इतिहास अत्यंत गौरवशाली है — वैदिक काल से लेकर स्वतंत्रता संग्राम तक, यहाँ अनेक महान व्यक्तित्वों ने जन्म लिया। राम, कृष्ण, बुद्ध, महावीर, तुलसीदास, कबीर, प्रेमचंद, गांधी, नेहरू — सभी का संबंध इसी भूमि से रहा है।</p>
 
@@ -1710,7 +1172,7 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <div class="box green">
 <h4>✅ याद रखने योग्य मुख्य बिंदु</h4>
 <ul>
-<li>UP का क्षेत्रफल — 2,40,928 वर्ग किमी (भारत में 4था)</li>
+<li>UP का क्षेत्रफल — 2,40,928 वर्ग किमी (भारत में चौथा)</li>
 <li>जनसंख्या — 19.98 करोड़ (2011), 24 करोड़+ (2024)</li>
 <li>75 जिले, 18 मंडल, 403 विधानसभा, 80 लोकसभा सीटें</li>
 <li>ताजमहल, आगरा किला, फतेहपुर सीकरी — UNESCO विश्व धरोहर</li>
@@ -1721,14 +1183,31 @@ Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG
 <li>राज्य खेल — हॉकी; राज्य पशु — बारहसिंगा</li>
 </ul>
 </div>
-
-<!-- ==================== FOOTER ==================== -->
-<div class="footer-note">
-© The Ravishankar Insights | ravishankarkamal59-eng.github.io<br>
-UPPCS GS5 (UP Special), UPSC, UGC NET, BA, MA, CUET PG के लिए उपयोगी।<br>
-सभी जानकारी NCERT और मानक पाठ्यक्रम पर आधारित।<br><br>
-<strong>📖 Complete UPPCS GS5 Study Material in Hindi</strong>
 </div>
+
+<!-- ============ FINAL PAGE ============ -->
+<div class="section" style="text-align:center;padding:60px 20px;page-break-before:always">
+<div class="cover-brand" style="display:inline-flex">
+  <div class="logo-badge">R</div>
+  <div class="brand-text">The Ravishankar Insights</div>
+</div>
+
+<h1 style="border:none;background:none;margin-top:30px">धन्यवाद!</h1>
+
+<div class="quote" style="max-width:600px;margin:30px auto">
+"ज्ञान वह नहीं जो हम सीखते हैं, बल्कि वह जो हम अपने जीवन में उतारते हैं।"
+</div>
+
+<div style="margin-top:40px;font-size:12pt;color:#4a5568;line-height:2">
+<strong>📚 UPPCS GS5 Complete Notes</strong><br>
+The Ravishankar Insights<br><br>
+<strong>© All Rights Reserved</strong><br>
+ravishankarkamal59-eng.github.io<br><br>
+<em>Useful for UPPCS, UPSC, UGC NET, BA, MA, CUET PG</em>
+</div>
+</div>
+
+</div><!-- /content-wrapper -->
 
 </body>
 </html>
