@@ -427,9 +427,111 @@ tr:hover{background:#ffe4d6}
   .section::before{color:rgba(194,65,12,0.05)}
   .cover::before{color:rgba(194,65,12,0.07)}
 }
+
+/* ==================== WATERMARK ==================== */
+.watermark {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.055;
+}
+.watermark-inner {
+  transform: rotate(-28deg);
+  text-align: center;
+  font-family: 'Georgia','Times New Roman',serif;
+  white-space: nowrap;
+}
+.wm-logo-box {
+  display: inline-block;
+  padding: 18px 26px;
+  border: 5px solid #c2410c;
+  border-radius: 24px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.wm-r {
+  font-size: 110px;
+  font-weight: 900;
+  color: #c2410c;
+  font-family: 'Georgia',serif;
+  line-height: 1;
+}
+.wm-swoosh {
+  position: absolute;
+  right: 12px;
+  top: 18px;
+  font-size: 36px;
+  color: #c2410c;
+  font-weight: 900;
+}
+.wm-the {
+  font-size: 22px;
+  letter-spacing: 14px;
+  color: #c2410c;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+.wm-brand {
+  font-size: 88px;
+  font-weight: 900;
+  color: #7c2d12;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.wm-tagline {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 18px;
+  color: #c2410c;
+  font-family: Arial,Helvetica,sans-serif;
+  border-bottom: 3px solid #c2410c;
+  padding-bottom: 6px;
+  display: inline-block;
+}
+body { position: relative; }
+h1, h2, h3, h4, p, ul, ol, table, .box, .important, .toc, .cover, .footer-note { position: relative; z-index: 1; }
+
+/* Print: watermark repeat on every page */
+@media print {
+  .watermark {
+    position: fixed;
+    inset: 0;
+    opacity: 0.06;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .watermark-inner {
+    transform: translate(-50%, -50%) rotate(-28deg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<!-- ==================== WATERMARK (Every Page) ==================== -->
+<div class="watermark" aria-hidden="true">
+  <div class="watermark-inner">
+    <div class="wm-logo-box">
+      <span class="wm-r">R</span>
+      <span class="wm-swoosh">~</span>
+    </div>
+    <div class="wm-the">THE</div>
+    <div class="wm-brand">Ravishankar</div>
+    <div class="wm-tagline">INSIGHTS</div>
+  </div>
+</div>
+
 
 <!-- ============ FIXED HEADER ============ -->
 <div class="page-header">
