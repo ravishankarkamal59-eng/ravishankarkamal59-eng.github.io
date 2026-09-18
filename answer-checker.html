@@ -9481,5 +9481,221 @@ console.log('✅ Fix JS loaded');
   console.log('✅ UPPCS GS1-GS6 + UPSC Full Examiner ready');
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+// ==================== OCR + IMAGE UPLOAD SYSTEM ====================
+(function(){
+  'use strict';
+  console.log('📷 OCR + Image Upload System loading...');
+
+  // PDF.js worker setup
+  if(window.pdfjsLib){
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var currentOCRWorker = null;
+
+  // ===== Progress UI =====
+  function showProgress(title, pct, status){
+    var el = document.getElementById('ocrProgress');
+    if(!el){
+      el = document.createElement('div');
+      el.id = 'ocrProgress';
+      el.style.cssText = 'position:fixed;inset:0;background:rgba(10,25,41,.95);backdrop-filter:blur(10px);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:20px';
+      el.innerHTML = '<div style="background:#fff;border-radius:20px;padding:30px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)">'+
+        '<div style="font-size:40px;margin-bottom:12px">📷</div>'+
+        '<div id="ocrTitle" style="font-size:18px;font-weight:900;color:#1a202c;margin-bottom:6px"></div>'+
+        '<div id="ocrStatus" style="font-size:13px;color:#718096;margin-bottom:20px"></div>'+
+        '<div style="height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:14px"><div id="ocrBar" style="height:100%;width:0%;background:linear-gradient(90deg,#4299e1,#48bb78);transition:width .3s"></div></div>'+
+        '<div id="ocrPct" style="font-size:28px;font-weight:900;color:#4299e1"></div>'+
+        '<div style="font-size:11px;color:#a0aec0;margin-top:14px">कृपया प्रतीक्षा करें...</div>'+
+        '</div>';
+      document.body.appendChild(el);
+    }
+    document.getElementById('ocrTitle').textContent = title || 'Processing';
+    document.getElementById('ocrStatus').textContent = status || '';
+    document.getElementById('ocrBar').style.width = (pct||0) + '%';
+    document.getElementById('ocrPct').textContent = Math.round(pct||0) + '%';
+  }
+  function hideProgress(){
+    var el = document.getElementById('ocrProgress');
+    if(el) el.remove();
+  }
+
+  // ===== Image to Text (OCR) =====
+  async function imageToText(imageSource, onProgress){
+    try {
+      var worker = await Tesseract.createWorker('hin+eng', 1, {
+        logger: function(m){
+          if(m.status === 'recognizing text' && onProgress){
+            onProgress(50 + m.progress*50, 'हस्तलेख पढ़ा जा रहा है...');
+          }
+        }
+      });
+      currentOCRWorker = worker;
+      var ret = await worker.recognize(imageSource);
+      await worker.terminate();
+      currentOCRWorker = null;
+      return ret.data.text || '';
+    } catch(e){
+      console.error('OCR err:', e);
+      if(currentOCRWorker){ try{ await currentOCRWorker.terminate(); }catch(_){} currentOCRWorker=null; }
+      return '';
+    }
+  }
+
+  // ===== PDF to Text =====
+  async function pdfToText(file, onProgress){
+    var arrayBuffer = await file.arrayBuffer();
+    var pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+    var totalPages = pdf.numPages;
+    var fullText = '';
+    var handwrittenPages = 0;
+
+    for(var i=1; i<=totalPages; i++){
+      var page = await pdf.getPage(i);
+      var textContent = await page.getTextContent();
+      var pageText = textContent.items.map(function(it){ return it.str; }).join(' ');
+
+      if(pageText.trim().length < 30){
+        // Scanned/handwritten page - use OCR
+        handwrittenPages++;
+        onProgress(10 + (i/totalPages)*35, 'पेज ' + i + '/' + totalPages + ' — OCR हो रहा है...');
+        var viewport = page.getViewport({ scale: 2.0 });
+        var canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        var ctx = canvas.getContext('2d');
+        await page.render({canvasContext: ctx, viewport: viewport}).promise;
+        var imgData = canvas.toDataURL('image/png');
+        var ocrText = await imageToText(imgData, function(p, s){
+          onProgress(10 + (i/totalPages)*35 + (p/100)*(35/totalPages), s);
+        });
+        pageText = ocrText;
+      } else {
+        onProgress(10 + (i/totalPages)*35, 'पेज ' + i + '/' + totalPages + ' पढ़ा जा रहा है...');
+      }
+      fullText += pageText + '\n\n';
+    }
+    return {text: fullText, handwritten: handwrittenPages > 0, pages: totalPages};
+  }
+
+  // ===== Set text into input =====
+  function setInputText(text){
+    var ta = document.getElementById('ansInput');
+    if(ta){
+      ta.value = text;
+      ta.dispatchEvent(new Event('input', {bubbles:true}));
+      return true;
+    }
+    // Try window state
+    if(window.state) window.state.currentText = text;
+    window.acxPdfText = text;
+    return false;
+  }
+
+  // ===== Main file handler =====
+  async function handleFile(file){
+    if(!file) return;
+    var name = (file.name||'').toLowerCase();
+    var isPDF = file.type === 'application/pdf' || name.endsWith('.pdf');
+    var isIMG = /image\/(jpeg|jpg|png|webp|bmp|gif|heic)/.test(file.type) || /\.(jpg|jpeg|png|webp|bmp|gif|heic)$/.test(name);
+
+    if(!isPDF && !isIMG){
+      alert('❌ सिर्फ PDF, JPG, PNG, WEBP फाइल सपोर्टेड है');
+      return;
+    }
+
+    showProgress('फाइल पढ़ी जा रही है...', 5, name);
+    try {
+      var result;
+      if(isPDF){
+        result = await pdfToText(file, function(p, s){ showProgress('PDF प्रोसेस हो रही है', p, s); });
+      } else {
+        showProgress('छवि पढ़ी जा रही है...', 5, name);
+        // Convert to data URL
+        var dataUrl = await new Promise(function(res, rej){
+          var fr = new FileReader();
+          fr.onload = function(){ res(fr.result); };
+          fr.onerror = rej;
+          fr.readAsDataURL(file);
+        });
+        showProgress('OCR हो रहा है...', 10, 'हस्तलेख पहचाना जा रहा है...');
+        var text = await imageToText(dataUrl, function(p, s){ showProgress('OCR हो रहा है...', p, s); });
+        result = {text: text, handwritten: true, pages: 1};
+      }
+
+      if(!result.text || result.text.trim().length < 20){
+        hideProgress();
+        alert('❌ फाइल से टेक्स्ट नहीं निकल पाया। कृपया साफ फोटो/PDF अपलोड करें या टाइप करके पेस्ट करें।');
+        return;
+      }
+
+      showProgress('टेक्स्ट तैयार हो रहा है...', 95, 'लगभग हो गया');
+      setInputText(result.text.trim());
+      showProgress('✅ पूरा हुआ!', 100, result.text.split(/\s+/).length + ' शब्द मिले' + (result.handwritten ? ' (OCR)' : ''));
+
+      setTimeout(hideProgress, 1200);
+      console.log('✅ File processed:', result.text.length, 'chars');
+
+    } catch(e){
+      console.error('File err:', e);
+      hideProgress();
+      alert('❌ त्रुटि: ' + e.message);
+    }
+  }
+
+  // ===== Enhance existing file inputs =====
+  function enhanceInputs(){
+    var fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach(function(inp){
+      if(inp._ocrEnhanced) return;
+      inp._ocrEnhanced = true;
+      // Accept both PDF and images
+      inp.setAttribute('accept', 'application/pdf,image/*,.pdf,.jpg,.jpeg,.png,.webp');
+      inp.addEventListener('change', function(e){
+        var f = e.target.files && e.target.files[0];
+        if(!f) return;
+        // Prevent default handler
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        handleFile(f);
+      }, true);
+    });
+
+    // Add floating "📷 Photo Upload" button if not exists
+    if(!document.getElementById('ocrPhotoBtn')){
+      var btn = document.createElement('button');
+      btn.id = 'ocrPhotoBtn';
+      btn.innerHTML = '📷 Photo/Page';
+      btn.style.cssText = 'position:fixed;bottom:80px;right:16px;z-index:9998;background:linear-gradient(135deg,#4299e1,#48bb78);color:#fff;border:none;padding:12px 18px;border-radius:50px;font-weight:900;font-size:13px;box-shadow:0 6px 20px rgba(66,153,225,0.5);cursor:pointer';
+      btn.onclick = function(){
+        var inp = document.createElement('input');
+        inp.type = 'file';
+        inp.accept = 'image/*,.pdf,.jpg,.jpeg,.png,.webp';
+        inp.capture = 'environment';
+        inp.onchange = function(e){ var f = e.target.files[0]; if(f) handleFile(f); };
+        inp.click();
+      };
+      document.body.appendChild(btn);
+    }
+  }
+
+  // Run enhancement
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(enhanceInputs, 500); });
+  } else {
+    setTimeout(enhanceInputs, 500);
+  }
+  // Repeat for dynamic inputs
+  setInterval(enhanceInputs, 2000);
+
+  // Expose globally
+  window.handleOCRFile = handleFile;
+
+  console.log('✅ OCR + Image Upload System ready');
+})();
+</script>
 </body>
 </html>
