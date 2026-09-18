@@ -558,8 +558,26 @@ async function uploadFileToGitHub(file, path, tk, un) {
 
 async function loadResources() {
   try {
-    var r = await fetch('data/resources.json?v=' + Date.now());
-    resourcesData = await r.json();
+    // पहले GitHub API से try करो (fresh data)
+    var tk = localStorage.getItem('gh_token');
+    if (tk) {
+      try {
+        var api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/data/resources.json?t=' + Date.now();
+        var r = await fetch(api, { headers: { 'Authorization': 'token ' + tk } });
+        if (r.ok) {
+          var j = await r.json();
+          var decoded = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\s/g, '')))));
+          if (decoded && typeof decoded === 'object') {
+            resourcesData = decoded;
+            loadItems();
+            return;
+          }
+        }
+      } catch(e) { console.log('API fetch failed, fallback to CDN'); }
+    }
+    // Fallback: GitHub Pages
+    var r2 = await fetch('data/resources.json?v=' + Date.now());
+    resourcesData = await r2.json();
     if (!resourcesData || typeof resourcesData !== 'object') resourcesData = {};
     loadItems();
   } catch(e) {
@@ -594,17 +612,39 @@ function loadItems() {
 }
 
 async function addToJson(ex, ty, title, link, type, tk, un) {
-  if (!resourcesData[ex]) {
-    resourcesData[ex] = { name: EXAM_NAMES[ex] || ex, notes: [], pyq: [], syllabus: [], videos: [], books: [] };
-  }
-  if (!resourcesData[ex][ty]) resourcesData[ex][ty] = [];
-  resourcesData[ex][ty].push({ title: title, link: link, type: type });
   var api = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/data/resources.json';
+  
+  // Step 1: GitHub API से FRESH data fetch करो (CDN से नहीं!)
   var g = await fetch(api + '?t=' + Date.now(), {
     headers: { 'Authorization': 'token ' + tk }
   });
+  if (!g.ok) {
+    var err0 = await g.json();
+    throw new Error('Fetch failed: ' + (err0.message || g.status));
+  }
   var cur = await g.json();
-  var content = btoa(unescape(encodeURIComponent(JSON.stringify(resourcesData, null, 2))));
+  
+  // Step 2: Fresh data decode करो
+  var freshData;
+  try {
+    freshData = JSON.parse(decodeURIComponent(escape(atob(cur.content.replace(/\s/g, '')))));
+  } catch(e) {
+    freshData = resourcesData || {};
+  }
+  if (!freshData || typeof freshData !== 'object') freshData = {};
+  
+  // Step 3: Fresh data में नया entry add करो (local memory पर भरोसा मत करो)
+  if (!freshData[ex]) {
+    freshData[ex] = { name: EXAM_NAMES[ex] || ex, notes: [], pyq: [], syllabus: [], videos: [], books: [] };
+  }
+  if (!freshData[ex][ty]) freshData[ex][ty] = [];
+  freshData[ex][ty].push({ title: title, link: link, type: type });
+  
+  // Step 4: Local memory भी update करो
+  resourcesData = freshData;
+  
+  // Step 5: PUT with FRESH sha
+  var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(freshData, null, 2))));
   var p = await fetch(api, {
     method: 'PUT',
     headers: {
@@ -613,7 +653,7 @@ async function addToJson(ex, ty, title, link, type, tk, un) {
     },
     body: JSON.stringify({
       message: 'Add ' + ty + ' for ' + ex + ': ' + title,
-      content: content,
+      content: newContent,
       sha: cur.sha,
       committer: { name: 'Admin', email: un + '@users.noreply.github.com' }
     })
@@ -622,6 +662,7 @@ async function addToJson(ex, ty, title, link, type, tk, un) {
     var err = await p.json();
     throw new Error(err.message || 'JSON update failed');
   }
+  console.log('✅ Added to JSON:', ex, '/', ty, '/', title);
 }
 
 async function uploadContent() {
