@@ -129,8 +129,53 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 <h2>📤 PDF / Video / Book Add करें</h2>
 <label>📚 Exam चुनें</label>
 <select id="examSelect">
-<optgroup label="🌾 Agriculture">
-<option value="agriculture">🌾 Agriculture Main</option>
+<optgroup label="🎯 UPSC (Civil Services)">
+<option value="upsc">UPSC Civil Services</option>
+<option value="upsc-prelims-gs1">UPSC Prelims GS1</option>
+<option value="upsc-prelims-csat">UPSC Prelims CSAT</option>
+<option value="upsc-mains-gs1">UPSC Mains GS1</option>
+<option value="upsc-mains-gs2">UPSC Mains GS2</option>
+<option value="upsc-mains-gs3">UPSC Mains GS3</option>
+<option value="upsc-mains-gs4">UPSC Mains GS4</option>
+<option value="upsc-mains-essay">UPSC Mains Essay</option>
+</optgroup>
+<optgroup label="🎯 UPPCS (UP PSC)">
+<option value="uppcs">UPPCS (General)</option>
+<option value="uppcs-prelims-gs">UPPCS Prelims GS</option>
+<option value="uppcs-prelims-csat">UPPCS Prelims CSAT</option>
+<option value="uppcs-mains-gs1">UPPCS Mains GS1</option>
+<option value="uppcs-mains-gs2">UPPCS Mains GS2</option>
+<option value="uppcs-mains-gs3">UPPCS Mains GS3</option>
+<option value="uppcs-mains-gs4">UPPCS Mains GS4</option>
+<option value="uppcs-mains-gs5">UPPCS Mains GS5 (UP Special)</option>
+<option value="uppcs-mains-gs6">UPPCS Mains GS6</option>
+<option value="uppcs-mains-hindi">UPPCS Mains Hindi</option>
+<option value="uppcs-mains-essay">UPPCS Mains Essay</option>
+</optgroup>
+<optgroup label="🎯 BPSC (Bihar PSC)">
+<option value="bpsc">BPSC</option>
+</optgroup>
+<optgroup label="📚 UGC NET / JRF">
+<option value="ugc-net">UGC NET / JRF</option>
+<option value="net-paper1">UGC NET Paper 1</option>
+<option value="net-polity">UGC NET Political Science</option>
+<option value="net-history">UGC NET History</option>
+<option value="net-geography">UGC NET Geography</option>
+<option value="net-hindi">UGC NET Hindi</option>
+<option value="net-english">UGC NET English</option>
+<option value="net-sociology">UGC NET Sociology</option>
+<option value="net-economics">UGC NET Economics</option>
+<option value="net-commerce">UGC NET Commerce</option>
+<option value="net-education">UGC NET Education</option>
+<option value="net-psychology">UGC NET Psychology</option>
+<option value="net-sanskrit">UGC NET Sanskrit</option>
+<option value="net-philosophy">UGC NET Philosophy</option>
+</optgroup>
+<optgroup label="🎓 JEE Main / NEET">
+<option value="jee-mains">JEE Mains</option>
+</optgroup>
+<optgroup label="🌾 Agriculture (Class 11-12)">
+<option value="agriculture">Agriculture Main</option>
 <option value="agri-11-biology">Class 11: Agriculture Biology</option>
 <option value="agri-11-crop">Class 11: Crop Production</option>
 <option value="agri-11-soil">Class 11: Soil Science</option>
@@ -138,61 +183,80 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 <option value="agri-11-animal">Class 11: Animal Husbandry</option>
 <option value="agri-11-farm">Class 11: Farm Machinery</option>
 <option value="agri-11-rural">Class 11: Rural Development</option>
-<option value="agri-12-crop">Class 12: Crop Production Mgmt</option>
-<option value="agri-12-genetics">Class 12: Genetics & Plant Breeding</option>
+<option value="agri-12-crop">Class 12: Crop Production</option>
+<option value="agri-12-genetics">Class 12: Genetics</option>
 <option value="agri-12-animal">Class 12: Animal Husbandry</option>
 <option value="agri-12-soil">Class 12: Soil Science</option>
-<option value="agri-12-economics">Class 12: Agriculture Economics</option>
+<option value="agri-12-economics">Class 12: Agri Economics</option>
 <option value="agri-12-extension">Class 12: Extension Education</option>
 <option value="agri-12-horticulture">Class 12: Horticulture</option>
+</optgroup>
+<optgroup label="🎓 BSc Agriculture">
 <option value="bsc-agronomy">BSc: Agronomy</option>
 <option value="bsc-horticulture">BSc: Horticulture</option>
-<option value="bsc-plant-breeding">BSc: Plant Breeding & Genetics</option>
+<option value="bsc-plant-breeding">BSc: Plant Breeding</option>
 <option value="bsc-soil-science">BSc: Soil Science</option>
 <option value="bsc-entomology">BSc: Entomology</option>
 <option value="bsc-plant-pathology">BSc: Plant Pathology</option>
 <option value="bsc-animal-husbandry">BSc: Animal Husbandry</option>
-<option value="bsc-agri-economics">BSc: Agricultural Economics</option>
+<option value="bsc-agri-economics">BSc: Agri Economics</option>
 <option value="bsc-extension">BSc: Extension Education</option>
-<option value="bsc-agri-engineering">BSc: Agricultural Engineering</option>
+<option value="bsc-agri-engineering">BSc: Agri Engineering</option>
 <option value="bsc-biochemistry">BSc: Biochemistry</option>
 <option value="bsc-microbiology">BSc: Microbiology</option>
 <option value="bsc-forestry">BSc: Forestry</option>
-<option value="bsc-statistics">BSc: Agricultural Statistics</option>
+<option value="bsc-statistics">BSc: Statistics</option>
 <option value="bsc-plant-physiology">BSc: Plant Physiology</option>
 </optgroup>
-
-<optgroup label="🌾 Agriculture (Class 11, 12, BSc)">
-<option value="agriculture">🌾 Agriculture Main</option>
-<option value="agri-11-biology">Class 11: Agriculture Biology</option>
-<option value="agri-11-crop">Class 11: Crop Production</option>
-<option value="agri-11-soil">Class 11: Soil Science</option>
-<option value="agri-11-horticulture">Class 11: Horticulture</option>
-<option value="agri-11-animal">Class 11: Animal Husbandry</option>
-<option value="agri-11-farm">Class 11: Farm Machinery</option>
-<option value="agri-11-rural">Class 11: Rural Development</option>
-<option value="agri-12-crop">Class 12: Crop Production Mgmt</option>
-<option value="agri-12-genetics">Class 12: Genetics & Plant Breeding</option>
-<option value="agri-12-animal">Class 12: Animal Husbandry</option>
-<option value="agri-12-soil">Class 12: Soil Science</option>
-<option value="agri-12-economics">Class 12: Agriculture Economics</option>
-<option value="agri-12-extension">Class 12: Extension Education</option>
-<option value="agri-12-horticulture">Class 12: Horticulture</option>
-<option value="bsc-agronomy">BSc: Agronomy</option>
-<option value="bsc-horticulture">BSc: Horticulture</option>
-<option value="bsc-plant-breeding">BSc: Plant Breeding & Genetics</option>
-<option value="bsc-soil-science">BSc: Soil Science</option>
-<option value="bsc-entomology">BSc: Entomology</option>
-<option value="bsc-plant-pathology">BSc: Plant Pathology</option>
-<option value="bsc-animal-husbandry">BSc: Animal Husbandry</option>
-<option value="bsc-agri-economics">BSc: Agricultural Economics</option>
-<option value="bsc-extension">BSc: Extension Education</option>
-<option value="bsc-agri-engineering">BSc: Agricultural Engineering</option>
-<option value="bsc-biochemistry">BSc: Biochemistry</option>
-<option value="bsc-microbiology">BSc: Microbiology</option>
-<option value="bsc-forestry">BSc: Forestry</option>
-<option value="bsc-statistics">BSc: Agricultural Statistics</option>
-<option value="bsc-plant-physiology">BSc: Plant Physiology</option>
+<optgroup label="🌾 Agriculture Exams">
+<option value="agta">AGTA</option>
+<option value="ars">ARS</option>
+<option value="bhu-agri">BHU Agriculture</option>
+<option value="icar-jrf">ICAR JRF</option>
+</optgroup>
+<optgroup label="🎓 BA (Bachelor of Arts)">
+<option value="ba-hindi">BA Hindi</option>
+<option value="ba-english">BA English</option>
+<option value="ba-history">BA History</option>
+<option value="ba-polity">BA Political Science</option>
+<option value="ba-economics">BA Economics</option>
+<option value="ba-geography">BA Geography</option>
+<option value="ba-sociology">BA Sociology</option>
+<option value="ba-psychology">BA Psychology</option>
+<option value="ba-sanskrit">BA Sanskrit</option>
+<option value="ba-urdu">BA Urdu</option>
+<option value="ba-finearts">BA Fine Arts</option>
+<option value="ba-journalism">BA Journalism</option>
+</optgroup>
+<optgroup label="🎓 MA (Master of Arts)">
+<option value="ma-hindi">MA Hindi</option>
+<option value="ma-english">MA English</option>
+<option value="ma-history">MA History</option>
+<option value="ma-polity">MA Political Science</option>
+<option value="ma-economics">MA Economics</option>
+<option value="ma-geography">MA Geography</option>
+<option value="ma-sociology">MA Sociology</option>
+<option value="ma-psychology">MA Psychology</option>
+<option value="ba-ma">BA/MA Combined</option>
+</optgroup>
+<optgroup label="💼 Banking Exams">
+<option value="banking">Banking (IBPS/SBI)</option>
+<option value="ibps-afo">IBPS AFO</option>
+<option value="nabard-grade-a">NABARD Grade A</option>
+</optgroup>
+<optgroup label="🚂 Railway">
+<option value="railway">Railway (RRB)</option>
+</optgroup>
+<optgroup label="📋 SSC">
+<option value="ssc-cgl">SSC CGL</option>
+<option value="ssc-chsl">SSC CHSL</option>
+<option value="ssc-mts">SSC MTS</option>
+<option value="ssc-gd">SSC GD</option>
+</optgroup>
+<optgroup label="👮 Police / Defence">
+<option value="up-police">UP Police</option>
+<option value="up-lekhpal">UP Lekhpal</option>
+<option value="pet">UP PET</option>
 </optgroup>
 </select>
 <label>📂 Type चुनें</label>
@@ -281,9 +345,90 @@ var selectedFiles = [];
 var resourcesData = null;
 
 var EXAM_NAMES = {
-  // UPPCS specific
-  'uppcs-prelims-gs': 'UPPCS Prelims GS',
-  'uppcs-prelims-csat': 'UPPCS Prelims CSAT',
+  'agri-11-animal': 'Class 11: Animal Husbandry',
+  'agri-11-biology': 'Class 11: Agriculture Biology',
+  'agri-11-crop': 'Class 11: Crop Production',
+  'agri-11-farm': 'Class 11: Farm Machinery',
+  'agri-11-horticulture': 'Class 11: Horticulture',
+  'agri-11-rural': 'Class 11: Rural Development',
+  'agri-11-soil': 'Class 11: Soil Science',
+  'agri-12-animal': 'Class 12: Animal Husbandry',
+  'agri-12-crop': 'Class 12: Crop Production',
+  'agri-12-economics': 'Class 12: Agri Economics',
+  'agri-12-extension': 'Class 12: Extension Education',
+  'agri-12-genetics': 'Class 12: Genetics',
+  'agri-12-horticulture': 'Class 12: Horticulture',
+  'agri-12-soil': 'Class 12: Soil Science',
+  'agriculture': 'Agriculture Main',
+  'agta': 'AGTA',
+  'ars': 'ARS',
+  'ba-economics': 'BA Economics',
+  'ba-english': 'BA English',
+  'ba-finearts': 'BA Fine Arts',
+  'ba-geography': 'BA Geography',
+  'ba-hindi': 'BA Hindi',
+  'ba-history': 'BA History',
+  'ba-journalism': 'BA Journalism',
+  'ba-ma': 'BA/MA Combined',
+  'ba-polity': 'BA Political Science',
+  'ba-psychology': 'BA Psychology',
+  'ba-sanskrit': 'BA Sanskrit',
+  'ba-sociology': 'BA Sociology',
+  'ba-urdu': 'BA Urdu',
+  'banking': 'Banking (IBPS/SBI)',
+  'bhu-agri': 'BHU Agriculture',
+  'bpsc': 'BPSC',
+  'bsc-agri-economics': 'BSc: Agri Economics',
+  'bsc-agri-engineering': 'BSc: Agri Engineering',
+  'bsc-agronomy': 'BSc: Agronomy',
+  'bsc-animal-husbandry': 'BSc: Animal Husbandry',
+  'bsc-biochemistry': 'BSc: Biochemistry',
+  'bsc-entomology': 'BSc: Entomology',
+  'bsc-extension': 'BSc: Extension Education',
+  'bsc-forestry': 'BSc: Forestry',
+  'bsc-horticulture': 'BSc: Horticulture',
+  'bsc-microbiology': 'BSc: Microbiology',
+  'bsc-plant-breeding': 'BSc: Plant Breeding',
+  'bsc-plant-pathology': 'BSc: Plant Pathology',
+  'bsc-plant-physiology': 'BSc: Plant Physiology',
+  'bsc-soil-science': 'BSc: Soil Science',
+  'bsc-statistics': 'BSc: Statistics',
+  'ibps-afo': 'IBPS AFO',
+  'icar-jrf': 'ICAR JRF',
+  'jee-mains': 'JEE Mains',
+  'ma-economics': 'MA Economics',
+  'ma-english': 'MA English',
+  'ma-geography': 'MA Geography',
+  'ma-hindi': 'MA Hindi',
+  'ma-history': 'MA History',
+  'ma-polity': 'MA Political Science',
+  'ma-psychology': 'MA Psychology',
+  'ma-sociology': 'MA Sociology',
+  'nabard-grade-a': 'NABARD Grade A',
+  'net-commerce': 'UGC NET Commerce',
+  'net-economics': 'UGC NET Economics',
+  'net-education': 'UGC NET Education',
+  'net-english': 'UGC NET English',
+  'net-geography': 'UGC NET Geography',
+  'net-hindi': 'UGC NET Hindi',
+  'net-history': 'UGC NET History',
+  'net-paper1': 'UGC NET Paper 1',
+  'net-philosophy': 'UGC NET Philosophy',
+  'net-polity': 'UGC NET Political Science',
+  'net-psychology': 'UGC NET Psychology',
+  'net-sanskrit': 'UGC NET Sanskrit',
+  'net-sociology': 'UGC NET Sociology',
+  'pet': 'UP PET',
+  'railway': 'Railway (RRB)',
+  'ssc-cgl': 'SSC CGL',
+  'ssc-chsl': 'SSC CHSL',
+  'ssc-gd': 'SSC GD',
+  'ssc-mts': 'SSC MTS',
+  'ugc-net': 'UGC NET / JRF',
+  'up-lekhpal': 'UP Lekhpal',
+  'up-police': 'UP Police',
+  'uppcs': 'UPPCS (General)',
+  'uppcs-mains-essay': 'UPPCS Mains Essay',
   'uppcs-mains-gs1': 'UPPCS Mains GS1',
   'uppcs-mains-gs2': 'UPPCS Mains GS2',
   'uppcs-mains-gs3': 'UPPCS Mains GS3',
@@ -291,114 +436,18 @@ var EXAM_NAMES = {
   'uppcs-mains-gs5': 'UPPCS Mains GS5 (UP Special)',
   'uppcs-mains-gs6': 'UPPCS Mains GS6',
   'uppcs-mains-hindi': 'UPPCS Mains Hindi',
-  'uppcs-mains-essay': 'UPPCS Mains Essay',
-  // UPSC specific
-  'upsc-prelims-gs1': 'UPSC Prelims GS1',
-  'upsc-prelims-csat': 'UPSC Prelims CSAT',
+  'uppcs-prelims-csat': 'UPPCS Prelims CSAT',
+  'uppcs-prelims-gs': 'UPPCS Prelims GS',
+  'upsc': 'UPSC Civil Services',
+  'upsc-mains-essay': 'UPSC Mains Essay',
   'upsc-mains-gs1': 'UPSC Mains GS1',
   'upsc-mains-gs2': 'UPSC Mains GS2',
   'upsc-mains-gs3': 'UPSC Mains GS3',
   'upsc-mains-gs4': 'UPSC Mains GS4',
-  'upsc-mains-essay': 'UPSC Mains Essay',
-  // UGC NET specific
-  'net-paper1': 'UGC NET Paper 1',
-  'net-polity': 'UGC NET Political Science',
-  'net-history': 'UGC NET History',
-  'net-geography': 'UGC NET Geography',
-  'net-hindi': 'UGC NET Hindi',
-  'net-english': 'UGC NET English',
-  'net-sociology': 'UGC NET Sociology',
-  'net-economics': 'UGC NET Economics',
-  'net-commerce': 'UGC NET Commerce',
-  'net-education': 'UGC NET Education',
-  'net-psychology': 'UGC NET Psychology',
-  'net-sanskrit': 'UGC NET Sanskrit',
-  'net-philosophy': 'UGC NET Philosophy',
-
-  'bhu-agri': 'BHU / ICAR UG Entrance',
-  'ars': 'ARS - Agricultural Research Service',
-  'icar-jrf': 'ICAR JRF/SRF',
-  'nabard-grade-a': 'NABARD Grade A',
-  'ibps-afo': 'IBPS AFO - Agriculture Field Officer',
-  'agriculture': 'Agriculture Main Page',
-  'bsc-plant-physiology': 'BSc: Plant Physiology',
-  'bsc-statistics': 'BSc: Agricultural Statistics',
-  'bsc-forestry': 'BSc: Forestry',
-  'bsc-microbiology': 'BSc: Microbiology',
-  'bsc-biochemistry': 'BSc: Biochemistry',
-  'bsc-agri-engineering': 'BSc: Agricultural Engineering',
-  'bsc-extension': 'BSc: Extension Education',
-  'bsc-agri-economics': 'BSc: Agricultural Economics',
-  'bsc-animal-husbandry': 'BSc: Animal Husbandry',
-  'bsc-plant-pathology': 'BSc: Plant Pathology',
-  'bsc-entomology': 'BSc: Entomology',
-  'bsc-soil-science': 'BSc: Soil Science',
-  'bsc-plant-breeding': 'BSc: Plant Breeding & Genetics',
-  'bsc-horticulture': 'BSc: Horticulture',
-  'bsc-agronomy': 'BSc: Agronomy',
-  'agri-12-horticulture': 'Class 12: Horticulture',
-  'agri-12-extension': 'Class 12: Extension Education',
-  'agri-12-economics': 'Class 12: Agriculture Economics',
-  'agri-12-soil': 'Class 12: Soil Science',
-  'agri-12-animal': 'Class 12: Animal Husbandry',
-  'agri-12-genetics': 'Class 12: Genetics & Plant Breeding',
-  'agri-12-crop': 'Class 12: Crop Production Mgmt',
-  'agri-11-rural': 'Class 11: Rural Development',
-  'agri-11-farm': 'Class 11: Farm Machinery',
-  'agri-11-animal': 'Class 11: Animal Husbandry',
-  'agri-11-horticulture': 'Class 11: Horticulture',
-  'agri-11-soil': 'Class 11: Soil Science',
-  'agri-11-crop': 'Class 11: Crop Production',
-  'agri-11-biology': 'Class 11: Agriculture Biology',
-  // Central Exams
-  'upsc':'UPSC Civil Services','bpsc':'BPSC','uppcs':'UPPCS','mppsc':'MPPSC','ras':'RAS Rajasthan',
-  'jpsc':'JPSC Jharkhand','ukpsc':'UKPSC Uttarakhand',
-  // SSC
-  'ssc-cgl':'SSC CGL','ssc-chsl':'SSC CHSL','ssc-mts':'SSC MTS','ssc-gd':'SSC GD',
-  // Railway & Banking
-  'railway':'Railway (RRB)','banking':'Banking (IBPS/SBI)',
-  // Defence
-  'nda-cds':'NDA / CDS',
-  // Police & PET
-  'bihar-police':'बिहार पुलिस','bihar-si':'बिहार SI','up-police':'UP Police','pet':'PET',
-  // Teaching
-  'b-ed':'B.Ed','ctet':'CTET','ugc-net':'UGC NET / JRF',
-  // UG & PG
-  'jee-mains':'JEE Mains','neet':'NEET','gate':'GATE','bca-mca':'BCA / MCA','llb':'LLB / LLM',
-  'cat-mba':'CAT / MBA','nursing':'Nursing','cuet':'CUET','ba-ma':'BA / MA',
-  // Special
-  'agta':'AGTA (Agriculture)','up-lekhpal':'UP लेखपाल',
-  // Notes Categories
-  'notes-history':'Notes: भारतीय इतिहास','notes-geography':'Notes: भूगोल','notes-polity':'Notes: राजनीति',
-  'notes-economics':'Notes: अर्थशास्त्र','notes-science':'Notes: सामान्य विज्ञान','notes-environment':'Notes: पर्यावरण',
-  'notes-maths':'Notes: अंकगणित','notes-adv-maths':'Notes: उन्नत गणित','notes-reasoning':'Notes: रीजनिंग',
-  'notes-hindi':'Notes: हिंदी व्याकरण','notes-english':'Notes: English Grammar','notes-essay':'Notes: निबंध',
-  // BA Subjects
-  'ba-hindi':'BA हिंदी','ba-english':'BA English','ba-history':'BA इतिहास','ba-polity':'BA राजनीति',
-  'ba-economics':'BA अर्थशास्त्र','ba-sociology':'BA समाजशास्त्र','ba-psychology':'BA मनोविज्ञान',
-  'ba-geography':'BA भूगोल','ba-sanskrit':'BA संस्कृत','ba-urdu':'BA उर्दू',
-  'ba-finearts':'BA फाइन आर्ट्स','ba-journalism':'BA पत्रकारिता',
-  // MA Subjects
-  'ma-hindi':'MA हिंदी','ma-english':'MA English','ma-history':'MA इतिहास','ma-polity':'MA राजनीति',
-  'ma-economics':'MA अर्थशास्त्र','ma-sociology':'MA समाजशास्त्र','ma-psychology':'MA मनोविज्ञान',
-  'ma-geography':'MA भूगोल',
-  // UGC NET Papers
-  'net-paper1':'NET Paper 1 (General)','net-hindi':'NET हिंदी','net-english':'NET English',
-  'net-history':'NET इतिहास','net-polity':'NET राजनीति','net-economics':'NET अर्थशास्त्र',
-  'net-sociology':'NET समाजशास्त्र','net-psychology':'NET मनोविज्ञान','net-geography':'NET भूगोल',
-  'net-education':'NET Education','net-commerce':'NET Commerce','net-philosophy':'NET Philosophy',
-  'net-sanskrit':'NET संस्कृत',
-  // UPSC Papers
-  'upsc-prelims-gs1':'UPSC Prelims GS Paper 1','upsc-prelims-csat':'UPSC Prelims CSAT',
-  'upsc-mains-essay':'UPSC Mains Essay','upsc-mains-gs1':'UPSC Mains GS1',
-  'upsc-mains-gs2':'UPSC Mains GS2','upsc-mains-gs3':'UPSC Mains GS3','upsc-mains-gs4':'UPSC Mains GS4',
-  // UPPCS Papers
-  'uppcs-prelims-gs':'UPPCS Prelims GS','uppcs-prelims-csat':'UPPCS Prelims CSAT',
-  'uppcs-mains-hindi':'UPPCS Mains हिंदी','uppcs-mains-essay':'UPPCS Mains निबंध',
-  'uppcs-mains-gs1':'UPPCS Mains GS1','uppcs-mains-gs2':'UPPCS Mains GS2',
-  'uppcs-mains-gs3':'UPPCS Mains GS3','uppcs-mains-gs4':'UPPCS Mains GS4',
-  'uppcs-mains-gs5':'UPPCS Mains GS5','uppcs-mains-gs6':'UPPCS Mains GS6'
+  'upsc-prelims-csat': 'UPSC Prelims CSAT',
+  'upsc-prelims-gs1': 'UPSC Prelims GS1',
 };
+
 
 function $(id) { return document.getElementById(id); }
 
