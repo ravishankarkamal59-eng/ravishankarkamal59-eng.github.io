@@ -279,7 +279,28 @@ header, nav {
 
 <div class="content" style="text-align:center;background:linear-gradient(135deg,#fff5f5,#fff);border:2px solid #ffe0e0;margin-bottom:1.5rem">
 <h3 style="color:#e94560;margin-bottom:0.5rem;font-size:1.1rem">⏰ अगली बड़ी परीक्षा में बचा समय</h3>
-<p style="font-size:1.2rem;color:#0f3460" id="examCountdown">गणना हो रही है...</p>
+<p style="font-size:1.2rem;color:#0f3460" 
+<!-- ===== SEARCH BOX ===== -->
+<div style="max-width:700px;margin:1.5rem auto;padding:0 1rem">
+  <div style="position:relative">
+    <input type="text" id="homeSearchBox" placeholder="🔍 कौन-सी परीक्षा, विषय या नोट्स चाहिए?"
+      style="width:100%;padding:1rem 3.5rem 1rem 1.2rem;border:3px solid #e94560;border-radius:50px;font-size:1rem;font-family:inherit;outline:none;box-shadow:0 4px 15px rgba(233,69,96,0.15);box-sizing:border-box"
+      autocomplete="off"
+      onkeypress="if(event.key==='Enter'){window.location.href='exams.html'}">
+    <button onclick="window.location.href='exams.html'"
+      style="position:absolute;right:5px;top:5px;bottom:5px;padding:0 1.3rem;background:linear-gradient(135deg,#e94560,#c73650);color:#fff;border:none;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer">खोजें</button>
+  </div>
+  <div style="text-align:center;margin-top:0.7rem;font-size:0.82rem;color:#666">
+    Popular:
+    <a href="uppcs.html" style="color:#e94560;text-decoration:none;margin:0 0.3rem;font-weight:600">UPPCS</a> •
+    <a href="upsc.html" style="color:#e94560;text-decoration:none;margin:0 0.3rem;font-weight:600">UPSC</a> •
+    <a href="bpsc.html" style="color:#e94560;text-decoration:none;margin:0 0.3rem;font-weight:600">BPSC</a> •
+    <a href="agriculture.html" style="color:#e94560;text-decoration:none;margin:0 0.3rem;font-weight:600">Agriculture</a> •
+    <a href="current-affairs.html" style="color:#e94560;text-decoration:none;margin:0 0.3rem;font-weight:600">Current Affairs</a>
+  </div>
+</div>
+
+<div id="examCountdown">गणना हो रही है...</p>
 <p style="font-size:0.85rem;color:#666;margin-top:0.3rem">तैयारी शुरू करें — आज ही!</p>
 </div>
 
