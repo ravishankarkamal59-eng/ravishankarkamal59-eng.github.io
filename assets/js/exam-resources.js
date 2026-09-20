@@ -5,7 +5,7 @@
   
   if (!document.querySelector('.exam-resources-container')) return;
 
-  fetch('data/resources.json?v=' + Date.now())
+  fetch('data/resources.json?v=' + Date.now() + '&cb=' + Math.random())
     .then(r => r.json())
     .then(data => {
       var exam = data[examKey];
