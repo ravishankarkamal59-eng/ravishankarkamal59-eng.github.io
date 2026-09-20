@@ -7,94 +7,10 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/index.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/uppcs-gs5-notes.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/uppcs.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/upsc.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/bpsc.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://ravishankarkamal59-eng.github.io/about.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/contact.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/privacy.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/disclaimer.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/terms.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/current-affairs.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/notes.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/exams.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/study-material.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/answer-checker.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/admit-card.html</loc>
@@ -217,6 +133,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ravishankarkamal59-eng.github.io/answer-checker.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ravishankarkamal59-eng.github.io/answer-key.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -224,12 +146,6 @@
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/ars.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/b-ed.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -319,25 +235,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/bca-mca.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://ravishankarkamal59-eng.github.io/bhu-agri.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/bihar-police.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/bihar-si.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -353,6 +251,12 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ravishankarkamal59-eng.github.io/bpsc.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/bsc-agri-economics.html</loc>
@@ -451,22 +355,16 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/cat-mba.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/contact.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/ctet.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/current-affairs.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/cuet.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/current-culture.html</loc>
@@ -511,13 +409,19 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ravishankarkamal59-eng.github.io/disclaimer.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ravishankarkamal59-eng.github.io/exam-calendar.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/facebook-banner.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/exams.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -530,12 +434,6 @@
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/forum.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/gate.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -560,18 +458,6 @@
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/jee-mains.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/jpsc.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/llb.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -661,25 +547,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/mppsc.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://ravishankarkamal59-eng.github.io/nabard-grade-a.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/nda-cds.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/neet.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -841,13 +709,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/notifications.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/notes.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/nursing.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/notifications.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -871,16 +739,10 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/plato-aadarsh-raj.html</loc>
+    <loc>https://ravishankarkamal59-eng.github.io/privacy.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/plato-darshan.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/pyq.html</loc>
@@ -902,12 +764,6 @@
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/railway.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ravishankarkamal59-eng.github.io/ras.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -967,6 +823,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ravishankarkamal59-eng.github.io/study-material.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ravishankarkamal59-eng.github.io/study-plan.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -983,6 +845,12 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ravishankarkamal59-eng.github.io/terms.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/test-series.html</loc>
@@ -1003,12 +871,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ravishankarkamal59-eng.github.io/ukpsc.html</loc>
-    <lastmod>2026-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://ravishankarkamal59-eng.github.io/up-lekhpal.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1016,6 +878,12 @@
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/up-police.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ravishankarkamal59-eng.github.io/uppcs-gs5-notes.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -1123,6 +991,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ravishankarkamal59-eng.github.io/uppcs.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ravishankarkamal59-eng.github.io/upsc-examiner.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1169,6 +1043,12 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ravishankarkamal59-eng.github.io/upsc.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ravishankarkamal59-eng.github.io/video-ad-youtube.html</loc>
