@@ -1,17 +1,6 @@
-# Backup files
-*backup*
-*broken*
-*-old.html
-ads-backup/
-node_modules/
-.DS_Store
-*.log
-
-# Backup files - never commit
 *.bak
-*.bak2
-*.bak3
-*.bak-*
-*.broken
-*.backup
-*.before_*
+*.bak_*
+*.tmp
+*.log
+.DS_Store
+node_modules/
