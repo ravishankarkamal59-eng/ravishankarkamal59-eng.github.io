@@ -41,6 +41,11 @@
     { title: 'UPSC Civil Services', url: 'upsc.html', keywords: 'upsc ias ips ifs civil services सिविल सेवा संघ लोक सेवा', icon: '🏛️', category: 'केंद्रीय परीक्षा' },
     { title: 'BPSC', url: 'bpsc.html', keywords: 'bpsc bihar psc बिहार लोक सेवा आयोग 70th 68th', icon: '📖', category: 'केंद्रीय परीक्षा' },
     { title: 'UPPCS', url: 'uppcs.html', keywords: 'uppcs up psc uppsc उत्तर प्रदेश लोक सेवा', icon: '🏛️', category: 'केंद्रीय परीक्षा' },
+    { title: 'MPPSC', url: 'mppsc.html', keywords: 'mppsc mp psc मध्य प्रदेश लोक सेवा', icon: '🏞️', category: 'केंद्रीय परीक्षा' },
+    { title: 'RAS Rajasthan', url: 'ras.html', keywords: 'ras rajasthan rpsc राजस्थान प्रशासनिक सेवा', icon: '🏰', category: 'केंद्रीय परीक्षा' },
+    { title: 'JPSC Jharkhand', url: 'jpsc.html', keywords: 'jpsc jharkhand psc झारखंड लोक सेवा', icon: '🌾', category: 'केंद्रीय परीक्षा' },
+    { title: 'UKPSC Uttarakhand', url: 'ukpsc.html', keywords: 'ukpsc uttarakhand psc उत्तराखंड लोक सेवा', icon: '🏔️', category: 'केंद्रीय परीक्षा' },
+    
     // ===== SSC =====
     { title: 'SSC CGL', url: 'ssc-cgl.html', keywords: 'ssc cgl combined graduate level tier 1 2', icon: '🎓', category: 'SSC' },
     { title: 'SSC CHSL', url: 'ssc-chsl.html', keywords: 'ssc chsl 10+2 ldc deo clerk', icon: '📝', category: 'SSC' },
@@ -52,15 +57,28 @@
     { title: 'Banking', url: 'banking.html', keywords: 'banking ibps po clerk sbi rbi nabard बैंकिंग', icon: '🏦', category: 'रेलवे और बैंकिंग' },
     
     // ===== Defence =====
+    { title: 'NDA / CDS', url: 'nda-cds.html', keywords: 'nda cds defence army navy air force ssb रक्षा', icon: '🎖️', category: 'रक्षा' },
+    
     // ===== Police =====
+    { title: 'बिहार पुलिस', url: 'bihar-police.html', keywords: 'bihar police constable बिहार पुलिस', icon: '👮', category: 'पुलिस' },
+    { title: 'बिहार SI', url: 'bihar-si.html', keywords: 'bihar si sub inspector दरोगा बिहार', icon: '👮', category: 'पुलिस' },
     { title: 'UP Police', url: 'up-police.html', keywords: 'up police si constable fireman jail warder', icon: '🚔', category: 'पुलिस' },
     { title: 'PET Physical Test', url: 'pet.html', keywords: 'pet physical test दौड़ running fitness', icon: '🏃', category: 'पुलिस' },
     
     // ===== Teaching =====
+    { title: 'B.Ed', url: 'b-ed.html', keywords: 'bed b.ed teacher education शिक्षक शिक्षा', icon: '👨‍🏫', category: 'शिक्षक' },
+    { title: 'CTET', url: 'ctet.html', keywords: 'ctet teacher eligibility kvs nvs paper 1 2', icon: '👨‍🏫', category: 'शिक्षक' },
     { title: 'UGC NET / JRF', url: 'ugc-net.html', keywords: 'ugc net jrf assistant professor paper 1 2', icon: '🎓', category: 'शिक्षक' },
     
     // ===== UG & PG =====
     { title: 'JEE Mains', url: 'jee-mains.html', keywords: 'jee mains engineering iit nit iiit entrance', icon: '⚙️', category: 'एंट्रेंस एग्जाम' },
+    { title: 'NEET', url: 'neet.html', keywords: 'neet mbbs bds medical aiims nursing', icon: '🩺', category: 'एंट्रेंस एग्जाम' },
+    { title: 'GATE', url: 'gate.html', keywords: 'gate engineering m.tech psu iit research', icon: '🎓', category: 'एंट्रेंस एग्जाम' },
+    { title: 'BCA / MCA', url: 'bca-mca.html', keywords: 'bca mca computer software it programming', icon: '💻', category: 'एंट्रेंस एग्जाम' },
+    { title: 'LLB / LLM', url: 'llb.html', keywords: 'llb llm law clat ailet advocate वकील', icon: '⚖️', category: 'एंट्रेंस एग्जाम' },
+    { title: 'CAT / MBA', url: 'cat-mba.html', keywords: 'cat mba management iim business', icon: '💼', category: 'एंट्रेंस एग्जाम' },
+    { title: 'Nursing', url: 'nursing.html', keywords: 'nursing bsc gnm anm aiims nurse', icon: '🩺', category: 'एंट्रेंस एग्जाम' },
+    { title: 'CUET', url: 'cuet.html', keywords: 'cuet ug pg university admission du bhu jnu', icon: '🎓', category: 'एंट्रेंस एग्जाम' },
     { title: 'BA / MA', url: 'ba-ma.html', keywords: 'ba ma arts graduation hindi english history', icon: '🎓', category: 'डिग्री कोर्स' },
     
     // ===== Special =====
@@ -164,7 +182,11 @@
   
   // ===== Create Search Bar - AFTER HERO =====
   function createSearchBar() {
-    if (document.getElementById('siteSearchBar')) return;
+    // पहले से कोई search bar है तो हटाएँ (cache से बचने के लिए)
+    var existing = document.getElementById('siteSearchBar');
+    if (existing) existing.remove();
+    var oldResults = document.getElementById('siteSearchResults');
+    if (oldResults) oldResults.remove();
     
     // Search bar HTML
     var searchHTML = 
@@ -177,24 +199,31 @@
         '<div id="siteSearchResults" style="display:none;position:absolute;top:100%;left:1rem;right:1rem;background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.25);z-index:9999;max-height:70vh;overflow-y:auto;margin-top:0.5rem;border:1px solid #e0e6ed"></div>' +
       '</div>';
     
+    // Search bar create करें
+    var temp = document.createElement('div');
+    temp.innerHTML = searchHTML;
+    var searchBar = temp.firstChild;
+    
     // Hero section के बाद insert करें
     var hero = document.querySelector('.hero');
-    var inserted = false;
-    
     if (hero && hero.parentNode) {
-      var temp = document.createElement('div');
-      temp.innerHTML = searchHTML;
-      hero.parentNode.insertBefore(temp.firstChild, hero.nextSibling);
-      inserted = true;
-    }
-    
-    // अगर hero नहीं मिला तो header के बाद
-    if (!inserted) {
-      var header = document.querySelector('header');
-      if (header && header.parentNode) {
-        var temp2 = document.createElement('div');
-        temp2.innerHTML = searchHTML;
-        header.parentNode.insertBefore(temp2.firstChild, header.nextSibling);
+      // Hero के अगले element को ढूंढें (text nodes skip करें)
+      var nextEl = hero.nextElementSibling;
+      if (nextEl) {
+        hero.parentNode.insertBefore(searchBar, nextEl);
+      } else {
+        hero.parentNode.appendChild(searchBar);
+      }
+      console.log('✅ Search bar inserted after hero');
+    } else {
+      // Fallback: main के शुरू में
+      var main = document.querySelector('main');
+      if (main) {
+        main.insertBefore(searchBar, main.firstChild);
+        console.log('✅ Search bar inserted at top of main');
+      } else {
+        document.body.appendChild(searchBar);
+        console.log('⚠️ Search bar added to body end');
       }
     }
     
@@ -356,7 +385,7 @@
     if (skipPages.indexOf(currentPage) > -1) return;
     
     createSearchBar();
-    console.log('✅ Site Search ready - ' + SEARCH_INDEX.length + ' items');
+    console.log('✅ Site Search v3 ready - ' + SEARCH_INDEX.length + ' items');
   }
   
   if (document.readyState === 'loading') {

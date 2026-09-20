@@ -41,6 +41,11 @@
     { title: 'UPSC Civil Services', url: 'upsc.html', keywords: 'upsc ias ips ifs civil services सिविल सेवा संघ लोक सेवा', icon: '🏛️', category: 'केंद्रीय परीक्षा' },
     { title: 'BPSC', url: 'bpsc.html', keywords: 'bpsc bihar psc बिहार लोक सेवा आयोग 70th 68th', icon: '📖', category: 'केंद्रीय परीक्षा' },
     { title: 'UPPCS', url: 'uppcs.html', keywords: 'uppcs up psc uppsc उत्तर प्रदेश लोक सेवा', icon: '🏛️', category: 'केंद्रीय परीक्षा' },
+    { title: 'MPPSC', url: 'mppsc.html', keywords: 'mppsc mp psc मध्य प्रदेश लोक सेवा', icon: '🏞️', category: 'केंद्रीय परीक्षा' },
+    { title: 'RAS Rajasthan', url: 'ras.html', keywords: 'ras rajasthan rpsc राजस्थान प्रशासनिक सेवा', icon: '🏰', category: 'केंद्रीय परीक्षा' },
+    { title: 'JPSC Jharkhand', url: 'jpsc.html', keywords: 'jpsc jharkhand psc झारखंड लोक सेवा', icon: '🌾', category: 'केंद्रीय परीक्षा' },
+    { title: 'UKPSC Uttarakhand', url: 'ukpsc.html', keywords: 'ukpsc uttarakhand psc उत्तराखंड लोक सेवा', icon: '🏔️', category: 'केंद्रीय परीक्षा' },
+    
     // ===== SSC =====
     { title: 'SSC CGL', url: 'ssc-cgl.html', keywords: 'ssc cgl combined graduate level tier 1 2', icon: '🎓', category: 'SSC' },
     { title: 'SSC CHSL', url: 'ssc-chsl.html', keywords: 'ssc chsl 10+2 ldc deo clerk', icon: '📝', category: 'SSC' },
@@ -52,15 +57,28 @@
     { title: 'Banking', url: 'banking.html', keywords: 'banking ibps po clerk sbi rbi nabard बैंकिंग', icon: '🏦', category: 'रेलवे और बैंकिंग' },
     
     // ===== Defence =====
+    { title: 'NDA / CDS', url: 'nda-cds.html', keywords: 'nda cds defence army navy air force ssb रक्षा', icon: '🎖️', category: 'रक्षा' },
+    
     // ===== Police =====
+    { title: 'बिहार पुलिस', url: 'bihar-police.html', keywords: 'bihar police constable बिहार पुलिस', icon: '👮', category: 'पुलिस' },
+    { title: 'बिहार SI', url: 'bihar-si.html', keywords: 'bihar si sub inspector दरोगा बिहार', icon: '👮', category: 'पुलिस' },
     { title: 'UP Police', url: 'up-police.html', keywords: 'up police si constable fireman jail warder', icon: '🚔', category: 'पुलिस' },
     { title: 'PET Physical Test', url: 'pet.html', keywords: 'pet physical test दौड़ running fitness', icon: '🏃', category: 'पुलिस' },
     
     // ===== Teaching =====
+    { title: 'B.Ed', url: 'b-ed.html', keywords: 'bed b.ed teacher education शिक्षक शिक्षा', icon: '👨‍🏫', category: 'शिक्षक' },
+    { title: 'CTET', url: 'ctet.html', keywords: 'ctet teacher eligibility kvs nvs paper 1 2', icon: '👨‍🏫', category: 'शिक्षक' },
     { title: 'UGC NET / JRF', url: 'ugc-net.html', keywords: 'ugc net jrf assistant professor paper 1 2', icon: '🎓', category: 'शिक्षक' },
     
     // ===== UG & PG =====
     { title: 'JEE Mains', url: 'jee-mains.html', keywords: 'jee mains engineering iit nit iiit entrance', icon: '⚙️', category: 'एंट्रेंस एग्जाम' },
+    { title: 'NEET', url: 'neet.html', keywords: 'neet mbbs bds medical aiims nursing', icon: '🩺', category: 'एंट्रेंस एग्जाम' },
+    { title: 'GATE', url: 'gate.html', keywords: 'gate engineering m.tech psu iit research', icon: '🎓', category: 'एंट्रेंस एग्जाम' },
+    { title: 'BCA / MCA', url: 'bca-mca.html', keywords: 'bca mca computer software it programming', icon: '💻', category: 'एंट्रेंस एग्जाम' },
+    { title: 'LLB / LLM', url: 'llb.html', keywords: 'llb llm law clat ailet advocate वकील', icon: '⚖️', category: 'एंट्रेंस एग्जाम' },
+    { title: 'CAT / MBA', url: 'cat-mba.html', keywords: 'cat mba management iim business', icon: '💼', category: 'एंट्रेंस एग्जाम' },
+    { title: 'Nursing', url: 'nursing.html', keywords: 'nursing bsc gnm anm aiims nurse', icon: '🩺', category: 'एंट्रेंस एग्जाम' },
+    { title: 'CUET', url: 'cuet.html', keywords: 'cuet ug pg university admission du bhu jnu', icon: '🎓', category: 'एंट्रेंस एग्जाम' },
     { title: 'BA / MA', url: 'ba-ma.html', keywords: 'ba ma arts graduation hindi english history', icon: '🎓', category: 'डिग्री कोर्स' },
     
     // ===== Special =====

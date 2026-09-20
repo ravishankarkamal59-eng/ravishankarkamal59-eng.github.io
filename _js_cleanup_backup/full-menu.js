@@ -30,15 +30,22 @@
       { href: 'upsc.html', label: 'UPSC Civil Services' },
       { href: 'bpsc.html', label: 'BPSC' },
       { href: 'uppcs.html', label: 'UPPCS / PCS' },
+      { href: 'mppsc.html', label: 'MPPSC' },
+      { href: 'ras.html', label: 'RAS Rajasthan' },
+      { href: 'jpsc.html', label: 'JPSC Jharkhand' },
+      { href: 'ukpsc.html', label: 'UKPSC Uttarakhand' },
       { href: 'ssc-cgl.html', label: 'SSC CGL' },
       { href: 'ssc-chsl.html', label: 'SSC CHSL' },
       { href: 'ssc-mts.html', label: 'SSC MTS' },
       { href: 'ssc-gd.html', label: 'SSC GD' },
       { href: 'railway.html', label: 'Railway' },
       { href: 'banking.html', label: 'Banking' },
+      { href: 'bihar-police.html', label: 'बिहार पुलिस' },
       { href: 'up-police.html', label: 'UP Police' },
       { href: 'up-lekhpal.html', label: 'UP लेखपाल' },
-      ]},
+      { href: 'bihar-si.html', label: 'बिहार SI' },
+      { href: 'nda-cds.html', label: 'NDA / CDS' }
+    ]},
     { icon: '📘', title: 'UPPCS Mains', items: [
       { href: 'uppcs-mains-gs1.html', label: 'GS Paper 1' },
       { href: 'uppcs-mains-gs2.html', label: 'GS Paper 2' },
@@ -115,7 +122,16 @@
       { href: 'bsc-soil-science.html', label: 'BSc Soil Science' }
     ]},
     { icon: '🎯', title: 'अन्य परीक्षाएँ', items: [
+      { href: 'cuet.html', label: 'CUET' },
+      { href: 'ctet.html', label: 'CTET' },
+      { href: 'b-ed.html', label: 'B.Ed' },
+      { href: 'llb.html', label: 'LLB / LLM' },
+      { href: 'cat-mba.html', label: 'CAT / MBA' },
+      { href: 'gate.html', label: 'GATE' },
       { href: 'jee-mains.html', label: 'JEE Mains' },
+      { href: 'neet.html', label: 'NEET' },
+      { href: 'nursing.html', label: 'Nursing' },
+      { href: 'bca-mca.html', label: 'BCA / MCA' },
       { href: 'pet.html', label: 'PET' }
     ]},
     { icon: '📖', title: 'नोट्स', items: [
