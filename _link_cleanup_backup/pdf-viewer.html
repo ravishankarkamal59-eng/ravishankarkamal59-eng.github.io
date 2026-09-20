@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Viewer - Notes पढ़ें और Download करें | The Ravishankar Insights</title>
+<meta name="description" content="Online PDF Viewer - Notes, PDF files browser में पढ़ें। Logo watermark के साथ download करें।">
+<link rel="canonical" href="https://ravishankarkamal59-eng.github.io/pdf-viewer.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg?v=99">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.pdf-toolbar { background: linear-gradient(135deg,#0f3460,#e94560); color:#fff; padding:0.7rem 1rem; border-radius:12px 12px 0 0; display:flex; align-items:center; gap:0.7rem; flex-wrap:wrap; }
+.pdf-toolbar img { height:32px; width:auto; }
+.pdf-toolbar .title { flex:1; font-weight:600; font-size:0.9rem; min-width:100px; }
+.pdf-toolbar .filename { font-size:0.75rem; opacity:0.85; display:block; }
+.btn-download { background:#27ae60; color:#fff; padding:0.5rem 1rem; border:none; border-radius:20px; cursor:pointer; font-weight:600; font-size:0.82rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem; }
+.btn-close { background:rgba(255,255,255,0.2); color:#fff; padding:0.5rem 1rem; border:none; border-radius:20px; cursor:pointer; font-weight:600; font-size:0.82rem; }
+.pdf-frame { width:100%; height:75vh; border:none; background:#fff; border-radius:0 0 12px 12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+.viewer-wrap { margin:1rem 0; }
+.watermark-badge { position:fixed; bottom:80px; right:15px; background:linear-gradient(135deg,#0f3460,#e94560); color:#fff; padding:6px 12px; border-radius:20px; font-size:11px; z-index:9999; font-family:Arial,sans-serif; box-shadow:0 2px 8px rgba(0,0,0,0.3); display:flex; align-items:center; gap:5px; pointer-events:none; }
+.watermark-badge img { height:20px; width:auto; }
+</style>
+
+<style id="trs-logo-force">
+img[src*="logo.svg?v=99"], img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
+  height: 90px !important;
+  max-height: 90px !important;
+  min-height: 90px !important;
+  width: auto !important;
+  max-width: 130px !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  visibility: visible !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+}
+header, nav {
+  min-height: 75px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+@media (max-width: 768px) {
+  img[src*="logo.svg?v=99"], img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
+    height: 80px !important;
+    max-height: 80px !important;
+    min-height: 80px !important;
+    max-width: 115px !important;
+  }
+  header, nav { min-height: 68px !important; }
+}
+@media (max-width: 480px) {
+  img[src*="logo.svg?v=99"], img.header-logo-img, #mainLogo, .header-logo-img, .logo img, .logo svg, nav img, nav svg, header img, header svg {
+    height: 72px !important;
+    max-height: 72px !important;
+    min-height: 72px !important;
+    max-width: 105px !important;
+  }
+  header, nav { min-height: 62px !important; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="top-bar">📄 Online PDF Viewer</div>
+<nav>
+<a href="index.html"><img src="assets/images/logo.svg?v=99" alt="Logo" style="height:45px;width:auto;max-width:55px"></a>
+<div id="userBox" class="user-box"></div>
+<button class="menu-toggle" aria-label="मेनू">☰</button>
+<ul class="nav-links">
+<li><a href="index.html">होम</a></li>
+<li><a href="notes.html">नोट्स</a></li>
+<li><a href="pdf-viewer.html" class="active">📄 PDF Reader</a></li>
+<li><a href="ai-chat.html">🤖 AI</a></li>
+</ul>
+</nav>
+</header>
+
+<main id="main">
+
+<!-- Viewer Area (अगर URL में ?url= है तो दिखेगा) -->
+<div id="viewerContainer" style="display:none">
+<div class="viewer-wrap">
+<div class="pdf-toolbar">
+<img src="assets/images/logo.svg?v=99" alt="Logo">
+<div class="title">
+📄 The Ravishankar Insights
+<span class="filename" id="fileName">Loading...</span>
+</div>
+<a id="downloadBtn" href="#" download class="btn-download">⬇️ Download</a>
+<button onclick="closeViewer()" class="btn-close">❌ बंद करें</button>
+</div>
+<iframe id="pdfFrame" class="pdf-frame" src=""></iframe>
+</div>
+</div>
+
+<!-- Search Area (अगर कोई URL नहीं) -->
+<div id="searchContainer">
+<div class="content" style="text-align:center;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border-radius:14px">
+<img src="assets/images/logo.svg?v=99" alt="Logo" style="height:70px;width:auto;margin-bottom:0.5rem">
+<h1 style="color:#fff;margin:0;font-size:1.4rem">📄 Online PDF Viewer</h1>
+<p style="margin-top:0.5rem;opacity:0.95;font-size:0.9rem">PDF को browser में पढ़ें - Download के साथ</p>
+</div>
+
+<div class="content" style="margin-top:1rem">
+<label style="display:block;font-weight:600;color:#0f3460;margin-bottom:0.5rem">📎 PDF Link paste करें</label>
+<input type="text" id="pdfUrl" placeholder="https://drive.google.com/file/d/..." style="width:100%;padding:0.9rem;border:2px solid #e0e6ed;border-radius:10px;font-size:0.95rem;box-sizing:border-box">
+<button onclick="openPdf(document.getElementById('pdfUrl').value)" style="display:block;width:100%;margin-top:0.8rem;padding:0.9rem;background:#27ae60;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:1rem">📖 PDF खोलें</button>
+</div>
+
+<div class="content">
+<h2 style="color:#0f3460;font-size:1.1rem;margin-bottom:0.8rem">📚 लोकप्रिय नोट्स</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.7rem">
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #e94560;display:block">
+<strong>📖 Polity Notes</strong>
+<div style="font-size:0.82rem;color:#666;margin-top:0.2rem">Indian Constitution</div>
+</a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #27ae60;display:block">
+<strong>📜 History Notes</strong>
+<div style="font-size:0.82rem;color:#666;margin-top:0.2rem">प्राचीन से आधुनिक</div>
+</a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #3498db;display:block">
+<strong>🌍 Geography Notes</strong>
+<div style="font-size:0.82rem;color:#666;margin-top:0.2rem">भारत और विश्व</div>
+</a>
+<a href="notes.html" style="padding:1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-decoration:none;color:#0f3460;border-left:4px solid #f39c12;display:block">
+<strong>🔬 Science Notes</strong>
+<div style="font-size:0.82rem;color:#666;margin-top:0.2rem">Physics, Chemistry</div>
+</a>
+</div>
+</div>
+</div>
+
+<div id="shareBox" style="background:#fff;padding:1.2rem;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)"></div>
+</main>
+
+<footer>
+<div style="max-width:1100px;margin:0 auto;padding:1rem;text-align:center;color:#aaa;font-size:0.85rem">
+<img src="assets/images/logo.svg?v=99" alt="Logo" style="height:40px;width:auto;margin-bottom:0.5rem"><br>
+© 2026 The Ravishankar Insights
+</div>
+</footer>
+
+<button id="darkToggle" class="dark-toggle">🌙</button>
+<button id="topBtn" class="top-btn">↑</button>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/login-state.js"></script>
+<script src="assets/js/full-menu.js"></script>
+<script src="assets/js/menu-toggle.js"></script>
+<script src="assets/js/pdf-download-watermark.js"></script>
+<script src="assets/js/site-search-v3.js"></script>
+
+<script>
+function getDriveEmbed(url) {
+  // Google Drive link को embed format में बदलें
+  var m = url.match(/\/file\/d\/([^\/]+)/);
+  if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+  m = url.match(/[?&]id=([^&]+)/);
+  if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+  // Dropbox
+  if (url.indexOf('dropbox.com') > -1) {
+    return url.replace('?dl=0', '?raw=1').replace('?dl=1', '?raw=1');
+  }
+  return url;
+}
+
+function openPdf(url) {
+  if (!url || !url.trim()) { alert('PDF URL डालें'); return; }
+  url = url.trim();
+  
+  var embed = getDriveEmbed(url);
+  
+  document.getElementById('pdfFrame').src = embed;
+  document.getElementById('downloadBtn').href = url;
+  
+  // Filename extract करें
+  var filename = url.split('/').pop().split('?')[0] || 'Notes.pdf';
+  if (!filename.endsWith('.pdf')) filename += '.pdf';
+  document.getElementById('fileName').textContent = decodeURIComponent(filename);
+  
+  // Viewer दिखाएँ
+  document.getElementById('viewerContainer').style.display = 'block';
+  document.getElementById('searchContainer').style.display = 'none';
+  
+  // Watermark badge add करें
+  if (!document.getElementById('watermarkBadge')) {
+    var wm = document.createElement('div');
+    wm.id = 'watermarkBadge';
+    wm.className = 'watermark-badge';
+    wm.innerHTML = '<img src="assets/images/logo.svg?v=99" alt="Logo"> The Ravishankar Insights';
+    document.body.appendChild(wm);
+  }
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function closeViewer() {
+  document.getElementById('pdfFrame').src = '';
+  document.getElementById('viewerContainer').style.display = 'none';
+  document.getElementById('searchContainer').style.display = 'block';
+  var wm = document.getElementById('watermarkBadge');
+  if (wm) wm.remove();
+}
+
+// Download button पर click - logo watermark के साथ download करें
+document.addEventListener('DOMContentLoaded', function() {
+  var dlBtn = document.getElementById('downloadBtn');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var url = this.href;
+      var filename = document.getElementById('fileName').textContent || 'notes.pdf';
+      
+      if (window.downloadPdfWithWatermark) {
+        window.downloadPdfWithWatermark(url, filename);
+      } else {
+        // Fallback: सीधा download
+        window.open(url, '_blank');
+      }
+    });
+  }
+  
+  // URL parameter check करें
+  var params = new URLSearchParams(location.search);
+  if (params.get('url')) {
+    var u = decodeURIComponent(params.get('url'));
+    document.getElementById('pdfUrl').value = u;
+    openPdf(u);
+  }
+});
+</script>
+</body>
+</html>

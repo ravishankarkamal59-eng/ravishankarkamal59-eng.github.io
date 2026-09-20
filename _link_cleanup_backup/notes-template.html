@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Ravishankar Insights — Notes</title>
+<style>
+/* ============ FONTS ============ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+/* ============ PAGE SETUP ============ */
+@page {
+  size: A4;
+  margin: 0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans Devanagari',Arial,sans-serif;
+  font-size:12pt;line-height:1.75;color:#1a1a2e;
+  background:#e8ecf1;
+}
+.page{
+  position:relative;
+  width:21cm;
+  min-height:29.7cm;
+  background:#fff;
+  margin:0 auto 20px;
+  padding:2.2cm 1.8cm 3cm 1.8cm;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  overflow:hidden;
+  page-break-after:always;
+}
+
+/* ============ WATERMARK ============ */
+.watermark{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-family:'Playfair Display',serif;
+  font-size:90px;
+  font-weight:900;
+  color:rgba(30,58,138,0.06);
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:0;
+  letter-spacing:8px;
+  user-select:none;
+}
+/* Pseudo watermark for print (works on every page) */
+@media print {
+  .watermark{color:rgba(30,58,138,0.07) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+}
+
+/* ============ CONTENT Z-INDEX ============ */
+.page > *:not(.watermark):not(.logo-banner):not(.page-num){
+  position:relative;
+  z-index:2;
+}
+
+/* ============ LOGO BANNER ============ */
+.logo-banner{
+  position:absolute;
+  bottom:1.2cm;
+  left:1.8cm;
+  right:1.8cm;
+  height:44px;
+  background:linear-gradient(135deg,#0f3460,#1e3a8a);
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:#fff;
+  font-family:'Playfair Display',serif;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:3px;
+  z-index:3;
+  box-shadow:0 2px 8px rgba(15,52,96,0.25);
+}
+.logo-banner::before{
+  content:"R";
+  width:32px;height:32px;
+  background:#c2410c;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:900;
+  color:#fff;
+}
+.page-num{
+  position:absolute;
+  bottom:0.7cm;
+  right:2cm;
+  font-size:9pt;
+  color:#94a3b8;
+  font-weight:600;
+  z-index:3;
+}
+
+/* ============ COVER PAGE ============ */
+.cover{
+  background:linear-gradient(160deg,#0f3460 0%,#1e3a8a 50%,#c2410c 100%);
+  padding:3cm 2cm;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+.cover .watermark{color:rgba(255,255,255,0.08) !important;font-size:110px;}
+.cover .brand-badge{
+  background:rgba(255,255,255,0.15);
+  border:2px solid rgba(255,255,255,0.4);
+  border-radius:50px;
+  padding:10px 26px;
+  font-family:'Playfair Display',serif;
+  font-size:13px;
+  letter-spacing:4px;
+  font-weight:700;
+  margin-bottom:40px;
+  backdrop-filter:blur(10px);
+}
+.cover h1{
+  font-family:'Playfair Display','Noto Sans Devanagari',serif;
+  font-size:44pt;
+  font-weight:900;
+  line-height:1.15;
+  margin-bottom:20px;
+  text-shadow:0 4px 20px rgba(0,0,0,0.3);
+  letter-spacing:-1px;
+}
+.cover .subtitle{
+  font-size:16pt;
+  opacity:0.9;
+  margin-bottom:10px;
+  font-weight:600;
+}
+.cover .subtitle-en{
+  font-size:12pt;
+  opacity:0.7;
+  font-style:italic;
+  margin-bottom:50px;
+  font-family:'Playfair Display',serif;
+}
+.cover .divider{
+  width:100px;
+  height:4px;
+  background:#fbbf24;
+  border-radius:2px;
+  margin:20px auto 40px;
+}
+.cover .topic-list{
+  font-size:12pt;
+  line-height:2;
+  opacity:0.9;
+  margin-bottom:50px;
+}
+.cover .footer-brand{
+  font-family:'Playfair Display',serif;
+  font-size:20pt;
+  font-weight:900;
+  letter-spacing:2px;
+  margin-top:auto;
+}
+.cover .footer-brand .logo-circle{
+  display:inline-block;
+  width:46px;height:46px;
+  background:#c2410c;
+  border-radius:12px;
+  line-height:46px;
+  text-align:center;
+  font-size:26px;
+  margin-right:12px;
+  vertical-align:middle;
+}
+.cover .year{
+  font-size:11pt;
+  opacity:0.6;
+  margin-top:16px;
+  letter-spacing:3px;
+}
+
+/* ============ HEADINGS ============ */
+h1.section-title{
+  font-family:'Playfair Display','Noto Sans Devanagari',serif;
+  font-size:24pt;
+  color:#0f3460;
+  margin:0 0 24px;
+  padding-bottom:14px;
+  border-bottom:4px solid #c2410c;
+  position:relative;
+  letter-spacing:-0.5px;
+}
+h1.section-title::after{
+  content:"";
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:100px;
+  height:4px;
+  background:#fbbf24;
+}
+h2{
+  font-size:16pt;
+  color:#c2410c;
+  margin:28px 0 14px;
+  padding-left:16px;
+  border-left:5px solid #c2410c;
+  font-weight:800;
+}
+h3{
+  font-size:13pt;
+  color:#1e3a8a;
+  margin:20px 0 10px;
+  font-weight:700;
+}
+h4{
+  font-size:12pt;
+  color:#7c2d12;
+  margin:16px 0 8px;
+  font-weight:700;
+}
+p{margin:10px 0;text-align:justify}
+ul,ol{margin:12px 0 12px 28px}
+li{margin:6px 0}
+strong{color:#0f3460;font-weight:700}
+
+/* ============ TABLE OF CONTENTS ============ */
+.toc{
+  background:#f8fafc;
+  border:2px solid #cbd5e0;
+  border-radius:14px;
+  padding:24px 28px;
+  margin:20px 0;
+}
+.toc h2{
+  border:none;
+  padding:0;
+  text-align:center;
+  color:#0f3460;
+  margin-bottom:18px;
+  font-size:18pt;
+}
+.toc ol{
+  columns:2;
+  column-gap:32px;
+  list-style-position:inside;
+  padding-left:0;
+}
+.toc li{
+  padding:5px 0;
+  font-size:11pt;
+  font-weight:600;
+  break-inside:avoid;
+  border-bottom:1px dashed #e2e8f0;
+}
+
+/* ============ TABLES ============ */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:16px 0;
+  font-size:10.5pt;
+  page-break-inside:avoid;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+th{
+  background:linear-gradient(135deg,#c2410c,#dc2626);
+  color:#fff;
+  padding:11px 12px;
+  text-align:left;
+  font-weight:800;
+  font-size:11pt;
+}
+td{
+  border:1px solid #e2e8f0;
+  padding:9px 12px;
+  vertical-align:top;
+}
+tr:nth-child(even){background:#fff7ed}
+tr:nth-child(odd){background:#fff}
+td strong{color:#c2410c}
+
+/* ============ INFO BOXES ============ */
+.box{
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border-left:6px solid #1e40af;
+  padding:16px 20px;
+  margin:16px 0;
+  border-radius:0 12px 12px 0;
+  position:relative;
+}
+.box::before{
+  content:"📌";
+  position:absolute;
+  top:14px;right:16px;
+  font-size:20px;
+  opacity:0.4;
+}
+.box h4{margin-top:0;color:#1e3a8a;font-size:12pt}
+.box.warn{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left-color:#d97706}
+.box.warn::before{content:"⚠️"}
+.box.warn h4{color:#92400e}
+.box.green{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-left-color:#16a34a}
+.box.green::before{content:"✅"}
+.box.green h4{color:#166534}
+.box.red{background:linear-gradient(135deg,#fef2f2,#fecaca);border-left-color:#dc2626}
+.box.red::before{content:"❗"}
+.box.red h4{color:#991b1b}
+.box.purple{background:linear-gradient(135deg,#faf5ff,#e9d5ff);border-left-color:#7c3aed}
+.box.purple::before{content:"💡"}
+.box.purple h4{color:#5b21b6}
+
+/* ============ QUOTE ============ */
+.quote{
+  background:#fef9c3;
+  border-left:6px solid #eab308;
+  padding:18px 24px;
+  margin:20px 0;
+  font-style:italic;
+  font-size:12.5pt;
+  color:#713f12;
+  border-radius:0 12px 12px 0;
+  position:relative;
+}
+.quote::before{
+  content:"❝";
+  font-size:40px;
+  color:#eab308;
+  position:absolute;
+  top:4px;left:10px;
+  line-height:1;
+  opacity:0.4;
+}
+.quote::after{
+  content:"❞";
+  font-size:40px;
+  color:#eab308;
+  position:absolute;
+  bottom:-8px;right:16px;
+  line-height:1;
+  opacity:0.4;
+}
+
+/* ============ IMPORTANT ============ */
+.important{
+  background:linear-gradient(135deg,#fed7aa,#fdba74);
+  padding:14px 20px;
+  border-radius:12px;
+  margin:16px 0;
+  border-left:6px solid #ea580c;
+  font-weight:600;
+  color:#7c2d12;
+  box-shadow:0 2px 8px rgba(234,88,12,0.15);
+}
+.important::before{content:"🎯 ";font-size:16px}
+
+/* ============ FLOW DIAGRAM ============ */
+.flow{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin:24px 0;
+  padding:20px;
+  background:#f8fafc;
+  border-radius:14px;
+  border:2px dashed #cbd5e0;
+}
+.flow-box{
+  background:linear-gradient(135deg,#1e3a8a,#3b82f6);
+  color:#fff;
+  padding:12px 28px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:11.5pt;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(30,58,138,0.3);
+  min-width:220px;
+}
+.flow-box.orange{background:linear-gradient(135deg,#c2410c,#ea580c);box-shadow:0 4px 12px rgba(194,65,12,0.3)}
+.flow-box.green{background:linear-gradient(135deg,#15803d,#22c55e);box-shadow:0 4px 12px rgba(21,128,61,0.3)}
+.flow-box.purple{background:linear-gradient(135deg,#7c3aed,#a78bfa);box-shadow:0 4px 12px rgba(124,58,237,0.3)}
+.flow-arrow{
+  font-size:24px;
+  color:#94a3b8;
+  font-weight:900;
+  line-height:1;
+}
+
+/* ============ PYRAMID / HIERARCHY ============ */
+.pyramid{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  margin:24px 0;
+  padding:20px;
+}
+.pyr-level{
+  color:#fff;
+  padding:14px 20px;
+  text-align:center;
+  font-weight:700;
+  font-size:11pt;
+  border-radius:10px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.15);
+  transition:transform 0.2s;
+}
+.pyr-level:hover{transform:scale(1.02)}
+
+/* ============ TWO-COLUMN GRID ============ */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:16px 0;
+}
+.grid-card{
+  background:#fff;
+  border:2px solid #e2e8f0;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.grid-card h4{margin-top:0;margin-bottom:8px;color:#1e3a8a;font-size:11.5pt}
+
+/* ============ CYCLE DIAGRAM ============ */
+.cycle{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+.cycle-item{
+  background:linear-gradient(135deg,#f8fafc,#e2e8f0);
+  border:2px solid #94a3b8;
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+  font-weight:700;
+  color:#1e3a8a;
+  font-size:11pt;
+  position:relative;
+}
+.cycle-item .num{
+  display:block;
+  font-size:22pt;
+  color:#c2410c;
+  font-weight:900;
+  margin-bottom:6px;
+  font-family:'Playfair Display',serif;
+}
+
+/* ============ TIMELINE ============ */
+.timeline{
+  position:relative;
+  padding-left:32px;
+  margin:20px 0;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:12px;top:8px;bottom:8px;
+  width:3px;
+  background:linear-gradient(180deg,#c2410c,#fbbf24);
+  border-radius:2px;
+}
+.tl-item{
+  position:relative;
+  margin-bottom:20px;
+  background:#fff;
+  padding:14px 18px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-left:4px solid #c2410c;
+}
+.tl-item::before{
+  content:"";
+  position:absolute;
+  left:-27px;top:20px;
+  width:16px;height:16px;
+  background:#fbbf24;
+  border:3px solid #fff;
+  border-radius:50%;
+  box-shadow:0 0 0 2px #c2410c;
+}
+.tl-item .year{
+  font-weight:900;
+  color:#c2410c;
+  font-size:11pt;
+  display:block;
+  margin-bottom:4px;
+}
+
+/* ============ HIGHLIGHT ============ */
+.highlight{
+  background:linear-gradient(180deg,transparent 60%,#fde047 60%);
+  padding:0 3px;
+  font-weight:700;
+}
+
+/* ============ PRINT ============ */
+@media print {
+  body{background:#fff;margin:0}
+  .page{
+    width:100%;
+    min-height:auto;
+    margin:0;
+    box-shadow:none;
+    padding:2cm 1.5cm 2.5cm;
+    page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto}
+  .logo-banner,.watermark,.page-num,.cover,.box,.quote,.important,.flow-box,.pyr-level{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="page cover">
+  <div class="watermark">ravishankar</div>
+  <div class="brand-badge">THE RAVISHANKAR INSIGHTS</div>
+  <h1>प्लेटो का आदर्श राज्य</h1>
+  <div class="subtitle">संपूर्ण विश्लेषण</div>
+  <div class="subtitle-en">Plato's Ideal State — Complete Analysis</div>
+  <div class="divider"></div>
+  <div class="topic-list">
+    दर्शन • राजनीति • न्याय • शिक्षा<br>
+    साम्यवाद • वर्ग विभाजन • आलोचना
+  </div>
+  <div class="footer-brand">
+    <span class="logo-circle">R</span>The Ravishankar Insights
+  </div>
+  <div class="year">UGC NET • UPSC • BA • MA</div>
+</div>
+
+<!-- ==================== PAGE 2: TOC ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">विषय-सूची</h1>
+  <div class="toc">
+    <h2>📖 Table of Contents</h2>
+    <ol>
+      <li>भूमिका</li>
+      <li>पृष्ठभूमि — आदर्श राज्य की आवश्यकता</li>
+      <li>यूनानी नगर-राज्य और प्लेटो</li>
+      <li>आदर्श राज्य की परिभाषा</li>
+      <li>आदर्श राज्य का विश्लेषण</li>
+      <li>आदर्श राज्य का वर्ग विभाजन</li>
+      <li>दार्शनिक राजा — शासक वर्ग</li>
+      <li>सैनिक वर्ग (रक्षक)</li>
+      <li>उत्पादक वर्ग</li>
+      <li>शिक्षा व्यवस्था</li>
+      <li>साम्यवाद — संपत्ति और परिवार</li>
+      <li>महिलाओं की स्थिति</li>
+      <li>न्याय और आदर्श राज्य</li>
+      <li>कानून की स्थिति</li>
+      <li>अन्य राज्यों से तुलना</li>
+      <li>आदर्श राज्य से पतन का क्रम</li>
+      <li>आदर्श राज्य की मुख्य विशेषताएँ</li>
+      <li>आलोचनाएँ</li>
+      <li>आज के संदर्भ में प्रासंगिकता</li>
+      <li>निष्कर्ष</li>
+    </ol>
+  </div>
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 2</div>
+</div>
+
+<!-- ==================== PAGE 3: SECTION 1 ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">1. भूमिका</h1>
+  
+  <p>प्लेटो का आदर्श राज्य (Ideal State) उनके पूरे राजनीतिक दर्शन का <span class="highlight">केंद्रबिंदु</span> है। अपनी प्रसिद्ध रचना <strong>"रिपब्लिक" (The Republic)</strong> में प्लेटो ने एक ऐसे राज्य की कल्पना की है जो पूर्ण न्याय, पूर्ण नैतिकता और पूर्ण ज्ञान पर आधारित हो।</p>
+
+  <p>यह राज्य किसी भौगोलिक सीमा या ऐतिहासिक कालखंड तक सीमित नहीं है, बल्कि यह एक <strong>"आदर्श" (Ideal)</strong> है — जिसे कभी पूरी तरह लागू नहीं किया जा सकता, परंतु जिसकी ओर हर राज्य को बढ़ना चाहिए।</p>
+
+  <div class="box">
+    <h4>💭 प्लेटो का मूल प्रश्न</h4>
+    <p>"क्या न्याय केवल शक्तिशाली की इच्छा है, या वह एक वस्तुनिष्ठ सत्य है?" — प्लेटो ने इस प्रश्न से अपना दार्शनिक सफर शुरू किया।</p>
+  </div>
+
+  <h2>प्लेटो के आदर्श राज्य का सार</h2>
+  <p>प्लेटो के आदर्श राज्य को समझने के लिए यह जानना आवश्यक है कि यह केवल एक "राजनीतिक व्यवस्था" नहीं है, बल्कि यह एक <span class="highlight">"जीवन-दर्शन"</span> है।</p>
+
+  <div class="quote">
+    आदर्श राज्य वह नहीं जहाँ शासक की इच्छा चलती हो, बल्कि वह जहाँ न्याय की इच्छा चलती हो।
+  </div>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 3</div>
+</div>
+
+<!-- ==================== PAGE 4: SECTION 2 with FLOW DIAGRAM ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">2. पृष्ठभूमि — आदर्श राज्य की आवश्यकता</h1>
+  
+  <p>प्लेटो ने आदर्श राज्य की कल्पना तीन मुख्य परिस्थितियों के कारण की:</p>
+
+  <div class="flow">
+    <div class="flow-box">1. सुकरात की मृत्यु (399 ई.पू.)</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-box orange">2. यूनानी राज्यों का पतन</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-box green">3. पेलोपोनेशियन युद्ध (27 वर्ष)</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-box purple">4. सिरैक्यूज के अनुभव (3 असफलताएँ)</div>
+  </div>
+
+  <h2>2.1 सुकरात की मृत्यु</h2>
+  <p>399 ईसा पूर्व में एथेंस की लोकतांत्रिक व्यवस्था ने सुकरात को मृत्यु की सजा सुनाई। यह घटना प्लेटो के लिए जीवन का <span class="highlight">सबसे बड़ा आघात</span> थी।</p>
+
+  <div class="important">
+    जिस राज्य में सबसे ज्ञानी और नैतिक व्यक्ति को मौत की सजा मिले, वह राज्य कैसे न्यायपूर्ण हो सकता है? — इसी प्रश्न से आदर्श राज्य का बीजारोपण हुआ।
+  </div>
+
+  <h2>2.2 यूनानी राज्यों का पतन</h2>
+  <p>प्लेटो के समय में ग्रीस अनेक छोटे-छोटे नगर-राज्यों में बँटा हुआ था। ये राज्य आपस में लड़ते रहते थे, भ्रष्टाचार से ग्रस्त थे, और उनमें कोई एकता नहीं थी।</p>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 4</div>
+</div>
+
+<!-- ==================== PAGE 5: SECTION 6 with PYRAMID ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">6. आदर्श राज्य का वर्ग विभाजन</h1>
+  
+  <p>प्लेटो ने समाज को <span class="highlight">तीन वर्गों</span> में बाँटा। यह विभाजन जन्म पर नहीं, बल्कि <strong>योग्यता और शिक्षा</strong> पर आधारित था।</p>
+
+  <div class="pyramid">
+    <div class="pyr-level purple" style="width:35%">दार्शनिक राजा (Philosophers)<br><small>शासन • ज्ञान</small></div>
+    <div class="pyr-level orange" style="width:60%">सैनिक वर्ग (Warriors)<br><small>रक्षा • वीरता</small></div>
+    <div class="pyr-level green" style="width:90%">उत्पादक वर्ग (Producers)<br><small>उत्पादन • संयम</small></div>
+  </div>
+
+  <h2>6.1 वर्ग विभाजन की विशेषताएँ</h2>
+  <ul>
+    <li><strong>योग्यता आधारित:</strong> जन्म नहीं, कर्म से वर्ग मिलता है</li>
+    <li><strong>गतिशीलता संभव:</strong> योग्यता सिद्ध करने पर वर्ग बदल सकता है</li>
+    <li><strong>सहयोग का संबंध:</strong> तीनों वर्ग एक-दूसरे के पूरक हैं</li>
+    <li><strong>विशेषज्ञता:</strong> हर वर्ग का अलग कार्य</li>
+  </ul>
+
+  <table>
+    <tr><th>वर्ग</th><th>आत्मा का भाग</th><th>सद्गुण</th><th>कार्य</th><th>संख्या</th></tr>
+    <tr><td><strong>दार्शनिक</strong></td><td>विवेक</td><td>ज्ञान</td><td>शासन</td><td>अल्प</td></tr>
+    <tr><td><strong>सैनिक</strong></td><td>साहस</td><td>वीरता</td><td>रक्षा</td><td>मध्यम</td></tr>
+    <tr><td><strong>उत्पादक</strong></td><td>इच्छा</td><td>संयम</td><td>उत्पादन</td><td>अधिक</td></tr>
+  </table>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 5</div>
+</div>
+
+<!-- ==================== PAGE 6: EDUCATION TIMELINE ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">10. शिक्षा व्यवस्था</h1>
+  
+  <p>प्लेटो के आदर्श राज्य की सबसे महत्वपूर्ण विशेषता है — उसकी <span class="highlight">शिक्षा व्यवस्था</span>। शिक्षा राज्य की सबसे बड़ी जिम्मेदारी है।</p>
+
+  <h2>शिक्षा के चरण (Timeline)</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="year">7-18 वर्ष</span>
+      <strong>प्राथमिक शिक्षा</strong> — संगीत, कविता, व्यायाम, गणित
+    </div>
+    <div class="tl-item">
+      <span class="year">18-20 वर्ष</span>
+      <strong>सैन्य प्रशिक्षण</strong> — रक्षा के लिए तैयारी
+    </div>
+    <div class="tl-item">
+      <span class="year">20-30 वर्ष</span>
+      <strong>वैज्ञानिक शिक्षा</strong> — उच्च गणित, ज्योतिष, संगीत
+    </div>
+    <div class="tl-item">
+      <span class="year">30-35 वर्ष</span>
+      <strong>द्वंद्वात्मक पद्धति</strong> — दर्शन, सत्य का ज्ञान
+    </div>
+    <div class="tl-item">
+      <span class="year">35-50 वर्ष</span>
+      <strong>प्रशासनिक अनुभव</strong> — व्यावहारिक शासन
+    </div>
+    <div class="tl-item">
+      <span class="year">50+ वर्ष</span>
+      <strong>दार्शनिक राजा</strong> — पूर्ण शासन
+    </div>
+  </div>
+
+  <div class="important">
+    प्लेटो की शिक्षा व्यवस्था का सबसे बड़ा उद्देश्य है — <strong>योग्यता के आधार पर दार्शनिक राजा तैयार करना।</strong>
+  </div>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 6</div>
+</div>
+
+<!-- ==================== PAGE 7: FALL CYCLE ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">16. आदर्श राज्य से पतन का क्रम</h1>
+  
+  <p>प्लेटो के अनुसार, आदर्श राज्य भी एक दिन पतित होता है, और फिर अन्य राज्यों की शृंखला शुरू होती है:</p>
+
+  <div class="cycle">
+    <div class="cycle-item"><span class="num">1</span>आदर्श राज्य<br><small>ज्ञान का शासन</small></div>
+    <div class="cycle-item"><span class="num">2</span>टिमोक्रेसी<br><small>सम्मान का शासन</small></div>
+    <div class="cycle-item"><span class="num">3</span>ऑलिगार्की<br><small>धन का शासन</small></div>
+    <div class="cycle-item"><span class="num">4</span>डेमोक्रेसी<br><small>जनता का शासन</small></div>
+    <div class="cycle-item"><span class="num">5</span>टायरनी<br><small>अत्याचार का शासन</small></div>
+    <div class="cycle-item" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#dc2626"><span class="num">✖</span>पतन<br><small>सबसे बुरा</small></div>
+  </div>
+
+  <h2>पतन के कारण</h2>
+  <div class="grid-2">
+    <div class="grid-card">
+      <h4>1. एकता का अभाव</h4>
+      <p>जब शासक वर्ग आपस में लड़ें</p>
+    </div>
+    <div class="grid-card">
+      <h4>2. वर्ग संघर्ष</h4>
+      <p>जब वर्गों के बीच असमानता बढ़े</p>
+    </div>
+    <div class="grid-card">
+      <h4>3. भ्रष्टाचार</h4>
+      <p>जब शासक स्वार्थी हो जाएँ</p>
+    </div>
+    <div class="grid-card">
+      <h4>4. अज्ञानता</h4>
+      <p>जब शासन ज्ञान पर आधारित न हो</p>
+    </div>
+  </div>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 7</div>
+</div>
+
+<!-- ==================== PAGE 8: JUSTICE TABLE ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">13. न्याय और आदर्श राज्य</h1>
+  
+  <p>प्लेटो के आदर्श राज्य का केंद्रीय विषय है — <span class="highlight">न्याय</span>। यह केवल कानूनी अवधारणा नहीं, बल्कि एक नैतिक और सामाजिक गुण है।</p>
+
+  <div class="quote">
+    न्याय वह है जब प्रत्येक व्यक्ति अपने स्वयं के कार्य को करता है, और दूसरों के कार्य में हस्तक्षेप नहीं करता।
+  </div>
+
+  <h2>न्याय के चार तत्व</h2>
+  <table>
+    <tr><th>सद्गुण</th><th>वर्ग</th><th>अर्थ</th></tr>
+    <tr><td><strong>ज्ञान (Wisdom)</strong></td><td>दार्शनिक</td><td>शासन का ज्ञान</td></tr>
+    <tr><td><strong>वीरता (Courage)</strong></td><td>सैनिक</td><td>रक्षा का साहस</td></tr>
+    <tr><td><strong>संयम (Temperance)</strong></td><td>उत्पादक</td><td>इच्छाओं पर नियंत्रण</td></tr>
+    <tr><td><strong>न्याय (Justice)</strong></td><td>तीनों में</td><td>सामंजस्य</td></tr>
+  </table>
+
+  <div class="box green">
+    <h4>✅ न्याय की प्राप्ति कब होती है?</h4>
+    <ul>
+      <li>जब दार्शनिक ज्ञान के आधार पर शासन करें</li>
+      <li>जब सैनिक वीरता के साथ रक्षा करें</li>
+      <li>जब उत्पादक संयम के साथ उत्पादन करें</li>
+      <li>जब तीनों वर्गों में सामंजस्य हो</li>
+    </ul>
+  </div>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 8</div>
+</div>
+
+<!-- ==================== PAGE 9: CRITICISM ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">18. आलोचनाएँ</h1>
+  
+  <p>प्लेटो के आदर्श राज्य की अनेक स्तरों पर आलोचना हुई है।</p>
+
+  <div class="box red">
+    <h4>अरस्तू की आलोचना</h4>
+    <ul>
+      <li><strong>अव्यावहारिक:</strong> यह केवल काल्पनिक है</li>
+      <li><strong>अमानवीय:</strong> परिवार और संपत्ति का साम्यवाद मानव स्वभाव के विरुद्ध</li>
+      <li><strong>राज्य का अतिक्रमण:</strong> व्यक्ति के जीवन में दखल</li>
+      <li><strong>कानून का अभाव:</strong> कानून के बिना शासन संभव नहीं</li>
+    </ul>
+  </div>
+
+  <h2>18.2 आधुनिक आलोचनाएँ</h2>
+  <table>
+    <tr><th>आलोचक</th><th>आलोचना</th></tr>
+    <tr><td><strong>कार्ल पॉपर</strong></td><td>अधिनायकवादी, खुला समाज विरोधी</td></tr>
+    <tr><td><strong>हॉब्स</strong></td><td>स्वतंत्रता का हनन</td></tr>
+    <tr><td><strong>बर्ट्रेंड रसेल</strong></td><td>अलोकतांत्रिक, रूढ़िवादी</td></tr>
+    <tr><td><strong>सैबाइन</strong></td><td>अव्यावहारिक, काल्पनिक</td></tr>
+    <tr><td><strong>मैक्सी</strong></td><td>कुलीनतंत्रीय, अव्यवाहारिक</td></tr>
+  </table>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 9</div>
+</div>
+
+<!-- ==================== PAGE 10: CONCLUSION ==================== -->
+<div class="page">
+  <div class="watermark">ravishankar</div>
+  <h1 class="section-title">20. निष्कर्ष</h1>
+  
+  <p>प्लेटो का आदर्श राज्य पश्चिमी राजनीतिक चिंतन के इतिहास में एक <span class="highlight">अमर अवधारणा</span> है। उन्होंने एक ऐसे राज्य की कल्पना की जहाँ न्याय, नैतिकता, ज्ञान और योग्यता सर्वोच्च हों।</p>
+
+  <div class="box purple">
+    <h4>💡 प्लेटो के आदर्श राज्य की मुख्य विशेषताएँ</h4>
+    <ul>
+      <li><strong>आदर्शवाद:</strong> आदर्श राज्य की कल्पना</li>
+      <li><strong>नैतिकता:</strong> राजनीति को नैतिकता से जोड़ा</li>
+      <li><strong>योग्यता:</strong> शासन योग्यता के आधार पर</li>
+      <li><strong>ज्ञान:</strong> ज्ञानी शासन का आधार</li>
+      <li><strong>न्याय:</strong> सबसे बड़ा सद्गुण</li>
+    </ul>
+  </div>
+
+  <div class="quote">
+    प्लेटो का आदर्श राज्य हमें यह सिखाता है कि राजनीति केवल शक्ति का खेल नहीं, बल्कि समाज को न्यायपूर्ण, नैतिक, और ज्ञानी बनाने का साधन है।
+  </div>
+
+  <h2>आज के संदर्भ में प्रासंगिकता</h2>
+  <div class="grid-2">
+    <div class="grid-card">
+      <h4>शिक्षा</h4>
+      <p>योग्यता आधारित शिक्षा — meritocracy का आधार</p>
+    </div>
+    <div class="grid-card">
+      <h4>न्याय</h4>
+      <p>फंक्शनल स्पेशलाइजेशन — आधुनिक specialization</p>
+    </div>
+    <div class="grid-card">
+      <h4>राजनीति</h4>
+      <p>योग्य शासक की आवश्यकता — आज भी प्रासंगिक</p>
+    </div>
+    <div class="grid-card">
+      <h4>भ्रष्टाचार</h4>
+      <p>आज भी सबसे बड़ी समस्या</p>
+    </div>
+  </div>
+
+  <div class="important">
+    अरस्तू ने कहा था — "प्लेटो मेरा मित्र है, पर सत्य उससे भी बड़ा है।" यही प्लेटो के आदर्श राज्य की सबसे बड़ी विशेषता है — वह सत्य की खोज में था।
+  </div>
+
+  <div class="logo-banner">THE RAVISHANKAR INSIGHTS</div>
+  <div class="page-num">Page 10</div>
+</div>
+
+</body>
+</html>
