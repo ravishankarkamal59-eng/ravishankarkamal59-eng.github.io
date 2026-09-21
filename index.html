@@ -402,6 +402,91 @@ section.compact-section > div > p {
   }
 }
 
+
+/* ============================================
+   FULL WIDTH FIX — Remove side white space
+   ============================================ */
+
+/* Body full width */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #f7fafc !important;
+}
+
+/* All sections full width */
+section {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Override any max-width on section inner divs */
+section > div {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 0 0.8rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Stats override */
+.stats {
+  max-width: 100% !important;
+  margin: 1rem auto !important;
+  padding: 0.8rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Grid overrides — ensure full width */
+section > div[style*="grid-template-columns"] {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* Trust badges container */
+div[style*="max-width:1100px"] {
+  max-width: 1100px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.8rem !important;
+  padding-right: 0.8rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Free PDFs section */
+section[style*="Free PDFs"] {
+  max-width: 1100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Footer full width */
+footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+  section > div {
+    padding: 0 0.6rem !important;
+  }
+  
+  section > div[style*="max-width:1100px"],
+  section > div[style*="max-width:900px"],
+  section > div[style*="max-width:700px"] {
+    max-width: 100% !important;
+    padding: 0 0.6rem !important;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="assets/css/style.css?v=10">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
@@ -595,7 +680,7 @@ if ('caches' in window) {
     </div>
   </div>
 </div
-<div class="stats" style="display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:0.6rem !important;padding:0.8rem !important;max-width:500px !important;margin:1rem auto !important">
+<div class="stats" style="display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:0.6rem !important;padding:0.8rem !important;max-width:100% !important;margin:1rem auto !important">
 <div class="stat" style="padding:0.7rem 0.4rem !important;border-radius:12px !important;text-align:center !important">
 <h3 style="font-size:1.5rem !important;margin:0 0 0.2rem 0 !important">50+</h3>
 <p style="font-size:0.7rem !important;margin:0 !important">सरकारी परीक्षाएँ</p>
@@ -647,7 +732,7 @@ if ('caches' in window) {
   <h2 style="text-align:center;color:#7c2d12;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem">🔥 Free PDFs Download करें</h2>
   <p style="text-align:center;color:#a0522d;margin-bottom:1rem;font-size:0.8rem">सबसे ज़्यादा download होने वाले notes</p>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.6rem;max-width:900px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.6rem;max-width:100%;margin:0 auto">
 
     <a href="uppcs-gs5-notes.html" style="text-decoration:none;color:inherit;background:#fff;padding:0.8rem;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.08);display:flex;align-items:center;gap:0.6rem">
       <div style="width:36px;height:36px;background:linear-gradient(135deg,#e94560,#c73650);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">📘</div>
@@ -689,7 +774,7 @@ if ('caches' in window) {
     <h2 style="text-align:center;color:#0f3460;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem">🚀 कैसे करें तैयारी?</h2>
     <p style="text-align:center;color:#666;margin-bottom:1rem;font-size:0.8rem">सिर्फ 4 आसान steps में अपनी preparation शुरू करें</p>
     
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;max-width:900px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;max-width:100%;margin:0 auto">
       
       <a href="exams.html" style="text-decoration:none;color:inherit;background:#fff;padding:0.9rem 0.7rem;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:all 0.25s;display:block;border:2px solid transparent" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 30px rgba(233,69,96,0.15)';this.style.borderColor='#e94560'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.06)';this.style.borderColor='transparent'">
         <div style="width:42px;height:42px;background:linear-gradient(135deg,#e94560,#c73650);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin:0 auto 0.5rem;font-weight:900">1</div>
@@ -726,7 +811,7 @@ if ('caches' in window) {
     <h2 style="text-align:center;color:#0f3460;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem">✨ हम क्या देते हैं?</h2>
     <p style="text-align:center;color:#666;margin-bottom:1rem;font-size:0.8rem">एक platform पर सब कुछ — तैयारी के लिए जो भी चाहिए</p>
     
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;max-width:900px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;max-width:100%;margin:0 auto">
       
       <a href="notes.html" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,#fef5f7,#fde8ec);padding:0.9rem;border-radius:12px;border-left:4px solid #e94560;transition:transform 0.2s;display:block" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
         <div style="font-size:1.4rem;margin-bottom:0.3rem">📝</div>
@@ -772,7 +857,7 @@ if ('caches' in window) {
     <h2 style="text-align:center;color:#0f3460;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem">📚 Subject-wise Study Material</h2>
     <p style="text-align:center;color:#666;margin-bottom:1rem;font-size:0.8rem">अपने पसंदीदा विषय को सीधे access करें</p>
     
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;max-width:700px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;max-width:100%;margin:0 auto">
       
       <a href="indian-history-notes.html" style="text-decoration:none;color:inherit;background:#fff;padding:0.7rem 0.5rem;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:all 0.2s;display:block" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(233,69,96,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 12px rgba(0,0,0,0.06)'">
         <div style="font-size:1.4rem;margin-bottom:0.2rem">📜</div>
@@ -934,7 +1019,7 @@ if ('caches' in window) {
 
 
 <section style="padding:1.5rem 0.8rem;background:#fff">
-  <div style="max-width:900px;margin:0 auto">
+  <div style="max-width:100%;margin:0 auto">
     <h2 style="text-align:center;color:#0f3460;font-size:1.7rem;font-weight:900;margin-bottom:0.4rem">❓ अक्सर पूछे जाने वाले प्रश्न</h2>
     <p style="text-align:center;color:#666;margin-bottom:1rem;font-size:0.8rem">आपके सवाल — हमारे जवाब</p>
     
