@@ -110,6 +110,36 @@ body > *:last-child {
   margin-bottom: 0 !important;
 }
 
+
+/* ===== MOBILE STATS GRID ===== */
+.stats {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.6rem !important;
+  padding: 0.8rem !important;
+  margin: 0.8rem auto !important;
+  max-width: 500px !important;
+}
+.stat {
+  padding: 0.7rem 0.4rem !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+}
+.stat h3 {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.2rem !important;
+}
+.stat p {
+  font-size: 0.7rem !important;
+  line-height: 1.3 !important;
+}
+@media (min-width: 600px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+    max-width: 900px !important;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="assets/css/style.css?v=10">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
@@ -244,8 +274,8 @@ header, nav {
 <h1 style="font-size:1.1rem;line-height:1.3;margin-bottom:0.4rem;font-weight:800">सरकारी परीक्षा की तैयारी <span>अब आसान</span></h1>
 <p style="font-size:0.75rem;line-height:1.4;margin-bottom:0.7rem;color:#e0e0e0">UPSC, BPSC, SSC, Railway, Banking, Police — सभी परीक्षाओं की मुफ़्त तैयारी</p>
 <div style="display:flex;gap:0.4rem;justify-content:center;flex-wrap:wrap">
-<a href="exams.html" class="btn" style="padding:0.45rem 0.9rem;font-size:0.75rem;border-radius:20px">परीक्षाएँ</a>
-<a href="notes.html" class="btn btn-outline" style="padding:0.45rem 0.9rem;font-size:0.75rem;border-radius:20px">नोट्स</a>
+<a href="exams.html" class="btn" style="padding:0.65rem 1.4rem;font-size:0.85rem;border-radius:25px">परीक्षाएँ</a>
+<a href="notes.html" class="btn btn-outline" style="padding:0.65rem 1.4rem;font-size:0.85rem;border-radius:25px">नोट्स</a>
 </div>
 </section>
 <!-- ===== SEARCH BOX ===== -->
@@ -269,7 +299,7 @@ header, nav {
 </div
 <!-- ===== TRUST BADGES ===== -->
 <div style="max-width:1100px;margin:1rem auto;padding:0 1rem">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.6rem">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem">
     <div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);padding:0.8rem 0.5rem;border-radius:12px;text-align:center">
       <div style="font-size:1.4rem">✅</div>
       <div style="font-size:0.75rem;font-weight:800;color:#1b5e20;margin-top:0.2rem">100% FREE</div>
@@ -302,7 +332,7 @@ header, nav {
   <h2 style="text-align:center;color:#7c2d12;font-size:1.6rem;font-weight:900;margin-bottom:0.4rem">🔥 Free PDFs Download करें</h2>
   <p style="text-align:center;color:#a0522d;margin-bottom:1.5rem;font-size:0.9rem">सबसे ज़्यादा download होने वाले notes — बिना login के</p>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:1000px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;max-width:1000px;margin:0 auto">
 
     <a href="uppcs-gs5-notes.html" style="text-decoration:none;color:inherit;background:#fff;padding:1rem;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,0.08);display:flex;align-items:center;gap:0.8rem;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
       <div style="width:44px;height:44px;background:linear-gradient(135deg,#e94560,#c73650);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📘</div>
