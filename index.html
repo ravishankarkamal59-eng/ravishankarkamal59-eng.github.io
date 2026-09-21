@@ -234,6 +234,169 @@ section.compact-section > div > p {
   margin-bottom: 1rem !important;
 }
 
+
+/* ============================================
+   FORCE COMPACT LAYOUT — Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  
+  /* Stats — 2 columns */
+  .stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+    padding: 0.6rem !important;
+    max-width: 500px !important;
+    margin: 0.8rem auto !important;
+  }
+  .stat {
+    padding: 0.5rem 0.3rem !important;
+  }
+  .stat h3 {
+    font-size: 1.2rem !important;
+    margin: 0 !important;
+  }
+  .stat p {
+    font-size: 0.65rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Study Categories — 3 columns grid */
+  section > div[style*="grid-template-columns:repeat(auto-fit,minmax(160px"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.4rem !important;
+    max-width: 100% !important;
+  }
+  
+  /* Study Category Cards — compact */
+  section > div > a[href*="history-notes"],
+  section > div > a[href*="notes-polity"],
+  section > div > a[href*="notes-geography"],
+  section > div > a[href*="notes-economics"],
+  section > div > a[href*="notes-science"],
+  section > div > a[href*="current-affairs"] {
+    padding: 0.5rem 0.3rem !important;
+    min-height: 70px !important;
+  }
+  
+  /* Testimonials — 2 columns? No, keep readable. 1 column but compact */
+  section[style*="Students की राय"] > div > div[style*="grid-template-columns:repeat(auto-fit,minmax(280px"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* All grids with minmax — force 2 columns */
+  section div[style*="minmax(220px"],
+  section div[style*="minmax(260px"],
+  section div[style*="minmax(280px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Section padding — reduced */
+  section {
+    padding: 1rem 0.6rem !important;
+  }
+  
+  /* Section headings */
+  section h2 {
+    font-size: 1.15rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  
+  section > div > p {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  /* Card padding — reduced everywhere */
+  section div[style*="padding:1.5rem"],
+  section div[style*="padding:1.2rem"] {
+    padding: 0.6rem !important;
+  }
+  
+  /* Card headings */
+  section h3[style*="font-size:1.05rem"],
+  section h3[style*="font-size:1.1rem"] {
+    font-size: 0.78rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  
+  /* Card paragraphs */
+  section p[style*="font-size:0.82rem"],
+  section p[style*="font-size:0.85rem"],
+  section p[style*="font-size:0.9rem"] {
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Icon circles — smaller */
+  section div[style*="width:60px"][style*="height:60px"] {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  section div[style*="width:70px"][style*="height:70px"] {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  /* Big emoji icons in cards */
+  section div[style*="font-size:2rem"] {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  
+  /* Testimonial quote marks */
+  section div[style*="font-size:3rem"] {
+    font-size: 1.8rem !important;
+  }
+  
+  /* Video cards — smaller height */
+  section a > div[style*="height:160px"] {
+    height: 100px !important;
+  }
+  
+  /* Footer — smaller */
+  footer {
+    padding: 0.8rem 0.6rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  /* FAQ details — smaller */
+  details {
+    padding: 0.7rem 0.8rem !important;
+  }
+  details summary {
+    font-size: 0.8rem !important;
+  }
+  details p {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  section h2 {
+    font-size: 1rem !important;
+  }
+  
+  section div[style*="minmax"] {
+    gap: 0.3rem !important;
+  }
+  
+  /* Study categories stay 2 cols on very small */
+  section > div[style*="grid-template-columns:repeat(auto-fit,minmax(160px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="assets/css/style.css?v=10">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
