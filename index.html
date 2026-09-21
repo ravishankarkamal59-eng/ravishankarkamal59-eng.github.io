@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+<!-- ===== CACHE CONTROL ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
     <!-- ===== Open Graph / Social Sharing Cards ===== -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Ravishankar Insights">
@@ -459,6 +464,21 @@ header, nav {
   header, nav { min-height: 62px !important; }
 }
 </style>
+
+<script>
+// ===== FORCE CACHE CLEAR =====
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs) {
+    regs.forEach(function(reg) { reg.unregister(); });
+  });
+}
+if ('caches' in window) {
+  caches.keys().then(function(names) {
+    names.forEach(function(name) { caches.delete(name); });
+  });
+}
+</script>
+
 </head>
 <body>
 <a href="#main" class="skip-link">मुख्य सामग्री पर जाएँ</a>
