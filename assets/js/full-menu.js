@@ -217,7 +217,7 @@
         var a = document.createElement('a');
         a.href = item.href;
         a.textContent = item.label;
-        var linkStyle = 'display:block;padding:0.6rem 1.2rem 0.6rem 2.8rem;font-size:0.86rem;color:#d1d9e6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);';
+        var linkStyle = 'display:block;padding:0.4rem 0.8rem 0.4rem 2rem;font-size:0.75rem;color:#d1d9e6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.03);';
         if (item.href === currentPath) {
           linkStyle += 'color:#fff;font-weight:600;background:rgba(233,69,96,0.25);border-left:3px solid #e94560;';
         }
