@@ -90,8 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(searchBtn);
   renderSearchResults(sitePages.slice(0, 6));
 
-  // ===== Table of Contents =====
-  const contentArea = document.querySelector('.content');
+  /* ===== Table of Contents — DISABLED =====
+  return; // Stop execution here
+  // Disabled on homepage — only show on notes/article pages
+  const currentPath = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+  const tocAllowedPages = ['notes-history', 'notes-polity', 'notes-geography', 'notes-economics', 'notes-science', 'indian-history-notes', 'uppcs-gs5-notes', 'ma-indian-geography'];
+  const tocEnabled = tocAllowedPages.includes(currentPath);
+  
+  if (tocEnabled) {
+    const contentArea = document.querySelector('.content');
   if (contentArea) {
     const headings = contentArea.querySelectorAll('h2, h3');
     if (headings.length >= 3) {
@@ -164,6 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
   recent.unshift(currentPage);
   recent = recent.slice(0, 8);
   localStorage.setItem('recentPages', JSON.stringify(recent));
+}
+    */
 });
 
 // ===== Print Styles =====
