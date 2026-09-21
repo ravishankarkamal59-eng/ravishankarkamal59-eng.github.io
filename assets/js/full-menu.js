@@ -167,7 +167,7 @@
     navLinks.innerHTML = '';
 
     var wrap = document.createElement('div');
-    wrap.style.cssText = 'max-height:calc(100vh - 70px);overflow-y:auto;width:100%;background:#0f3460;padding:0;margin:0;';
+    wrap.style.cssText = 'max-height:calc(100vh - 60px);overflow-y:auto;width:100%;background:#0f3460;padding:0.2rem 0;margin:0;scrollbar-width:thin;';
 
     // Search box
     var searchBox = document.createElement('div');
@@ -226,11 +226,11 @@
         body.appendChild(a);
       });
 
-      var isOpen = hasActive;
+      var isOpen = false; // All sections closed by default (compact)
       function setOpen(open) {
         isOpen = open;
         if (open) {
-          body.style.maxHeight = '2000px';
+          body.style.maxHeight = '1500px';
           arrowSpan.style.transform = 'rotate(90deg)';
           btn.setAttribute('aria-expanded', 'true');
         } else {
