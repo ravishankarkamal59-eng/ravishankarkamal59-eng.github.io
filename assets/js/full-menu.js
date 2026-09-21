@@ -167,15 +167,15 @@
     navLinks.innerHTML = '';
 
     var wrap = document.createElement('div');
-    wrap.style.cssText = 'max-height:calc(100vh - 90px);overflow-y:auto;width:100%;background:#0f3460;padding:0;margin:0;';
+    wrap.style.cssText = 'max-height:calc(100vh - 70px);overflow-y:auto;width:100%;background:#0f3460;padding:0;margin:0;';
 
     // Search box
     var searchBox = document.createElement('div');
-    searchBox.style.cssText = 'padding:0.6rem 1rem;background:#0f3460;border-bottom:2px solid #e94560;position:sticky;top:0;z-index:10;';
+    searchBox.style.cssText = 'padding:0.4rem 0.7rem;background:#0f3460;border-bottom:2px solid #e94560;position:sticky;top:0;z-index:10;';
     var searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = '🔍 खोजें...';
-    searchInput.style.cssText = 'width:100%;padding:0.6rem 1rem;border:1px solid rgba(255,255,255,0.3);border-radius:20px;font-size:0.9rem;font-family:inherit;background:rgba(255,255,255,0.12);color:#fff;outline:none;box-sizing:border-box;';
+    searchInput.style.cssText = 'width:100%;padding:0.4rem 0.8rem;border:1px solid rgba(255,255,255,0.3);border-radius:20px;font-size:0.8rem;font-family:inherit;background:rgba(255,255,255,0.12);color:#fff;outline:none;box-sizing:border-box;';
     searchBox.appendChild(searchInput);
     wrap.appendChild(searchBox);
 
@@ -183,27 +183,27 @@
       var hasActive = section.items.some(function(it) { return it.href === currentPath; });
 
       var cat = document.createElement('div');
-      cat.style.cssText = 'border-bottom:1px solid rgba(255,255,255,0.12);';
+      cat.style.cssText = 'border-bottom:1px solid rgba(255,255,255,0.08);';
 
       var btn = document.createElement('button');
       btn.type = 'button';
       var btnBg = section.highlight 
         ? 'linear-gradient(90deg,#e94560,#ff6b6b)' 
         : 'transparent';
-      btn.style.cssText = 'width:100%;background:' + btnBg + ';border:none;text-align:left;padding:0.85rem 1.2rem;font-size:0.95rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.6rem;font-family:inherit;box-sizing:border-box;line-height:1.4;';
+      btn.style.cssText = 'width:100%;background:' + btnBg + ';border:none;text-align:left;padding:0.5rem 0.8rem;font-size:0.82rem;font-weight:600;color:#ffffff;cursor:pointer;display:flex;align-items:center;gap:0.4rem;font-family:inherit;box-sizing:border-box;line-height:1.3;';
       
       // Build button HTML safely
       var iconSpan = document.createElement('span');
-      iconSpan.style.cssText = 'font-size:1.15rem;line-height:1;flex-shrink:0;display:inline-block;width:1.5rem;text-align:center;';
+      iconSpan.style.cssText = 'font-size:0.95rem;line-height:1;flex-shrink:0;display:inline-block;width:1.2rem;text-align:center;';
       iconSpan.textContent = section.icon;
       
       var titleSpan = document.createElement('span');
-      titleSpan.style.cssText = 'flex:1;color:#ffffff;font-size:0.95rem;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+      titleSpan.style.cssText = 'flex:1;color:#ffffff;font-size:0.8rem;font-weight:600;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
       titleSpan.textContent = section.title;
       
       var arrowSpan = document.createElement('span');
       arrowSpan.className = 'acc-arrow';
-      arrowSpan.style.cssText = 'font-size:0.7rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;';
+      arrowSpan.style.cssText = 'font-size:0.6rem;color:#e94560;flex-shrink:0;display:inline-block;transition:transform 0.25s;';
       arrowSpan.textContent = '▶';
       
       btn.appendChild(iconSpan);
