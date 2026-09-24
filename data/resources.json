@@ -905,7 +905,13 @@
   },
   "uppcs-mains-gs2": {
     "name": "UPPCS Mains GS Paper 2",
-    "notes": [],
+    "notes": [
+      {
+        "title": "भारतीय विदेश नीति_ निर्धारक तत्व, उद्देश्य एवं विशेषताएं _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/uppcs-mains-gs2/notes/1790242038257-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
