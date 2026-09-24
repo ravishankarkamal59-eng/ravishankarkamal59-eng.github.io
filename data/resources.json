@@ -780,7 +780,13 @@
   },
   "upsc-mains-gs2": {
     "name": "UPSC Mains GS Paper 2",
-    "notes": [],
+    "notes": [
+      {
+        "title": "भारत-अमेरिका संबंध_ प्राचीन काल से वर्तमान तक _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/upsc-mains-gs2/notes/1790242001659-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
