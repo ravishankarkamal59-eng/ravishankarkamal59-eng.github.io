@@ -252,7 +252,13 @@
   },
   "up-lekhpal": {
     "name": "UP लेखपाल",
-    "notes": [],
+    "notes": [
+      {
+        "title": "G20 शिखर सम्मेलन_ विस्तृत विश्लेषण _ The Ravishankar Insights.",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/up-lekhpal/notes/1790242191817-g20-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [
       {
