@@ -307,7 +307,13 @@
   },
   "pet": {
     "name": "PET",
-    "notes": [],
+    "notes": [
+      {
+        "title": "G20 शिखर सम्मेलन_ विस्तृत विश्लेषण _ The Ravishankar Insights.pdf",
+        "link": "https://ravishankarkamal59-eng.github.io/resources/pet/notes/1790242161156-g20-the-ravishankar-insights.pdf",
+        "type": "PDF"
+      }
+    ],
     "pyq": [],
     "syllabus": [],
     "videos": [],
