@@ -36,7 +36,7 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .hdr-btn:active{background:rgba(255,255,255,.3)}
 
 /* ============ EXAM BAR ============ */
-.exam-bar{padding:8px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid #e8eef5;flex-shrink:0}
+.exam-bar{background:#fff;padding:8px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid #e8eef5;flex-shrink:0}
 .exam-bar:active{background:#f8fafc}
 .exam-bar .eb-i{width:32px;height:32px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .exam-bar .eb-t{flex:1;min-width:0}
@@ -48,7 +48,7 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .mid{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px;-webkit-overflow-scrolling:touch}
 
 /* Question picker */
-.qpick{border-radius:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
+.qpick{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
 .qpick-btn{width:100%;background:transparent;border:none;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;text-align:left}
 .qpick-btn:active{background:#f8fafc}
 .qpick-btn .qp-i{width:32px;height:32px;background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#FDBA3B;font-weight:900;flex-shrink:0}
@@ -75,15 +75,15 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .qcard .qh .sub{font-size:9px;font-weight:800;color:#fff;background:#0f3460;padding:2px 7px;border-radius:8px}
 .qcard .qt{font-size:12.5px;font-weight:700;color:#1a1a2e;line-height:1.45;margin-bottom:6px}
 .qcard .qm{display:flex;gap:5px;flex-wrap:wrap}
-.qcard .qm span{font-size:9px;color:#666;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid #e0e6ed}
+.qcard .qm span{font-size:9px;color:#666;font-weight:600;background:#fff;padding:2px 7px;border-radius:8px;border:1px solid #e0e6ed}
 
 /* Mode toggle */
 .mode-tog{display:flex;gap:5px;background:#e8eef5;padding:3px;border-radius:10px;margin-bottom:8px}
 .mode-b{flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:11.5px;font-weight:700;color:#666;cursor:pointer;transition:.15s}
-.mode-b.on{color:#0f3460;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.mode-b.on{background:#fff;color:#0f3460;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 
 /* Answer textarea */
-.ans-box{border-radius:12px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:8px}
+.ans-box{background:#fff;border-radius:12px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:8px}
 textarea{width:100%;min-height:200px;padding:10px;border:1.5px solid #e0e6ed;border-radius:10px;font-family:inherit;font-size:13px;line-height:1.6;resize:none;outline:none;background:#fafbfc;color:#1a1a2e;height:calc(100% - 30px)}
 textarea:focus{border-color:#0f3460;background:#fff}
 .wcnt{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;font-weight:600;color:#666}
@@ -110,7 +110,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .pdf-prog-t.on{display:block}
 
 /* ============ BOTTOM ACTION ============ */
-.bottom{padding:10px 12px;border-top:1px solid #e8eef5;flex-shrink:0;box-shadow:0 -2px 12px rgba(0,0,0,.04)}
+.bottom{background:#fff;padding:10px 12px;border-top:1px solid #e8eef5;flex-shrink:0;box-shadow:0 -2px 12px rgba(0,0,0,.04)}
 .btn-check{width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,.3);letter-spacing:.5px}
 .btn-check:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 .btn-check:active{transform:scale(.98)}
@@ -139,7 +139,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .verdict.po{background:rgba(233,69,96,.3);color:#fca5a5}
 
 .bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
-.bd-i{border-radius:10px;padding:10px}
+.bd-i{background:#fff;border-radius:10px;padding:10px}
 .bd-l{font-size:9px;color:#666;font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
 .bd-v{font-size:18px;font-weight:900;color:#0f3460;line-height:1}
 .bd-v small{font-size:11px;color:#999}
@@ -150,7 +150,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .fo{background:linear-gradient(90deg,#f39c12,#f1c40f)}
 .fr{background:linear-gradient(90deg,#e94560,#c0392b)}
 
-.fb-card{border-radius:12px;padding:14px;margin-bottom:10px}
+.fb-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px}
 .fb-t{font-size:12px;font-weight:800;margin-bottom:8px}
 .fb-t.go{color:#27ae60}
 .fb-t.ba{color:#e94560}
@@ -186,11 +186,11 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .detect-info .di-t{font-size:11px;font-weight:800;color:#27ae60;margin-bottom:8px;display:flex;align-items:center;gap:6px;letter-spacing:.5px;text-transform:uppercase}
 .detect-info.warn .di-t{color:#b8860b}
 .detect-info .di-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.detect-info .di-item{padding:8px 10px;border-radius:8px}
+.detect-info .di-item{background:#fff;padding:8px 10px;border-radius:8px}
 .detect-info .di-l{font-size:9px;color:#999;font-weight:700;letter-spacing:1px;margin-bottom:2px}
 .detect-info .di-v{font-size:12px;font-weight:800;color:#0f3460}
-.detect-info .di-q{padding:10px;border-radius:8px;margin-top:8px;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.5}
-.detect-info .di-conf{padding:8px 10px;border-radius:8px;margin-top:8px;font-size:10.5px;color:#666;font-weight:600}
+.detect-info .di-q{background:#fff;padding:10px;border-radius:8px;margin-top:8px;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.5}
+.detect-info .di-conf{background:#fff;padding:8px 10px;border-radius:8px;margin-top:8px;font-size:10.5px;color:#666;font-weight:600}
 .detect-info .di-conf b{color:#27ae60}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -337,7 +337,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 #authScr.on{display:flex !important}
 #authScr .as-cd{
   max-width:420px;width:100%;
-  
+  background:#fff;
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 25px 70px rgba(0,0,0,.5);
@@ -351,7 +351,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 #authScr .as-bd{padding:18px 20px}
 #authScr .as-tabs{display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px}
 #authScr .as-tab{flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer}
-#authScr .as-tab.on{color:#0f3460;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+#authScr .as-tab.on{background:#fff;color:#0f3460;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 #authScr .as-f{margin-bottom:13px}
 #authScr .as-f label{display:block;font-size:10.5px;font-weight:800;color:#666;letter-spacing:.4px;margin-bottom:4px;text-transform:uppercase}
 #authScr .as-f input{width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;color:#1a1a2e;box-sizing:border-box}
@@ -369,7 +369,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
-.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;height:100dvh;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
+.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;height:100dvh;background:#fff;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
 .dr.on{right:0}
 .dr-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
 .dr-hdr .t .s{font-size:8px;color:#FDBA3B;letter-spacing:2px;font-weight:700}
@@ -568,7 +568,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- AUTH SCREEN -->
 <div id="authScr" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99998;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
-  <div style="max-width:400px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
+  <div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
     <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">
       <button onclick="AC.closeAuth()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
       <div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>
@@ -577,7 +577,7 @@ console.log('✅ Fix JS loaded');
     </div>
     <div style="padding:20px">
       <div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">
-        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
+        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
         <button type="button" class="as-tab" data-mode="login" onclick="AC.switchTab('login');return false" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>
       </div>
       <form id="asForm" onsubmit="return AC.submit(event)">
@@ -608,7 +608,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- HISTORY MODAL -->
 <div id="histModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99997;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
-  <div style="max-width:450px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto;max-height:85vh;display:flex;flex-direction:column">
+  <div style="max-width:450px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto;max-height:85vh;display:flex;flex-direction:column">
     <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between">
       <div>
         <div style="font-size:16px;font-weight:900">📊 My History</div>
@@ -1379,20 +1379,20 @@ console.log('✅ Fix JS loaded');
 
     // Level + Word count
     h+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px">';
-    h+='<div style="padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">LEVEL</div><div style="font-size:12px;font-weight:800;color:#0f3460;line-height:1.3">'+rtu.level+'</div></div>';
-    h+='<div style="padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">WORDS</div><div style="font-size:12px;font-weight:800;color:#0f3460">'+rtu.wordCount+'</div></div>';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">LEVEL</div><div style="font-size:12px;font-weight:800;color:#0f3460;line-height:1.3">'+rtu.level+'</div></div>';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">WORDS</div><div style="font-size:12px;font-weight:800;color:#0f3460">'+rtu.wordCount+'</div></div>';
     h+='</div>';
 
     // Purpose
     if(rtu.purpose.length){
-      h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">📌 किसलिए लिखा गया</div>';
+      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">📌 किसलिए लिखा गया</div>';
       rtu.purpose.forEach(function(p){h+='<div style="font-size:11px;color:#333;padding:2px 0">• '+p+'</div>'});
       h+='</div>';
     }
 
     // Topics
     if(rtu.topics.length){
-      h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">🎯 विषय पहचान</div>';
+      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">🎯 विषय पहचान</div>';
       h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';
       rtu.topics.forEach(function(t){h+='<span style="background:#e8f4ff;color:#2980b9;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:700">'+t+'</span>'});
       h+='</div></div>';
@@ -1400,10 +1400,10 @@ console.log('✅ Fix JS loaded');
 
     // Quality score
     var qc=rtu.qualityPct>=70?'#27ae60':(rtu.qualityPct>=45?'#f39c12':'#e94560');
-    h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px">📊 QUALITY SCORE</div><div style="font-size:14px;font-weight:900;color:'+qc+'">'+rtu.qualityPct+'%</div></div><div style="height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+rtu.qualityPct+'%;background:'+qc+';border-radius:3px"></div></div></div>';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px">📊 QUALITY SCORE</div><div style="font-size:14px;font-weight:900;color:'+qc+'">'+rtu.qualityPct+'%</div></div><div style="height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+rtu.qualityPct+'%;background:'+qc+';border-radius:3px"></div></div></div>';
 
     // Suggested length
-    h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:4px">📏 लंबाई सुझाव</div><div style="font-size:11px;color:#333;font-weight:600">'+rtu.suggested+'</div><div style="font-size:10px;color:#666;margin-top:4px">Avg '+rtu.avgWordsPerSentence+' शब्द/वाक्य • '+rtu.paragraphs+' paragraphs • ~'+rtu.readingTime+' मिनट पढ़ने में</div></div>';
+    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:4px">📏 लंबाई सुझाव</div><div style="font-size:11px;color:#333;font-weight:600">'+rtu.suggested+'</div><div style="font-size:10px;color:#666;margin-top:4px">Avg '+rtu.avgWordsPerSentence+' शब्द/वाक्य • '+rtu.paragraphs+' paragraphs • ~'+rtu.readingTime+' मिनट पढ़ने में</div></div>';
 
     // Missing items
     if(rtu.missing.length){
@@ -2377,9 +2377,9 @@ console.log('✅ Fix JS loaded');
       h+='</div>';
       // All exam scores
       h+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">';
-      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.upsc>=10?'#27ae60':'#999')+'">'+examDetect.scores.upsc+'</div></div>';
-      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPPCS</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.uppcs>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.uppcs/2)+'</div></div>';
-      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">BPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.bpsc>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.bpsc/2)+'</div></div>';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.upsc>=10?'#27ae60':'#999')+'">'+examDetect.scores.upsc+'</div></div>';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPPCS</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.uppcs>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.uppcs/2)+'</div></div>';
+      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">BPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.bpsc>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.bpsc/2)+'</div></div>';
       h+='</div>';
       h+='</div>';
     }
@@ -2389,7 +2389,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:14px;padding:14px;margin-bottom:12px">';
       h+='<div style="font-size:10px;font-weight:800;color:#2980b9;letter-spacing:1.5px;margin-bottom:8px">📚 DETECTED TOPICS</div>';
       topics.forEach(function(t,i){
-        h+='<div style="border-radius:10px;padding:10px;margin-bottom:6px">';
+        h+='<div style="background:#fff;border-radius:10px;padding:10px;margin-bottom:6px">';
         h+='<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h+='<div style="font-size:13px;font-weight:800;color:#0f3460">'+(i+1)+'. '+t.topic+'</div>';
         h+='<div style="background:#2980b9;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px">'+t.score+' hits</div>';
@@ -2417,7 +2417,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="font-size:10px;font-weight:800;color:#b8860b;letter-spacing:1.5px;margin-bottom:8px">📋 '+examInfo.name+' REQUIREMENTS</div>';
 
       // Score bar
-      h+='<div style="padding:10px;border-radius:10px;margin-bottom:10px">';
+      h+='<div style="background:#fff;padding:10px;border-radius:10px;margin-bottom:10px">';
       h+='<div style="display:flex;justify-content:space-between;margin-bottom:6px">';
       h+='<div style="font-size:12px;font-weight:800;color:#0f3460">'+reqStatus+'</div>';
       h+='<div style="font-size:16px;font-weight:900;color:'+reqColor+'">'+reqPct+'%</div>';
@@ -2444,7 +2444,7 @@ console.log('✅ Fix JS loaded');
 
       // What to add section
       if(rp.missing.length>0){
-        h+='<div style="padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #e94560">';
+        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #e94560">';
         h+='<div style="font-size:11px;font-weight:800;color:#e94560;margin-bottom:8px">🎯 ये जोड़ना ज़रूरी है ('+rp.missing.length+')</div>';
         rp.missing.forEach(function(c){
           h+='<div style="background:#ffe8e8;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
@@ -2454,7 +2454,7 @@ console.log('✅ Fix JS loaded');
         });
         h+='</div>';
       } else {
-        h+='<div style="padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #27ae60;text-align:center">';
+        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #27ae60;text-align:center">';
         h+='<div style="font-size:12px;font-weight:800;color:#27ae60">🎉 सभी required elements मौजूद हैं!</div>';
         h+='</div>';
       }
@@ -2624,7 +2624,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="font-size:13px;color:#0f3460;font-weight:800;margin-bottom:4px">📚 '+getExamName(d.exam)+'</div>';
       h+='<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:6px">✓ Subject: '+(d.q.subject||'General')+'</div>';
       h+='<div style="font-size:10px;color:#666;font-weight:600;margin-bottom:6px">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b></div>';
-      h+='<div style="font-size:11px;color:#333;line-height:1.5;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
+      h+='<div style="font-size:11px;color:#333;line-height:1.5;background:#fff;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
       h+='<div style="font-size:10px;color:#666;font-weight:600">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b> • Keywords: '+d.kwFound+'/'+d.kwTotal+'</div>';
       h+='</div>';
     }
@@ -2928,7 +2928,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- USER MENU -->
 <div id="userMenu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:99996;padding:70px 14px 14px;align-items:flex-start;justify-content:flex-end" onclick="AC.closeUserMenu(event)">
-  <div onclick="event.stopPropagation()" style="border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:230px">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:230px">
     <div style="padding:12px 14px;border-bottom:1px solid #f0f4f8">
       <div id="umName" style="font-size:13px;font-weight:800;color:#0f3460">User</div>
       <div id="umEmail" style="font-size:11px;color:#666;margin-top:2px">user@email.com</div>
@@ -3657,7 +3657,7 @@ console.log('✅ Fix JS loaded');
     m.id = 'acxAuth';
     m.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:999998;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
     m.innerHTML =
-      '<div style="max-width:400px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">' +
+      '<div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">' +
         '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">' +
           '<button id="acxClose" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>' +
           '<div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>' +
@@ -3666,7 +3666,7 @@ console.log('✅ Fix JS loaded');
         '</div>' +
         '<div style="padding:20px">' +
           '<div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">' +
-            '<button id="acxSignupTab" type="button" style="flex:1;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>' +
+            '<button id="acxSignupTab" type="button" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>' +
             '<button id="acxLoginTab" type="button" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>' +
           '</div>' +
           '<div id="acxNameF" style="margin-bottom:13px">' +
@@ -3843,7 +3843,7 @@ console.log('✅ Fix JS loaded');
         '</div>' +
         '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-bottom:8px"><div id="acxBar" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);transition:width .3s"></div></div>' +
         '<div id="acxPdfStat" style="font-size:11px;color:#666;text-align:center;font-weight:700;margin-bottom:8px">-</div>' +
-        '<div id="acxPdfPrev" style="display:none;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
+        '<div id="acxPdfPrev" style="display:none;background:#fff;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
       pz.appendChild(status);
 
       var _rm = document.getElementById('acxPdfRemove') || document.getElementById('acxRemove'); if(_rm) _rm.onclick = function(){
@@ -4247,7 +4247,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Quality breakdown
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Quality Breakdown</div>';
     h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
     var pList = [
@@ -4272,7 +4272,7 @@ console.log('✅ Fix JS loaded');
 
     // Good
     if(good.length){
-      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ अच्छी बातें (' + good.length + ')</div><ul style="list-style:none;padding:0">';
       good.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#27ae60">✓</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4280,7 +4280,7 @@ console.log('✅ Fix JS loaded');
 
     // Bad
     if(bad.length){
-      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#e94560;margin-bottom:10px">❌ सुधार ज़रूरी (' + bad.length + ')</div><ul style="list-style:none;padding:0">';
       bad.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#e94560">✗</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4288,7 +4288,7 @@ console.log('✅ Fix JS loaded');
 
     // Warn
     if(warn.length){
-      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#f39c12;margin-bottom:10px">⚠️ Suggestions (' + warn.length + ')</div><ul style="list-style:none;padding:0">';
       warn.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#f39c12">!</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4572,7 +4572,7 @@ console.log('✅ Fix JS loaded');
     // Score card
     var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
     var scoreStatus = r.pct >= 70 ? '✅ Exam-Ready' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -4586,7 +4586,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + '/' + r.maxScore + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -4599,7 +4599,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -4615,7 +4615,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -4894,7 +4894,7 @@ console.log('✅ Fix JS loaded');
     // Score card
     var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
     var scoreStatus = r.pct >= 70 ? '✅ JEE-Ready' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -4913,7 +4913,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -4926,7 +4926,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -4942,7 +4942,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -5531,7 +5531,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Score card
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -5545,7 +5545,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -5558,7 +5558,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -5574,7 +5574,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -5903,7 +5903,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Score
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -5917,7 +5917,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -5930,7 +5930,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -5946,7 +5946,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -6453,7 +6453,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== SECTION-WISE BREAKDOWN =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Section-wise Marks</div>';
     var sections = [
       { name: 'Introduction', got: r.introScore, max: 15 },
@@ -6478,7 +6478,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📚 Detected Topics (क्या-क्या cover हुआ)</div>';
       r.detectedTopics.forEach(function(t){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px">';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12px;font-weight:800;color:#0f3460">✓ ' + t.name + '</span>';
         h += '<span style="font-size:10px;color:#2980b9;font-weight:700">' + t.hits + ' hits</span>';
@@ -6494,7 +6494,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ये topics पूरी तरह missing हैं</div>';
       r.missingTopics.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b;margin-bottom:4px">✗ ' + m.name + ' [' + m.severity + ']</div>';
         h += '<div style="font-size:11px;color:#666">💡 ' + m.suggestion + '</div>';
         h += '</div>';
@@ -6503,7 +6503,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // ===== REQUIREMENTS CHECK =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Examiner Requirements Check</div>';
     h += '<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:8px">✓ FOUND (' + r.requirementsFound.length + ')</div>';
     r.requirementsFound.forEach(function(rq){
@@ -6520,7 +6520,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== CONTENT STATS =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Content Statistics</div>';
     h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
     var stats = [
@@ -6548,7 +6548,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये sentences कमजोर हैं (Generic)</div>';
       r.weakSentences.forEach(function(s){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
       });
       h += '<div style="font-size:10px;color:#999;margin-top:8px">💡 इनको specific facts, data, examples से replace करें</div>';
       h += '</div>';
@@ -6575,7 +6575,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:10px">🎉 कोई major improvement नहीं चाहिए!</div>';
     } else {
       improvements.forEach(function(imp){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#1a1a2e;font-weight:600;border-left:3px solid #2980b9">→ ' + imp + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#1a1a2e;font-weight:600;border-left:3px solid #2980b9">→ ' + imp + '</div>';
       });
     }
     h += '</div>';
@@ -7019,7 +7019,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== MARKS BREAKDOWN (4 dimensions) =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { name: '📝 Content (60%)', got: r.marksBreakdown.content, max: r.marksBreakdown.maxContent },
@@ -7045,7 +7045,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - Examiner ये ढूँढ रहा था</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -7053,7 +7053,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // ===== ALL ELEMENTS CHECK =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.elementsFound.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -7074,7 +7074,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Grammar/Language Errors (' + r.grammarErrors.length + ')</div>';
       r.grammarErrors.forEach(function(e){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
       });
       h += '</div>';
     }
@@ -7085,7 +7085,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Generic Phrases हटाएँ (' + r.genericPhrases.length + ')</div>';
       h += '<div style="display:flex;flex-wrap:wrap;gap:4px">';
       r.genericPhrases.forEach(function(p){
-        h += '<span style="color:#b8860b;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700;border:1px solid #f39c12">' + p + '</span>';
+        h += '<span style="background:#fff;color:#b8860b;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700;border:1px solid #f39c12">' + p + '</span>';
       });
       h += '</div></div>';
     }
@@ -7098,7 +7098,7 @@ console.log('✅ Fix JS loaded');
       var cnt = r.argumentStructure[at];
       var atColor = cnt > 0 ? '#27ae60' : '#e94560';
       var atIcon = cnt > 0 ? '✓' : '✗';
-      h += '<div style="padding:6px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<div style="background:#fff;padding:6px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
       h += '<span style="font-size:11px;font-weight:700;color:#1a1a2e">' + argIcon + ' ' + argLabels[at] + '</span>';
       h += '<span style="font-size:11px;font-weight:800;color:' + atColor + '">' + cnt + '</span>';
       h += '</div>';
@@ -7110,7 +7110,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">📄 Paragraph Issues</div>';
       r.paragraphIssues.forEach(function(p){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600">⚠️ ' + p + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600">⚠️ ' + p + '</div>';
       });
       h += '</div>';
     }
@@ -7120,7 +7120,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">💪 Strong Sentences</div>';
       r.strongSentences.forEach(function(s){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#1a1a2e;border-left:3px solid #27ae60">" ' + s + ' "</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#1a1a2e;border-left:3px solid #27ae60">" ' + s + ' "</div>';
       });
       h += '</div>';
     }
@@ -7130,13 +7130,13 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Sentences (हटाएँ/replace करें)</div>';
       r.weakSentences.forEach(function(s){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
       });
       h += '</div>';
     }
 
     // ===== CONTENT STATS =====
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Content Analysis</div>';
     h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
     var stats = [
@@ -7186,7 +7186,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
         h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
         h += '</div>';
@@ -7563,7 +7563,7 @@ console.log('✅ Fix JS loaded');
     h += '</div></div>';
 
     // Breakdown
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { n: '📝 Content (60%)', g: r.marksBreakdown.content, m: r.marksBreakdown.maxContent },
@@ -7589,14 +7589,14 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ' + r.name + ' में अनिवार्य</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div></div>';
       });
       h += '</div>';
     }
 
     // Elements
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.found.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -7620,7 +7620,7 @@ console.log('✅ Fix JS loaded');
       { l: 'Paragraphs', v: r.paragraphs, c: r.paragraphs >= 3 ? '#27ae60' : '#f39c12' }
     ];
     stats.forEach(function(s){
-      h += '<div style="padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
+      h += '<div style="background:#fff;padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700">' + s.l.toUpperCase() + '</div>';
       h += '<div style="font-size:18px;font-weight:900;color:' + s.c + '">' + s.v + '</div></div>';
     });
@@ -7631,7 +7631,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ सुधार ज़रूरी</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -7653,7 +7653,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var col = a.p === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
         h += '<div style="font-size:9px;background:' + col + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.p + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.t + '</div></div>';
       });
@@ -8259,7 +8259,7 @@ console.log('✅ Fix JS loaded');
     h += '</div></div>';
 
     // Marks Breakdown
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { n: '📝 Content (60%)', g: r.marksBreakdown.content, m: r.marksBreakdown.maxContent },
@@ -8285,7 +8285,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ये ' + r.name + ' में अनिवार्य हैं</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -8293,7 +8293,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // All Elements
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.found.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -8317,7 +8317,7 @@ console.log('✅ Fix JS loaded');
       { l: 'Paragraphs', v: r.paragraphs, c: r.paragraphs >= 3 ? '#27ae60' : '#f39c12' }
     ];
     stats.forEach(function(s){
-      h += '<div style="padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
+      h += '<div style="background:#fff;padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700">' + s.l.toUpperCase() + '</div>';
       h += '<div style="font-size:18px;font-weight:900;color:' + s.c + '">' + s.v + '</div></div>';
     });
@@ -8328,7 +8328,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ सुधार ज़रूरी (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -8350,7 +8350,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var col = a.p === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
         h += '<div style="font-size:9px;background:' + col + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.p + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.t + '</div></div>';
       });
@@ -8701,7 +8701,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Marks Breakdown
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { name: '🎯 Approach (30%)', got: r.marksBreakdown.approach, max: r.marksBreakdown.maxApproach },
@@ -8727,7 +8727,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - JEE में ये अनिवार्य हैं</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -8735,7 +8735,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // Element Check
-    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.elementsFound.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -8764,7 +8764,7 @@ console.log('✅ Fix JS loaded');
       { label: 'Words', value: r.words, color: '#2980b9', ideal: '50+' }
     ];
     stats.forEach(function(s){
-      h += '<div style="padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
+      h += '<div style="background:#fff;padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700;margin-bottom:2px">' + s.label.toUpperCase() + '</div>';
       h += '<div style="font-size:16px;font-weight:900;color:' + s.color + '">' + s.value + '</div>';
       h += '<div style="font-size:9px;color:#999">Ideal: ' + s.ideal + '</div>';
@@ -8777,7 +8777,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Errors Found (' + r.grammarErrors.length + ')</div>';
       r.grammarErrors.forEach(function(e){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
       });
       h += '</div>';
     }
@@ -8787,7 +8787,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Points</div>';
       r.weakPoints.forEach(function(p){
-        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
+        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
       });
       h += '</div>';
     }
@@ -8824,7 +8824,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
+        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
         h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
         h += '</div>';
@@ -9098,604 +9098,4 @@ console.log('✅ Fix JS loaded');
       bad:[{t:function(x){return !/\d+%|GDP|HDI|inflation|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},{t:function(x){return !/योजना|scheme|policy|mission|reform/i.test(x);},m:'❌ Scheme नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
     gs4:{n:'GS Paper 4 (Ethics)',i:'⚖️',m:15,
       st:{intro:{w:15,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma/i},concl:{w:20,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward/i}},
-      pts:[{w:8,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant/i,s:'Ethical concept/thinker'},{w:7,n:'Case Study',r:/case|केस|situation|dilemma|दुविधा|stakeholder|option/i,s:'Case analysis'},{w:6,n:'Values',r:/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय/i,s:'Values लिखें'},{w:6,n:'Admin Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability/i,s:'Admin ethics'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Constitutional morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real example'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected/i,s:'Stakeholders'},{w:10,n:'Solution/Decision',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई/i,s:'Final decision'}],
-      bad:[{t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य/i.test(x);},m:'❌ Ethical concept नहीं'},{t:function(x){return !/case|केस|situation|dilemma|stakeholder/i.test(x);},m:'❌ Case analysis नहीं'},{t:function(x){return !/solution|समाधान|decision|निर्णय/i.test(x);},m:'❌ Solution नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    essay:{n:'Essay',i:'📝',m:20,
-      st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|quote|उद्धरण/i},body:{w:50,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|example|उदाहरण/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|summary/i}},
-      pts:[{w:10,n:'Philosophical',r:/philosoph|दर्शन|thinker|विचारक|Gandhi|Nehru|Ambedkar/i,s:'Thinkers जोड़ें'},{w:12,n:'Multi-dim',r:/social|economic|political|environment|सामाजिक|आर्थिक|राजनीतिक|पर्यावरण/i,s:'हर dimension'},{w:8,n:'Examples',r:/example|उदाहरण|जैसे|case/i,s:'Real examples'},{w:8,n:'Current Affairs',r:/20\d{2}|recent|हाल|current|today/i,s:'Current affairs'},{w:6,n:'Quotes',r:/[""][^""]{10,}[""]|कहा|quote/i,s:'Quotes जोड़ें'},{w:6,n:'Personal',r:/\bI\s|मेरे|मैं|my\s|we\s|हम/i,s:'Personal touch'},{w:8,n:'Coherence',r:/therefore|इसलिए|thus|hence|इस प्रकार/i,s:'Flow के लिए linking words'},{w:10,n:'Way Forward',r:/way forward|solution|समाधान|future|भविष्य|hope/i,s:'Positive conclusion'}],
-      bad:[{t:function(x){return x.split(/\s+/).length<500;},m:'❌ Essay बहुत छोटा — 1000-1200 शब्द'},{t:function(x){return !/[""][^""]{10,}[""]|कहा|quote/i.test(x);},m:'❌ कोई quote नहीं'},{t:function(x){return !/philosoph|दर्शन|thinker|विचारक/i.test(x);},m:'❌ Philosophical depth नहीं'},{t:function(x){return !/social|economic|political|सामाजिक|आर्थिक/i.test(x);},m:'❌ Multi-dimensional नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward/i.test(x);},m:'❌ Conclusion नहीं'}]}
-  };
-
-  function detect(t){
-    var s={gs1:0,gs2:0,gs3:0,gs4:0};
-    if(/इतिहास|history|संस्कृति|भूगोल|समाज|स्वतंत्रता|मुगल|मौर्य/i.test(t))s.gs1+=3;
-    if(/राजव्यवस्था|polity|संविधान|constitution|अनुच्छेद|शासन|न्यायपालिका|संसद/i.test(t))s.gs2+=3;
-    if(/अर्थव्यवस्था|economy|GDP|बजट|महंगाई|पर्यावरण|तकनीक|सुरक्षा/i.test(t))s.gs3+=3;
-    if(/नैतिकता|ethics|integrity|सत्यनिष्ठा|दुविधा|dilemma|केस/i.test(t))s.gs4+=3;
-    var mx='gs1',v=0;for(var k in s){if(s[k]>v){v=s[k];mx=k;}}return mx;
-  }
-
-  function buildHTML(text,mode){
-    var key=mode==='essay'?'essay':detect(text),d=DB[key];if(!d)return null;
-    var r={n:d.n,i:d.i,m:d.m,w:text.split(/\s+/).filter(function(x){return x.length>0;}).length,sF:[],sM:[],pF:[],pM:[],warn:[],sc:0,mx:0};
-    for(var k in d.st){var s=d.st[k];r.mx+=s.w;if(s.r.test(text)){r.sF.push({n:s.n,w:s.w});r.sc+=s.w;}else r.sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){r.mx+=p.w;if(p.r.test(text)){r.pF.push({n:p.n,w:p.w});r.sc+=p.w;}else r.pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))r.warn.push(b.m);}catch(e){}});
-    r.mk=Math.round((r.sc/r.mx)*d.m*10)/10;r.pc=Math.round((r.sc/r.mx)*100);
-    r.gr=r.pc>=80?'A+':r.pc>=65?'A':r.pc>=50?'B':r.pc>=35?'C':'D';
-    var h='';
-    h+='<div style="padding:20px;background:#f7fafc;min-height:100vh">';
-    h+='<div style="max-width:700px;margin:0 auto">';
-    h+='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:#a0aec0;font-weight:800;letter-spacing:2px">UPSC EXAMINER SCORECARD</div>';
-    h+='<div style="font-size:22px;font-weight:900;margin-top:4px">'+r.i+' '+r.n+'</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:#a0aec0">SCORE</div>';
-    h+='<div style="font-size:42px;font-weight:900;color:'+(r.pc>=65?'#48bb78':r.pc>=50?'#f6ad55':'#fc8181')+';line-height:1">'+r.mk+'</div>';
-    h+='<div style="font-size:14px;color:#a0aec0">/ '+r.m+'</div></div></div>';
-    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+r.pc+'%;background:linear-gradient(90deg,#f6ad55,#48bb78)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">WORDS</div><div style="font-size:18px;font-weight:900">'+r.w+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">PERCENT</div><div style="font-size:18px;font-weight:900">'+r.pc+'%</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">GRADE</div><div style="font-size:18px;font-weight:900">'+r.gr+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">MISSING</div><div style="font-size:18px;font-weight:900;color:#fc8181">'+(r.sM.length+r.pM.length)+'</div></div>';
-    h+='</div></div>';
-    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
-    h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
-    r.sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    r.sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' — MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div>';
-    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
-    h+='<div style="font-size:14px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH ('+r.pF.length+'/'+(r.pF.length+r.pM.length)+' elements मिले)</div>';
-    r.pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    r.pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(r.warn.length){
-      h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
-      h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 EXAMINER WARNINGS ('+r.warn.length+')</div>';
-      r.warn.forEach(function(w){h+='<div style="padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
-      h+='</div>';
-    }
-    h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:15px;font-weight:900;color:#2b6cb0;margin-bottom:12px">🎯 ACTION PLAN — यह सुधारें</div>';
-    var a=[];r.sM.forEach(function(s){a.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
-    r.pM.forEach(function(p){a.push({p:'HIGH',t:p.s});});r.warn.forEach(function(w){a.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!a.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#22543d;padding:16px">🏆 शानदार! कोई major कमी नहीं</div>';}
-    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;align-items:flex-start;border-left:5px solid '+c+';box-shadow:0 1px 4px rgba(0,0,0,0.05)"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
-    h+='</div>';
-    h+='<div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:18px;color:#fff;margin-bottom:20px">';
-    h+='<div style="font-size:14px;font-weight:900;color:#f6ad55;margin-bottom:12px">👨‍🏫 EXAMINER का FINAL VERDICT</div>';
-    var v=r.pc>=75?'🏆 Excellent! UPSC top 1% answer। Structure, content, examples — सब perfect।':r.pc>=60?'👍 Good! Content अच्छा, structure/depth में सुधार करें। Above-average।':r.pc>=45?'📊 Average. Intro/Conclusion ठीक करें, data/facts बढ़ाएं, examples जोड़ें।':r.pc>=30?'⚠️ Weak. Basic structure गायब, content depth कम। Pattern सीखें।':'❌ Very Poor. UPSC हिसाब से fail। Structure सीखें, toppers की copies देखें।';
-    h+='<div style="font-size:13px;line-height:1.7;color:#e2e8f0">'+v+'</div></div>';
-    h+='<button onclick="document.getElementById(\'upscBtnOverlay\').remove()" style="width:100%;padding:16px;background:#e94560;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer">✖ बंद करें</button>';
-    h+='</div></div>';
-    return h;
-  }
-
-  // Button add karo — sirf UPSC/UPPCS/BPSC/Essay select hone par dikhe
-  function addButton(){
-    if(document.getElementById('upscBtnFloat'))return;
-    var ex=null;
-    var a=document.querySelector('.dr-item.on');
-    if(a)ex=a.getAttribute('data-exam');
-    if(ex!=='upsc'&&ex!=='uppcs'&&ex!=='bpsc'&&ex!=='essay'){
-      // Check via ebN text
-      var eb=document.getElementById('ebN');
-      if(eb){
-        var t=eb.textContent||'';
-        if(t.indexOf('UPSC')>-1||t.indexOf('UPPCS')>-1||t.indexOf('BPSC')>-1||t.indexOf('निबंध')>-1) ex='upsc';
-      }
-    }
-    if(ex!=='upsc'&&ex!=='uppcs'&&ex!=='bpsc'&&ex!=='essay')return;
-    var rb=document.getElementById('resBody');
-    if(!rb||!rb.innerHTML||rb.innerHTML.length<200)return;
-    var txt=(window.state&&window.state.currentText)||window.acxPdfText||(document.getElementById('ansInput')&&document.getElementById('ansInput').value)||'';
-    if(!txt||txt.length<30)return;
-
-    var btn=document.createElement('button');
-    btn.id='upscBtnFloat';
-    btn.textContent='🔍 UPSC Examiner Analysis';
-    btn.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:999999;background:linear-gradient(135deg,#e94560,#c0392b);color:#fff;border:none;padding:14px 28px;border-radius:50px;font-weight:900;font-size:14px;box-shadow:0 6px 20px rgba(233,69,96,0.5);cursor:pointer';
-    btn.onclick=function(){
-      var ov=document.createElement('div');
-      ov.id='upscBtnOverlay';
-      ov.innerHTML=buildHTML(txt,ex==='essay'?'essay':'auto');
-      ov.style.cssText='position:fixed;inset:0;background:#f7fafc;overflow:auto;z-index:9999999;padding:0';
-      document.body.appendChild(ov);
-    };
-    document.body.appendChild(btn);
-    console.log('✅ UPSC Button added');
-  }
-
-  setInterval(function(){
-    var old=document.getElementById('upscBtnFloat');
-    if(old)old.remove();
-    addButton();
-  },1000);
-
-  console.log('✅ UPSC Button v5 ready');
-})();
-</script>
-
-<script>
-(function(){
-  'use strict';
-  console.log('🎯 UPSC v9 - acxResultModal target');
-
-  var DB = {
-    gs1:{n:'GS Paper 1',i:'📜',m:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact|विश्लेषण/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i}},pts:[{w:6,n:'Historical Date',r:/\b(1[0-9]{3}|20[0-2][0-9])\b|सन्|मौर्य|मुगल|ब्रिटिश|स्वतंत्रता|आंदोलन/i,s:'तिथि/कालखंड लिखें'},{w:6,n:'Culture/Art',r:/कला|संस्कृति|नृत्य|संगीत|मंदिर|विरासत|भाषा|साहित्य/i,s:'Culture reference जोड़ें'},{w:6,n:'Geography',r:/नदी|पर्वत|मैदान|मानसून|जलवायु|मिट्टी|खनिज/i,s:'भौगोलिक feature'},{w:7,n:'Social Dimension',r:/समाज|जाति|वर्ग|महिला|शहरीकरण|ग्रामीण|gender|caste/i,s:'सामाजिक पहलू'},{w:6,n:'Data/Stats',r:/\d+%|\d{4}|Census|NFHS|GDP|Index/i,s:'Data जोड़ें'},{w:6,n:'Example',r:/उदाहरण|example|जैसे|such as/i,s:'Example दें'},{w:6,n:'Scheme',r:/योजना|scheme|policy|नीति|mission|act/i,s:'योजना का नाम'},{w:8,n:'Way Forward',r:/way forward|आगे की राह|suggestion|सुझाव|reform|सुधार/i,s:'Way forward ज़रूर दें'}],bad:[{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/\d+%|\d{4}|report|census/i.test(x);},m:'❌ कोई data नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा — 150-250 शब्द चाहिए'}]},
-    gs2:{n:'GS Paper 2',i:'🏛️',m:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'Constitutional Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|amendment/i,s:'अनुच्छेद लिखें — Article 21, 44'},{w:6,n:'Judgment',r:/Supreme Court|सुप्रीम कोर्ट|judgment|निर्णय|High Court/i,s:'Court judgment'},{w:6,n:'Committee',r:/committee|समिति|commission|आयोग|report|NITI/i,s:'Committee report'},{w:7,n:'Governance',r:/शासन|governance|प्रशासन|accountability|transparency|reform/i,s:'Governance aspect'},{w:6,n:'International',r:/international|अंतर्राष्ट्रीय|UN|bilateral|foreign policy|treaty/i,s:'International angle'},{w:6,n:'Federal/State',r:/federal|संघीय|राज्य|state|center|concurrent/i,s:'Federal angle'},{w:6,n:'Example',r:/उदाहरण|example|जैसे/i,s:'Example दें'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way forward'}],bad:[{t:function(x){return !/अनुच्छेद|article|संविधान|constitution/i.test(x);},m:'❌ संविधान/अनुच्छेद का reference नहीं'},{t:function(x){return !/Supreme Court|सुप्रीम कोर्ट|judgment|निर्णय/i.test(x);},m:'❌ Court judgment नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs3:{n:'GS Paper 3',i:'💰',m:15,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion/i}},pts:[{w:8,n:'Economic Data',r:/GDP|HDI|inflation|महंगाई|fiscal|budget|बजट|\d+%/i,s:'Economic data — GDP, inflation'},{w:6,n:'Scheme',r:/योजना|scheme|policy|mission|PLI|MSME|NITI/i,s:'Scheme का नाम'},{w:7,n:'Environment',r:/पर्यावरण|environment|climate|जलवायु|carbon|pollution|renewable/i,s:'Environment angle'},{w:6,n:'Science/Tech',r:/technology|तकनीक|AI|digital|space|ISRO|innovation/i,s:'Science/Tech'},{w:6,n:'Security',r:/सुरक्षा|security|defense|terrorism|cyber|border/i,s:'Security angle'},{w:6,n:'Committee',r:/committee|समिति|commission|report|Economic Survey/i,s:'Committee report'},{w:6,n:'Example',r:/उदाहरण|example|जैसे|\d+%/i,s:'Example/Data'},{w:8,n:'Way Forward',r:/way forward|suggestion|reform|सुधार/i,s:'Way forward'}],bad:[{t:function(x){return !/\d+%|GDP|HDI|inflation|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},{t:function(x){return !/योजना|scheme|policy|mission|reform/i.test(x);},m:'❌ Scheme नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    gs4:{n:'GS Paper 4 (Ethics)',i:'⚖️',m:15,st:{intro:{w:15,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},body:{w:45,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma/i},concl:{w:20,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|way forward/i}},pts:[{w:8,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant/i,s:'Ethical concept'},{w:7,n:'Case Study',r:/case|केस|situation|dilemma|दुविधा|stakeholder|option/i,s:'Case analysis'},{w:6,n:'Values',r:/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय/i,s:'Values लिखें'},{w:6,n:'Admin Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability/i,s:'Admin ethics'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Constitutional morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real example'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected/i,s:'Stakeholders'},{w:10,n:'Solution/Decision',r:/solution|समाधान|decision|निर्णय|action|कार्रवाई/i,s:'Final decision'}],bad:[{t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य/i.test(x);},m:'❌ Ethical concept नहीं'},{t:function(x){return !/case|केस|situation|dilemma|stakeholder/i.test(x);},m:'❌ Case analysis नहीं'},{t:function(x){return !/solution|समाधान|decision|निर्णय/i.test(x);},m:'❌ Solution नहीं'},{t:function(x){return x.split(/\s+/).length<120;},m:'❌ बहुत छोटा'}]},
-    essay:{n:'Essay',i:'📝',m:20,st:{intro:{w:15,n:'Introduction',r:/intro|परिचय|प्रस्तावना|quote|उद्धरण/i},body:{w:50,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|example|उदाहरण/i},concl:{w:20,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|summary/i}},pts:[{w:10,n:'Philosophical',r:/philosoph|दर्शन|thinker|विचारक|Gandhi|Nehru|Ambedkar/i,s:'Thinkers जोड़ें'},{w:12,n:'Multi-dim',r:/social|economic|political|environment|सामाजिक|आर्थिक|राजनीतिक|पर्यावरण/i,s:'हर dimension'},{w:8,n:'Examples',r:/example|उदाहरण|जैसे|case/i,s:'Real examples'},{w:8,n:'Current Affairs',r:/20\d{2}|recent|हाल|current|today/i,s:'Current affairs'},{w:6,n:'Quotes',r:/[""][^""]{10,}[""]|कहा|quote/i,s:'Quotes'},{w:6,n:'Personal',r:/\bI\s|मेरे|मैं|my\s|we\s|हम/i,s:'Personal touch'},{w:8,n:'Coherence',r:/therefore|इसलिए|thus|hence|इस प्रकार/i,s:'Linking words'},{w:10,n:'Way Forward',r:/way forward|solution|समाधान|future|भविष्य|hope/i,s:'Positive conclusion'}],bad:[{t:function(x){return x.split(/\s+/).length<500;},m:'❌ Essay बहुत छोटा'},{t:function(x){return !/[""][^""]{10,}[""]|कहा|quote/i.test(x);},m:'❌ कोई quote नहीं'},{t:function(x){return !/philosoph|दर्शन|thinker|विचारक/i.test(x);},m:'❌ Philosophical depth नहीं'},{t:function(x){return !/social|economic|political|सामाजिक|आर्थिक/i.test(x);},m:'❌ Multi-dimensional नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward/i.test(x);},m:'❌ Conclusion नहीं'}]}
-  };
-
-  function detect(t){
-    var s={gs1:0,gs2:0,gs3:0,gs4:0};
-    if(/इतिहास|history|संस्कृति|भूगोल|समाज|स्वतंत्रता|मुगल|मौर्य/i.test(t))s.gs1+=3;
-    if(/राजव्यवस्था|polity|संविधान|constitution|अनुच्छेद|शासन|न्यायपालिका|संसद/i.test(t))s.gs2+=3;
-    if(/अर्थव्यवस्था|economy|GDP|बजट|महंगाई|पर्यावरण|तकनीक|सुरक्षा/i.test(t))s.gs3+=3;
-    if(/नैतिकता|ethics|integrity|सत्यनिष्ठा|दुविधा|dilemma|केस/i.test(t))s.gs4+=3;
-    var mx='gs1',v=0;for(var k in s){if(s[k]>v){v=s[k];mx=k;}}return mx;
-  }
-
-  function buildPanel(text,mode){
-    var key=mode==='essay'?'essay':detect(text),d=DB[key];if(!d)return null;
-    var r={n:d.n,i:d.i,m:d.m,w:text.split(/\s+/).filter(function(x){return x.length>0;}).length,sF:[],sM:[],pF:[],pM:[],warn:[],sc:0,mx:0};
-    for(var k in d.st){var s=d.st[k];r.mx+=s.w;if(s.r.test(text)){r.sF.push({n:s.n,w:s.w});r.sc+=s.w;}else r.sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){r.mx+=p.w;if(p.r.test(text)){r.pF.push({n:p.n,w:p.w});r.sc+=p.w;}else r.pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))r.warn.push(b.m);}catch(e){}});
-    r.mk=Math.round((r.sc/r.mx)*d.m*10)/10;r.pc=Math.round((r.sc/r.mx)*100);
-    r.gr=r.pc>=80?'A+':r.pc>=65?'A':r.pc>=50?'B':r.pc>=35?'C':'D';
-    var h='';
-    h+='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:#a0aec0;font-weight:800;letter-spacing:2px">UPSC EXAMINER SCORECARD</div>';
-    h+='<div style="font-size:20px;font-weight:900;margin-top:4px">'+r.i+' '+r.n+'</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:#a0aec0">SCORE</div>';
-    h+='<div style="font-size:38px;font-weight:900;color:'+(r.pc>=65?'#48bb78':r.pc>=50?'#f6ad55':'#fc8181')+';line-height:1">'+r.mk+'</div>';
-    h+='<div style="font-size:13px;color:#a0aec0">/ '+r.m+'</div></div></div>';
-    h+='<div style="height:8px;background:rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;margin-bottom:12px"><div style="height:100%;width:'+r.pc+'%;background:linear-gradient(90deg,#f6ad55,#48bb78)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">WORDS</div><div style="font-size:16px;font-weight:900">'+r.w+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">PERCENT</div><div style="font-size:16px;font-weight:900">'+r.pc+'%</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">GRADE</div><div style="font-size:16px;font-weight:900">'+r.gr+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">MISSING</div><div style="font-size:16px;font-weight:900;color:#fc8181">'+(r.sM.length+r.pM.length)+'</div></div></div></div>';
-    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
-    h+='<div style="font-size:13px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
-    r.sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:12.5px">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    r.sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:12.5px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div><div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
-    h+='<div style="font-size:13px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH ('+r.pF.length+'/'+(r.pF.length+r.pM.length)+')</div>';
-    r.pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:12.5px">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    r.pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:11px 12px;border-radius:8px;margin-bottom:7px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#c05621;font-weight:800;font-size:12.5px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:11.5px;color:#7b341e;font-weight:600">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(r.warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:13px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 WARNINGS ('+r.warn.length+')</div>';r.warn.forEach(function(w){h+='<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#c53030;font-weight:700;border-left:4px solid #fc8181">'+w+'</div>';});h+='</div>';}
-    h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">🎯 ACTION PLAN</div>';
-    var a=[];r.sM.forEach(function(s){a.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
-    r.pM.forEach(function(p){a.push({p:'HIGH',t:p.s});});r.warn.forEach(function(w){a.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!a.length){h+='<div style="text-align:center;font-size:14px;font-weight:900;color:#22543d;padding:16px">🏆 शानदार! कोई major कमी नहीं</div>';}
-    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="padding:11px 13px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:3px 9px;border-radius:11px;font-weight:900">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
-    h+='</div><div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:16px;color:#fff">';
-    h+='<div style="font-size:13px;font-weight:900;color:#f6ad55;margin-bottom:10px">👨‍🏫 FINAL VERDICT</div>';
-    var v=r.pc>=75?'🏆 Excellent! UPSC top 1% answer।':r.pc>=60?'👍 Good! Content अच्छा, structure सुधारें।':r.pc>=45?'📊 Average. Intro/Conclusion ठीक करें, data/facts बढ़ाएं।':r.pc>=30?'⚠️ Weak. Basic structure गायब, content depth कम।':'❌ Very Poor. UPSC हिसाब से fail।';
-    h+='<div style="font-size:12.5px;line-height:1.7;color:#e2e8f0">'+v+'</div></div>';
-    return h;
-  }
-
-  function inject(){
-    var modal=document.getElementById('acxResultModal');
-    if(!modal) return;
-    if(modal.querySelector('#upscExaminerPanel')) return;
-    
-    var exam=document.querySelector('.dr-item.on');
-    var ex=exam?exam.getAttribute('data-exam'):null;
-    if(ex!=='upsc'&&ex!=='uppcs'&&ex!=='bpsc'&&ex!=='essay') return;
-    
-    var text=(window.state&&window.state.currentText)||window.acxPdfText||'';
-    if(!text||text.length<30){var ta=document.getElementById('ansInput');if(ta)text=ta.value||'';}
-    if(!text||text.length<30) return;
-    
-    var panelHTML=buildPanel(text,ex==='essay'?'essay':'auto');
-    if(!panelHTML) return;
-    
-    // Inner container dhoondo (jisme close button + cards hain)
-    var inner=modal.querySelector('div[style*="max-width:640px"]')||modal.firstElementChild;
-    if(!inner) return;
-    
-    var wrap=document.createElement('div');
-    wrap.id='upscExaminerPanel';
-    wrap.innerHTML=panelHTML;
-    wrap.style.cssText='margin-bottom:14px';
-    
-    // Close button ke baad daalo
-    var firstChild=inner.firstElementChild;
-    if(firstChild) inner.insertBefore(wrap,firstChild.nextSibling);
-    else inner.appendChild(wrap);
-    
-    console.log('✅✅✅ UPSC Panel injected into acxResultModal!');
-  }
-
-  new MutationObserver(function(){setTimeout(inject,100);setTimeout(inject,400);}).observe(document.body,{childList:true,subtree:true});
-  setInterval(inject,400);
-  console.log('✅ UPSC v9 ready');
-})();
-</script>
-
-
-
-
-
-
-<script>
-(function(){
-  'use strict';
-  console.log('🎯 UPPCS GS1-GS6 Examiner loading...');
-
-  // ============ UPSC (basic, direct click) ============
-  var UPSC={gs1:{name:'UPSC GS Paper 1',icon:'📜',max:15,st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि|context/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i}},pts:[{w:8,n:'Historical Facts',r:/\b(1[0-9]{3}|20[0-2][0-9])\b|सन्|मौर्य|मुगल|ब्रिटिश|स्वतंत्रता|आंदोलन|हड़प्पा/i,s:'ऐतिहासिक तिथि ज़रूर'},{w:7,n:'Culture/Art',r:/कला|संस्कृति|नृत्य|संगीत|मंदिर|विरासत|भाषा|साहित्य/i,s:'Culture reference'},{w:7,n:'Geography',r:/नदी|पर्वत|मैदान|मानसून|जलवायु|मिट्टी|खनिज|हिमालय/i,s:'भौगोलिक feature'},{w:8,n:'Social Dimension',r:/समाज|जाति|वर्ग|महिला|शहरीकरण|ग्रामीण|urbanization|gender|caste/i,s:'सामाजिक पहलू'},{w:6,n:'Data/Stats',r:/\d+%|\d{4}|Census|NFHS|GDP|Index/i,s:'Data जोड़ें'},{w:6,n:'Example',r:/उदाहरण|example|जैसे|such as|case/i,s:'Example'},{w:6,n:'Scheme/Policy',r:/योजना|scheme|policy|नीति|mission|act|कानून/i,s:'योजना'},{w:6,n:'Quotes/Thinkers',r:/[""][^""]{8,}[""]|Gandhi|Nehru|Ambedkar|Tagore|कहा था|अनुसार|quote/i,s:'Quote/Thinker'},{w:7,n:'Counter-view',r:/however|हालांकि|लेकिन|on the other hand|दूसरी ओर|criticism|आलोचना|limitation|सीमा/i,s:'दूसरा पक्ष'},{w:7,n:'Way Forward',r:/way forward|आगे की राह|suggestion|सुझाव|reform|सुधार|solution/i,s:'Way Forward'}],bad:[{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/\d+%|\d{4}|report|census|GDP/i.test(x);},m:'❌ कोई data नहीं'},{t:function(x){return !/योजना|scheme|policy|mission/i.test(x);},m:'❌ कोई scheme नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ कोई example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा — 150-250 शब्द चाहिए'},{t:function(x){return !/however|हालांकि|लेकिन|criticism|आलोचना/i.test(x);},m:'⚠️ सिर्फ एक पक्ष'},{t:function(x){return !/way forward|suggestion|सुझाव|reform|सुधार/i.test(x);},m:'⚠️ Way forward नहीं'}]},
-    gs2:{name:'UPSC GS Paper 2',icon:'🏛️',max:15,st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},pts:[{w:9,n:'Constitutional Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|schedule|amendment|संशोधन|73rd|74th|DPSP|मौलिक अधिकार/i,s:'अनुच्छेद ज़रूर'},{w:8,n:'SC/HC Judgment',r:/Supreme Court|सुप्रीम कोर्ट|High Court|judgment|निर्णय|verdict|Kesavananda|Maneka|Puttaswamy|Basic Structure/i,s:'Landmark judgment'},{w:6,n:'Committee/Report',r:/committee|समिति|commission|आयोग|report|NITI|Punchhi|Sarkaria|ARC/i,s:'Committee report'},{w:8,n:'Governance',r:/शासन|governance|प्रशासन|accountability|transparency|e-gov|reform|सुधार|citizen|participat/i,s:'Governance aspect'},{w:7,n:'Federal Structure',r:/federal|संघीय|राज्य|state|center|केंद्र|concurrent|समवर्ती|राज्यपाल|governor/i,s:'Federal angle'},{w:6,n:'International',r:/international|अंतर्राष्ट्रीय|UN|bilateral|foreign policy|treaty|SAARC|BRICS|G20|WHO/i,s:'International angle'},{w:6,n:'Scheme/Policy',r:/योजना|scheme|policy|नीति|mission|act|कानून/i,s:'Scheme'},{w:6,n:'Statutory Body',r:/ECI|चुनाव आयोग|UPSC|CAG|CIC|NHRC|Lokpal|लोकपाल|NITI Aayog/i,s:'Statutory body'},{w:6,n:'Example',r:/उदाहरण|example|जैसे|case/i,s:'Example'},{w:6,n:'Counter-view',r:/however|हालांकि|लेकिन|on the other hand|criticism|आलोचना|limitation|सीमा/i,s:'दूसरा पक्ष'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|recommend/i,s:'Way Forward'}],bad:[{t:function(x){return !/अनुच्छेद|article|संविधान|constitution|schedule/i.test(x);},m:'❌ संविधान/अनुच्छेद नहीं'},{t:function(x){return !/Supreme Court|सुप्रीम कोर्ट|judgment|निर्णय|High Court/i.test(x);},m:'❌ Court judgment नहीं'},{t:function(x){return !/committee|समिति|commission|report|NITI|ARC/i.test(x);},m:'❌ Committee report नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background|संवैधानिक/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion|reform/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/शासन|governance|प्रशासन|accountability|transparency/i.test(x);},m:'❌ Governance aspect नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/federal|संघीय|राज्य|state|center|समवर्ती/i.test(x);},m:'⚠️ Federal angle नहीं'},{t:function(x){return !/however|हालांकि|लेकिन|criticism|आलोचना/i.test(x);},m:'⚠️ सिर्फ एक पक्ष'}]},
-    gs3:{name:'UPSC GS Paper 3',icon:'💰',max:15,st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|context/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},pts:[{w:9,n:'Economic Data',r:/GDP|GNP|HDI|inflation|महंगाई|CPI|WPI|fiscal|राजकोषीय|monetary|मौद्रिक|budget|बजट|\d+%/i,s:'Economic data'},{w:7,n:'NITI/Economic Survey',r:/NITI|Economic Survey|आर्थिक सर्वेक्षण|Finance Commission|Budget|MoSPI|NSO/i,s:'NITI/Economic Survey'},{w:6,n:'Scheme/Reform',r:/योजना|scheme|policy|नीति|mission|PLI|MSME|MUDRA|Make in India|Atmanirbhar|GST|reform|सुधार/i,s:'Scheme/Reform'},{w:7,n:'Environment',r:/पर्यावरण|environment|climate|जलवायु|carbon|pollution|renewable|biodiversity|COP|Paris|वन|forest/i,s:'Environment angle'},{w:6,n:'Science/Tech',r:/technology|तकनीक|science|विज्ञान|AI|digital|डिजिटल|space|अंतरिक्ष|ISRO|biotech|nano|quantum|innovation/i,s:'Science/Tech'},{w:7,n:'Security',r:/सुरक्षा|security|defense|रक्षा|terrorism|cyber|साइबर|border|Naxal|LWE|internal security/i,s:'Security angle'},{w:6,n:'Agriculture',r:/कृषि|agriculture|किसान|farmer|MSP|फसल|crop|irrigation|सिंचाई|fertilizer|rural|ग्रामीण/i,s:'Agriculture'},{w:6,n:'Committee/Report',r:/committee|समिति|commission|आयोग|report|Rangarajan|Kelkar|Swaminathan/i,s:'Committee report'},{w:6,n:'Example/Data',r:/उदाहरण|example|जैसे|\d+%|\d{4}/i,s:'Example/Data'},{w:6,n:'Global/Comparative',r:/global|वैश्विक|world|विश्व|UN|WTO|World Bank|IMF|comparison|तुलना/i,s:'Global perspective'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|recommend|policy|नीति/i,s:'Way Forward'}],bad:[{t:function(x){return !/\d+%|GDP|HDI|inflation|fiscal|budget|बजट/i.test(x);},m:'❌ Economic data नहीं'},{t:function(x){return !/योजना|scheme|policy|mission|reform/i.test(x);},m:'❌ Scheme/Reform नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/पर्यावरण|environment|climate|carbon|pollution/i.test(x);},m:'⚠️ Environment angle नहीं'},{t:function(x){return !/technology|तकनीक|digital|AI|innovation/i.test(x);},m:'⚠️ Science/Tech नहीं'},{t:function(x){return !/सुरक्षा|security|defense|cyber|border/i.test(x);},m:'⚠️ Security angle नहीं'}]},
-    gs4:{name:'UPSC GS Paper 4 (Ethics)',icon:'⚖️',max:15,st:{intro:{w:12,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|concept/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma|दुविधा/i},concl:{w:18,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|decision|निर्णय/i}},pts:[{w:9,n:'Ethical Concept/Thinker',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|probity|Gandhi|Kant|Aristotle|Ambedkar|दर्शन|philosophy|अहिंसा/i,s:'Ethical concept/thinker'},{w:8,n:'Case Study',r:/case|केस|situation|dilemma|दुविधा|stakeholder|हितधारक|option|विकल्प|decision|निर्णय/i,s:'Case analysis'},{w:7,n:'Values',r:/मूल्य|value|honesty|सत्य|compassion|करुणा|empathy|सहानुभूति|justice|न्याय|equality|समानता|responsibility/i,s:'Values'},{w:7,n:'Admin Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability|जवाबदेही|transparency|neutrality|निष्पक्षता/i,s:'Admin ethics'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|अनुच्छेद|secular|democratic/i,s:'Constitutional morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस|case|instance/i,s:'Real example'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected|प्रभावित/i,s:'Stakeholder'},{w:8,n:'Multiple Options/Decision',r:/option|विकल्प|decision|निर्णय|choice|course of action|कार्रवाई|approach/i,s:'Multiple options'},{w:6,n:'Ethical Theory',r:/utilitarian|उपयोगितावाद|deontolog|कर्तव्यवाद|virtue|सद्गुण|Kantian|consequential|framework/i,s:'Ethical theory'},{w:7,n:'Final Solution',r:/solution|समाधान|decision|निर्णय|recommend|सुझाव|justif|conclusion|निष्कर्ष/i,s:'Final solution'}],bad:[{t:function(x){return !/ethics|नैतिकता|integrity|value|मूल्य|philosophy|दर्शन/i.test(x);},m:'❌ Ethical concept नहीं'},{t:function(x){return !/case|केस|situation|dilemma|दुविधा|stakeholder/i.test(x);},m:'❌ Case study नहीं'},{t:function(x){return !/solution|समाधान|decision|निर्णय|action|कार्रवाई/i.test(x);},m:'❌ Final solution नहीं'},{t:function(x){return !/intro|परिचय|परिभाषा|definition|concept/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/मूल्य|value|honesty|सत्य|empathy|justice|न्याय/i.test(x);},m:'❌ Values नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case|केस/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/Gandhi|Kant|Aristotle|Ambedkar|Nehru|Vivekananda|दर्शन|philosophy/i.test(x);},m:'⚠️ Ethical thinker नहीं'},{t:function(x){return !/stakeholder|हितधारक|affected|प्रभावित/i.test(x);},m:'⚠️ Stakeholder analysis नहीं'}]}};
-
-  // ============ UPPCS GS1-GS6 FULL ============
-  var UPPCS={
-    gs1:{name:'UPPCS GS Paper 1 — History/Culture/Geography/Society',icon:'📜',max:15,
-      st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|पृष्ठभूमि|context/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact|विश्लेषण/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|सुझाव/i}},
-      pts:[{w:8,n:'UP+Indian History',r:/उत्तर प्रदेश|UP|अवध|1857|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश|मौर्य|गुप्त|सिंधु|वैदिक|राष्ट्रीय आंदोलन|स्वतंत्रता/i,s:'UP+Indian history — अवध, 1857, कानपुर, लखनऊ, मौर्य, मुगल'},{w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|संगीत|मंदिर|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|तुलसीदास|कबीर|सूरदास|मैथिली/i,s:'UP culture — काशी, अयोध्या, ब्रज, तुलसीदास, कबीर'},{w:7,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|हिमालय|मैदान|बुंदेलखंड|रोहिलखंड|मानसून|जलवायु/i,s:'UP geography — गंगा, यमुना, बुंदेलखंड, रोहिलखंड'},{w:7,n:'UP Society',r:/समाज|जाति|वर्ग|महिला|किसान|ग्रामीण|शहरीकरण|SC|ST|OBC|अल्पसंख्यक|दलित|महादलित/i,s:'UP society — जाति, किसान, ग्रामीण, दलित'},{w:6,n:'World History',r:/विश्व|world|फ्रांस|France|रूस|Russia|अमेरिका|America|औद्योगिक|industrial|क्रांति|revolution|विश्वयुद्ध|world war/i,s:'World history connection'},{w:6,n:'UP Data',r:/\d+%|\d{4}|Census|जनसंख्या|\d+\s*(करोड़|lakh|लाख)|HDI|साक्षरता/i,s:'UP data — जनसंख्या, साक्षरता'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|such as|case/i,s:'Real example'},{w:6,n:'UP Scheme',r:/योजना|scheme|policy|मिशन|मुख्यमंत्री|CM|सरकार/i,s:'UP scheme'},{w:6,n:'Quotes/Thinkers',r:/[""][^""]{8,}[""]|Gandhi|Nehru|Ambedkar|Tagore|कबीर|तुलसी|कहा था|अनुसार/i,s:'Quote/Thinker'},{w:6,n:'Counter-view',r:/however|हालांकि|लेकिन|on the other hand|criticism|आलोचना|limitation|सीमा/i,s:'दूसरा पक्ष'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|समाधान/i,s:'Way Forward'}],
-      bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|वाराणसी|प्रयागराज|काशी|अयोध्या|अवध/i.test(x);},m:'❌ UP-specific reference नहीं — UPPCS GS1 में अनिवार्य'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/\d+%|\d{4}|report|census/i.test(x);},m:'❌ कोई data नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/समाज|सामाजिक|जाति|महिला|किसान/i.test(x);},m:'⚠️ Social dimension नहीं'},{t:function(x){return !/कला|संस्कृति|विरासत|भाषा|साहित्य/i.test(x);},m:'⚠️ Culture reference नहीं'}]},
-    gs2:{name:'UPPCS GS Paper 2 — Polity/Governance/IR',icon:'🏛️',max:15,
-      st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|संवैधानिक|constitutional/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},
-      pts:[{w:9,n:'Constitutional Article',r:/अनुच्छेद|article\s*\d+|संविधान|constitution|अनुसूची|schedule|amendment|संशोधन|73rd|74th|DPSP|मौलिक अधिकार|Preamble|प्रस्तावना/i,s:'अनुच्छेद ज़रूर — 73rd/74th, Article 21, 356'},{w:8,n:'UP Governance',r:/उत्तर प्रदेश|UP|राज्यपाल|मुख्यमंत्री|CM|विधानसभा|विधान परिषद|पंचायत|नगर निगम|जिला|मंडल|DM|SP|प्रमुख सचिव/i,s:'UP governance — विधानसभा, विधान परिषद, DM, SP'},{w:7,n:'UP Polity',r:/विधानसभा|विधान परिषद|MLC|MLA|मुख्यमंत्री|स्पीकर|राज्यपाल|मंडलायुक्त|DM|SP|नगर पंचायत/i,s:'UP polity — विधान परिषद (स्थायी सदन)'},{w:7,n:'SC/HC Judgment',r:/Supreme Court|सुप्रीम कोर्ट|High Court|उच्च न्यायालय|judgment|निर्णय|verdict|Allahabad High Court|इलाहाबाद उच्च न्यायालय|Basic Structure/i,s:'SC/HC judgment — Allahabad HC भी'},{w:6,n:'Committee/Commission',r:/committee|समिति|commission|आयोग|report|NITI|ARC|Punchhi|Sarkaria|Law Commission/i,s:'Committee report'},{w:7,n:'Governance Aspect',r:/शासन|governance|प्रशासन|administration|accountability|जवाबदेही|transparency|पारदर्शिता|e-gov|reform|सुधार|भ्रष्टाचार|corruption/i,s:'Governance aspect'},{w:7,n:'Federal/State',r:/federal|संघीय|राज्य|state|center|केंद्र|concurrent|समवर्ती|7th schedule|राज्य सूची|समवर्ती सूची/i,s:'Federal/state angle'},{w:6,n:'International',r:/international|अंतर्राष्ट्रीय|UN|bilateral|foreign policy|treaty|SAARC|BRICS|G20|WHO|WTO/i,s:'International angle'},{w:6,n:'UP Example',r:/उदाहरण|example|जैसे|UP में|बिहार|मध्य प्रदेश/i,s:'UP example'},{w:6,n:'Counter-view',r:/however|हालांकि|लेकिन|criticism|आलोचना|limitation|सीमा|challenge|चुनौती/i,s:'दूसरा पक्ष'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|recommend/i,s:'Way Forward'}],
-      bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|विधानसभा|पंचायत|मंडल|कानपुर|प्रयागराज/i.test(x);},m:'❌ UP-specific reference नहीं — UPPCS GS2 में अनिवार्य'},{t:function(x){return !/अनुच्छेद|article|संविधान|constitution|schedule|अनुसूची/i.test(x);},m:'❌ संविधान/अनुच्छेद reference नहीं'},{t:function(x){return !/Supreme Court|सुप्रीम कोर्ट|judgment|निर्णय|High Court|उच्च न्यायालय/i.test(x);},m:'❌ Court judgment नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background|संवैधानिक/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/शासन|governance|प्रशासन|accountability|transparency/i.test(x);},m:'❌ Governance aspect नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/federal|संघीय|राज्य|state|center|समवर्ती/i.test(x);},m:'⚠️ Federal angle नहीं'}]},
-    gs3:{name:'UPPCS GS Paper 3 — Economy/Statistics',icon:'💰',max:15,
-      st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},
-      pts:[{w:9,n:'UP+Indian Economy',r:/GSDP|GDP|UP|उत्तर प्रदेश|अर्थव्यवस्था|economy|निवेश|बजट|budget|\d+%|inflation|महंगाई|fiscal|monetary/i,s:'UP+Indian economy — GSDP, बजट, निवेश'},{w:8,n:'UP Agriculture',r:/कृषि|agriculture|किसान|farmer|फसल|गेहूं|गन्ना|चीनी|धान|मक्का|सिंचाई|irrigation|उर्वरक|fertilizer|MSP/i,s:'UP कृषि — गन्ना, गेहूं, किसान, MSP'},{w:7,n:'UP Industry/MSME',r:/उद्योग|industry|MSME|व्यापार|व्यवसाय|निवेश|रोजगार|ODOP|एक जनपद एक उत्पाद|Make in India|Startup/i,s:'UP उद्योग — MSME, ODOP, निवेश'},{w:6,n:'Statistics/Data',r:/statistics|सांख्यिकी|mean|median|mode|average|औसत|प्रतिशत|percentage|correlation|regression|sample|survey/i,s:'Statistics — mean, median, mode, percentage'},{w:6,n:'Planning/NITI',r:/NITI|Economic Survey|आर्थिक सर्वेक्षण|planning|योजना आयोग|Finance Commission|Five Year|पंचवर्षीय|Budget/i,s:'Planning/NITI/आर्थिक सर्वेक्षण'},{w:7,n:'Environment',r:/पर्यावरण|environment|climate|जलवायु|carbon|pollution|प्रदूषण|renewable|नवीकरणीय|COP|Paris|वन|forest|जलवायु परिवर्तन/i,s:'Environment angle'},{w:6,n:'Demography',r:/जनसांख्यिकी|demography|population|जनसंख्या|census|sex ratio|लिंगानुपात|literacy|साक्षरता|migration/i,s:'Demography — जनसंख्या, लिंगानुपात'},{w:6,n:'UP Scheme',r:/मुख्यमंत्री|CM|योजना|scheme|mission|मिशन|UP सरकार|ODOP|एक जनपद/i,s:'UP सरकार की योजना'},{w:6,n:'Real Example/Data',r:/उदाहरण|example|जैसे|\d+%|\d{4}|case/i,s:'Example/Data'},{w:6,n:'Committee/Report',r:/committee|समिति|commission|आयोग|report|Rangarajan|Kelkar|Swaminathan|Economic Survey/i,s:'Committee report'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|recommend|policy|नीति/i,s:'Way Forward'}],
-      bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|गन्ना|गेहूं|GSDP|ODOP/i.test(x);},m:'❌ UP-specific reference नहीं — UPPCS GS3 में अनिवार्य'},{t:function(x){return !/\d+%|GSDP|GDP|inflation|budget|बजट|fiscal/i.test(x);},m:'❌ Economic data नहीं — GS3 में facts और figures ज़रूरी'},{t:function(x){return !/योजना|scheme|policy|mission|मिशन|reform|सुधार/i.test(x);},m:'❌ Scheme/Reform नहीं'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/statistics|सांख्यिकी|mean|median|percentage|प्रतिशत/i.test(x);},m:'⚠️ Statistics angle नहीं — GS3 में डेटा विश्लेषण ज़रूरी'},{t:function(x){return !/पर्यावरण|environment|climate|carbon|pollution/i.test(x);},m:'⚠️ Environment angle नहीं'},{t:function(x){return !/कृषि|agriculture|किसान|farmer|MSP|गन्ना|गेहूं/i.test(x);},m:'⚠️ Agriculture angle नहीं'}]},
-    gs4:{name:'UPPCS GS Paper 4 — Science/Tech/Environment',icon:'🔬',max:15,
-      st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background|context/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},
-      pts:[{w:8,n:'Science & Technology',r:/technology|तकनीक|science|विज्ञान|AI|artificial intelligence|digital|डिजिटल|space|अंतरिक्ष|ISRO|DRDO|biotech|nano|quantum|innovation|नवाचार|5G|semiconductor|chip|robot|computer/i,s:'Science/Tech — AI, space, biotech, quantum, ISRO'},{w:8,n:'Environment/Ecology',r:/पर्यावरण|environment|climate|जलवायु|carbon|कार्बन|pollution|प्रदूषण|renewable|नवीकरणीय|biodiversity|जैव विविधता|COP|Paris|पेरिस|वन|forest|emission|उत्सर्जन|ecology|पारिस्थितिकी/i,s:'Environment — climate, biodiversity, pollution'},{w:7,n:'Health/Medicine',r:/स्वास्थ्य|health|medical|चिकित्सा|hospital|अस्पताल|vaccine|टीका|disease|रोग|COVID|corona|मलेरिया|टीबी|nutrition|पोषण|Ayushman|आयुष्मान/i,s:'Health — vaccines, diseases, Ayushman Bharat'},{w:6,n:'Education',r:/शिक्षा|education|NEP|school|स्कूल|college|कॉलेज|university|विश्वविद्यालय|literacy|साक्षरता|digital\s*education|online\s*class/i,s:'Education — NEP, digital learning'},{w:7,n:'Security/Defense',r:/सुरक्षा|security|defense|रक्षा|terrorism|आतंकवाद|cyber|साइबर|border|सीमा|internal security|आंतरिक सुरक्षा|Naxal|नक्सल|LWE|UAV|missile|मिसाइल/i,s:'Security — cyber, borders, Naxal, defense'},{w:6,n:'UP Sci/Tech',r:/उत्तर प्रदेश|UP|defence corridor|रक्षा कॉरिडोर|Noida|नोएडा|Lucknow|लखनऊ|IT|digital|startup|up electronics/i,s:'UP में Science/Tech — defence corridor, IT'},{w:6,n:'Space/Atomic',r:/ISRO|इसरो|NASA|space|अंतरिक्ष|satellite|उपग्रह|Chandrayaan|चंद्रयान|Mangalyaan|Gaganyaan|nuclear|परमाणु|atomic|missile|मिसाइल/i,s:'Space/Atomic — ISRO, Chandrayaan, nuclear'},{w:6,n:'IT/Digital India',r:/IT|information technology|digital|डिजिटल|UPI|Aadhaar|आधार|e-gov|online|internet|AI|blockchain|cloud/i,s:'IT/Digital — UPI, Aadhaar, e-governance'},{w:6,n:'Real Example/Data',r:/उदाहरण|example|जैसे|\d+%|\d{4}|case/i,s:'Example/Data'},{w:6,n:'Counter-view',r:/however|हालांकि|लेकिन|criticism|आलोचना|limitation|सीमा|risk|जोखिम|challenge|चुनौती/i,s:'दूसरा पक्ष/risk'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|recommend/i,s:'Way Forward'}],
-      bad:[{t:function(x){return !/technology|तकनीक|science|विज्ञान|AI|ISRO|biotech|digital|innovation/i.test(x);},m:'❌ Science/Tech reference नहीं — GS4 में अनिवार्य'},{t:function(x){return !/पर्यावरण|environment|climate|carbon|pollution|biodiversity|वन/i.test(x);},m:'❌ Environment angle नहीं — GS4 में अनिवार्य'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|case/i.test(x);},m:'❌ Example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/स्वास्थ्य|health|शिक्षा|education|security|सुरक्षा/i.test(x);},m:'⚠️ Health/Education/Security angle नहीं'},{t:function(x){return !/उत्तर प्रदेश|UP|नोएडा|लखनऊ|defence corridor/i.test(x);},m:'⚠️ UP-specific Sci/Tech reference नहीं'},{t:function(x){return !/however|हालांकि|लेकिन|criticism|risk|जोखिम|challenge/i.test(x);},m:'⚠️ Risk/Counter-view नहीं'}]},
-    gs5:{name:'UPPCS GS Paper 5 — UP Special',icon:'🌟',max:15,
-      st:{intro:{w:12,n:'Introduction',r:/intro|परिचय|प्रस्तावना|background/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|कारण|impact/i},concl:{w:18,n:'Conclusion',r:/conclusion|निष्कर्ष|way forward|suggestion|reform/i}},
-      pts:[{w:9,n:'UP History',r:/उत्तर प्रदेश|UP|अवध|1857|स्वतंत्रता|कानपुर|लखनऊ|प्रयागराज|वाराणसी|मुगल|ब्रिटिश|मौर्य|कुशाण|गुप्त|रानी लक्ष्मीबाई|1857 की क्रांति/i,s:'UP history — अवध, 1857, कानपुर, लखनऊ, प्रयागराज'},{w:8,n:'UP Geography',r:/गंगा|यमुना|सरयू|घाघरा|गोमती|विंध्य|बुंदेलखंड|रोहिलखंड|अवध|पूर्वांचल|हिमालय|मैदान|मानसून|जलवायु|मिट्टी/i,s:'UP geography — नदी, बुंदेलखंड, रोहिलखंड, पूर्वांचल'},{w:8,n:'UP Culture',r:/कला|संस्कृति|कथक|संगीत|मंदिर|काशी|अयोध्या|विरासत|अवधी|भोजपुरी|ब्रज|तुलसीदास|कबीर|सूरदास|मेला|कुंभ|कुम्भ|महोत्सव/i,s:'UP culture — काशी, अयोध्या, ब्रज, कुंभ, तुलसीदास'},{w:7,n:'UP Administration',r:/प्रशासन|administrative|जिला|मंडल|तहसील|पंचायत|नगर निगम|DM|SP|विकास|मंडलायुक्त|नगर पंचायत|जिलाधिकारी/i,s:'UP administration — DM, SP, मंडल, तहसील'},{w:7,n:'UP Economy',r:/कृषि|agriculture|उद्योग|industry|व्यापार|GDP|GSDP|गन्ना|गेहूं|चीनी|ODOP|एक जनपद एक उत्पाद|MSME|निवेश/i,s:'UP economy — कृषि, उद्योग, GSDP, ODOP'},{w:6,n:'UP Education',r:/शिक्षा|education|विश्वविद्यालय|university|BHU|AMU|इलाहाबाद विश्वविद्यालय|NEP|स्कूल|college|साक्षरता/i,s:'UP education — BHU, AMU, इलाहाबाद विश्वविद्यालय'},{w:6,n:'UP Current Affairs',r:/20\d{2}|recent|हाल|current|अभी|नया|new|2023|2024|2025|योगी|Yogi|मुख्यमंत्री|CM/i,s:'UP current affairs — 2023-2025 updates'},{w:5,n:'UP Tourism',r:/पर्यटन|tourism|ताजमहल|Taj Mahal|वाराणसी|Varanasi|अयोध्या|Ayodhya|कुंभ|Kumbh|पर्यटक|tourist/i,s:'UP tourism — Taj, Kashi, Ayodhya'},{w:6,n:'UP Sports/Awards',r:/खेल|sports|क्रीड़ा|एथलीट|athlete|खिलाड़ी|award|पुरस्कार|सम्मान|खेलो इंडिया/i,s:'UP sports/awards'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|UP में|UP के/i,s:'UP-specific example'},{w:7,n:'Way Forward',r:/way forward|suggestion|reform|सुधार|solution|समाधान/i,s:'Way Forward'}],
-      bad:[{t:function(x){return !/उत्तर प्रदेश|UP|यूपी|लखनऊ|कानपुर|वाराणसी|प्रयागराज|अयोध्या|काशी|अवध|बुंदेलखंड/i.test(x);},m:'❌ UP-specific reference नहीं — GS5 में सबसे अनिवार्य'},{t:function(x){return !/intro|परिचय|प्रस्तावना|background/i.test(x);},m:'❌ Introduction नहीं'},{t:function(x){return !/conclusion|निष्कर्ष|way forward|suggestion/i.test(x);},m:'❌ Conclusion नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|UP में/i.test(x);},m:'❌ UP-specific example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा'},{t:function(x){return !/20\d{2}|recent|हाल|current|2023|2024|2025/i.test(x);},m:'❌ UP current affairs नहीं'},{t:function(x){return !/इतिहास|history|1857|अवध|कानपुर|लखनऊ|मुगल/i.test(x);},m:'⚠️ UP history नहीं'},{t:function(x){return !/संस्कृति|कला|काशी|अयोध्या|ब्रज|कुंभ/i.test(x);},m:'⚠️ UP culture नहीं'},{t:function(x){return !/गंगा|यमुना|बुंदेलखंड|रोहिलखंड|पूर्वांचल|नदी/i.test(x);},m:'⚠️ UP geography नहीं'},{t:function(x){return !/प्रशासन|जिला|मंडल|पंचायत|DM|SP|मंडलायुक्त/i.test(x);},m:'⚠️ UP administration नहीं'}]},
-    gs6:{name:'UPPCS GS Paper 6 — Ethics/Integrity/Aptitude',icon:'⚖️',max:15,
-      st:{intro:{w:12,n:'Intro/Definition',r:/intro|परिचय|परिभाषा|definition|meaning|अर्थ|concept|अवधारणा/i},body:{w:42,n:'Main Body',r:/main|body|मुख्य|विवेचन|analysis|case|केस|dilemma|दुविधा|discuss/i},concl:{w:18,n:'Conclusion/Solution',r:/conclusion|निष्कर्ष|solution|समाधान|decision|निर्णय|way forward/i}},
-      pts:[{w:9,n:'Ethical Concept/Thinker',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|probity|ईमानदारी|Gandhi|Kant|Aristotle|Ambedkar|Nehru|Vivekananda|Tagore|दर्शन|philosophy|अहिंसा|सत्य|धर्म|कर्म|सुकरात/i,s:'Ethical concept/thinker — Gandhi, Kant, Aristotle, Ambedkar'},{w:8,n:'Case Study Analysis',r:/case|केस|situation|स्थिति|dilemma|दुविधा|stakeholder|हितधारक|option|विकल्प|decision|निर्णय|action|कार्रवाई|choice/i,s:'Case study में stakeholders, options, decision analyze करें'},{w:7,n:'Values',r:/मूल्य|value|honesty|सत्य|compassion|करुणा|empathy|सहानुभूति|justice|न्याय|equality|समानता|responsibility|जिम्मेदारी|respect|integrity|trust|विश्वास/i,s:'Values — honesty, empathy, justice, integrity'},{w:7,n:'Administrative Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|public service|लोक सेवा|accountability|जवाबदेही|transparency|पारदर्शिता|neutrality|निष्पक्षता|impartiality|objectivity/i,s:'Administrative ethics'},{w:6,n:'UP Public Service',r:/उत्तर प्रदेश|UP|लोक सेवक|civil servant|जवाबदेही|पारदर्शिता|प्रशासनिक|UP सरकार/i,s:'UP public service values'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|नैतिकता|article|अनुच्छेद|secular|धर्मनिरपेक्ष|democratic|लोकतांत्रिक|Preamble/i,s:'Constitutional morality'},{w:6,n:'Ethical Theory',r:/utilitarian|उपयोगितावाद|deontolog|कर्तव्यवाद|virtue|सद्गुण|Kantian|consequential|framework|गांधीवाद|Gandhian/i,s:'Ethical theory — utilitarianism, deontology, virtue'},{w:6,n:'Real-Life Example',r:/उदाहरण|example|जैसे|केस|case|instance|सत्य घटना|real/i,s:'Real-life example'},{w:6,n:'Stakeholder Analysis',r:/stakeholder|हितधारक|पक्षकार|involved|शामिल|affected|प्रभावित|family|परिवार|society|community/i,s:'Stakeholders list करें'},{w:8,n:'Multiple Options/Decision',r:/option|विकल्प|decision|निर्णय|choice|चुनाव|course of action|कार्रवाई|approach|दृष्टिकोण|way out/i,s:'Multiple options और final decision'},{w:7,n:'Final Solution',r:/solution|समाधान|decision|निर्णय|recommend|सुझाव|justif|सिद्ध|conclusion|निष्कर्ष|final/i,s:'Final solution justify करें'}],
-      bad:[{t:function(x){return !/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|philosophy|दर्शन/i.test(x);},m:'❌ कोई ethical concept नहीं — GS6 में अनिवार्य'},{t:function(x){return !/case|केस|situation|dilemma|दुविधा|stakeholder|हितधारक/i.test(x);},m:'❌ Case study analysis नहीं — stakeholders और dilemma analyze करें'},{t:function(x){return !/solution|समाधान|decision|निर्णय|action|कार्रवाई|recommend/i.test(x);},m:'❌ Final solution/decision नहीं'},{t:function(x){return !/intro|परिचय|परिभाषा|definition|concept/i.test(x);},m:'❌ Introduction/Definition नहीं'},{t:function(x){return !/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय/i.test(x);},m:'❌ Values mention नहीं'},{t:function(x){return !/उदाहरण|example|जैसे|केस|case/i.test(x);},m:'❌ Real-life example नहीं'},{t:function(x){return x.split(/\s+/).filter(function(w){return w.length>0;}).length<120;},m:'❌ बहुत छोटा — 150-250 शब्द चाहिए'},{t:function(x){return !/Gandhi|Kant|Aristotle|Ambedkar|Nehru|Vivekananda|दर्शन|philosophy/i.test(x);},m:'⚠️ कोई ethical thinker नहीं'},{t:function(x){return !/stakeholder|हितधारक|involved|affected|प्रभावित/i.test(x);},m:'⚠️ Stakeholder analysis नहीं'},{t:function(x){return !/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability|जवाबदेही/i.test(x);},m:'⚠️ Administrative ethics angle नहीं'},{t:function(x){return !/however|हालांकि|लेकिन|criticism|आलोचना|limitation|सीमा/i.test(x);},m:'⚠️ Alternative perspective नहीं'}]}
-  };
-
-  // Detect UPPCS paper
-  function detectUP(t){
-    if(/नैतिकता|ethics|integrity|सत्यनिष्ठा|दुविधा|dilemma|केस|case study|मूल्य|value|probity/i.test(t)) return 'gs6';
-    if(/technology|तकनीक|science|विज्ञान|AI|ISRO|biotech|environment|पर्यावरण|climate|जलवायु|carbon|health|स्वास्थ्य|vaccine|education|शिक्षा|defence|रक्षा|cyber|साइबर/i.test(t)&&!/कृषि|agriculture|GSDP|GDP|बजट|बजट/i.test(t)) return 'gs4';
-    if(/GSDP|GDP|economy|अर्थव्यवस्था|inflation|महंगाई|fiscal|budget|बजट|statistics|सांख्यिकी|कृषि|agriculture|किसान|गन्ना|गेहूं|ODOP|उद्योग|industry|planning|NITI|demography|जनसांख्यिकी/i.test(t)) return 'gs3';
-    if(/उत्तर प्रदेश|UP|यूपी|अवध|बुंदेलखंड|रोहिलखंड|काशी|अयोध्या|लखनऊ|कानपुर|प्रयागराज|कुंभ|ब्रज|पूर्वांचल|बनारस|Varanasi/i.test(t)) return 'gs5';
-    if(/राजव्यवस्था|polity|संविधान|constitution|अनुच्छेद|article|शासन|governance|न्यायपालिका|judiciary|संसद|विधानसभा|पंचायत|federal|international|अंतर्राष्ट्रीय/i.test(t)) return 'gs2';
-    return 'gs1';
-  }
-
-  function getText(){var t=(window.state&&window.state.currentText)||window.acxPdfText||'';if(!t||t.length<30){var ta=document.getElementById('ansInput');if(ta)t=ta.value||'';}return t;}
-  function getExam(){var a=document.querySelector('.dr-item.on');return a?a.getAttribute('data-exam'):null;}
-  function detUPSC(t){var s={gs1:0,gs2:0,gs3:0,gs4:0};if(/इतिहास|history|संस्कृति|भूगोल|समाज|स्वतंत्रता|मुगल|मौर्य|हड़प्पा/i.test(t))s.gs1+=3;if(/राजव्यवस्था|polity|संविधान|constitution|अनुच्छेद|शासन|न्यायपालिका|संसद/i.test(t))s.gs2+=3;if(/अर्थव्यवस्था|economy|GDP|बजट|महंगाई|पर्यावरण|तकनीक|सुरक्षा/i.test(t))s.gs3+=3;if(/नैतिकता|ethics|integrity|दुविधा|dilemma|केस|मूल्य/i.test(t))s.gs4+=4;var mx='gs1',v=0;for(var k in s){if(s[k]>v){v=s[k];mx=k;}}return mx;}
-
-  function buildPanel(text, DB, paper, cat, theme, accent, lightBg, darkText){
-    var d = DB[paper]; if(!d) return null;
-    var words = text.split(/\s+/).filter(function(w){return w.length>0;}).length;
-    var sentences = text.split(/[.!?।]+/).filter(function(s){return s.trim().length>5;}).length;
-    var paragraphs = text.split(/\n\s*\n/).filter(function(p){return p.trim().length>30;}).length;
-    var sF=[], sM=[], pF=[], pM=[], warn=[], sc=0, mx=0;
-    for(var k in d.st){var s=d.st[k];mx+=s.w;if(s.r.test(text)){sF.push({n:s.n,w:s.w});sc+=s.w;}else sM.push({n:s.n,w:s.w});}
-    d.pts.forEach(function(p){mx+=p.w;if(p.r.test(text)){pF.push({n:p.n,w:p.w});sc+=p.w;}else pM.push({n:p.n,w:p.w,s:p.s});});
-    d.bad.forEach(function(b){try{if(b.t(text))warn.push(b.m);}catch(e){}});
-    var pc=Math.round((sc/mx)*100);var marks=Math.round((sc/mx)*d.max*10)/10;
-    var grade=pc>=80?'A+':pc>=65?'A':pc>=50?'B':pc>=35?'C':'D';
-    var h='';
-    h+='<div style="background:linear-gradient(135deg,'+theme+');border-radius:16px;padding:20px;margin-bottom:14px;color:#fff">';
-    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div>';
-    h+='<div style="font-size:9px;color:rgba(255,255,255,0.7);font-weight:800;letter-spacing:2px">'+cat+' EXAMINER SCORECARD</div>';
-    h+='<div style="font-size:20px;font-weight:900;margin-top:4px">'+d.icon+' '+d.name+'</div></div>';
-    h+='<div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,0.7)">SCORE</div>';
-    h+='<div style="font-size:42px;font-weight:900;color:'+(pc>=65?'#86efac':pc>=50?'#fde047':'#fca5a5')+';line-height:1">'+marks+'</div>';
-    h+='<div style="font-size:14px;color:rgba(255,255,255,0.7)">/ '+d.max+'</div></div></div>';
-    h+='<div style="height:10px;background:rgba(255,255,255,0.15);border-radius:5px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:'+pc+'%;background:linear-gradient(90deg,#fde047,#86efac)"></div></div>';
-    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">WORDS</div><div style="font-size:18px;font-weight:900">'+words+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">SENTENCES</div><div style="font-size:18px;font-weight:900">'+sentences+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">PARAS</div><div style="font-size:18px;font-weight:900">'+paragraphs+'</div></div>';
-    h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
-    h+='</div></div>';
-    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid '+accent+'">';
-    h+='<div style="font-size:14px;font-weight:900;color:'+darkText+';margin-bottom:12px">📐 STRUCTURE ANALYSIS (72 marks)</div>';
-    sF.forEach(function(s){h+='<div style="background:'+lightBg+';padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:'+darkText+';font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:'+accent+';color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
-    sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' — MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div>';
-    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #10b981">';
-    h+='<div style="font-size:14px;font-weight:900;color:#065f46;margin-bottom:12px">📚 CONTENT DEPTH — '+cat+' Examiner Check ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
-    pF.forEach(function(p){h+='<div style="background:#ecfdf5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#065f46;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#10b981;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
-    pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
-    h+='</div>';
-    if(warn.length){
-      h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
-      h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 '+cat+' EXAMINER WARNINGS ('+warn.length+' गंभीर गलतियाँ)</div>';
-      warn.forEach(function(w){h+='<div style="padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
-      h+='</div>';
-    }
-    h+='<div style="background:linear-gradient(135deg,'+lightBg+',#bfdbfe);border:2px solid '+accent+';border-radius:12px;padding:16px;margin-bottom:12px">';
-    h+='<div style="font-size:15px;font-weight:900;color:'+darkText+';margin-bottom:12px">🎯 ACTION PLAN — अगली बार ये सुधारें</div>';
-    var acts=[];
-    sM.forEach(function(s){acts.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
-    pM.forEach(function(p){acts.push({p:'HIGH',t:p.s});});
-    warn.forEach(function(w){acts.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
-    if(!acts.length){
-      h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#065f46;padding:16px">🏆 Outstanding! '+cat+' examiner के हिसाब से perfect answer</div>';
-    } else {
-      acts.slice(0,18).forEach(function(x){
-        var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';
-        h+='<div style="padding:11px 14px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0;margin-top:1px">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';
-      });
-    }
-    h+='</div>';
-    h+='<div style="background:linear-gradient(135deg,#1a202c,'+accent+');border-radius:12px;padding:18px;color:#fff">';
-    h+='<div style="font-size:14px;font-weight:900;color:#fde047;margin-bottom:12px">👨‍🏫 '+cat+' EXAMINER का FINAL VERDICT</div>';
-    var v;
-    if(pc>=80) v='🏆 OUTSTANDING! यह उत्तर '+cat+' के top 1% में आएगा। Structure, content, examples — सब perfect।';
-    else if(pc>=65) v='👍 EXCELLENT! Content और structure अच्छा है। थोड़ी depth और data जोड़कर top-level बना सकते हैं।';
-    else if(pc>=50) v='📊 GOOD. Average से ऊपर। Intro/Conclusion और data/facts बढ़ाएं।';
-    else if(pc>=35) v='⚠️ AVERAGE. Basic structure ठीक है, लेकिन content depth बहुत कम। ज़्यादा examples और data जोड़ें।';
-    else if(pc>=20) v='⚠️ WEAK. Basic structure (Intro-Body-Conclusion) गायब है। Content depth कम।';
-    else v='❌ VERY POOR. '+cat+' हिसाब से यह answer fail है। पहले structure सीखें।';
-    h+='<div style="font-size:13px;line-height:1.7;color:rgba(255,255,255,0.85)">'+v+'</div></div>';
-    return h;
-  }
-
-  function inject(){
-    var exam=getExam();var modal=document.getElementById('acxResultModal');if(!modal)return;
-    ['uppcsFullPanel','upscFullPanel'].forEach(function(id){var el=document.getElementById(id);if(el)el.remove();});
-    if(exam!=='uppcs'&&exam!=='upsc')return;
-    var text=getText();if(!text||text.length<30)return;
-    var panel=null,panelId=null;
-    if(exam==='uppcs'){
-      var paper=detectUP(text);
-      panel=buildPanel(text,UPPCS,paper,'UPPCS','#7c2d12,#c2410c','#c2410c','#fff7ed','#7c2d12');
-      panelId='uppcsFullPanel';
-      if(panel){var wp=document.createElement('div');wp.innerHTML=panel;var wt=(wp.textContent||'').length;}
-      console.log('✅ UPPCS '+paper.toUpperCase()+' panel injected');
-    }
-    else if(exam==='upsc'){
-      var paperU=detUPSC(text);
-      panel=buildPanel(text,UPSC,paperU,'UPSC','#1a1a2e,#0f3460','#0f3460','#eff6ff','#1e3a8a');
-      panelId='upscFullPanel';
-      console.log('✅ UPSC '+paperU.toUpperCase()+' panel injected');
-    }
-    if(!panel)return;
-    var inner=modal.querySelector('div[style*="max-width:640px"]')||modal.firstElementChild;if(!inner)return;
-    var wrap=document.createElement('div');wrap.id=panelId;wrap.innerHTML=panel;wrap.style.cssText='margin-bottom:14px';
-    var fc=inner.firstElementChild;if(fc)inner.insertBefore(wrap,fc.nextSibling);else inner.appendChild(wrap);
-  }
-
-  new MutationObserver(function(){setTimeout(inject,100);setTimeout(inject,400);}).observe(document.body,{childList:true,subtree:true});
-  setInterval(inject,400);
-  console.log('✅ UPPCS GS1-GS6 + UPSC Full Examiner ready');
-})();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-// ==================== OCR + IMAGE UPLOAD SYSTEM ====================
-(function(){
-  'use strict';
-  console.log('📷 OCR + Image Upload System loading...');
-
-  // PDF.js worker setup
-  if(window.pdfjsLib){
-    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  }
-
-  var currentOCRWorker = null;
-
-  // ===== Progress UI =====
-  function showProgress(title, pct, status){
-    var el = document.getElementById('ocrProgress');
-    if(!el){
-      el = document.createElement('div');
-      el.id = 'ocrProgress';
-      el.style.cssText = 'position:fixed;inset:0;background:rgba(10,25,41,.95);backdrop-filter:blur(10px);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:20px';
-      el.innerHTML = '<div style="border-radius:20px;padding:30px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)">'+
-        '<div style="font-size:40px;margin-bottom:12px">📷</div>'+
-        '<div id="ocrTitle" style="font-size:18px;font-weight:900;color:#1a202c;margin-bottom:6px"></div>'+
-        '<div id="ocrStatus" style="font-size:13px;color:#718096;margin-bottom:20px"></div>'+
-        '<div style="height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:14px"><div id="ocrBar" style="height:100%;width:0%;background:linear-gradient(90deg,#4299e1,#48bb78);transition:width .3s"></div></div>'+
-        '<div id="ocrPct" style="font-size:28px;font-weight:900;color:#4299e1"></div>'+
-        '<div style="font-size:11px;color:#a0aec0;margin-top:14px">कृपया प्रतीक्षा करें...</div>'+
-        '</div>';
-      document.body.appendChild(el);
-    }
-    document.getElementById('ocrTitle').textContent = title || 'Processing';
-    document.getElementById('ocrStatus').textContent = status || '';
-    document.getElementById('ocrBar').style.width = (pct||0) + '%';
-    document.getElementById('ocrPct').textContent = Math.round(pct||0) + '%';
-  }
-  function hideProgress(){
-    var el = document.getElementById('ocrProgress');
-    if(el) el.remove();
-  }
-
-  // ===== Image to Text (OCR) =====
-  async function imageToText(imageSource, onProgress){
-    try {
-      var worker = await Tesseract.createWorker('hin+eng', 1, {
-        logger: function(m){
-          if(m.status === 'recognizing text' && onProgress){
-            onProgress(50 + m.progress*50, 'हस्तलेख पढ़ा जा रहा है...');
-          }
-        }
-      });
-      currentOCRWorker = worker;
-      var ret = await worker.recognize(imageSource);
-      await worker.terminate();
-      currentOCRWorker = null;
-      return ret.data.text || '';
-    } catch(e){
-      console.error('OCR err:', e);
-      if(currentOCRWorker){ try{ await currentOCRWorker.terminate(); }catch(_){} currentOCRWorker=null; }
-      return '';
-    }
-  }
-
-  // ===== PDF to Text =====
-  async function pdfToText(file, onProgress){
-    var arrayBuffer = await file.arrayBuffer();
-    var pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
-    var totalPages = pdf.numPages;
-    var fullText = '';
-    var handwrittenPages = 0;
-
-    for(var i=1; i<=totalPages; i++){
-      var page = await pdf.getPage(i);
-      var textContent = await page.getTextContent();
-      var pageText = textContent.items.map(function(it){ return it.str; }).join(' ');
-
-      if(pageText.trim().length < 30){
-        // Scanned/handwritten page - use OCR
-        handwrittenPages++;
-        onProgress(10 + (i/totalPages)*35, 'पेज ' + i + '/' + totalPages + ' — OCR हो रहा है...');
-        var viewport = page.getViewport({ scale: 2.0 });
-        var canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        var ctx = canvas.getContext('2d');
-        await page.render({canvasContext: ctx, viewport: viewport}).promise;
-        var imgData = canvas.toDataURL('image/png');
-        var ocrText = await imageToText(imgData, function(p, s){
-          onProgress(10 + (i/totalPages)*35 + (p/100)*(35/totalPages), s);
-        });
-        pageText = ocrText;
-      } else {
-        onProgress(10 + (i/totalPages)*35, 'पेज ' + i + '/' + totalPages + ' पढ़ा जा रहा है...');
-      }
-      fullText += pageText + '\n\n';
-    }
-    return {text: fullText, handwritten: handwrittenPages > 0, pages: totalPages};
-  }
-
-  // ===== Set text into input =====
-  function setInputText(text){
-    var ta = document.getElementById('ansInput');
-    if(ta){
-      ta.value = text;
-      ta.dispatchEvent(new Event('input', {bubbles:true}));
-      return true;
-    }
-    // Try window state
-    if(window.state) window.state.currentText = text;
-    window.acxPdfText = text;
-    return false;
-  }
-
-  // ===== Main file handler =====
-  async function handleFile(file){
-    if(!file) return;
-    var name = (file.name||'').toLowerCase();
-    var isPDF = file.type === 'application/pdf' || name.endsWith('.pdf');
-    var isIMG = /image\/(jpeg|jpg|png|webp|bmp|gif|heic)/.test(file.type) || /\.(jpg|jpeg|png|webp|bmp|gif|heic)$/.test(name);
-
-    if(!isPDF && !isIMG){
-      alert('❌ सिर्फ PDF, JPG, PNG, WEBP फाइल सपोर्टेड है');
-      return;
-    }
-
-    showProgress('फाइल पढ़ी जा रही है...', 5, name);
-    try {
-      var result;
-      if(isPDF){
-        result = await pdfToText(file, function(p, s){ showProgress('PDF प्रोसेस हो रही है', p, s); });
-      } else {
-        showProgress('छवि पढ़ी जा रही है...', 5, name);
-        // Convert to data URL
-        var dataUrl = await new Promise(function(res, rej){
-          var fr = new FileReader();
-          fr.onload = function(){ res(fr.result); };
-          fr.onerror = rej;
-          fr.readAsDataURL(file);
-        });
-        showProgress('OCR हो रहा है...', 10, 'हस्तलेख पहचाना जा रहा है...');
-        var text = await imageToText(dataUrl, function(p, s){ showProgress('OCR हो रहा है...', p, s); });
-        result = {text: text, handwritten: true, pages: 1};
-      }
-
-      if(!result.text || result.text.trim().length < 20){
-        hideProgress();
-        alert('❌ फाइल से टेक्स्ट नहीं निकल पाया। कृपया साफ फोटो/PDF अपलोड करें या टाइप करके पेस्ट करें।');
-        return;
-      }
-
-      showProgress('टेक्स्ट तैयार हो रहा है...', 95, 'लगभग हो गया');
-      setInputText(result.text.trim());
-      showProgress('✅ पूरा हुआ!', 100, result.text.split(/\s+/).length + ' शब्द मिले' + (result.handwritten ? ' (OCR)' : ''));
-
-      setTimeout(hideProgress, 1200);
-      console.log('✅ File processed:', result.text.length, 'chars');
-
-    } catch(e){
-      console.error('File err:', e);
-      hideProgress();
-      alert('❌ त्रुटि: ' + e.message);
-    }
-  }
-
-  // ===== Enhance existing file inputs =====
-  function enhanceInputs(){
-    var fileInputs = document.querySelectorAll('input[type="file"]');
-    fileInputs.forEach(function(inp){
-      if(inp._ocrEnhanced) return;
-      inp._ocrEnhanced = true;
-      // Accept both PDF and images
-      inp.setAttribute('accept', 'application/pdf,image/*,.pdf,.jpg,.jpeg,.png,.webp');
-      inp.addEventListener('change', function(e){
-        var f = e.target.files && e.target.files[0];
-        if(!f) return;
-        // Prevent default handler
-        e.stopImmediatePropagation();
-        e.preventDefault();
-        handleFile(f);
-      }, true);
-    });
-
-    // Add floating "📷 Photo Upload" button if not exists
-    if(!document.getElementById('ocrPhotoBtn')){
-      var btn = document.createElement('button');
-      btn.id = 'ocrPhotoBtn';
-      btn.innerHTML = '📷 Photo/Page';
-      btn.style.cssText = 'position:fixed;bottom:80px;right:16px;z-index:9998;background:linear-gradient(135deg,#4299e1,#48bb78);color:#fff;border:none;padding:12px 18px;border-radius:50px;font-weight:900;font-size:13px;box-shadow:0 6px 20px rgba(66,153,225,0.5);cursor:pointer';
-      btn.onclick = function(){
-        var inp = document.createElement('input');
-        inp.type = 'file';
-        inp.accept = 'image/*,.pdf,.jpg,.jpeg,.png,.webp';
-        inp.capture = 'environment';
-        inp.onchange = function(e){ var f = e.target.files[0]; if(f) handleFile(f); };
-        inp.click();
-      };
-      document.body.appendChild(btn);
-    }
-  }
-
-  // Run enhancement
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(enhanceInputs, 500); });
-  } else {
-    setTimeout(enhanceInputs, 500);
-  }
-  // Repeat for dynamic inputs
-  setInterval(enhanceInputs, 2000);
-
-  // Expose globally
-  window.handleOCRFile = handleFile;
-
-  console.log('✅ OCR + Image Upload System ready');
-})();
-</script>
-</body>
-</html>
+      pts:[{w:8,n:'Ethical Concept',r:/ethics|नैतिकता|integrity|सत्यनिष्ठा|value|मूल्य|Gandhi|Kant/i,s:'Ethical concept/thinker'},{w:7,n:'Case Study',r:/case|केस|situation|dilemma|दुविधा|stakeholder|option/i,s:'Case analysis'},{w:6,n:'Values',r:/मूल्य|value|honesty|सत्य|empathy|सहानुभूति|justice|न्याय/i,s:'Values लिखें'},{w:6,n:'Admin Ethics',r:/प्रशासनिक|administrative|civil servant|लोक सेवक|accountability/i,s:'Admin ethics'},{w:6,n:'Constitutional Morality',r:/संवैधानिक|constitutional|morality|article|secular/i,s:'Constitutional morality'},{w:6,n:'Real Example',r:/उदाहरण|example|जैसे|केस/i,s:'Real example'},{w:6,n:'Stakeholder',r:/stakeholder|हितधारक|involved|affected/i,s:'Stakeholders'},{w:10,n:'Solution/Decision',r:/solution|समाधान|decis

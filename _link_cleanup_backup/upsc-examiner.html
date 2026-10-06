@@ -87,12 +87,12 @@ function check(){
   h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">PERCENT</div><div style="font-size:18px;font-weight:900">'+r.pc+'%</div></div>';
   h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">GRADE</div><div style="font-size:18px;font-weight:900">'+r.gr+'</div></div>';
   h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">MISSING</div><div style="font-size:18px;font-weight:900;color:#fc8181">'+(r.sM.length+r.pM.length)+'</div></div></div></div>';
-  h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
+  h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
   h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
   r.sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
   r.sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
   h+='</div>';
-  h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
+  h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
   h+='<div style="font-size:14px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH ('+r.pF.length+'/'+(r.pF.length+r.pM.length)+')</div>';
   r.pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
   r.pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600">💡 '+p.s+'</div></div>';});
@@ -100,7 +100,7 @@ function check(){
   if(r.warn.length){
     h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
     h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 WARNINGS ('+r.warn.length+')</div>';
-    r.warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181">'+w+'</div>';});
+    r.warn.forEach(function(w){h+='<div style="padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181">'+w+'</div>';});
     h+='</div>';
   }
   h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
@@ -108,7 +108,7 @@ function check(){
   var a=[];r.sM.forEach(function(s){a.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
   r.pM.forEach(function(p){a.push({p:'HIGH',t:p.s});});r.warn.forEach(function(w){a.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
   if(!a.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#22543d;padding:16px">🏆 शानदार! कोई major कमी नहीं</div>';}
-  else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600">'+x.t+'</div></div>';});}
+  else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600">'+x.t+'</div></div>';});}
   h+='</div>';
   h+='<div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:18px;color:#fff">';
   h+='<div style="font-size:14px;font-weight:900;color:#f6ad55;margin-bottom:12px">👨‍🏫 FINAL VERDICT</div>';

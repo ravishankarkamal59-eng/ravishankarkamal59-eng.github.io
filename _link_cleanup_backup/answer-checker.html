@@ -36,7 +36,7 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .hdr-btn:active{background:rgba(255,255,255,.3)}
 
 /* ============ EXAM BAR ============ */
-.exam-bar{background:#fff;padding:8px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid #e8eef5;flex-shrink:0}
+.exam-bar{padding:8px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;border-bottom:1px solid #e8eef5;flex-shrink:0}
 .exam-bar:active{background:#f8fafc}
 .exam-bar .eb-i{width:32px;height:32px;background:linear-gradient(135deg,#e94560,#c0392b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .exam-bar .eb-t{flex:1;min-width:0}
@@ -48,7 +48,7 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .mid{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px;-webkit-overflow-scrolling:touch}
 
 /* Question picker */
-.qpick{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
+.qpick{border-radius:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
 .qpick-btn{width:100%;background:transparent;border:none;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;text-align:left}
 .qpick-btn:active{background:#f8fafc}
 .qpick-btn .qp-i{width:32px;height:32px;background:linear-gradient(135deg,#0f3460,#1a5276);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#FDBA3B;font-weight:900;flex-shrink:0}
@@ -75,15 +75,15 @@ body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f0f4f8;
 .qcard .qh .sub{font-size:9px;font-weight:800;color:#fff;background:#0f3460;padding:2px 7px;border-radius:8px}
 .qcard .qt{font-size:12.5px;font-weight:700;color:#1a1a2e;line-height:1.45;margin-bottom:6px}
 .qcard .qm{display:flex;gap:5px;flex-wrap:wrap}
-.qcard .qm span{font-size:9px;color:#666;font-weight:600;background:#fff;padding:2px 7px;border-radius:8px;border:1px solid #e0e6ed}
+.qcard .qm span{font-size:9px;color:#666;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid #e0e6ed}
 
 /* Mode toggle */
 .mode-tog{display:flex;gap:5px;background:#e8eef5;padding:3px;border-radius:10px;margin-bottom:8px}
 .mode-b{flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:11.5px;font-weight:700;color:#666;cursor:pointer;transition:.15s}
-.mode-b.on{background:#fff;color:#0f3460;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.mode-b.on{color:#0f3460;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 
 /* Answer textarea */
-.ans-box{background:#fff;border-radius:12px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:8px}
+.ans-box{border-radius:12px;padding:10px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:8px}
 textarea{width:100%;min-height:200px;padding:10px;border:1.5px solid #e0e6ed;border-radius:10px;font-family:inherit;font-size:13px;line-height:1.6;resize:none;outline:none;background:#fafbfc;color:#1a1a2e;height:calc(100% - 30px)}
 textarea:focus{border-color:#0f3460;background:#fff}
 .wcnt{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;font-weight:600;color:#666}
@@ -110,7 +110,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .pdf-prog-t.on{display:block}
 
 /* ============ BOTTOM ACTION ============ */
-.bottom{background:#fff;padding:10px 12px;border-top:1px solid #e8eef5;flex-shrink:0;box-shadow:0 -2px 12px rgba(0,0,0,.04)}
+.bottom{padding:10px 12px;border-top:1px solid #e8eef5;flex-shrink:0;box-shadow:0 -2px 12px rgba(0,0,0,.04)}
 .btn-check{width:100%;background:linear-gradient(135deg,#0f3460,#e94560);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,.3);letter-spacing:.5px}
 .btn-check:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 .btn-check:active{transform:scale(.98)}
@@ -139,7 +139,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .verdict.po{background:rgba(233,69,96,.3);color:#fca5a5}
 
 .bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
-.bd-i{background:#fff;border-radius:10px;padding:10px}
+.bd-i{border-radius:10px;padding:10px}
 .bd-l{font-size:9px;color:#666;font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
 .bd-v{font-size:18px;font-weight:900;color:#0f3460;line-height:1}
 .bd-v small{font-size:11px;color:#999}
@@ -150,7 +150,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .fo{background:linear-gradient(90deg,#f39c12,#f1c40f)}
 .fr{background:linear-gradient(90deg,#e94560,#c0392b)}
 
-.fb-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px}
+.fb-card{border-radius:12px;padding:14px;margin-bottom:10px}
 .fb-t{font-size:12px;font-weight:800;margin-bottom:8px}
 .fb-t.go{color:#27ae60}
 .fb-t.ba{color:#e94560}
@@ -186,11 +186,11 @@ textarea:focus{border-color:#0f3460;background:#fff}
 .detect-info .di-t{font-size:11px;font-weight:800;color:#27ae60;margin-bottom:8px;display:flex;align-items:center;gap:6px;letter-spacing:.5px;text-transform:uppercase}
 .detect-info.warn .di-t{color:#b8860b}
 .detect-info .di-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.detect-info .di-item{background:#fff;padding:8px 10px;border-radius:8px}
+.detect-info .di-item{padding:8px 10px;border-radius:8px}
 .detect-info .di-l{font-size:9px;color:#999;font-weight:700;letter-spacing:1px;margin-bottom:2px}
 .detect-info .di-v{font-size:12px;font-weight:800;color:#0f3460}
-.detect-info .di-q{background:#fff;padding:10px;border-radius:8px;margin-top:8px;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.5}
-.detect-info .di-conf{background:#fff;padding:8px 10px;border-radius:8px;margin-top:8px;font-size:10.5px;color:#666;font-weight:600}
+.detect-info .di-q{padding:10px;border-radius:8px;margin-top:8px;font-size:11.5px;font-weight:600;color:#1a1a2e;line-height:1.5}
+.detect-info .di-conf{padding:8px 10px;border-radius:8px;margin-top:8px;font-size:10.5px;color:#666;font-weight:600}
 .detect-info .di-conf b{color:#27ae60}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -337,7 +337,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 #authScr.on{display:flex !important}
 #authScr .as-cd{
   max-width:420px;width:100%;
-  background:#fff;
+  
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 25px 70px rgba(0,0,0,.5);
@@ -351,7 +351,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 #authScr .as-bd{padding:18px 20px}
 #authScr .as-tabs{display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px}
 #authScr .as-tab{flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer}
-#authScr .as-tab.on{background:#fff;color:#0f3460;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+#authScr .as-tab.on{color:#0f3460;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 #authScr .as-f{margin-bottom:13px}
 #authScr .as-f label{display:block;font-size:10.5px;font-weight:800;color:#666;letter-spacing:.4px;margin-bottom:4px;text-transform:uppercase}
 #authScr .as-f input{width:100%;padding:11px 13px;border:1.5px solid #e0e6ed;border-radius:9px;font-family:inherit;font-size:13.5px;outline:none;background:#fafbfc;color:#1a1a2e;box-sizing:border-box}
@@ -369,7 +369,7 @@ textarea:focus{border-color:#0f3460;background:#fff}
 /* ============ DRAWER ============ */
 .dr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:.25s}
 .dr-overlay.on{opacity:1;visibility:visible}
-.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;height:100dvh;background:#fff;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
+.dr{position:fixed;top:0;right:-340px;width:340px;max-width:88vw;height:100vh;height:100dvh;z-index:2001;transition:right .28s;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.2)}
 .dr.on{right:0}
 .dr-hdr{background:linear-gradient(135deg,#0f3460,#1a5276);color:#fff;padding:16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
 .dr-hdr .t .s{font-size:8px;color:#FDBA3B;letter-spacing:2px;font-weight:700}
@@ -568,7 +568,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- AUTH SCREEN -->
 <div id="authScr" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99998;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
-  <div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
+  <div style="max-width:400px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
     <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">
       <button onclick="AC.closeAuth()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
       <div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>
@@ -577,7 +577,7 @@ console.log('✅ Fix JS loaded');
     </div>
     <div style="padding:20px">
       <div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">
-        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
+        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
         <button type="button" class="as-tab" data-mode="login" onclick="AC.switchTab('login');return false" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>
       </div>
       <form id="asForm" onsubmit="return AC.submit(event)">
@@ -608,7 +608,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- HISTORY MODAL -->
 <div id="histModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99997;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
-  <div style="max-width:450px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto;max-height:85vh;display:flex;flex-direction:column">
+  <div style="max-width:450px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto;max-height:85vh;display:flex;flex-direction:column">
     <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between">
       <div>
         <div style="font-size:16px;font-weight:900">📊 My History</div>
@@ -1379,20 +1379,20 @@ console.log('✅ Fix JS loaded');
 
     // Level + Word count
     h+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px">';
-    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">LEVEL</div><div style="font-size:12px;font-weight:800;color:#0f3460;line-height:1.3">'+rtu.level+'</div></div>';
-    h+='<div style="background:#fff;padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">WORDS</div><div style="font-size:12px;font-weight:800;color:#0f3460">'+rtu.wordCount+'</div></div>';
+    h+='<div style="padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">LEVEL</div><div style="font-size:12px;font-weight:800;color:#0f3460;line-height:1.3">'+rtu.level+'</div></div>';
+    h+='<div style="padding:10px;border-radius:9px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:3px">WORDS</div><div style="font-size:12px;font-weight:800;color:#0f3460">'+rtu.wordCount+'</div></div>';
     h+='</div>';
 
     // Purpose
     if(rtu.purpose.length){
-      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">📌 किसलिए लिखा गया</div>';
+      h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">📌 किसलिए लिखा गया</div>';
       rtu.purpose.forEach(function(p){h+='<div style="font-size:11px;color:#333;padding:2px 0">• '+p+'</div>'});
       h+='</div>';
     }
 
     // Topics
     if(rtu.topics.length){
-      h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">🎯 विषय पहचान</div>';
+      h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:6px">🎯 विषय पहचान</div>';
       h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';
       rtu.topics.forEach(function(t){h+='<span style="background:#e8f4ff;color:#2980b9;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:700">'+t+'</span>'});
       h+='</div></div>';
@@ -1400,10 +1400,10 @@ console.log('✅ Fix JS loaded');
 
     // Quality score
     var qc=rtu.qualityPct>=70?'#27ae60':(rtu.qualityPct>=45?'#f39c12':'#e94560');
-    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px">📊 QUALITY SCORE</div><div style="font-size:14px;font-weight:900;color:'+qc+'">'+rtu.qualityPct+'%</div></div><div style="height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+rtu.qualityPct+'%;background:'+qc+';border-radius:3px"></div></div></div>';
+    h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px">📊 QUALITY SCORE</div><div style="font-size:14px;font-weight:900;color:'+qc+'">'+rtu.qualityPct+'%</div></div><div style="height:5px;background:#e0e6ed;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+rtu.qualityPct+'%;background:'+qc+';border-radius:3px"></div></div></div>';
 
     // Suggested length
-    h+='<div style="background:#fff;padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:4px">📏 लंबाई सुझाव</div><div style="font-size:11px;color:#333;font-weight:600">'+rtu.suggested+'</div><div style="font-size:10px;color:#666;margin-top:4px">Avg '+rtu.avgWordsPerSentence+' शब्द/वाक्य • '+rtu.paragraphs+' paragraphs • ~'+rtu.readingTime+' मिनट पढ़ने में</div></div>';
+    h+='<div style="padding:10px;border-radius:9px;margin-bottom:8px"><div style="font-size:9px;color:#999;font-weight:700;letter-spacing:.5px;margin-bottom:4px">📏 लंबाई सुझाव</div><div style="font-size:11px;color:#333;font-weight:600">'+rtu.suggested+'</div><div style="font-size:10px;color:#666;margin-top:4px">Avg '+rtu.avgWordsPerSentence+' शब्द/वाक्य • '+rtu.paragraphs+' paragraphs • ~'+rtu.readingTime+' मिनट पढ़ने में</div></div>';
 
     // Missing items
     if(rtu.missing.length){
@@ -2377,9 +2377,9 @@ console.log('✅ Fix JS loaded');
       h+='</div>';
       // All exam scores
       h+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">';
-      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.upsc>=10?'#27ae60':'#999')+'">'+examDetect.scores.upsc+'</div></div>';
-      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPPCS</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.uppcs>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.uppcs/2)+'</div></div>';
-      h+='<div style="background:#fff;padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">BPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.bpsc>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.bpsc/2)+'</div></div>';
+      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.upsc>=10?'#27ae60':'#999')+'">'+examDetect.scores.upsc+'</div></div>';
+      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">UPPCS</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.uppcs>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.uppcs/2)+'</div></div>';
+      h+='<div style="padding:6px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#666;font-weight:700">BPSC</div><div style="font-size:11px;font-weight:800;color:'+(examDetect.scores.bpsc>=10?'#27ae60':'#999')+'">'+Math.round(examDetect.scores.bpsc/2)+'</div></div>';
       h+='</div>';
       h+='</div>';
     }
@@ -2389,7 +2389,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="background:linear-gradient(135deg,#e8f4ff,#d4e9ff);border:2px solid #2980b9;border-radius:14px;padding:14px;margin-bottom:12px">';
       h+='<div style="font-size:10px;font-weight:800;color:#2980b9;letter-spacing:1.5px;margin-bottom:8px">📚 DETECTED TOPICS</div>';
       topics.forEach(function(t,i){
-        h+='<div style="background:#fff;border-radius:10px;padding:10px;margin-bottom:6px">';
+        h+='<div style="border-radius:10px;padding:10px;margin-bottom:6px">';
         h+='<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h+='<div style="font-size:13px;font-weight:800;color:#0f3460">'+(i+1)+'. '+t.topic+'</div>';
         h+='<div style="background:#2980b9;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px">'+t.score+' hits</div>';
@@ -2417,7 +2417,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="font-size:10px;font-weight:800;color:#b8860b;letter-spacing:1.5px;margin-bottom:8px">📋 '+examInfo.name+' REQUIREMENTS</div>';
 
       // Score bar
-      h+='<div style="background:#fff;padding:10px;border-radius:10px;margin-bottom:10px">';
+      h+='<div style="padding:10px;border-radius:10px;margin-bottom:10px">';
       h+='<div style="display:flex;justify-content:space-between;margin-bottom:6px">';
       h+='<div style="font-size:12px;font-weight:800;color:#0f3460">'+reqStatus+'</div>';
       h+='<div style="font-size:16px;font-weight:900;color:'+reqColor+'">'+reqPct+'%</div>';
@@ -2444,7 +2444,7 @@ console.log('✅ Fix JS loaded');
 
       // What to add section
       if(rp.missing.length>0){
-        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #e94560">';
+        h+='<div style="padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #e94560">';
         h+='<div style="font-size:11px;font-weight:800;color:#e94560;margin-bottom:8px">🎯 ये जोड़ना ज़रूरी है ('+rp.missing.length+')</div>';
         rp.missing.forEach(function(c){
           h+='<div style="background:#ffe8e8;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
@@ -2454,7 +2454,7 @@ console.log('✅ Fix JS loaded');
         });
         h+='</div>';
       } else {
-        h+='<div style="background:#fff;padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #27ae60;text-align:center">';
+        h+='<div style="padding:12px;border-radius:10px;margin-top:10px;border:1.5px solid #27ae60;text-align:center">';
         h+='<div style="font-size:12px;font-weight:800;color:#27ae60">🎉 सभी required elements मौजूद हैं!</div>';
         h+='</div>';
       }
@@ -2624,7 +2624,7 @@ console.log('✅ Fix JS loaded');
       h+='<div style="font-size:13px;color:#0f3460;font-weight:800;margin-bottom:4px">📚 '+getExamName(d.exam)+'</div>';
       h+='<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:6px">✓ Subject: '+(d.q.subject||'General')+'</div>';
       h+='<div style="font-size:10px;color:#666;font-weight:600;margin-bottom:6px">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b></div>';
-      h+='<div style="font-size:11px;color:#333;line-height:1.5;background:#fff;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
+      h+='<div style="font-size:11px;color:#333;line-height:1.5;padding:8px;border-radius:8px;margin-bottom:6px">'+d.q.q+'</div>';
       h+='<div style="font-size:10px;color:#666;font-weight:600">Confidence: <b style="color:#27ae60">'+Math.round(d.score)+'%</b> • Keywords: '+d.kwFound+'/'+d.kwTotal+'</div>';
       h+='</div>';
     }
@@ -2928,7 +2928,7 @@ console.log('✅ Fix JS loaded');
 
 <!-- USER MENU -->
 <div id="userMenu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:99996;padding:70px 14px 14px;align-items:flex-start;justify-content:flex-end" onclick="AC.closeUserMenu(event)">
-  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:230px">
+  <div onclick="event.stopPropagation()" style="border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:230px">
     <div style="padding:12px 14px;border-bottom:1px solid #f0f4f8">
       <div id="umName" style="font-size:13px;font-weight:800;color:#0f3460">User</div>
       <div id="umEmail" style="font-size:11px;color:#666;margin-top:2px">user@email.com</div>
@@ -3657,7 +3657,7 @@ console.log('✅ Fix JS loaded');
     m.id = 'acxAuth';
     m.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:999998;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
     m.innerHTML =
-      '<div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">' +
+      '<div style="max-width:400px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">' +
         '<div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">' +
           '<button id="acxClose" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>' +
           '<div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>' +
@@ -3666,7 +3666,7 @@ console.log('✅ Fix JS loaded');
         '</div>' +
         '<div style="padding:20px">' +
           '<div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">' +
-            '<button id="acxSignupTab" type="button" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>' +
+            '<button id="acxSignupTab" type="button" style="flex:1;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>' +
             '<button id="acxLoginTab" type="button" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>' +
           '</div>' +
           '<div id="acxNameF" style="margin-bottom:13px">' +
@@ -3843,7 +3843,7 @@ console.log('✅ Fix JS loaded');
         '</div>' +
         '<div style="height:6px;background:#e0e6ed;border-radius:3px;overflow:hidden;margin-bottom:8px"><div id="acxBar" style="height:100%;width:0%;background:linear-gradient(90deg,#FDBA3B,#FB5D3B);transition:width .3s"></div></div>' +
         '<div id="acxPdfStat" style="font-size:11px;color:#666;text-align:center;font-weight:700;margin-bottom:8px">-</div>' +
-        '<div id="acxPdfPrev" style="display:none;background:#fff;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
+        '<div id="acxPdfPrev" style="display:none;border-radius:8px;padding:10px;max-height:120px;overflow-y:auto;font-size:10px;line-height:1.4;border:1px solid #e0e6ed;font-family:monospace;white-space:pre-wrap"></div>';
       pz.appendChild(status);
 
       var _rm = document.getElementById('acxPdfRemove') || document.getElementById('acxRemove'); if(_rm) _rm.onclick = function(){
@@ -4247,7 +4247,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Quality breakdown
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Quality Breakdown</div>';
     h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
     var pList = [
@@ -4272,7 +4272,7 @@ console.log('✅ Fix JS loaded');
 
     // Good
     if(good.length){
-      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ अच्छी बातें (' + good.length + ')</div><ul style="list-style:none;padding:0">';
       good.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#27ae60">✓</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4280,7 +4280,7 @@ console.log('✅ Fix JS loaded');
 
     // Bad
     if(bad.length){
-      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#e94560;margin-bottom:10px">❌ सुधार ज़रूरी (' + bad.length + ')</div><ul style="list-style:none;padding:0">';
       bad.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#e94560">✗</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4288,7 +4288,7 @@ console.log('✅ Fix JS loaded');
 
     // Warn
     if(warn.length){
-      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+      h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
       h += '<div style="font-size:14px;font-weight:800;color:#f39c12;margin-bottom:10px">⚠️ Suggestions (' + warn.length + ')</div><ul style="list-style:none;padding:0">';
       warn.forEach(function(g){ h += '<li style="font-size:13px;line-height:1.5;padding:6px 0 6px 22px;position:relative;color:#333;border-bottom:1px solid #f5f7fa"><span style="position:absolute;left:0;top:6px;font-weight:900;color:#f39c12">!</span>' + g + '</li>'; });
       h += '</ul></div>';
@@ -4572,7 +4572,7 @@ console.log('✅ Fix JS loaded');
     // Score card
     var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
     var scoreStatus = r.pct >= 70 ? '✅ Exam-Ready' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -4586,7 +4586,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + '/' + r.maxScore + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -4599,7 +4599,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -4615,7 +4615,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -4894,7 +4894,7 @@ console.log('✅ Fix JS loaded');
     // Score card
     var scoreColor = r.pct >= 70 ? '#27ae60' : (r.pct >= 45 ? '#f39c12' : '#e94560');
     var scoreStatus = r.pct >= 70 ? '✅ JEE-Ready' : (r.pct >= 45 ? '⚠️ और सुधार चाहिए' : '❌ कई चीज़ें missing');
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -4913,7 +4913,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -4926,7 +4926,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -4942,7 +4942,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -5531,7 +5531,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Score card
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -5545,7 +5545,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -5558,7 +5558,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -5574,7 +5574,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -5903,7 +5903,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Score
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
     h += '<div style="font-size:14px;font-weight:800;color:#0f3460">' + scoreStatus + '</div>';
     h += '<div style="font-size:22px;font-weight:900;color:' + scoreColor + '">' + r.pct + '%</div>';
@@ -5917,7 +5917,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">✅ ये सही किया (' + r.found.length + ')</div>';
       r.found.forEach(function(f){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between">';
         h += '<span style="font-size:12px;font-weight:700;color:#1a1a2e">✓ ' + f.name + '</span>';
         h += '<span style="font-size:10px;color:#27ae60;font-weight:700">+' + f.weight + '</span>';
         h += '</div>';
@@ -5930,7 +5930,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ ये जोड़ना ज़रूरी है (' + r.missing.length + ')</div>';
       r.missing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m.name + '</span>';
         h += '<span style="font-size:10px;color:#e94560;font-weight:700">-' + m.weight + '</span>';
@@ -5946,7 +5946,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये नहीं करना चाहिए (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -6453,7 +6453,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== SECTION-WISE BREAKDOWN =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Section-wise Marks</div>';
     var sections = [
       { name: 'Introduction', got: r.introScore, max: 15 },
@@ -6478,7 +6478,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f4ff;border:2px solid #2980b9;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#2980b9;margin-bottom:10px">📚 Detected Topics (क्या-क्या cover हुआ)</div>';
       r.detectedTopics.forEach(function(t){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px">';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px">';
         h += '<div style="display:flex;justify-content:space-between;margin-bottom:4px">';
         h += '<span style="font-size:12px;font-weight:800;color:#0f3460">✓ ' + t.name + '</span>';
         h += '<span style="font-size:10px;color:#2980b9;font-weight:700">' + t.hits + ' hits</span>';
@@ -6494,7 +6494,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ये topics पूरी तरह missing हैं</div>';
       r.missingTopics.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b;margin-bottom:4px">✗ ' + m.name + ' [' + m.severity + ']</div>';
         h += '<div style="font-size:11px;color:#666">💡 ' + m.suggestion + '</div>';
         h += '</div>';
@@ -6503,7 +6503,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // ===== REQUIREMENTS CHECK =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Examiner Requirements Check</div>';
     h += '<div style="font-size:11px;color:#27ae60;font-weight:700;margin-bottom:8px">✓ FOUND (' + r.requirementsFound.length + ')</div>';
     r.requirementsFound.forEach(function(rq){
@@ -6520,7 +6520,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== CONTENT STATS =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Content Statistics</div>';
     h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
     var stats = [
@@ -6548,7 +6548,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ ये sentences कमजोर हैं (Generic)</div>';
       r.weakSentences.forEach(function(s){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
       });
       h += '<div style="font-size:10px;color:#999;margin-top:8px">💡 इनको specific facts, data, examples से replace करें</div>';
       h += '</div>';
@@ -6575,7 +6575,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="text-align:center;font-size:13px;font-weight:700;color:#27ae60;padding:10px">🎉 कोई major improvement नहीं चाहिए!</div>';
     } else {
       improvements.forEach(function(imp){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#1a1a2e;font-weight:600;border-left:3px solid #2980b9">→ ' + imp + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#1a1a2e;font-weight:600;border-left:3px solid #2980b9">→ ' + imp + '</div>';
       });
     }
     h += '</div>';
@@ -7019,7 +7019,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // ===== MARKS BREAKDOWN (4 dimensions) =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { name: '📝 Content (60%)', got: r.marksBreakdown.content, max: r.marksBreakdown.maxContent },
@@ -7045,7 +7045,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - Examiner ये ढूँढ रहा था</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -7053,7 +7053,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // ===== ALL ELEMENTS CHECK =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.elementsFound.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -7074,7 +7074,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Grammar/Language Errors (' + r.grammarErrors.length + ')</div>';
       r.grammarErrors.forEach(function(e){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
       });
       h += '</div>';
     }
@@ -7085,7 +7085,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Generic Phrases हटाएँ (' + r.genericPhrases.length + ')</div>';
       h += '<div style="display:flex;flex-wrap:wrap;gap:4px">';
       r.genericPhrases.forEach(function(p){
-        h += '<span style="background:#fff;color:#b8860b;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700;border:1px solid #f39c12">' + p + '</span>';
+        h += '<span style="color:#b8860b;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700;border:1px solid #f39c12">' + p + '</span>';
       });
       h += '</div></div>';
     }
@@ -7098,7 +7098,7 @@ console.log('✅ Fix JS loaded');
       var cnt = r.argumentStructure[at];
       var atColor = cnt > 0 ? '#27ae60' : '#e94560';
       var atIcon = cnt > 0 ? '✓' : '✗';
-      h += '<div style="background:#fff;padding:6px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
+      h += '<div style="padding:6px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
       h += '<span style="font-size:11px;font-weight:700;color:#1a1a2e">' + argIcon + ' ' + argLabels[at] + '</span>';
       h += '<span style="font-size:11px;font-weight:800;color:' + atColor + '">' + cnt + '</span>';
       h += '</div>';
@@ -7110,7 +7110,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">📄 Paragraph Issues</div>';
       r.paragraphIssues.forEach(function(p){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600">⚠️ ' + p + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600">⚠️ ' + p + '</div>';
       });
       h += '</div>';
     }
@@ -7120,7 +7120,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#e8f8f0;border:2px solid #27ae60;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#27ae60;margin-bottom:10px">💪 Strong Sentences</div>';
       r.strongSentences.forEach(function(s){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#1a1a2e;border-left:3px solid #27ae60">" ' + s + ' "</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#1a1a2e;border-left:3px solid #27ae60">" ' + s + ' "</div>';
       });
       h += '</div>';
     }
@@ -7130,13 +7130,13 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Sentences (हटाएँ/replace करें)</div>';
       r.weakSentences.forEach(function(s){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11px;color:#7a5a00;font-style:italic;border-left:3px solid #f39c12">" ' + s + ' "</div>';
       });
       h += '</div>';
     }
 
     // ===== CONTENT STATS =====
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📊 Content Analysis</div>';
     h += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
     var stats = [
@@ -7186,7 +7186,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
         h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
         h += '</div>';
@@ -7563,7 +7563,7 @@ console.log('✅ Fix JS loaded');
     h += '</div></div>';
 
     // Breakdown
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { n: '📝 Content (60%)', g: r.marksBreakdown.content, m: r.marksBreakdown.maxContent },
@@ -7589,14 +7589,14 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ' + r.name + ' में अनिवार्य</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div></div>';
       });
       h += '</div>';
     }
 
     // Elements
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.found.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -7620,7 +7620,7 @@ console.log('✅ Fix JS loaded');
       { l: 'Paragraphs', v: r.paragraphs, c: r.paragraphs >= 3 ? '#27ae60' : '#f39c12' }
     ];
     stats.forEach(function(s){
-      h += '<div style="background:#fff;padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
+      h += '<div style="padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700">' + s.l.toUpperCase() + '</div>';
       h += '<div style="font-size:18px;font-weight:900;color:' + s.c + '">' + s.v + '</div></div>';
     });
@@ -7631,7 +7631,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ सुधार ज़रूरी</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -7653,7 +7653,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var col = a.p === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
         h += '<div style="font-size:9px;background:' + col + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.p + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.t + '</div></div>';
       });
@@ -8259,7 +8259,7 @@ console.log('✅ Fix JS loaded');
     h += '</div></div>';
 
     // Marks Breakdown
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { n: '📝 Content (60%)', g: r.marksBreakdown.content, m: r.marksBreakdown.maxContent },
@@ -8285,7 +8285,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - ये ' + r.name + ' में अनिवार्य हैं</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -8293,7 +8293,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // All Elements
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.found.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -8317,7 +8317,7 @@ console.log('✅ Fix JS loaded');
       { l: 'Paragraphs', v: r.paragraphs, c: r.paragraphs >= 3 ? '#27ae60' : '#f39c12' }
     ];
     stats.forEach(function(s){
-      h += '<div style="background:#fff;padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
+      h += '<div style="padding:10px;border-radius:8px;text-align:center;border-left:3px solid ' + s.c + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700">' + s.l.toUpperCase() + '</div>';
       h += '<div style="font-size:18px;font-weight:900;color:' + s.c + '">' + s.v + '</div></div>';
     });
@@ -8328,7 +8328,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ सुधार ज़रूरी (' + r.warnings.length + ')</div>';
       r.warnings.forEach(function(w){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">' + w + '</div>';
       });
       h += '</div>';
     }
@@ -8350,7 +8350,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var col = a.p === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + col + '">';
         h += '<div style="font-size:9px;background:' + col + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.p + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.t + '</div></div>';
       });
@@ -8701,7 +8701,7 @@ console.log('✅ Fix JS loaded');
     h += '</div>';
 
     // Marks Breakdown
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">📋 Marks Breakdown</div>';
     var breakdown = [
       { name: '🎯 Approach (30%)', got: r.marksBreakdown.approach, max: r.marksBreakdown.maxApproach },
@@ -8727,7 +8727,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#ffe8e8;border:3px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">🚨 CRITICAL - JEE में ये अनिवार्य हैं</div>';
       r.criticalMissing.forEach(function(m){
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;border-left:4px solid #e94560">';
         h += '<div style="font-size:12.5px;font-weight:800;color:#c0392b">✗ ' + m + '</div>';
         h += '</div>';
       });
@@ -8735,7 +8735,7 @@ console.log('✅ Fix JS loaded');
     }
 
     // Element Check
-    h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px">';
+    h += '<div style="border-radius:14px;padding:16px;margin-bottom:12px">';
     h += '<div style="font-size:13px;font-weight:800;color:#0f3460;margin-bottom:12px">✅ Element-by-Element Check</div>';
     r.elementsFound.forEach(function(el){
       h += '<div style="background:#e8f8f0;padding:8px 10px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between">';
@@ -8764,7 +8764,7 @@ console.log('✅ Fix JS loaded');
       { label: 'Words', value: r.words, color: '#2980b9', ideal: '50+' }
     ];
     stats.forEach(function(s){
-      h += '<div style="background:#fff;padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
+      h += '<div style="padding:10px;border-radius:8px;border-left:3px solid ' + s.color + '">';
       h += '<div style="font-size:9px;color:#666;font-weight:700;margin-bottom:2px">' + s.label.toUpperCase() + '</div>';
       h += '<div style="font-size:16px;font-weight:900;color:' + s.color + '">' + s.value + '</div>';
       h += '<div style="font-size:9px;color:#999">Ideal: ' + s.ideal + '</div>';
@@ -8777,7 +8777,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff5f5;border:2px solid #e94560;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#e94560;margin-bottom:10px">❌ Errors Found (' + r.grammarErrors.length + ')</div>';
       r.grammarErrors.forEach(function(e){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#c0392b;font-weight:600;border-left:3px solid #e94560">⚠️ ' + e + '</div>';
       });
       h += '</div>';
     }
@@ -8787,7 +8787,7 @@ console.log('✅ Fix JS loaded');
       h += '<div style="background:#fff8e1;border:2px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:12px">';
       h += '<div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:10px">⚠️ Weak Points</div>';
       r.weakPoints.forEach(function(p){
-        h += '<div style="background:#fff;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
+        h += '<div style="padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:11.5px;color:#7a5a00;font-weight:600">• ' + p + '</div>';
       });
       h += '</div>';
     }
@@ -8824,7 +8824,7 @@ console.log('✅ Fix JS loaded');
     } else {
       actions.forEach(function(a){
         var aColor = a.priority === 'HIGH' ? '#e94560' : '#f39c12';
-        h += '<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
+        h += '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;border-left:4px solid ' + aColor + '">';
         h += '<div style="font-size:9px;background:' + aColor + ';color:#fff;padding:2px 8px;border-radius:10px;font-weight:800;flex-shrink:0;margin-top:2px">' + a.priority + '</div>';
         h += '<div style="font-size:12px;color:#1a1a2e;font-weight:600;line-height:1.4">' + a.text + '</div>';
         h += '</div>';
@@ -9140,12 +9140,12 @@ console.log('✅ Fix JS loaded');
     h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">GRADE</div><div style="font-size:18px;font-weight:900">'+r.gr+'</div></div>';
     h+='<div style="background:rgba(255,255,255,0.08);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0;font-weight:700">MISSING</div><div style="font-size:18px;font-weight:900;color:#fc8181">'+(r.sM.length+r.pM.length)+'</div></div>';
     h+='</div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
+    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
     h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
     r.sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
     r.sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' — MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
     h+='</div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
+    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78;box-shadow:0 2px 8px rgba(0,0,0,0.05)">';
     h+='<div style="font-size:14px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH ('+r.pF.length+'/'+(r.pF.length+r.pM.length)+' elements मिले)</div>';
     r.pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center"><span style="color:#22543d;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
     r.pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
@@ -9153,7 +9153,7 @@ console.log('✅ Fix JS loaded');
     if(r.warn.length){
       h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
       h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 EXAMINER WARNINGS ('+r.warn.length+')</div>';
-      r.warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
+      r.warn.forEach(function(w){h+='<div style="padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
       h+='</div>';
     }
     h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
@@ -9161,7 +9161,7 @@ console.log('✅ Fix JS loaded');
     var a=[];r.sM.forEach(function(s){a.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
     r.pM.forEach(function(p){a.push({p:'HIGH',t:p.s});});r.warn.forEach(function(w){a.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
     if(!a.length){h+='<div style="text-align:center;font-size:15px;font-weight:900;color:#22543d;padding:16px">🏆 शानदार! कोई major कमी नहीं</div>';}
-    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="background:#fff;padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;align-items:flex-start;border-left:5px solid '+c+';box-shadow:0 1px 4px rgba(0,0,0,0.05)"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
+    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="padding:12px 14px;border-radius:9px;margin-bottom:8px;display:flex;gap:11px;align-items:flex-start;border-left:5px solid '+c+';box-shadow:0 1px 4px rgba(0,0,0,0.05)"><div style="font-size:10px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0">'+x.p+'</div><div style="font-size:13px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
     h+='</div>';
     h+='<div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:18px;color:#fff;margin-bottom:20px">';
     h+='<div style="font-size:14px;font-weight:900;color:#f6ad55;margin-bottom:12px">👨‍🏫 EXAMINER का FINAL VERDICT</div>';
@@ -9261,22 +9261,22 @@ console.log('✅ Fix JS loaded');
     h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">PERCENT</div><div style="font-size:16px;font-weight:900">'+r.pc+'%</div></div>';
     h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">GRADE</div><div style="font-size:16px;font-weight:900">'+r.gr+'</div></div>';
     h+='<div style="background:rgba(255,255,255,0.08);padding:8px;border-radius:8px;text-align:center"><div style="font-size:9px;color:#a0aec0">MISSING</div><div style="font-size:16px;font-weight:900;color:#fc8181">'+(r.sM.length+r.pM.length)+'</div></div></div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
+    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #4299e1">';
     h+='<div style="font-size:13px;font-weight:900;color:#2b6cb0;margin-bottom:12px">📐 STRUCTURE ANALYSIS</div>';
     r.sF.forEach(function(s){h+='<div style="background:#f0fff4;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:12.5px">✅ '+s.n+'</span><span style="background:#48bb78;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
     r.sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:12.5px">❌ '+s.n+' MISSING</span><span style="background:#fc8181;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
-    h+='</div><div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
+    h+='</div><div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #48bb78">';
     h+='<div style="font-size:13px;font-weight:900;color:#22543d;margin-bottom:12px">📚 CONTENT DEPTH ('+r.pF.length+'/'+(r.pF.length+r.pM.length)+')</div>';
     r.pF.forEach(function(p){h+='<div style="background:#f0fff4;padding:9px 12px;border-radius:8px;margin-bottom:5px;display:flex;justify-content:space-between"><span style="color:#22543d;font-weight:700;font-size:12.5px">✅ '+p.n+'</span><span style="background:#48bb78;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
     r.pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:11px 12px;border-radius:8px;margin-bottom:7px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#c05621;font-weight:800;font-size:12.5px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:11.5px;color:#7b341e;font-weight:600">💡 '+p.s+'</div></div>';});
     h+='</div>';
-    if(r.warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:13px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 WARNINGS ('+r.warn.length+')</div>';r.warn.forEach(function(w){h+='<div style="background:#fff;padding:10px 12px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#c53030;font-weight:700;border-left:4px solid #fc8181">'+w+'</div>';});h+='</div>';}
+    if(r.warn.length){h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px"><div style="font-size:13px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 WARNINGS ('+r.warn.length+')</div>';r.warn.forEach(function(w){h+='<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;font-size:12px;color:#c53030;font-weight:700;border-left:4px solid #fc8181">'+w+'</div>';});h+='</div>';}
     h+='<div style="background:linear-gradient(135deg,#ebf8ff,#bee3f8);border:2px solid #4299e1;border-radius:12px;padding:16px;margin-bottom:12px">';
     h+='<div style="font-size:14px;font-weight:900;color:#2b6cb0;margin-bottom:12px">🎯 ACTION PLAN</div>';
     var a=[];r.sM.forEach(function(s){a.push({p:'CRITICAL',t:s.n+' ज़रूर लिखें — '+s.w+' marks का नुकसान'});});
     r.pM.forEach(function(p){a.push({p:'HIGH',t:p.s});});r.warn.forEach(function(w){a.push({p:'CRITICAL',t:w.replace(/^[❌⚠️]\s*/,'')});});
     if(!a.length){h+='<div style="text-align:center;font-size:14px;font-weight:900;color:#22543d;padding:16px">🏆 शानदार! कोई major कमी नहीं</div>';}
-    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="background:#fff;padding:11px 13px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:3px 9px;border-radius:11px;font-weight:900">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
+    else{a.slice(0,15).forEach(function(x){var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';h+='<div style="padding:11px 13px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:3px 9px;border-radius:11px;font-weight:900">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';});}
     h+='</div><div style="background:linear-gradient(135deg,#1a202c,#2d3748);border-radius:12px;padding:16px;color:#fff">';
     h+='<div style="font-size:13px;font-weight:900;color:#f6ad55;margin-bottom:10px">👨‍🏫 FINAL VERDICT</div>';
     var v=r.pc>=75?'🏆 Excellent! UPSC top 1% answer।':r.pc>=60?'👍 Good! Content अच्छा, structure सुधारें।':r.pc>=45?'📊 Average. Intro/Conclusion ठीक करें, data/facts बढ़ाएं।':r.pc>=30?'⚠️ Weak. Basic structure गायब, content depth कम।':'❌ Very Poor. UPSC हिसाब से fail।';
@@ -9407,12 +9407,12 @@ console.log('✅ Fix JS loaded');
     h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">PARAS</div><div style="font-size:18px;font-weight:900">'+paragraphs+'</div></div>';
     h+='<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:8px;text-align:center"><div style="font-size:9px;color:rgba(255,255,255,0.7)">GRADE</div><div style="font-size:18px;font-weight:900">'+grade+'</div></div>';
     h+='</div></div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid '+accent+'">';
+    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid '+accent+'">';
     h+='<div style="font-size:14px;font-weight:900;color:'+darkText+';margin-bottom:12px">📐 STRUCTURE ANALYSIS (72 marks)</div>';
     sF.forEach(function(s){h+='<div style="background:'+lightBg+';padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:'+darkText+';font-weight:700;font-size:13px">✅ '+s.n+'</span><span style="background:'+accent+';color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+s.w+'</span></div>';});
     sM.forEach(function(s){h+='<div style="background:#fff5f5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;border-left:3px solid #fc8181"><span style="color:#c53030;font-weight:700;font-size:13px">❌ '+s.n+' — MISSING</span><span style="background:#fc8181;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+s.w+'</span></div>';});
     h+='</div>';
-    h+='<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #10b981">';
+    h+='<div style="border-radius:12px;padding:16px;margin-bottom:12px;border-left:5px solid #10b981">';
     h+='<div style="font-size:14px;font-weight:900;color:#065f46;margin-bottom:12px">📚 CONTENT DEPTH — '+cat+' Examiner Check ('+pF.length+'/'+(pF.length+pM.length)+')</div>';
     pF.forEach(function(p){h+='<div style="background:#ecfdf5;padding:10px 14px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span style="color:#065f46;font-weight:700;font-size:13px">✅ '+p.n+'</span><span style="background:#10b981;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">+'+p.w+'</span></div>';});
     pM.forEach(function(p){h+='<div style="background:#fffaf0;padding:12px 14px;border-radius:8px;margin-bottom:8px;border-left:3px solid #f6ad55"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:#c05621;font-weight:800;font-size:13px">⚠️ '+p.n+'</span><span style="background:#f6ad55;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:800">-'+p.w+'</span></div><div style="font-size:12px;color:#7b341e;font-weight:600;line-height:1.5">💡 '+p.s+'</div></div>';});
@@ -9420,7 +9420,7 @@ console.log('✅ Fix JS loaded');
     if(warn.length){
       h+='<div style="background:#fff5f5;border:2px solid #fc8181;border-radius:12px;padding:16px;margin-bottom:12px">';
       h+='<div style="font-size:14px;font-weight:900;color:#c53030;margin-bottom:12px">🚨 '+cat+' EXAMINER WARNINGS ('+warn.length+' गंभीर गलतियाँ)</div>';
-      warn.forEach(function(w){h+='<div style="background:#fff;padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
+      warn.forEach(function(w){h+='<div style="padding:11px 14px;border-radius:8px;margin-bottom:7px;font-size:13px;color:#c53030;font-weight:700;border-left:4px solid #fc8181;line-height:1.5">'+w+'</div>';});
       h+='</div>';
     }
     h+='<div style="background:linear-gradient(135deg,'+lightBg+',#bfdbfe);border:2px solid '+accent+';border-radius:12px;padding:16px;margin-bottom:12px">';
@@ -9434,7 +9434,7 @@ console.log('✅ Fix JS loaded');
     } else {
       acts.slice(0,18).forEach(function(x){
         var c=x.p==='CRITICAL'?'#e53e3e':'#dd6b20';
-        h+='<div style="background:#fff;padding:11px 14px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0;margin-top:1px">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';
+        h+='<div style="padding:11px 14px;border-radius:9px;margin-bottom:7px;display:flex;gap:11px;border-left:5px solid '+c+'"><div style="font-size:9px;background:'+c+';color:#fff;padding:4px 10px;border-radius:11px;font-weight:900;flex-shrink:0;margin-top:1px">'+x.p+'</div><div style="font-size:12.5px;color:#1a202c;font-weight:600;line-height:1.5">'+x.t+'</div></div>';
       });
     }
     h+='</div>';
@@ -9503,7 +9503,7 @@ console.log('✅ Fix JS loaded');
       el = document.createElement('div');
       el.id = 'ocrProgress';
       el.style.cssText = 'position:fixed;inset:0;background:rgba(10,25,41,.95);backdrop-filter:blur(10px);z-index:9999999;display:flex;align-items:center;justify-content:center;padding:20px';
-      el.innerHTML = '<div style="background:#fff;border-radius:20px;padding:30px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)">'+
+      el.innerHTML = '<div style="border-radius:20px;padding:30px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)">'+
         '<div style="font-size:40px;margin-bottom:12px">📷</div>'+
         '<div id="ocrTitle" style="font-size:18px;font-weight:900;color:#1a202c;margin-bottom:6px"></div>'+
         '<div id="ocrStatus" style="font-size:13px;color:#718096;margin-bottom:20px"></div>'+

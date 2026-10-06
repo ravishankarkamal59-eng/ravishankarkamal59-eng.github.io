@@ -21,7 +21,7 @@ h2{color:#0f3460}
 .hero h1,.hero h2{color:#fff}
 .btn{display:inline-block;background:#e94560;color:#fff;padding:0.8rem 1.5rem;text-decoration:none;border-radius:25px;font-weight:bold;margin:0.3rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
-.content{background:#fff;padding:2rem;border-radius:12px;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.content{padding:2rem;border-radius:12px;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
 footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text-align:center}
 .top-bar{background:#e94560;text-align:center;padding:0.3rem;font-size:0.85rem;margin:-1rem -1rem 1rem}
 .user-box{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem}
@@ -30,12 +30,12 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
 .nav-links{list-style:none;display:flex;gap:1rem;flex-wrap:wrap;padding:0;margin:0}
 .nav-links a{color:#fff;text-decoration:none;font-weight:500;font-size:0.9rem;padding:0.3rem 0.5rem}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0}
-.stat{background:#fff;padding:1.5rem 1rem;border-radius:10px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:4px solid #e94560}
+.stat{padding:1.5rem 1rem;border-radius:10px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-top:4px solid #e94560}
 .stat h3{font-size:1.8rem;color:#0f3460;margin:0 0 0.3rem}
-.exam-card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:5px solid #e94560;text-decoration:none;color:inherit;display:block}
+.exam-card{border-radius:12px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:5px solid #e94560;text-decoration:none;color:inherit;display:block}
 .exam-card .icon{font-size:2.2rem;margin-bottom:0.5rem}
 .exam-card h3{color:#0f3460;margin-bottom:0.5rem}
-.feature-box{background:#fff;padding:1.8rem 1.2rem;border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.feature-box{padding:1.8rem 1.2rem;border-radius:12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
 .cta-box{background:linear-gradient(135deg,#0f3460,#16213e);color:#fff;padding:2.5rem 1.5rem;border-radius:12px;text-align:center;margin:2rem 0}
 .cta-box h2{color:#fff}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto 1.5rem;text-align:left}
@@ -55,7 +55,7 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
 </style>
 <link rel="stylesheet" href="assets/css/style.css?v=10">
   <style>
-    .chat-wrapper { max-width:900px; margin:1rem auto; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; display:flex; flex-direction:column; height:calc(100vh - 200px); min-height:500px; }
+    .chat-wrapper { max-width:900px; margin:1rem auto;  border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; display:flex; flex-direction:column; height:calc(100vh - 200px); min-height:500px; }
     .chat-header { background:linear-gradient(135deg,#0f3460,#e94560); color:#fff; padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
     .chat-header h2 { margin:0; font-size:1.1rem; color:#fff; }
     .chat-header h2::after { display:none; }
@@ -65,19 +65,19 @@ footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem 1rem;margin-top:3rem;text
     .msg { max-width:85%; padding:0.8rem 1rem; border-radius:16px; font-size:0.95rem; line-height:1.5; word-wrap:break-word; white-space:pre-wrap; animation:fadeIn 0.3s ease; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
     .msg.user { background:#0f3460; color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
-    .msg.ai { background:#fff; color:#333; align-self:flex-start; border-bottom-left-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+    .msg.ai {  color:#333; align-self:flex-start; border-bottom-left-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
     .msg .copy-btn { background:none; border:none; color:#888; font-size:0.75rem; cursor:pointer; margin-top:0.4rem; padding:0.2rem 0.5rem; border-radius:4px; }
     .msg .copy-btn:hover { background:#f0f0f0; color:#0f3460; }
-    .typing { display:inline-block; padding:0.8rem 1rem; background:#fff; border-radius:16px; align-self:flex-start; }
+    .typing { display:inline-block; padding:0.8rem 1rem;  border-radius:16px; align-self:flex-start; }
     .typing span { display:inline-block; width:8px; height:8px; margin:0 2px; background:#888; border-radius:50%; animation:blink 1.4s infinite both; }
     .typing span:nth-child(2){animation-delay:0.2s} .typing span:nth-child(3){animation-delay:0.4s}
     @keyframes blink{0%,80%,100%{opacity:0.3}40%{opacity:1}}
-    .chat-input-area { padding:0.8rem; background:#fff; border-top:1px solid #eee; display:flex; gap:0.5rem; align-items:flex-end; }
+    .chat-input-area { padding:0.8rem;  border-top:1px solid #eee; display:flex; gap:0.5rem; align-items:flex-end; }
     .chat-input-area textarea { flex:1; border:2px solid #e0e6ed; border-radius:24px; padding:0.7rem 1rem; font-family:inherit; font-size:0.95rem; resize:none; max-height:120px; min-height:44px; outline:none; }
     .chat-input-area textarea:focus { border-color:#e94560; }
     .chat-input-area button { background:#e94560; color:#fff; border:none; width:44px; height:44px; border-radius:50%; font-size:1.2rem; cursor:pointer; flex-shrink:0; }
     .chat-input-area button:disabled { background:#ccc; cursor:not-allowed; }
-    .suggestions { display:flex; flex-wrap:wrap; gap:0.4rem; padding:0.6rem 1rem; background:#fff; border-top:1px solid #eee; overflow-x:auto; }
+    .suggestions { display:flex; flex-wrap:wrap; gap:0.4rem; padding:0.6rem 1rem;  border-top:1px solid #eee; overflow-x:auto; }
     .suggestions button { background:#f0f4f8; color:#0f3460; border:1px solid #d0dae5; padding:0.4rem 0.8rem; border-radius:16px; font-size:0.8rem; cursor:pointer; white-space:nowrap; }
     .suggestions button:hover { background:#e94560; color:#fff; border-color:#e94560; }
     body.dark-mode .chat-wrapper { background:#16213e; }

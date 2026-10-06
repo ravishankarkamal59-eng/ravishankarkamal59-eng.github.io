@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8411032765700351" crossorigin="anonymous"></script>
 <style>
-.mock-card{background:#fff;border-radius:14px;padding:1.3rem;box-shadow:0 3px 15px rgba(0,0,0,0.08);border-left:5px solid #e94560;margin-bottom:1rem}
+.mock-card{border-radius:14px;padding:1.3rem;box-shadow:0 3px 15px rgba(0,0,0,0.08);border-left:5px solid #e94560;margin-bottom:1rem}
 .mock-card h3{color:#0f3460;margin-bottom:0.5rem;font-size:1.1rem}
 .mock-card .meta{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#666;margin-bottom:0.8rem}
 .mock-card .meta span{background:#f0f4f8;padding:0.2rem 0.7rem;border-radius:12px}
@@ -18,11 +18,11 @@
 .mock-card .btn:active{background:#c73650}
 .exam-timer{position:fixed;top:70px;right:10px;background:#e94560;color:#fff;padding:0.5rem 1rem;border-radius:25px;font-weight:700;z-index:100;box-shadow:0 3px 12px rgba(233,69,96,0.4);display:none}
 .exam-timer.on{display:block}
-.mock-q{background:#fff;padding:1.3rem;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.mock-q{padding:1.3rem;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
 .mock-q h3{color:#0f3460;font-size:1rem;margin-bottom:0.8rem;line-height:1.4}
 .mock-opt{display:block;padding:0.7rem 1rem;margin:0.4rem 0;background:#f8fafc;border-radius:8px;cursor:pointer;border:2px solid transparent;font-size:0.92rem}
 .mock-opt.sel{background:#0f3460;color:#fff;border-color:#0f3460}
-.result-box{background:#fff;padding:1.5rem;border-radius:14px;text-align:center;box-shadow:0 3px 15px rgba(0,0,0,0.1)}
+.result-box{padding:1.5rem;border-radius:14px;text-align:center;box-shadow:0 3px 15px rgba(0,0,0,0.1)}
 .result-box .big{font-size:2.5rem;font-weight:700;color:#0f3460;margin-bottom:0.5rem}
 .result-box .stat{display:inline-block;padding:0.7rem 1.2rem;margin:0.5rem;border-radius:10px;background:#f0f4f8;font-weight:600}
 </style>
@@ -152,7 +152,7 @@ header, nav {
 
 <div id="mockResult" style="display:none"></div>
 
-<div id="shareBox" style="background:#fff;padding:1.2rem;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)"></div>
+<div id="shareBox" style="padding:1.2rem;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)"></div>
 </main>
 
 <footer>
@@ -506,7 +506,7 @@ function showReview() {
     var ua = answers[i];
     var badge = ua === null ? '⏭️ छोड़ा' : (ua === q.a ? '✅ सही' : '❌ गलत');
     var color = ua === null ? '#f39c12' : (ua === q.a ? '#27ae60' : '#e74c3c');
-    html += '<div style="background:#fff;padding:1rem;border-radius:12px;margin-bottom:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)">';
+    html += '<div style="padding:1rem;border-radius:12px;margin-bottom:0.8rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)">';
     html += '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><strong style="color:#0f3460">Q' + (i+1) + '</strong><span style="color:' + color + ';font-weight:600;font-size:0.85rem">' + badge + '</span></div>';
     html += '<p style="margin-bottom:0.5rem;font-size:0.92rem">' + q.q + '</p>';
     for (var j = 0; j < q.o.length; j++) {

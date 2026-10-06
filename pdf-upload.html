@@ -306,7 +306,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
 
 <!-- AUTH MODAL -->
 <div id="authScr" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(10,25,41,.92);backdrop-filter:blur(10px);z-index:99998;align-items:center;justify-content:center;padding:16px;overflow-y:auto;box-sizing:border-box">
-  <div style="max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
+  <div style="max-width:400px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.5);margin:auto">
     <div style="background:linear-gradient(135deg,#0f3460,#1a5276);padding:20px;color:#fff;position:relative">
       <button onclick="AC.closeAuth()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;cursor:pointer;font-weight:700">✕</button>
       <div style="width:46px;height:46px;background:linear-gradient(135deg,#FDBA3B,#FB5D3B);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:900;font-size:26px;color:#0a1929;margin-bottom:10px">R</div>
@@ -315,7 +315,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
     </div>
     <div style="padding:20px">
       <div style="display:flex;gap:5px;background:#f0f4f8;padding:4px;border-radius:11px;margin-bottom:16px">
-        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;background:#fff;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
+        <button type="button" class="as-tab on" data-mode="signup" onclick="AC.switchTab('signup');return false" style="flex:1;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0f3460;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)">Sign Up</button>
         <button type="button" class="as-tab" data-mode="login" onclick="AC.switchTab('login');return false" style="flex:1;background:transparent;border:none;padding:9px;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:700;color:#666;cursor:pointer">Login</button>
       </div>
       <form id="asForm" onsubmit="return AC.submit(event)">
@@ -346,7 +346,7 @@ body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; backgr
 
 <!-- USER MENU -->
 <div id="userMenu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:99996;padding:70px 14px 14px;align-items:flex-start;justify-content:flex-end" onclick="AC.closeUserMenu(event)">
-  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:220px">
+  <div onclick="event.stopPropagation()" style="border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);padding:6px;min-width:220px">
     <div style="padding:12px 14px;border-bottom:1px solid #f0f4f8">
       <div id="umName" style="font-size:13px;font-weight:800;color:#0f3460">User</div>
       <div id="umEmail" style="font-size:11px;color:#666;margin-top:2px">user@email.com</div>
