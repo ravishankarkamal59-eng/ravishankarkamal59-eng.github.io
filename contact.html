@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us - The Ravishankar Insights</title>
+<meta name="description" content="Contact The Ravishankar Insights. Call, WhatsApp, or email us for any queries, suggestions, or study material.">
 <style>
-  :root{--brand-dark:#0f3460;--brand-mid:#1a5276;--brand-accent:#e94560;--light:#f9f9f9;--white:#fff;--text:#2c3e50;}
-  body{margin:0;font-family:'Segoe UI',Tahoma,sans-serif;line-height:1.8;color:var(--text);background:var(--light);}
+  :root{--brand-dark:#0f3460;--brand-mid:#1a5276;--brand-accent:#e94560;--brand-orange:#f39c12;--light:#f9f9f9;--white:#fff;--text:#2c3e50;--border:#e0e7ef;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Tahoma,'Noto Sans Devanagari',sans-serif;line-height:1.7;color:var(--text);background:var(--light);}
   header{background:var(--brand-mid);color:#fff;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
   .header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
   .logo-box{display:flex;align-items:center;gap:12px;}
@@ -16,22 +18,50 @@
   .header-right{text-align:right;font-size:0.85rem;color:#cde;}
   .top-bar{background:var(--brand-accent);text-align:center;padding:0.4rem;font-size:0.85rem;color:#fff;font-weight:600;}
   main{max-width:900px;margin:2rem auto;padding:0 1rem;}
-  .content{padding:2.5rem;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-  h1{color:var(--brand-dark);font-size:1.8rem;border-bottom:3px solid var(--brand-accent);padding-bottom:10px;}
+  .content{background:#fff;padding:2.5rem;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+  h1{color:var(--brand-dark);font-size:1.8rem;border-bottom:3px solid var(--brand-accent);padding-bottom:10px;text-align:left;}
   h2{color:var(--brand-dark);margin-top:2rem;font-size:1.3rem;}
   p{margin-bottom:1.2rem;text-align:left;}
-  .info-box{background:#e8f0ff;padding:20px 25px;border-radius:10px;margin:1.5rem 0;}
-  .info-box p{margin:0.8rem 0;font-size:1rem;font-weight:600;line-height:1.5;}
+  .btn-form{display:inline-block;background:var(--brand-accent);color:#fff;padding:12px 28px;text-decoration:none;border-radius:25px;font-weight:bold;font-size:1rem;transition:background 0.2s;}
+  .btn-form:hover{background:#c73652;}
+  .form-box{text-align:center;margin:1.5rem 0;padding:25px;background:#f4f8ff;border-radius:12px;border:1px dashed var(--brand-mid);}
+
+  /* ==== Contact Cards ==== */
+  .contact-section{margin-top:2.5rem;padding-top:2rem;border-top:2px solid var(--border);}
+  .contact-section h2{text-align:center;color:var(--brand-dark);font-size:1.4rem;margin-bottom:0.4rem;}
+  .contact-section .sub{text-align:center;color:#777;font-size:0.9rem;margin-bottom:1.5rem;}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;}
+  .contact-card{display:flex;align-items:center;gap:14px;padding:18px;background:#fff;border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all 0.25s;box-shadow:0 2px 6px rgba(0,0,0,0.04);}
+  .contact-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(15,52,96,0.15);border-color:var(--brand-mid);}
+  .contact-card .icon{flex-shrink:0;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;}
+  .icon-email{background:linear-gradient(135deg,#e94560,#c73652);}
+  .icon-phone{background:linear-gradient(135deg,#1a5276,#0f3460);}
+  .icon-wa{background:linear-gradient(135deg,#25D366,#128C7E);}
+  .contact-card .info{flex:1;min-width:0;}
+  .contact-card .label{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;}
+  .contact-card .value{font-size:0.98rem;font-weight:700;color:var(--brand-dark);word-break:break-word;margin-top:2px;}
+
+  .faq-item{margin-bottom:1.2rem;}
+  .faq-item strong{color:var(--brand-dark);}
+
   footer{background:#1a1a2e;color:#ccc;padding:2rem 1rem;margin-top:3rem;text-align:center;}
-  footer a{color:var(--brand-accent);text-decoration:none;margin:0 10px;}
-  @media(max-width:768px){.header-inner{flex-direction:column;text-align:center;}.header-right{text-align:center;}.content{padding:1.2rem;}}
+  footer a{color:var(--brand-accent);text-decoration:none;margin:0 8px;}
+
+  @media(max-width:768px){
+    .header-inner{flex-direction:column;text-align:center;}
+    .header-right{text-align:center;}
+    .content{padding:1.3rem;}
+    h1{font-size:1.4rem;}
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-card .value{font-size:0.9rem;}
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
     <div class="logo-box">
-      <img src="assets/images/logo.svg" alt="The Ravishankar Insights Logo" class="logo-img">
+      <img src="assets/images/logo.jpg" alt="The Ravishankar Insights Logo" class="logo-img">
       <div class="logo-text">The Ravishankar<small>INSIGHTS</small></div>
     </div>
     <div class="header-right">Education • Knowledge • Success</div>
@@ -42,33 +72,88 @@
 <main>
   <div class="content">
     <h1>Contact Us (संपर्क करें)</h1>
-    
+
     <p>अगर आपके पास कोई प्रश्न, सुझाव, या शिकायत है, तो हमें बेझिझक संपर्क करें। हम आपकी बात सुनने और यथासंभव मदद करने के लिए सदैव तत्पर हैं। The Ravishankar Insights में हम छात्रों के सुझावों को बहुत महत्व देते हैं, क्योंकि इससे हम और बेहतर बन पाते हैं।</p>
 
-    <div class="info-box">
-      <p>📧 <strong>ईमेल:</strong> ravishankarkamal59@gmail.com</p>
-      <p>📱 <strong>फोन / WhatsApp 1:</strong> +91 6391024897</p>
-      <p>📱 <strong>फोन / WhatsApp 2:</strong> +91 8931050393</p>
-      <p>📍 <strong>स्थान:</strong> उत्तर प्रदेश, भारत</p>
-    </div>
-
     <h2>संपर्क फॉर्म (Contact Form)</h2>
-    <p>आप नीचे दिए गए फॉर्म को भरकर भी हमें संदेश भेज सकते हैं। हम 24-48 घंटों के भीतर आपको जवाब देने का प्रयास करेंगे। कृपया फॉर्म में अपनी समस्या या प्रश्न स्पष्ट रूप से लिखें ताकि हम आपकी सही मदद कर सकें।</p>
-    
-    <div style="text-align:center; margin-top:20px; padding:20px; background:#f4f8ff; border-radius:8px;">
-      <p style="font-weight:bold; color:var(--brand-dark);">फॉर्म भरने के लिए नीचे क्लिक करें:</p>
-      <a href="https://forms.gle/your-google-form-link" target="_blank" style="display:inline-block; background:var(--brand-accent); color:#fff; padding:12px 25px; text-decoration:none; border-radius:25px; font-weight:bold;">📝 कॉन्टैक्ट फॉर्म खोलें</a>
+    <p>आप नीचे दिए गए फॉर्म को भरकर भी हमें संदेश भेज सकते हैं। हम 24-48 घंटों के भीतर आपको जवाब देने का प्रयास करेंगे।</p>
+
+    <div class="form-box">
+      <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn-form">📝 कॉन्टैक्ट फॉर्म खोलें</a>
     </div>
 
     <h2>अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
-    <p><strong>प्रश्न 1: क्या आपकी सामग्री पूरी तरह से मुफ्त है?</strong><br>उत्तर: हाँ, हमारी वेबसाइट पर उपलब्ध सभी नोट्स, करंट अफेयर्स और स्टडी मटेरियल पूरी तरह से मुफ्त हैं। हम शिक्षा को व्यावसायिक बनाने में विश्वास नहीं रखते।</p>
-    <p><strong>प्रश्न 2: मैं नोट्स कैसे डाउनलोड कर सकता हूँ?</strong><br>उत्तर: आप हमारी वेबसाइट के विभिन्न विषयों के पेजों पर जाकर वहाँ दिए गए लिंक से नोट्स डाउनलोड कर सकते हैं।</p>
-    <p><strong>प्रश्न 3: क्या आप कोचिंग भी प्रदान करते हैं?</strong><br>उत्तर: नहीं, हम केवल ऑनलाइन शैक्षणिक सामग्री और मार्गदर्शन प्रदान करते हैं।</p>
-    <p><strong>प्रश्न 4: अगर मुझे किसी विषय में कोई प्रश्न है, तो मैं क्या करूँ?</strong><br>उत्तर: आप हमें ईमेल या कॉन्टैक्ट फॉर्म के माध्यम से अपना प्रश्न भेज सकते हैं। हम आपकी यथासंभव मदद करने का प्रयास करेंगे।</p>
-    <p><strong>प्रश्न 5: वेबसाइट पर कंटेंट कितनी बार अपडेट होता है?</strong><br>उत्तर: हम करंट अफेयर्स और नए सिलेबस के अनुसार नियमित रूप से कंटेंट अपडेट करते रहते हैं।</p>
+    <div class="faq-item"><strong>प्रश्न 1: क्या आपकी सामग्री पूरी तरह से मुफ्त है?</strong><br>उत्तर: हाँ, हमारी वेबसाइट पर उपलब्ध सभी नोट्स, करंट अफेयर्स और स्टडी मटेरियल पूरी तरह से मुफ्त हैं।</div>
+    <div class="faq-item"><strong>प्रश्न 2: मैं नोट्स कैसे डाउनलोड कर सकता हूँ?</strong><br>उत्तर: आप हमारी वेबसाइट के विभिन्न विषयों के पेजों पर जाकर वहाँ दिए गए लिंक से नोट्स डाउनलोड कर सकते हैं।</div>
+    <div class="faq-item"><strong>प्रश्न 3: क्या आप कोचिंग भी प्रदान करते हैं?</strong><br>उत्तर: नहीं, हम केवल ऑनलाइन शैक्षणिक सामग्री और मार्गदर्शन प्रदान करते हैं।</div>
+    <div class="faq-item"><strong>प्रश्न 4: अगर मुझे किसी विषय में कोई प्रश्न है, तो मैं क्या करूँ?</strong><br>उत्तर: आप हमें नीचे दिए गए ईमेल, फोन या WhatsApp के माध्यम से अपना प्रश्न भेज सकते हैं।</div>
+    <div class="faq-item"><strong>प्रश्न 5: वेबसाइट पर कंटेंट कितनी बार अपडेट होता है?</strong><br>उत्तर: हम करंट अफेयर्स और नए सिलेबस के अनुसार नियमित रूप से कंटेंट अपडेट करते रहते हैं।</div>
 
-    <h2>हमसे जुड़ें</h2>
-    <p>आप हमसे सोशल मीडिया पर भी जुड़ सकते हैं। हमारे YouTube चैनल और Telegram ग्रुप पर नियमित रूप से अपडेट मिलते रहते हैं। अगर आप हमारे काम से खुश हैं, तो कृपया अपने दोस्तों के साथ भी शेयर करें।</p>
+    <!-- ============ CONTACT SECTION (Bottom) ============ -->
+    <div class="contact-section">
+      <h2>📞 हमसे सीधे संपर्क करें</h2>
+      <p class="sub">किसी भी आइकॉन पर क्लिक करें — सीधे कॉल, WhatsApp या ईमेल खुलेगा</p>
+
+      <div class="contact-grid">
+
+        <!-- Email -->
+        <a href="mailto:ravishankarkamal59@gmail.com?subject=Query%20from%20Website" class="contact-card">
+          <div class="icon icon-email">✉️</div>
+          <div class="info">
+            <div class="label">ईमेल भेजें</div>
+            <div class="value">ravishankarkamal59@gmail.com</div>
+          </div>
+        </a>
+
+        <!-- Phone 1 -->
+        <a href="tel:+916391024897" class="contact-card">
+          <div class="icon icon-phone">📞</div>
+          <div class="info">
+            <div class="label">फोन करें</div>
+            <div class="value">+91 63910 24897</div>
+          </div>
+        </a>
+
+        <!-- WhatsApp 1 -->
+        <a href="https://wa.me/916391024897?text=नमस्ते%20The%20Ravishankar%20Insights" target="_blank" class="contact-card">
+          <div class="icon icon-wa">💬</div>
+          <div class="info">
+            <div class="label">WhatsApp चैट</div>
+            <div class="value">+91 63910 24897</div>
+          </div>
+        </a>
+
+        <!-- Phone 2 -->
+        <a href="tel:+918931050393" class="contact-card">
+          <div class="icon icon-phone">📞</div>
+          <div class="info">
+            <div class="label">फोन करें</div>
+            <div class="value">+91 89310 50393</div>
+          </div>
+        </a>
+
+        <!-- WhatsApp 2 -->
+        <a href="https://wa.me/918931050393?text=नमस्ते%20The%20Ravishankar%20Insights" target="_blank" class="contact-card">
+          <div class="icon icon-wa">💬</div>
+          <div class="info">
+            <div class="label">WhatsApp चैट</div>
+            <div class="value">+91 89310 50393</div>
+          </div>
+        </a>
+
+        <!-- Location -->
+        <div class="contact-card" style="cursor:default;">
+          <div class="icon icon-phone" style="background:linear-gradient(135deg,#f39c12,#e67e22);">📍</div>
+          <div class="info">
+            <div class="label">स्थान</div>
+            <div class="value">उत्तर प्रदेश, भारत</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- ============ END CONTACT SECTION ============ -->
+
   </div>
 </main>
 
@@ -76,11 +161,11 @@
   <div>
     <p style="color:#fff;font-weight:700;font-size:1.1rem;">The Ravishankar Insights</p>
     <p>
-      <a href="index.html">Home</a> | 
-      <a href="about.html">About Us</a> | 
-      <a href="contact.html">Contact Us</a> | 
-      <a href="privacy.html">Privacy Policy</a> | 
-      <a href="disclaimer.html">Disclaimer</a> | 
+      <a href="index.html">Home</a> |
+      <a href="about.html">About Us</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="disclaimer.html">Disclaimer</a> |
       <a href="terms.html">Terms</a>
     </p>
     <p style="font-size:0.85rem;color:#888;">© 2026 The Ravishankar Insights. All Rights Reserved.</p>
